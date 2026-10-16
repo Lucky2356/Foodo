@@ -194,7 +194,7 @@ jobs:
           curl -sf http://localhost:8080/ | grep -q '<div id="root">'
       - name: Restart keeps the database; seed load stays idempotent
         run: |
-          docker compose exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; g().objects.create_user(username='keep@example.com', email='keep@example.com', password='Keep-me-123')"
+          docker compose exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; g().objects.create_user(username='keep@example.com', email='keep@example.com', password=__import__('secrets').token_urlsafe(18))"
           docker compose down
           docker compose up -d --wait --wait-timeout 300
           docker compose exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; assert g().objects.filter(email='keep@example.com').exists()"

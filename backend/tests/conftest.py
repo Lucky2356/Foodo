@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import secrets
 from typing import Any
 
 import pytest
@@ -21,7 +22,14 @@ def _clear_cache() -> None:
     cache.clear()
 
 
-def make_client(email: str, password: str = "Sup3r-secret-pass") -> tuple[APIClient, dict[str, Any]]:
+# Test passwords are generated per run: nothing that looks like a credential is stored in the repo.
+TEST_PASSWORD = secrets.token_urlsafe(18)
+OTHER_PASSWORD = secrets.token_urlsafe(18)
+THIRD_PASSWORD = secrets.token_urlsafe(18)
+WRONG_PASSWORD = secrets.token_urlsafe(18)
+
+
+def make_client(email: str, password: str = TEST_PASSWORD) -> tuple[APIClient, dict[str, Any]]:
     client = APIClient()
     r = client.post("/api/auth/register/", {"email": email, "password": password, "name": email.split("@")[0]}, format="json")
     assert r.status_code == 201, r.content

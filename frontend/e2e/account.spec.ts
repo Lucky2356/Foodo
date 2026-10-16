@@ -1,3 +1,4 @@
+import { randomBytes } from 'node:crypto';
 import { expect, test } from '@playwright/test';
 import { noHorizontalScroll } from './helpers';
 
@@ -20,7 +21,7 @@ test('account: register, plan on the server, transfer guest data, log out', asyn
   // Opening the account screen sent nothing (check 14/18).
   expect(posts).toEqual([]);
   await page.getByLabel('Почта').fill(email);
-  await page.getByLabel('Пароль').fill('Sup3r-secret-pass');
+  await page.getByLabel('Пароль').fill(randomBytes(18).toString('base64url'));
   await page.getByRole('button', { name: 'Создать аккаунт' }).click();
   await expect(page.getByText(email)).toBeVisible();
   expect(posts.every((u) => /auth\/register/.test(u))).toBe(true);

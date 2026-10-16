@@ -7,18 +7,18 @@ from django.core import mail
 from django.test import override_settings
 from rest_framework.test import APIClient
 
-from .conftest import add_member, household_id, make_client
+from .conftest import OTHER_PASSWORD, TEST_PASSWORD, THIRD_PASSWORD, WRONG_PASSWORD, add_member, household_id, make_client
 
 pytestmark = pytest.mark.django_db
 
 
 def test_csrf_is_enforced_for_session_requests() -> None:
     client = APIClient(enforce_csrf_checks=True)
-    r = client.post("/api/auth/register/", {"email": "c@example.com", "password": "Sup3r-secret-pass"}, format="json")
+    r = client.post("/api/auth/register/", {"email": "c@example.com", "password": TEST_PASSWORD}, format="json")
     assert r.status_code == 403
     client.get("/api/auth/csrf/")
     token = client.cookies["csrftoken"].value
-    r = client.post("/api/auth/register/", {"email": "c@example.com", "password": "Sup3r-secret-pass"}, format="json", HTTP_X_CSRFTOKEN=token)
+    r = client.post("/api/auth/register/", {"email": "c@example.com", "password": TEST_PASSWORD}, format="json", HTTP_X_CSRFTOKEN=token)
     assert r.status_code == 201
     assert client.cookies["sessionid"]["httponly"]
     # Authenticated writes without the token are rejected too.
@@ -30,9 +30,10 @@ def test_login_logout_and_wrong_password() -> None:
     make_client("dana@example.com")
     client = APIClient()
     assert (
-        client.post("/api/auth/login/", {"email": "dana@example.com", "password": "nope-nope"}, format="json").json()["error"]["code"] == "invalid_credentials"
+        client.post("/api/auth/login/", {"email": "dana@example.com", "password": WRONG_PASSWORD}, format="json").json()["error"]["code"]
+        == "invalid_credentials"
     )
-    assert client.post("/api/auth/login/", {"email": "DANA@example.com", "password": "Sup3r-secret-pass"}, format="json").status_code == 200
+    assert client.post("/api/auth/login/", {"email": "DANA@example.com", "password": TEST_PASSWORD}, format="json").status_code == 200
     assert client.get("/api/auth/me/").status_code == 200
     r = client.post("/api/auth/logout/")
     assert r["Clear-Site-Data"] == '"cache"'
@@ -42,7 +43,7 @@ def test_login_logout_and_wrong_password() -> None:
 def test_login_is_rate_limited() -> None:
     make_client("eve@example.com")
     client = APIClient()
-    codes = [client.post("/api/auth/login/", {"email": "eve@example.com", "password": "wrong-password"}, format="json").status_code for _ in range(12)]
+    codes = [client.post("/api/auth/login/", {"email": "eve@example.com", "password": WRONG_PASSWORD}, format="json").status_code for _ in range(12)]
     assert 429 in codes
 
 
@@ -56,9 +57,9 @@ def test_password_reset_flow() -> None:
     assert len(mail.outbox) == 1
     link = next(line for line in mail.outbox[0].body.splitlines() if "reset-password" in line)
     params = dict(p.split("=", 1) for p in link.split("?", 1)[1].split("&"))
-    assert client.post("/api/auth/password/reset/confirm/", {**params, "password": "An0ther-secret-pass"}, format="json").status_code == 200
-    assert client.post("/api/auth/password/reset/confirm/", {**params, "password": "Third-secret-pass1"}, format="json").status_code == 400
-    assert client.post("/api/auth/login/", {"email": "fay@example.com", "password": "An0ther-secret-pass"}, format="json").status_code == 200
+    assert client.post("/api/auth/password/reset/confirm/", {**params, "password": OTHER_PASSWORD}, format="json").status_code == 200
+    assert client.post("/api/auth/password/reset/confirm/", {**params, "password": THIRD_PASSWORD}, format="json").status_code == 400
+    assert client.post("/api/auth/login/", {"email": "fay@example.com", "password": OTHER_PASSWORD}, format="json").status_code == 200
 
 
 def test_user_cannot_touch_another_household(alice: Any, bob: Any) -> None:
@@ -125,8 +126,8 @@ def test_account_export_and_delete(alice: Any) -> None:
     export = client.get("/api/account/export/").json()
     assert export["format"] == "foodo-account-export"
     assert export["households"][0]["members"][0]["name"] == "Аня"
-    assert client.post("/api/account/delete/", {"password": "Sup3r-secret-pass"}, format="json").json()["error"]["code"] == "confirmation_required"
-    assert client.post("/api/account/delete/", {"password": "Sup3r-secret-pass", "confirm": "УДАЛИТЬ"}, format="json").status_code == 200
+    assert client.post("/api/account/delete/", {"password": TEST_PASSWORD}, format="json").json()["error"]["code"] == "confirmation_required"
+    assert client.post("/api/account/delete/", {"password": TEST_PASSWORD, "confirm": "УДАЛИТЬ"}, format="json").status_code == 200
     from households.models import Household
 
     assert not Household.objects.filter(pk=hid).exists()
