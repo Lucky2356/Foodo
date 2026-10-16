@@ -1,0 +1,28 @@
+# Dependencies and build output
+node_modules/
+frontend/dist/
+frontend/dist-static/
+frontend/dev-dist/
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+backend/staticfiles/
+backend/media/
+backend/.coverage
+htmlcov/
+
+# Local configuration and secrets
+.env
+*.env.local
+*.sqlite3
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store

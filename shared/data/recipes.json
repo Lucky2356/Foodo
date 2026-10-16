@@ -1,0 +1,1322 @@
+{
+  "format": "foodo-recipes",
+  "version": 1,
+  "recipes": [
+    {
+      "id": "ovsyanka-s-yablokom", "version": 1, "name": "Овсяная каша с яблоком",
+      "description": "Мягкая каша на молоке с кусочками яблока — быстрый тёплый завтрак.",
+      "category": "breakfast", "meal_types": ["breakfast"], "servings": 2, "yield_g": 560,
+      "ingredients": [
+        {"product": "oats_flakes", "qty": 80, "unit": "g"},
+        {"product": "milk", "qty": 300, "unit": "ml"},
+        {"product": "water", "qty": 100, "unit": "ml"},
+        {"product": "apple", "qty": 1, "unit": "pcs"},
+        {"product": "sugar", "qty": 1, "unit": "tsp"},
+        {"product": "salt", "qty": 1, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 7, "total_min": 12, "steps": [
+          "Смешайте молоко и воду в кастрюле, доведите до кипения.",
+          "Всыпьте хлопья, соль и сахар, варите на слабом огне 5 минут, помешивая.",
+          "Нарежьте яблоко кубиком, добавьте в кашу и дайте постоять 2 минуты под крышкой."
+        ]},
+        {"id": "microwave", "name": "В микроволновке", "equipment": ["microwave"], "active_min": 5, "total_min": 8, "steps": [
+          "Сложите хлопья, соль и сахар в глубокую миску, залейте молоком и водой.",
+          "Готовьте 2 минуты на полной мощности, перемешайте и готовьте ещё 1–2 минуты, следя, чтобы каша не убежала.",
+          "Добавьте нарезанное яблоко и дайте постоять 2 минуты."
+        ]}
+      ],
+      "techniques": ["boil", "knife_basic"], "diet_tags": ["whole_grain"], "container_ok": true,
+      "tip": "Яблоко можно заменить грушей или горстью ягод.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "grechka-s-molokom", "version": 1, "name": "Гречневая каша с молоком",
+      "description": "Рассыпчатая гречка, которую подают с тёплым молоком.",
+      "category": "breakfast", "meal_types": ["breakfast"], "servings": 2, "yield_g": 600,
+      "ingredients": [
+        {"product": "buckwheat_dry", "qty": 120, "unit": "g"},
+        {"product": "water", "qty": 250, "unit": "ml"},
+        {"product": "milk", "qty": 200, "unit": "ml"},
+        {"product": "butter", "qty": 10, "unit": "g"},
+        {"product": "salt", "qty": 1, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 5, "total_min": 25, "steps": [
+          "Промойте гречку, залейте водой, посолите и доведите до кипения.",
+          "Варите под крышкой на слабом огне 15–18 минут, пока вода не впитается.",
+          "Добавьте масло, разложите по тарелкам и залейте подогретым молоком."
+        ]}
+      ],
+      "techniques": ["boil"], "diet_tags": ["whole_grain"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "omlet-s-pomidorami", "version": 1, "name": "Омлет с помидорами",
+      "description": "Пышный омлет на сковороде с сочными помидорами и зеленью.",
+      "category": "breakfast", "meal_types": ["breakfast", "dinner"], "servings": 2, "yield_g": 420,
+      "ingredients": [
+        {"product": "eggs", "qty": 4, "unit": "pcs"},
+        {"product": "milk", "qty": 80, "unit": "ml"},
+        {"product": "tomato", "qty": 2, "unit": "pcs"},
+        {"product": "dill", "qty": 10, "unit": "g"},
+        {"product": "sunflower_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 10, "total_min": 15, "steps": [
+          "Взбейте яйца с молоком и солью вилкой до однородности.",
+          "Нарежьте помидоры кружками и слегка обжарьте на масле 2 минуты.",
+          "Залейте яичной смесью, накройте крышкой и готовьте на слабом огне 6–8 минут.",
+          "Посыпьте рубленым укропом перед подачей."
+        ]}
+      ],
+      "techniques": ["fry_simple", "knife_basic", "mix"], "diet_tags": ["vegetable_rich", "lean_protein"], "container_ok": false,
+      "tip": "Не открывайте крышку первые 5 минут — так омлет лучше поднимется.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "syrniki", "version": 1, "name": "Сырники",
+      "description": "Румяные творожные сырники на сковороде, подаются со сметаной.",
+      "category": "breakfast", "meal_types": ["breakfast", "snack"], "servings": 3, "yield_g": 480,
+      "ingredients": [
+        {"product": "cottage_cheese", "qty": 400, "unit": "g"},
+        {"product": "eggs", "qty": 1, "unit": "pcs"},
+        {"product": "wheat_flour", "qty": 4, "unit": "tbsp"},
+        {"product": "sugar", "qty": 2, "unit": "tbsp"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "sour_cream", "qty": 3, "unit": "tbsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 25, "total_min": 30, "steps": [
+          "Разомните творог вилкой, добавьте яйцо и сахар, перемешайте.",
+          "Всыпьте 3 ложки муки и замесите мягкую массу.",
+          "Мокрыми руками сформируйте лепёшки толщиной 1,5 см и обваляйте в оставшейся муке.",
+          "Жарьте на разогретом масле на среднем огне по 3–4 минуты с каждой стороны.",
+          "Подавайте со сметаной."
+        ]}
+      ],
+      "techniques": ["batter", "fry_simple", "mix"], "diet_tags": ["fried", "refined_sugar"], "container_ok": true,
+      "tip": "Если масса липнет, добавьте ещё ложку муки, но не больше — иначе сырники станут плотными.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "tvorog-s-chernikoy", "version": 1, "name": "Творог с черникой и мёдом",
+      "description": "Завтрак без плиты: творог, ягоды и немного мёда.",
+      "category": "breakfast", "meal_types": ["breakfast", "snack"], "servings": 2, "yield_g": 420,
+      "ingredients": [
+        {"product": "cottage_cheese", "qty": 300, "unit": "g"},
+        {"product": "blueberries_frozen", "qty": 100, "unit": "g"},
+        {"product": "honey", "qty": 1, "unit": "tbsp"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 5, "total_min": 15, "steps": [
+          "Разморозьте ягоды при комнатной температуре 10 минут.",
+          "Разложите творог по тарелкам, сверху выложите ягоды.",
+          "Полейте мёдом."
+        ]}
+      ],
+      "techniques": ["no_cook", "mix"], "diet_tags": ["lean_protein"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "tost-s-avokado-i-yaytsom", "version": 1, "name": "Тост с авокадо и яйцом",
+      "description": "Цельнозерновой хлеб, пюре из авокадо и яйцо всмятку.",
+      "category": "breakfast", "meal_types": ["breakfast", "snack"], "servings": 2, "yield_g": 360,
+      "ingredients": [
+        {"product": "bread_wholegrain", "qty": 4, "unit": "pcs"},
+        {"product": "avocado", "qty": 1, "unit": "pcs"},
+        {"product": "eggs", "qty": 2, "unit": "pcs"},
+        {"product": "lemon", "qty": 15, "unit": "g"},
+        {"product": "salt", "qty": 1, "unit": "pinch"},
+        {"product": "black_pepper", "qty": 1, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 8, "total_min": 12, "steps": [
+          "Опустите яйца в кипящую воду и варите 6 минут, затем остудите в холодной воде.",
+          "Разомните мякоть авокадо вилкой с лимонным соком, солью и перцем.",
+          "Подсушите хлеб на сухой сковороде по минуте с каждой стороны.",
+          "Намажьте авокадо на хлеб, сверху выложите половинки яиц."
+        ]}
+      ],
+      "techniques": ["boil", "knife_basic", "mix"], "diet_tags": ["whole_grain", "vegetable_rich"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "pshyonnaya-kasha-s-tykvoy", "version": 1, "name": "Пшённая каша с тыквой",
+      "description": "Яркая осенняя каша на молоке с кусочками тыквы.",
+      "category": "breakfast", "meal_types": ["breakfast"], "servings": 3, "yield_g": 900,
+      "ingredients": [
+        {"product": "millet_dry", "qty": 150, "unit": "g"},
+        {"product": "pumpkin", "qty": 300, "unit": "g"},
+        {"product": "milk", "qty": 400, "unit": "ml"},
+        {"product": "water", "qty": 200, "unit": "ml"},
+        {"product": "sugar", "qty": 1, "unit": "tbsp"},
+        {"product": "butter", "qty": 15, "unit": "g"},
+        {"product": "salt", "qty": 1, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 10, "total_min": 40, "steps": [
+          "Тщательно промойте пшено горячей водой.",
+          "Очистите тыкву, нарежьте кубиками и варите в воде 10 минут.",
+          "Добавьте пшено, молоко, сахар и соль, варите на слабом огне 25 минут, помешивая.",
+          "Положите масло и дайте каше постоять под крышкой 5 минут."
+        ]},
+        {"id": "multicooker", "name": "В мультиварке", "equipment": ["multicooker"], "active_min": 8, "total_min": 50, "steps": [
+          "Промойте пшено, очистите и нарежьте тыкву кубиками.",
+          "Сложите всё в чашу мультиварки, залейте молоком и водой, добавьте сахар и соль.",
+          "Готовьте в режиме «Молочная каша» 40 минут.",
+          "Добавьте масло и оставьте на подогреве 10 минут."
+        ]}
+      ],
+      "techniques": ["boil", "knife_basic"], "diet_tags": ["whole_grain", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "yogurt-s-ovsyankoy-i-bananom", "version": 1, "name": "Йогурт с овсянкой и бананом",
+      "description": "Ленивый завтрак, который собирается за пять минут.",
+      "category": "breakfast", "meal_types": ["breakfast", "snack"], "servings": 2, "yield_g": 520,
+      "ingredients": [
+        {"product": "yogurt_plain", "qty": 300, "unit": "g"},
+        {"product": "oats_flakes", "qty": 50, "unit": "g"},
+        {"product": "banana", "qty": 1, "unit": "pcs"},
+        {"product": "walnuts", "qty": 20, "unit": "g"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 5, "total_min": 5, "steps": [
+          "Нарежьте банан кружками, орехи слегка порубите.",
+          "Смешайте йогурт с хлопьями.",
+          "Разложите по стаканам слоями: йогурт, банан, орехи."
+        ]}
+      ],
+      "techniques": ["no_cook", "knife_basic"], "diet_tags": ["whole_grain"], "container_ok": true,
+      "tip": "Если оставить на ночь в холодильнике, хлопья станут мягкими.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "oladi-na-kefire", "version": 1, "name": "Оладьи на кефире",
+      "description": "Пышные оладьи к чаю или на выходной завтрак.",
+      "category": "breakfast", "meal_types": ["breakfast", "snack"], "servings": 3, "yield_g": 560,
+      "ingredients": [
+        {"product": "kefir", "qty": 300, "unit": "ml"},
+        {"product": "eggs", "qty": 1, "unit": "pcs"},
+        {"product": "wheat_flour", "qty": 200, "unit": "g"},
+        {"product": "sugar", "qty": 2, "unit": "tbsp"},
+        {"product": "baking_soda", "qty": 0.5, "unit": "tsp"},
+        {"product": "salt", "qty": 1, "unit": "pinch"},
+        {"product": "sunflower_oil", "qty": 3, "unit": "tbsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 25, "total_min": 30, "steps": [
+          "Слегка подогрейте кефир, вмешайте яйцо, сахар, соль и соду.",
+          "Всыпьте муку и перемешайте до густого теста без комков.",
+          "Выкладывайте тесто ложкой на разогретую сковороду с маслом.",
+          "Жарьте на среднем огне до появления пузырьков, переверните и жарьте ещё 2 минуты."
+        ]}
+      ],
+      "techniques": ["batter", "fry_simple", "mix"], "diet_tags": ["fried", "refined_sugar", "white_flour"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "smuzi-boul", "version": 1, "name": "Смузи-боул с черникой",
+      "description": "Густой ягодный смузи с бананом и хлопьями сверху.",
+      "category": "breakfast", "meal_types": ["breakfast", "snack"], "servings": 2, "yield_g": 480,
+      "ingredients": [
+        {"product": "blueberries_frozen", "qty": 150, "unit": "g"},
+        {"product": "banana", "qty": 2, "unit": "pcs"},
+        {"product": "yogurt_plain", "qty": 150, "unit": "g"},
+        {"product": "oats_flakes", "qty": 30, "unit": "g"}
+      ],
+      "methods": [
+        {"id": "blender", "name": "В блендере", "equipment": ["blender"], "active_min": 5, "total_min": 5, "steps": [
+          "Очистите бананы, один нарежьте кружками для подачи.",
+          "Взбейте в блендере ягоды, второй банан и йогурт до густоты.",
+          "Разлейте по мискам, сверху выложите банан и хлопья."
+        ]}
+      ],
+      "techniques": ["blend", "no_cook"], "diet_tags": ["whole_grain"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "borshch-s-govyadinoy", "version": 1, "name": "Борщ с говядиной",
+      "description": "Насыщенный борщ со свёклой, капустой и говядиной.",
+      "category": "soup", "meal_types": ["lunch", "dinner"], "servings": 6, "yield_g": 3000,
+      "ingredients": [
+        {"product": "beef", "qty": 500, "unit": "g"},
+        {"product": "water", "qty": 2500, "unit": "ml"},
+        {"product": "beet", "qty": 300, "unit": "g"},
+        {"product": "cabbage", "qty": 300, "unit": "g"},
+        {"product": "potato", "qty": 400, "unit": "g"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "tomato_paste", "qty": 2, "unit": "tbsp"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "bay_leaf", "qty": 2, "unit": "pcs"},
+        {"product": "salt", "qty": 2, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 40, "total_min": 150, "steps": [
+          "Залейте говядину холодной водой, доведите до кипения, снимите пену и варите 1,5 часа на слабом огне.",
+          "Выньте мясо, нарежьте кусочками и верните в бульон, добавьте нарезанный картофель.",
+          "Обжарьте на масле лук, тёртые морковь и свёклу, добавьте томатную пасту и тушите 10 минут.",
+          "Положите в бульон нашинкованную капусту, через 10 минут — овощную зажарку, лавровый лист и соль.",
+          "Варите ещё 10 минут и дайте настояться под крышкой."
+        ]},
+        {"id": "multicooker", "name": "В мультиварке", "equipment": ["multicooker"], "active_min": 30, "total_min": 120, "steps": [
+          "В режиме «Жарка» обжарьте на масле лук, тёртые морковь и свёклу 10 минут, добавьте томатную пасту.",
+          "Добавьте нарезанные говядину, картофель, капусту, лавровый лист и соль.",
+          "Залейте водой до отметки и готовьте в режиме «Суп» 90 минут.",
+          "Оставьте на подогреве 15 минут перед подачей."
+        ]}
+      ],
+      "techniques": ["boil", "simmer", "fry_simple", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": false,
+      "tip": "Ложка лимонного сока в конце сохранит яркий цвет свёклы.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "kurinyy-sup-s-lapshoy", "version": 1, "name": "Куриный суп с лапшой",
+      "description": "Лёгкий суп на курином бульоне с домашней яичной лапшой.",
+      "category": "soup", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 2200,
+      "ingredients": [
+        {"product": "chicken_thighs", "qty": 500, "unit": "g"},
+        {"product": "water", "qty": 2000, "unit": "ml"},
+        {"product": "egg_noodles_dry", "qty": 100, "unit": "g"},
+        {"product": "potato", "qty": 2, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "dill", "qty": 10, "unit": "g"},
+        {"product": "salt", "qty": 1.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 60, "steps": [
+          "Залейте курицу водой, доведите до кипения, снимите пену и варите 30 минут.",
+          "Выньте курицу, отделите мясо от костей и верните в бульон.",
+          "Добавьте нарезанные картофель, морковь и лук, варите 15 минут.",
+          "Всыпьте лапшу и варите ещё 5 минут, посолите и добавьте укроп."
+        ]}
+      ],
+      "techniques": ["boil", "knife_basic"], "diet_tags": ["lean_protein"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "chechevichnyy-sup", "version": 1, "name": "Суп из красной чечевицы",
+      "description": "Густой пряный суп без мяса: чечевица, морковь и томаты.",
+      "category": "soup", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1800,
+      "ingredients": [
+        {"product": "red_lentils_dry", "qty": 200, "unit": "g"},
+        {"product": "water", "qty": 1200, "unit": "ml"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "canned_tomatoes", "qty": 400, "unit": "g"},
+        {"product": "olive_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "cumin", "qty": 1, "unit": "tsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 35, "steps": [
+          "Обжарьте на масле мелко нарезанные лук и морковь 5 минут, добавьте зиру.",
+          "Всыпьте промытую чечевицу, добавьте томаты и воду.",
+          "Варите 20 минут, пока чечевица не разварится, посолите.",
+          "При желании разомните суп толкушкой для однородности."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "shchi-iz-svezhey-kapusty", "version": 1, "name": "Щи из свежей капусты",
+      "description": "Постные щи с капустой, картофелем и зеленью.",
+      "category": "soup", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 2000,
+      "ingredients": [
+        {"product": "cabbage", "qty": 400, "unit": "g"},
+        {"product": "potato", "qty": 3, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "tomato_paste", "qty": 1, "unit": "tbsp"},
+        {"product": "water", "qty": 1500, "unit": "ml"},
+        {"product": "sunflower_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "parsley", "qty": 10, "unit": "g"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 45, "steps": [
+          "Доведите воду до кипения, положите нарезанный картофель.",
+          "Через 5 минут добавьте нашинкованную капусту.",
+          "Обжарьте лук и морковь на масле, добавьте томатную пасту и переложите в суп.",
+          "Варите 20 минут, посолите и посыпьте зеленью."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "gorohovyy-sup", "version": 1, "name": "Гороховый суп",
+      "description": "Сытный гороховый суп с овощами, без копчёностей.",
+      "category": "soup", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 2000,
+      "ingredients": [
+        {"product": "split_peas_dry", "qty": 200, "unit": "g"},
+        {"product": "water", "qty": 1800, "unit": "ml"},
+        {"product": "potato", "qty": 2, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "sunflower_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "bay_leaf", "qty": 1, "unit": "pcs"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 75, "steps": [
+          "Промойте горох и варите в воде 40 минут, снимая пену.",
+          "Добавьте нарезанный картофель и лавровый лист.",
+          "Обжарьте лук и морковь на масле и добавьте в суп.",
+          "Варите ещё 20 минут до мягкости гороха, посолите."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["legumes"], "container_ok": false,
+      "tip": "Колотый горох не требует замачивания, но промыть его нужно обязательно.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "sup-pyure-iz-tykvy", "version": 1, "name": "Суп-пюре из тыквы",
+      "description": "Бархатистый тыквенный суп со сливками.",
+      "category": "soup", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1600,
+      "ingredients": [
+        {"product": "pumpkin", "qty": 800, "unit": "g"},
+        {"product": "potato", "qty": 2, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "cream_10", "qty": 150, "unit": "ml"},
+        {"product": "water", "qty": 700, "unit": "ml"},
+        {"product": "olive_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove-blender", "name": "На плите с блендером", "equipment": ["stove", "blender"], "active_min": 15, "total_min": 40, "steps": [
+          "Обжарьте нарезанный лук на масле до мягкости.",
+          "Добавьте кубики тыквы и картофеля, залейте водой и варите 20 минут.",
+          "Измельчите погружным блендером до гладкости.",
+          "Влейте сливки, посолите и прогрейте, не доводя до кипения."
+        ]}
+      ],
+      "techniques": ["boil", "blend", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "ukha-iz-treski", "version": 1, "name": "Уха из трески",
+      "description": "Прозрачный рыбный суп с картофелем и зеленью.",
+      "category": "soup", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 2000,
+      "ingredients": [
+        {"product": "cod_fillet", "qty": 400, "unit": "g"},
+        {"product": "water", "qty": 1500, "unit": "ml"},
+        {"product": "potato", "qty": 3, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "dill", "qty": 15, "unit": "g"},
+        {"product": "bay_leaf", "qty": 1, "unit": "pcs"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 35, "steps": [
+          "Доведите воду до кипения, положите нарезанные картофель, морковь и целую луковицу.",
+          "Варите 15 минут, затем удалите лук.",
+          "Добавьте кусочки трески и лавровый лист, варите 7 минут на слабом огне.",
+          "Посолите и посыпьте укропом."
+        ]}
+      ],
+      "techniques": ["boil", "knife_basic"], "diet_tags": ["fish", "lean_protein"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "gribnoy-sup-s-perlovkoy", "version": 1, "name": "Грибной суп с перловкой",
+      "description": "Ароматный суп из шампиньонов с перловой крупой.",
+      "category": "soup", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 2000,
+      "ingredients": [
+        {"product": "champignons", "qty": 400, "unit": "g"},
+        {"product": "pearl_barley_dry", "qty": 80, "unit": "g"},
+        {"product": "potato", "qty": 2, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "water", "qty": 1600, "unit": "ml"},
+        {"product": "sunflower_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 70, "steps": [
+          "Промойте перловку и варите в воде 35 минут.",
+          "Обжарьте нарезанные грибы с луком и морковью на масле 10 минут.",
+          "Добавьте в кастрюлю картофель и обжаренные грибы.",
+          "Варите 20 минут до готовности, посолите."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["whole_grain", "vegetable_rich"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "plov-s-govyadinoy", "version": 1, "name": "Плов с говядиной",
+      "description": "Рассыпчатый плов с морковью, чесноком и зирой.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1500,
+      "ingredients": [
+        {"product": "beef", "qty": 500, "unit": "g"},
+        {"product": "rice_white_dry", "qty": 300, "unit": "g"},
+        {"product": "carrot", "qty": 300, "unit": "g"},
+        {"product": "onion", "qty": 2, "unit": "pcs"},
+        {"product": "garlic", "qty": 6, "unit": "pcs"},
+        {"product": "sunflower_oil", "qty": 4, "unit": "tbsp"},
+        {"product": "cumin", "qty": 1, "unit": "tsp"},
+        {"product": "water", "qty": 600, "unit": "ml"},
+        {"product": "salt", "qty": 2, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 30, "total_min": 90, "steps": [
+          "Обжарьте нарезанную кубиками говядину в толстостенной кастрюле на масле до корочки.",
+          "Добавьте полукольца лука и соломку моркови, жарьте 10 минут.",
+          "Влейте воду, добавьте зиру и соль, тушите под крышкой 40 минут.",
+          "Выложите промытую крупу ровным слоем, воткните зубчики чеснока, долейте воду на 1 см выше.",
+          "Готовьте на слабом огне под крышкой 25 минут, затем перемешайте."
+        ]}
+      ],
+      "techniques": ["fry_simple", "simmer", "knife_basic"], "diet_tags": [], "container_ok": true,
+      "tip": "Не мешайте плов, пока крупа не впитает воду.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "kuritsa-s-grechkoy", "version": 1, "name": "Курица с гречкой и луком",
+      "description": "Тушёное куриное филе с гречкой — простое сытное блюдо.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1300,
+      "ingredients": [
+        {"product": "chicken_breast", "qty": 500, "unit": "g"},
+        {"product": "buckwheat_dry", "qty": 200, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "water", "qty": 450, "unit": "ml"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 1.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 40, "steps": [
+          "Нарежьте филе кусочками и обжарьте на масле 5 минут.",
+          "Добавьте лук и тёртую морковь, жарьте ещё 5 минут.",
+          "Всыпьте промытую гречку, залейте водой, посолите.",
+          "Тушите под крышкой на слабом огне 20 минут."
+        ]}
+      ],
+      "techniques": ["fry_simple", "simmer", "knife_basic"], "diet_tags": ["whole_grain", "lean_protein"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "makarony-po-flotski", "version": 1, "name": "Макароны по-флотски",
+      "description": "Макароны с обжаренным говяжьим фаршем и луком.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1200,
+      "ingredients": [
+        {"product": "pasta_dry", "qty": 350, "unit": "g"},
+        {"product": "beef_mince", "qty": 400, "unit": "g"},
+        {"product": "onion", "qty": 2, "unit": "pcs"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "tsp"},
+        {"product": "black_pepper", "qty": 2, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 30, "steps": [
+          "Отварите макароны в подсоленной воде по инструкции на упаковке.",
+          "Обжарьте мелко нарезанный лук на масле 5 минут.",
+          "Добавьте фарш и жарьте, разбивая комочки, 10–12 минут, посолите и поперчите.",
+          "Смешайте макароны с фаршем и прогрейте 2 минуты."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["fried"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "spagetti-s-tomatnym-sousom", "version": 1, "name": "Спагетти с томатным соусом",
+      "description": "Паста с соусом из томатов, чеснока и пармезана.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 3, "yield_g": 900,
+      "ingredients": [
+        {"product": "spaghetti_dry", "qty": 300, "unit": "g"},
+        {"product": "canned_tomatoes", "qty": 400, "unit": "g"},
+        {"product": "garlic", "qty": 3, "unit": "pcs"},
+        {"product": "olive_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "parmesan", "qty": 30, "unit": "g"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 25, "steps": [
+          "Поставьте вариться спагетти в подсоленной воде.",
+          "Прогрейте на масле раздавленный чеснок 1 минуту, добавьте томаты и разомните их.",
+          "Тушите соус 10 минут, посолите.",
+          "Смешайте спагетти с соусом и посыпьте тёртым пармезаном."
+        ]}
+      ],
+      "techniques": ["boil", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "treska-s-ovoshchami-v-duhovke", "version": 1, "name": "Треска, запечённая с овощами",
+      "description": "Филе трески на подушке из картофеля и кабачка.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 3, "yield_g": 1150,
+      "ingredients": [
+        {"product": "cod_fillet", "qty": 450, "unit": "g"},
+        {"product": "potato", "qty": 500, "unit": "g"},
+        {"product": "zucchini", "qty": 1, "unit": "pcs"},
+        {"product": "lemon", "qty": 30, "unit": "g"},
+        {"product": "olive_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"},
+        {"product": "black_pepper", "qty": 1, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "oven", "name": "В духовке", "equipment": ["oven"], "active_min": 15, "total_min": 50, "steps": [
+          "Разогрейте духовку до 200 °C.",
+          "Нарежьте картофель тонкими дольками, кабачок кружками, перемешайте с маслом и половиной соли.",
+          "Запекайте овощи 20 минут.",
+          "Выложите сверху треску, посолите, поперчите, сбрызните лимоном и запекайте ещё 15 минут."
+        ]},
+        {"id": "airfryer", "name": "В аэрогриле", "equipment": ["airfryer"], "active_min": 15, "total_min": 35, "steps": [
+          "Нарежьте картофель тонкими дольками, кабачок кружками, перемешайте с маслом и солью.",
+          "Готовьте овощи в аэрогриле при 190 °C 15 минут, встряхнув на середине.",
+          "Положите сверху треску, сбрызните лимоном и готовьте ещё 10 минут при 180 °C."
+        ]}
+      ],
+      "techniques": ["bake_simple", "knife_basic"], "diet_tags": ["fish", "lean_protein", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "kurinye-bedra-s-kartofelem", "version": 1, "name": "Куриные бёдра с картофелем",
+      "description": "Запечённые бёдра с хрустящей кожицей и картофелем с паприкой.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1500,
+      "ingredients": [
+        {"product": "chicken_thighs", "qty": 900, "unit": "g"},
+        {"product": "potato", "qty": 800, "unit": "g"},
+        {"product": "garlic", "qty": 3, "unit": "pcs"},
+        {"product": "paprika", "qty": 1, "unit": "tsp"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "oven", "name": "В духовке", "equipment": ["oven"], "active_min": 15, "total_min": 60, "steps": [
+          "Разогрейте духовку до 200 °C.",
+          "Натрите бёдра солью, паприкой и чесноком.",
+          "Нарежьте картофель дольками, перемешайте с маслом и солью, выложите на противень.",
+          "Сверху положите курицу и запекайте 45 минут до золотистой корочки."
+        ]},
+        {"id": "airfryer", "name": "В аэрогриле", "equipment": ["airfryer"], "active_min": 15, "total_min": 45, "steps": [
+          "Натрите бёдра солью, паприкой и чесноком.",
+          "Нарежьте картофель дольками и перемешайте с маслом и солью.",
+          "Готовьте картофель и курицу в аэрогриле при 190 °C 30 минут, перевернув на середине.",
+          "Проверьте готовность: сок из курицы должен быть прозрачным."
+        ]}
+      ],
+      "techniques": ["bake_simple", "knife_basic"], "diet_tags": [], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "kotlety-iz-indeyki", "version": 1, "name": "Котлеты из индейки",
+      "description": "Нежные котлеты из фарша индейки на сковороде.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 650,
+      "ingredients": [
+        {"product": "turkey_mince", "qty": 500, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "eggs", "qty": 1, "unit": "pcs"},
+        {"product": "breadcrumbs", "qty": 4, "unit": "tbsp"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 25, "total_min": 35, "steps": [
+          "Натрите лук на мелкой тёрке и смешайте с фаршем, яйцом, солью и 2 ложками сухарей.",
+          "Сформируйте котлеты мокрыми руками и обваляйте в оставшихся сухарях.",
+          "Обжарьте на масле по 3 минуты с каждой стороны.",
+          "Убавьте огонь, накройте крышкой и доведите до готовности за 10 минут."
+        ]}
+      ],
+      "techniques": ["forming", "fry_simple"], "diet_tags": ["lean_protein", "fried"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "tefteli-v-tomatnom-souse", "version": 1, "name": "Тефтели в томатном соусе",
+      "description": "Мясные тефтели, тушённые в соусе из томатной пасты.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1200,
+      "ingredients": [
+        {"product": "beef_mince", "qty": 500, "unit": "g"},
+        {"product": "rice_white_dry", "qty": 60, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "eggs", "qty": 1, "unit": "pcs"},
+        {"product": "tomato_paste", "qty": 3, "unit": "tbsp"},
+        {"product": "sour_cream", "qty": 2, "unit": "tbsp"},
+        {"product": "water", "qty": 400, "unit": "ml"},
+        {"product": "salt", "qty": 1.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 25, "total_min": 55, "steps": [
+          "Отварите крупу до полуготовности 8 минут и остудите.",
+          "Смешайте фарш, крупу, тёртый лук, яйцо и соль, сформируйте шарики.",
+          "Разведите томатную пасту и сметану в воде, доведите до кипения.",
+          "Опустите тефтели в соус и тушите под крышкой 30 минут."
+        ]}
+      ],
+      "techniques": ["forming", "simmer", "boil"], "diet_tags": [], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "ovoshchnoe-ragu", "version": 1, "name": "Овощное рагу",
+      "description": "Тушёные кабачок, баклажан, перец и томаты.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1400,
+      "ingredients": [
+        {"product": "zucchini", "qty": 1, "unit": "pcs"},
+        {"product": "eggplant", "qty": 1, "unit": "pcs"},
+        {"product": "bell_pepper", "qty": 2, "unit": "pcs"},
+        {"product": "tomato", "qty": 3, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "potato", "qty": 3, "unit": "pcs"},
+        {"product": "sunflower_oil", "qty": 3, "unit": "tbsp"},
+        {"product": "salt", "qty": 1.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 25, "total_min": 50, "steps": [
+          "Нарежьте все овощи кубиками примерно одного размера.",
+          "Обжарьте на масле лук и морковь 5 минут, добавьте картофель и баклажан.",
+          "Через 10 минут добавьте кабачок и перец, накройте крышкой.",
+          "Положите помидоры, посолите и тушите ещё 20 минут."
+        ]}
+      ],
+      "techniques": ["simmer", "fry_simple", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "chili-s-fasolyu", "version": 1, "name": "Чили с фасолью и кукурузой",
+      "description": "Острое томатное рагу с фасолью и перцем, без мяса.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1300,
+      "ingredients": [
+        {"product": "beans_canned", "qty": 800, "unit": "g"},
+        {"product": "corn_canned", "qty": 340, "unit": "g"},
+        {"product": "canned_tomatoes", "qty": 400, "unit": "g"},
+        {"product": "bell_pepper", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "garlic", "qty": 2, "unit": "pcs"},
+        {"product": "paprika", "qty": 2, "unit": "tsp"},
+        {"product": "cumin", "qty": 1, "unit": "tsp"},
+        {"product": "olive_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 35, "steps": [
+          "Обжарьте на масле лук, чеснок и перец 5 минут.",
+          "Добавьте паприку и зиру, прогрейте 30 секунд.",
+          "Положите томаты, фасоль и кукурузу без жидкости.",
+          "Тушите 20 минут, посолите."
+        ]}
+      ],
+      "techniques": ["simmer", "fry_simple", "knife_basic"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "grechka-s-gribami", "version": 1, "name": "Гречка с грибами",
+      "description": "Гречка с обжаренными шампиньонами и луком.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1100,
+      "ingredients": [
+        {"product": "buckwheat_dry", "qty": 250, "unit": "g"},
+        {"product": "champignons", "qty": 400, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "water", "qty": 500, "unit": "ml"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 1.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 30, "steps": [
+          "Отварите гречку в подсоленной воде под крышкой 18 минут.",
+          "Обжарьте на масле лук и нарезанные грибы 10 минут до испарения жидкости.",
+          "Смешайте гречку с грибами и прогрейте 2 минуты."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["whole_grain", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "kartofelnaya-zapekanka-s-farshem", "version": 1, "name": "Картофельная запеканка с фаршем",
+      "description": "Слои картофельного пюре и тушёного фарша под сырной корочкой.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1500,
+      "ingredients": [
+        {"product": "potato", "qty": 1000, "unit": "g"},
+        {"product": "beef_mince", "qty": 400, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "milk", "qty": 150, "unit": "ml"},
+        {"product": "butter", "qty": 20, "unit": "g"},
+        {"product": "cheese_hard", "qty": 80, "unit": "g"},
+        {"product": "sunflower_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "oven", "name": "Плита и духовка", "equipment": ["stove", "oven"], "active_min": 35, "total_min": 75, "steps": [
+          "Отварите картофель до мягкости и разомните в пюре с тёплым молоком и маслом.",
+          "Обжарьте лук и фарш на масле 12 минут, посолите.",
+          "Выложите в форму половину пюре, затем фарш и оставшееся пюре.",
+          "Посыпьте тёртым сыром и запекайте при 190 °C 25 минут."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "bake_simple"], "diet_tags": [], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "lenivye-golubtsy", "version": 1, "name": "Ленивые голубцы",
+      "description": "Тушёные «ёжики» из фарша, капусты и крупы в сметанно-томатном соусе.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1400,
+      "ingredients": [
+        {"product": "beef_mince", "qty": 400, "unit": "g"},
+        {"product": "cabbage", "qty": 300, "unit": "g"},
+        {"product": "rice_white_dry", "qty": 80, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "tomato_paste", "qty": 2, "unit": "tbsp"},
+        {"product": "sour_cream", "qty": 3, "unit": "tbsp"},
+        {"product": "water", "qty": 400, "unit": "ml"},
+        {"product": "salt", "qty": 1.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 30, "total_min": 70, "steps": [
+          "Мелко нашинкуйте капусту и ошпарьте кипятком, отожмите.",
+          "Смешайте фарш, капусту, промытую крупу, тёртый лук и соль, сформируйте котлеты.",
+          "Уложите в сотейник, сверху — тёртую морковь.",
+          "Залейте смесью воды, томатной пасты и сметаны и тушите 45 минут."
+        ]}
+      ],
+      "techniques": null, "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "losos-s-brokkoli", "version": 1, "name": "Лосось с брокколи",
+      "description": "Запечённый лосось с брокколи и лимоном.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 2, "yield_g": 650,
+      "ingredients": [
+        {"product": "salmon_fillet", "qty": 300, "unit": "g"},
+        {"product": "broccoli", "qty": 400, "unit": "g"},
+        {"product": "lemon", "qty": 30, "unit": "g"},
+        {"product": "olive_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "oven", "name": "В духовке", "equipment": ["oven"], "active_min": 10, "total_min": 30, "steps": [
+          "Разогрейте духовку до 200 °C.",
+          "Разберите брокколи на соцветия, перемешайте с маслом и солью.",
+          "Выложите на противень вместе с лососем, сбрызните лимоном.",
+          "Запекайте 15–18 минут."
+        ]},
+        {"id": "airfryer", "name": "В аэрогриле", "equipment": ["airfryer"], "active_min": 10, "total_min": 22, "steps": [
+          "Разберите брокколи на соцветия, перемешайте с маслом и солью.",
+          "Уложите лосось и брокколи в корзину, сбрызните лимоном.",
+          "Готовьте при 185 °C 12 минут."
+        ]}
+      ],
+      "techniques": ["bake_simple", "knife_basic"], "diet_tags": ["fish", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "bulgur-s-nutom-i-ovoshchami", "version": 1, "name": "Булгур с нутом и овощами",
+      "description": "Тёплое блюдо из булгура, нута, перца и кабачка.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1300,
+      "ingredients": [
+        {"product": "bulgur_dry", "qty": 200, "unit": "g"},
+        {"product": "chickpeas_canned", "qty": 400, "unit": "g"},
+        {"product": "bell_pepper", "qty": 1, "unit": "pcs"},
+        {"product": "zucchini", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "water", "qty": 400, "unit": "ml"},
+        {"product": "olive_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 30, "steps": [
+          "Обжарьте на масле лук, перец и кабачок 7 минут.",
+          "Всыпьте булгур, перемешайте и залейте водой, посолите.",
+          "Варите под крышкой 15 минут, добавьте нут без жидкости и прогрейте."
+        ]}
+      ],
+      "techniques": ["fry_simple", "boil", "knife_basic"], "diet_tags": ["whole_grain", "legumes", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "kuritsa-teriyaki-s-risom", "version": 1, "name": "Курица терияки с рисом",
+      "description": "Кусочки курицы в готовом соусе терияки с отварным рисом.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 3, "yield_g": 1000,
+      "ingredients": [
+        {"product": "chicken_breast", "qty": 450, "unit": "g"},
+        {"product": "rice_white_dry", "qty": 200, "unit": "g"},
+        {"product": "teriyaki_sauce", "qty": 4, "unit": "tbsp"},
+        {"product": "sunflower_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "water", "qty": 400, "unit": "ml"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 30, "steps": [
+          "Отварите рис в воде под крышкой 18 минут.",
+          "Обжарьте кусочки курицы на масле 7 минут.",
+          "Влейте соус терияки и прогрейте 3 минуты, помешивая.",
+          "Подавайте курицу с рисом."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["lean_protein"], "container_ok": true,
+      "tip": "Состав готового соуса зависит от производителя — проверьте этикетку, если есть аллергия.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "shakshuka", "version": 1, "name": "Шакшука",
+      "description": "Яйца, запечённые в соусе из томатов и сладкого перца.",
+      "category": "main", "meal_types": ["breakfast", "dinner"], "servings": 2, "yield_g": 700,
+      "ingredients": [
+        {"product": "eggs", "qty": 4, "unit": "pcs"},
+        {"product": "canned_tomatoes", "qty": 400, "unit": "g"},
+        {"product": "bell_pepper", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "paprika", "qty": 1, "unit": "tsp"},
+        {"product": "olive_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 15, "total_min": 25, "steps": [
+          "Обжарьте лук и перец на масле 5 минут, добавьте паприку.",
+          "Влейте томаты и тушите 8 минут до загустения, посолите.",
+          "Сделайте углубления и разбейте в них яйца.",
+          "Накройте крышкой и готовьте 5–6 минут, пока белок не схватится."
+        ]}
+      ],
+      "techniques": ["simmer", "fry_simple", "knife_basic"], "diet_tags": ["vegetable_rich", "lean_protein"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "perlovka-s-kuritsey-v-multivarke", "version": 1, "name": "Перловка с курицей в мультиварке",
+      "description": "Томлёная перловка с курицей и овощами без присмотра.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1500,
+      "ingredients": [
+        {"product": "pearl_barley_dry", "qty": 250, "unit": "g"},
+        {"product": "chicken_thighs", "qty": 600, "unit": "g"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "water", "qty": 750, "unit": "ml"},
+        {"product": "salt", "qty": 2, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "multicooker", "name": "В мультиварке", "equipment": ["multicooker"], "active_min": 15, "total_min": 105, "steps": [
+          "Промойте перловку несколько раз до прозрачной воды.",
+          "Сложите в чашу курицу, нарезанные морковь и лук, сверху крупу.",
+          "Залейте водой, посолите и готовьте в режиме «Тушение» 90 минут."
+        ]}
+      ],
+      "techniques": ["multicooker", "knife_basic"], "diet_tags": ["whole_grain"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "tsvetnaya-kapusta-pod-syrom", "version": 1, "name": "Цветная капуста под сыром",
+      "description": "Запечённая цветная капуста с хрустящей сырной корочкой.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 3, "yield_g": 800,
+      "ingredients": [
+        {"product": "cauliflower", "qty": 1, "unit": "pcs"},
+        {"product": "cheese_hard", "qty": 100, "unit": "g"},
+        {"product": "eggs", "qty": 2, "unit": "pcs"},
+        {"product": "sour_cream", "qty": 3, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "oven", "name": "Плита и духовка", "equipment": ["stove", "oven"], "active_min": 15, "total_min": 45, "steps": [
+          "Разберите капусту на соцветия и отварите 5 минут в подсоленной воде.",
+          "Смешайте яйца со сметаной и половиной тёртого сыра.",
+          "Выложите капусту в форму, залейте смесью и посыпьте оставшимся сыром.",
+          "Запекайте при 190 °C 25 минут."
+        ]}
+      ],
+      "techniques": ["boil", "bake_simple"], "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "pasta-s-kuritsey-i-brokkoli", "version": 1, "name": "Паста с курицей и брокколи в сливочном соусе",
+      "description": "Макароны с курицей, брокколи и соусом из сливок и пармезана.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1300,
+      "ingredients": [
+        {"product": "pasta_dry", "qty": 300, "unit": "g"},
+        {"product": "chicken_breast", "qty": 400, "unit": "g"},
+        {"product": "broccoli", "qty": 300, "unit": "g"},
+        {"product": "cream_10", "qty": 200, "unit": "ml"},
+        {"product": "parmesan", "qty": 40, "unit": "g"},
+        {"product": "garlic", "qty": 2, "unit": "pcs"},
+        {"product": "olive_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 1.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 30, "steps": [
+          "Отварите пасту, за 3 минуты до готовности добавьте соцветия брокколи.",
+          "Обжарьте кусочки курицы с чесноком на масле 7 минут.",
+          "Влейте сливки, добавьте тёртый пармезан и прогрейте до загустения.",
+          "Смешайте пасту и брокколи с соусом."
+        ]}
+      ],
+      "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["creamy", "lean_protein"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "pirog-s-kapustoy", "version": 1, "name": "Пирог с капустой на дрожжевом тесте",
+      "description": "Домашний закрытый пирог с тушёной капустой и яйцом.",
+      "category": "main", "meal_types": ["lunch", "dinner", "snack"], "servings": 8, "yield_g": null,
+      "ingredients": [
+        {"product": "wheat_flour", "qty": 500, "unit": "g"},
+        {"product": "milk", "qty": 250, "unit": "ml"},
+        {"product": "dry_yeast", "qty": 7, "unit": "g"},
+        {"product": "eggs", "qty": 3, "unit": "pcs"},
+        {"product": "butter", "qty": 50, "unit": "g"},
+        {"product": "sugar", "qty": 1, "unit": "tbsp"},
+        {"product": "cabbage", "qty": 800, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "oven", "name": "Плита и духовка", "equipment": ["stove", "oven"], "active_min": 60, "total_min": 180, "steps": [
+          "Растворите дрожжи и сахар в тёплом молоке, добавьте яйцо, растопленное масло, соль и муку.",
+          "Замесите мягкое тесто и оставьте в тепле на 1 час.",
+          "Потушите нашинкованную капусту с луком на масле 25 минут, добавьте рубленые варёные яйца.",
+          "Раскатайте две трети теста в форму, выложите начинку и накройте оставшимся тестом.",
+          "Дайте подойти 20 минут и выпекайте при 180 °C 35–40 минут."
+        ]}
+      ],
+      "techniques": ["yeast_dough", "simmer", "bake_simple"], "diet_tags": ["white_flour"], "container_ok": true,
+      "tip": "Масса готового пирога сильно зависит от формы и выпекания, поэтому выход не указан.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "vinegret", "version": 1, "name": "Винегрет",
+      "description": "Классический салат из отварных овощей и солёных огурцов.",
+      "category": "salad", "meal_types": ["lunch", "dinner", "snack"], "servings": 4, "yield_g": 1100,
+      "ingredients": [
+        {"product": "beet", "qty": 300, "unit": "g"},
+        {"product": "potato", "qty": 300, "unit": "g"},
+        {"product": "carrot", "qty": 200, "unit": "g"},
+        {"product": "pickled_cucumbers", "qty": 3, "unit": "pcs"},
+        {"product": "beans_canned", "qty": 200, "unit": "g"},
+        {"product": "onion", "qty": 0.5, "unit": "pcs"},
+        {"product": "sunflower_oil", "qty": 3, "unit": "tbsp"},
+        {"product": "salt", "qty": 0.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 70, "steps": [
+          "Отварите свёклу, картофель и морковь в кожуре до мягкости, остудите.",
+          "Очистите и нарежьте овощи и огурцы мелким кубиком.",
+          "Добавьте фасоль без жидкости и мелко нарезанный лук.",
+          "Заправьте маслом и посолите."
+        ]}
+      ],
+      "techniques": ["boil", "knife_basic", "mix"], "diet_tags": ["vegetable_rich", "legumes"], "container_ok": true,
+      "tip": "Свёклу заправьте маслом отдельно — так она меньше окрасит остальные овощи.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "salat-iz-ogurtsov-i-pomidorov", "version": 1, "name": "Салат из огурцов и помидоров",
+      "description": "Свежий летний салат с зеленью и маслом.",
+      "category": "salad", "meal_types": ["lunch", "dinner", "snack"], "servings": 2, "yield_g": 480,
+      "ingredients": [
+        {"product": "tomato", "qty": 2, "unit": "pcs"},
+        {"product": "cucumber", "qty": 2, "unit": "pcs"},
+        {"product": "dill", "qty": 10, "unit": "g"},
+        {"product": "sunflower_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 7, "total_min": 7, "steps": [
+          "Нарежьте помидоры и огурцы дольками.",
+          "Добавьте рубленый укроп.",
+          "Посолите и заправьте маслом перед подачей."
+        ]}
+      ],
+      "techniques": ["no_cook", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "salat-s-tuntsom-i-yaytsom", "version": 1, "name": "Салат с тунцом и яйцом",
+      "description": "Листья салата, тунец, яйцо и огурец с лимонной заправкой.",
+      "category": "salad", "meal_types": ["lunch", "dinner"], "servings": 2, "yield_g": 520,
+      "ingredients": [
+        {"product": "tuna_canned", "qty": 185, "unit": "g"},
+        {"product": "eggs", "qty": 2, "unit": "pcs"},
+        {"product": "cucumber", "qty": 1, "unit": "pcs"},
+        {"product": "lettuce", "qty": 100, "unit": "g"},
+        {"product": "lemon", "qty": 20, "unit": "g"},
+        {"product": "olive_oil", "qty": 1, "unit": "tbsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 10, "total_min": 15, "steps": [
+          "Сварите яйца вкрутую за 9 минут, остудите и нарежьте четвертинками.",
+          "Порвите листья салата, нарежьте огурец.",
+          "Выложите тунец без жидкости и яйца.",
+          "Заправьте лимонным соком и маслом."
+        ]}
+      ],
+      "techniques": ["boil", "knife_basic"], "diet_tags": ["fish", "lean_protein", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "grecheskiy-salat", "version": 1, "name": "Греческий салат",
+      "description": "Овощи, маслины и фета с оливковым маслом.",
+      "category": "salad", "meal_types": ["lunch", "dinner", "snack"], "servings": 3, "yield_g": 700,
+      "ingredients": [
+        {"product": "tomato", "qty": 2, "unit": "pcs"},
+        {"product": "cucumber", "qty": 1, "unit": "pcs"},
+        {"product": "bell_pepper", "qty": 1, "unit": "pcs"},
+        {"product": "onion", "qty": 0.5, "unit": "pcs"},
+        {"product": "olives", "qty": 80, "unit": "g"},
+        {"product": "feta", "qty": 150, "unit": "g"},
+        {"product": "olive_oil", "qty": 2, "unit": "tbsp"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 10, "total_min": 10, "steps": [
+          "Нарежьте помидоры, огурец и перец крупными кусочками, лук — тонкими кольцами.",
+          "Добавьте маслины и кубики феты.",
+          "Полейте оливковым маслом и аккуратно перемешайте."
+        ]}
+      ],
+      "techniques": ["no_cook", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": "Фета солёная, поэтому салат обычно не нужно солить дополнительно.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "morkovnyy-salat-s-chesnokom", "version": 1, "name": "Морковный салат с чесноком",
+      "description": "Тёртая морковь со сметаной и чесноком.",
+      "category": "salad", "meal_types": ["lunch", "dinner", "snack"], "servings": 2, "yield_g": 340,
+      "ingredients": [
+        {"product": "carrot", "qty": 3, "unit": "pcs"},
+        {"product": "garlic", "qty": 1, "unit": "pcs"},
+        {"product": "sour_cream", "qty": 3, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 8, "total_min": 8, "steps": [
+          "Натрите морковь на мелкой тёрке.",
+          "Добавьте измельчённый чеснок и сметану.",
+          "Посолите и перемешайте."
+        ]}
+      ],
+      "techniques": ["no_cook", "knife_basic", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "salat-s-nutom", "version": 1, "name": "Салат с нутом и свежими овощами",
+      "description": "Сытный салат из нута, огурцов, томатов и петрушки.",
+      "category": "salad", "meal_types": ["lunch", "dinner", "snack"], "servings": 3, "yield_g": 750,
+      "ingredients": [
+        {"product": "chickpeas_canned", "qty": 400, "unit": "g"},
+        {"product": "cucumber", "qty": 1, "unit": "pcs"},
+        {"product": "tomato", "qty": 2, "unit": "pcs"},
+        {"product": "parsley", "qty": 20, "unit": "g"},
+        {"product": "lemon", "qty": 30, "unit": "g"},
+        {"product": "olive_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 10, "total_min": 10, "steps": [
+          "Слейте жидкость с нута и промойте его.",
+          "Нарежьте огурец и помидоры кубиком, петрушку — мелко.",
+          "Смешайте всё, заправьте лимонным соком, маслом и солью."
+        ]}
+      ],
+      "techniques": ["no_cook", "knife_basic"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "salat-tsezar-s-kuritsey", "version": 1, "name": "Салат с курицей и сухариками",
+      "description": "Листья салата, курица, сухарики из батона и сырная заправка на майонезе.",
+      "category": "salad", "meal_types": ["lunch", "dinner"], "servings": 2, "yield_g": 560,
+      "ingredients": [
+        {"product": "chicken_breast", "qty": 250, "unit": "g"},
+        {"product": "lettuce", "qty": 150, "unit": "g"},
+        {"product": "bread_white", "qty": 3, "unit": "pcs"},
+        {"product": "parmesan", "qty": 25, "unit": "g"},
+        {"product": "mayonnaise", "qty": 2, "unit": "tbsp"},
+        {"product": "garlic", "qty": 1, "unit": "pcs"},
+        {"product": "olive_oil", "qty": 1, "unit": "tbsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 25, "steps": [
+          "Обжарьте филе на масле по 6 минут с каждой стороны, нарежьте полосками.",
+          "Нарежьте батон кубиками и подсушите на сухой сковороде.",
+          "Смешайте майонез с тёртым чесноком и половиной пармезана.",
+          "Выложите салат, курицу и сухарики, полейте заправкой и посыпьте пармезаном."
+        ]}
+      ],
+      "techniques": ["fry_simple", "knife_basic", "mix"], "diet_tags": ["creamy", "white_flour", "lean_protein"], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "yabloko-s-arahisovoy-pastoy", "version": 1, "name": "Яблоко с арахисовой пастой",
+      "description": "Дольки яблока с арахисовой пастой — перекус за минуту.",
+      "category": "snack", "meal_types": ["snack"], "servings": 1, "yield_g": 190,
+      "ingredients": [
+        {"product": "apple", "qty": 1, "unit": "pcs"},
+        {"product": "peanut_butter", "qty": 1, "unit": "tbsp"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 2, "total_min": 2, "steps": [
+          "Нарежьте яблоко дольками, удалив сердцевину.",
+          "Подавайте с арахисовой пастой."
+        ]}
+      ],
+      "techniques": ["no_cook", "knife_basic"], "diet_tags": [], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "hummus-s-ovoshchami", "version": 1, "name": "Хумус с овощными палочками",
+      "description": "Домашний хумус из нута и тахини с морковью и огурцом.",
+      "category": "snack", "meal_types": ["snack"], "servings": 4, "yield_g": 650,
+      "ingredients": [
+        {"product": "chickpeas_canned", "qty": 400, "unit": "g"},
+        {"product": "tahini", "qty": 2, "unit": "tbsp"},
+        {"product": "lemon", "qty": 40, "unit": "g"},
+        {"product": "garlic", "qty": 1, "unit": "pcs"},
+        {"product": "olive_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "carrot", "qty": 2, "unit": "pcs"},
+        {"product": "cucumber", "qty": 1, "unit": "pcs"},
+        {"product": "salt", "qty": 2, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "blender", "name": "В блендере", "equipment": ["blender"], "active_min": 10, "total_min": 10, "steps": [
+          "Слейте жидкость с нута, оставив 3 ложки.",
+          "Взбейте нут с тахини, лимонным соком, чесноком, маслом и солью до гладкости, добавляя жидкость.",
+          "Нарежьте морковь и огурец брусочками и подавайте с хумусом."
+        ]}
+      ],
+      "techniques": ["blend", "knife_basic"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "yogurt-s-orehami-i-myodom", "version": 1, "name": "Йогурт с орехами и мёдом",
+      "description": "Натуральный йогурт с грецкими орехами.",
+      "category": "snack", "meal_types": ["snack", "breakfast"], "servings": 1, "yield_g": 185,
+      "ingredients": [
+        {"product": "yogurt_plain", "qty": 150, "unit": "g"},
+        {"product": "walnuts", "qty": 20, "unit": "g"},
+        {"product": "honey", "qty": 1, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 2, "total_min": 2, "steps": [
+          "Выложите йогурт в пиалу.",
+          "Посыпьте порубленными орехами и полейте мёдом."
+        ]}
+      ],
+      "techniques": ["no_cook"], "diet_tags": [], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "buterbrod-s-syrom-i-ogurtsom", "version": 1, "name": "Бутерброд с сыром и огурцом",
+      "description": "Цельнозерновой хлеб, сыр и свежий огурец.",
+      "category": "snack", "meal_types": ["snack", "breakfast"], "servings": 2, "yield_g": 250,
+      "ingredients": [
+        {"product": "bread_wholegrain", "qty": 4, "unit": "pcs"},
+        {"product": "cheese_hard", "qty": 60, "unit": "g"},
+        {"product": "cucumber", "qty": 1, "unit": "pcs"}
+      ],
+      "methods": [
+        {"id": "no-heat", "name": "Без нагрева", "equipment": [], "active_min": 4, "total_min": 4, "steps": [
+          "Нарежьте сыр и огурец тонкими ломтиками.",
+          "Выложите на хлеб."
+        ]}
+      ],
+      "techniques": ["no_cook", "knife_basic"], "diet_tags": ["whole_grain"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "pechyonye-yabloki-s-tvorogom", "version": 1, "name": "Печёные яблоки с творогом",
+      "description": "Яблоки, запечённые с творожной начинкой и мёдом.",
+      "category": "snack", "meal_types": ["snack", "breakfast"], "servings": 2, "yield_g": 420,
+      "ingredients": [
+        {"product": "apple", "qty": 2, "unit": "pcs"},
+        {"product": "cottage_cheese", "qty": 120, "unit": "g"},
+        {"product": "honey", "qty": 2, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "oven", "name": "В духовке", "equipment": ["oven"], "active_min": 10, "total_min": 35, "steps": [
+          "Разогрейте духовку до 180 °C.",
+          "Вырежьте у яблок сердцевину, не прорезая дно.",
+          "Смешайте творог с мёдом и наполните яблоки.",
+          "Запекайте 25 минут."
+        ]},
+        {"id": "microwave", "name": "В микроволновке", "equipment": ["microwave"], "active_min": 10, "total_min": 16, "steps": [
+          "Вырежьте у яблок сердцевину, не прорезая дно.",
+          "Наполните творогом, смешанным с мёдом.",
+          "Готовьте под крышкой 5–6 минут на средней мощности до мягкости."
+        ]}
+      ],
+      "techniques": ["bake_simple", "knife_basic"], "diet_tags": ["lean_protein"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "kefir-s-bananom", "version": 1, "name": "Банановый коктейль на кефире",
+      "description": "Простой коктейль из кефира и банана.",
+      "category": "snack", "meal_types": ["snack"], "servings": 2, "yield_g": 640,
+      "ingredients": [
+        {"product": "kefir", "qty": 500, "unit": "ml"},
+        {"product": "banana", "qty": 1, "unit": "pcs"}
+      ],
+      "methods": [
+        {"id": "blender", "name": "В блендере", "equipment": ["blender"], "active_min": 3, "total_min": 3, "steps": [
+          "Очистите банан и нарежьте кусочками.",
+          "Взбейте с кефиром в блендере 30 секунд."
+        ]}
+      ],
+      "techniques": ["blend"], "diet_tags": [], "container_ok": false,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "kartofelnoe-pyure-s-kotletoy-iz-treski", "version": 1, "name": "Рыбные котлеты из трески с пюре",
+      "description": "Котлеты из трески на сковороде с картофельным пюре.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1300,
+      "ingredients": [
+        {"product": "cod_fillet", "qty": 500, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "eggs", "qty": 1, "unit": "pcs"},
+        {"product": "breadcrumbs", "qty": 4, "unit": "tbsp"},
+        {"product": "potato", "qty": 800, "unit": "g"},
+        {"product": "milk", "qty": 150, "unit": "ml"},
+        {"product": "butter", "qty": 20, "unit": "g"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "salt", "qty": 2, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 35, "total_min": 45, "steps": [
+          "Отварите картофель и разомните с тёплым молоком и маслом, посолите.",
+          "Мелко порубите треску ножом, смешайте с тёртым луком, яйцом, солью и половиной сухарей.",
+          "Сформируйте котлеты и обваляйте в сухарях.",
+          "Обжарьте на масле по 4 минуты с каждой стороны."
+        ]}
+      ],
+      "techniques": ["forming", "fry_simple", "boil"], "diet_tags": ["fish", "fried"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "zapechyonnyy-kartofel-s-gribami", "version": 1, "name": "Картофель с грибами в сметане",
+      "description": "Тушёный картофель с шампиньонами и сметаной.",
+      "category": "main", "meal_types": ["lunch", "dinner"], "servings": 4, "yield_g": 1300,
+      "ingredients": [
+        {"product": "potato", "qty": 900, "unit": "g"},
+        {"product": "champignons", "qty": 300, "unit": "g"},
+        {"product": "onion", "qty": 1, "unit": "pcs"},
+        {"product": "sour_cream", "qty": 4, "unit": "tbsp"},
+        {"product": "sunflower_oil", "qty": 2, "unit": "tbsp"},
+        {"product": "dill", "qty": 10, "unit": "g"},
+        {"product": "salt", "qty": 1.5, "unit": "tsp"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 20, "total_min": 45, "steps": [
+          "Обжарьте лук и грибы на масле 8 минут.",
+          "Добавьте нарезанный брусочками картофель и 100 мл воды.",
+          "Тушите под крышкой 20 минут, добавьте сметану и соль.",
+          "Тушите ещё 5 минут и посыпьте укропом."
+        ]}
+      ],
+      "techniques": ["simmer", "fry_simple", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    },
+    {
+      "id": "yaytsa-vsmyatku-s-tostom", "version": 1, "name": "Яйца всмятку с цельнозерновым тостом",
+      "description": "Самый простой горячий завтрак.",
+      "category": "breakfast", "meal_types": ["breakfast"], "servings": 1, "yield_g": 160,
+      "ingredients": [
+        {"product": "eggs", "qty": 2, "unit": "pcs"},
+        {"product": "bread_wholegrain", "qty": 2, "unit": "pcs"},
+        {"product": "salt", "qty": 1, "unit": "pinch"}
+      ],
+      "methods": [
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 3, "total_min": 8, "steps": [
+          "Опустите яйца в кипящую воду и варите 5 минут.",
+          "Подсушите хлеб на сухой сковороде.",
+          "Подавайте яйца с тостом и щепоткой соли."
+        ]},
+        {"id": "kettle-microwave", "name": "В микроволновке (без яиц в скорлупе)", "equipment": ["microwave"], "active_min": 4, "total_min": 6, "steps": [
+          "Разбейте яйца в смазанную чашку, проколите желтки вилкой и накройте блюдцем.",
+          "Готовьте 60–80 секунд на средней мощности, проверяя каждые 20 секунд.",
+          "Подавайте с хлебом и щепоткой соли."
+        ]}
+      ],
+      "techniques": ["boil"], "diet_tags": ["whole_grain", "lean_protein"], "container_ok": false,
+      "tip": "Никогда не готовьте яйца в скорлупе в микроволновке — они могут лопнуть.", "storage": null, "image": null, "source": "foodo-recipes-2026-10"
+    }
+  ]
+}

@@ -1,0 +1,1684 @@
+{
+ "sequence": [
+  0.18689791089855134,
+  0.5267679621465504,
+  0.036956520518288016,
+  0.19033258804120123,
+  0.27266927040182054,
+  0.377966626547277,
+  0.5112987842876464,
+  0.7815919460263103,
+  0.38609081716276705,
+  0.6261486788280308,
+  0.7983699275646359,
+  0.06453288835473359,
+  0.6061468836851418,
+  0.4852938880212605,
+  0.837805008282885,
+  0.43353456631302834,
+  0.20541162695735693,
+  0.22432500054128468,
+  0.9286944381892681,
+  0.7950901330914348
+ ],
+ "nutrition": [
+  {
+   "id": "ovsyanka-s-yablokom",
+   "one": {
+    "scale": 1,
+    "total": {
+     "kcal": {
+      "value": 562.5020000000001,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 19.9962,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 13.241800000000001,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 94.7422,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 11.8816,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 72.732,
+      "complete": true,
+      "missing": []
+     },
+     "vit_c": {
+      "value": 10.3764,
+      "complete": true,
+      "missing": []
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "milk"
+      ]
+     },
+     "vit_e": {
+      "value": 0.77562,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b6": {
+      "value": 0.26696,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b12": {
+      "value": 1.236,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 45.802,
+      "complete": true,
+      "missing": []
+     }
+    },
+    "perServing": {
+     "kcal": {
+      "value": 281.25100000000003,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 9.9981,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 6.620900000000001,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 47.3711,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 5.9408,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 36.366,
+      "complete": true,
+      "missing": []
+     },
+     "vit_c": {
+      "value": 5.1882,
+      "complete": true,
+      "missing": []
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "milk"
+      ]
+     },
+     "vit_e": {
+      "value": 0.38781,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b6": {
+      "value": 0.13348,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b12": {
+      "value": 0.618,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 22.901,
+      "complete": true,
+      "missing": []
+     }
+    },
+    "per100g": {
+     "kcal": {
+      "value": 100.44678571428572,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 3.5707500000000003,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 2.3646071428571434,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 16.91825,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 2.121714285714286,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 12.987857142857143,
+      "complete": true,
+      "missing": []
+     },
+     "vit_c": {
+      "value": 1.8529285714285715,
+      "complete": true,
+      "missing": []
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "milk"
+      ]
+     },
+     "vit_e": {
+      "value": 0.13850357142857142,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b6": {
+      "value": 0.047671428571428566,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b12": {
+      "value": 0.22071428571428572,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 8.178928571428571,
+      "complete": true,
+      "missing": []
+     }
+    },
+    "yieldG": 560,
+    "edibleMassG": 652.1,
+    "unconvertible": []
+   },
+   "two": {
+    "scale": 2,
+    "total": {
+     "kcal": {
+      "value": 1125.0040000000001,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 39.9924,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 26.483600000000003,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 189.4844,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 23.7632,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 145.464,
+      "complete": true,
+      "missing": []
+     },
+     "vit_c": {
+      "value": 20.7528,
+      "complete": true,
+      "missing": []
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "milk"
+      ]
+     },
+     "vit_e": {
+      "value": 1.55124,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b6": {
+      "value": 0.53392,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b12": {
+      "value": 2.472,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 91.604,
+      "complete": true,
+      "missing": []
+     }
+    },
+    "perServing": {
+     "kcal": {
+      "value": 281.25100000000003,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 9.9981,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 6.620900000000001,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 47.3711,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 5.9408,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 36.366,
+      "complete": true,
+      "missing": []
+     },
+     "vit_c": {
+      "value": 5.1882,
+      "complete": true,
+      "missing": []
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "milk"
+      ]
+     },
+     "vit_e": {
+      "value": 0.38781,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b6": {
+      "value": 0.13348,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b12": {
+      "value": 0.618,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 22.901,
+      "complete": true,
+      "missing": []
+     }
+    },
+    "per100g": {
+     "kcal": {
+      "value": 100.44678571428572,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 3.5707500000000003,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 2.3646071428571434,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 16.91825,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 2.121714285714286,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 12.987857142857143,
+      "complete": true,
+      "missing": []
+     },
+     "vit_c": {
+      "value": 1.8529285714285715,
+      "complete": true,
+      "missing": []
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "milk"
+      ]
+     },
+     "vit_e": {
+      "value": 0.13850357142857142,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b6": {
+      "value": 0.047671428571428566,
+      "complete": true,
+      "missing": []
+     },
+     "vit_b12": {
+      "value": 0.22071428571428572,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 8.178928571428571,
+      "complete": true,
+      "missing": []
+     }
+    },
+    "yieldG": 1120,
+    "edibleMassG": 1304.2,
+    "unconvertible": []
+   }
+  },
+  {
+   "id": "pirog-s-kapustoy",
+   "one": {
+    "scale": 1,
+    "total": {
+     "kcal": {
+      "value": 3054.4346,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 90.69861999999999,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 95.69590000000001,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 455.94834000000003,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 32.913,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 658.642,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_c": {
+      "value": 243.475,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_d": {
+      "value": 3.0624000000000002,
+      "complete": false,
+      "missing": [
+       "milk",
+       "dry_yeast",
+       "butter"
+      ]
+     },
+     "vit_e": {
+      "value": 15.338269999999998,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_b6": {
+      "value": 1.439304,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_b12": {
+      "value": 2.477768,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "folate": {
+      "value": 508.64140000000003,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     }
+    },
+    "perServing": {
+     "kcal": {
+      "value": 381.804325,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 11.337327499999999,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 11.961987500000001,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 56.993542500000004,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 4.114125,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 82.33025,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_c": {
+      "value": 30.434375,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_d": {
+      "value": 0.38280000000000003,
+      "complete": false,
+      "missing": [
+       "milk",
+       "dry_yeast",
+       "butter"
+      ]
+     },
+     "vit_e": {
+      "value": 1.9172837499999997,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.179913,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.309721,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "folate": {
+      "value": 63.580175000000004,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     }
+    },
+    "per100g": null,
+    "yieldG": null,
+    "edibleMassG": 1749.32,
+    "unconvertible": []
+   },
+   "two": {
+    "scale": 2,
+    "total": {
+     "kcal": {
+      "value": 6108.8692,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 181.39723999999998,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 191.39180000000002,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 911.8966800000001,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 65.826,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 1317.284,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_c": {
+      "value": 486.95,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_d": {
+      "value": 6.1248000000000005,
+      "complete": false,
+      "missing": [
+       "milk",
+       "dry_yeast",
+       "butter"
+      ]
+     },
+     "vit_e": {
+      "value": 30.676539999999996,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_b6": {
+      "value": 2.878608,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_b12": {
+      "value": 4.955536,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "folate": {
+      "value": 1017.2828000000001,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     }
+    },
+    "perServing": {
+     "kcal": {
+      "value": 381.804325,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 11.337327499999999,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 11.961987500000001,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 56.993542500000004,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 4.114125,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 82.33025,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_c": {
+      "value": 30.434375,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_d": {
+      "value": 0.38280000000000003,
+      "complete": false,
+      "missing": [
+       "milk",
+       "dry_yeast",
+       "butter"
+      ]
+     },
+     "vit_e": {
+      "value": 1.9172837499999997,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.179913,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.309721,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     },
+     "folate": {
+      "value": 63.580175000000004,
+      "complete": false,
+      "missing": [
+       "dry_yeast"
+      ]
+     }
+    },
+    "per100g": null,
+    "yieldG": null,
+    "edibleMassG": 3498.64,
+    "unconvertible": []
+   }
+  },
+  {
+   "id": "oladi-na-kefire",
+   "one": {
+    "scale": 1,
+    "total": {
+     "kcal": {
+      "value": 1382.0092,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 36.30104,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 50.7388,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 190.31727999999998,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 5.4,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 81.664,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_c": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_d": {
+      "value": 1.0208,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_e": {
+      "value": 17.416559999999997,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.166768,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.45425600000000005,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "folate": {
+      "value": 75.9888,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     }
+    },
+    "perServing": {
+     "kcal": {
+      "value": 460.6697333333333,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 12.100346666666667,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 16.91293333333333,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 63.439093333333325,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 1.8,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 27.221333333333334,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_c": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_d": {
+      "value": 0.3402666666666666,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_e": {
+      "value": 5.805519999999999,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.05558933333333333,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.15141866666666667,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "folate": {
+      "value": 25.3296,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     }
+    },
+    "per100g": {
+     "kcal": {
+      "value": 246.78735714285713,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 6.482328571428572,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 9.0605,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 33.98522857142857,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 0.9642857142857144,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 14.582857142857144,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_c": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_d": {
+      "value": 0.18228571428571427,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_e": {
+      "value": 3.1100999999999996,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.02978,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.08111714285714287,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "folate": {
+      "value": 13.56942857142857,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     }
+    },
+    "yieldG": 560,
+    "edibleMassG": 628.6399999999999,
+    "unconvertible": []
+   },
+   "two": {
+    "scale": 2,
+    "total": {
+     "kcal": {
+      "value": 2764.0184,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 72.60208,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 101.4776,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 380.63455999999996,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 10.8,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 163.328,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_c": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_d": {
+      "value": 2.0416,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_e": {
+      "value": 34.833119999999994,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.333536,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.9085120000000001,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "folate": {
+      "value": 151.9776,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     }
+    },
+    "perServing": {
+     "kcal": {
+      "value": 460.6697333333333,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 12.100346666666667,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 16.91293333333333,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 63.439093333333325,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 1.8,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 27.221333333333334,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_c": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_d": {
+      "value": 0.3402666666666666,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_e": {
+      "value": 5.805519999999999,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.05558933333333333,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.15141866666666667,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "folate": {
+      "value": 25.3296,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     }
+    },
+    "per100g": {
+     "kcal": {
+      "value": 246.78735714285713,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 6.482328571428572,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 9.0605,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 33.98522857142857,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 0.9642857142857144,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 14.582857142857144,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_c": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_d": {
+      "value": 0.18228571428571427,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_e": {
+      "value": 3.1100999999999996,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.02978,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.08111714285714287,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     },
+     "folate": {
+      "value": 13.56942857142857,
+      "complete": false,
+      "missing": [
+       "kefir"
+      ]
+     }
+    },
+    "yieldG": 1120,
+    "edibleMassG": 1257.2799999999997,
+    "unconvertible": []
+   }
+  },
+  {
+   "id": "borshch-s-govyadinoy",
+   "one": {
+    "scale": 1,
+    "total": {
+     "kcal": {
+      "value": 1677.404,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 111.39000000000001,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 88.6644,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 114.4364,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 24.6784,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 628.96,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_c": {
+      "value": 180.46160000000003,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "beef"
+      ]
+     },
+     "vit_e": {
+      "value": 14.520399999999999,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b6": {
+      "value": 3.69296,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b12": {
+      "value": 12.5,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 477.116,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     }
+    },
+    "perServing": {
+     "kcal": {
+      "value": 279.5673333333333,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 18.565,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 14.7774,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 19.072733333333332,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 4.113066666666667,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 104.82666666666667,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_c": {
+      "value": 30.076933333333336,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "beef"
+      ]
+     },
+     "vit_e": {
+      "value": 2.420066666666666,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.6154933333333332,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b12": {
+      "value": 2.083333333333333,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 79.51933333333332,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     }
+    },
+    "per100g": {
+     "kcal": {
+      "value": 55.913466666666665,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 3.7130000000000005,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 2.95548,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 3.8145466666666668,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 0.8226133333333333,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 20.965333333333334,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_c": {
+      "value": 6.015386666666668,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "beef"
+      ]
+     },
+     "vit_e": {
+      "value": 0.4840133333333333,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.12309866666666666,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.4166666666666667,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 15.903866666666666,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     }
+    },
+    "yieldG": 3000,
+    "edibleMassG": 4032,
+    "unconvertible": []
+   },
+   "two": {
+    "scale": 2,
+    "total": {
+     "kcal": {
+      "value": 3354.808,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 222.78000000000003,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 177.3288,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 228.8728,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 49.3568,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 1257.92,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_c": {
+      "value": 360.92320000000007,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "beef"
+      ]
+     },
+     "vit_e": {
+      "value": 29.040799999999997,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b6": {
+      "value": 7.38592,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b12": {
+      "value": 25,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 954.232,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     }
+    },
+    "perServing": {
+     "kcal": {
+      "value": 279.5673333333333,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 18.565,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 14.7774,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 19.072733333333332,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 4.113066666666667,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 104.82666666666667,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_c": {
+      "value": 30.076933333333336,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "beef"
+      ]
+     },
+     "vit_e": {
+      "value": 2.420066666666666,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.6154933333333332,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b12": {
+      "value": 2.083333333333333,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 79.51933333333332,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     }
+    },
+    "per100g": {
+     "kcal": {
+      "value": 55.913466666666665,
+      "complete": true,
+      "missing": []
+     },
+     "protein": {
+      "value": 3.7130000000000005,
+      "complete": true,
+      "missing": []
+     },
+     "fat": {
+      "value": 2.95548,
+      "complete": true,
+      "missing": []
+     },
+     "carbs": {
+      "value": 3.8145466666666668,
+      "complete": true,
+      "missing": []
+     },
+     "fiber": {
+      "value": 0.8226133333333333,
+      "complete": true,
+      "missing": []
+     },
+     "vit_a": {
+      "value": 20.965333333333334,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_c": {
+      "value": 6.015386666666668,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_d": {
+      "value": 0,
+      "complete": false,
+      "missing": [
+       "beef"
+      ]
+     },
+     "vit_e": {
+      "value": 0.4840133333333333,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b6": {
+      "value": 0.12309866666666666,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     },
+     "vit_b12": {
+      "value": 0.4166666666666667,
+      "complete": true,
+      "missing": []
+     },
+     "folate": {
+      "value": 15.903866666666666,
+      "complete": false,
+      "missing": [
+       "bay_leaf"
+      ]
+     }
+    },
+    "yieldG": 6000,
+    "edibleMassG": 8064,
+    "unconvertible": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,584 @@
+{
+ "menu": {
+  "format": "foodo-menu",
+  "format_version": 1,
+  "start_date": "2026-10-19",
+  "days": 1,
+  "seed": 42,
+  "revision": 1,
+  "slots": [
+   "lunch"
+  ],
+  "member_ids": [
+   "m1"
+  ],
+  "settings": {
+   "skill": "any",
+   "diet_mode": "regular",
+   "equipment": [
+    "stove",
+    "oven",
+    "microwave"
+   ],
+   "max_total_min": null,
+   "repeat": {
+    "mode": "unique",
+    "max_uses": 2,
+    "min_gap_days": 2,
+    "cook_days": [],
+    "batch_days": 2,
+    "batch_slots": [
+     "lunch",
+     "dinner"
+    ]
+   },
+   "container_days": [],
+   "vitamins": {
+    "enabled": false,
+    "target_set": null,
+    "demo": false
+   },
+   "budget": {
+    "limit_kop": 10000,
+    "currency": "RUB"
+   },
+   "tolerances": {
+    "energy_pct": 10,
+    "macro_pct": 20
+   },
+   "portion_min": 0.5,
+   "portion_max": 2
+  },
+  "batches": [
+   {
+    "id": "b1",
+    "recipe_id": "kuritsa-s-grechkoy",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-19",
+    "slot": "lunch",
+    "portions": 2
+   }
+  ],
+  "meals": [
+   {
+    "date": "2026-10-19",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i1",
+      "batch_id": "b1",
+      "portions": {
+       "m1": 2
+      },
+      "pinned": true,
+      "alternative_for": null
+     }
+    ]
+   }
+  ],
+  "unfilled": [],
+  "conflicts": [
+   {
+    "code": "budget_exceeded",
+    "message": "В пределах текущего поиска и известных цен не найдено меню, укладывающееся в бюджет.",
+    "suggestion": "Увеличьте лимит, добавьте остатки дома, разрешите повторы или выберите более простые блюда."
+   }
+  ],
+  "warnings": [],
+  "stats": {
+   "attempts": 6,
+   "evaluated": 0,
+   "score": 0,
+   "budget_status": "exceeded"
+  },
+  "snapshot_ids": {
+   "recipes": [
+    "kuritsa-s-grechkoy"
+   ],
+   "products": [
+    "buckwheat_dry",
+    "carrot",
+    "chicken_breast",
+    "onion",
+    "salt",
+    "sunflower_oil",
+    "water"
+   ]
+  }
+ },
+ "shopping": {
+  "lines": [
+   {
+    "id": "auto:onion:g",
+    "product_id": "onion",
+    "name": "Лук репчатый",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 50,
+    "from_pantry": 0,
+    "to_buy": 50,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 4990,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "purchase_cost_kop": 4990,
+    "usage_cost_kop": 250,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "kuritsa-s-grechkoy",
+      "recipe_name": "Курица с гречкой и луком",
+      "cook_date": "2026-10-19",
+      "qty": 50
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:carrot:g",
+    "product_id": "carrot",
+    "name": "Морковь",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 40,
+    "from_pantry": 0,
+    "to_buy": 40,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 5490,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "purchase_cost_kop": 5490,
+    "usage_cost_kop": 220,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "kuritsa-s-grechkoy",
+      "recipe_name": "Курица с гречкой и луком",
+      "cook_date": "2026-10-19",
+      "qty": 40
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:chicken_breast:g",
+    "product_id": "chicken_breast",
+    "name": "Куриное филе",
+    "department": "Мясо и птица",
+    "unit": "g",
+    "convertible": true,
+    "needed": 250,
+    "from_pantry": 0,
+    "to_buy": 250,
+    "package": {
+     "size": 500,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 37900,
+    "price_date": "2026-10-05",
+    "price_source": "чек",
+    "purchase_cost_kop": 37900,
+    "usage_cost_kop": 18950,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "kuritsa-s-grechkoy",
+      "recipe_name": "Курица с гречкой и луком",
+      "cook_date": "2026-10-19",
+      "qty": 250
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:buckwheat_dry:g",
+    "product_id": "buckwheat_dry",
+    "name": "Гречка ядрица",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 100,
+    "from_pantry": 0,
+    "to_buy": 100,
+    "package": {
+     "size": 900,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 8990,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "purchase_cost_kop": 8990,
+    "usage_cost_kop": 999,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "kuritsa-s-grechkoy",
+      "recipe_name": "Курица с гречкой и луком",
+      "cook_date": "2026-10-19",
+      "qty": 100
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:sunflower_oil:ml",
+    "product_id": "sunflower_oil",
+    "name": "Масло подсолнечное рафинированное",
+    "department": "Масла и специи",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 14.782609,
+    "from_pantry": 0,
+    "to_buy": 14.782609,
+    "package": {
+     "size": 1,
+     "unit": "l",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 15990,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "purchase_cost_kop": 15990,
+    "usage_cost_kop": 236,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "kuritsa-s-grechkoy",
+      "recipe_name": "Курица с гречкой и луком",
+      "cook_date": "2026-10-19",
+      "qty": 14.782609
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:salt:g",
+    "product_id": "salt",
+    "name": "Соль поваренная",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 4.5,
+    "from_pantry": 0,
+    "to_buy": 4.5,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 2490,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "purchase_cost_kop": 2490,
+    "usage_cost_kop": 11,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "kuritsa-s-grechkoy",
+      "recipe_name": "Курица с гречкой и луком",
+      "cook_date": "2026-10-19",
+      "qty": 4.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   }
+  ],
+  "manual_lines": [],
+  "totals": {
+   "purchase_kop": 75850,
+   "usage_kop": 20666,
+   "complete": true,
+   "missing_prices": []
+  },
+  "budget": {
+   "limit_kop": 10000,
+   "purchase_kop": 75850,
+   "diff_kop": -65850,
+   "status": "exceeded"
+  },
+  "allocations": [],
+  "expired_skipped": []
+ },
+ "report": [
+  {
+   "member_id": "m1",
+   "name": "Аня",
+   "days": [
+    {
+     "date": "2026-10-19",
+     "totals": {
+      "kcal": {
+       "value": 795.656,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 70.3618,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 23.6154,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 79.0642,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 11.7506,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 316.42,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 5.4068000000000005,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": false,
+       "missing": [
+        "chicken_breast"
+       ]
+      },
+      "vit_e": {
+       "value": 7.228199999999999,
+       "complete": false,
+       "missing": [
+        "buckwheat_dry"
+       ]
+      },
+      "vit_b6": {
+       "value": 2.3382799999999997,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 0.525,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 55.238,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 650,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    }
+   ],
+   "period": {
+    "kcal": {
+     "value": 795.656,
+     "complete": true,
+     "missing": []
+    },
+    "protein": {
+     "value": 70.3618,
+     "complete": true,
+     "missing": []
+    },
+    "fat": {
+     "value": 23.6154,
+     "complete": true,
+     "missing": []
+    },
+    "carbs": {
+     "value": 79.0642,
+     "complete": true,
+     "missing": []
+    },
+    "fiber": {
+     "value": 11.7506,
+     "complete": true,
+     "missing": []
+    },
+    "vit_a": {
+     "value": 316.42,
+     "complete": true,
+     "missing": []
+    },
+    "vit_c": {
+     "value": 5.4068000000000005,
+     "complete": true,
+     "missing": []
+    },
+    "vit_d": {
+     "value": 0,
+     "complete": false,
+     "missing": [
+      "chicken_breast"
+     ]
+    },
+    "vit_e": {
+     "value": 7.228199999999999,
+     "complete": false,
+     "missing": [
+      "buckwheat_dry"
+     ]
+    },
+    "vit_b6": {
+     "value": 2.3382799999999997,
+     "complete": true,
+     "missing": []
+    },
+    "vit_b12": {
+     "value": 0.525,
+     "complete": true,
+     "missing": []
+    },
+    "folate": {
+     "value": 55.238,
+     "complete": true,
+     "missing": []
+    }
+   },
+   "vitamins": [
+    {
+     "nutrient": "vit_a",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 316.42,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_c",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 5.4068000000000005,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_d",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 0,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "chicken_breast"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_e",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 7.228199999999999,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "buckwheat_dry"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b6",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 2.3382799999999997,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b12",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 0.525,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "folate",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 55.238,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    }
+   ]
+  }
+ ],
+ "ops": []
+}
