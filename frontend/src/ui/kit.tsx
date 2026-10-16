@@ -202,12 +202,18 @@ const COVER_PALETTES: Record<string, [string, string, string]> = {
   snack: ['#f1e2fb', '#cfa9ee', '#6c3d94'],
 };
 
+/** Catalog photos are stored as `photos/<id>.webp` next to the app: resolve them against the
+ * app base (`/` on the server, `/Foodo/` on GitHub Pages), not against the current route. */
+export function photoUrl(url: string): string {
+  return /^https:\/\//.test(url) ? url : `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
+}
+
 /** Photo with its licence credit, or a clearly illustrative cover (never a fake photo). */
 export function RecipeCover({ recipe, rounded = false, showCredit = false }: { recipe: Pick<Recipe, 'name' | 'category' | 'image'>; rounded?: boolean; showCredit?: boolean }) {
   if (recipe.image?.url) {
     return (
       <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: rounded ? 18 : 0, overflow: 'hidden', background: 'var(--surface-2)' }}>
-        <img className="cover-img" src={recipe.image.url} alt={recipe.name} loading="lazy" decoding="async" />
+        <img className="cover-img" src={photoUrl(recipe.image.url)} alt={recipe.name} loading="lazy" decoding="async" />
         {showCredit &&
           (recipe.image.page_url ? (
             <a className="cover-credit" href={recipe.image.page_url} target="_blank" rel="noopener noreferrer">

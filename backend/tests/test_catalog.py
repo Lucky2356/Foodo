@@ -208,3 +208,26 @@ def test_seed_imports_collected_prices_once(tmp_path) -> None:
     call_command("load_seed", "--seed-dir", str(seed), verbosity=0)
     assert PriceObservation.objects.count() == before + 1
     assert PriceObservation.objects.get(kind="rosstat", region=region, product_id="potato").price_kop == 4550
+
+
+def test_import_accepts_only_https_or_self_hosted_photo_urls() -> None:
+    from pathlib import Path
+
+    seed = json.loads((Path(__file__).resolve().parents[2] / "shared/data/recipes.json").read_text(encoding="utf-8"))
+    recipe = dict(seed["recipes"][0])
+
+    def image_errors(url: str) -> list[dict]:
+        recipe["image"] = {
+            "url": url,
+            "source": "Фото: автор, Wikimedia Commons",
+            "license": "CC BY 4.0",
+            "page_url": "https://commons.wikimedia.org/wiki/File:X.jpg",
+        }
+        result = import_catalog_file("r.json", json.dumps({"recipes": [recipe]}).encode(), dry_run=True)
+        return [e for e in result["recipes"]["errors"] if e["code"] == "invalid_image"]
+
+    assert image_errors(f"photos/{recipe['id']}.webp") == []
+    assert image_errors("https://upload.wikimedia.org/x.jpg") == []
+    assert image_errors("javascript:alert(1)") != []
+    assert image_errors("http://example.com/x.jpg") != []
+    assert image_errors("photos/../../secret.webp") != []

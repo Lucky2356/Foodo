@@ -9,6 +9,8 @@ from typing import Any
 from engine.nutrition import NUTRIENT_IDS
 
 SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]{0,99}$")
+# Self-hosted catalog photo (see scripts/photos/apply.py); anything else must be an https URL.
+_LOCAL_PHOTO = re.compile(r"photos/[a-z0-9][a-z0-9-]{0,99}\.webp")
 RECIPE_UNITS = {"g", "kg", "ml", "l", "pcs", "tbsp", "tsp", "pinch"}
 BASE_UNITS = {"g", "ml", "pcs"}
 PACKAGE_UNITS = {"g", "kg", "ml", "l", "pcs"}
@@ -187,6 +189,8 @@ def validate_recipes(recipes: Any, products: set[str], reference: dict[str, Any]
         if image is not None:
             if not isinstance(image, dict) or not all(isinstance(image.get(k), str) and image.get(k) for k in ("url", "source", "license")):
                 _err(errors, f"{path}.image", "invalid_image", "Изображение: url, source и license обязательны.")
+            elif not (image["url"].startswith("https://") or _LOCAL_PHOTO.fullmatch(image["url"])):
+                _err(errors, f"{path}.image", "invalid_image", "Адрес фото: https://… или photos/<id>.webp.")
             elif any(image.get(k) is not None and not str(image.get(k)).startswith("https://") for k in ("license_url", "page_url")):
                 _err(errors, f"{path}.image", "invalid_image", "Ссылки на файл и лицензию должны начинаться с https://.")
     return errors
