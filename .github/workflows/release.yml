@@ -1,0 +1,158 @@
+name: Release
+
+# Run manually on main (Actions → Release → Run workflow). The version comes from the VERSION file
+# and must have a section in CHANGELOG.md. Everything is built and signed here, in GitHub:
+#   - the static site archive and SHA256SUMS → GitHub Release assets;
+#   - the API and web images → ghcr.io/<owner>/foodo-api and foodo-web;
+#   - Sigstore build provenance for all of them (keyless, nothing stored outside GitHub).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    name: All CI checks
+    uses: ./.github/workflows/ci.yml
+
+  prepare:
+    name: Version and changelog
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - id: v
+        name: Validate VERSION, CHANGELOG and branch
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/main" ]; then echo "::error::Release only from main (got $GITHUB_REF)"; exit 1; fi
+          version="$(tr -d '[:space:]' < VERSION)"
+          echo "$version" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' || { echo "::error::VERSION must be X.Y.Z"; exit 1; }
+          grep -q "^## \[$version\]" CHANGELOG.md || { echo "::error::CHANGELOG.md has no section [$version]"; exit 1; }
+          if git rev-parse -q --verify "refs/tags/v$version" >/dev/null; then echo "::error::Tag v$version already exists"; exit 1; fi
+          grep -q "\"version\": \"$version\"" frontend/package.json || { echo "::error::frontend/package.json version differs from VERSION"; exit 1; }
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  images:
+    name: Images → GHCR (${{ matrix.image }})
+    needs: [checks, prepare]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    strategy:
+      matrix:
+        include:
+          - image: foodo-api
+            dockerfile: backend/Dockerfile
+          - image: foodo-web
+            dockerfile: frontend/Dockerfile
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - id: name
+        run: echo "image=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/${{ matrix.image }}" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ steps.name.outputs.image }}
+          tags: |
+            type=semver,pattern={{version}},value=v${{ needs.prepare.outputs.version }}
+            type=semver,pattern={{major}}.{{minor}},value=v${{ needs.prepare.outputs.version }}
+            type=raw,value=latest
+          labels: |
+            org.opencontainers.image.title=${{ matrix.image }}
+            org.opencontainers.image.version=${{ needs.prepare.outputs.version }}
+      - id: build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: FOODO_VERSION=${{ needs.prepare.outputs.version }}
+          provenance: false
+      - uses: actions/attest-build-provenance@v4
+        with:
+          subject-name: ${{ steps.name.outputs.image }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          push-to-registry: true
+
+  publish:
+    name: Static site, attestations, GitHub Release
+    needs: [checks, prepare, images]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    env:
+      VERSION: ${{ needs.prepare.outputs.version }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Build the static site (guest mode)
+        working-directory: frontend
+        env:
+          FOODO_VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          npm ci --no-audit --no-fund
+          npx vite build --mode static --outDir dist-static
+      - name: Package
+        run: |
+          mkdir -p release
+          (cd frontend/dist-static && zip -qr "../../release/foodo-web-static-$VERSION.zip" .)
+          cp docker-compose.prod.yml .env.example release/
+          (cd release && sha256sum * > SHA256SUMS)
+          cat release/SHA256SUMS
+          awk -v v="$VERSION" '$0 ~ "^## \\[" v "\\]" {on=1; next} /^## \[/ {on=0} on' CHANGELOG.md > release-notes.md
+          owner="${GITHUB_REPOSITORY_OWNER,,}"
+          {
+            echo
+            echo "### Образы"
+            echo "- \`ghcr.io/$owner/foodo-api:$VERSION\`"
+            echo "- \`ghcr.io/$owner/foodo-web:$VERSION\`"
+            echo
+            echo "### Проверка подписи (Sigstore, GitHub artifact attestations)"
+            echo '```'
+            echo "gh attestation verify foodo-web-static-$VERSION.zip -R $GITHUB_REPOSITORY"
+            echo "gh attestation verify oci://ghcr.io/$owner/foodo-api:$VERSION -R $GITHUB_REPOSITORY"
+            echo '```'
+          } >> release-notes.md
+      - uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: |
+            release/foodo-web-static-*.zip
+            release/docker-compose.prod.yml
+            release/.env.example
+      - name: Create the tag and the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v$VERSION" release/* \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "Foodo $VERSION" --notes-file release-notes.md

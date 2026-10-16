@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import copy
 import math
-from typing import Any
+from typing import Any, TypeGuard
 
 from .basics import Rng, add_days, clamp, is_iso_date, iso_weekday
 from .catalog import Catalog, add_to_snapshot, find_method, recipe_ids
@@ -51,7 +51,7 @@ DEFAULT_SETTINGS: JSON = {
 }
 
 
-def _is_int(value: Any) -> bool:
+def _is_int(value: Any) -> TypeGuard[int | float]:
     if isinstance(value, bool):
         return False
     if isinstance(value, int):

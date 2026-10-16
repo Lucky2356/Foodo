@@ -20,6 +20,23 @@ class CatalogState(models.Model):
         return obj
 
 
+class SeedState(models.Model):
+    """What `load_seed` applied last time: a hash of every seed row (or of the whole file).
+
+    `load_seed` runs on every container start. A row whose seed content has not changed since the
+    last load is skipped, so corrections made by an administrator are not reverted; rows the new seed
+    did change are applied."""
+
+    name = models.CharField(primary_key=True, max_length=40)
+    file_hash = models.CharField(max_length=64)
+    rows = models.JSONField(default=dict)
+    loaded_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Загрузка стартовых данных"
+        verbose_name_plural = "Загрузки стартовых данных"
+
+
 class ReferenceData(models.Model):
     """Static reference lists (nutrient definitions, departments, meal slots, sources, …) in the
     shared JSON format. Categories, allergens, equipment, techniques and diet tags have their own

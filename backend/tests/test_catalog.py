@@ -22,6 +22,30 @@ def test_seed_is_idempotent() -> None:
     assert before[1] >= 40
 
 
+def test_seed_reload_keeps_admin_edits_and_applies_seed_changes(tmp_path) -> None:
+    """load_seed runs on every container start: it must not revert admin corrections of rows the
+    seed did not change, but must apply rows the new seed did change."""
+    from django.conf import settings
+
+    potato = Product.objects.get(pk="potato")
+    potato.name = "Картофель (исправлено администратором)"
+    potato.save()
+    call_command("load_seed", verbosity=0)
+    assert Product.objects.get(pk="potato").name == "Картофель (исправлено администратором)"
+
+    seed = tmp_path / "seed"
+    import shutil
+
+    shutil.copytree(settings.FOODO_SEED_DIR, seed)
+    products = json.loads((seed / "products.json").read_text(encoding="utf-8"))
+    carrot = next(p for p in products["products"] if p["id"] == "carrot")
+    carrot["name"] = "Морковь столовая"
+    (seed / "products.json").write_text(json.dumps(products, ensure_ascii=False), encoding="utf-8")
+    call_command("load_seed", "--seed-dir", str(seed), verbosity=0)
+    assert Product.objects.get(pk="carrot").name == "Морковь столовая"
+    assert Product.objects.get(pk="potato").name == "Картофель (исправлено администратором)"
+
+
 def test_bundle_has_etag_and_matches_engine_results() -> None:
     client = APIClient()
     r = client.get("/api/catalog/bundle/")
