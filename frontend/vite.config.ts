@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
           ],
         },
         workbox: {
-          globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'],
+          globPatterns: ['**/*.{js,css,html,svg,png,woff2,json,ttf}'],
           navigateFallback: 'index.html',
           navigateFallbackDenylist: [/^\/api\//, /^\/admin\//, /^\/static\//],
           maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
@@ -62,6 +62,13 @@ export default defineConfig(({ mode }) => {
         '/api': 'http://127.0.0.1:8000',
         '/admin': 'http://127.0.0.1:8000',
         '/static/admin': 'http://127.0.0.1:8000',
+      },
+    },
+    preview: {
+      proxy: {
+        '/api': process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000',
+        '/admin': process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000',
+        '/static/admin': process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000',
       },
     },
     build: { outDir: isStatic ? 'dist-static' : 'dist', sourcemap: false, chunkSizeWarningLimit: 1500 },

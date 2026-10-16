@@ -1,0 +1,127 @@
+import { readFileSync } from 'node:fs';
+import { expect, test } from '@playwright/test';
+import ExcelJS from 'exceljs';
+import { noHorizontalScroll, onboard } from './helpers';
+
+test.describe('guest mode (static site, no server)', () => {
+  test('family → menu → shopping survives a reload; 360 px; no horizontal scroll (checks 1, 17)', async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 780 });
+    await onboard(page, ['Без риса', 'Без макарон']);
+    await noHorizontalScroll(page);
+    const firstDish = await page.locator('.dish-title').first().innerText();
+    await page.reload();
+    await expect(page.locator('.dish-title').first()).toHaveText(firstDish);
+    await page.getByRole('link', { name: 'Покупки' }).last().click();
+    await expect(page.getByRole('heading', { name: 'Покупки' })).toBeVisible();
+    await noHorizontalScroll(page);
+    const items = await page.locator('.shop-name').allInnerTexts();
+    expect(items.join(' ')).not.toMatch(/Рис белый|Макароны|Спагетти|Яичная лапша/);
+    for (const path of ['#/recipes', '#/profile', '#/pantry', '#/habits', '#/settings', '#/account', '#/about']) {
+      await page.goto(`./${path}`);
+      await page.waitForTimeout(300);
+      await noHorizontalScroll(page);
+    }
+  });
+
+  test('one-tap replace with undo updates the menu (check 6)', async ({ page }) => {
+    await onboard(page);
+    const before = await page.locator('.dish-title').first().innerText();
+    await page.getByRole('button', { name: 'Заменить' }).first().click();
+    await expect(page.locator('.dish-title').first()).not.toHaveText(before);
+    await page.getByRole('button', { name: 'Отменить' }).click();
+    await expect(page.locator('.dish-title').first()).toHaveText(before);
+  });
+
+  test('keyboard only: start and finish onboarding (check 17)', async ({ page }) => {
+    await page.goto('./');
+    await page.keyboard.press('Tab');
+    await expect(page.getByText('Перейти к содержимому')).toBeFocused();
+    const cta = page.getByRole('link', { name: 'Составить меню бесплатно' }).first();
+    await cta.focus();
+    await page.keyboard.press('Enter');
+    await expect(page.getByRole('heading', { name: 'Для кого готовим?' })).toBeVisible();
+    await page.getByRole('button', { name: 'Дальше' }).focus();
+    await page.keyboard.press('Enter');
+    await page.getByRole('button', { name: 'Составить меню' }).focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(/#\/menu/);
+  });
+
+  test('guest planning sends no profile data anywhere (check 18)', async ({ page }) => {
+    const requests: { url: string; method: string; body: string | null }[] = [];
+    page.on('request', (r) => requests.push({ url: r.url(), method: r.method(), body: r.postData() }));
+    await onboard(page, ['Без молочного']);
+    await page.goto('./#/account');
+    await page.waitForTimeout(500);
+    for (const r of requests) {
+      expect(r.method).toBe('GET');
+      expect(r.body).toBeNull();
+      expect(decodeURIComponent(r.url)).not.toMatch(/Взрослый|milk|dairy/);
+    }
+  });
+
+  test('PDF and XLSX exports contain the current list with Cyrillic (check 15)', async ({ page }) => {
+    await onboard(page);
+    await page.goto('./#/shopping');
+    const firstItem = (await page.locator('.shop-name').first().innerText()).trim().split('\n')[0] as string;
+    const [xlsx] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'XLSX' }).click()]);
+    const wb = new ExcelJS.Workbook();
+    await wb.xlsx.readFile((await xlsx.path()) as string);
+    expect(wb.worksheets.map((w) => w.name)).toEqual(['Меню', 'Покупки', 'Готовка']);
+    const names = wb.getWorksheet('Покупки')!.getColumn(2).values.map(String);
+    expect(names).toContain(firstItem);
+    const [pdf] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'PDF' }).click()]);
+    const bytes = readFileSync((await pdf.path()) as string);
+    expect(bytes.subarray(0, 5).toString()).toBe('%PDF-');
+    expect(bytes.toString('latin1')).toContain('DejaVu');
+    expect(bytes.length).toBeGreaterThan(20000);
+  });
+
+  test('works offline after the first visit (PWA cache, check 17)', async ({ page, context }) => {
+    await onboard(page);
+    await page.evaluate(async () => {
+      await navigator.serviceWorker.ready;
+    });
+    await page.reload();
+    await page.evaluate(async () => {
+      await navigator.serviceWorker.ready;
+    });
+    await context.setOffline(true);
+    await page.reload();
+    await expect(page.getByText('Нет сети')).toBeVisible();
+    await page.goto('./#/shopping');
+    await expect(page.getByRole('heading', { name: 'Покупки' })).toBeVisible();
+    await page.goto('./#/recipes/borshch-s-govyadinoy');
+    await expect(page.getByRole('heading', { name: 'Борщ с говядиной' })).toBeVisible();
+    await page.goto('./#/menu');
+    await page.getByRole('button', { name: 'День', exact: true }).click();
+    await page.getByRole('button', { name: 'Заменить' }).first().click();
+    await expect(page.getByText(/Заменили на/)).toBeVisible();
+    await context.setOffline(false);
+  });
+
+  test('beginner with only a stove gets no oven dishes (check 21)', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('link', { name: 'Составить меню бесплатно' }).first().click();
+    await page.getByRole('button', { name: 'Дальше' }).click();
+    await page.getByRole('button', { name: 'Кухня и уровень готовки' }).click();
+    await page.getByRole('button', { name: 'Начинающий' }).click();
+    await page.getByRole('button', { name: 'Духовка' }).click();
+    await page.getByRole('button', { name: 'Микроволновка' }).click();
+    await page.getByRole('button', { name: 'Составить меню' }).click();
+    await page.waitForURL(/#\/menu/);
+    const backup = await page.evaluate(async () => {
+      const req = indexedDB.open('foodo-guest');
+      const db: IDBDatabase = await new Promise((res) => (req.onsuccess = () => res(req.result)));
+      const tx = db.transaction('menus');
+      const all: { menu: { batches: { method_id: string; recipe_id: string }[] } }[] = await new Promise((res) => {
+        const r = tx.objectStore('menus').getAll();
+        r.onsuccess = () => res(r.result);
+      });
+      return all[0]!.menu.batches;
+    });
+    expect(backup.length).toBeGreaterThan(0);
+    expect(backup.every((b) => b.method_id !== 'oven' && b.method_id !== 'airfryer' && b.method_id !== 'microwave')).toBe(true);
+    expect(backup.some((b) => ['syrniki', 'kotlety-iz-indeyki', 'pirog-s-kapustoy', 'lenivye-golubtsy'].includes(b.recipe_id))).toBe(false);
+  });
+});

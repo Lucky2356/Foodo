@@ -20,3 +20,13 @@ class HealthView(APIView):
             db = "error"
         status = 200 if db == "ok" else 503
         return Response({"status": "ok" if db == "ok" else "degraded", "database": db, "version": settings.FOODO_VERSION}, status=status)
+
+
+def csrf_failure(request, reason: str = ""):  # type: ignore[no-untyped-def]
+    """JSON answer for CSRF failures so the SPA can show a clear message."""
+    from django.http import JsonResponse
+
+    return JsonResponse(
+        {"error": {"code": "csrf_failed", "message": "Сессия устарела или запрос пришёл с другого сайта. Обновите страницу и повторите.", "details": {}}},
+        status=403,
+    )
