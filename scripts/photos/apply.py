@@ -16,7 +16,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from .commons import acceptable, download, file_info
+from .commons import acceptable, author_name, download, file_info, license_link
 
 ROOT = Path(__file__).resolve().parents[2]
 WIDTH = 800
@@ -41,13 +41,14 @@ def main(argv: list[str]) -> int:
         img = Image.open(io.BytesIO(download(info["thumb"]))).convert("RGB")
         img.thumbnail((WIDTH, WIDTH))
         img.save(out / "photos" / f"{rid}.webp", "WEBP", quality=78, method=6)
-        credits[rid] = {
+        credit = {
             "url": f"photos/{rid}.webp",
-            "source": f"Фото: {info['artist'] or 'автор не указан'}, Wikimedia Commons",
+            "source": f"Фото: {author_name(info['artist']) or 'автор не указан'}, Wikimedia Commons",
             "license": info["license"],
-            "license_url": info["license_url"],
+            "license_url": license_link(info["license_url"]),
             "page_url": info["page_url"],
         }
+        credits[rid] = {k: v for k, v in credit.items() if v is not None}
         print(f"{rid}: {title} ({info['license']})")
     (out / "credits.json").write_text(
         json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8"

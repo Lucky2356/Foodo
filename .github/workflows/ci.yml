@@ -83,12 +83,12 @@ jobs:
       - run: mypy
       - name: No missing migrations
         run: python manage.py makemigrations --check --dry-run
-      - name: Price collector — lint and unit tests (no network)
+      - name: Price and photo collectors — lint and unit tests (no network)
         working-directory: .
         run: |
           ruff check scripts
           ruff format --check scripts
-          python -m pytest -p no:django -p no:cacheprovider -q scripts/prices/tests
+          python -m pytest -p no:django -p no:cacheprovider -q scripts/prices/tests scripts/photos/tests
       - run: pytest
 
   e2e-guest:

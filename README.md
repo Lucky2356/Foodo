@@ -94,7 +94,7 @@ docker compose up --build
 pip install --require-hashes -r scripts/prices/requirements.txt
 python -m scripts.prices.run --dry-run          # собрать и показать сводку, ничего не записывая
 python -m scripts.prices.publish frontend/public/data/prices
-python -m pytest -p no:django scripts/prices/tests
+python -m pytest -p no:django scripts/prices/tests scripts/photos/tests
 ```
 
 Импорт данных администратором: `python manage.py import_catalog <file.json>` (продукты/рецепты, с проверкой связей и единиц, без дублей при повторе) и `python manage.py import_prices <file.json> --kind scraped|rosstat`. Те же импорты доступны в Django Admin.

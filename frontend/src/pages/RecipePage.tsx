@@ -70,7 +70,7 @@ export default function RecipePage() {
       </button>
       <div className="bento">
         <div className="span-3" style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', aspectRatio: '4 / 3', boxShadow: 'var(--shadow)' }}>
-          <RecipeCover recipe={recipe} showCredit />
+          <RecipeCover recipe={recipe} />
         </div>
         <div className="span-3 stack" style={{ ['--gap' as string]: '12px', alignContent: 'start' }}>
           <span className="eyebrow muted small" style={{ textTransform: 'uppercase', letterSpacing: '.08em', fontWeight: 700 }}>
@@ -103,7 +103,22 @@ export default function RecipePage() {
           </div>
           {recipe.image && (
             <p className="tiny muted">
-              Фото: {recipe.image.source}, {recipe.image.license}
+              {recipe.image.source} ·{' '}
+              {recipe.image.license_url ? (
+                <a href={recipe.image.license_url} target="_blank" rel="noopener noreferrer">
+                  {recipe.image.license}
+                </a>
+              ) : (
+                recipe.image.license
+              )}
+              {recipe.image.page_url && (
+                <>
+                  {' · '}
+                  <a href={recipe.image.page_url} target="_blank" rel="noopener noreferrer">
+                    страница файла
+                  </a>
+                </>
+              )}
             </p>
           )}
         </div>

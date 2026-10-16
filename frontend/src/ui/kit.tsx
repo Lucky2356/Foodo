@@ -208,22 +208,13 @@ export function photoUrl(url: string): string {
   return /^https:\/\//.test(url) ? url : `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
 }
 
-/** Photo with its licence credit, or a clearly illustrative cover (never a fake photo). */
-export function RecipeCover({ recipe, rounded = false, showCredit = false }: { recipe: Pick<Recipe, 'name' | 'category' | 'image'>; rounded?: boolean; showCredit?: boolean }) {
+/** Recipe photo, or a clearly illustrative cover (never a fake photo). The author and licence
+ * are shown as a full line on the recipe page. */
+export function RecipeCover({ recipe, rounded = false }: { recipe: Pick<Recipe, 'name' | 'category' | 'image'>; rounded?: boolean }) {
   if (recipe.image?.url) {
     return (
       <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: rounded ? 18 : 0, overflow: 'hidden', background: 'var(--surface-2)' }}>
         <img className="cover-img" src={photoUrl(recipe.image.url)} alt={recipe.name} loading="lazy" decoding="async" />
-        {showCredit &&
-          (recipe.image.page_url ? (
-            <a className="cover-credit" href={recipe.image.page_url} target="_blank" rel="noopener noreferrer">
-              {recipe.image.source} · {recipe.image.license}
-            </a>
-          ) : (
-            <span className="cover-credit">
-              {recipe.image.source} · {recipe.image.license}
-            </span>
-          ))}
       </div>
     );
   }

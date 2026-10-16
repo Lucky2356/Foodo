@@ -55,6 +55,23 @@ def plain(value: str) -> str:
     ).strip()
 
 
+def license_link(url: str) -> str | None:
+    """Licence deed link for the credit: https only. Commons often stores Creative Commons
+    deeds as http://; that host serves the same page over https. Other non-https links are
+    dropped rather than shown as an insecure link."""
+    if url.startswith("http://creativecommons.org/"):
+        url = "https://" + url[len("http://") :]
+    return url if url.startswith("https://") else None
+
+
+def author_name(artist: str) -> str:
+    """Short author line. Some uploaders put usage notes into the Artist field after the
+    name in parentheses («Name ( Name ) I'd appreciate…»): keep the name only."""
+    if len(artist) > 80:
+        artist = artist.split(" (", 1)[0].strip() or artist[:80].rstrip() + "…"
+    return artist
+
+
 def describe(page: dict[str, Any]) -> dict[str, Any] | None:
     info = (page.get("imageinfo") or [None])[0]
     if not info:

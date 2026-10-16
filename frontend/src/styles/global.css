@@ -1163,21 +1163,6 @@ textarea.input {
   object-fit: cover;
 }
 
-.cover-credit {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgb(0 0 0 / 45%);
-  color: #fff;
-  max-width: 80%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .meta {
   display: flex;
   flex-wrap: wrap;
