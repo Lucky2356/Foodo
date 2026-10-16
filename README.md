@@ -21,7 +21,7 @@
 | Workflow | Когда | Что делает |
 | --- | --- | --- |
 | `CI` (`.github/workflows/ci.yml`) | каждый PR и push в `main` | ESLint, TypeScript, vitest; ruff, mypy, проверка миграций, pytest на PostgreSQL 16; Playwright (гость и аккаунт); сборка Docker-образов, чистый запуск, health, перезапуск с сохранением БД |
-| `Pages` (`pages.yml`) | push в `main`, вручную | статическая сборка (гостевой режим) → GitHub Pages |
+| `Pages` (`pages.yml`) | push в `main`, вручную | статическая сборка (гостевой режим) → GitHub Pages → проверка опубликованного сайта: HTTPS, ресурсы, гостевой путь и офлайн (Playwright) |
 | `Release` (`release.yml`) | вручную на `main` | все проверки CI → образы в GHCR → архив сайта и `SHA256SUMS` → Sigstore-аттестации → тег `vX.Y.Z` и GitHub Release |
 | `Prices` (`prices.yml`) | еженедельно, вручную; пробный прогон в PR | средние цены Росстата по регионам и городам, цены сайта «Магнита»; коммит в `shared/data/prices` и пересборка Pages — [`docs/PRICES.md`](docs/PRICES.md) |
 | `Photos` (`photos.yml`) | вручную; в PR при изменении выбора | кандидаты из Wikimedia Commons на контактных листах для проверки и применение выбранных фото с авторством и лицензией — [`docs/PHOTOS.md`](docs/PHOTOS.md) |
@@ -70,6 +70,7 @@ npm test               # vitest: движок, хранилище гостя, э
 npm run build          # сборка для сервера (nginx + API)
 npm run build:static   # сборка для GitHub Pages (только гостевой режим)
 npm run e2e            # Playwright, гостевой режим
+E2E_BASE_URL=https://lucky2356.github.io/Foodo/ npx playwright test -g "family → menu → shopping|works offline"  # то же на опубликованном сайте
 E2E_ACCOUNT=1 npm run e2e   # Playwright, аккаунт (нужен API на :8000 с данными)
 npm run fixtures:write # пересоздать ожидаемые результаты shared/fixtures/engine
 
