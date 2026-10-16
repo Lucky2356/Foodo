@@ -1,0 +1,63 @@
+# Production: images from GHCR, PostgreSQL in a private network, Caddy for HTTPS.
+#   cp .env.example .env && edit .env
+#   docker compose -f docker-compose.prod.yml pull
+#   docker compose -f docker-compose.prod.yml up -d
+# Data lives in named volumes (pgdata, media, caddy_data); `down` keeps them. Never use `down -v`.
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      retries: 10
+    networks: [internal]
+
+  api:
+    image: ghcr.io/${FOODO_IMAGE_OWNER}/foodo-api:${FOODO_IMAGE_TAG}
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      FOODO_MIGRATE: "1"
+      FOODO_LOAD_SEED: "1"
+      DJANGO_BEHIND_PROXY: "1"
+    volumes:
+      - media:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: [internal]
+
+  web:
+    image: ghcr.io/${FOODO_IMAGE_OWNER}/foodo-web:${FOODO_IMAGE_TAG}
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    networks: [internal]
+
+  proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [web]
+    networks: [internal]
+
+volumes:
+  pgdata:
+  media:
+  caddy_data:
+  caddy_config:
+
+networks:
+  internal:

@@ -27,7 +27,8 @@ if not SECRET_KEY:
     else:
         raise RuntimeError("DJANGO_SECRET_KEY is required when DJANGO_DEBUG is off")
 
-ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1")
+# Internal names are always allowed so container health checks and the nginx → api hop work.
+ALLOWED_HOSTS = [*env_list("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1"), "127.0.0.1", "localhost", "api"]
 CSRF_TRUSTED_ORIGINS = env_list("DJANGO_CSRF_TRUSTED_ORIGINS", "")
 
 FOODO_APP_NAME = os.environ.get("FOODO_APP_NAME", "Foodo")
