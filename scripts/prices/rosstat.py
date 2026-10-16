@@ -122,6 +122,10 @@ def region_key(name: str) -> str:
     return re.sub(r"\s*\([^)]*\)$", "", norm(name))
 
 
+# Keys compared in the same normalised form as sheet names (« - » becomes «-»).
+ALIASES = {norm(k): v for k, v in REGION_ALIASES.items()}
+
+
 def latest_file_url(page_html: str) -> str:
     """The newest «sred_potreb_cen» file: current-year «MM-YYYY» beats past-year «YYYY»."""
     best: tuple[int, int, str] | None = None
@@ -187,7 +191,7 @@ def parse_sheet(
         code, name = str(row[0]).strip(), str(row[1]).strip()
         if not code.isdigit():
             continue
-        alias = REGION_ALIASES.get(norm(name)) or regions.get(region_key(name))
+        alias = ALIASES.get(norm(name)) or regions.get(region_key(name))
         if alias:
             region, city_id = alias, None
             stats["regions"].add(region)

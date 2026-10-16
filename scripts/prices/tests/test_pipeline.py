@@ -146,6 +146,29 @@ def test_rosstat_sheet_regions_cities_and_missing_values() -> None:
     ]
 
 
+def test_rosstat_region_aliases_and_urban_okrug_cities() -> None:
+    """«Чувашская Республика - Чувашия» is a region (its cities must not fall under the previous
+    region), and Moscow-region towns stored as urban okrugs are matched by name."""
+    rows = [
+        ("Код территории", "Наименование территории", "2501"),
+        ("", "", "Картофель, кг"),
+        ("94000000000", "Удмуртская Республика", 40.0),
+        ("94401000000", "Ижевск", 41.0),
+        ("97000000000", "Чувашская Республика - Чувашия", 42.0),
+        ("97401000000", "Чебоксары", 43.0),
+        ("46000000000", "Московская область", 60.0),
+        ("46437000000", "Клин", 61.0),
+    ]
+    obs, summary = rosstat.parse_sheet(rows, CITIES, 2026, 9)
+    by = {(o["region"], o.get("city_id")): o["price_kop"] for o in obs}
+    city = {c["name"]: c for c in CITIES}
+    assert by[("Чувашская Республика", None)] == 4200
+    assert by[("Чувашская Республика", city["Чебоксары"]["id"])] == 4300
+    assert by[("Удмуртская Республика", None)] == 4000
+    assert by[("Московская область", city["Клин"]["id"])] == 6100
+    assert summary["unmatched_cities"] == []
+
+
 def test_latest_file_prefers_the_current_year_file() -> None:
     html = '<a href="/storage/mediabank/sred_potreb_cen_2025.xlsx"></a><a href="/storage/mediabank/sred_potreb_cen_09-2026.xlsx"></a><a href="/storage/mediabank/sred_potreb_cen_1991-2025.xlsx"></a>'
     assert (
