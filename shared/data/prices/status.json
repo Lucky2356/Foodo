@@ -1,0 +1,143 @@
+{
+ "sources": {
+  "rosstat": {
+   "name": "Росстат, средние потребительские цены",
+   "observations": 31992,
+   "regions": 84,
+   "cities": 263,
+   "unmatched_cities": [
+    "Брянская область: Навля",
+    "Московская область: Истра",
+    "Московская область: Клин",
+    "Московская область: Одинцово",
+    "Московская область: Орехово-Зуево",
+    "Московская область: Сергиев Посад",
+    "Удмуртская Республика: Чувашская Республика - Чувашия",
+    "Удмуртская Республика: Чебоксары",
+    "Удмуртская Республика: Канаш",
+    "Республика Бурятия: Селенгинск",
+    "Республика Саха (Якутия): Зырянка",
+    "Республика Саха (Якутия): Усть-Нера",
+    "Забайкальский край: Агинское",
+    "Камчатский край: Палана",
+    "Магаданская область: Усть-Омчуг"
+   ],
+   "period": "2026-09",
+   "file": "https://rosstat.gov.ru/storage/mediabank/sred_potreb_cen_09-2026.xlsx",
+   "checked_at": "2026-10-16T20:25:23+00:00",
+   "ok": true,
+   "updated_at": "2026-10-16T20:25:23+00:00"
+  },
+  "magnit": {
+   "name": "Магнит, magnit.ru",
+   "store": "992301",
+   "city_id": "2300000100000",
+   "city": "Краснодар",
+   "categories": 80,
+   "categories_failed": 0,
+   "offers": 1954,
+   "products": 71,
+   "requests": 83,
+   "checked_at": "2026-10-16T20:32:00+00:00",
+   "ok": true,
+   "updated_at": "2026-10-16T20:32:00+00:00"
+  },
+  "pyaterochka": {
+   "name": "pyaterochka",
+   "collected": false,
+   "reachable": false,
+   "detail": "HTTP 403 https://5ka.ru/robots.txt",
+   "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
+   "checked_at": "2026-10-16T20:32:01+00:00"
+  },
+  "perekrestok": {
+   "name": "perekrestok",
+   "collected": false,
+   "reachable": false,
+   "detail": "HTTP 403 https://www.perekrestok.ru/robots.txt",
+   "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
+   "checked_at": "2026-10-16T20:32:02+00:00"
+  },
+  "lenta": {
+   "name": "lenta",
+   "collected": false,
+   "reachable": true,
+   "detail": "доступен",
+   "reason": "Сайт отвечает, сбор цен ещё не реализован.",
+   "checked_at": "2026-10-16T20:32:03+00:00"
+  },
+  "auchan": {
+   "name": "auchan",
+   "collected": false,
+   "reachable": true,
+   "detail": "доступен",
+   "reason": "Сайт отвечает, сбор цен ещё не реализован.",
+   "checked_at": "2026-10-16T20:32:04+00:00"
+  },
+  "okey": {
+   "name": "okey",
+   "collected": false,
+   "reachable": false,
+   "detail": "HTTP 403 https://www.okeydostavka.ru/robots.txt",
+   "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
+   "checked_at": "2026-10-16T20:32:04+00:00"
+  },
+  "metro": {
+   "name": "metro",
+   "collected": false,
+   "reachable": true,
+   "detail": "доступен",
+   "reason": "Сайт отвечает, сбор цен ещё не реализован.",
+   "checked_at": "2026-10-16T20:32:06+00:00"
+  },
+  "dixy": {
+   "name": "dixy",
+   "collected": false,
+   "reachable": false,
+   "detail": "HTTP 403 https://dixy.ru/robots.txt",
+   "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
+   "checked_at": "2026-10-16T20:32:07+00:00"
+  },
+  "vkusvill": {
+   "name": "vkusvill",
+   "collected": false,
+   "reachable": true,
+   "detail": "доступен",
+   "reason": "Сайт доступен, но вес и единица товара не публикуются в машиночитаемом виде — без них цена за кг была бы догадкой.",
+   "checked_at": "2026-10-16T20:32:08+00:00"
+  },
+  "monetka": {
+   "name": "monetka",
+   "collected": false,
+   "reachable": true,
+   "detail": "доступен",
+   "reason": "Сайт отвечает, сбор цен ещё не реализован.",
+   "checked_at": "2026-10-16T20:32:09+00:00"
+  },
+  "globus": {
+   "name": "globus",
+   "collected": false,
+   "reachable": false,
+   "detail": "URLError: <urlopen error [Errno 104] Connection reset by peer> (https://online.globus.ru/robots.txt)",
+   "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
+   "checked_at": "2026-10-16T20:32:09+00:00"
+  },
+  "spar": {
+   "name": "spar",
+   "collected": false,
+   "reachable": false,
+   "detail": "HTTP 307 https://myspar.ru/robots.txt",
+   "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
+   "checked_at": "2026-10-16T20:32:14+00:00"
+  },
+  "maria_ra": {
+   "name": "maria_ra",
+   "collected": false,
+   "reachable": false,
+   "detail": "HTTP 404 https://www.maria-ra.ru/robots.txt",
+   "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
+   "checked_at": "2026-10-16T20:32:15+00:00"
+  }
+ },
+ "generated_at": "2026-10-16T20:32:15+00:00"
+}
