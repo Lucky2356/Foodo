@@ -131,7 +131,8 @@ jobs:
         run: |
           mkdir -p release
           (cd frontend/dist-static && zip -qr "../../release/foodo-web-static-$VERSION.zip" .)
-          cp docker-compose.prod.yml .env.example release/
+          # No leading dot: «release/*» and «sha256sum *» skip dotfiles, so .env.example was not uploaded.
+          cp docker-compose.prod.yml release/ && cp .env.example release/env.example
           (cd release && sha256sum * > SHA256SUMS)
           cat release/SHA256SUMS
           awk -v v="$VERSION" '$0 ~ "^## \\[" v "\\]" {on=1; next} /^## \[/ {on=0} on' CHANGELOG.md > release-notes.md
@@ -153,7 +154,7 @@ jobs:
           subject-path: |
             release/foodo-web-static-*.zip
             release/docker-compose.prod.yml
-            release/.env.example
+            release/env.example
       - name: Create the tag and the release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
