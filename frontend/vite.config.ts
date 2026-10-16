@@ -40,6 +40,8 @@ export default defineConfig(({ mode }) => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,svg,png,woff2,json,ttf}'],
+          // Price data is large and changes weekly: fetched at runtime (below), not precached.
+          globIgnores: ['data/prices/**'],
           navigateFallback: 'index.html',
           navigateFallbackDenylist: [/^\/api\//, /^\/admin\//, /^\/static\//],
           maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
@@ -47,6 +49,18 @@ export default defineConfig(({ mode }) => {
           // the service worker; the account's offline copy lives in a per-account IndexedDB that is
           // wiped on logout.
           runtimeCaching: [
+            {
+              // Published public prices: the latest copy when online, the cached one offline.
+              urlPattern: ({ url }) => url.pathname.includes('/data/prices/'),
+              handler: 'NetworkFirst',
+              options: { cacheName: 'foodo-public-prices', networkTimeoutSeconds: 4, expiration: { maxEntries: 50 } },
+            },
+            {
+              // Recipe photos (self-hosted WebP copies from Wikimedia Commons): cached once seen.
+              urlPattern: ({ url }) => /\/photos\/[^/]+\.webp$/.test(url.pathname),
+              handler: 'CacheFirst',
+              options: { cacheName: 'foodo-photos', expiration: { maxEntries: 400 } },
+            },
             {
               urlPattern: ({ url }) => url.pathname.startsWith('/api/catalog/'),
               handler: 'StaleWhileRevalidate',

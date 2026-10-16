@@ -208,7 +208,16 @@ export function RecipeCover({ recipe, rounded = false, showCredit = false }: { r
     return (
       <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: rounded ? 18 : 0, overflow: 'hidden', background: 'var(--surface-2)' }}>
         <img className="cover-img" src={recipe.image.url} alt={recipe.name} loading="lazy" decoding="async" />
-        {showCredit && <span className="cover-credit">{recipe.image.source}</span>}
+        {showCredit &&
+          (recipe.image.page_url ? (
+            <a className="cover-credit" href={recipe.image.page_url} target="_blank" rel="noopener noreferrer">
+              {recipe.image.source} · {recipe.image.license}
+            </a>
+          ) : (
+            <span className="cover-credit">
+              {recipe.image.source} · {recipe.image.license}
+            </span>
+          ))}
       </div>
     );
   }

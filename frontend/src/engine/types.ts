@@ -83,7 +83,8 @@ export interface Recipe {
   container_ok: boolean;
   tip?: string | null;
   storage?: { fridge_days?: number | null; freezer_ok?: boolean | null; source?: string } | null;
-  image?: { url: string; source: string; license: string } | null;
+  /** A licensed photo: `source` names the author and origin, links lead to the file page and licence. */
+  image?: { url: string; source: string; license: string; license_url?: string; page_url?: string } | null;
   source: string;
   visibility?: 'public' | 'private';
   owner?: string | null;

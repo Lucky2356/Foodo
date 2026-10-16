@@ -187,4 +187,6 @@ def validate_recipes(recipes: Any, products: set[str], reference: dict[str, Any]
         if image is not None:
             if not isinstance(image, dict) or not all(isinstance(image.get(k), str) and image.get(k) for k in ("url", "source", "license")):
                 _err(errors, f"{path}.image", "invalid_image", "Изображение: url, source и license обязательны.")
+            elif any(image.get(k) is not None and not str(image.get(k)).startswith("https://") for k in ("license_url", "page_url")):
+                _err(errors, f"{path}.image", "invalid_image", "Ссылки на файл и лицензию должны начинаться с https://.")
     return errors
