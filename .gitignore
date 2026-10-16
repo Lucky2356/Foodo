@@ -26,3 +26,6 @@ htmlcov/
 .idea/
 .vscode/
 .DS_Store
+
+# Generated from shared/data/prices by scripts/prices/publish.py at build time
+frontend/public/data/prices/

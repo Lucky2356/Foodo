@@ -14,7 +14,7 @@ import { buildExportModel, shoppingText } from '../export/model';
 
 type Line = ShoppingView['lines'][number];
 
-const KIND_NAMES: Record<string, string> = { manual: 'ваша цена', receipt: 'чек', community: 'цены пользователей', scraped: 'сайт сети', rosstat: 'средняя по региону (Росстат)' };
+const KIND_NAMES: Record<string, string> = { manual: 'ваша цена', receipt: 'чек', community: 'цены пользователей', scraped: 'сайт сети', rosstat: 'средняя цена Росстата (оценка)' };
 
 function qty(value: number, unit: string): string {
   const u = (UNIT_NAMES as Record<string, string>)[unit] ?? unit;
@@ -196,7 +196,7 @@ export default function ShoppingPage() {
               <Link to="/settings#store">Выберите город и магазин</Link> или <Link to="/settings#prices">добавьте свои цены</Link>.
             </div>
           )}
-          {view.totals.estimated && <div className="badge blue" style={{ marginTop: 8, marginLeft: 4 }}>часть цен — средние по региону</div>}
+          {view.totals.estimated && <div className="badge blue" style={{ marginTop: 8, marginLeft: 4 }}>часть цен — средние Росстата (оценка)</div>}
         </div>
         <div className="card span-3">
           <div className="muted small">Бюджет</div>

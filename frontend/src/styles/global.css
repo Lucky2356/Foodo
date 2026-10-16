@@ -1593,3 +1593,19 @@ hr.sep {
     transform: translateY(8px);
   }
 }
+
+/* Collapsible note («Источники цен»): native <details>, keyboard accessible by default. */
+.disclosure {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.disclosure > summary {
+  cursor: pointer;
+  font-weight: 600;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+.disclosure[open] > summary {
+  margin-bottom: 8px;
+}

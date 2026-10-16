@@ -1,25 +1,67 @@
 name: Prices
 
+# Collects public prices (Rosstat averages, Magnit's website) into shared/data/prices.
+# - Pull requests touching the collector: a dry run (nothing is written or committed).
+# - Weekly schedule or a manual run on main: the data is committed to main and the Pages site
+#   is rebuilt with it. The server picks the data up on its next `load_seed` (every start).
 on:
   pull_request:
     paths:
       - "scripts/prices/**"
       - ".github/workflows/prices.yml"
+  schedule:
+    - cron: "17 3 * * 1"
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: prices-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  probe:
-    name: Source reachability from GitHub runners
+  collect:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v6
         with:
-          persist-credentials: false
+          persist-credentials: ${{ github.event_name != 'pull_request' }}
       - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
-      - run: pip install openpyxl==3.1.5
-      - run: python scripts/prices/probe.py
+      - run: pip install --require-hashes -r scripts/prices/requirements.txt
+      - name: Unit tests of the collector
+        run: |
+          pip install pytest==8.4.2
+          python -m pytest -q scripts/prices/tests
+      - name: Collect (dry run on pull requests)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python -m scripts.prices.run --dry-run
+          else
+            python -m scripts.prices.run
+          fi
+      - name: Commit the data to main
+        id: commit
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          git add shared/data/prices
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Update public prices (automated, $(date -u +%F))"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  pages:
+    needs: collect
+    if: needs.collect.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

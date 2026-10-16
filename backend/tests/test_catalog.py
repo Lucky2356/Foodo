@@ -179,3 +179,32 @@ def test_cities_and_chains_for_city() -> None:
     names = {c["name"] for c in detail["chains"]}
     assert {"Пятёрочка", "Магнит", "Бахетле"} <= names
     assert "Самбери" not in names
+
+
+def test_seed_imports_collected_prices_once(tmp_path) -> None:
+    import shutil
+
+    from django.conf import settings
+
+    from prices.models import PriceObservation
+
+    seed = tmp_path / "seed"
+    shutil.copytree(settings.FOODO_SEED_DIR, seed)
+    (seed / "prices").mkdir(exist_ok=True)
+    region = "Республика Татарстан"
+    observation = {
+        "product_id": "potato",
+        "region": region,
+        "price_kop": 4550,
+        "package_size": 1,
+        "package_unit": "kg",
+        "loose": True,
+        "observed_on": "2026-09-30",
+    }
+    (seed / "prices" / "rosstat.json").write_text(json.dumps({"kind": "rosstat", "observations": [observation]}, ensure_ascii=False), encoding="utf-8")
+    (seed / "prices" / "status.json").write_text("{}", encoding="utf-8")
+    before = PriceObservation.objects.count()
+    call_command("load_seed", "--seed-dir", str(seed), verbosity=0)
+    call_command("load_seed", "--seed-dir", str(seed), verbosity=0)
+    assert PriceObservation.objects.count() == before + 1
+    assert PriceObservation.objects.get(kind="rosstat", region=region, product_id="potato").price_kop == 4550

@@ -81,7 +81,11 @@ def public_prices(city: City | None, chain: StoreChain | None, today: date | Non
             chosen[pid] = _entry(newest, "community", median_kop, f"Медиана цен пользователей Foodo, {chain.name}, {city.name}", len(obs))
     if city is not None:
         rosstat = PriceObservation.objects.filter(kind="rosstat", region=city.region, observed_on__gte=today - timedelta(days=FRESH_DAYS["rosstat"]))
-        for o in rosstat.order_by("product_id", "-observed_on", "-id"):
+        # The city's own Rosstat average (published for larger cities) before the regional one.
+        for o in rosstat.filter(city=city).order_by("product_id", "-observed_on", "-id"):
+            if o.product_id not in chosen:
+                chosen[o.product_id] = _entry(o, "rosstat", o.price_kop, f"Росстат, средняя цена, {city.name}")
+        for o in rosstat.filter(city__isnull=True).order_by("product_id", "-observed_on", "-id"):
             if o.product_id not in chosen:
                 chosen[o.product_id] = _entry(o, "rosstat", o.price_kop, f"Росстат, средняя цена, {city.region}")
     return [chosen[k] for k in sorted(chosen)]
@@ -169,6 +173,12 @@ def import_observations(rows: list[JSON], kind: str) -> dict[str, Any]:
         elif region not in regions:
             errors.append(f"{where} неизвестный регион {region}")
             continue
+        elif r.get("city_id"):
+            # Rosstat also publishes averages for individual cities; they must lie in the stated region.
+            city = cities.get(r.get("city_id"))
+            if city is None or city.region != region:
+                errors.append(f"{where} город не найден в регионе {region}")
+                continue
         valid.append(
             PriceObservation(
                 kind=kind,

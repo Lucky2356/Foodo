@@ -55,6 +55,27 @@ def test_public_prices_priority_and_idempotent_import() -> None:
     assert merged["potato"]["price_kop"] == 7000  # own price wins even if older
 
 
+def test_rosstat_city_average_beats_the_regional_one() -> None:
+    city = kazan()
+    other = City.objects.filter(region=city.region).exclude(pk=city.pk).first()
+    assert other is not None
+    today = date.today().isoformat()
+    rows = [
+        {"product_id": "potato", "region": city.region, "price_kop": 4000, "package_size": 1, "package_unit": "kg", "observed_on": today},
+        {"product_id": "potato", "region": city.region, "city_id": city.id, "price_kop": 5200, "package_size": 1, "package_unit": "kg", "observed_on": today},
+    ]
+    assert import_observations(rows, "rosstat")["created"] == 2
+    in_city = {e["product_id"]: e for e in public_prices(city, None)}["potato"]
+    assert in_city["price_kop"] == 5200 and city.name in in_city["source"]
+    elsewhere = {e["product_id"]: e for e in public_prices(other, None)}["potato"]
+    assert elsewhere["price_kop"] == 4000 and city.region in elsewhere["source"]
+    wrong_region = import_observations(
+        [{"product_id": "potato", "region": "Москва", "city_id": city.id, "price_kop": 1, "package_size": 1, "package_unit": "kg", "observed_on": today}],
+        "rosstat",
+    )
+    assert wrong_region["errors"] and wrong_region["created"] == 0
+
+
 def test_shared_prices_become_a_community_median(alice: Any, bob: Any) -> None:
     city = kazan()
     for (client, user), price in ((alice, 8000), (bob, 10000)):

@@ -13,7 +13,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "shared" / "data" / "geo" / "hflabs-city.csv"
+SRC = (
+    Path(sys.argv[1])
+    if len(sys.argv) > 1
+    else ROOT / "shared" / "data" / "geo" / "hflabs-city.csv"
+)
 OUT = ROOT / "shared" / "data" / "geo" / "cities.json"
 
 # hflabs gives UTC offsets; map them to representative IANA zones (Russia has no DST since 2014).
@@ -35,7 +39,13 @@ OFFSET_TO_TZ = {
 def region_name(row: dict[str, str]) -> str:
     region, kind = row["region"].replace(" /Якутия/", " (Якутия)"), row["region_type"]
     if kind == "Респ":
-        if region in {"Чувашская", "Удмуртская", "Кабардино-Балкарская", "Карачаево-Черкесская", "Чеченская"}:
+        if region in {
+            "Чувашская",
+            "Удмуртская",
+            "Кабардино-Балкарская",
+            "Карачаево-Черкесская",
+            "Чеченская",
+        }:
             return f"{region} Республика"
         return f"Республика {region}"
     if kind == "обл":
@@ -43,7 +53,11 @@ def region_name(row: dict[str, str]) -> str:
     if kind == "край":
         return f"{region} край"
     if kind == "АО":
-        return region.replace("Автономный", "автономный") if "округ" in region else f"{region} автономный округ"
+        return (
+            region.replace("Автономный", "автономный")
+            if "округ" in region
+            else f"{region} автономный округ"
+        )
     if kind == "Аобл":
         return f"{region} автономная область"
     return region
@@ -59,21 +73,38 @@ def main() -> None:
             if not kladr or kladr in seen or not row["geo_lat"]:
                 continue
             seen.add(kladr)
-            cities.append({
-                "id": kladr,
-                "name": name,
-                "region": region_name(row),
-                "region_type": row["region_type"],
-                "federal_district": row["federal_district"],
-                "timezone": OFFSET_TO_TZ.get(row["timezone"], "Europe/Moscow"),
-                "lat": round(float(row["geo_lat"]), 5),
-                "lon": round(float(row["geo_lon"]), 5),
-                "population": int(row["population"]) if row["population"].isdigit() else None,
-            })
+            cities.append(
+                {
+                    "id": kladr,
+                    "name": name,
+                    "region": region_name(row),
+                    "region_type": row["region_type"],
+                    "federal_district": row["federal_district"],
+                    "timezone": OFFSET_TO_TZ.get(row["timezone"], "Europe/Moscow"),
+                    "lat": round(float(row["geo_lat"]), 5),
+                    "lon": round(float(row["geo_lon"]), 5),
+                    "population": int(row["population"])
+                    if row["population"].isdigit()
+                    else None,
+                }
+            )
     cities.sort(key=lambda c: (-(c["population"] or 0), c["name"]))
-    OUT.write_text(json.dumps({"format": "foodo-cities", "version": 1, "source": "hflabs/city", "license": "CC BY-SA 4.0",
-                               "source_url": "https://github.com/hflabs/city", "cities": cities}, ensure_ascii=False, separators=(",", ":")) + "\n",
-                   encoding="utf-8")
+    OUT.write_text(
+        json.dumps(
+            {
+                "format": "foodo-cities",
+                "version": 1,
+                "source": "hflabs/city",
+                "license": "CC BY-SA 4.0",
+                "source_url": "https://github.com/hflabs/city",
+                "cities": cities,
+            },
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     print(f"{len(cities)} cities → {OUT}")
 
 

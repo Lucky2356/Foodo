@@ -18,6 +18,7 @@ from django.db import transaction
 from catalog.models import SeedState
 from catalog.services import ImportResult, load_reference, upsert_articles, upsert_products, upsert_recipes, upsert_target_sets
 from geo.services import load_chains, load_cities
+from prices.services import import_observations
 
 
 def _hash(value: Any) -> str:
@@ -80,3 +81,24 @@ class Command(BaseCommand):
             cities = whole_file("geo/cities", read("geo/cities.json")["cities"], load_cities)
             chains = whole_file("geo/chains", read("geo/chains.json")["chains"], load_chains)
             self.stdout.write(f"Города: {cities or 'без изменений'}; сети: {chains or 'без изменений'}")
+        # Public prices collected by the price workflow (shared/data/prices). Import is idempotent:
+        # an observation already stored is skipped by the unique constraint.
+        prices_dir = seed / "prices"
+        for path in sorted(prices_dir.glob("*.json")) if prices_dir.exists() and not options["skip_geo"] else []:
+            if path.name == "status.json":
+                continue
+            doc = json.loads(path.read_text(encoding="utf-8"))
+
+            def apply(d: dict[str, Any], name: str = path.name) -> dict[str, Any]:
+                result = import_observations(d["observations"], d["kind"])
+                if result["errors"]:
+                    for e in result["errors"][:20]:
+                        self.stderr.write(e)
+                    raise CommandError(f"Цены {name}: ошибки ({len(result['errors'])}), ничего не записано.")
+                return result
+
+            result = whole_file(f"prices/{path.name}", doc, apply)
+            if result is None:
+                self.stdout.write(f"Цены {path.name}: без изменений")
+            else:
+                self.stdout.write(f"Цены {path.name}: новых {result['created']}, уже были {result['duplicates']}")

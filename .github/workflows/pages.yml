@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
@@ -20,6 +21,12 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Publish collected prices for the static site
+        run: python -m scripts.prices.publish frontend/public/data/prices
       - uses: actions/setup-node@v6
         with:
           node-version: "22"

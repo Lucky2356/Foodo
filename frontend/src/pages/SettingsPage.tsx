@@ -11,6 +11,8 @@ import { ProductPicker } from '../ui/ProductPicker';
 import { dayMonth } from '../lib/dates';
 import { rub } from '../lib/format';
 import { SLOT_NAMES } from '../lib/recipes';
+import { fetchPriceSourcesStatus } from '../data/prices';
+import type { PriceSourceStatus } from '../data/prices';
 
 const EQUIPMENT = [
   ['stove', 'Плита'],
@@ -21,7 +23,7 @@ const EQUIPMENT = [
   ['airfryer', 'Аэрогриль'],
 ] as const;
 const WEEK = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
-const KIND_NAMES: Record<string, string> = { manual: 'вручную', receipt: 'чек', community: 'пользователи Foodo', scraped: 'сайт сети', rosstat: 'Росстат (средняя по региону)' };
+const KIND_NAMES: Record<string, string> = { manual: 'вручную', receipt: 'чек', community: 'пользователи Foodo', scraped: 'сайт сети', rosstat: 'Росстат, средняя цена (оценка)' };
 
 export default function SettingsPage() {
   const { household, gateway, refreshHousehold, reportError } = useApp();
@@ -316,6 +318,7 @@ function StoreSection() {
           <p className="muted tiny">Список сетей по региону составлен по открытым данным и может быть неточным. Выбор сети не загружает её ассортимент: цены берутся из источников, указанных у каждой цены.</p>
         </div>
       )}
+      <PriceSources />
       {user && (
         <Switch
           checked={household?.share_prices ?? false}
@@ -325,6 +328,53 @@ function StoreSection() {
         />
       )}
     </section>
+  );
+}
+
+const CHAIN_LABELS: Record<string, string> = {
+  rosstat: 'Росстат',
+  magnit: 'Магнит',
+  pyaterochka: 'Пятёрочка',
+  perekrestok: 'Перекрёсток',
+  lenta: 'Лента',
+  auchan: 'Ашан',
+  okey: 'О’КЕЙ',
+  metro: 'METRO',
+  dixy: 'Дикси',
+  vkusvill: 'ВкусВилл',
+  monetka: 'Монетка',
+  globus: 'Глобус',
+  spar: 'SPAR',
+  maria_ra: 'Мария-Ра',
+};
+
+/** Where public prices come from and why a chain has none — read from the published status. */
+function PriceSources() {
+  const [sources, setSources] = useState<Record<string, PriceSourceStatus> | null>(null);
+  useEffect(() => {
+    void fetchPriceSourcesStatus().then(setSources);
+  }, []);
+  if (!sources) return null;
+  const line = (s: PriceSourceStatus) => {
+    if (s.collected === false) return s.reason ?? 'Цены не собираются.';
+    if (s.ok) {
+      const parts = [s.period ? `период ${s.period}` : null, s.city ? `магазин в городе ${s.city}` : null, s.updated_at ? `обновлено ${dayMonth(s.updated_at.slice(0, 10))}` : null];
+      return parts.filter(Boolean).join(', ');
+    }
+    return `Последний сбор не удался: ${s.error ?? 'причина неизвестна'}`;
+  };
+  return (
+    <details className="disclosure">
+      <summary>Источники цен</summary>
+      <ul className="stack small" style={{ ['--gap' as string]: '6px', paddingLeft: 18 }}>
+        {Object.entries(sources).map(([id, s]) => (
+          <li key={id}>
+            <strong>{CHAIN_LABELS[id] ?? s.name ?? id}</strong>: {line(s)}
+          </li>
+        ))}
+      </ul>
+      <p className="muted tiny">Средние цены Росстата — оценка для региона или города, а не цена конкретного магазина. Свои цены всегда важнее.</p>
+    </details>
   );
 }
 

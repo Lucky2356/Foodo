@@ -30,18 +30,49 @@ export async function fetchPublicPrices(cityId: string, chainId: string | null, 
     if (!r.ok) return [];
     const index = (await r.json()) as { files: Record<string, string> };
     const out: PriceEntry[] = [];
-    const chainFile = chainId ? index.files[`${cityId}:${chainId}`] : undefined;
-    const regionFile = region ? index.files[`region:${region}`] : undefined;
-    for (const file of [regionFile, chainFile]) {
+    // Least to most specific: the region's Rosstat average, the city's own Rosstat average, then the
+    // chain's prices in the city. Later files replace earlier ones for the same product.
+    const keys = [region ? `region:${region}` : null, `city:${cityId}`, chainId ? `${cityId}:${chainId}` : null];
+    for (const key of keys) {
+      const file = key ? index.files[key] : undefined;
       if (!file) continue;
       const data = await fetch(`data/prices/${file}`).then((x) => (x.ok ? x.json() : { entries: [] }));
       out.push(...((data as { entries: PriceEntry[] }).entries ?? []));
     }
-    // Chain entries (read last) replace regional averages for the same product.
     const byProduct = new Map<string, PriceEntry>();
     for (const e of out) byProduct.set(e.product_id, e);
     return [...byProduct.values()];
   } catch {
+    // No published prices (offline, not yet collected): the shopping list then shows the budget as
+    // «не подтверждён» rather than inventing prices.
     return [];
+  }
+}
+
+export interface PriceSourceStatus {
+  name?: string;
+  ok?: boolean;
+  updated_at?: string;
+  checked_at?: string;
+  error?: string;
+  collected?: boolean;
+  reachable?: boolean;
+  reason?: string;
+  period?: string;
+  city?: string;
+  products?: number;
+  observations?: number;
+}
+
+/** What the price workflow last collected (published with the static site), or null if unknown. */
+export async function fetchPriceSourcesStatus(): Promise<Record<string, PriceSourceStatus> | null> {
+  try {
+    const r = await fetch(`data/prices/index.json`, { cache: 'no-cache' });
+    if (!r.ok) return null;
+    const index = (await r.json()) as { status?: { sources?: Record<string, PriceSourceStatus> } | null };
+    return index.status?.sources ?? null;
+  } catch {
+    // Offline or a server build without published files: the block is simply not shown.
+    return null;
   }
 }
