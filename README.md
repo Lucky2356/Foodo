@@ -23,6 +23,8 @@
 | `CI` (`.github/workflows/ci.yml`) | каждый PR и push в `main` | ESLint, TypeScript, vitest; ruff, mypy, проверка миграций, pytest на PostgreSQL 16; Playwright (гость и аккаунт); сборка Docker-образов, чистый запуск, health, перезапуск с сохранением БД |
 | `Pages` (`pages.yml`) | push в `main`, вручную | статическая сборка (гостевой режим) → GitHub Pages |
 | `Release` (`release.yml`) | вручную на `main` | все проверки CI → образы в GHCR → архив сайта и `SHA256SUMS` → Sigstore-аттестации → тег `vX.Y.Z` и GitHub Release |
+| `Prices` (`prices.yml`) | еженедельно, вручную; пробный прогон в PR | средние цены Росстата по регионам и городам, цены сайта «Магнита»; коммит в `shared/data/prices` и пересборка Pages — [`docs/PRICES.md`](docs/PRICES.md) |
+| `Photos` (`photos.yml`) | вручную; в PR при изменении выбора | кандидаты из Wikimedia Commons на контактных листах для проверки и применение выбранных фото с авторством и лицензией — [`docs/PHOTOS.md`](docs/PHOTOS.md) |
 
 Выпуск версии: обновить `VERSION`, `frontend/package.json` и раздел в `CHANGELOG.md` через PR, слить, затем **Actions → Release → Run workflow** (ветка `main`).
 
@@ -47,7 +49,9 @@ frontend/           React 19 + TypeScript + Vite 7, PWA
 shared/data/        Стартовые данные: справочники, продукты, рецепты, нормы, города, сети
 shared/fixtures/    Общие тест-кейсы движка и ожидаемые результаты (TS ⇄ Python)
 deploy/             nginx и Caddy для production
-docs/               Задание, архитектура, правила питания, витамины, цены, развёртывание, статус
+scripts/prices/     Сбор цен (Росстат, сайты сетей) и публикация для статического сайта
+scripts/photos/     Поиск и применение фотографий из Wikimedia Commons
+docs/               Задание, архитектура, правила питания, витамины, цены, фото, развёртывание, статус
 .github/workflows/  CI, Pages, Release
 ```
 
@@ -82,6 +86,15 @@ pytest                             # только PostgreSQL
 
 # Весь стек в Docker: http://localhost:8080
 docker compose up --build
+```
+
+Сбор цен и фото (обычно в GitHub Actions; локально — для разработки):
+
+```sh
+pip install --require-hashes -r scripts/prices/requirements.txt
+python -m scripts.prices.run --dry-run          # собрать и показать сводку, ничего не записывая
+python -m scripts.prices.publish frontend/public/data/prices
+python -m pytest -p no:django scripts/prices/tests
 ```
 
 Импорт данных администратором: `python manage.py import_catalog <file.json>` (продукты/рецепты, с проверкой связей и единиц, без дублей при повторе) и `python manage.py import_prices <file.json> --kind scraped|rosstat`. Те же импорты доступны в Django Admin.
