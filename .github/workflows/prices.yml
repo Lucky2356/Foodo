@@ -18,7 +18,8 @@ permissions:
 
 concurrency:
   group: prices-${{ github.ref }}
-  cancel-in-progress: false
+  # A newer push supersedes a PR dry run; scheduled/manual runs on main are never interrupted.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   collect:

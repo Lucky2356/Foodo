@@ -15,6 +15,11 @@ on:
 permissions:
   contents: read
 
+# One run at a time per branch: a newer push supersedes the older run (polite to Wikimedia).
+concurrency:
+  group: photos-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   photos:
     runs-on: ubuntu-24.04
