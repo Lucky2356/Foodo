@@ -246,7 +246,9 @@ describe('repeat modes', () => {
   });
 
   it('unique mode explains a too-small catalog instead of repeating (check 23)', () => {
-    const cat = catalog();
+    // A deliberately small catalog: 40 recipes cannot fill 35 days × 4 meals without repeats.
+    const full = catalog();
+    const cat = { ...full, recipes: Object.fromEntries(Object.entries(full.recipes).slice(0, 40)) };
     const { menu } = generateMenu(request({ days: 35, members: [member()] }), cat);
     const ids = menu.batches.map((b) => b.recipe_id);
     expect(new Set(ids).size).toBe(ids.length);

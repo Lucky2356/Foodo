@@ -18,8 +18,8 @@ describe('units', () => {
     // Potato has no density: grams cannot become millilitres.
     expect(convertQuantity(p('potato'), 100, 'g', 'ml')).toBeNull();
     expect(availableDisplayUnits(p('potato'))).not.toContain('ml');
-    // Soy sauce has spoon mass but no density: a spoon cannot be turned into millilitres.
-    expect(toBase(p('soy_sauce'), 2, 'tbsp')).toBeNull();
+    // Sugar has a spoon mass but no density: a spoonful cannot be turned into millilitres.
+    expect(convertQuantity(p('sugar'), 2, 'tbsp', 'ml')).toBeNull();
   });
 
   it('refuses pieces without an average piece mass and marks pieces approximate (check 9)', () => {

@@ -75,7 +75,12 @@
     {"id": "sweets", "name": "Сахар и сладкое", "parent": null},
     {"id": "condiments", "name": "Соусы и приправы", "parent": null},
     {"id": "spices", "name": "Специи", "parent": "condiments"},
-    {"id": "beverages", "name": "Напитки и вода", "parent": null}
+    {"id": "beverages", "name": "Напитки и вода", "parent": null},
+    {"id": "pork", "name": "Свинина", "parent": "meat"},
+    {"id": "lamb", "name": "Баранина", "parent": "meat"},
+    {"id": "offal", "name": "Субпродукты", "parent": "meat"},
+    {"id": "processed_meat", "name": "Колбасы и сосиски", "parent": "meat"},
+    {"id": "seafood", "name": "Морепродукты", "parent": "fish_seafood"}
   ],
   "departments": [
     "Овощи и фрукты",
@@ -116,7 +121,8 @@
     {"id": "batter", "name": "Жидкое тесто, оладьи", "rank": 2},
     {"id": "forming", "name": "Формовка котлет и тефтелей", "rank": 2},
     {"id": "sauce_emulsion", "name": "Соус-эмульсия", "rank": 2},
-    {"id": "yeast_dough", "name": "Дрожжевое тесто", "rank": 3}
+    {"id": "yeast_dough", "name": "Дрожжевое тесто", "rank": 3},
+    {"id": "dough_rolling", "name": "Пресное тесто: раскатка и лепка", "rank": 3}
   ],
   "diet_modes": [
     {"id": "regular", "name": "Обычное"},

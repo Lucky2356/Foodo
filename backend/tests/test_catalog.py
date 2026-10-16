@@ -96,16 +96,31 @@ def test_bundle_has_etag_and_matches_engine_results() -> None:
     assert json.loads(json.dumps(from_db["batches"])) == json.loads(json.dumps(from_seed["batches"]))
 
 
+def _all_recipe_ids(client: APIClient, **params: str) -> set[str]:
+    """Walks every page: absence checks are only meaningful over the whole catalog."""
+    ids: set[str] = set()
+    page = 1
+    while True:
+        r = client.get("/api/catalog/recipes/", {**params, "page_size": 100, "page": page}).json()
+        ids |= {x["id"] for x in r["results"]}
+        if not r.get("next"):
+            return ids
+        page += 1
+
+
 def test_recipe_search_and_filters_use_ids_not_names() -> None:
     client = APIClient()
     r = client.get("/api/catalog/recipes/", {"search": "плов"})
-    assert [x["id"] for x in r.json()["results"]] == ["plov-s-govyadinoy"]
-    banned = client.get("/api/catalog/recipes/", {"exclude_categories": "rice,pasta", "page_size": 100}).json()["results"]
-    ids = {x["id"] for x in banned}
-    assert "plov-s-govyadinoy" not in ids and "tefteli-v-tomatnom-souse" not in ids and "makarony-po-flotski" not in ids
-    egg_free = {x["id"] for x in client.get("/api/catalog/recipes/", {"exclude_allergens": "eggs", "page_size": 100}).json()["results"]}
+    assert {x["id"] for x in r.json()["results"]} == {"plov-s-govyadinoy", "plov-s-kuritsey"}
+    everything = _all_recipe_ids(client)
+    assert len(everything) >= 300
+    ids = _all_recipe_ids(client, exclude_categories="rice,pasta")
+    assert {"plov-s-govyadinoy", "plov-s-kuritsey", "tefteli-v-tomatnom-souse", "makarony-po-flotski"} <= everything
+    assert not ids & {"plov-s-govyadinoy", "plov-s-kuritsey", "tefteli-v-tomatnom-souse", "makarony-po-flotski"}
+    egg_free = _all_recipe_ids(client, exclude_allergens="eggs")
     assert "salat-tsezar-s-kuritsey" not in egg_free  # mayonnaise contains eggs
     assert "kuritsa-teriyaki-s-risom" not in egg_free  # unknown composition is never «safe»
+    assert "ovsyanka-s-orehami-i-myodom" in egg_free
     by_time = client.get("/api/catalog/recipes/", {"max_time": 10, "page_size": 100}).json()["results"]
     assert by_time and all(x["total_min"] <= 10 for x in by_time)
     detail = client.get("/api/catalog/recipes/pirog-s-kapustoy/").json()

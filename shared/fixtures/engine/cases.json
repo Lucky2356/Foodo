@@ -895,6 +895,92 @@
    "ops": []
   },
   {
+   "id": "unique-35d-strict",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 35,
+    "seed": 11,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [],
+    "prices": null,
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [
+        "meat",
+        "fish_seafood",
+        "dairy",
+        "grains"
+       ],
+       "allergens": [
+        "eggs"
+       ]
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "beginner",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": true,
+      "target_set": "mr-2.3.1.0253-21-adults",
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": []
+  },
+  {
    "id": "pins-conflict",
    "request": {
     "start_date": "2026-10-19",
