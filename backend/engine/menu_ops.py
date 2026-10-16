@@ -17,8 +17,8 @@ JSON = dict[str, Any]
 def _next_id(prefix: str, ids: list[str]) -> str:
     highest = 0
     for i in ids:
-        if i.startswith(prefix) and i[len(prefix):].isdigit():
-            highest = max(highest, int(i[len(prefix):]))
+        if i.startswith(prefix) and i[len(prefix) :].isdigit():
+            highest = max(highest, int(i[len(prefix) :]))
     return f"{prefix}{highest + 1}"
 
 
@@ -88,8 +88,15 @@ def _new_batch_for(menu: JSON, catalog: Catalog, recipe_id: str, method_id: str,
     recipe = catalog.recipes.get(recipe_id)
     if recipe is None:
         raise EngineError("recipe_not_found", "Рецепт не найден.")
-    batch = {"id": _next_id("b", [b["id"] for b in menu["batches"]]), "recipe_id": recipe_id, "recipe_version": recipe["version"],
-             "method_id": method_id, "cook_date": date, "slot": slot, "portions": 0}
+    batch = {
+        "id": _next_id("b", [b["id"] for b in menu["batches"]]),
+        "recipe_id": recipe_id,
+        "recipe_version": recipe["version"],
+        "method_id": method_id,
+        "cook_date": date,
+        "slot": slot,
+        "portions": 0,
+    }
     menu["batches"].append(batch)
     add_to_snapshot(menu["snapshot"], catalog, recipe_id)
     return batch
@@ -207,13 +214,15 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
         method = _check_manual_choice(nxt, catalog, recipe_id, method_id, [member])
         portion = item["portions"].pop(op["member_id"])
         batch = _new_batch_for(nxt, catalog, recipe_id, method["id"], meal["date"], meal["slot"])
-        meal["items"].append({
-            "id": _next_id("i", [i["id"] for _, i in _all_items(nxt)]),
-            "batch_id": batch["id"],
-            "portions": {op["member_id"]: portion},
-            "pinned": False,
-            "alternative_for": item["id"],
-        })
+        meal["items"].append(
+            {
+                "id": _next_id("i", [i["id"] for _, i in _all_items(nxt)]),
+                "batch_id": batch["id"],
+                "portions": {op["member_id"]: portion},
+                "pinned": False,
+                "alternative_for": item["id"],
+            }
+        )
     elif kind == "add":
         meal = _find_meal(nxt, op["date"], op["slot"])
         people = [members[i] for i in op["member_ids"] if i in members]
@@ -222,8 +231,15 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
         method = _check_manual_choice(nxt, catalog, op["recipe_id"], op.get("method_id"), people)
         batch = _new_batch_for(nxt, catalog, op["recipe_id"], method["id"], meal["date"], meal["slot"])
         portions = {m["id"]: (min(3, max(0.25, m["portion_factor"])) if m["portion_mode"] == "simple" else 1) for m in people}
-        meal["items"].append({"id": _next_id("i", [i["id"] for _, i in _all_items(nxt)]), "batch_id": batch["id"],
-                              "portions": portions, "pinned": False, "alternative_for": None})
+        meal["items"].append(
+            {
+                "id": _next_id("i", [i["id"] for _, i in _all_items(nxt)]),
+                "batch_id": batch["id"],
+                "portions": portions,
+                "pinned": False,
+                "alternative_for": None,
+            }
+        )
         nxt["unfilled"] = [u for u in nxt["unfilled"] if not (u["date"] == meal["date"] and u["slot"] == meal["slot"])]
     elif kind == "remove":
         meal, _ = _find_item(nxt, op["item_id"])
@@ -235,11 +251,19 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
             if not item["pinned"]:
                 continue
             batch = _batch_of(nxt, item)
-            pins.append({"date": meal["date"], "slot": meal["slot"], "recipe_id": batch["recipe_id"], "method_id": batch["method_id"],
-                         "portions": dict(item["portions"])})
+            pins.append(
+                {
+                    "date": meal["date"],
+                    "slot": meal["slot"],
+                    "recipe_id": batch["recipe_id"],
+                    "method_id": batch["method_id"],
+                    "portions": dict(item["portions"]),
+                }
+            )
         req["pins"] = pins
-        pinned_catalog = Catalog(products=catalog.products, recipes={**catalog.recipes, **_pinned_recipes(nxt)},
-                                 reference=catalog.reference, target_sets=catalog.target_sets)
+        pinned_catalog = Catalog(
+            products=catalog.products, recipes={**catalog.recipes, **_pinned_recipes(nxt)}, reference=catalog.reference, target_sets=catalog.target_sets
+        )
         fresh = generate_menu(req, pinned_catalog)["menu"]
         fresh["revision"] = nxt["revision"]
         nxt = fresh

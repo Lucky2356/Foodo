@@ -47,8 +47,9 @@ def menu_report(menu: JSON, base_catalog: Catalog, members: list[JSON]) -> list[
             if target:
                 deviation = (totals["kcal"]["value"] - target) / target * 100
                 status = "ok" if abs(deviation) <= tolerance else ("below" if deviation < 0 else "above")
-            days.append({"date": date, "totals": totals, "portion_mass_g": mass, "energy_target": target,
-                         "energy_deviation_pct": deviation, "energy_status": status})
+            days.append(
+                {"date": date, "totals": totals, "portion_mass_g": mass, "energy_target": target, "energy_deviation_pct": deviation, "energy_status": status}
+            )
         vitamins: list[JSON] = []
         vit_settings = menu["settings"]["vitamins"]
         resolved = resolve_vitamin_targets(catalog, member, vit_settings["target_set"], vit_settings["demo"])

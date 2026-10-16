@@ -62,31 +62,72 @@ def resolve_vitamin_targets(catalog: Catalog, member: JSON, set_id: str | None, 
             if manual["form"] == data_form:
                 result.append(row(nutrient, "ok", manual["value"], manual["form"], "manual", "manual", "Цель задана вручную."))
             else:
-                result.append(row(nutrient, "incompatible_form", None, manual["form"], "manual", "manual",
-                                  f"Форма цели ({manual['form']}) не совпадает с формой данных продуктов ({data_form or 'нет'})."))
+                result.append(
+                    row(
+                        nutrient,
+                        "incompatible_form",
+                        None,
+                        manual["form"],
+                        "manual",
+                        "manual",
+                        f"Форма цели ({manual['form']}) не совпадает с формой данных продуктов ({data_form or 'нет'}).",
+                    )
+                )
             continue
         if target_set is None:
             result.append(row(nutrient, "no_target", None, None, None, None, "Целевая норма не выбрана."))
             continue
         if target_set["demo"] and not demo_allowed:
-            result.append(row(nutrient, "demo_not_allowed", None, None, target_set["id"], target_set["status"],
-                              "Демонстрационные значения не применяются к реальным профилям."))
+            result.append(
+                row(
+                    nutrient,
+                    "demo_not_allowed",
+                    None,
+                    None,
+                    target_set["id"],
+                    target_set["status"],
+                    "Демонстрационные значения не применяются к реальным профилям.",
+                )
+            )
             continue
         min_age = target_set.get("min_age")
         if min_age is not None and (member.get("age") is None or member["age"] < min_age):
-            result.append(row(nutrient, "not_applicable", None, None, target_set["id"], target_set["status"],
-                              f"Набор «{target_set['name']}» рассчитан на возраст от {min_age} лет."))
+            result.append(
+                row(
+                    nutrient,
+                    "not_applicable",
+                    None,
+                    None,
+                    target_set["id"],
+                    target_set["status"],
+                    f"Набор «{target_set['name']}» рассчитан на возраст от {min_age} лет.",
+                )
+            )
             continue
         target = _pick_target(target_set["targets"], nutrient, member)
         if target is None:
-            result.append(row(nutrient, "no_target", None, None, target_set["id"], target_set["status"],
-                              "В выбранном наборе нет цели для этого участника."))
+            result.append(row(nutrient, "no_target", None, None, target_set["id"], target_set["status"], "В выбранном наборе нет цели для этого участника."))
             continue
         if target["form"] != data_form:
-            result.append(row(nutrient, "incompatible_form", None, target["form"], target_set["id"], target_set["status"],
-                              target.get("note") or f"Форма цели ({target['form']}) не совпадает с формой данных продуктов ({data_form or 'нет'})."))
+            result.append(
+                row(
+                    nutrient,
+                    "incompatible_form",
+                    None,
+                    target["form"],
+                    target_set["id"],
+                    target_set["status"],
+                    target.get("note") or f"Форма цели ({target['form']}) не совпадает с формой данных продуктов ({data_form or 'нет'}).",
+                )
+            )
             continue
         status = target_set["status"]
-        message = "Значение не сверено с первоисточником." if status == "unverified" else "Демонстрационное значение, не норма." if status == "demo" else "Значение из справочника."
+        message = (
+            "Значение не сверено с первоисточником."
+            if status == "unverified"
+            else "Демонстрационное значение, не норма."
+            if status == "demo"
+            else "Значение из справочника."
+        )
         result.append(row(nutrient, "ok", target["value"], target["form"], target_set["id"], status, message))
     return result

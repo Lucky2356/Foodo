@@ -56,11 +56,31 @@ def batch_needs(menu: JSON, catalog: Catalog, only_batch_id: str | None = None) 
                 continue
             base = to_base(product, ing["qty"] * scale, ing["unit"])
             if base is not None:
-                needs.append({"key": f"{product['id']}:{product['base_unit']}", "product": product, "unit": product["base_unit"],
-                              "convertible": True, "qty": base, "batch_id": b["id"], "recipe": recipe, "cook_date": b["cook_date"]})
+                needs.append(
+                    {
+                        "key": f"{product['id']}:{product['base_unit']}",
+                        "product": product,
+                        "unit": product["base_unit"],
+                        "convertible": True,
+                        "qty": base,
+                        "batch_id": b["id"],
+                        "recipe": recipe,
+                        "cook_date": b["cook_date"],
+                    }
+                )
             else:
-                needs.append({"key": f"{product['id']}:{ing['unit']}", "product": product, "unit": ing["unit"],
-                              "convertible": False, "qty": ing["qty"] * scale, "batch_id": b["id"], "recipe": recipe, "cook_date": b["cook_date"]})
+                needs.append(
+                    {
+                        "key": f"{product['id']}:{ing['unit']}",
+                        "product": product,
+                        "unit": ing["unit"],
+                        "convertible": False,
+                        "qty": ing["qty"] * scale,
+                        "batch_id": b["id"],
+                        "recipe": recipe,
+                        "cook_date": b["cook_date"],
+                    }
+                )
     return needs
 
 
@@ -98,7 +118,9 @@ def allocate_pantry(catalog: Catalog, needs: list[JSON], pantry: list[JSON]) -> 
                 if expires is not None and expires < need["cook_date"]:
                     if lot["item"]["id"] not in expired_seen:
                         expired_seen.add(lot["item"]["id"])
-                        expired.append({"pantry_id": lot["item"]["id"], "product_id": need["product"]["id"], "expires": expires, "needed_on": need["cook_date"]})
+                        expired.append(
+                            {"pantry_id": lot["item"]["id"], "product_id": need["product"]["id"], "expires": expires, "needed_on": need["cook_date"]}
+                        )
                     continue
                 take = min(lot["remaining"], remaining)
                 lot["remaining"] -= take
@@ -125,19 +147,43 @@ def compute_shopping(menu: JSON, base_catalog: Catalog, pantry: list[JSON], pric
         line = by_key.get(need["key"])
         if line is None:
             line = {
-                "id": f"auto:{need['key']}", "product_id": need["product"]["id"], "name": need["product"]["name"],
-                "department": need["product"]["department"], "unit": need["unit"], "convertible": need["convertible"],
-                "needed": 0, "from_pantry": 0, "to_buy": 0, "package": None, "package_note": None,
-                "price_kop": None, "price_date": None, "price_source": None, "price_kind": None, "estimated": False,
-                "purchase_cost_kop": None, "usage_cost_kop": None, "sources": [], "purchased": False, "at_home": False,
-                "previous_to_buy": None, "changed": False,
+                "id": f"auto:{need['key']}",
+                "product_id": need["product"]["id"],
+                "name": need["product"]["name"],
+                "department": need["product"]["department"],
+                "unit": need["unit"],
+                "convertible": need["convertible"],
+                "needed": 0,
+                "from_pantry": 0,
+                "to_buy": 0,
+                "package": None,
+                "package_note": None,
+                "price_kop": None,
+                "price_date": None,
+                "price_source": None,
+                "price_kind": None,
+                "estimated": False,
+                "purchase_cost_kop": None,
+                "usage_cost_kop": None,
+                "sources": [],
+                "purchased": False,
+                "at_home": False,
+                "previous_to_buy": None,
+                "changed": False,
             }
             by_key[need["key"]] = line
             keys.append(need["key"])
         line["needed"] += need["qty"]
         line["from_pantry"] += covered[index]
-        line["sources"].append({"batch_id": need["batch_id"], "recipe_id": need["recipe"]["id"], "recipe_name": need["recipe"]["name"],
-                                "cook_date": need["cook_date"], "qty": clean_qty(need["qty"])})
+        line["sources"].append(
+            {
+                "batch_id": need["batch_id"],
+                "recipe_id": need["recipe"]["id"],
+                "recipe_name": need["recipe"]["name"],
+                "cook_date": need["cook_date"],
+                "qty": clean_qty(need["qty"]),
+            }
+        )
 
     missing: list[str] = []
     estimated = False
@@ -211,8 +257,13 @@ def compute_shopping(menu: JSON, base_catalog: Catalog, pantry: list[JSON], pric
         "lines": lines,
         "manual_lines": manual,
         "totals": {"purchase_kop": purchase_kop, "usage_kop": usage_kop, "complete": not missing, "estimated": estimated, "missing_prices": missing},
-        "budget": {"limit_kop": limit, "purchase_kop": purchase_kop, "diff_kop": None if limit is None else limit - purchase_kop,
-                   "status": status, "estimated": estimated},
+        "budget": {
+            "limit_kop": limit,
+            "purchase_kop": purchase_kop,
+            "diff_kop": None if limit is None else limit - purchase_kop,
+            "status": status,
+            "estimated": estimated,
+        },
         "allocations": allocations,
         "expired_skipped": expired,
     }

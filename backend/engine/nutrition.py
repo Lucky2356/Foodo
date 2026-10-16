@@ -22,10 +22,7 @@ def new_table() -> Table:
 
 
 def scale_table(table: Table, factor: float) -> Table:
-    return {
-        nid: {"value": table[nid]["value"] * factor, "complete": table[nid]["complete"], "missing": list(table[nid]["missing"])}
-        for nid in NUTRIENT_IDS
-    }
+    return {nid: {"value": table[nid]["value"] * factor, "complete": table[nid]["complete"], "missing": list(table[nid]["missing"])} for nid in NUTRIENT_IDS}
 
 
 def recipe_nutrition(catalog: Catalog, recipe: dict[str, Any], scale: float = 1) -> dict[str, Any]:

@@ -60,8 +60,9 @@ def run_case(case: dict[str, Any]) -> dict[str, Any]:
             op["item_id"] = resolve_item(current, op["item_id"])
         try:
             current = apply_menu_op(current, op, ctx)
-            ops.append({"op": op["op"], "menu": comparable_menu(current),
-                        "shopping_totals": compute_shopping(current, catalog, pantry, prices, state)["totals"]})
+            ops.append(
+                {"op": op["op"], "menu": comparable_menu(current), "shopping_totals": compute_shopping(current, catalog, pantry, prices, state)["totals"]}
+            )
         except EngineError as error:
             ops.append({"op": op["op"], "error": error.code})
     return {"menu": comparable_menu(menu), "shopping": shopping, "report": report, "ops": ops}

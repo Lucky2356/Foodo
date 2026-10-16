@@ -1,0 +1,475 @@
+{
+ "format": "foodo-store-chains",
+ "version": 1,
+ "chains": [
+  {
+   "id": "pyaterochka",
+   "name": "Пятёрочка",
+   "kind": "federal",
+   "website": "https://5ka.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Северо-Кавказский",
+    "Приволжский",
+    "Уральский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 0
+  },
+  {
+   "id": "magnit",
+   "name": "Магнит",
+   "kind": "federal",
+   "website": "https://magnit.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Северо-Кавказский",
+    "Приволжский",
+    "Уральский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 1
+  },
+  {
+   "id": "perekrestok",
+   "name": "Перекрёсток",
+   "kind": "federal",
+   "website": "https://www.perekrestok.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Приволжский",
+    "Уральский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 2
+  },
+  {
+   "id": "chizhik",
+   "name": "Чижик",
+   "kind": "discounter",
+   "website": "https://chizhik.club",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Приволжский",
+    "Уральский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 3
+  },
+  {
+   "id": "lenta",
+   "name": "Лента",
+   "kind": "hypermarket",
+   "website": "https://lenta.com",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Приволжский",
+    "Уральский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 4
+  },
+  {
+   "id": "auchan",
+   "name": "Ашан",
+   "kind": "hypermarket",
+   "website": "https://www.auchan.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Приволжский",
+    "Уральский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 5
+  },
+  {
+   "id": "okey",
+   "name": "О'КЕЙ",
+   "kind": "hypermarket",
+   "website": "https://www.okeydostavka.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Приволжский",
+    "Уральский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 6
+  },
+  {
+   "id": "metro",
+   "name": "METRO",
+   "kind": "hypermarket",
+   "website": "https://online.metro-cc.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Северо-Кавказский",
+    "Приволжский",
+    "Уральский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 7
+  },
+  {
+   "id": "dixy",
+   "name": "Дикси",
+   "kind": "federal",
+   "website": "https://dixy.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Уральский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 8
+  },
+  {
+   "id": "vkusvill",
+   "name": "ВкусВилл",
+   "kind": "federal",
+   "website": "https://vkusvill.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Приволжский",
+    "Уральский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 9
+  },
+  {
+   "id": "svetofor",
+   "name": "Светофор",
+   "kind": "discounter",
+   "website": "https://svetofor.info",
+   "nationwide": true,
+   "federal_districts": [],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 10
+  },
+  {
+   "id": "verny",
+   "name": "Верный",
+   "kind": "federal",
+   "website": "https://www.verno-info.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Приволжский",
+    "Уральский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 11
+  },
+  {
+   "id": "spar",
+   "name": "SPAR",
+   "kind": "federal",
+   "website": "https://spar.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный",
+    "Северо-Западный",
+    "Южный",
+    "Приволжский",
+    "Уральский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 12
+  },
+  {
+   "id": "globus",
+   "name": "Глобус",
+   "kind": "hypermarket",
+   "website": "https://www.globus.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Центральный"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 13
+  },
+  {
+   "id": "azbuka",
+   "name": "Азбука вкуса",
+   "kind": "premium",
+   "website": "https://av.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Москва",
+    "Московская область",
+    "Санкт-Петербург",
+    "Ленинградская область"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 14
+  },
+  {
+   "id": "magnolia",
+   "name": "Магнолия",
+   "kind": "regional",
+   "website": "https://magnolia.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Москва",
+    "Московская область"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 15
+  },
+  {
+   "id": "monetka",
+   "name": "Монетка",
+   "kind": "regional",
+   "website": "https://www.monetka.ru",
+   "nationwide": false,
+   "federal_districts": [
+    "Уральский",
+    "Приволжский",
+    "Сибирский"
+   ],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 16
+  },
+  {
+   "id": "maria_ra",
+   "name": "Мария-Ра",
+   "kind": "regional",
+   "website": "https://www.maria-ra.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Алтайский край",
+    "Новосибирская область",
+    "Кемеровская область - Кузбасс",
+    "Томская область",
+    "Республика Алтай"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 17
+  },
+  {
+   "id": "yarche",
+   "name": "Ярче!",
+   "kind": "regional",
+   "website": "https://yarcheplus.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Томская область",
+    "Новосибирская область",
+    "Кемеровская область - Кузбасс",
+    "Алтайский край",
+    "Красноярский край",
+    "Омская область"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 18
+  },
+  {
+   "id": "komandor",
+   "name": "Командор",
+   "kind": "regional",
+   "website": "https://www.komandor.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Красноярский край",
+    "Республика Хакасия"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 19
+  },
+  {
+   "id": "slata",
+   "name": "Слата",
+   "kind": "regional",
+   "website": "https://slata.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Иркутская область",
+    "Республика Бурятия"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 20
+  },
+  {
+   "id": "sambery",
+   "name": "Самбери",
+   "kind": "regional",
+   "website": "https://www.sambery.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Хабаровский край",
+    "Приморский край",
+    "Амурская область",
+    "Еврейская автономная область"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 21
+  },
+  {
+   "id": "evropa",
+   "name": "Европа",
+   "kind": "regional",
+   "website": "https://evroopt.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Курская область",
+    "Белгородская область",
+    "Орловская область",
+    "Липецкая область"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 22
+  },
+  {
+   "id": "bahetle",
+   "name": "Бахетле",
+   "kind": "premium",
+   "website": "https://bahetle.com",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Республика Татарстан",
+    "Москва"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 23
+  },
+  {
+   "id": "tabris",
+   "name": "Табрис",
+   "kind": "premium",
+   "website": "https://tabris.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Краснодарский край"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 24
+  },
+  {
+   "id": "kirovsky",
+   "name": "Кировский",
+   "kind": "regional",
+   "website": "https://kirovsky.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Свердловская область"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 25
+  },
+  {
+   "id": "megamart",
+   "name": "Мегамарт",
+   "kind": "regional",
+   "website": "https://megamart.ru",
+   "nationwide": false,
+   "federal_districts": [],
+   "regions": [
+    "Свердловская область",
+    "Челябинская область"
+   ],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 26
+  },
+  {
+   "id": "market_other",
+   "name": "Рынок или другой магазин",
+   "kind": "other",
+   "website": "",
+   "nationwide": true,
+   "federal_districts": [],
+   "regions": [],
+   "presence_verified": false,
+   "note": "Регионы присутствия указаны по общедоступным сведениям и требуют проверки; уточните в админке.",
+   "position": 27
+  }
+ ]
+}

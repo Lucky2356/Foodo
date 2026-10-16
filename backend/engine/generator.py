@@ -249,8 +249,9 @@ class _Planner:
                 gain += min(1, shares)
         return gain
 
-    def score(self, state: _State, recipe_id: str, people: list[JSON], day: int, slot: str, container: bool,
-              cost_weight: float, budget_per_meal: float) -> float:
+    def score(
+        self, state: _State, recipe_id: str, people: list[JSON], day: int, slot: str, container: bool, cost_weight: float, budget_per_meal: float
+    ) -> float:
         recipe = self.catalog.recipes[recipe_id]
         s = self.req["settings"]
         score: float = 0
@@ -287,8 +288,18 @@ class _Planner:
             score += SCORE["vitamins"] * self.vitamin_gain(state, recipe_id, portions, people) / len(people)
         return score
 
-    def pick_best(self, state: _State, candidates: list[str], people: list[JSON], day: int, slot: str, container: bool,
-                  rng: Rng, cost_weight: float, budget_per_meal: float) -> tuple[str, float] | None:
+    def pick_best(
+        self,
+        state: _State,
+        candidates: list[str],
+        people: list[JSON],
+        day: int,
+        slot: str,
+        container: bool,
+        rng: Rng,
+        cost_weight: float,
+        budget_per_meal: float,
+    ) -> tuple[str, float] | None:
         best: str | None = None
         best_score = -math.inf
         for rid in candidates:
@@ -345,13 +356,21 @@ class _Planner:
     def new_batch(self, state: _State, recipe_id: str, method_id: str, date: str, slot: str) -> JSON:
         state.batch_seq += 1
         recipe = self.catalog.recipes[recipe_id]
-        batch = {"id": f"b{state.batch_seq}", "recipe_id": recipe_id, "recipe_version": recipe["version"], "method_id": method_id,
-                 "cook_date": date, "slot": slot, "portions": 0}
+        batch = {
+            "id": f"b{state.batch_seq}",
+            "recipe_id": recipe_id,
+            "recipe_version": recipe["version"],
+            "method_id": method_id,
+            "cook_date": date,
+            "slot": slot,
+            "portions": 0,
+        }
         state.batches.append(batch)
         return batch
 
-    def add_item(self, state: _State, meal: JSON, batch: JSON, people: list[JSON], day: int, pinned: bool, count_use: bool,
-                 fixed_portions: dict[str, float] | None) -> JSON:
+    def add_item(
+        self, state: _State, meal: JSON, batch: JSON, people: list[JSON], day: int, pinned: bool, count_use: bool, fixed_portions: dict[str, float] | None
+    ) -> JSON:
         state.item_seq += 1
         portions: dict[str, float] = {}
         for m in people:
@@ -423,20 +442,24 @@ class _Planner:
                             why = "оно нарушает запреты участника «" + "», «".join(m["name"] for m in unsafe) + "»"
                         else:
                             why = "участники не входят в этот приём пищи"
-                        state.conflicts.append({
-                            "code": "pin_invalid",
-                            "message": f"Закреплённое блюдо на {date} ({self.slot_ref(slot)['name']}) нельзя сохранить: {why}.",
-                            "suggestion": "Снимите закрепление или замените блюдо вручную.",
-                        })
+                        state.conflicts.append(
+                            {
+                                "code": "pin_invalid",
+                                "message": f"Закреплённое блюдо на {date} ({self.slot_ref(slot)['name']}) нельзя сохранить: {why}.",
+                                "suggestion": "Снимите закрепление или замените блюдо вручную.",
+                            }
+                        )
                         continue
                     used = pinned_uses.get(recipe["id"], 0)
                     pinned_uses[recipe["id"]] = used + 1
                     if repeat["mode"] == "unique" and used > 0:
-                        state.conflicts.append({
-                            "code": "pins_repeat",
-                            "message": f"Блюдо «{recipe['name']}» закреплено несколько раз, а выбран режим «Разные блюда каждый день».",
-                            "suggestion": "Снимите одно из закреплений или включите режим «Повторы разрешены».",
-                        })
+                        state.conflicts.append(
+                            {
+                                "code": "pins_repeat",
+                                "message": f"Блюдо «{recipe['name']}» закреплено несколько раз, а выбран режим «Разные блюда каждый день».",
+                                "suggestion": "Снимите одно из закреплений или включите режим «Повторы разрешены».",
+                            }
+                        )
                     batch = self.new_batch(state, recipe["id"], method["id"], date, slot)
                     self.add_item(state, meal, batch, pin_people, day, True, True, pin["portions"])
                     people = [m for m in people if m["id"] not in pin["portions"]]
@@ -444,8 +467,12 @@ class _Planner:
                 if people and repeat["mode"] == "batch" and slot in repeat["batch_slots"]:
                     active = state.active_batch.get(slot)
                     same_group = active is not None and ",".join(active["member_ids"]) == ",".join(m["id"] for m in people)
-                    if (active is not None and day <= active["until_day"] and same_group
-                            and not (container and not self.catalog.recipes[active["batch"]["recipe_id"]]["container_ok"])):
+                    if (
+                        active is not None
+                        and day <= active["until_day"]
+                        and same_group
+                        and not (container and not self.catalog.recipes[active["batch"]["recipe_id"]]["container_ok"])
+                    ):
                         self.add_item(state, meal, active["batch"], people, day, False, False, None)
                         people = []
 
@@ -474,7 +501,9 @@ class _Planner:
                                 code, message = self.explain_empty(state, [m], day, slot, container)
                                 state.unfilled.append({"date": date, "slot": slot, "member_ids": [m["id"]], "code": code, "message": message})
                         if split:
-                            state.warnings.append(f"{date}, {self.slot_ref(slot)['name']}: общего блюда для всех нет, подобраны отдельные блюда ({', '.join(split)}).")
+                            state.warnings.append(
+                                f"{date}, {self.slot_ref(slot)['name']}: общего блюда для всех нет, подобраны отдельные блюда ({', '.join(split)})."
+                            )
                     else:
                         code, message = self.explain_empty(state, people, day, slot, container)
                         state.unfilled.append({"date": date, "slot": slot, "member_ids": [m["id"] for m in people], "code": code, "message": message})
@@ -482,17 +511,23 @@ class _Planner:
 
         if any(u["code"] == "repeat_exhausted" for u in state.unfilled):
             unique = repeat["mode"] == "unique"
-            state.conflicts.append({
-                "code": "unique_mode_catalog_too_small" if unique else "repeat_limit_too_strict",
-                "message": "Подходящих рецептов не хватает, чтобы не повторять блюда весь период." if unique
-                else "Ограничения на повторы не позволяют заполнить все приёмы пищи.",
-                "suggestion": "Выберите «Повторы разрешены», сократите период или ослабьте мягкие условия (время, технику, уровень)." if unique
-                else "Увеличьте допустимое число повторов или уменьшите интервал между ними.",
-            })
+            state.conflicts.append(
+                {
+                    "code": "unique_mode_catalog_too_small" if unique else "repeat_limit_too_strict",
+                    "message": "Подходящих рецептов не хватает, чтобы не повторять блюда весь период."
+                    if unique
+                    else "Ограничения на повторы не позволяют заполнить все приёмы пищи.",
+                    "suggestion": "Выберите «Повторы разрешены», сократите период или ослабьте мягкие условия (время, технику, уровень)."
+                    if unique
+                    else "Увеличьте допустимое число повторов или уменьшите интервал между ними.",
+                }
+            )
         if repeat["mode"] == "batch":
             batches = {b["id"]: b for b in state.batches}
             if any(batches[i["batch_id"]]["cook_date"] != m["date"] for m in state.meals for i in m["items"]):
-                state.warnings.append("Блюда из партии едят в другие дни: сроки хранения рецептов не проверены, ориентируйтесь на собственные правила хранения.")
+                state.warnings.append(
+                    "Блюда из партии едят в другие дни: сроки хранения рецептов не проверены, ориентируйтесь на собственные правила хранения."
+                )
         return state
 
 
@@ -542,8 +577,13 @@ def rank_candidates(req: JSON, catalog: Catalog, menu: JSON, date: str, slot: st
         method = planner.kitchen(rid, slot, container)["method"]
         if method is None:
             continue
-        ranked.append({"recipe_id": rid, "method_id": method["id"],
-                       "score": planner.score(state, rid, participants, day, slot, container, 0.75 if limit is not None else 0, budget_per_meal)})
+        ranked.append(
+            {
+                "recipe_id": rid,
+                "method_id": method["id"],
+                "score": planner.score(state, rid, participants, day, slot, container, 0.75 if limit is not None else 0, budget_per_meal),
+            }
+        )
     ranked.sort(key=lambda c: (-c["score"], c["recipe_id"]))
     return ranked
 
@@ -631,11 +671,13 @@ def generate_menu(req: JSON, catalog: Catalog) -> JSON:
     chosen_state, _, chosen_status = best
     menu = _assemble(req, catalog, chosen_state, planner.evaluated, attempts, chosen_status)
     if chosen_status == "exceeded":
-        menu["conflicts"].append({
-            "code": "budget_exceeded",
-            "message": "В пределах текущего поиска и известных цен не найдено меню, укладывающееся в бюджет.",
-            "suggestion": "Увеличьте лимит, добавьте остатки дома, разрешите повторы или выберите более простые блюда.",
-        })
+        menu["conflicts"].append(
+            {
+                "code": "budget_exceeded",
+                "message": "В пределах текущего поиска и известных цен не найдено меню, укладывающееся в бюджет.",
+                "suggestion": "Увеличьте лимит, добавьте остатки дома, разрешите повторы или выберите более простые блюда.",
+            }
+        )
     violations = menu_violations(menu, catalog, req["members"])
     if violations:
         raise EngineError("internal_violation", "Внутренняя ошибка: меню нарушает ограничения.", {"violations": violations})
