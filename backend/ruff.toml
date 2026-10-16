@@ -1,0 +1,12 @@
+line-length = 160
+target-version = "py313"
+extend-exclude = ["*/migrations/*"]
+
+[lint]
+select = ["E", "F", "W", "I", "B", "UP", "BLE", "S", "DJ"]
+# DJ001: nullable choice fields mirror the engine JSON (null = not specified). DJ008: private models are not shown in the admin.
+ignore = ["S101", "S105", "S106", "S311", "B904", "E501", "DJ001", "DJ008"]
+
+[lint.per-file-ignores]
+"tests/*" = ["S", "B"]
+"engine/tests/*" = ["S"]

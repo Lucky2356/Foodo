@@ -1,0 +1,13 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<h1>Импорт каталога</h1>
+<p>JSON в общем формате Foodo (<code>{"products": [...], "recipes": [...]}</code>) или CSV продуктов.
+Сначала выполните проверку — ничего не будет записано, пока в файле есть ошибки. Повторный импорт не создаёт дублей.</p>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+  <p><input type="file" name="file" accept=".json,.csv" required></p>
+  <p><label><input type="checkbox" name="dry_run" checked> Только проверить</label></p>
+  <p><button type="submit">Загрузить</button></p>
+</form>
+{% if error %}<p class="errornote">{{ error }}</p>{% endif %}
+{% if result %}<h2>Результат</h2><pre>{{ result }}</pre>{% endif %}
+{% endblock %}

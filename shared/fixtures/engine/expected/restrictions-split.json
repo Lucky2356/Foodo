@@ -1,0 +1,4280 @@
+{
+ "menu": {
+  "format": "foodo-menu",
+  "format_version": 1,
+  "start_date": "2026-10-19",
+  "days": 4,
+  "seed": 99,
+  "revision": 1,
+  "slots": [
+   "breakfast",
+   "lunch",
+   "snack",
+   "dinner"
+  ],
+  "member_ids": [
+   "m1",
+   "kid"
+  ],
+  "settings": {
+   "skill": "any",
+   "diet_mode": "regular",
+   "equipment": [
+    "stove",
+    "oven",
+    "microwave"
+   ],
+   "max_total_min": null,
+   "repeat": {
+    "mode": "unique",
+    "max_uses": 2,
+    "min_gap_days": 2,
+    "cook_days": [],
+    "batch_days": 2,
+    "batch_slots": [
+     "lunch",
+     "dinner"
+    ]
+   },
+   "container_days": [],
+   "vitamins": {
+    "enabled": false,
+    "target_set": null,
+    "demo": false
+   },
+   "budget": {
+    "limit_kop": null,
+    "currency": "RUB"
+   },
+   "tolerances": {
+    "energy_pct": 10,
+    "macro_pct": 20
+   },
+   "portion_min": 0.5,
+   "portion_max": 2
+  },
+  "batches": [
+   {
+    "id": "b1",
+    "recipe_id": "tost-s-arahisovoy-pastoy-i-bananom",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-19",
+    "slot": "breakfast",
+    "portions": 1.5
+   },
+   {
+    "id": "b2",
+    "recipe_id": "vitaminnyy-salat",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-19",
+    "slot": "lunch",
+    "portions": 1.5
+   },
+   {
+    "id": "b3",
+    "recipe_id": "salat-iz-kapusty-s-morkovyu",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-19",
+    "slot": "snack",
+    "portions": 1.5
+   },
+   {
+    "id": "b4",
+    "recipe_id": "borshch-postnyy",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-19",
+    "slot": "dinner",
+    "portions": 1.5
+   },
+   {
+    "id": "b5",
+    "recipe_id": "ovsyanka-s-orehami-i-myodom",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-20",
+    "slot": "breakfast",
+    "portions": 1.5
+   },
+   {
+    "id": "b6",
+    "recipe_id": "tomatnyy-sup-s-fasolyu",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-20",
+    "slot": "lunch",
+    "portions": 1.5
+   },
+   {
+    "id": "b7",
+    "recipe_id": "salat-iz-kapusty-s-goroshkom",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-20",
+    "slot": "snack",
+    "portions": 1.5
+   },
+   {
+    "id": "b8",
+    "recipe_id": "tushenaya-fasol-s-ovoshchami",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-20",
+    "slot": "dinner",
+    "portions": 1.5
+   },
+   {
+    "id": "b9",
+    "recipe_id": "granola-domashnyaya",
+    "recipe_version": 1,
+    "method_id": "oven",
+    "cook_date": "2026-10-21",
+    "slot": "breakfast",
+    "portions": 1.5
+   },
+   {
+    "id": "b10",
+    "recipe_id": "chili-s-fasolyu",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-21",
+    "slot": "lunch",
+    "portions": 1.5
+   },
+   {
+    "id": "b11",
+    "recipe_id": "guakamole-s-tostami",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-21",
+    "slot": "snack",
+    "portions": 1.5
+   },
+   {
+    "id": "b12",
+    "recipe_id": "salat-s-tuntsom-i-fasolyu",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-21",
+    "slot": "dinner",
+    "portions": 1.5
+   },
+   {
+    "id": "b13",
+    "recipe_id": "ovsyanoe-pechene-bez-sahara",
+    "recipe_version": 1,
+    "method_id": "oven",
+    "cook_date": "2026-10-22",
+    "slot": "breakfast",
+    "portions": 1.5
+   },
+   {
+    "id": "b14",
+    "recipe_id": "salat-s-nutom",
+    "recipe_version": 1,
+    "method_id": "no-heat",
+    "cook_date": "2026-10-22",
+    "slot": "lunch",
+    "portions": 1.5
+   },
+   {
+    "id": "b15",
+    "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-22",
+    "slot": "snack",
+    "portions": 1.5
+   },
+   {
+    "id": "b16",
+    "recipe_id": "shchi-iz-svezhey-kapusty",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-22",
+    "slot": "dinner",
+    "portions": 1.5
+   }
+  ],
+  "meals": [
+   {
+    "date": "2026-10-19",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i1",
+      "batch_id": "b1",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-19",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i2",
+      "batch_id": "b2",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-19",
+    "slot": "snack",
+    "items": [
+     {
+      "id": "i3",
+      "batch_id": "b3",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-19",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i4",
+      "batch_id": "b4",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-20",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i5",
+      "batch_id": "b5",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-20",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i6",
+      "batch_id": "b6",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-20",
+    "slot": "snack",
+    "items": [
+     {
+      "id": "i7",
+      "batch_id": "b7",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-20",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i8",
+      "batch_id": "b8",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-21",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i9",
+      "batch_id": "b9",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-21",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i10",
+      "batch_id": "b10",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-21",
+    "slot": "snack",
+    "items": [
+     {
+      "id": "i11",
+      "batch_id": "b11",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-21",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i12",
+      "batch_id": "b12",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-22",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i13",
+      "batch_id": "b13",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-22",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i14",
+      "batch_id": "b14",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-22",
+    "slot": "snack",
+    "items": [
+     {
+      "id": "i15",
+      "batch_id": "b15",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-22",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i16",
+      "batch_id": "b16",
+      "portions": {
+       "m1": 1,
+       "kid": 0.5
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   }
+  ],
+  "unfilled": [],
+  "conflicts": [],
+  "warnings": [],
+  "stats": {
+   "attempts": 6,
+   "evaluated": 3533,
+   "score": 11.622323500182633,
+   "budget_status": "none"
+  },
+  "snapshot_ids": {
+   "recipes": [
+    "baklazhany-tushyonye-s-pomidorami",
+    "borshch-postnyy",
+    "chili-s-fasolyu",
+    "granola-domashnyaya",
+    "guakamole-s-tostami",
+    "ovsyanka-s-orehami-i-myodom",
+    "ovsyanoe-pechene-bez-sahara",
+    "salat-iz-kapusty-s-goroshkom",
+    "salat-iz-kapusty-s-morkovyu",
+    "salat-s-nutom",
+    "salat-s-tuntsom-i-fasolyu",
+    "shchi-iz-svezhey-kapusty",
+    "tomatnyy-sup-s-fasolyu",
+    "tost-s-arahisovoy-pastoy-i-bananom",
+    "tushenaya-fasol-s-ovoshchami",
+    "vitaminnyy-salat"
+   ],
+   "products": [
+    "apple",
+    "avocado",
+    "banana",
+    "basil",
+    "bay_leaf",
+    "beans_canned",
+    "beet",
+    "bell_pepper",
+    "bread_wholegrain",
+    "cabbage",
+    "canned_tomatoes",
+    "carrot",
+    "cherry_tomatoes",
+    "chickpeas_canned",
+    "cilantro",
+    "cinnamon",
+    "corn_canned",
+    "cucumber",
+    "cumin",
+    "dill",
+    "eggplant",
+    "garlic",
+    "green_peas_canned",
+    "honey",
+    "lemon",
+    "oats_flakes",
+    "olive_oil",
+    "onion",
+    "paprika",
+    "parsley",
+    "peanut_butter",
+    "potato",
+    "raisins",
+    "salt",
+    "sugar",
+    "sunflower_oil",
+    "sunflower_seeds",
+    "tomato",
+    "tomato_paste",
+    "tuna_canned",
+    "vinegar",
+    "walnuts",
+    "water",
+    "wheat_flour"
+   ]
+  }
+ },
+ "shopping": {
+  "lines": [
+   {
+    "id": "auto:avocado:g",
+    "product_id": "avocado",
+    "name": "Авокадо",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 150,
+    "from_pantry": 0,
+    "to_buy": 150,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 150
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:basil:g",
+    "product_id": "basil",
+    "name": "Базилик свежий",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 3.75,
+    "from_pantry": 0,
+    "to_buy": 3.75,
+    "package": {
+     "size": 30,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 3.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:eggplant:g",
+    "product_id": "eggplant",
+    "name": "Баклажан",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 225,
+    "from_pantry": 0,
+    "to_buy": 225,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_name": "Баклажаны, тушённые с помидорами",
+      "cook_date": "2026-10-22",
+      "qty": 225
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:banana:g",
+    "product_id": "banana",
+    "name": "Бананы",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 270,
+    "from_pantry": 0,
+    "to_buy": 270,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "tost-s-arahisovoy-pastoy-i-bananom",
+      "recipe_name": "Тост с арахисовой пастой и бананом",
+      "cook_date": "2026-10-19",
+      "qty": 135
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "ovsyanoe-pechene-bez-sahara",
+      "recipe_name": "Овсяное печенье с бананом без сахара",
+      "cook_date": "2026-10-22",
+      "qty": 135
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cabbage:g",
+    "product_id": "cabbage",
+    "name": "Капуста белокочанная",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 712.5,
+    "from_pantry": 0,
+    "to_buy": 712.5,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-19",
+      "qty": 140.625
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-10-19",
+      "qty": 168.75
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 112.5
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-10-20",
+      "qty": 140.625
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-22",
+      "qty": 150
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:potato:g",
+    "product_id": "potato",
+    "name": "Картофель",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 281.25,
+    "from_pantry": 0,
+    "to_buy": 281.25,
+    "package": {
+     "size": 2000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 112.5
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-22",
+      "qty": 168.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cilantro:g",
+    "product_id": "cilantro",
+    "name": "Кинза",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 11.25,
+    "from_pantry": 0,
+    "to_buy": 11.25,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_name": "Баклажаны, тушённые с помидорами",
+      "cook_date": "2026-10-22",
+      "qty": 3.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:lemon:g",
+    "product_id": "lemon",
+    "name": "Лимон",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 112.5,
+    "from_pantry": 0,
+    "to_buy": 112.5,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-19",
+      "qty": 22.5
+     },
+     {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 45
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_name": "Салат с тунцом и белой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 30
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-22",
+      "qty": 15
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:onion:g",
+    "product_id": "onion",
+    "name": "Лук репчатый",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 256.25,
+    "from_pantry": 0,
+    "to_buy": 256.25,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 25
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 37.5
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 37.5
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 37.5
+     },
+     {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 18.75
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_name": "Салат с тунцом и белой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 25
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_name": "Баклажаны, тушённые с помидорами",
+      "cook_date": "2026-10-22",
+      "qty": 37.5
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-22",
+      "qty": 37.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:carrot:g",
+    "product_id": "carrot",
+    "name": "Морковь",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 140,
+    "from_pantry": 0,
+    "to_buy": 140,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-19",
+      "qty": 30
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-10-19",
+      "qty": 30
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 20
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 30
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-22",
+      "qty": 30
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cucumber:g",
+    "product_id": "cucumber",
+    "name": "Огурцы",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 105,
+    "from_pantry": 0,
+    "to_buy": 105,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-10-20",
+      "qty": 45
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-22",
+      "qty": 60
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:bell_pepper:g",
+    "product_id": "bell_pepper",
+    "name": "Перец сладкий",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 168.75,
+    "from_pantry": 0,
+    "to_buy": 168.75,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 56.25
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 56.25
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_name": "Баклажаны, тушённые с помидорами",
+      "cook_date": "2026-10-22",
+      "qty": 56.25
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:parsley:g",
+    "product_id": "parsley",
+    "name": "Петрушка",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 21.25,
+    "from_pantry": 0,
+    "to_buy": 21.25,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_name": "Салат с тунцом и белой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 7.5
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-22",
+      "qty": 10
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-22",
+      "qty": 3.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:tomato:g",
+    "product_id": "tomato",
+    "name": "Помидоры",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 390,
+    "from_pantry": 0,
+    "to_buy": 390,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 90
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-22",
+      "qty": 120
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_name": "Баклажаны, тушённые с помидорами",
+      "cook_date": "2026-10-22",
+      "qty": 180
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cherry_tomatoes:g",
+    "product_id": "cherry_tomatoes",
+    "name": "Помидоры черри",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 75,
+    "from_pantry": 0,
+    "to_buy": 75,
+    "package": {
+     "size": 250,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_name": "Салат с тунцом и белой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:beet:g",
+    "product_id": "beet",
+    "name": "Свёкла",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 125,
+    "from_pantry": 0,
+    "to_buy": 125,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 125
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:dill:g",
+    "product_id": "dill",
+    "name": "Укроп",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 8.125,
+    "from_pantry": 0,
+    "to_buy": 8.125,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b3",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-10-19",
+      "qty": 1.875
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 2.5
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-10-20",
+      "qty": 3.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:garlic:g",
+    "product_id": "garlic",
+    "name": "Чеснок",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 19.375,
+    "from_pantry": 0,
+    "to_buy": 19.375,
+    "package": {
+     "size": 100,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 2.5
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_name": "Баклажаны, тушённые с помидорами",
+      "cook_date": "2026-10-22",
+      "qty": 5.625
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:apple:g",
+    "product_id": "apple",
+    "name": "Яблоки",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 67.5,
+    "from_pantry": 0,
+    "to_buy": 67.5,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-19",
+      "qty": 67.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:peanut_butter:g",
+    "product_id": "peanut_butter",
+    "name": "Арахисовая паста",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 24,
+    "from_pantry": 0,
+    "to_buy": 24,
+    "package": {
+     "size": 340,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "tost-s-arahisovoy-pastoy-i-bananom",
+      "recipe_name": "Тост с арахисовой пастой и бананом",
+      "cook_date": "2026-10-19",
+      "qty": 24
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:walnuts:g",
+    "product_id": "walnuts",
+    "name": "Грецкие орехи",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 30,
+    "from_pantry": 0,
+    "to_buy": 30,
+    "package": {
+     "size": 100,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b5",
+      "recipe_id": "ovsyanka-s-orehami-i-myodom",
+      "recipe_name": "Овсянка на воде с орехами и мёдом",
+      "cook_date": "2026-10-20",
+      "qty": 18.75
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_name": "Домашняя гранола",
+      "cook_date": "2026-10-21",
+      "qty": 11.25
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:raisins:g",
+    "product_id": "raisins",
+    "name": "Изюм",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 20.625,
+    "from_pantry": 0,
+    "to_buy": 20.625,
+    "package": {
+     "size": 200,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_name": "Домашняя гранола",
+      "cook_date": "2026-10-21",
+      "qty": 9.375
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "ovsyanoe-pechene-bez-sahara",
+      "recipe_name": "Овсяное печенье с бананом без сахара",
+      "cook_date": "2026-10-22",
+      "qty": 11.25
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:honey:g",
+    "product_id": "honey",
+    "name": "Мёд",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 26.25,
+    "from_pantry": 0,
+    "to_buy": 26.25,
+    "package": {
+     "size": 250,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b5",
+      "recipe_id": "ovsyanka-s-orehami-i-myodom",
+      "recipe_name": "Овсянка на воде с орехами и мёдом",
+      "cook_date": "2026-10-20",
+      "qty": 10.5
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_name": "Домашняя гранола",
+      "cook_date": "2026-10-21",
+      "qty": 15.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:oats_flakes:g",
+    "product_id": "oats_flakes",
+    "name": "Овсяные хлопья",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 159.375,
+    "from_pantry": 0,
+    "to_buy": 159.375,
+    "package": {
+     "size": 500,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b5",
+      "recipe_id": "ovsyanka-s-orehami-i-myodom",
+      "recipe_name": "Овсянка на воде с орехами и мёдом",
+      "cook_date": "2026-10-20",
+      "qty": 67.5
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_name": "Домашняя гранола",
+      "cook_date": "2026-10-21",
+      "qty": 46.875
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "ovsyanoe-pechene-bez-sahara",
+      "recipe_name": "Овсяное печенье с бананом без сахара",
+      "cook_date": "2026-10-22",
+      "qty": 45
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:sugar:g",
+    "product_id": "sugar",
+    "name": "Сахар",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 5.775,
+    "from_pantry": 0,
+    "to_buy": 5.775,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-19",
+      "qty": 1.575
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-10-19",
+      "qty": 1.575
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 1.05
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 1.575
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:sunflower_seeds:g",
+    "product_id": "sunflower_seeds",
+    "name": "Семечки подсолнечника очищенные",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 7.5,
+    "from_pantry": 0,
+    "to_buy": 7.5,
+    "package": {
+     "size": 150,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_name": "Домашняя гранола",
+      "cook_date": "2026-10-21",
+      "qty": 7.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:bread_wholegrain:g",
+    "product_id": "bread_wholegrain",
+    "name": "Хлеб цельнозерновой",
+    "department": "Хлеб",
+    "unit": "g",
+    "convertible": true,
+    "needed": 135,
+    "from_pantry": 0,
+    "to_buy": 135,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "tost-s-arahisovoy-pastoy-i-bananom",
+      "recipe_name": "Тост с арахисовой пастой и бананом",
+      "cook_date": "2026-10-19",
+      "qty": 90
+     },
+     {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 45
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:green_peas_canned:g",
+    "product_id": "green_peas_canned",
+    "name": "Горошек зелёный консервированный",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 75,
+    "from_pantry": 0,
+    "to_buy": 75,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-10-20",
+      "qty": 75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:corn_canned:g",
+    "product_id": "corn_canned",
+    "name": "Кукуруза консервированная",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 127.5,
+    "from_pantry": 0,
+    "to_buy": 127.5,
+    "package": {
+     "size": 340,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 127.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:chickpeas_canned:g",
+    "product_id": "chickpeas_canned",
+    "name": "Нут консервированный",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 200,
+    "from_pantry": 0,
+    "to_buy": 200,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b14",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-22",
+      "qty": 200
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:tomato_paste:g",
+    "product_id": "tomato_paste",
+    "name": "Томатная паста",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 14,
+    "from_pantry": 0,
+    "to_buy": 14,
+    "package": {
+     "size": 140,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 8
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-22",
+      "qty": 6
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:canned_tomatoes:g",
+    "product_id": "canned_tomatoes",
+    "name": "Томаты в собственном соку",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 600,
+    "from_pantry": 0,
+    "to_buy": 600,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 300
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 150
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 150
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:tuna_canned:g",
+    "product_id": "tuna_canned",
+    "name": "Тунец в собственном соку",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 92.5,
+    "from_pantry": 0,
+    "to_buy": 92.5,
+    "package": {
+     "size": 185,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_name": "Салат с тунцом и белой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 92.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:beans_canned:g",
+    "product_id": "beans_canned",
+    "name": "Фасоль красная консервированная",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 1050,
+    "from_pantry": 0,
+    "to_buy": 1050,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 3
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 100
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 150
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 300
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 300
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_name": "Салат с тунцом и белой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 200
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cumin:g",
+    "product_id": "cumin",
+    "name": "Зира (кумин)",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.75,
+    "from_pantry": 0,
+    "to_buy": 0.75,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 0.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cinnamon:g",
+    "product_id": "cinnamon",
+    "name": "Корица молотая",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.5625,
+    "from_pantry": 0,
+    "to_buy": 0.5625,
+    "package": {
+     "size": 15,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_name": "Домашняя гранола",
+      "cook_date": "2026-10-21",
+      "qty": 0.4875
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "ovsyanoe-pechene-bez-sahara",
+      "recipe_name": "Овсяное печенье с бананом без сахара",
+      "cook_date": "2026-10-22",
+      "qty": 0.075
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:bay_leaf:g",
+    "product_id": "bay_leaf",
+    "name": "Лавровый лист",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.1,
+    "from_pantry": 0,
+    "to_buy": 0.1,
+    "package": {
+     "size": 10,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 0.1
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:olive_oil:ml",
+    "product_id": "olive_oil",
+    "name": "Масло оливковое",
+    "department": "Масла и специи",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 51.923077,
+    "from_pantry": 0,
+    "to_buy": 51.923077,
+    "package": {
+     "size": 500,
+     "unit": "ml",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 11.126374
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 11.126374
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_name": "Салат с тунцом и белой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 14.835165
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-22",
+      "qty": 14.835165
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:sunflower_oil:ml",
+    "product_id": "sunflower_oil",
+    "name": "Масло подсолнечное рафинированное",
+    "department": "Масла и специи",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 82.228261,
+    "from_pantry": 0,
+    "to_buy": 82.228261,
+    "package": {
+     "size": 1000,
+     "unit": "ml",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-19",
+      "qty": 11.086957
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-10-19",
+      "qty": 11.086957
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 7.391304
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-10-20",
+      "qty": 11.086957
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 11.086957
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_name": "Домашняя гранола",
+      "cook_date": "2026-10-21",
+      "qty": 8.315217
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_name": "Баклажаны, тушённые с помидорами",
+      "cook_date": "2026-10-22",
+      "qty": 16.630435
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-22",
+      "qty": 5.543478
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:paprika:g",
+    "product_id": "paprika",
+    "name": "Паприка молотая",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 3.45,
+    "from_pantry": 0,
+    "to_buy": 3.45,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 0.8625
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 0.8625
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 1.725
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:salt:g",
+    "product_id": "salt",
+    "name": "Соль поваренная",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 19.03125,
+    "from_pantry": 0,
+    "to_buy": 19.03125,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-19",
+      "qty": 0.1875
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-10-19",
+      "qty": 2.25
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 1.5
+     },
+     {
+      "batch_id": "b5",
+      "recipe_id": "ovsyanka-s-orehami-i-myodom",
+      "recipe_name": "Овсянка на воде с орехами и мёдом",
+      "cook_date": "2026-10-20",
+      "qty": 0.375
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-20",
+      "qty": 2.25
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-10-20",
+      "qty": 2.25
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_name": "Тушёная фасоль с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 2.25
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_name": "Домашняя гранола",
+      "cook_date": "2026-10-21",
+      "qty": 0.09375
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-21",
+      "qty": 2.25
+     },
+     {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 0.375
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_name": "Салат с тунцом и белой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 0.25
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-22",
+      "qty": 0.5
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_name": "Баклажаны, тушённые с помидорами",
+      "cook_date": "2026-10-22",
+      "qty": 2.25
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-22",
+      "qty": 2.25
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:vinegar:ml",
+    "product_id": "vinegar",
+    "name": "Уксус столовый 9 %",
+    "department": "Масла и специи",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 3.094059,
+    "from_pantry": 0,
+    "to_buy": 3.094059,
+    "package": {
+     "size": 500,
+     "unit": "ml",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b3",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-10-19",
+      "qty": 1.856436
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_name": "Борщ постный с фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 1.237624
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   }
+  ],
+  "manual_lines": [],
+  "totals": {
+   "purchase_kop": 0,
+   "usage_kop": 0,
+   "complete": false,
+   "estimated": false,
+   "missing_prices": [
+    "auto:bread_wholegrain:g",
+    "auto:peanut_butter:g",
+    "auto:banana:g",
+    "auto:cabbage:g",
+    "auto:carrot:g",
+    "auto:apple:g",
+    "auto:lemon:g",
+    "auto:sunflower_oil:ml",
+    "auto:sugar:g",
+    "auto:salt:g",
+    "auto:vinegar:ml",
+    "auto:dill:g",
+    "auto:beet:g",
+    "auto:potato:g",
+    "auto:onion:g",
+    "auto:beans_canned:g",
+    "auto:tomato_paste:g",
+    "auto:garlic:g",
+    "auto:bay_leaf:g",
+    "auto:oats_flakes:g",
+    "auto:walnuts:g",
+    "auto:honey:g",
+    "auto:canned_tomatoes:g",
+    "auto:paprika:g",
+    "auto:olive_oil:ml",
+    "auto:basil:g",
+    "auto:cucumber:g",
+    "auto:green_peas_canned:g",
+    "auto:bell_pepper:g",
+    "auto:cilantro:g",
+    "auto:sunflower_seeds:g",
+    "auto:cinnamon:g",
+    "auto:raisins:g",
+    "auto:corn_canned:g",
+    "auto:cumin:g",
+    "auto:avocado:g",
+    "auto:tomato:g",
+    "auto:tuna_canned:g",
+    "auto:cherry_tomatoes:g",
+    "auto:parsley:g",
+    "auto:chickpeas_canned:g",
+    "auto:eggplant:g"
+   ]
+  },
+  "budget": {
+   "limit_kop": null,
+   "purchase_kop": 0,
+   "diff_kop": null,
+   "status": "none",
+   "estimated": false
+  },
+  "allocations": [],
+  "expired_skipped": []
+ },
+ "report": [
+  {
+   "member_id": "m1",
+   "name": "Аня",
+   "days": [
+    {
+     "date": "2026-10-19",
+     "totals": {
+      "kcal": {
+       "value": 692.9764166666666,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 20.975941666666664,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 29.275124999999996,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 95.37223333333334,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 20.027975,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 421.7105,
+       "complete": false,
+       "missing": [
+        "bay_leaf"
+       ]
+      },
+      "vit_c": {
+       "value": 118.04348333333333,
+       "complete": false,
+       "missing": [
+        "bay_leaf"
+       ]
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 10.158123333333332,
+       "complete": false,
+       "missing": [
+        "dill",
+        "beans_canned",
+        "bay_leaf"
+       ]
+      },
+      "vit_b6": {
+       "value": 1.0461641666666668,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "bay_leaf"
+       ]
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 247.96800000000002,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "bay_leaf"
+       ]
+      }
+     },
+     "portion_mass_g": 925.8333333333333,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-20",
+     "totals": {
+      "kcal": {
+       "value": 770.898,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 25.58945,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 33.6018,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 98.38235,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 23.041750000000004,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 287.60699999999997,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 107.29145,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 7.972345,
+       "complete": false,
+       "missing": [
+        "canned_tomatoes",
+        "beans_canned",
+        "dill"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.81984,
+       "complete": false,
+       "missing": [
+        "beans_canned"
+       ]
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 127.62799999999999,
+       "complete": false,
+       "missing": [
+        "beans_canned"
+       ]
+      }
+     },
+     "portion_mass_g": 1022.5,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-21",
+     "totals": {
+      "kcal": {
+       "value": 988.4404999999999,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 40.671350000000004,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 44.628125000000004,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 115.73195000000001,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 27.53035,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 168.85825,
+       "complete": false,
+       "missing": [
+        "corn_canned",
+        "cumin"
+       ]
+      },
+      "vit_c": {
+       "value": 103.40955,
+       "complete": false,
+       "missing": [
+        "cumin"
+       ]
+      },
+      "vit_d": {
+       "value": 0.78625,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 9.524745,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "corn_canned",
+        "canned_tomatoes",
+        "cumin"
+       ]
+      },
+      "vit_b6": {
+       "value": 1.00245,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "cumin"
+       ]
+      },
+      "vit_b12": {
+       "value": 1.3828749999999999,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 187.14075,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "cumin"
+       ]
+      }
+     },
+     "portion_mass_g": 731.25,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-22",
+     "totals": {
+      "kcal": {
+       "value": 708.922125,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 18.30995,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 28.166362499999998,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 105.50752499999999,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 23.1266125,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 329.09749999999997,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 142.2802,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 9.777325,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b6": {
+       "value": 1.531775,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 221.81487499999997,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 1050,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    }
+   ],
+   "period": {
+    "kcal": {
+     "value": 3161.2370416666663,
+     "complete": true,
+     "missing": []
+    },
+    "protein": {
+     "value": 105.54669166666666,
+     "complete": true,
+     "missing": []
+    },
+    "fat": {
+     "value": 135.6714125,
+     "complete": true,
+     "missing": []
+    },
+    "carbs": {
+     "value": 414.9940583333333,
+     "complete": true,
+     "missing": []
+    },
+    "fiber": {
+     "value": 93.7266875,
+     "complete": true,
+     "missing": []
+    },
+    "vit_a": {
+     "value": 1207.27325,
+     "complete": false,
+     "missing": [
+      "bay_leaf",
+      "corn_canned",
+      "cumin"
+     ]
+    },
+    "vit_c": {
+     "value": 471.0246833333333,
+     "complete": false,
+     "missing": [
+      "bay_leaf",
+      "cumin"
+     ]
+    },
+    "vit_d": {
+     "value": 0.78625,
+     "complete": true,
+     "missing": []
+    },
+    "vit_e": {
+     "value": 37.43253833333333,
+     "complete": false,
+     "missing": [
+      "dill",
+      "beans_canned",
+      "bay_leaf",
+      "canned_tomatoes",
+      "corn_canned",
+      "cumin"
+     ]
+    },
+    "vit_b6": {
+     "value": 4.4002291666666675,
+     "complete": false,
+     "missing": [
+      "beans_canned",
+      "bay_leaf",
+      "cumin"
+     ]
+    },
+    "vit_b12": {
+     "value": 1.3828749999999999,
+     "complete": true,
+     "missing": []
+    },
+    "folate": {
+     "value": 784.5516250000001,
+     "complete": false,
+     "missing": [
+      "beans_canned",
+      "bay_leaf",
+      "cumin"
+     ]
+    }
+   },
+   "vitamins": [
+    {
+     "nutrient": "vit_a",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 1207.27325,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "corn_canned",
+      "cumin"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_c",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 471.0246833333333,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "cumin"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_d",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 0.78625,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_e",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 37.43253833333333,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "beans_canned",
+      "canned_tomatoes",
+      "corn_canned",
+      "cumin",
+      "dill"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b6",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 4.4002291666666675,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "beans_canned",
+      "cumin"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b12",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 1.3828749999999999,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "folate",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 784.5516250000001,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "beans_canned",
+      "cumin"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    }
+   ]
+  },
+  {
+   "member_id": "kid",
+   "name": "Миша",
+   "days": [
+    {
+     "date": "2026-10-19",
+     "totals": {
+      "kcal": {
+       "value": 346.4882083333333,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 10.487970833333332,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 14.637562499999998,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 47.68611666666667,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 10.0139875,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 210.85525,
+       "complete": false,
+       "missing": [
+        "bay_leaf"
+       ]
+      },
+      "vit_c": {
+       "value": 59.021741666666664,
+       "complete": false,
+       "missing": [
+        "bay_leaf"
+       ]
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 5.079061666666666,
+       "complete": false,
+       "missing": [
+        "dill",
+        "beans_canned",
+        "bay_leaf"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.5230820833333334,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "bay_leaf"
+       ]
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 123.98400000000001,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "bay_leaf"
+       ]
+      }
+     },
+     "portion_mass_g": 462.91666666666663,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-20",
+     "totals": {
+      "kcal": {
+       "value": 385.449,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 12.794725,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 16.8009,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 49.191175,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 11.520875000000002,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 143.80349999999999,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 53.645725,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 3.9861725,
+       "complete": false,
+       "missing": [
+        "canned_tomatoes",
+        "beans_canned",
+        "dill"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.40992,
+       "complete": false,
+       "missing": [
+        "beans_canned"
+       ]
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 63.81399999999999,
+       "complete": false,
+       "missing": [
+        "beans_canned"
+       ]
+      }
+     },
+     "portion_mass_g": 511.25,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-21",
+     "totals": {
+      "kcal": {
+       "value": 494.22024999999996,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 20.335675000000002,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 22.314062500000002,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 57.865975000000006,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 13.765175,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 84.429125,
+       "complete": false,
+       "missing": [
+        "corn_canned",
+        "cumin"
+       ]
+      },
+      "vit_c": {
+       "value": 51.704775,
+       "complete": false,
+       "missing": [
+        "cumin"
+       ]
+      },
+      "vit_d": {
+       "value": 0.393125,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 4.7623725,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "corn_canned",
+        "canned_tomatoes",
+        "cumin"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.501225,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "cumin"
+       ]
+      },
+      "vit_b12": {
+       "value": 0.6914374999999999,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 93.570375,
+       "complete": false,
+       "missing": [
+        "beans_canned",
+        "cumin"
+       ]
+      }
+     },
+     "portion_mass_g": 365.625,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-22",
+     "totals": {
+      "kcal": {
+       "value": 354.4610625,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 9.154975,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 14.083181249999999,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 52.75376249999999,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 11.56330625,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 164.54874999999998,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 71.1401,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 4.8886625,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b6": {
+       "value": 0.7658875,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 110.90743749999999,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 525,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    }
+   ],
+   "period": {
+    "kcal": {
+     "value": 1580.6185208333332,
+     "complete": true,
+     "missing": []
+    },
+    "protein": {
+     "value": 52.77334583333333,
+     "complete": true,
+     "missing": []
+    },
+    "fat": {
+     "value": 67.83570625,
+     "complete": true,
+     "missing": []
+    },
+    "carbs": {
+     "value": 207.49702916666666,
+     "complete": true,
+     "missing": []
+    },
+    "fiber": {
+     "value": 46.86334375,
+     "complete": true,
+     "missing": []
+    },
+    "vit_a": {
+     "value": 603.636625,
+     "complete": false,
+     "missing": [
+      "bay_leaf",
+      "corn_canned",
+      "cumin"
+     ]
+    },
+    "vit_c": {
+     "value": 235.51234166666666,
+     "complete": false,
+     "missing": [
+      "bay_leaf",
+      "cumin"
+     ]
+    },
+    "vit_d": {
+     "value": 0.393125,
+     "complete": true,
+     "missing": []
+    },
+    "vit_e": {
+     "value": 18.716269166666667,
+     "complete": false,
+     "missing": [
+      "dill",
+      "beans_canned",
+      "bay_leaf",
+      "canned_tomatoes",
+      "corn_canned",
+      "cumin"
+     ]
+    },
+    "vit_b6": {
+     "value": 2.2001145833333338,
+     "complete": false,
+     "missing": [
+      "beans_canned",
+      "bay_leaf",
+      "cumin"
+     ]
+    },
+    "vit_b12": {
+     "value": 0.6914374999999999,
+     "complete": true,
+     "missing": []
+    },
+    "folate": {
+     "value": 392.27581250000003,
+     "complete": false,
+     "missing": [
+      "beans_canned",
+      "bay_leaf",
+      "cumin"
+     ]
+    }
+   },
+   "vitamins": [
+    {
+     "nutrient": "vit_a",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 603.636625,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "corn_canned",
+      "cumin"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_c",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 235.51234166666666,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "cumin"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_d",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 0.393125,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_e",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 18.716269166666667,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "beans_canned",
+      "canned_tomatoes",
+      "corn_canned",
+      "cumin",
+      "dill"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b6",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 2.2001145833333338,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "beans_canned",
+      "cumin"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b12",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 0.6914374999999999,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "folate",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 392.27581250000003,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "bay_leaf",
+      "beans_canned",
+      "cumin"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    }
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "op": "split",
+   "error": "no_replacement"
+  },
+  {
+   "op": "add",
+   "error": "restriction_violation"
+  },
+  {
+   "op": "remove",
+   "menu": {
+    "format": "foodo-menu",
+    "format_version": 1,
+    "start_date": "2026-10-19",
+    "days": 4,
+    "seed": 99,
+    "revision": 2,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "member_ids": [
+     "m1",
+     "kid"
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": false,
+      "target_set": null,
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    },
+    "batches": [
+     {
+      "id": "b1",
+      "recipe_id": "tost-s-arahisovoy-pastoy-i-bananom",
+      "recipe_version": 1,
+      "method_id": "nocook",
+      "cook_date": "2026-10-19",
+      "slot": "breakfast",
+      "portions": 1.5
+     },
+     {
+      "id": "b3",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_version": 1,
+      "method_id": "nocook",
+      "cook_date": "2026-10-19",
+      "slot": "snack",
+      "portions": 1.5
+     },
+     {
+      "id": "b4",
+      "recipe_id": "borshch-postnyy",
+      "recipe_version": 1,
+      "method_id": "stove",
+      "cook_date": "2026-10-19",
+      "slot": "dinner",
+      "portions": 1.5
+     },
+     {
+      "id": "b5",
+      "recipe_id": "ovsyanka-s-orehami-i-myodom",
+      "recipe_version": 1,
+      "method_id": "stove",
+      "cook_date": "2026-10-20",
+      "slot": "breakfast",
+      "portions": 1.5
+     },
+     {
+      "id": "b6",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_version": 1,
+      "method_id": "stove",
+      "cook_date": "2026-10-20",
+      "slot": "lunch",
+      "portions": 1.5
+     },
+     {
+      "id": "b7",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_version": 1,
+      "method_id": "nocook",
+      "cook_date": "2026-10-20",
+      "slot": "snack",
+      "portions": 1.5
+     },
+     {
+      "id": "b8",
+      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_version": 1,
+      "method_id": "stove",
+      "cook_date": "2026-10-20",
+      "slot": "dinner",
+      "portions": 1.5
+     },
+     {
+      "id": "b9",
+      "recipe_id": "granola-domashnyaya",
+      "recipe_version": 1,
+      "method_id": "oven",
+      "cook_date": "2026-10-21",
+      "slot": "breakfast",
+      "portions": 1.5
+     },
+     {
+      "id": "b10",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_version": 1,
+      "method_id": "stove",
+      "cook_date": "2026-10-21",
+      "slot": "lunch",
+      "portions": 1.5
+     },
+     {
+      "id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_version": 1,
+      "method_id": "nocook",
+      "cook_date": "2026-10-21",
+      "slot": "snack",
+      "portions": 1.5
+     },
+     {
+      "id": "b12",
+      "recipe_id": "salat-s-tuntsom-i-fasolyu",
+      "recipe_version": 1,
+      "method_id": "nocook",
+      "cook_date": "2026-10-21",
+      "slot": "dinner",
+      "portions": 1.5
+     },
+     {
+      "id": "b13",
+      "recipe_id": "ovsyanoe-pechene-bez-sahara",
+      "recipe_version": 1,
+      "method_id": "oven",
+      "cook_date": "2026-10-22",
+      "slot": "breakfast",
+      "portions": 1.5
+     },
+     {
+      "id": "b14",
+      "recipe_id": "salat-s-nutom",
+      "recipe_version": 1,
+      "method_id": "no-heat",
+      "cook_date": "2026-10-22",
+      "slot": "lunch",
+      "portions": 1.5
+     },
+     {
+      "id": "b15",
+      "recipe_id": "baklazhany-tushyonye-s-pomidorami",
+      "recipe_version": 1,
+      "method_id": "stove",
+      "cook_date": "2026-10-22",
+      "slot": "snack",
+      "portions": 1.5
+     },
+     {
+      "id": "b16",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_version": 1,
+      "method_id": "stove",
+      "cook_date": "2026-10-22",
+      "slot": "dinner",
+      "portions": 1.5
+     }
+    ],
+    "meals": [
+     {
+      "date": "2026-10-19",
+      "slot": "breakfast",
+      "items": [
+       {
+        "id": "i1",
+        "batch_id": "b1",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-19",
+      "slot": "lunch",
+      "items": []
+     },
+     {
+      "date": "2026-10-19",
+      "slot": "snack",
+      "items": [
+       {
+        "id": "i3",
+        "batch_id": "b3",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-19",
+      "slot": "dinner",
+      "items": [
+       {
+        "id": "i4",
+        "batch_id": "b4",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-20",
+      "slot": "breakfast",
+      "items": [
+       {
+        "id": "i5",
+        "batch_id": "b5",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-20",
+      "slot": "lunch",
+      "items": [
+       {
+        "id": "i6",
+        "batch_id": "b6",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-20",
+      "slot": "snack",
+      "items": [
+       {
+        "id": "i7",
+        "batch_id": "b7",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-20",
+      "slot": "dinner",
+      "items": [
+       {
+        "id": "i8",
+        "batch_id": "b8",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-21",
+      "slot": "breakfast",
+      "items": [
+       {
+        "id": "i9",
+        "batch_id": "b9",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-21",
+      "slot": "lunch",
+      "items": [
+       {
+        "id": "i10",
+        "batch_id": "b10",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-21",
+      "slot": "snack",
+      "items": [
+       {
+        "id": "i11",
+        "batch_id": "b11",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-21",
+      "slot": "dinner",
+      "items": [
+       {
+        "id": "i12",
+        "batch_id": "b12",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-22",
+      "slot": "breakfast",
+      "items": [
+       {
+        "id": "i13",
+        "batch_id": "b13",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-22",
+      "slot": "lunch",
+      "items": [
+       {
+        "id": "i14",
+        "batch_id": "b14",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-22",
+      "slot": "snack",
+      "items": [
+       {
+        "id": "i15",
+        "batch_id": "b15",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     },
+     {
+      "date": "2026-10-22",
+      "slot": "dinner",
+      "items": [
+       {
+        "id": "i16",
+        "batch_id": "b16",
+        "portions": {
+         "m1": 1,
+         "kid": 0.5
+        },
+        "pinned": false,
+        "alternative_for": null
+       }
+      ]
+     }
+    ],
+    "unfilled": [],
+    "conflicts": [],
+    "warnings": [],
+    "stats": {
+     "attempts": 6,
+     "evaluated": 3533,
+     "score": 11.622323500182633,
+     "budget_status": "none"
+    },
+    "snapshot_ids": {
+     "recipes": [
+      "baklazhany-tushyonye-s-pomidorami",
+      "borshch-postnyy",
+      "chili-s-fasolyu",
+      "granola-domashnyaya",
+      "guakamole-s-tostami",
+      "ovsyanka-s-orehami-i-myodom",
+      "ovsyanoe-pechene-bez-sahara",
+      "salat-iz-kapusty-s-goroshkom",
+      "salat-iz-kapusty-s-morkovyu",
+      "salat-s-nutom",
+      "salat-s-tuntsom-i-fasolyu",
+      "shchi-iz-svezhey-kapusty",
+      "tomatnyy-sup-s-fasolyu",
+      "tost-s-arahisovoy-pastoy-i-bananom",
+      "tushenaya-fasol-s-ovoshchami",
+      "vitaminnyy-salat"
+     ],
+     "products": [
+      "apple",
+      "avocado",
+      "banana",
+      "basil",
+      "bay_leaf",
+      "beans_canned",
+      "beet",
+      "bell_pepper",
+      "bread_wholegrain",
+      "cabbage",
+      "canned_tomatoes",
+      "carrot",
+      "cherry_tomatoes",
+      "chickpeas_canned",
+      "cilantro",
+      "cinnamon",
+      "corn_canned",
+      "cucumber",
+      "cumin",
+      "dill",
+      "eggplant",
+      "garlic",
+      "green_peas_canned",
+      "honey",
+      "lemon",
+      "oats_flakes",
+      "olive_oil",
+      "onion",
+      "paprika",
+      "parsley",
+      "peanut_butter",
+      "potato",
+      "raisins",
+      "salt",
+      "sugar",
+      "sunflower_oil",
+      "sunflower_seeds",
+      "tomato",
+      "tomato_paste",
+      "tuna_canned",
+      "vinegar",
+      "walnuts",
+      "water",
+      "wheat_flour"
+     ]
+    }
+   },
+   "shopping_totals": {
+    "purchase_kop": 0,
+    "usage_kop": 0,
+    "complete": false,
+    "estimated": false,
+    "missing_prices": [
+     "auto:bread_wholegrain:g",
+     "auto:peanut_butter:g",
+     "auto:banana:g",
+     "auto:cabbage:g",
+     "auto:carrot:g",
+     "auto:sunflower_oil:ml",
+     "auto:vinegar:ml",
+     "auto:sugar:g",
+     "auto:salt:g",
+     "auto:dill:g",
+     "auto:beet:g",
+     "auto:potato:g",
+     "auto:onion:g",
+     "auto:beans_canned:g",
+     "auto:tomato_paste:g",
+     "auto:garlic:g",
+     "auto:bay_leaf:g",
+     "auto:oats_flakes:g",
+     "auto:walnuts:g",
+     "auto:honey:g",
+     "auto:canned_tomatoes:g",
+     "auto:paprika:g",
+     "auto:olive_oil:ml",
+     "auto:basil:g",
+     "auto:cucumber:g",
+     "auto:green_peas_canned:g",
+     "auto:bell_pepper:g",
+     "auto:cilantro:g",
+     "auto:sunflower_seeds:g",
+     "auto:cinnamon:g",
+     "auto:raisins:g",
+     "auto:corn_canned:g",
+     "auto:cumin:g",
+     "auto:avocado:g",
+     "auto:tomato:g",
+     "auto:lemon:g",
+     "auto:tuna_canned:g",
+     "auto:cherry_tomatoes:g",
+     "auto:parsley:g",
+     "auto:chickpeas_canned:g",
+     "auto:eggplant:g"
+    ]
+   }
+  }
+ ]
+}

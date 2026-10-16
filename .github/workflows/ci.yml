@@ -1,0 +1,209 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "22"
+  PYTHON_VERSION: "3.13"
+
+jobs:
+  frontend:
+    name: Frontend — lint, types, unit tests, builds
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - name: Server build (served by nginx next to the API)
+        run: npx vite build
+      - name: Static build (GitHub Pages, guest mode)
+        run: npx vite build --mode static --outDir dist-static
+      - uses: actions/upload-artifact@v7
+        with:
+          name: static-site
+          path: frontend/dist-static
+          retention-days: 7
+
+  backend:
+    name: Backend — ruff, mypy, migrations, pytest on PostgreSQL
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: foodo
+          POSTGRES_USER: foodo
+          POSTGRES_PASSWORD: foodo
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U foodo -d foodo"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      DATABASE_URL: postgres://foodo:foodo@127.0.0.1:5432/foodo
+      FOODO_TESTING: "1"
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/requirements*.txt
+      - run: pip install --require-hashes -r requirements.txt -r requirements-dev.txt
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: mypy
+      - name: No missing migrations
+        run: python manage.py makemigrations --check --dry-run
+      - name: Price and photo collectors — lint and unit tests (no network)
+        working-directory: .
+        run: |
+          ruff check scripts
+          ruff format --check scripts
+          python -m pytest -p no:django -p no:cacheprovider -q scripts/prices/tests scripts/photos/tests
+      - run: pytest
+
+  e2e-guest:
+    name: E2E — guest mode (static build, offline, 360 px, exports, privacy)
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-guest-report
+          path: |
+            frontend/playwright-report
+            frontend/test-results
+          retention-days: 7
+
+  e2e-account:
+    name: E2E — account mode against Django and PostgreSQL
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: foodo
+          POSTGRES_USER: foodo
+          POSTGRES_PASSWORD: foodo
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U foodo -d foodo"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      DATABASE_URL: postgres://foodo:foodo@127.0.0.1:5432/foodo
+      DJANGO_SECRET_KEY: ci-only-not-secret
+      DJANGO_DEBUG: "0"
+      DJANGO_SECURE: "0"
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
+      # The browser talks to `vite preview` on :4174, which proxies /api to Django.
+      DJANGO_CSRF_TRUSTED_ORIGINS: http://localhost:4174
+      FOODO_SITE_URL: http://localhost:4174
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/requirements*.txt
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Start the API (migrations + seed data)
+        working-directory: backend
+        run: |
+          pip install --require-hashes -r requirements.txt
+          python manage.py migrate --noinput
+          python manage.py load_seed
+          nohup gunicorn foodo.wsgi:application --bind 127.0.0.1:8000 --workers 2 --no-control-socket > ../gunicorn.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8000/api/health/ && exit 0; sleep 1; done
+          cat ../gunicorn.log; exit 1
+      - working-directory: frontend
+        run: npm ci --no-audit --no-fund
+      - working-directory: frontend
+        run: npx playwright install --with-deps chromium
+      - working-directory: frontend
+        run: npx playwright test
+        env:
+          E2E_ACCOUNT: "1"
+      - if: failure()
+        run: cat gunicorn.log
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-account-report
+          path: |
+            frontend/playwright-report
+            frontend/test-results
+          retention-days: 7
+
+  docker:
+    name: Docker — build images, clean start, health, restart keeps data
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Build and start the stack (migrations and seed on start)
+        run: docker compose up -d --build --wait --wait-timeout 300
+      - name: Health and catalog through nginx
+        run: |
+          curl -sf http://localhost:8080/healthz
+          curl -sf http://localhost:8080/api/health/ | tee /dev/stderr | grep -q '"database":"ok"'
+          curl -sf http://localhost:8080/api/catalog/bundle/ | python3 -c "import json,sys; d=json.load(sys.stdin); assert len(d['recipes']) >= 40, len(d['recipes'])"
+          curl -sf http://localhost:8080/ | grep -q '<div id="root">'
+      - name: Restart keeps the database; seed load stays idempotent
+        run: |
+          docker compose exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; g().objects.create_user(username='keep@example.com', email='keep@example.com', password=__import__('secrets').token_urlsafe(18))"
+          docker compose down
+          docker compose up -d --wait --wait-timeout 300
+          docker compose exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; assert g().objects.filter(email='keep@example.com').exists()"
+          docker compose logs api | grep -E "Рецепты: создано 0" 
+      - if: failure()
+        run: docker compose logs

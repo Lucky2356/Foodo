@@ -1,0 +1,44 @@
+name: Photos
+
+# Recipe photos from Wikimedia Commons, in two reviewed steps (docs/PHOTOS.md):
+# 1. candidates: free-licensed candidates per recipe → numbered contact sheets (artifact);
+# 2. apply: the photos chosen in shared/data/photos/selection.json are downloaded, resized to
+#    WebP and returned with author/license data (artifact) to be committed after review.
+on:
+  pull_request:
+    paths:
+      - "scripts/photos/**"
+      - "shared/data/photos/**"
+      - ".github/workflows/photos.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One run at a time per branch: a newer push supersedes the older run (polite to Wikimedia).
+concurrency:
+  group: photos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  photos:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: pip install --require-hashes -r scripts/photos/requirements.txt
+      - name: Candidates for recipes without a decision
+        run: python -m scripts.photos.candidates out/candidates
+      - name: Apply the reviewed selection
+        if: hashFiles('shared/data/photos/selection.json') != ''
+        run: python -m scripts.photos.apply out/applied
+      - uses: actions/upload-artifact@v7
+        with:
+          name: photos
+          path: out
+          retention-days: 7

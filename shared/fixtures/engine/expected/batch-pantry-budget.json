@@ -1,0 +1,3046 @@
+{
+ "menu": {
+  "format": "foodo-menu",
+  "format_version": 1,
+  "start_date": "2026-10-19",
+  "days": 6,
+  "seed": 5,
+  "revision": 1,
+  "slots": [
+   "breakfast",
+   "lunch",
+   "dinner"
+  ],
+  "member_ids": [
+   "m1",
+   "m2"
+  ],
+  "settings": {
+   "skill": "any",
+   "diet_mode": "regular",
+   "equipment": [
+    "stove",
+    "oven",
+    "microwave"
+   ],
+   "max_total_min": null,
+   "repeat": {
+    "mode": "batch",
+    "max_uses": 3,
+    "min_gap_days": 1,
+    "cook_days": [
+     1,
+     4
+    ],
+    "batch_days": 3,
+    "batch_slots": [
+     "lunch",
+     "dinner"
+    ]
+   },
+   "container_days": [],
+   "vitamins": {
+    "enabled": false,
+    "target_set": null,
+    "demo": false
+   },
+   "budget": {
+    "limit_kop": 500000,
+    "currency": "RUB"
+   },
+   "tolerances": {
+    "energy_pct": 10,
+    "macro_pct": 20
+   },
+   "portion_min": 0.5,
+   "portion_max": 2
+  },
+  "batches": [
+   {
+    "id": "b1",
+    "recipe_id": "tvorog-s-yagodami-i-myodom",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-19",
+    "slot": "breakfast",
+    "portions": 2
+   },
+   {
+    "id": "b2",
+    "recipe_id": "salat-iz-pomidorov-s-lukom",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-19",
+    "slot": "lunch",
+    "portions": 6
+   },
+   {
+    "id": "b3",
+    "recipe_id": "kalmary-v-smetane",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-19",
+    "slot": "dinner",
+    "portions": 6
+   },
+   {
+    "id": "b4",
+    "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-20",
+    "slot": "breakfast",
+    "portions": 2
+   },
+   {
+    "id": "b5",
+    "recipe_id": "tvorog-so-smetanoy-i-zelenyu",
+    "recipe_version": 1,
+    "method_id": "nocook",
+    "cook_date": "2026-10-21",
+    "slot": "breakfast",
+    "portions": 2
+   },
+   {
+    "id": "b6",
+    "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-22",
+    "slot": "breakfast",
+    "portions": 2
+   },
+   {
+    "id": "b7",
+    "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+    "recipe_version": 1,
+    "method_id": "no-heat",
+    "cook_date": "2026-10-22",
+    "slot": "lunch",
+    "portions": 6
+   },
+   {
+    "id": "b8",
+    "recipe_id": "draniki",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-22",
+    "slot": "dinner",
+    "portions": 6
+   },
+   {
+    "id": "b9",
+    "recipe_id": "ovsyanoblin",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-23",
+    "slot": "breakfast",
+    "portions": 2
+   },
+   {
+    "id": "b10",
+    "recipe_id": "skrembl-s-pomidorami",
+    "recipe_version": 1,
+    "method_id": "stove",
+    "cook_date": "2026-10-24",
+    "slot": "breakfast",
+    "portions": 2
+   }
+  ],
+  "meals": [
+   {
+    "date": "2026-10-19",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i1",
+      "batch_id": "b1",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-19",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i2",
+      "batch_id": "b2",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-19",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i3",
+      "batch_id": "b3",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-20",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i4",
+      "batch_id": "b4",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-20",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i5",
+      "batch_id": "b2",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-20",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i6",
+      "batch_id": "b3",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-21",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i7",
+      "batch_id": "b5",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-21",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i8",
+      "batch_id": "b2",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-21",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i9",
+      "batch_id": "b3",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-22",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i10",
+      "batch_id": "b6",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-22",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i11",
+      "batch_id": "b7",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-22",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i12",
+      "batch_id": "b8",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-23",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i13",
+      "batch_id": "b9",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-23",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i14",
+      "batch_id": "b7",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-23",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i15",
+      "batch_id": "b8",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-24",
+    "slot": "breakfast",
+    "items": [
+     {
+      "id": "i16",
+      "batch_id": "b10",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-24",
+    "slot": "lunch",
+    "items": [
+     {
+      "id": "i17",
+      "batch_id": "b7",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   },
+   {
+    "date": "2026-10-24",
+    "slot": "dinner",
+    "items": [
+     {
+      "id": "i18",
+      "batch_id": "b8",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      },
+      "pinned": false,
+      "alternative_for": null
+     }
+    ]
+   }
+  ],
+  "unfilled": [],
+  "conflicts": [],
+  "warnings": [
+   "Блюда из партии едят в другие дни: сроки хранения рецептов не проверены, ориентируйтесь на собственные правила хранения."
+  ],
+  "stats": {
+   "attempts": 6,
+   "evaluated": 7162,
+   "score": 7.167858525564892,
+   "budget_status": "unconfirmed"
+  },
+  "snapshot_ids": {
+   "recipes": [
+    "draniki",
+    "kalmary-v-smetane",
+    "ovsyanoblin",
+    "salat-iz-ogurtsov-i-pomidorov",
+    "salat-iz-pomidorov-s-lukom",
+    "skrembl-s-pomidorami",
+    "syrnye-lepeshki-iz-tvoroga",
+    "tvorog-s-yagodami-i-myodom",
+    "tvorog-so-smetanoy-i-zelenyu",
+    "yaichnitsa-s-pomidorami-i-lukom"
+   ],
+   "products": [
+    "black_pepper",
+    "butter",
+    "cheese_hard",
+    "cherry_tomatoes",
+    "cottage_cheese",
+    "cucumber",
+    "dill",
+    "eggs",
+    "green_onion",
+    "honey",
+    "milk",
+    "oats_flakes",
+    "onion",
+    "potato",
+    "salt",
+    "sour_cream",
+    "squid",
+    "strawberries_frozen",
+    "sunflower_oil",
+    "tomato",
+    "wheat_flour"
+   ]
+  }
+ },
+ "shopping": {
+  "lines": [
+   {
+    "id": "auto:potato:g",
+    "product_id": "potato",
+    "name": "Картофель",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 1200,
+    "from_pantry": 300,
+    "to_buy": 900,
+    "package": null,
+    "package_note": null,
+    "price_kop": 4210,
+    "price_date": "2026-10-01",
+    "price_source": "Росстат, средняя цена по региону",
+    "price_kind": "rosstat",
+    "estimated": true,
+    "purchase_cost_kop": 3789,
+    "usage_cost_kop": 5052,
+    "sources": [
+     {
+      "batch_id": "b8",
+      "recipe_id": "draniki",
+      "recipe_name": "Драники",
+      "cook_date": "2026-10-22",
+      "qty": 1200
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:green_onion:g",
+    "product_id": "green_onion",
+    "name": "Лук зелёный",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 20,
+    "from_pantry": 0,
+    "to_buy": 20,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b5",
+      "recipe_id": "tvorog-so-smetanoy-i-zelenyu",
+      "recipe_name": "Творог со сметаной и зеленью",
+      "cook_date": "2026-10-21",
+      "qty": 10
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "skrembl-s-pomidorami",
+      "recipe_name": "Скрэмбл с помидорами черри",
+      "cook_date": "2026-10-24",
+      "qty": 10
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:onion:g",
+    "product_id": "onion",
+    "name": "Лук репчатый",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 500,
+    "from_pantry": 200,
+    "to_buy": 300,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 4990,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "price_kind": "manual",
+    "estimated": false,
+    "purchase_cost_kop": 4990,
+    "usage_cost_kop": 2495,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-19",
+      "qty": 100
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "kalmary-v-smetane",
+      "recipe_name": "Кальмары, тушённые в сметане",
+      "cook_date": "2026-10-19",
+      "qty": 150
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_name": "Яичница с помидорами и луком",
+      "cook_date": "2026-10-20",
+      "qty": 50
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "draniki",
+      "recipe_name": "Драники",
+      "cook_date": "2026-10-22",
+      "qty": 200
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cucumber:g",
+    "product_id": "cucumber",
+    "name": "Огурцы",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 900,
+    "from_pantry": 0,
+    "to_buy": 900,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b5",
+      "recipe_id": "tvorog-so-smetanoy-i-zelenyu",
+      "recipe_name": "Творог со сметаной и зеленью",
+      "cook_date": "2026-10-21",
+      "qty": 60
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+      "recipe_name": "Салат из огурцов и помидоров",
+      "cook_date": "2026-10-22",
+      "qty": 720
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "ovsyanoblin",
+      "recipe_name": "Овсяноблин с сыром",
+      "cook_date": "2026-10-23",
+      "qty": 120
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:tomato:g",
+    "product_id": "tomato",
+    "name": "Помидоры",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 1920,
+    "from_pantry": 0,
+    "to_buy": 1920,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-19",
+      "qty": 960
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_name": "Яичница с помидорами и луком",
+      "cook_date": "2026-10-20",
+      "qty": 240
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+      "recipe_name": "Салат из огурцов и помидоров",
+      "cook_date": "2026-10-22",
+      "qty": 720
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cherry_tomatoes:g",
+    "product_id": "cherry_tomatoes",
+    "name": "Помидоры черри",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 120,
+    "from_pantry": 0,
+    "to_buy": 120,
+    "package": {
+     "size": 250,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "skrembl-s-pomidorami",
+      "recipe_name": "Скрэмбл с помидорами черри",
+      "cook_date": "2026-10-24",
+      "qty": 120
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:dill:g",
+    "product_id": "dill",
+    "name": "Укроп",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 71.666667,
+    "from_pantry": 0,
+    "to_buy": 71.666667,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-19",
+      "qty": 10
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "kalmary-v-smetane",
+      "recipe_name": "Кальмары, тушённые в сметане",
+      "cook_date": "2026-10-19",
+      "qty": 15
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_name": "Яичница с помидорами и луком",
+      "cook_date": "2026-10-20",
+      "qty": 5
+     },
+     {
+      "batch_id": "b5",
+      "recipe_id": "tvorog-so-smetanoy-i-zelenyu",
+      "recipe_name": "Творог со сметаной и зеленью",
+      "cook_date": "2026-10-21",
+      "qty": 5
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_name": "Творожные лепёшки с зеленью",
+      "cook_date": "2026-10-22",
+      "qty": 6.666667
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+      "recipe_name": "Салат из огурцов и помидоров",
+      "cook_date": "2026-10-22",
+      "qty": 30
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:butter:g",
+    "product_id": "butter",
+    "name": "Масло сливочное 82,5%",
+    "department": "Молочные продукты и яйца",
+    "unit": "g",
+    "convertible": true,
+    "needed": 45,
+    "from_pantry": 0,
+    "to_buy": 45,
+    "package": {
+     "size": 180,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b3",
+      "recipe_id": "kalmary-v-smetane",
+      "recipe_name": "Кальмары, тушённые в сметане",
+      "cook_date": "2026-10-19",
+      "qty": 30
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "skrembl-s-pomidorami",
+      "recipe_name": "Скрэмбл с помидорами черри",
+      "cook_date": "2026-10-24",
+      "qty": 15
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:milk:ml",
+    "product_id": "milk",
+    "name": "Молоко 2,5%",
+    "department": "Молочные продукты и яйца",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 100,
+    "from_pantry": 0,
+    "to_buy": 100,
+    "package": {
+     "size": 0.93,
+     "unit": "l",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 8990,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "price_kind": "manual",
+    "estimated": false,
+    "purchase_cost_kop": 8990,
+    "usage_cost_kop": 967,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "ovsyanoblin",
+      "recipe_name": "Овсяноблин с сыром",
+      "cook_date": "2026-10-23",
+      "qty": 60
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "skrembl-s-pomidorami",
+      "recipe_name": "Скрэмбл с помидорами черри",
+      "cook_date": "2026-10-24",
+      "qty": 40
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:sour_cream:g",
+    "product_id": "sour_cream",
+    "name": "Сметана 15%",
+    "department": "Молочные продукты и яйца",
+    "unit": "g",
+    "convertible": true,
+    "needed": 550,
+    "from_pantry": 0,
+    "to_buy": 550,
+    "package": {
+     "size": 300,
+     "unit": "g",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b3",
+      "recipe_id": "kalmary-v-smetane",
+      "recipe_name": "Кальмары, тушённые в сметане",
+      "cook_date": "2026-10-19",
+      "qty": 300
+     },
+     {
+      "batch_id": "b5",
+      "recipe_id": "tvorog-so-smetanoy-i-zelenyu",
+      "recipe_name": "Творог со сметаной и зеленью",
+      "cook_date": "2026-10-21",
+      "qty": 50
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "draniki",
+      "recipe_name": "Драники",
+      "cook_date": "2026-10-22",
+      "qty": 200
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cheese_hard:g",
+    "product_id": "cheese_hard",
+    "name": "Сыр полутвёрдый",
+    "department": "Молочные продукты и яйца",
+    "unit": "g",
+    "convertible": true,
+    "needed": 66.666667,
+    "from_pantry": 0,
+    "to_buy": 66.666667,
+    "package": {
+     "size": 200,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_name": "Творожные лепёшки с зеленью",
+      "cook_date": "2026-10-22",
+      "qty": 26.666667
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "ovsyanoblin",
+      "recipe_name": "Овсяноблин с сыром",
+      "cook_date": "2026-10-23",
+      "qty": 40
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cottage_cheese:g",
+    "product_id": "cottage_cheese",
+    "name": "Творог 5%",
+    "department": "Молочные продукты и яйца",
+    "unit": "g",
+    "convertible": true,
+    "needed": 776.666667,
+    "from_pantry": 0,
+    "to_buy": 776.666667,
+    "package": {
+     "size": 200,
+     "unit": "g",
+     "count": 4
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "tvorog-s-yagodami-i-myodom",
+      "recipe_name": "Творог с клубникой и мёдом",
+      "cook_date": "2026-10-19",
+      "qty": 360
+     },
+     {
+      "batch_id": "b5",
+      "recipe_id": "tvorog-so-smetanoy-i-zelenyu",
+      "recipe_name": "Творог со сметаной и зеленью",
+      "cook_date": "2026-10-21",
+      "qty": 250
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_name": "Творожные лепёшки с зеленью",
+      "cook_date": "2026-10-22",
+      "qty": 166.666667
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:eggs:pcs",
+    "product_id": "eggs",
+    "name": "Яйца куриные С1",
+    "department": "Молочные продукты и яйца",
+    "unit": "pcs",
+    "convertible": true,
+    "needed": 14.666667,
+    "from_pantry": 4,
+    "to_buy": 10.666667,
+    "package": {
+     "size": 10,
+     "unit": "pcs",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": 11990,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "price_kind": "manual",
+    "estimated": false,
+    "purchase_cost_kop": 23980,
+    "usage_cost_kop": 17585,
+    "sources": [
+     {
+      "batch_id": "b4",
+      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_name": "Яичница с помидорами и луком",
+      "cook_date": "2026-10-20",
+      "qty": 4
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_name": "Творожные лепёшки с зеленью",
+      "cook_date": "2026-10-22",
+      "qty": 0.666667
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "draniki",
+      "recipe_name": "Драники",
+      "cook_date": "2026-10-22",
+      "qty": 2
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "ovsyanoblin",
+      "recipe_name": "Овсяноблин с сыром",
+      "cook_date": "2026-10-23",
+      "qty": 4
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "skrembl-s-pomidorami",
+      "recipe_name": "Скрэмбл с помидорами черри",
+      "cook_date": "2026-10-24",
+      "qty": 4
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:squid:g",
+    "product_id": "squid",
+    "name": "Кальмар, тушка",
+    "department": "Рыба",
+    "unit": "g",
+    "convertible": true,
+    "needed": 900,
+    "from_pantry": 0,
+    "to_buy": 900,
+    "package": {
+     "size": 500,
+     "unit": "g",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b3",
+      "recipe_id": "kalmary-v-smetane",
+      "recipe_name": "Кальмары, тушённые в сметане",
+      "cook_date": "2026-10-19",
+      "qty": 900
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:wheat_flour:g",
+    "product_id": "wheat_flour",
+    "name": "Мука пшеничная",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 53.333333,
+    "from_pantry": 0,
+    "to_buy": 53.333333,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_name": "Творожные лепёшки с зеленью",
+      "cook_date": "2026-10-22",
+      "qty": 21.333333
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "draniki",
+      "recipe_name": "Драники",
+      "cook_date": "2026-10-22",
+      "qty": 32
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:honey:g",
+    "product_id": "honey",
+    "name": "Мёд",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 14,
+    "from_pantry": 0,
+    "to_buy": 14,
+    "package": {
+     "size": 250,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "tvorog-s-yagodami-i-myodom",
+      "recipe_name": "Творог с клубникой и мёдом",
+      "cook_date": "2026-10-19",
+      "qty": 14
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:oats_flakes:g",
+    "product_id": "oats_flakes",
+    "name": "Овсяные хлопья",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 60,
+    "from_pantry": 0,
+    "to_buy": 60,
+    "package": {
+     "size": 500,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "ovsyanoblin",
+      "recipe_name": "Овсяноблин с сыром",
+      "cook_date": "2026-10-23",
+      "qty": 60
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:sunflower_oil:ml",
+    "product_id": "sunflower_oil",
+    "name": "Масло подсолнечное рафинированное",
+    "department": "Масла и специи",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 266.014493,
+    "from_pantry": 0,
+    "to_buy": 266.014493,
+    "package": {
+     "size": 1,
+     "unit": "l",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 15990,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "price_kind": "manual",
+    "estimated": false,
+    "purchase_cost_kop": 15990,
+    "usage_cost_kop": 4254,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-19",
+      "qty": 59.130435
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_name": "Яичница с помидорами и луком",
+      "cook_date": "2026-10-20",
+      "qty": 14.782609
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_name": "Творожные лепёшки с зеленью",
+      "cook_date": "2026-10-22",
+      "qty": 19.710145
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+      "recipe_name": "Салат из огурцов и помидоров",
+      "cook_date": "2026-10-22",
+      "qty": 44.347826
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "draniki",
+      "recipe_name": "Драники",
+      "cook_date": "2026-10-22",
+      "qty": 118.26087
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "ovsyanoblin",
+      "recipe_name": "Овсяноблин с сыром",
+      "cook_date": "2026-10-23",
+      "qty": 9.782609
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:black_pepper:g",
+    "product_id": "black_pepper",
+    "name": "Перец чёрный молотый",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 1.3,
+    "from_pantry": 0,
+    "to_buy": 1.3,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-19",
+      "qty": 0.4
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "kalmary-v-smetane",
+      "recipe_name": "Кальмары, тушённые в сметане",
+      "cook_date": "2026-10-19",
+      "qty": 0.3
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_name": "Яичница с помидорами и луком",
+      "cook_date": "2026-10-20",
+      "qty": 0.2
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "draniki",
+      "recipe_name": "Драники",
+      "cook_date": "2026-10-22",
+      "qty": 0.4
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:salt:g",
+    "product_id": "salt",
+    "name": "Соль поваренная",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 19.833333,
+    "from_pantry": 0,
+    "to_buy": 19.833333,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 0
+    },
+    "package_note": null,
+    "price_kop": 2490,
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "price_kind": "manual",
+    "estimated": false,
+    "purchase_cost_kop": 0,
+    "usage_cost_kop": 49,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-19",
+      "qty": 1
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "kalmary-v-smetane",
+      "recipe_name": "Кальмары, тушённые в сметане",
+      "cook_date": "2026-10-19",
+      "qty": 9
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_name": "Яичница с помидорами и луком",
+      "cook_date": "2026-10-20",
+      "qty": 1
+     },
+     {
+      "batch_id": "b5",
+      "recipe_id": "tvorog-so-smetanoy-i-zelenyu",
+      "recipe_name": "Творог со сметаной и зеленью",
+      "cook_date": "2026-10-21",
+      "qty": 0.5
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_name": "Творожные лепёшки с зеленью",
+      "cook_date": "2026-10-22",
+      "qty": 0.333333
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+      "recipe_name": "Салат из огурцов и помидоров",
+      "cook_date": "2026-10-22",
+      "qty": 3
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "draniki",
+      "recipe_name": "Драники",
+      "cook_date": "2026-10-22",
+      "qty": 3
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "ovsyanoblin",
+      "recipe_name": "Овсяноблин с сыром",
+      "cook_date": "2026-10-23",
+      "qty": 1
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "skrembl-s-pomidorami",
+      "recipe_name": "Скрэмбл с помидорами черри",
+      "cook_date": "2026-10-24",
+      "qty": 1
+     }
+    ],
+    "purchased": false,
+    "at_home": true,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:strawberries_frozen:g",
+    "product_id": "strawberries_frozen",
+    "name": "Клубника замороженная",
+    "department": "Заморозка",
+    "unit": "g",
+    "convertible": true,
+    "needed": 120,
+    "from_pantry": 0,
+    "to_buy": 120,
+    "package": {
+     "size": 300,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "tvorog-s-yagodami-i-myodom",
+      "recipe_name": "Творог с клубникой и мёдом",
+      "cook_date": "2026-10-19",
+      "qty": 120
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   }
+  ],
+  "manual_lines": [
+   {
+    "id": "manual:1",
+    "name": "Салфетки",
+    "qty": 1,
+    "unit": "pcs",
+    "department": "Другое",
+    "price_kop": 15000,
+    "purchased": false,
+    "at_home": false
+   }
+  ],
+  "totals": {
+   "purchase_kop": 72739,
+   "usage_kop": 30402,
+   "complete": false,
+   "estimated": true,
+   "missing_prices": [
+    "auto:cottage_cheese:g",
+    "auto:strawberries_frozen:g",
+    "auto:honey:g",
+    "auto:tomato:g",
+    "auto:black_pepper:g",
+    "auto:dill:g",
+    "auto:squid:g",
+    "auto:sour_cream:g",
+    "auto:butter:g",
+    "auto:cucumber:g",
+    "auto:green_onion:g",
+    "auto:wheat_flour:g",
+    "auto:cheese_hard:g",
+    "auto:oats_flakes:g",
+    "auto:cherry_tomatoes:g"
+   ]
+  },
+  "budget": {
+   "limit_kop": 500000,
+   "purchase_kop": 72739,
+   "diff_kop": 427261,
+   "status": "unconfirmed",
+   "estimated": true
+  },
+  "allocations": [
+   {
+    "pantry_id": "p4",
+    "batch_id": "b2",
+    "product_id": "onion",
+    "qty": 100
+   },
+   {
+    "pantry_id": "p4",
+    "batch_id": "b3",
+    "product_id": "onion",
+    "qty": 100
+   },
+   {
+    "pantry_id": "p2",
+    "batch_id": "b4",
+    "product_id": "eggs",
+    "qty": 4
+   },
+   {
+    "pantry_id": "p1",
+    "batch_id": "b8",
+    "product_id": "potato",
+    "qty": 300
+   }
+  ],
+  "expired_skipped": [
+   {
+    "pantry_id": "p3",
+    "product_id": "milk",
+    "expires": "2026-10-20",
+    "needed_on": "2026-10-23"
+   }
+  ]
+ },
+ "report": [
+  {
+   "member_id": "m1",
+   "name": "Аня",
+   "days": [
+    {
+     "date": "2026-10-19",
+     "totals": {
+      "kcal": {
+       "value": 623.2946666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 55.71488333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 32.148266666666665,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 29.105666666666664,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 3.7837666666666663,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 225.715,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 68.8965,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "sour_cream",
+        "butter"
+       ]
+      },
+      "vit_e": {
+       "value": 6.467886666666667,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "black_pepper",
+        "dill",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.49412500000000004,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 3.7135,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 123.49,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 575,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-20",
+     "totals": {
+      "kcal": {
+       "value": 601.8395666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 38.53861333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 39.744416666666666,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 22.952226666666668,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 4.392816666666667,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 389.208,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 52.777,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 2.0416,
+       "complete": false,
+       "missing": [
+        "sour_cream",
+        "butter"
+       ]
+      },
+      "vit_e": {
+       "value": 10.773266666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "dill",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.560736,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 2.822012,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 118.6776,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 490,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-21",
+     "totals": {
+      "kcal": {
+       "value": 562.4471666666666,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 46.82313333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 33.030516666666664,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 19.989666666666665,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 2.8765166666666664,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 242.925,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 37.363,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "sour_cream",
+        "butter"
+       ]
+      },
+      "vit_e": {
+       "value": 6.323436666666666,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "sour_cream",
+        "dill",
+        "black_pepper"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.4256,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 3.2384999999999997,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 99.7,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 490,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-22",
+     "totals": {
+      "kcal": {
+       "value": 785.1704666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 29.825459999999996,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 51.04256666666666,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 54.89385333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 6.574366666666666,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 226.13933333333333,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 59.224999999999994,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 0.7605333333333333,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "sour_cream"
+       ]
+      },
+      "vit_e": {
+       "value": 15.005879999999998,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "dill",
+        "cheese_hard",
+        "black_pepper",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.8402953333333333,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 1.4361706666666667,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 120.34919999999998,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 573.3333333333334,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-23",
+     "totals": {
+      "kcal": {
+       "value": 887.8144666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 31.795293333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 54.96373333333332,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 69.47495333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 9.538366666666667,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 351.14733333333334,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 58.58,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 2.5018666666666665,
+       "complete": false,
+       "missing": [
+        "milk",
+        "sour_cream"
+       ]
+      },
+      "vit_e": {
+       "value": 14.17524333333333,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "dill",
+        "black_pepper",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.9537686666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 1.5835306666666669,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 140.35886666666664,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 640,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-24",
+     "totals": {
+      "kcal": {
+       "value": 716.5524666666665,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 23.19279333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 48.71333333333334,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 49.25055333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 7.045966666666667,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 371.7273333333334,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 65.7826,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 2.3818666666666664,
+       "complete": false,
+       "missing": [
+        "milk",
+        "butter",
+        "sour_cream"
+       ]
+      },
+      "vit_e": {
+       "value": 12.671893333333331,
+       "complete": false,
+       "missing": [
+        "dill",
+        "black_pepper",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.9305886666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 1.2550806666666667,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 134.17886666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 590,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    }
+   ],
+   "period": {
+    "kcal": {
+     "value": 4177.1188,
+     "complete": true,
+     "missing": []
+    },
+    "protein": {
+     "value": 225.89017666666666,
+     "complete": true,
+     "missing": []
+    },
+    "fat": {
+     "value": 259.64283333333333,
+     "complete": true,
+     "missing": []
+    },
+    "carbs": {
+     "value": 245.66692,
+     "complete": true,
+     "missing": []
+    },
+    "fiber": {
+     "value": 34.2118,
+     "complete": true,
+     "missing": []
+    },
+    "vit_a": {
+     "value": 1806.862,
+     "complete": false,
+     "missing": [
+      "black_pepper"
+     ]
+    },
+    "vit_c": {
+     "value": 342.6241,
+     "complete": false,
+     "missing": [
+      "black_pepper"
+     ]
+    },
+    "vit_d": {
+     "value": 7.685866666666666,
+     "complete": false,
+     "missing": [
+      "cottage_cheese",
+      "sour_cream",
+      "butter",
+      "milk"
+     ]
+    },
+    "vit_e": {
+     "value": 65.41760666666666,
+     "complete": false,
+     "missing": [
+      "cottage_cheese",
+      "black_pepper",
+      "dill",
+      "sour_cream",
+      "cheese_hard"
+     ]
+    },
+    "vit_b6": {
+     "value": 4.205113666666667,
+     "complete": false,
+     "missing": [
+      "black_pepper"
+     ]
+    },
+    "vit_b12": {
+     "value": 14.048794,
+     "complete": true,
+     "missing": []
+    },
+    "folate": {
+     "value": 736.7545333333333,
+     "complete": false,
+     "missing": [
+      "black_pepper"
+     ]
+    }
+   },
+   "vitamins": [
+    {
+     "nutrient": "vit_a",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 1806.862,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_c",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 342.6241,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_d",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 7.685866666666666,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "butter",
+      "cottage_cheese",
+      "milk",
+      "sour_cream"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_e",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 65.41760666666666,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper",
+      "cheese_hard",
+      "cottage_cheese",
+      "dill",
+      "sour_cream"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b6",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 4.205113666666667,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b12",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 14.048794,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "folate",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 736.7545333333333,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    }
+   ]
+  },
+  {
+   "member_id": "m2",
+   "name": "Борис",
+   "days": [
+    {
+     "date": "2026-10-19",
+     "totals": {
+      "kcal": {
+       "value": 623.2946666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 55.71488333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 32.148266666666665,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 29.105666666666664,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 3.7837666666666663,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 225.715,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 68.8965,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "sour_cream",
+        "butter"
+       ]
+      },
+      "vit_e": {
+       "value": 6.467886666666667,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "black_pepper",
+        "dill",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.49412500000000004,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 3.7135,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 123.49,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 575,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-20",
+     "totals": {
+      "kcal": {
+       "value": 601.8395666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 38.53861333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 39.744416666666666,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 22.952226666666668,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 4.392816666666667,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 389.208,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 52.777,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 2.0416,
+       "complete": false,
+       "missing": [
+        "sour_cream",
+        "butter"
+       ]
+      },
+      "vit_e": {
+       "value": 10.773266666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "dill",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.560736,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 2.822012,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 118.6776,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 490,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-21",
+     "totals": {
+      "kcal": {
+       "value": 562.4471666666666,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 46.82313333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 33.030516666666664,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 19.989666666666665,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 2.8765166666666664,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 242.925,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 37.363,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "sour_cream",
+        "butter"
+       ]
+      },
+      "vit_e": {
+       "value": 6.323436666666666,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "sour_cream",
+        "dill",
+        "black_pepper"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.4256,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 3.2384999999999997,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 99.7,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 490,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-22",
+     "totals": {
+      "kcal": {
+       "value": 785.1704666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 29.825459999999996,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 51.04256666666666,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 54.89385333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 6.574366666666666,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 226.13933333333333,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 59.224999999999994,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 0.7605333333333333,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "sour_cream"
+       ]
+      },
+      "vit_e": {
+       "value": 15.005879999999998,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "dill",
+        "cheese_hard",
+        "black_pepper",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.8402953333333333,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 1.4361706666666667,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 120.34919999999998,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 573.3333333333334,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-23",
+     "totals": {
+      "kcal": {
+       "value": 887.8144666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 31.795293333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 54.96373333333332,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 69.47495333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 9.538366666666667,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 351.14733333333334,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 58.58,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 2.5018666666666665,
+       "complete": false,
+       "missing": [
+        "milk",
+        "sour_cream"
+       ]
+      },
+      "vit_e": {
+       "value": 14.17524333333333,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "dill",
+        "black_pepper",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.9537686666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 1.5835306666666669,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 140.35886666666664,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 640,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-24",
+     "totals": {
+      "kcal": {
+       "value": 716.5524666666665,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 23.19279333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 48.71333333333334,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 49.25055333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 7.045966666666667,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 371.7273333333334,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 65.7826,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 2.3818666666666664,
+       "complete": false,
+       "missing": [
+        "milk",
+        "butter",
+        "sour_cream"
+       ]
+      },
+      "vit_e": {
+       "value": 12.671893333333331,
+       "complete": false,
+       "missing": [
+        "dill",
+        "black_pepper",
+        "sour_cream"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.9305886666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 1.2550806666666667,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 134.17886666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 590,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    }
+   ],
+   "period": {
+    "kcal": {
+     "value": 4177.1188,
+     "complete": true,
+     "missing": []
+    },
+    "protein": {
+     "value": 225.89017666666666,
+     "complete": true,
+     "missing": []
+    },
+    "fat": {
+     "value": 259.64283333333333,
+     "complete": true,
+     "missing": []
+    },
+    "carbs": {
+     "value": 245.66692,
+     "complete": true,
+     "missing": []
+    },
+    "fiber": {
+     "value": 34.2118,
+     "complete": true,
+     "missing": []
+    },
+    "vit_a": {
+     "value": 1806.862,
+     "complete": false,
+     "missing": [
+      "black_pepper"
+     ]
+    },
+    "vit_c": {
+     "value": 342.6241,
+     "complete": false,
+     "missing": [
+      "black_pepper"
+     ]
+    },
+    "vit_d": {
+     "value": 7.685866666666666,
+     "complete": false,
+     "missing": [
+      "cottage_cheese",
+      "sour_cream",
+      "butter",
+      "milk"
+     ]
+    },
+    "vit_e": {
+     "value": 65.41760666666666,
+     "complete": false,
+     "missing": [
+      "cottage_cheese",
+      "black_pepper",
+      "dill",
+      "sour_cream",
+      "cheese_hard"
+     ]
+    },
+    "vit_b6": {
+     "value": 4.205113666666667,
+     "complete": false,
+     "missing": [
+      "black_pepper"
+     ]
+    },
+    "vit_b12": {
+     "value": 14.048794,
+     "complete": true,
+     "missing": []
+    },
+    "folate": {
+     "value": 736.7545333333333,
+     "complete": false,
+     "missing": [
+      "black_pepper"
+     ]
+    }
+   },
+   "vitamins": [
+    {
+     "nutrient": "vit_a",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 1806.862,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_c",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 342.6241,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_d",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 7.685866666666666,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "butter",
+      "cottage_cheese",
+      "milk",
+      "sour_cream"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_e",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 65.41760666666666,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper",
+      "cheese_hard",
+      "cottage_cheese",
+      "dill",
+      "sour_cream"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b6",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 4.205113666666667,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "vit_b12",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 14.048794,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": true,
+     "missing_products": [],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    },
+    {
+     "nutrient": "folate",
+     "status": "no_target",
+     "daily_target": null,
+     "period_target": null,
+     "period_value": 736.7545333333333,
+     "coverage_pct": null,
+     "lower_bound_pct": null,
+     "data_complete": false,
+     "missing_products": [
+      "black_pepper"
+     ],
+     "message": "Целевая норма не выбрана.",
+     "set_status": null
+    }
+   ]
+  }
+ ],
+ "ops": []
+}

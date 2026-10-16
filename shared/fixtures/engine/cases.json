@@ -1,0 +1,1312 @@
+{
+ "format": "foodo-engine-cases",
+ "version": 1,
+ "cases": [
+  {
+   "id": "family-7d",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 7,
+    "seed": 42,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [],
+    "prices": null,
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     },
+     {
+      "id": "m2",
+      "name": "Борис",
+      "age": 36,
+      "sex": "male",
+      "height_cm": 182,
+      "weight_kg": 80,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": false,
+      "target_set": null,
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": [
+    {
+     "op": "replace",
+     "item_id": "FIRST_DINNER",
+     "recipe_id": null
+    },
+    {
+     "op": "set_portion",
+     "item_id": "FIRST_LUNCH",
+     "member_id": "m2",
+     "portion": 1.5
+    },
+    {
+     "op": "move",
+     "from": {
+      "date": "2026-10-19",
+      "slot": "lunch"
+     },
+     "to": {
+      "date": "2026-10-20",
+      "slot": "dinner"
+     }
+    },
+    {
+     "op": "pin",
+     "item_id": "FIRST_LUNCH",
+     "pinned": true
+    },
+    {
+     "op": "regenerate",
+     "seed": 7
+    }
+   ]
+  },
+  {
+   "id": "targets-balanced-vitamins",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 5,
+    "seed": 1234,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [],
+    "prices": null,
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "target",
+      "portion_factor": 1,
+      "kcal_target": 1700,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     },
+     {
+      "id": "m2",
+      "name": "Борис",
+      "age": 40,
+      "sex": "male",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "target",
+      "portion_factor": 1,
+      "kcal_target": 2600,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "beginner",
+     "diet_mode": "balanced",
+     "equipment": [
+      "stove",
+      "microwave"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [
+      1,
+      3
+     ],
+     "vitamins": {
+      "enabled": true,
+      "target_set": "demo-2026-10",
+      "demo": true
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": []
+  },
+  {
+   "id": "restrictions-split",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 4,
+    "seed": 99,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [],
+    "prices": null,
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [
+        "rice",
+        "pasta"
+       ],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     },
+     {
+      "id": "kid",
+      "name": "Миша",
+      "age": 8,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 0.5,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [
+        "beef"
+       ],
+       "categories": [],
+       "allergens": [
+        "eggs",
+        "milk"
+       ]
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": false,
+      "target_set": null,
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": [
+    {
+     "op": "split",
+     "item_id": "FIRST_SHARED",
+     "member_id": "kid",
+     "recipe_id": null
+    },
+    {
+     "op": "add",
+     "date": "2026-10-20",
+     "slot": "snack",
+     "recipe_id": "syrniki",
+     "member_ids": [
+      "kid"
+     ]
+    },
+    {
+     "op": "remove",
+     "item_id": "FIRST_LUNCH"
+    }
+   ]
+  },
+  {
+   "id": "batch-pantry-budget",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 6,
+    "seed": 5,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [
+     {
+      "id": "p1",
+      "product_id": "potato",
+      "qty": 300,
+      "unit": "g",
+      "location": "Кладовая",
+      "expires": null
+     },
+     {
+      "id": "p2",
+      "product_id": "eggs",
+      "qty": 4,
+      "unit": "pcs",
+      "location": "Холодильник",
+      "expires": "2026-10-21"
+     },
+     {
+      "id": "p3",
+      "product_id": "milk",
+      "qty": 500,
+      "unit": "ml",
+      "location": "Холодильник",
+      "expires": "2026-10-20"
+     },
+     {
+      "id": "p4",
+      "product_id": "onion",
+      "qty": 2,
+      "unit": "pcs",
+      "location": "Кладовая",
+      "expires": null
+     },
+     {
+      "id": "p5",
+      "product_id": "carrot",
+      "qty": 200,
+      "unit": "g",
+      "location": "Холодильник",
+      "expires": "2026-10-18"
+     }
+    ],
+    "prices": {
+     "store_id": "magnit",
+     "region": "Казань",
+     "entries": [
+      {
+       "product_id": "potato",
+       "price_kop": 4210,
+       "package_size": 1,
+       "package_unit": "kg",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "Росстат, средняя цена по региону",
+       "kind": "rosstat",
+       "loose": true
+      },
+      {
+       "product_id": "carrot",
+       "price_kop": 5490,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "onion",
+       "price_kop": 4990,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "eggs",
+       "price_kop": 11990,
+       "package_size": 10,
+       "package_unit": "pcs",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "milk",
+       "price_kop": 8990,
+       "package_size": 0.93,
+       "package_unit": "l",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "chicken_breast",
+       "price_kop": 39900,
+       "package_size": 500,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "chicken_breast",
+       "price_kop": 37900,
+       "package_size": 500,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-05",
+       "source": "чек",
+       "kind": "receipt"
+      },
+      {
+       "product_id": "buckwheat_dry",
+       "price_kop": 8990,
+       "package_size": 900,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "sunflower_oil",
+       "price_kop": 15990,
+       "package_size": 1,
+       "package_unit": "l",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "salt",
+       "price_kop": 2490,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      }
+     ]
+    },
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     },
+     {
+      "id": "m2",
+      "name": "Борис",
+      "age": 36,
+      "sex": "male",
+      "height_cm": 182,
+      "weight_kg": 80,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "batch",
+      "max_uses": 3,
+      "min_gap_days": 1,
+      "cook_days": [
+       1,
+       4
+      ],
+      "batch_days": 3,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": false,
+      "target_set": null,
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": 500000,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "shopping_state": {
+    "manual_lines": [
+     {
+      "id": "manual:1",
+      "name": "Салфетки",
+      "qty": 1,
+      "unit": "pcs",
+      "department": "Другое",
+      "price_kop": 15000
+     }
+    ],
+    "marks": {
+     "auto:salt:g": {
+      "at_home": true
+     }
+    },
+    "seen": {}
+   },
+   "ops": []
+  },
+  {
+   "id": "allow-21d-budget-unconfirmed",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 21,
+    "seed": 2026,
+    "slots": [
+     "lunch",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [],
+    "prices": {
+     "store_id": "magnit",
+     "region": "Казань",
+     "entries": [
+      {
+       "product_id": "potato",
+       "price_kop": 6990,
+       "package_size": 2,
+       "package_unit": "kg",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "carrot",
+       "price_kop": 5490,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "onion",
+       "price_kop": 4990,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "eggs",
+       "price_kop": 11990,
+       "package_size": 10,
+       "package_unit": "pcs",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "milk",
+       "price_kop": 8990,
+       "package_size": 0.93,
+       "package_unit": "l",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "chicken_breast",
+       "price_kop": 39900,
+       "package_size": 500,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "chicken_breast",
+       "price_kop": 37900,
+       "package_size": 500,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-05",
+       "source": "чек"
+      },
+      {
+       "product_id": "buckwheat_dry",
+       "price_kop": 8990,
+       "package_size": 900,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "sunflower_oil",
+       "price_kop": 15990,
+       "package_size": 1,
+       "package_unit": "l",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "salt",
+       "price_kop": 2490,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      }
+     ]
+    },
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": 60,
+     "repeat": {
+      "mode": "allow",
+      "max_uses": 3,
+      "min_gap_days": 3,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": false,
+      "target_set": null,
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": 1000,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": []
+  },
+  {
+   "id": "unique-35d",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 35,
+    "seed": 3,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [],
+    "prices": null,
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": true,
+      "target_set": "mr-2.3.1.0253-21-adults",
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": []
+  },
+  {
+   "id": "unique-35d-strict",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 35,
+    "seed": 11,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [],
+    "prices": null,
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [
+        "meat",
+        "fish_seafood",
+        "dairy",
+        "grains"
+       ],
+       "allergens": [
+        "eggs"
+       ]
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "beginner",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": true,
+      "target_set": "mr-2.3.1.0253-21-adults",
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": []
+  },
+  {
+   "id": "pins-conflict",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 3,
+    "seed": 11,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "pins": [
+     {
+      "date": "2026-10-19",
+      "slot": "lunch",
+      "recipe_id": "borshch-s-govyadinoy",
+      "method_id": "stove",
+      "portions": {
+       "m1": 1,
+       "m2": 1.5
+      }
+     },
+     {
+      "date": "2026-10-20",
+      "slot": "lunch",
+      "recipe_id": "borshch-s-govyadinoy",
+      "method_id": "stove",
+      "portions": {
+       "m1": 1
+      }
+     },
+     {
+      "date": "2026-10-21",
+      "slot": "dinner",
+      "recipe_id": "plov-s-govyadinoy",
+      "method_id": "stove",
+      "portions": {
+       "m1": 1,
+       "m2": 1
+      }
+     }
+    ],
+    "pantry": [],
+    "prices": null,
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     },
+     {
+      "id": "m2",
+      "name": "Борис",
+      "age": 36,
+      "sex": "male",
+      "height_cm": 182,
+      "weight_kg": 80,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": false,
+      "target_set": null,
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": [
+    {
+     "op": "replace",
+     "item_id": "FIRST_DINNER",
+     "recipe_id": "losos-s-brokkoli"
+    },
+    {
+     "op": "replace",
+     "item_id": "FIRST_DINNER",
+     "recipe_id": "pirog-s-kapustoy"
+    }
+   ]
+  },
+  {
+   "id": "budget-exceeded-pinned",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 1,
+    "seed": 42,
+    "slots": [
+     "lunch"
+    ],
+    "pins": [
+     {
+      "date": "2026-10-19",
+      "slot": "lunch",
+      "recipe_id": "kuritsa-s-grechkoy",
+      "method_id": "stove",
+      "portions": {
+       "m1": 2
+      }
+     }
+    ],
+    "pantry": [],
+    "prices": {
+     "store_id": "magnit",
+     "region": "Казань",
+     "entries": [
+      {
+       "product_id": "potato",
+       "price_kop": 6990,
+       "package_size": 2,
+       "package_unit": "kg",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "carrot",
+       "price_kop": 5490,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "onion",
+       "price_kop": 4990,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "eggs",
+       "price_kop": 11990,
+       "package_size": 10,
+       "package_unit": "pcs",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "milk",
+       "price_kop": 8990,
+       "package_size": 0.93,
+       "package_unit": "l",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "chicken_breast",
+       "price_kop": 39900,
+       "package_size": 500,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "chicken_breast",
+       "price_kop": 37900,
+       "package_size": 500,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-05",
+       "source": "чек"
+      },
+      {
+       "product_id": "buckwheat_dry",
+       "price_kop": 8990,
+       "package_size": 900,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "sunflower_oil",
+       "price_kop": 15990,
+       "package_size": 1,
+       "package_unit": "l",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      },
+      {
+       "product_id": "salt",
+       "price_kop": 2490,
+       "package_size": 1000,
+       "package_unit": "g",
+       "currency": "RUB",
+       "date": "2026-10-01",
+       "source": "вручную"
+      }
+     ]
+    },
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null
+     }
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "regular",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": null,
+     "repeat": {
+      "mode": "unique",
+      "max_uses": 2,
+      "min_gap_days": 2,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": false,
+      "target_set": null,
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": 10000,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2
+    }
+   },
+   "ops": []
+  }
+ ]
+}

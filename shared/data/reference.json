@@ -1,0 +1,180 @@
+{
+  "format": "foodo-reference",
+  "version": 1,
+  "sources": [
+    {
+      "id": "foodo-estimate-2026-10",
+      "name": "Оценочные стартовые значения Foodo",
+      "verified": false,
+      "date": "2026-10-16",
+      "basis": "на 100 г съедобной части продукта в указанном состоянии",
+      "note": "Значения внесены разработчиком как ориентир без доступа к первоисточнику. Перед использованием в реальном сервисе замените их импортом проверенного справочника (см. docs/NUTRIENTS.md)."
+    },
+    {
+      "id": "foodo-recipes-2026-10",
+      "name": "Собственные рецепты Foodo",
+      "verified": false,
+      "date": "2026-10-16",
+      "basis": "состав и шаги написаны для Foodo; выход готового блюда оценочный",
+      "note": "Рецепты созданы для стартовой базы и не скопированы из сторонних каталогов."
+    }
+  ],
+  "nutrients": [
+    {"id": "kcal", "name": "Энергия", "unit": "ккал", "form": "kcal", "kind": "energy"},
+    {"id": "protein", "name": "Белки", "unit": "г", "form": "g", "kind": "macro"},
+    {"id": "fat", "name": "Жиры", "unit": "г", "form": "g", "kind": "macro"},
+    {"id": "carbs", "name": "Углеводы", "unit": "г", "form": "g_total_by_difference", "kind": "macro", "note": "Углеводы общие (по разности), клетчатка входит в это значение и показана отдельно."},
+    {"id": "fiber", "name": "Пищевые волокна", "unit": "г", "form": "g", "kind": "fiber"},
+    {"id": "vit_a", "name": "Витамин A", "unit": "мкг", "form": "ug_rae", "form_name": "мкг ретинол-активного эквивалента (RAE)", "kind": "vitamin"},
+    {"id": "vit_c", "name": "Витамин C", "unit": "мг", "form": "mg", "form_name": "мг аскорбиновой кислоты", "kind": "vitamin"},
+    {"id": "vit_d", "name": "Витамин D", "unit": "мкг", "form": "ug", "form_name": "мкг (D2 + D3)", "kind": "vitamin"},
+    {"id": "vit_e", "name": "Витамин E", "unit": "мг", "form": "mg_alpha_tocopherol", "form_name": "мг альфа-токоферола", "kind": "vitamin"},
+    {"id": "vit_b6", "name": "Витамин B6", "unit": "мг", "form": "mg", "form_name": "мг пиридоксина", "kind": "vitamin"},
+    {"id": "vit_b12", "name": "Витамин B12", "unit": "мкг", "form": "ug", "form_name": "мкг кобаламина", "kind": "vitamin"},
+    {"id": "folate", "name": "Фолаты", "unit": "мкг", "form": "ug_food_folate", "form_name": "мкг пищевых фолатов", "kind": "vitamin"}
+  ],
+  "allergens": [
+    {"id": "gluten", "name": "Глютен (злаки)"},
+    {"id": "milk", "name": "Молоко и лактоза"},
+    {"id": "eggs", "name": "Яйца"},
+    {"id": "fish", "name": "Рыба"},
+    {"id": "crustaceans", "name": "Ракообразные"},
+    {"id": "molluscs", "name": "Моллюски"},
+    {"id": "peanuts", "name": "Арахис"},
+    {"id": "tree_nuts", "name": "Орехи"},
+    {"id": "soy", "name": "Соя"},
+    {"id": "sesame", "name": "Кунжут"},
+    {"id": "celery", "name": "Сельдерей"},
+    {"id": "mustard", "name": "Горчица"},
+    {"id": "sulphites", "name": "Сульфиты"},
+    {"id": "lupin", "name": "Люпин"}
+  ],
+  "categories": [
+    {"id": "grains", "name": "Крупы и мука", "parent": null},
+    {"id": "rice", "name": "Рис", "parent": "grains"},
+    {"id": "pasta", "name": "Макароны и лапша", "parent": "grains"},
+    {"id": "buckwheat", "name": "Гречка", "parent": "grains"},
+    {"id": "cereals", "name": "Другие крупы и хлопья", "parent": "grains"},
+    {"id": "flour", "name": "Мука", "parent": "grains"},
+    {"id": "bread", "name": "Хлеб и выпечка", "parent": "grains"},
+    {"id": "vegetables", "name": "Овощи и зелень", "parent": null},
+    {"id": "potatoes", "name": "Картофель", "parent": "vegetables"},
+    {"id": "mushrooms", "name": "Грибы", "parent": null},
+    {"id": "fruits", "name": "Фрукты и ягоды", "parent": null},
+    {"id": "legumes", "name": "Бобовые", "parent": null},
+    {"id": "nuts_seeds", "name": "Орехи и семена", "parent": null},
+    {"id": "dairy", "name": "Молочные продукты", "parent": null},
+    {"id": "cheese", "name": "Сыр", "parent": "dairy"},
+    {"id": "eggs", "name": "Яйца", "parent": null},
+    {"id": "meat", "name": "Мясо и птица", "parent": null},
+    {"id": "beef", "name": "Говядина", "parent": "meat"},
+    {"id": "poultry", "name": "Птица", "parent": "meat"},
+    {"id": "fish_seafood", "name": "Рыба и морепродукты", "parent": null},
+    {"id": "fish", "name": "Рыба", "parent": "fish_seafood"},
+    {"id": "oils_fats", "name": "Масла и жиры", "parent": null},
+    {"id": "sweets", "name": "Сахар и сладкое", "parent": null},
+    {"id": "condiments", "name": "Соусы и приправы", "parent": null},
+    {"id": "spices", "name": "Специи", "parent": "condiments"},
+    {"id": "beverages", "name": "Напитки и вода", "parent": null},
+    {"id": "pork", "name": "Свинина", "parent": "meat"},
+    {"id": "lamb", "name": "Баранина", "parent": "meat"},
+    {"id": "offal", "name": "Субпродукты", "parent": "meat"},
+    {"id": "processed_meat", "name": "Колбасы и сосиски", "parent": "meat"},
+    {"id": "seafood", "name": "Морепродукты", "parent": "fish_seafood"}
+  ],
+  "departments": [
+    "Овощи и фрукты",
+    "Молочные продукты и яйца",
+    "Мясо и птица",
+    "Рыба",
+    "Бакалея",
+    "Хлеб",
+    "Консервы и соусы",
+    "Масла и специи",
+    "Заморозка",
+    "Другое"
+  ],
+  "equipment": [
+    {"id": "stove", "name": "Плита"},
+    {"id": "oven", "name": "Духовка"},
+    {"id": "microwave", "name": "Микроволновка"},
+    {"id": "multicooker", "name": "Мультиварка"},
+    {"id": "blender", "name": "Блендер"},
+    {"id": "airfryer", "name": "Аэрогриль"}
+  ],
+  "skill_levels": [
+    {"id": "beginner", "rank": 1, "name": "Начинающий"},
+    {"id": "confident", "rank": 2, "name": "Уверенно готовлю"},
+    {"id": "any", "rank": 3, "name": "Любой уровень"}
+  ],
+  "techniques": [
+    {"id": "no_cook", "name": "Без готовки", "rank": 1},
+    {"id": "knife_basic", "name": "Простая нарезка", "rank": 1},
+    {"id": "mix", "name": "Смешивание", "rank": 1},
+    {"id": "boil", "name": "Варка", "rank": 1},
+    {"id": "simmer", "name": "Тушение", "rank": 1},
+    {"id": "fry_simple", "name": "Обжаривание", "rank": 1},
+    {"id": "bake_simple", "name": "Простое запекание", "rank": 1},
+    {"id": "microwave", "name": "Готовка в микроволновке", "rank": 1},
+    {"id": "blend", "name": "Измельчение блендером", "rank": 1},
+    {"id": "multicooker", "name": "Готовка в мультиварке", "rank": 1},
+    {"id": "batter", "name": "Жидкое тесто, оладьи", "rank": 2},
+    {"id": "forming", "name": "Формовка котлет и тефтелей", "rank": 2},
+    {"id": "sauce_emulsion", "name": "Соус-эмульсия", "rank": 2},
+    {"id": "yeast_dough", "name": "Дрожжевое тесто", "rank": 3},
+    {"id": "dough_rolling", "name": "Пресное тесто: раскатка и лепка", "rank": 3}
+  ],
+  "diet_modes": [
+    {"id": "regular", "name": "Обычное"},
+    {"id": "balanced", "name": "Сбалансированное (ПП)"}
+  ],
+  "diet_tags": [
+    {"id": "whole_grain", "name": "Цельнозерновые крупы"},
+    {"id": "vegetable_rich", "name": "Много овощей"},
+    {"id": "lean_protein", "name": "Нежирный белок"},
+    {"id": "legumes", "name": "Бобовые"},
+    {"id": "fish", "name": "Рыба"},
+    {"id": "fried", "name": "Жарка в масле"},
+    {"id": "refined_sugar", "name": "Добавленный сахар"},
+    {"id": "white_flour", "name": "Белая мука"},
+    {"id": "creamy", "name": "Жирный сливочный соус или майонез"}
+  ],
+  "diet_rules": {
+    "version": "foodo-pp-2026-10",
+    "balanced": {
+      "whole_grain": 1.0,
+      "vegetable_rich": 1.0,
+      "lean_protein": 0.8,
+      "legumes": 0.6,
+      "fish": 0.6,
+      "fried": -1.2,
+      "refined_sugar": -1.2,
+      "white_flour": -0.6,
+      "creamy": -0.8
+    },
+    "regular": {}
+  },
+  "meal_slots": [
+    {"id": "breakfast", "name": "Завтрак", "energy_share": 0.25},
+    {"id": "lunch", "name": "Обед", "energy_share": 0.35},
+    {"id": "snack", "name": "Перекус", "energy_share": 0.1},
+    {"id": "dinner", "name": "Ужин", "energy_share": 0.3}
+  ],
+  "recipe_categories": [
+    {"id": "breakfast", "name": "Завтраки"},
+    {"id": "soup", "name": "Супы"},
+    {"id": "main", "name": "Вторые блюда"},
+    {"id": "salad", "name": "Салаты"},
+    {"id": "snack", "name": "Перекусы"}
+  ],
+  "stores": [
+    {"id": "none", "name": "Без привязки к магазину"},
+    {"id": "pyaterochka", "name": "Пятёрочка"},
+    {"id": "magnit", "name": "Магнит"},
+    {"id": "perekrestok", "name": "Перекрёсток"},
+    {"id": "lenta", "name": "Лента"},
+    {"id": "vkusvill", "name": "ВкусВилл"},
+    {"id": "auchan", "name": "Ашан"},
+    {"id": "other", "name": "Другой магазин или рынок"}
+  ]
+}
