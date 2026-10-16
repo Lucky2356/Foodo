@@ -68,7 +68,10 @@ def main() -> None:
     seen: set[str] = set()
     with SRC.open(encoding="utf-8") as fh:
         for row in csv.DictReader(fh):
-            name = row["city"] or row["settlement"] or row["region"]
+            # Some cities are stored as an urban okrug: «г Клин» sits in area/area_type with an
+            # empty city column. Only Moscow, St Petersburg and Sevastopol fall back to the region.
+            town = row["area"] if row["area_type"] == "г" else ""
+            name = row["city"] or town or row["settlement"] or row["region"]
             kladr = row["kladr_id"]
             if not kladr or kladr in seen or not row["geo_lat"]:
                 continue

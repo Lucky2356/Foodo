@@ -199,7 +199,8 @@ def test_seed_imports_collected_prices_once(tmp_path) -> None:
         "package_size": 1,
         "package_unit": "kg",
         "loose": True,
-        "observed_on": "2026-09-30",
+        # A date no published Rosstat file has: the seed may also carry real prices for the region.
+        "observed_on": "2000-01-31",
     }
     (seed / "prices" / "rosstat.json").write_text(json.dumps({"kind": "rosstat", "observations": [observation]}, ensure_ascii=False), encoding="utf-8")
     (seed / "prices" / "status.json").write_text("{}", encoding="utf-8")
@@ -207,7 +208,7 @@ def test_seed_imports_collected_prices_once(tmp_path) -> None:
     call_command("load_seed", "--seed-dir", str(seed), verbosity=0)
     call_command("load_seed", "--seed-dir", str(seed), verbosity=0)
     assert PriceObservation.objects.count() == before + 1
-    assert PriceObservation.objects.get(kind="rosstat", region=region, product_id="potato").price_kop == 4550
+    assert PriceObservation.objects.get(kind="rosstat", region=region, product_id="potato", observed_on="2000-01-31").price_kop == 4550
 
 
 def test_import_accepts_only_https_or_self_hosted_photo_urls() -> None:

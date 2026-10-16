@@ -57,7 +57,9 @@ def test_public_prices_priority_and_idempotent_import() -> None:
 
 def test_rosstat_city_average_beats_the_regional_one() -> None:
     city = kazan()
-    other = City.objects.filter(region=city.region).exclude(pk=city.pk).first()
+    # A town of the same region without its own Rosstat average (the seed may carry real ones).
+    with_city_prices = PriceObservation.objects.filter(kind="rosstat", product_id="potato", city__isnull=False).values("city_id")
+    other = City.objects.filter(region=city.region).exclude(pk=city.pk).exclude(pk__in=with_city_prices).first()
     assert other is not None
     today = date.today().isoformat()
     rows = [

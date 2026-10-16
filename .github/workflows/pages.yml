@@ -44,6 +44,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-24.04
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write
       id-token: write
@@ -53,3 +55,46 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  # A successful build is not a working site: check the deployed URL itself over HTTPS and run
+  # the main guest path and the offline PWA check against it.
+  verify:
+    name: Live site — HTTPS, assets, guest path, offline
+    needs: deploy
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: main
+      - name: HTTPS and key assets
+        env:
+          SITE: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          case "$SITE" in https://*/) ;; *) echo "::error::Unexpected Pages URL: $SITE"; exit 1;; esac
+          # The CDN may serve the previous build for a short while after deploy.
+          for i in $(seq 1 24); do curl -sfI "$SITE" >/dev/null && break; sleep 5; done
+          for path in "" manifest.webmanifest sw.js offline.html photos/borshch-s-govyadinoy.webp; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$SITE$path")
+            echo "$code $SITE$path"
+            [ "$code" = 200 ] || { echo "::error::$SITE$path returned $code"; exit 1; }
+          done
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Guest path and offline mode on the live site
+        working-directory: frontend
+        env:
+          E2E_BASE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          npx playwright test -g "family → menu → shopping|works offline"
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-live-site-report
+          path: frontend/playwright-report
+          retention-days: 7
