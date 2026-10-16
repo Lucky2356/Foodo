@@ -32,8 +32,13 @@ def main() -> int:
     for url in ["https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt", "http://nuc-cdp.digital.gov.ru/cdp/subca_ssl_rsa2024.crt"]:
         _, pem = fetch(url)
         ctx.load_verify_locations(cadata=pem)
-    status, data = fetch("https://rosstat.gov.ru/storage/mediabank/sred_potreb_cen_2026.xlsx", ctx, binary=True)
-    print("2026 file:", status, len(data))
+    _, page = fetch("https://rosstat.gov.ru/statistics/price", ctx)
+    links = sorted(set(re.findall(r'href="(/storage/mediabank/[^"]*potreb[^"]*\.xlsx)"', page, re.I)))
+    print("CONSUMER PRICE LINKS:", links)
+    yearly = sorted((int(m.group(1)), l) for l in links if (m := re.search(r"sred_potreb_cen_(\d{4})", l)))
+    url = "https://rosstat.gov.ru" + yearly[-1][1]
+    status, data = fetch(url, ctx, binary=True)
+    print("latest file:", url, status, len(data))
     wb = openpyxl.load_workbook(io.BytesIO(data), read_only=True, data_only=True)
     sheets = [ws.title for ws in wb.worksheets]
     print("SHEETS:", sheets)
