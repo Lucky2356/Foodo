@@ -29,9 +29,9 @@ GitHub Actions не является хостингом Django и PostgreSQL: д
 
 ```sh
 mkdir -p /opt/foodo && cd /opt/foodo
-# из релиза: docker-compose.prod.yml, .env.example и каталог deploy/ (Caddyfile)
+# из релиза — docker-compose.prod.yml; из исходников того же тега — пример .env и Caddyfile
 curl -LO https://github.com/Lucky2356/Foodo/releases/download/v0.1.0/docker-compose.prod.yml
-curl -L  https://github.com/Lucky2356/Foodo/releases/download/v0.1.0/.env.example -o .env
+curl -L  https://raw.githubusercontent.com/Lucky2356/Foodo/v0.1.0/.env.example -o .env
 mkdir -p deploy && curl -L https://raw.githubusercontent.com/Lucky2356/Foodo/v0.1.0/deploy/Caddyfile -o deploy/Caddyfile
 nano .env          # домен, секреты, пароль БД, SMTP
 docker compose -f docker-compose.prod.yml pull
