@@ -1,0 +1,52 @@
+name: Android signing key
+
+# One-time setup: generates the APK signing key inside GitHub Actions and stores it as
+# repository secrets, so the key never exists outside GitHub (docs/ANDROID.md).
+# Needs the SIGNING_SETUP_TOKEN secret: a fine-grained token for this repository with
+# «Secrets: Read and write». Refuses to replace an existing key — installed apps accept
+# updates only when they are signed with the same key.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-signing-key
+  cancel-in-progress: false
+
+jobs:
+  create:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Generate the key and store it as repository secrets
+        env:
+          GH_TOKEN: ${{ secrets.SIGNING_SETUP_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          umask 077
+          if [ -z "$GH_TOKEN" ]; then echo "::error::Add the SIGNING_SETUP_TOKEN secret first (docs/ANDROID.md)."; exit 1; fi
+          if gh secret list --repo "$REPO" --json name -q '.[].name' | grep -qx ANDROID_KEYSTORE_BASE64; then
+            echo "::error::ANDROID_KEYSTORE_BASE64 already exists. Replacing it would stop installed apps from updating."
+            exit 1
+          fi
+          work="$(mktemp -d)"
+          trap 'rm -rf "$work"' EXIT
+          pass="$(openssl rand -hex 32)"
+          echo "::add-mask::$pass"
+          # PKCS12 uses one password for the store and the key. 30 years: the key outlives the app.
+          keytool -genkeypair -noprompt -storetype PKCS12 -keystore "$work/foodo.p12" -alias foodo \
+            -keyalg RSA -keysize 4096 -validity 10950 -storepass "$pass" -keypass "$pass" \
+            -dname "CN=Foodo, O=Lucky2356"
+          # Values go through stdin, never through command-line arguments or the log.
+          base64 -w0 "$work/foodo.p12" | gh secret set ANDROID_KEYSTORE_BASE64 --repo "$REPO"
+          printf '%s' "$pass" | gh secret set ANDROID_KEYSTORE_PASSWORD --repo "$REPO"
+          printf '%s' foodo | gh secret set ANDROID_KEY_ALIAS --repo "$REPO"
+          fingerprint="$(keytool -list -v -keystore "$work/foodo.p12" -storepass "$pass" -alias foodo | awk -F': ' '/SHA256:/ {print $2; exit}')"
+          {
+            echo "### Ключ подписи APK создан"
+            echo "Сохранён в секретах ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS."
+            echo "Отпечаток сертификата (публичный): \`$fingerprint\`"
+            echo "Токен SIGNING_SETUP_TOKEN больше не нужен: его можно удалить из секретов и в настройках GitHub."
+          } >> "$GITHUB_STEP_SUMMARY"
