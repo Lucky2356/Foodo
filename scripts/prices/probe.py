@@ -1,4 +1,4 @@
-"""Reachability probe for price sources, run from GitHub Actions runners (round 3: page structure)."""
+"""Reachability probe for price sources, run from GitHub Actions runners (round 4)."""
 
 from __future__ import annotations
 
@@ -22,38 +22,34 @@ def fetch(url: str) -> tuple[int, str]:
         return -1, f"{type(e).__name__}: {e}"
 
 
-def ld_blocks(html: str) -> list[str]:
-    return re.findall(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', html, re.S)
-
-
-def show(url: str, link_re: str) -> list[str]:
-    status, html = fetch(url)
-    print(f"\n=== {url} -> {status}, {len(html)} chars")
-    for i, b in enumerate(ld_blocks(html)[:4]):
-        print(f"--- ld+json #{i}: {b.strip()[:1800]}")
-    links = sorted(set(re.findall(link_re, html)))
-    print(f"--- {len(links)} links: {links[:80]}")
-    return links
+def offers(html: str) -> list[dict]:
+    out = []
+    for block in re.findall(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', html, re.S):
+        try:
+            data = json.loads(block)
+        except ValueError:
+            continue
+        if isinstance(data, dict) and data.get("@type") == "OfferCatalog":
+            out += data.get("itemListElement", [])
+    return out
 
 
 def main() -> int:
-    vv = show("https://vkusvill.ru/goods/ovoshchi-frukty-yagody-zelen/", r'href="(/goods/[a-z0-9\-/]+)"')
-    products = [l for l in vv if l.endswith(".html")]
-    if products:
-        show("https://vkusvill.ru" + products[0], r'href="(/goods/[a-z0-9\-/]+)"')
-    status, html = fetch("https://vkusvill.ru/goods/ovoshchi-frukty-yagody-zelen/")
-    for m in list(re.finditer(r'(ProductCard__weight|weight|Вес|кг|/шт)', html))[:5]:
-        print("VV context:", html[max(0, m.start() - 200): m.start() + 200].replace("\n", " "))
-
-    mg = show("https://magnit.ru/catalog/", r'href="(/catalog/[^"?#]+)"')
+    status, robots = fetch("https://magnit.ru/robots.txt")
+    print("MAGNIT ROBOTS FULL:\n", robots[:6000])
     status, html = fetch("https://magnit.ru/catalog/")
-    for key in ["storeCode", "storeId", "cityName", "city", "shopCode", "Москва", "region"]:
-        i = html.find(key)
-        if i >= 0:
-            print(f"MG [{key}]:", html[max(0, i - 150): i + 250].replace("\n", " "))
-    cats = [l for l in mg if re.match(r"/catalog/\d+", l)]
-    if cats:
-        show("https://magnit.ru" + cats[0], r'href="(/product/[^"?#]+)"')
+    links = sorted(set(re.findall(r'href="(https://magnit\.ru/catalog/[^"?#]+)"', html)))
+    print(f"MAGNIT catalog links ({len(links)}):", links[:120])
+    for url in [l for l in links if re.search(r"/catalog/\d+", l)][:3]:
+        status, page = fetch(url)
+        items = offers(page)
+        print(f"\nCATEGORY {url} -> {status}, {len(items)} offers")
+        for o in items[:15]:
+            print("   ", o.get("name"), "|", o.get("price"))
+        sub = sorted(set(re.findall(r'href="(https://magnit\.ru/catalog/[^"?#]+)"', page)))
+        print("   sublinks:", sub[:40])
+    status, vv = fetch("https://vkusvill.ru/goods/ovoshchi-frukty-yagody-zelen/")
+    print(f"\nVKUSVILL -> {status}, {len(vv)} chars:", re.sub(r"\s+", " ", vv[:800]))
     return 0
 
 
