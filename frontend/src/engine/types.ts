@@ -220,6 +220,14 @@ export interface PlanSettings {
   portion_max: number;
 }
 
+/**
+ * Where a price comes from. `manual` and `receipt` are the user's own prices; `community` is the
+ * median of prices shared by Foodo users for a chain in a city; `scraped` was collected from a
+ * chain's public website; `rosstat` is an official regional average (not a store price) and is
+ * therefore treated as an estimate.
+ */
+export type PriceKind = 'manual' | 'receipt' | 'community' | 'scraped' | 'rosstat';
+
 export interface PriceEntry {
   product_id: string;
   price_kop: number;
@@ -228,11 +236,17 @@ export interface PriceEntry {
   currency: string;
   date: string;
   source: string;
+  kind?: PriceKind;
+  /** Sold by weight/volume: checkout cost follows the exact quantity, no package rounding. */
+  loose?: boolean;
   available?: boolean | null;
 }
 
+export const ESTIMATED_PRICE_KINDS: readonly PriceKind[] = ['rosstat'];
+
 export interface PriceProfile {
   store_id: string;
+  city_id?: string | null;
   region: string | null;
   entries: PriceEntry[];
 }

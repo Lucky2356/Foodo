@@ -1,4 +1,5 @@
 import { cleanQty, compareStr, roundKop } from './basics';
+import { ESTIMATED_PRICE_KINDS } from './types';
 import type {
   BudgetStatus,
   Catalog,
@@ -67,6 +68,8 @@ export interface ShoppingLine {
   price_kop: number | null;
   price_date: string | null;
   price_source: string | null;
+  price_kind: string | null;
+  estimated: boolean;
   purchase_cost_kop: number | null;
   usage_cost_kop: number | null;
   sources: LineSource[];
@@ -93,8 +96,8 @@ export interface ExpiredSkip {
 export interface ShoppingList {
   lines: ShoppingLine[];
   manual_lines: (ManualLine & { purchased: boolean; at_home: boolean })[];
-  totals: { purchase_kop: number; usage_kop: number; complete: boolean; missing_prices: string[] };
-  budget: { limit_kop: number | null; purchase_kop: number; diff_kop: number | null; status: BudgetStatus };
+  totals: { purchase_kop: number; usage_kop: number; complete: boolean; estimated: boolean; missing_prices: string[] };
+  budget: { limit_kop: number | null; purchase_kop: number; diff_kop: number | null; status: BudgetStatus; estimated: boolean };
   allocations: PantryAllocation[];
   expired_skipped: ExpiredSkip[];
 }
@@ -259,6 +262,8 @@ export function computeShopping(
         price_kop: null,
         price_date: null,
         price_source: null,
+        price_kind: null,
+        estimated: false,
         purchase_cost_kop: null,
         usage_cost_kop: null,
         sources: [],
@@ -276,6 +281,7 @@ export function computeShopping(
   });
 
   const missing: string[] = [];
+  let estimated = false;
   let purchaseKop = 0;
   let usageKop = 0;
   const lines: ShoppingLine[] = [];
@@ -298,13 +304,16 @@ export function computeShopping(
     if (line.convertible && pkg) {
       const sizeBase = toBase(product, pkg.size, pkg.unit);
       if (sizeBase !== null && sizeBase > 0) {
+        const loose = Boolean(entry?.loose);
         const count = effective > 0 ? Math.ceil(effective / sizeBase - 1e-9) : 0;
-        line.package = { size: pkg.size, unit: pkg.unit, count };
+        line.package = loose ? null : { size: pkg.size, unit: pkg.unit, count };
         if (entry) {
           line.price_kop = entry.price_kop;
           line.price_date = entry.date;
           line.price_source = entry.source;
-          line.purchase_cost_kop = count * entry.price_kop;
+          line.price_kind = entry.kind ?? 'manual';
+          line.estimated = ESTIMATED_PRICE_KINDS.includes(entry.kind ?? 'manual');
+          line.purchase_cost_kop = loose ? roundKop((effective * entry.price_kop) / sizeBase) : count * entry.price_kop;
           line.usage_cost_kop = roundKop((line.needed * entry.price_kop) / sizeBase);
         }
       } else {
@@ -314,6 +323,7 @@ export function computeShopping(
       line.package_note = 'Количество не переведено: для продукта нет нужного коэффициента';
     }
     if (line.purchase_cost_kop !== null) purchaseKop += line.purchase_cost_kop;
+    if (line.estimated && effective > 0) estimated = true;
     if (line.usage_cost_kop !== null) usageKop += line.usage_cost_kop;
     if (effective > 0 && line.purchase_cost_kop === null) missing.push(line.id);
     lines.push(line);
@@ -345,8 +355,8 @@ export function computeShopping(
   return {
     lines,
     manual_lines: manual,
-    totals: { purchase_kop: purchaseKop, usage_kop: usageKop, complete: missing.length === 0, missing_prices: missing },
-    budget: { limit_kop: limit, purchase_kop: purchaseKop, diff_kop: limit === null ? null : limit - purchaseKop, status },
+    totals: { purchase_kop: purchaseKop, usage_kop: usageKop, complete: missing.length === 0, estimated, missing_prices: missing },
+    budget: { limit_kop: limit, purchase_kop: purchaseKop, diff_kop: limit === null ? null : limit - purchaseKop, status, estimated },
     allocations,
     expired_skipped: expired,
   };

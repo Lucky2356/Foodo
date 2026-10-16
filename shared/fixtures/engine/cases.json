@@ -436,12 +436,14 @@
      "entries": [
       {
        "product_id": "potato",
-       "price_kop": 6990,
-       "package_size": 2,
+       "price_kop": 4210,
+       "package_size": 1,
        "package_unit": "kg",
        "currency": "RUB",
        "date": "2026-10-01",
-       "source": "вручную"
+       "source": "Росстат, средняя цена по региону",
+       "kind": "rosstat",
+       "loose": true
       },
       {
        "product_id": "carrot",
@@ -495,7 +497,8 @@
        "package_unit": "g",
        "currency": "RUB",
        "date": "2026-10-05",
-       "source": "чек"
+       "source": "чек",
+       "kind": "receipt"
       },
       {
        "product_id": "buckwheat_dry",

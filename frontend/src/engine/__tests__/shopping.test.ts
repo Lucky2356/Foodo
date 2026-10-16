@@ -159,3 +159,40 @@ describe('pantry and shopping', () => {
     expect(oil.convertible).toBe(true);
   });
 });
+
+describe('price sources', () => {
+  it('loose regional averages are costed by exact weight and marked as an estimate', () => {
+    const cat = potatoCatalog();
+    const menu = menuWith(cat, ['stew']);
+    const prices: PriceProfile = {
+      store_id: 'none',
+      city_id: 'kazan',
+      region: 'Татарстан',
+      entries: [{ product_id: 'potato', price_kop: 4500, package_size: 1, package_unit: 'kg', currency: 'RUB', date: '2026-09-30', source: 'Росстат', kind: 'rosstat', loose: true }],
+    };
+    const list = computeShopping({ ...menu, settings: { ...menu.settings, budget: { limit_kop: 5000, currency: 'RUB' } } }, cat, [], prices, emptyShoppingState());
+    const line = list.lines[0]!;
+    expect(line.package).toBeNull();
+    expect(line.purchase_cost_kop).toBe(1800);
+    expect(line.estimated).toBe(true);
+    expect(list.budget.status).toBe('ok');
+    expect(list.budget.estimated).toBe(true);
+  });
+
+  it('the user’s own newer receipt wins over an older price', () => {
+    const cat = potatoCatalog();
+    const menu = menuWith(cat, ['stew']);
+    const prices: PriceProfile = {
+      store_id: 'magnit',
+      region: null,
+      entries: [
+        { product_id: 'potato', price_kop: 4500, package_size: 1, package_unit: 'kg', currency: 'RUB', date: '2026-09-30', source: 'Росстат', kind: 'rosstat', loose: true },
+        { product_id: 'potato', price_kop: 7990, package_size: 2, package_unit: 'kg', currency: 'RUB', date: '2026-10-12', source: 'чек', kind: 'receipt' },
+      ],
+    };
+    const line = computeShopping(menu, cat, [], prices, emptyShoppingState()).lines[0]!;
+    expect(line.price_kind).toBe('receipt');
+    expect(line.estimated).toBe(false);
+    expect(line.purchase_cost_kop).toBe(7990);
+  });
+});
