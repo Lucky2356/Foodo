@@ -125,3 +125,43 @@ test.describe('guest mode (static site, no server)', () => {
     expect(backup.some((b) => ['syrniki', 'kotlety-iz-indeyki', 'pirog-s-kapustoy', 'lenivye-golubtsy'].includes(b.recipe_id))).toBe(false);
   });
 });
+
+test('published Rosstat prices for the chosen city appear as estimates (prices)', async ({ page }) => {
+  const entry = (product_id: string, price_kop: number) => ({
+    product_id,
+    price_kop,
+    package_size: 1,
+    package_unit: 'kg',
+    currency: 'RUB',
+    date: '2026-09-30',
+    source: 'Росстат, средние потребительские цены, 09.2026',
+    kind: 'rosstat',
+    loose: true,
+  });
+  const requested: string[] = [];
+  await page.route('**/data/prices/**', async (route) => {
+    const url = route.request().url();
+    requested.push(url);
+    if (url.endsWith('/index.json')) {
+      return route.fulfill({
+        json: {
+          files: { 'region:Республика Татарстан': 'tat.json' },
+          status: { sources: { rosstat: { ok: true, period: '2026-09', updated_at: '2026-10-16T00:00:00+00:00' }, pyaterochka: { collected: false, reason: 'Сайт недоступен из сети GitHub Actions.' } } },
+        },
+      });
+    }
+    if (url.endsWith('/tat.json')) return route.fulfill({ json: { entries: [entry('potato', 4550), entry('onion', 3990), entry('carrot', 4200)] } });
+    return route.fulfill({ status: 404, body: '' });
+  });
+  await onboard(page);
+  await page.goto('./#/settings');
+  await page.getByPlaceholder('Или найдите город вручную').fill('Казань');
+  await page.getByRole('button', { name: /^Казань/ }).first().click();
+  await page.getByText('Источники цен').click();
+  await expect(page.getByText('период 2026-09')).toBeVisible();
+  await expect(page.getByText('Сайт недоступен из сети GitHub Actions.')).toBeVisible();
+  await page.goto('./#/shopping');
+  await expect(page.getByText('часть цен — средние Росстата (оценка)')).toBeVisible();
+  // Only file names were requested — no profile data in the URL.
+  expect(requested.every((u) => /\/data\/prices\/(index|tat)\.json$/.test(u))).toBe(true);
+});
