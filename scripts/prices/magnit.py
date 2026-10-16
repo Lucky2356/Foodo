@@ -307,11 +307,17 @@ def offers_from_html(html: str) -> list[dict[str, Any]]:
 
 
 def store_location(html: str) -> tuple[str, float, float] | None:
-    """The default store's code and coordinates from the page state."""
-    m = re.search(
-        r'latitude:(-?\d+\.\d+),longitude:(-?\d+\.\d+)\}[^{}]*?storeCode:"(\d+)"', html
-    )
-    return (m.group(3), float(m.group(1)), float(m.group(2))) if m else None
+    """The default store's code and coordinates from the page state (Nuxt payload): the store
+    object lists latitude/longitude shortly before its externalId with the storeCode."""
+    m = re.search(r'storeCode:"(\d+)"', html)
+    if not m:
+        return None
+    window = html[max(0, m.start() - 2000) : m.start()]
+    lats = re.findall(r"latitude:(-?\d+(?:\.\d+)?)", window)
+    lons = re.findall(r"longitude:(-?\d+(?:\.\d+)?)", window)
+    if not lats or not lons:
+        return None
+    return m.group(1), float(lats[-1]), float(lons[-1])
 
 
 def nearest_city(

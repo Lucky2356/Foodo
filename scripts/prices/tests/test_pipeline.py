@@ -207,3 +207,11 @@ def test_publish_groups_by_region_city_and_chain(tmp_path: Path) -> None:
     assert set(index) == {"region:R", "city:C1", "C1:magnit"}
     assert files[index["C1:magnit"]]["entries"][0]["kind"] == "scraped"
     assert files[index["region:R"]]["entries"][0]["date"] == "2026-09-30"
+
+
+def test_store_location_from_the_page_state() -> None:
+    # Fragment of magnit.ru/catalog/ as served on 16.10.2026 (store shown without an address).
+    page = 'store:{id:"x",coordinates:{latitude:45.047057,longitude:38.973527},deliveryTypeList:["DELIVERY_TYPE_DELIVERY"],externalId:{owner:"OWNER_MAGNIT",storeCode:"992301"},isActive:true}'
+    assert magnit.store_location(page) == ("992301", 45.047057, 38.973527)
+    assert magnit.nearest_city(CITIES, 45.047057, 38.973527)["name"] == "Краснодар"
+    assert magnit.store_location("<html>no store</html>") is None
