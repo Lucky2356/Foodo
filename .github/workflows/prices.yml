@@ -21,4 +21,5 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
+      - run: pip install openpyxl==3.1.5
       - run: python scripts/prices/probe.py
