@@ -87,7 +87,7 @@ export function Toasts() {
               Отменить
             </button>
           )}
-          <button className="icon-btn small" style={{ color: '#fff' }} onClick={() => dismissToast(t.id)} aria-label="Скрыть уведомление">
+          <button className="icon-btn small" style={{ color: 'var(--toast-ink)' }} onClick={() => dismissToast(t.id)} aria-label="Скрыть уведомление">
             <Icon name="close" size={18} />
           </button>
         </div>

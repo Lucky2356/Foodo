@@ -391,7 +391,7 @@ describe('food preferences from the questionnaire', () => {
     const req = request({ members: [child], days: 1, slots: ['lunch'] });
     const menu = generateMenu(req, cat).menu;
     const itemId = menu.meals[0]!.items[0]!.id;
-    expect(() => applyMenuOp(menu, { op: 'replace', item_id: itemId, recipe_id: 'chili' }, { catalog: cat, members: [child], request: req })).toThrow(/острее/);
+    expect(() => applyMenuOp(menu, { op: 'replace', item_id: itemId, recipe_id: 'chili' }, { catalog: cat, members: [child] })).toThrow(/острее/);
   });
 
   it('weekends can have their own cooking time limit', () => {

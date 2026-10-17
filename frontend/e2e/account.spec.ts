@@ -1,6 +1,6 @@
 import { randomBytes } from 'node:crypto';
 import { expect, test } from '@playwright/test';
-import { noHorizontalScroll } from './helpers';
+import { noHorizontalScroll, walkQuestionnaire } from './helpers';
 
 // Requires the Django API at FOODO_BACKEND_URL (default http://127.0.0.1:8000) with seed data.
 test('account: register, plan on the server, transfer guest data, log out', async ({ page }) => {
@@ -8,7 +8,7 @@ test('account: register, plan on the server, transfer guest data, log out', asyn
   // Guest data first (stays local until the explicit transfer).
   await page.goto('./');
   await page.getByRole('link', { name: 'Составить меню бесплатно' }).first().click();
-  await page.getByRole('button', { name: 'Дальше' }).click();
+  await walkQuestionnaire(page);
   await page.getByRole('button', { name: 'Составить меню' }).click();
   await page.waitForURL(/#\/menu/);
 
