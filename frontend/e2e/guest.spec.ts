@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
 import ExcelJS from 'exceljs';
-import { noHorizontalScroll, onboard } from './helpers';
+import { noHorizontalScroll, onboard, walkQuestionnaire } from './helpers';
 
 test.describe('guest mode (static site, no server)', () => {
   test('family → menu → shopping survives a reload; 360 px; no horizontal scroll (checks 1, 17)', async ({ page }) => {
@@ -40,8 +40,13 @@ test.describe('guest mode (static site, no server)', () => {
     await cta.focus();
     await page.keyboard.press('Enter');
     await expect(page.getByRole('heading', { name: 'Для кого готовим?' })).toBeVisible();
-    await page.getByRole('button', { name: 'Дальше' }).focus();
-    await page.keyboard.press('Enter');
+    for (let step = 0; step < 7; step += 1) {
+      const heading = await page.getByRole('heading', { level: 1 }).innerText();
+      await page.getByRole('button', { name: 'Дальше' }).focus();
+      await page.keyboard.press('Enter');
+      await expect(page.getByRole('heading', { level: 1 })).not.toHaveText(heading);
+    }
+    await expect(page.getByRole('heading', { name: 'Проверьте ответы' })).toBeVisible();
     await page.getByRole('button', { name: 'Составить меню' }).focus();
     await page.keyboard.press('Enter');
     await page.waitForURL(/#\/menu/);
@@ -103,11 +108,16 @@ test.describe('guest mode (static site, no server)', () => {
   test('beginner with only a stove gets no oven dishes (check 21)', async ({ page }) => {
     await page.goto('./');
     await page.getByRole('link', { name: 'Составить меню бесплатно' }).first().click();
-    await page.getByRole('button', { name: 'Дальше' }).click();
-    await page.getByRole('button', { name: 'Кухня и уровень готовки' }).click();
-    await page.getByRole('button', { name: 'Начинающий' }).click();
-    await page.getByRole('button', { name: 'Духовка' }).click();
-    await page.getByRole('button', { name: 'Микроволновка' }).click();
+    await walkQuestionnaire(page, {
+      'Кухня и время': async () => {
+        await page.getByRole('button', { name: /^Начинающий/ }).click();
+        // Only the stove stays selected.
+        for (const name of ['Духовка', 'Микроволновка', 'Мультиварка', 'Блендер', 'Аэрогриль']) {
+          const chip = page.getByRole('button', { name, exact: true });
+          if ((await chip.getAttribute('aria-pressed')) === 'true') await chip.click();
+        }
+      },
+    });
     await page.getByRole('button', { name: 'Составить меню' }).click();
     await page.waitForURL(/#\/menu/);
     const backup = await page.evaluate(async () => {

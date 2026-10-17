@@ -1,9 +1,9 @@
-"""Applies the reviewed photo selection: downloads each chosen Commons file, stores a WebP copy
-and returns the credit data for the recipe.
+"""Applies the reviewed photo selection: downloads each chosen Commons or Openverse image, stores a
+WebP copy and returns the credit data for the recipe.
 
     python -m scripts.photos.apply OUT_DIR
 
-Input: shared/data/photos/selection.json — {"recipe-id": "File:Title.jpg" | null}. null means
+Input: shared/data/photos/selection.json — {"recipe-id": "File:Title.jpg" | "openverse:<id>" | null}. null means
 «no suitable free photo»: the recipe keeps the drawn placeholder (never presented as a photo).
 Output: OUT_DIR/photos/<recipe-id>.webp and OUT_DIR/credits.json."""
 
@@ -16,6 +16,7 @@ from pathlib import Path
 
 from PIL import Image
 
+from . import openverse
 from .commons import acceptable, author_name, download, file_info, license_link
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -32,18 +33,29 @@ def main(argv: list[str]) -> int:
     for rid, title in sorted(selection.items()):
         if not title:
             continue
-        info = file_info(title, WIDTH)
+        from_openverse = title.startswith(openverse.PREFIX)
+        info = (
+            openverse.image_info(title) if from_openverse else file_info(title, WIDTH)
+        )
         if info is None or not acceptable(info):
             problems.append(
                 f"{rid}: {title} — файл не найден или лицензия/формат не подходят"
             )
             continue
-        img = Image.open(io.BytesIO(download(info["thumb"]))).convert("RGB")
+        # Commons serves a ready 800 px rendition; Openverse links the original at the provider.
+        img = Image.open(
+            io.BytesIO(download(info["url"] if from_openverse else info["thumb"]))
+        ).convert("RGB")
         img.thumbnail((WIDTH, WIDTH))
         img.save(out / "photos" / f"{rid}.webp", "WEBP", quality=78, method=6)
         credit = {
             "url": f"photos/{rid}.webp",
-            "source": f"Фото: {author_name(info['artist']) or 'автор не указан'}, Wikimedia Commons",
+            "source": f"Фото: {author_name(info['artist']) or 'автор не указан'}, "
+            + (
+                f"{info['provider']} (через Openverse)"
+                if from_openverse
+                else "Wikimedia Commons"
+            ),
             "license": info["license"],
             "license_url": license_link(info["license_url"]),
             "page_url": info["page_url"],

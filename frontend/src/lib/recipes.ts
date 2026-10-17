@@ -3,7 +3,7 @@ import type { Catalog, CookingMethod, Recipe, RecipeUnit } from '../engine';
 import type { NutrientTable } from '../engine/nutrition';
 
 export const SLOT_NAMES: Record<string, string> = { breakfast: 'Завтрак', lunch: 'Обед', snack: 'Перекус', dinner: 'Ужин' };
-export const CATEGORY_NAMES: Record<string, string> = { breakfast: 'Завтраки', soup: 'Супы', main: 'Вторые блюда', salad: 'Салаты', snack: 'Перекусы' };
+export const CATEGORY_NAMES: Record<string, string> = { breakfast: 'Завтраки', soup: 'Супы', main: 'Вторые блюда', salad: 'Салаты', snack: 'Перекусы', dessert: 'Десерты', baking: 'Выпечка', drink: 'Напитки' };
 export const SKILL_NAMES: Record<number, string> = { 1: 'Просто', 2: 'Нужен опыт', 3: 'Сложно' };
 
 export interface RecipeSummary {

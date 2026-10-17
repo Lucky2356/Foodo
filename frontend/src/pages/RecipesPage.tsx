@@ -1,6 +1,6 @@
 import { useDeferredValue, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { productClosure } from '../engine';
+import { effectiveRestrictions, productClosure, recipeSpice } from '../engine';
 import type { Recipe } from '../engine';
 import { useApp } from '../state/app';
 import { Icon } from '../ui/icons';
@@ -60,6 +60,10 @@ export default function RecipesPage() {
   const [familyBans, setFamilyBans] = useState(true);
   const [extra, setExtra] = useState<Set<string>>(new Set());
   const [onlyMyKitchen, setOnlyMyKitchen] = useState(false);
+  const [dietType, setDietType] = useState<string | null>(null);
+  const [cuisine, setCuisine] = useState<string | null>(null);
+  const [kidsOnly, setKidsOnly] = useState(false);
+  const [mildOnly, setMildOnly] = useState(false);
   const [sort, setSort] = useState<'name' | 'time' | 'kcal'>('name');
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [limit, setLimit] = useState(PAGE);
@@ -69,12 +73,14 @@ export default function RecipesPage() {
     const categories = new Set<string>();
     const allergens = new Set<string>();
     for (const m of household?.members ?? []) {
-      m.restrictions.products.forEach((x) => products.add(x));
-      m.restrictions.categories.forEach((x) => categories.add(x));
-      m.restrictions.allergens.forEach((x) => allergens.add(x));
+      // Diet types (vegetarian, gluten-free…) count as the member's bans too.
+      const r = effectiveRestrictions(catalog, m);
+      r.products.forEach((x) => products.add(x));
+      r.categories.forEach((x) => categories.add(x));
+      r.allergens.forEach((x) => allergens.add(x));
     }
     return { products, categories, allergens };
-  }, [household]);
+  }, [household, catalog]);
 
   const results = useMemo(() => {
     const q = deferred.trim().toLowerCase().replace(/ё/g, 'е');
@@ -84,6 +90,10 @@ export default function RecipesPage() {
       familyRestrictions.categories.forEach((x) => bans.categories.add(x));
       familyRestrictions.allergens.forEach((x) => bans.allergens.add(x));
     }
+    const diet = dietType ? catalog.reference.diet_types?.find((t) => t.id === dietType) : undefined;
+    diet?.products.forEach((x) => bans.products.add(x));
+    diet?.categories.forEach((x) => bans.categories.add(x));
+    diet?.allergens.forEach((x) => bans.allergens.add(x));
     for (const id of extra) {
       const qx = QUICK_EXCLUSIONS.find((x) => x.id === id);
       qx?.categories?.forEach((c) => bans.categories.add(c));
@@ -93,6 +103,9 @@ export default function RecipesPage() {
     const list = Object.values(catalog.recipes).filter((r) => {
       if (r.visibility === 'private') return false;
       if (category && r.category !== category) return false;
+      if (cuisine && r.cuisine !== cuisine) return false;
+      if (kidsOnly && !r.kid_friendly) return false;
+      if (mildOnly && recipeSpice(r) > 0) return false;
       const s = summarize(catalog, r);
       if (maxTime !== null && s.totalMin > maxTime) return false;
       if (onlyMyKitchen && !r.methods.some((m) => m.equipment.every((e) => equipment.has(e)))) return false;
@@ -104,7 +117,7 @@ export default function RecipesPage() {
         for (const ing of r.ingredients) {
           const c = productClosure(catalog, ing.product);
           if ([...c.productIds].some((p) => bans.products.has(p)) || [...c.categories].some((x) => bans.categories.has(x)) || [...c.allergens].some((a) => bans.allergens.has(a))) return false;
-          if (bans.allergens.size > 0 && !c.compositionKnown) return false;
+          if (!c.compositionKnown) return false;
         }
       }
       return true;
@@ -115,9 +128,9 @@ export default function RecipesPage() {
       return a.name.localeCompare(b.name, 'ru');
     });
     return list;
-  }, [catalog, deferred, category, maxTime, familyBans, familyRestrictions, extra, onlyMyKitchen, sort, household]);
+  }, [catalog, deferred, category, maxTime, familyBans, familyRestrictions, extra, onlyMyKitchen, sort, household, dietType, cuisine, kidsOnly, mildOnly]);
 
-  const activeFilters = (maxTime !== null ? 1 : 0) + extra.size + (onlyMyKitchen ? 1 : 0);
+  const activeFilters = (maxTime !== null ? 1 : 0) + extra.size + (onlyMyKitchen ? 1 : 0) + (dietType ? 1 : 0) + (cuisine ? 1 : 0) + (kidsOnly ? 1 : 0) + (mildOnly ? 1 : 0);
   const hasFamilyBans = familyRestrictions.products.size + familyRestrictions.categories.size + familyRestrictions.allergens.size > 0;
 
   return (
@@ -198,6 +211,10 @@ export default function RecipesPage() {
                 setMaxTime(null);
                 setExtra(new Set());
                 setOnlyMyKitchen(false);
+                setDietType(null);
+                setCuisine(null);
+                setKidsOnly(false);
+                setMildOnly(false);
                 setSort('name');
               }}
             >
@@ -220,6 +237,28 @@ export default function RecipesPage() {
               ))}
             </div>
           </div>
+          <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+            <span className="label">Тип питания</span>
+            <div className="chips">
+              {(catalog.reference.diet_types ?? []).map((t) => (
+                <Chip key={t.id} on={dietType === t.id} onClick={() => setDietType(dietType === t.id ? null : t.id)}>
+                  {t.name}
+                </Chip>
+              ))}
+            </div>
+          </div>
+          <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+            <span className="label">Кухня</span>
+            <div className="chips">
+              {(catalog.reference.cuisines ?? []).map((c) => (
+                <Chip key={c.id} on={cuisine === c.id} onClick={() => setCuisine(cuisine === c.id ? null : c.id)}>
+                  {c.name}
+                </Chip>
+              ))}
+            </div>
+          </div>
+          <Switch checked={kidsOnly} onChange={setKidsOnly} label="Подходит детям" />
+          <Switch checked={mildOnly} onChange={setMildOnly} label="Без остроты" />
           <div className="stack" style={{ ['--gap' as string]: '8px' }}>
             <span className="label">Исключить</span>
             <div className="chips">

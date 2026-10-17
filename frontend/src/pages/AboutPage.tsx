@@ -45,7 +45,7 @@ export default function AboutPage() {
           <li>Нормы витаминов МР 2.3.1.0253-21 внесены со статусом «не сверено с первоисточником».</li>
           <li>Справочник городов — hflabs/city, лицензия CC BY-SA 4.0 (HFLabs).</li>
           <li>Шрифт интерфейса Onest — SIL Open Font License 1.1; шрифт PDF DejaVu Sans — лицензия Bitstream Vera / public domain.</li>
-          <li>Фотографии блюд — только с указанием автора и свободной лицензии (Wikimedia Commons); без фото показывается иллюстрация.</li>
+          <li>Фотографии блюд — только с указанием автора и свободной лицензии (Wikimedia Commons и Openverse); без фото показывается иллюстрация.</li>
         </ul>
       </section>
     </div>

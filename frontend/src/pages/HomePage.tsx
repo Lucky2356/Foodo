@@ -1,11 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import type { Member, MemberReport } from '../engine';
+import type { Member, MemberReport, Recipe } from '../engine';
 import { useApp, useLoad } from '../state/app';
 import { useCurrentMenu } from '../state/menu';
 import { Icon } from '../ui/icons';
 import type { IconName } from '../ui/icons';
 import { Loading, RecipeCover } from '../ui/kit';
+import { Illustration } from '../ui/illustrations';
 import { APP_NAME, STATIC_BUILD } from '../lib/config';
 import { deviceTimeZone, humanDate, localDate } from '../lib/dates';
 import { kcal, num } from '../lib/format';
@@ -20,10 +21,24 @@ const FEATURES: { icon: IconName; title: string; text: string }[] = [
   { icon: 'leaf', title: 'Витамины и ПП', text: 'Режим «Сбалансированное» и учёт витаминов влияют на подбор, а неполные данные помечены.' },
 ];
 
+/** A few dishes with real photos from each main category, in a stable order. */
+function showcase(recipes: Recipe[], perCategory: number): Recipe[] {
+  const out: Recipe[] = [];
+  for (const category of ['main', 'soup', 'salad', 'breakfast', 'dessert', 'baking']) {
+    out.push(...recipes.filter((r) => r.category === category && r.image?.url && r.visibility !== 'private').slice(0, perCategory));
+  }
+  return out;
+}
+
 function Landing() {
+  const { catalog } = useApp();
+  const dishes = showcase(Object.values(catalog.recipes), 2).slice(0, 8);
   return (
     <div className="stack" style={{ ['--gap' as string]: '22px' }}>
       <section className="landing-hero fade-in">
+        <div className="landing-art" aria-hidden="true">
+          <Illustration name="cooking" />
+        </div>
         <span className="badge green" style={{ marginBottom: 16 }}>
           <Icon name="sparkle" size={14} /> Бесплатно, без регистрации
         </span>
@@ -41,9 +56,27 @@ function Landing() {
           </Link>
         </div>
         <p className="muted small" style={{ marginTop: 18 }}>
-          Два шага: сколько вас и чего нельзя. Данные остаются на этом устройстве{STATIC_BUILD ? '' : ', аккаунт — по желанию'}.
+          Короткая анкета: семья, цель, запреты и вкусы — и меню готово. Данные остаются на этом устройстве{STATIC_BUILD ? '' : ', аккаунт — по желанию'}.
         </p>
       </section>
+      {dishes.length > 0 && (
+        <section className="stack" style={{ ['--gap' as string]: '12px' }} aria-label="Блюда из каталога">
+          <div className="row between">
+            <h2>Из каталога</h2>
+            <Link to="/recipes" className="btn small ghost">
+              Все рецепты <Icon name="chevron" size={16} />
+            </Link>
+          </div>
+          <div className="dish-strip">
+            {dishes.map((r) => (
+              <Link key={r.id} to={`/recipes/${r.id}`} className="dish-tile">
+                <RecipeCover recipe={r} />
+                <span>{r.name}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
       <section className="grid" aria-label="Возможности">
         {FEATURES.map((f) => (
           <div key={f.title} className="card feature fade-in">
@@ -167,7 +200,7 @@ function Dashboard() {
                 const r = meal.items[0] ? recipeOf(meal.items[0].batch_id) : undefined;
                 return (
                   <Link key={meal.slot} to={r ? `/recipes/${r.id}` : '/menu'} className="row" style={{ color: 'inherit', textDecoration: 'none' }}>
-                    <span className="badge" style={{ background: 'rgb(255 255 255 / 14%)', color: '#fff', minWidth: 78, justifyContent: 'center' }}>
+                    <span className="badge" style={{ background: 'color-mix(in srgb, var(--hero-ink) 14%, transparent)', color: 'var(--hero-ink)', minWidth: 78, justifyContent: 'center' }}>
                       {SLOT_NAMES[meal.slot]}
                     </span>
                     <span className="grow" style={{ fontWeight: 600 }}>
@@ -179,7 +212,7 @@ function Dashboard() {
               })}
             </div>
           ) : (
-            <Link to="/start" className="btn big" style={{ marginTop: 18, ['--btn-bg' as string]: '#fff', ['--btn-ink' as string]: '#1f4d38' }}>
+            <Link to="/start" className="btn big" style={{ marginTop: 18, ['--btn-bg' as string]: 'var(--hero-ink)', ['--btn-ink' as string]: 'var(--hero-btn-ink)' }}>
               Составить меню
             </Link>
           )}

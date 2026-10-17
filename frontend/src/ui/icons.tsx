@@ -47,6 +47,9 @@ const paths: Record<string, string> = {
   star: 'M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z',
   timer: 'M12 21a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM12 9v4l2.5 1.5M9.5 2h5',
   play: 'M7 5v14l11-7z',
+  scale: 'M5 21h14a1 1 0 0 0 1-1l-1.5-11a1 1 0 0 0-1-.9H6.5a1 1 0 0 0-1 .9L4 20a1 1 0 0 0 1 1zM9 8a3 3 0 0 1 6 0M12 12.5l1.5-2',
+  'trend-down': 'M3 7l6 6 4-4 8 8M15 17h6v-6',
+  'trend-up': 'M3 17l6-6 4 4 8-8M15 7h6v6',
 };
 
 export type IconName = keyof typeof paths;

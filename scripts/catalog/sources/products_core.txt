@@ -1,0 +1,335 @@
+// Базовые продукты для расширенного каталога рецептов (кухни мира, постное, без глютена, десерты, напитки).
+// Формат — docs/CATALOG.md. Значения на 100 г съедобной части, оценки разработчика; N — неизвестно.
+// Для специй с очень высокой долей клетчатки углеводы указаны без клетчатки (как в таблицах Скурихина),
+// иначе энергия источника не сходится с формулой 4/9/4.
+
+// Говядина и телятина
+beef_tenderloin | Говядина, вырезка | beef | Мясо и птица | raw | g | 1 | 158 20.5 8.5 0 0 0 0 0.1 0.2 0.55 2.6 7 | pkg=500 g
+beef_ribeye | Говядина, стейк рибай | beef | Мясо и птица | raw | g | 1 | 250 18.5 19.5 0 0 0 0 0.1 0.2 0.45 2.4 6 | piece=300; pkg=300 g
+beef_striploin | Говядина, стейк стриплойн | beef | Мясо и птица | raw | g | 1 | 190 21 11.8 0 0 0 0 0.1 0.2 0.5 2.5 7 | piece=250; pkg=250 g
+beef_brisket | Говядина, грудинка без кости | beef | Мясо и птица | raw | g | 1 | 250 17.5 20 0 0 0 0 0.1 0.2 0.35 2.4 6 | pkg=1000 g
+beef_shank | Говядина, голяшка на кости | beef | Мясо и птица | raw | g | 0.65 | 150 21 7.3 0 0 0 0 0.1 0.2 0.4 2.8 6 | pkg=1000 g
+beef_soup_bones | Говядина, суповой набор на кости | beef | Мясо и птица | raw | g | 0.45 | 200 18 14 0 0 0 0 N 0.2 0.3 2.2 5 | pkg=1000 g
+veal | Телятина, мякоть | beef | Мясо и птица | raw | g | 1 | 112 20.2 3.1 0 0 0 0 0.1 0.3 0.45 1.3 15 | pkg=500 g
+canned_beef | Говядина тушёная (консервы) | beef | Консервы и соусы | processed | g | 1 | 220 16.8 17 0 0 0 0 N N N N N | pkg=325 g; contains=salt
+
+// Птица и кролик
+turkey_breast | Индейка, филе грудки | poultry | Мясо и птица | raw | g | 1 | 112 23.6 1.6 0 0 0 0 0.1 0.1 0.8 0.5 7 | pkg=500 g
+turkey_thigh | Индейка, филе бедра | poultry | Мясо и птица | raw | g | 1 | 144 19.5 7.2 0 0 7 0 0.2 0.2 0.4 1.2 9 | pkg=600 g
+chicken_whole | Курица (тушка) | poultry | Мясо и птица | raw | g | 0.68 | 215 18.6 15 0 0 41 1.6 0.2 0.3 0.35 0.3 6 | piece=1600
+chicken_leg_quarters | Окорочка куриные | poultry | Мясо и птица | raw | g | 0.7 | 214 16.8 16 0 0 25 0 0.2 0.2 0.3 0.4 6 | piece=300; pkg=1000 g
+chicken_thigh_fillet | Филе куриного бедра без кожи | poultry | Мясо и птица | raw | g | 1 | 145 18.5 8 0 0 15 0 0.1 0.2 0.4 0.6 8 | pkg=500 g
+duck_breast | Утиная грудка с кожей | poultry | Мясо и птица | raw | g | 1 | 200 19 13.5 0 0 30 3 0.1 0.7 0.35 0.3 10 | piece=300
+duck_whole | Утка (тушка) | poultry | Мясо и птица | raw | g | 0.6 | 337 16 30 0 0 50 2.8 0.1 0.7 0.19 0.3 6 | piece=2000
+rabbit | Кролик (тушка) | meat | Мясо и птица | raw | g | 0.8 | 183 21 11 0 0 0 0 N 0.5 0.5 7 8 | piece=1500
+
+// Субпродукты
+beef_liver | Печень говяжья | offal | Мясо и птица | raw | g | 1 | 135 20.4 3.6 3.9 0 4968 1.3 1.2 0.38 1.08 59.3 290 | pkg=500 g
+beef_tongue | Язык говяжий | offal | Мясо и птица | raw | g | 0.85 | 224 15 17.5 3.7 0 0 3.1 N 0.3 0.16 3.8 7 | piece=1000
+chicken_hearts | Сердечки куриные | offal | Мясо и птица | raw | g | 1 | 153 15.6 9.3 0.7 0 8 3.2 N 0.7 0.36 7.3 72 | pkg=500 g
+chicken_gizzards | Желудки куриные | offal | Мясо и птица | raw | g | 1 | 94 17.7 2.1 0 0 0 3.7 N 0.2 0.11 1 5 | pkg=500 g
+// Желатин животного происхождения (свиной или говяжий — по производителю), поэтому категория мясная и known=0.
+gelatin | Желатин пищевой | offal | Бакалея | processed | g | 1 | 335 85.6 0.1 0 0 0 0 0 0 0 0 30 | spoon=tbsp:10,tsp:4; pkg=20 g; known=0
+
+// Свинина
+pork_neck | Свинина, шея | pork | Мясо и птица | raw | g | 1 | 267 16 22.5 0 0 2 0 0.6 0.2 0.35 0.7 3 | pkg=1000 g
+pork_tenderloin | Свинина, вырезка | pork | Мясо и птица | raw | g | 1 | 120 21 3.5 0 0 2 0.3 0.4 0.2 0.7 0.5 0 | pkg=500 g
+pork_ribs | Рёбра свиные | pork | Мясо и птица | raw | g | 0.7 | 277 15.5 23.5 0 0 2 0 0.6 0.3 0.35 0.6 3 | pkg=1000 g
+pork_belly | Свиная грудинка | pork | Мясо и птица | raw | g | 1 | 518 9.3 53 0 0 3 0.3 N 0.4 0.17 0.7 1 | pkg=800 g
+pork_mince | Фарш свиной | pork | Мясо и птица | raw | g | 1 | 263 16.9 21.2 0 0 2 0.7 0.9 0.2 0.32 0.5 5 | pkg=500 g
+salo | Сало солёное | pork | Мясо и птица | processed | g | 1 | 770 2.4 85 0 0 0 0 N N N N N | pkg=300 g; contains=salt
+pork_brisket_smoked | Грудинка свиная копчёная | pork | Мясо и птица | processed | g | 1 | 450 10 45 0 0 N 0 N N N N N | pkg=300 g; contains=salt
+
+// Колбасы и сосиски: состав зависит от производителя
+ham | Ветчина варёная | processed_meat | Мясо и птица | processed | g | 1 | 145 17 7.5 1.5 0 0 0 N N N N N | pkg=300 g; known=0
+boiled_sausage | Колбаса варёная | processed_meat | Мясо и птица | processed | g | 1 | 257 12.8 22.2 1.5 0 0 0 N N N N N | pkg=400 g; known=0
+salami | Колбаса сырокопчёная (салями) | processed_meat | Мясо и птица | processed | g | 1 | 450 22 40 1 0 0 0 N N N N N | pkg=200 g; known=0
+pepperoni | Пепперони | processed_meat | Мясо и птица | processed | g | 1 | 494 22.6 44 1.2 0 0 0 N N N N N | pkg=150 g; known=0
+chicken_sausages | Сосиски куриные | processed_meat | Мясо и птица | processed | g | 1 | 220 11 18 3 0 0 0 N N N N N | piece=45; pkg=420 g; known=0
+grill_sausages | Колбаски для жарки (купаты) | processed_meat | Мясо и птица | processed | g | 1 | 280 14 25 1 0 0 0 N N N N N | piece=100; pkg=500 g; known=0
+
+// Баранина
+lamb_ribs | Баранина, рёбрышки | lamb | Мясо и птица | raw | g | 0.65 | 320 15 29 0 0 0 0 0.1 0.2 0.1 2.2 18 | pkg=1000 g
+lamb_leg | Баранина, окорок на кости | lamb | Мясо и птица | raw | g | 0.75 | 200 18.5 14 0 0 0 0 0.1 0.2 0.14 2.6 20 | pkg=2000 g
+lamb_mince | Фарш бараний | lamb | Мясо и птица | raw | g | 1 | 282 16.6 23.4 0 0 0 0 0.1 0.2 0.13 2.3 19 | pkg=500 g
+
+// Рыба
+salmon_steak | Сёмга, стейк | fish | Рыба | raw | g | 0.9 | 208 20.4 13.4 0 0 58 3.9 11 3.55 0.64 3.18 26 | piece=250; allergens=fish
+trout_fillet | Форель, филе | fish | Рыба | raw | g | 1 | 141 20 6.6 0 0 N N 13 N 0.4 4.3 12 | pkg=300 g; allergens=fish
+trout_salted | Форель слабосолёная | fish | Рыба | processed | g | 1 | 195 20.6 12.5 0 0 N N N N N N N | pkg=200 g; allergens=fish; contains=salt
+salmon_salted | Сёмга слабосолёная | fish | Рыба | processed | g | 1 | 202 21 13 0 0 N N N N N N N | pkg=200 g; allergens=fish; contains=salt
+sea_bass | Сибас (целая рыба) | fish | Рыба | raw | g | 0.5 | 97 18.4 2 0 0 36 0 N 0.5 0.4 0.3 6 | piece=400; allergens=fish
+dorado | Дорадо (целая рыба) | fish | Рыба | raw | g | 0.5 | 96 18 3 0 0 N N N N N N N | piece=400; allergens=fish
+tilapia_fillet | Тилапия, филе | fish | Рыба | raw | g | 1 | 96 20.1 1.7 0 0 0 0 3.1 0.4 0.16 1.6 24 | pkg=500 g; allergens=fish
+pangasius_fillet | Пангасиус, филе | fish | Рыба | raw | g | 1 | 89 15.2 3 0 0 N N N N N N N | pkg=800 g; allergens=fish
+pike_perch_fillet | Судак, филе | fish | Рыба | raw | g | 1 | 84 18.4 1.1 0 0 10 3 N 1.8 0.1 N N | pkg=500 g; allergens=fish
+tuna_steak | Тунец, стейк | fish | Рыба | raw | g | 1 | 109 24.4 0.5 0 0 18 0 1.7 0.24 0.93 2.1 2 | piece=200; allergens=fish
+herring_fresh | Сельдь свежемороженая | fish | Рыба | raw | g | 0.6 | 158 18 9.2 0 0 28 0.7 16.7 1.1 0.3 13.7 10 | piece=300; allergens=fish
+smoked_mackerel | Скумбрия горячего копчения | fish | Рыба | processed | g | 0.7 | 317 23.4 25 0 0 N N N N N N N | piece=300; allergens=fish; contains=salt
+sprats | Шпроты в масле | fish | Консервы и соусы | processed | g | 0.9 | 363 17.4 32.4 0 0 N N N N N N N | pkg=160 g; allergens=fish
+pink_salmon_canned | Горбуша консервированная натуральная | fish | Консервы и соусы | processed | g | 0.85 | 136 20.9 5.1 0 0 N 0 N N N N N | pkg=245 g; allergens=fish
+cod_liver_canned | Печень трески консервированная | fish | Консервы и соусы | processed | g | 1 | 613 4.2 65.7 1.2 0 N N N N N N N | pkg=230 g; allergens=fish
+red_caviar | Икра красная (лососёвая) | fish | Рыба | processed | g | 1 | 250 31.6 13.8 0 0 N N N N N N N | spoon=tbsp:16,tsp:6; pkg=100 g; allergens=fish
+
+// Морепродукты
+mussels | Мидии варёно-мороженые очищенные | seafood | Заморозка | processed | g | 1 | 86 11.9 2.2 3.7 0 48 8 N 0.6 0.05 12 42 | pkg=500 g; allergens=molluscs
+king_prawns | Креветки королевские сыромороженые в панцире | seafood | Заморозка | raw | g | 0.55 | 85 20.1 0.5 0 0 0 0 0 1.3 0.16 1.1 3 | pkg=1000 g; allergens=crustaceans
+seafood_cocktail | Морской коктейль замороженный | seafood | Заморозка | processed | g | 1 | 85 15 1.5 2.5 0 N N N N N N N | pkg=500 g; allergens=crustaceans,molluscs
+
+// Яйца
+quail_eggs | Яйца перепелиные | eggs | Молочные продукты и яйца | raw | pcs | 0.9 | 158 13 11 0.4 0 156 0 1.4 1.1 0.15 1.6 66 | piece=11; pkg=20 pcs; allergens=eggs
+
+// Молочные продукты
+milk_32 | Молоко 3,2% | dairy | Молочные продукты и яйца | processed | ml | 1 | 59 2.9 3.2 4.7 0 30 1 N 0.08 0.04 0.4 5 | dens=1.03; spoon=tbsp:15.5; pkg=930 ml; allergens=milk
+kefir_25 | Кефир 2,5% | dairy | Молочные продукты и яйца | processed | ml | 1 | 51 2.9 2.5 4 0 N N N N N N N | dens=1.03; spoon=tbsp:15.5; pkg=900 ml; allergens=milk
+prostokvasha | Простокваша 2,5% | dairy | Молочные продукты и яйца | processed | ml | 1 | 53 2.9 2.5 4.1 0 N N N N N N N | dens=1.03; pkg=500 ml; allergens=milk
+ayran | Айран | dairy | Молочные продукты и яйца | processed | ml | 1 | 27 1.1 1.5 1.9 0 N N N N N N N | dens=1.02; pkg=500 ml; allergens=milk; contains=salt
+matsoni | Мацони | dairy | Молочные продукты и яйца | processed | g | 1 | 63 2.8 3.2 4.1 0 N N N N N N N | spoon=tbsp:18; pkg=500 g; allergens=milk
+yogurt_greek | Йогурт греческий 2% | dairy | Молочные продукты и яйца | processed | g | 1 | 73 9.95 1.9 3.9 0 N N N N N N N | spoon=tbsp:20,tsp:7; pkg=400 g; allergens=milk
+sour_cream_20 | Сметана 20% | dairy | Молочные продукты и яйца | processed | g | 1 | 206 2.8 20 3.2 0 160 0.3 N 0.6 0.03 0.4 9 | spoon=tbsp:20,tsp:7; pkg=300 g; allergens=milk
+cottage_cheese_9 | Творог 9% | dairy | Молочные продукты и яйца | processed | g | 1 | 159 16.7 9 2 0 N 0 N N 0.11 1 35 | spoon=tbsp:17; pkg=200 g; allergens=milk
+cottage_cheese_fatfree | Творог обезжиренный | dairy | Молочные продукты и яйца | processed | g | 1 | 81 18 0.6 1.8 0 N 0 N N 0.11 1 40 | spoon=tbsp:17; pkg=200 g; allergens=milk
+cream_33 | Сливки 33% | dairy | Молочные продукты и яйца | processed | ml | 1 | 322 2.2 33 3 0 N N N N N N N | dens=1; spoon=tbsp:15; pkg=200 ml; allergens=milk
+condensed_milk | Молоко сгущённое с сахаром 8,5% | dairy | Бакалея | processed | g | 1 | 320 7.2 8.5 56 0 N N N N N N N | spoon=tbsp:25,tsp:8; pkg=380 g; allergens=milk; contains=sugar
+ricotta | Сыр рикотта | cheese | Молочные продукты и яйца | processed | g | 1 | 174 11.3 13 3 0 120 0 0.2 0.1 0.04 0.3 12 | spoon=tbsp:20; pkg=250 g; allergens=milk
+mascarpone | Сыр маскарпоне | cheese | Молочные продукты и яйца | processed | g | 1 | 412 4.6 42 3.6 0 N N N N N N N | spoon=tbsp:20; pkg=250 g; allergens=milk
+brynza | Брынза | cheese | Молочные продукты и яйца | processed | g | 1 | 260 17.9 20.1 0.4 0 N 0 N N N N N | pkg=250 g; allergens=milk
+suluguni | Сыр сулугуни | cheese | Молочные продукты и яйца | processed | g | 1 | 290 20 24 0 0 N 0 N N N N N | pkg=300 g; allergens=milk
+adyghe_cheese | Сыр адыгейский | cheese | Молочные продукты и яйца | processed | g | 1 | 240 18.5 16 1.5 0 N 0 N N N N N | pkg=300 g; allergens=milk
+cheddar | Сыр чеддер | cheese | Молочные продукты и яйца | processed | g | 1 | 403 24.9 33.1 1.3 0 265 0 0.6 0.29 0.07 0.83 18 | pkg=200 g; allergens=milk
+processed_cheese | Сыр плавленый | cheese | Молочные продукты и яйца | processed | g | 1 | 270 11 23 6 0 N 0 N N N N N | spoon=tbsp:20; pkg=200 g; allergens=milk
+ghee | Масло топлёное (гхи) | oils_fats | Молочные продукты и яйца | processed | g | 1 | 892 0.2 99 0 0 N 0 N N 0 N 0 | spoon=tbsp:13,tsp:4.5; pkg=250 g; allergens=milk
+
+// Растительные напитки и кокосовые сливки (не молочные: ограничения задают аллергены)
+soy_milk | Соевый напиток | beverages | Молочные продукты и яйца | processed | ml | 1 | 54 3.3 1.8 6.3 0.6 N N N N N N N | dens=1.03; spoon=tbsp:15.5; pkg=1000 ml; allergens=soy
+oat_milk | Овсяный напиток | beverages | Молочные продукты и яйца | processed | ml | 1 | 46 1 1.5 7 0.8 N N N N N N N | dens=1.03; spoon=tbsp:15.5; pkg=1000 ml; allergens=gluten
+almond_milk | Миндальный напиток | beverages | Молочные продукты и яйца | processed | ml | 1 | 24 0.6 1.1 3 0.3 N N N N N N N | dens=1.02; spoon=tbsp:15.5; pkg=1000 ml; allergens=tree_nuts
+coconut_cream | Кокосовые сливки | condiments | Консервы и соусы | processed | ml | 1 | 330 3.6 34.7 6.6 2.2 0 1 0 0.2 0.03 0 N | dens=1; spoon=tbsp:15; pkg=200 ml
+
+// Бобовые и соя
+tofu | Тофу | legumes | Молочные продукты и яйца | processed | g | 1 | 121 12.7 7.3 1.9 0.6 0 0 0 0 0.1 0 29 | pkg=300 g; allergens=soy
+soy_mince | Соевое мясо (текстурат) сухое | legumes | Бакалея | dry | g | 1 | 300 48 1 25 15 N N N N N N N | pkg=150 g; allergens=soy
+edamame_frozen | Эдамаме замороженные в стручках | legumes | Заморозка | raw | g | 0.5 | 121 11.9 5.2 8.9 5.2 15 6.1 0 0.68 0.1 0 311 | pkg=400 g; allergens=soy
+chickpeas_dry | Нут сухой | legumes | Бакалея | dry | g | 1 | 364 19.3 6 60.7 17.4 3 4 0 0.82 0.54 0 557 | pkg=500 g
+lentils_green_dry | Чечевица зелёная | legumes | Бакалея | dry | g | 1 | 352 24.6 1.1 63.4 10.7 2 4.5 0 0.49 0.54 0 479 | pkg=450 g
+mung_beans_dry | Маш | legumes | Бакалея | dry | g | 1 | 347 23.9 1.2 62.6 16.3 6 4.8 0 0.51 0.38 0 625 | pkg=450 g
+beans_white_dry | Фасоль белая сухая | legumes | Бакалея | dry | g | 1 | 333 23.4 0.9 60.3 15.2 0 0 0 0.21 0.32 0 388 | pkg=500 g
+beans_white_canned | Фасоль белая консервированная | legumes | Консервы и соусы | processed | g | 0.6 | 99 6.7 0.3 17.5 4.6 0 0 0 N N 0 N | pkg=400 g
+beans_in_tomato | Фасоль в томатном соусе | legumes | Консервы и соусы | processed | g | 1 | 80 5 0.5 14 3.7 N N 0 N N 0 N | pkg=400 g; contains=tomato_paste
+chickpea_flour | Мука нутовая | legumes | Бакалея | dry | g | 1 | 387 22.4 6.7 57.8 10.8 2 0 0 0.83 0.49 0 437 | spoon=tbsp:8,tsp:3; pkg=500 g; contains=chickpeas_dry
+bean_sprouts | Ростки маша | vegetables | Овощи и фрукты | raw | g | 1 | 30 3 0.2 5.9 1.8 1 13.2 0 0.1 0.09 0 61 | pkg=200 g; contains=mung_beans_dry
+
+// Рис
+rice_basmati_dry | Рис басмати | rice | Бакалея | dry | g | 1 | 356 8.1 0.6 78 1.3 0 0 0 0.1 0.16 0 8 | spoon=tbsp:15; pkg=500 g
+rice_jasmine_dry | Рис жасмин | rice | Бакалея | dry | g | 1 | 355 7 0.6 79 1 0 0 0 0.1 0.15 0 8 | spoon=tbsp:15; pkg=500 g
+rice_brown_dry | Рис бурый | rice | Бакалея | dry | g | 1 | 362 7.5 2.7 76 3.4 0 0 0 0.6 0.5 0 20 | spoon=tbsp:15; pkg=500 g
+rice_wild_dry | Рис дикий | rice | Бакалея | dry | g | 1 | 357 14.7 1.1 75 6.2 1 0 0 0.82 0.39 0 95 | pkg=250 g
+rice_sushi_dry | Рис для суши | rice | Бакалея | dry | g | 1 | 360 6.5 0.5 79.5 1 0 0 0 0.1 0.15 0 7 | spoon=tbsp:15; pkg=500 g
+rice_parboiled_dry | Рис пропаренный | rice | Бакалея | dry | g | 1 | 370 7.5 0.6 81 1.7 0 0 0 N N 0 N | spoon=tbsp:15; pkg=900 g
+rice_arborio_dry | Рис для ризотто (арборио) | rice | Бакалея | dry | g | 1 | 350 7 0.6 79 1 0 0 0 0.1 0.15 0 7 | spoon=tbsp:15; pkg=500 g
+// Рисовая мука в категории «Рис», чтобы запрет риса исключал её и изделия из неё.
+rice_flour | Мука рисовая | rice | Бакалея | dry | g | 1 | 366 6 1.4 80 2.4 0 0 0 0.11 0.44 0 4 | spoon=tbsp:10,tsp:3; pkg=500 g
+
+// Другие крупы и хлопья
+barley_grits | Ячневая крупа | cereals | Бакалея | dry | g | 1 | 313 10 1.3 65.4 13 0 0 0 N 0.3 0 N | pkg=700 g; allergens=gluten
+wheat_groats | Пшеничная крупа | cereals | Бакалея | dry | g | 1 | 329 11.5 1.3 68.5 8 0 0 0 N 0.3 0 N | pkg=700 g; allergens=gluten
+corn_flakes | Хлопья кукурузные | cereals | Бакалея | processed | g | 1 | 357 7.5 0.4 84 3.3 0 0 0 N N 0 N | pkg=500 g; allergens=gluten; contains=sugar
+cornstarch | Крахмал кукурузный | cereals | Бакалея | processed | g | 1 | 381 0.3 0.1 91.3 0.9 0 0 0 0 0 0 0 | spoon=tbsp:10,tsp:4; pkg=250 g
+
+// Мука
+oat_flour | Мука овсяная | flour | Бакалея | dry | g | 1 | 369 13 6.8 64.9 6.5 0 0 0 0.4 0.1 0 32 | spoon=tbsp:8,tsp:3; pkg=500 g; allergens=gluten; contains=oats_flakes
+corn_flour | Мука кукурузная | flour | Бакалея | dry | g | 1 | 361 6.9 3.9 76.9 7.3 11 0 0 0.42 0.37 0 25 | spoon=tbsp:9,tsp:3; pkg=500 g
+buckwheat_flour | Мука гречневая | buckwheat | Бакалея | dry | g | 1 | 335 12.6 3.1 70.6 10 0 0 0 0.32 0.58 0 54 | spoon=tbsp:8,tsp:3; pkg=500 g
+whole_wheat_flour | Мука пшеничная цельнозерновая | flour | Бакалея | dry | g | 1 | 340 13.2 2.5 72 10.7 0 0 0 0.71 0.41 0 44 | spoon=tbsp:8,tsp:3; pkg=1000 g; allergens=gluten
+rye_flour | Мука ржаная | flour | Бакалея | dry | g | 1 | 325 9 1.7 67 11 0 0 0 N 0.3 0 N | spoon=tbsp:8,tsp:3; pkg=1000 g; allergens=gluten
+almond_flour | Мука миндальная | nuts_seeds | Бакалея | dry | g | 1 | 600 21 54 20 10 0 0 0 24 0.1 0 50 | spoon=tbsp:7,tsp:2.5; pkg=200 g; allergens=tree_nuts; contains=almonds
+// Состав смесей без глютена различается; соя указана с запасом.
+gluten_free_flour_mix | Смесь муки без глютена | flour | Бакалея | dry | g | 1 | 350 6 1.5 79 3 0 0 0 N N 0 N | spoon=tbsp:9,tsp:3; pkg=500 g; allergens=soy
+
+// Макароны и лапша
+penne_dry | Макароны перья (пенне) | pasta | Бакалея | dry | g | 1 | 371 13 1.5 75 3.2 0 0 0 0.11 0.14 0 18 | pkg=450 g; allergens=gluten
+tagliatelle_dry | Тальятелле яичные | pasta | Бакалея | dry | g | 1 | 384 14.2 4.4 71.3 3.3 N 0 N N N N N | pkg=250 g; allergens=gluten,eggs
+whole_wheat_pasta_dry | Макароны цельнозерновые | pasta | Бакалея | dry | g | 1 | 348 14.6 2.5 70 9 0 0 0 0.6 0.2 0 30 | pkg=450 g; allergens=gluten
+gluten_free_pasta_dry | Макароны без глютена (кукуруза и рис) | pasta | Бакалея | dry | g | 1 | 357 7 1.5 79 2 0 0 0 N N 0 N | pkg=400 g; contains=corn_flour,rice_flour
+soba_dry | Лапша гречневая (соба) | pasta | Бакалея | dry | g | 1 | 336 14.4 0.7 74.6 3.4 0 0 0 N N 0 N | pkg=300 g; allergens=gluten; contains=buckwheat_flour,wheat_flour
+udon_dry | Лапша удон сухая | pasta | Бакалея | dry | g | 1 | 340 10 1 72 2.5 0 0 0 N N 0 N | pkg=300 g; allergens=gluten; contains=wheat_flour
+glass_noodles_dry | Лапша фунчоза (крахмальная) | pasta | Бакалея | dry | g | 1 | 351 0.2 0.1 86 0.5 0 0 0 0 0 0 0 | pkg=200 g
+rice_paper | Рисовая бумага | pasta | Бакалея | dry | g | 1 | 333 6 0.5 76 1 0 0 0 N N 0 N | piece=9; pkg=100 g; contains=rice_flour
+
+// Хлеб, выпечка и тесто
+pita | Пита | bread | Хлеб | processed | g | 1 | 275 9.1 1.2 55.7 2.2 0 0 0 0.3 0.04 0 N | piece=60; pkg=360 g; allergens=gluten; contains=wheat_flour
+burger_buns | Булочки для бургеров с кунжутом | bread | Хлеб | processed | g | 1 | 279 9.5 4.3 50 2.3 0 0 0 N N N N | piece=75; pkg=300 g; allergens=gluten,sesame,milk,eggs; contains=wheat_flour
+baguette | Багет | bread | Хлеб | processed | g | 1 | 272 10 2.5 52 2.5 0 0 0 N N 0 N | piece=250; allergens=gluten; contains=wheat_flour
+toast_bread | Хлеб для тостов | bread | Хлеб | processed | g | 1 | 265 8.5 3.5 49 2.7 0 0 0 N N N N | piece=25; pkg=500 g; allergens=gluten,milk; contains=wheat_flour
+// Хлеб без глютена: глютена нет, остальные частые аллергены рецептур указаны с запасом.
+gluten_free_bread | Хлеб без глютена | bread | Хлеб | processed | g | 1 | 250 4 5 46 4 N 0 N N N N N | piece=30; pkg=300 g; allergens=eggs,milk,soy
+rye_crispbread | Хлебцы ржаные | bread | Хлеб | processed | g | 1 | 334 9.4 1.3 77 16.5 0 0 0 0.8 0.3 0 N | piece=10; pkg=200 g; allergens=gluten; contains=rye_flour
+rice_crispbread | Хлебцы рисовые | bread | Хлеб | processed | g | 1 | 387 8 3 81 4 0 0 0 N N 0 N | piece=8; pkg=100 g; contains=rice_round_dry
+tortilla_corn | Тортилья кукурузная (100% кукуруза) | bread | Хлеб | processed | g | 1 | 218 5.7 2.9 44.6 6.3 0 0 0 0.3 0.2 0 N | piece=30; pkg=300 g; contains=corn_flour
+tandoor_flatbread | Лепёшка тандырная | bread | Хлеб | processed | g | 1 | 265 8 1.5 55 2.5 0 0 0 N N 0 N | piece=250; allergens=gluten; contains=wheat_flour
+puff_pastry | Тесто слоёное бездрожжевое | bread | Заморозка | processed | g | 1 | 366 6 22 36 1.2 N 0 N N N N N | pkg=500 g; allergens=gluten,milk; contains=wheat_flour
+phyllo_dough | Тесто фило | bread | Заморозка | processed | g | 1 | 299 7.1 6 52.6 1.9 0 0 0 N 0.03 0 N | pkg=250 g; allergens=gluten; contains=wheat_flour
+savoiardi | Печенье савоярди | bread | Бакалея | processed | g | 1 | 390 8 4 81 1 N 0 N N N N N | piece=8; pkg=200 g; allergens=gluten,eggs; contains=wheat_flour,eggs,sugar
+shortbread_cookies | Печенье песочное | bread | Бакалея | processed | g | 1 | 458 6.5 20 65 2 N 0 N N N N N | pkg=200 g; allergens=gluten,milk,eggs; contains=wheat_flour,butter,sugar
+
+// Овощи
+red_onion | Лук красный | vegetables | Овощи и фрукты | raw | g | 0.9 | 40 1.1 0.1 9.3 1.7 0 8 0 0.02 0.12 0 19 | piece=120; pkg=1000 g
+shallot | Лук шалот | vegetables | Овощи и фрукты | raw | g | 0.9 | 72 2.5 0.1 16.8 3.2 1 8 0 0.04 0.35 0 34 | piece=30; pkg=250 g
+leek | Лук-порей | vegetables | Овощи и фрукты | raw | g | 0.6 | 61 1.5 0.3 14.2 1.8 83 12 0 0.92 0.23 0 64 | piece=250
+sweet_potato | Батат | vegetables | Овощи и фрукты | raw | g | 0.85 | 86 1.6 0.1 20.1 3 709 2.4 0 0.26 0.21 0 11 | piece=300
+red_cabbage | Капуста краснокочанная | vegetables | Овощи и фрукты | raw | g | 0.85 | 31 1.4 0.2 7.4 2.1 56 57 0 0.11 0.21 0 18 | piece=1200
+celery_root | Сельдерей корневой | vegetables | Овощи и фрукты | raw | g | 0.75 | 42 1.5 0.3 9.2 1.8 0 8 0 0.36 0.17 0 8 | piece=500; allergens=celery
+parsnip | Пастернак | vegetables | Овощи и фрукты | raw | g | 0.85 | 75 1.2 0.3 18 4.9 0 17 0 1.49 0.09 0 67 | piece=150
+turnip | Репа | vegetables | Овощи и фрукты | raw | g | 0.85 | 28 0.9 0.1 6.4 1.8 0 21 0 0.03 0.09 0 15 | piece=200
+daikon | Дайкон | vegetables | Овощи и фрукты | raw | g | 0.9 | 18 0.6 0.1 4.1 1.6 0 22 0 0 0.05 0 28 | piece=500
+asparagus | Спаржа зелёная | vegetables | Овощи и фрукты | raw | g | 0.8 | 20 2.2 0.1 3.9 2.1 38 5.6 0 1.13 0.09 0 52 | pkg=250 g
+pak_choi | Пак-чой | vegetables | Овощи и фрукты | raw | g | 0.9 | 13 1.5 0.2 2.2 1 223 45 0 0.09 0.19 0 66 | piece=200
+iceberg_lettuce | Салат айсберг | vegetables | Овощи и фрукты | raw | g | 0.85 | 14 0.9 0.1 3 1.2 25 2.8 0 0.18 0.04 0 29 | piece=500
+romaine_lettuce | Салат романо | vegetables | Овощи и фрукты | raw | g | 0.85 | 17 1.2 0.3 3.3 2.1 436 4 0 0.13 0.07 0 136 | piece=300
+chili_pepper | Перец чили свежий | vegetables | Овощи и фрукты | raw | g | 0.9 | 40 1.9 0.4 8.8 1.5 48 144 0 0.69 0.51 0 23 | piece=15
+beet_cooked | Свёкла варёная в вакуумной упаковке | vegetables | Овощи и фрукты | cooked | g | 1 | 44 1.7 0.2 10 2 2 3.6 0 0.04 0.07 0 80 | piece=200; pkg=500 g
+mint | Мята свежая | vegetables | Овощи и фрукты | raw | g | 0.8 | 70 3.8 0.9 14.9 8 212 31.8 0 N 0.13 0 114 | pkg=30 g
+rosemary | Розмарин свежий | vegetables | Овощи и фрукты | raw | g | 0.7 | 131 3.3 5.9 20.7 14.1 146 21.8 0 N 0.34 0 109 | pkg=20 g
+thyme | Тимьян свежий | vegetables | Овощи и фрукты | raw | g | 0.7 | 101 5.6 1.7 24.5 14 238 160 0 N 0.35 0 45 | pkg=20 g
+nori | Нори (листы водорослей) | vegetables | Бакалея | dry | g | 1 | 349 41 3 44 33 N N N N N N N | piece=2.5; pkg=25 g
+
+// Замороженные овощи
+broccoli_frozen | Брокколи замороженная | vegetables | Заморозка | raw | g | 1 | 28 3 0.3 5.4 3 39 56 0 1.2 0.12 0 94 | pkg=400 g
+cauliflower_frozen | Цветная капуста замороженная | vegetables | Заморозка | raw | g | 1 | 24 2 0.3 4.7 2.3 1 49 0 0.07 0.17 0 57 | pkg=400 g
+brussels_sprouts_frozen | Капуста брюссельская замороженная | vegetables | Заморозка | raw | g | 1 | 43 3.4 0.3 9 3.8 38 85 0 0.88 0.22 0 61 | pkg=400 g
+spinach_frozen | Шпинат замороженный | vegetables | Заморозка | raw | g | 1 | 29 3.6 0.6 4.2 2.9 N N 0 N N 0 N | pkg=400 g
+corn_frozen | Кукуруза замороженная | vegetables | Заморозка | raw | g | 1 | 86 3.3 1.4 19 2 9 6.8 0 0.07 0.09 0 42 | pkg=400 g
+
+// Овощные консервы и заготовки
+jalapeno_pickled | Халапеньо маринованный | vegetables | Консервы и соусы | processed | g | 1 | 28 0.9 0.9 4.9 2.6 N N 0 N N 0 N | pkg=200 g
+gherkins | Огурцы маринованные (корнишоны) | vegetables | Консервы и соусы | processed | g | 1 | 20 0.5 0.2 4 1 N N 0 N N 0 N | piece=15; pkg=680 g
+sun_dried_tomatoes | Томаты вяленые в масле | vegetables | Консервы и соусы | processed | g | 1 | 213 5.1 14 23.3 5.8 N N 0 N N 0 N | pkg=280 g
+green_olives | Оливки зелёные без косточки | vegetables | Консервы и соусы | processed | g | 0.6 | 145 1 15.3 3.8 3.3 20 0 0 3.8 0.03 0 3 | pkg=300 g
+capers | Каперсы | vegetables | Консервы и соусы | processed | g | 1 | 23 2.4 0.9 4.9 3.2 N N 0 N N 0 N | spoon=tbsp:9,tsp:3; pkg=100 g
+passata | Томатное пюре (пассата) | vegetables | Консервы и соусы | processed | g | 1 | 24 1.3 0.2 4.5 1.5 N N 0 N N 0 N | spoon=tbsp:16; pkg=500 g
+zucchini_caviar | Икра кабачковая | vegetables | Консервы и соусы | processed | g | 1 | 97 1.2 7 7.4 1.5 N N 0 N N 0 N | spoon=tbsp:18; pkg=480 g; contains=zucchini,carrot,onion,tomato_paste,sunflower_oil
+pickled_ginger | Имбирь маринованный | vegetables | Консервы и соусы | processed | g | 1 | 51 0.2 0.3 12 N N N 0 N N 0 N | pkg=150 g; contains=ginger,sugar
+// В кимчи обычно есть рыбный соус или креветочная паста, поэтому аллергены указаны с запасом.
+kimchi | Кимчи | vegetables | Консервы и соусы | processed | g | 1 | 15 1.1 0.5 2.4 1.6 N N 0 N N 0 N | pkg=300 g; allergens=fish,crustaceans; contains=chinese_cabbage
+marinated_champignons | Шампиньоны маринованные | mushrooms | Консервы и соусы | processed | g | 0.65 | 25 2.5 0.4 3 1.5 N N N N N N N | pkg=280 g; contains=champignons
+
+// Грибы
+oyster_mushrooms | Вёшенки | mushrooms | Овощи и фрукты | raw | g | 0.9 | 33 3.3 0.4 6.1 2.3 2 0 0.7 0 0.11 0 38 | pkg=400 g
+shiitake | Шиитаке свежие | mushrooms | Овощи и фрукты | raw | g | 0.9 | 34 2.2 0.5 6.8 2.5 0 0 0.4 0 0.29 0 13 | pkg=200 g
+porcini_dried | Белые грибы сушёные | mushrooms | Бакалея | dry | g | 1 | 286 30.3 3.3 35 26 N N N N N N N | pkg=50 g
+
+// Фрукты
+lime | Лайм | fruits | Овощи и фрукты | raw | g | 0.7 | 30 0.7 0.2 10.5 2.8 2 29.1 0 0.22 0.04 0 8 | piece=70
+grapefruit | Грейпфрут | fruits | Овощи и фрукты | raw | g | 0.7 | 42 0.8 0.1 10.7 1.6 58 31.2 0 0.13 0.05 0 13 | piece=400
+mandarin | Мандарины | fruits | Овощи и фрукты | raw | g | 0.75 | 53 0.8 0.3 13.3 1.8 34 26.7 0 0.2 0.08 0 16 | piece=80; pkg=1000 g
+grapes | Виноград | fruits | Овощи и фрукты | raw | g | 0.95 | 69 0.7 0.2 18.1 0.9 3 3.2 0 0.19 0.09 0 2 | pkg=500 g
+peach | Персики | fruits | Овощи и фрукты | raw | g | 0.9 | 39 0.9 0.3 9.5 1.5 16 6.6 0 0.73 0.03 0 4 | piece=150
+apricot | Абрикосы | fruits | Овощи и фрукты | raw | g | 0.9 | 48 1.4 0.4 11.1 2 96 10 0 0.89 0.05 0 9 | piece=40
+plum | Сливы | fruits | Овощи и фрукты | raw | g | 0.9 | 46 0.7 0.3 11.4 1.4 17 9.5 0 0.26 0.03 0 5 | piece=30
+pomegranate | Гранат | fruits | Овощи и фрукты | raw | g | 0.55 | 83 1.7 1.2 18.7 4 0 10.2 0 0.6 0.08 0 38 | piece=300
+pineapple | Ананас | fruits | Овощи и фрукты | raw | g | 0.55 | 50 0.5 0.1 13.1 1.4 3 47.8 0 0.02 0.11 0 18 | piece=1500
+mango | Манго | fruits | Овощи и фрукты | raw | g | 0.7 | 60 0.8 0.4 15 1.6 54 36.4 0 0.9 0.12 0 43 | piece=350
+persimmon | Хурма | fruits | Овощи и фрукты | raw | g | 0.9 | 70 0.6 0.2 18.6 3.6 81 7.5 0 0.73 0.1 0 8 | piece=200
+watermelon | Арбуз | fruits | Овощи и фрукты | raw | g | 0.6 | 30 0.6 0.2 7.6 0.4 28 8.1 0 0.05 0.05 0 3 | piece=8000
+melon | Дыня | fruits | Овощи и фрукты | raw | g | 0.6 | 34 0.8 0.2 8.2 0.9 169 36.7 0 0.05 0.07 0 21 | piece=1500
+strawberries | Клубника свежая | fruits | Овощи и фрукты | raw | g | 0.95 | 32 0.7 0.3 7.7 2 1 58.8 0 0.29 0.05 0 24 | pkg=250 g
+blueberries_fresh | Голубика свежая | fruits | Овощи и фрукты | raw | g | 1 | 57 0.7 0.3 14.5 2.4 3 9.7 0 0.57 0.05 0 6 | pkg=125 g
+
+// Ягоды замороженные
+raspberries_frozen | Малина замороженная | fruits | Заморозка | raw | g | 1 | 52 1.2 0.7 11.9 6.5 2 26.2 0 0.87 0.06 0 21 | pkg=300 g
+cherries_frozen | Вишня замороженная без косточки | fruits | Заморозка | raw | g | 1 | 50 1 0.3 12.2 1.6 64 10 0 0.07 0.04 0 8 | pkg=300 g
+blackcurrant_frozen | Смородина чёрная замороженная | fruits | Заморозка | raw | g | 1 | 63 1.4 0.4 15.4 4.8 12 181 0 1 0.07 0 N | pkg=300 g
+lingonberries_frozen | Брусника замороженная | fruits | Заморозка | raw | g | 1 | 46 0.7 0.5 9.6 2.5 N 15 0 1 N 0 N | pkg=300 g
+sea_buckthorn_frozen | Облепиха замороженная | fruits | Заморозка | raw | g | 1 | 82 1.2 5.4 5.7 2 N 200 0 5 N 0 N | pkg=300 g
+// Набор ягод в смеси меняется от упаковки к упаковке.
+berry_mix_frozen | Ягодная смесь замороженная | fruits | Заморозка | raw | g | 1 | 45 0.8 0.4 10 3.5 N N 0 N N 0 N | pkg=300 g; known=0
+
+// Фруктовые консервы и сухофрукты
+canned_peaches | Персики консервированные в сиропе | fruits | Консервы и соусы | processed | g | 0.6 | 74 0.5 0.1 19 1.3 N N 0 N N 0 N | pkg=850 g; contains=sugar
+canned_pineapple | Ананасы консервированные | fruits | Консервы и соусы | processed | g | 0.6 | 60 0.4 0.1 15.6 0.8 N N 0 N N 0 N | pkg=580 g; contains=sugar
+dried_cranberries | Клюква сушёная | fruits | Бакалея | dry | g | 1 | 308 0.1 1.4 82.4 5.3 N 0.2 0 2.1 0.04 0 0 | spoon=tbsp:10; pkg=150 g; contains=sugar
+dates | Финики сушёные | fruits | Бакалея | dry | g | 0.88 | 282 2.5 0.4 75 8 0 0.4 0 0.05 0.17 0 19 | piece=8; pkg=200 g
+dried_figs | Инжир сушёный | fruits | Бакалея | dry | g | 1 | 249 3.3 0.9 63.9 9.8 0 1.2 0 0.35 0.11 0 9 | piece=20; pkg=200 g
+rosehip_dried | Шиповник сушёный | fruits | Бакалея | dry | g | 1 | 253 3.4 1.4 48 22 N N 0 N N 0 N | pkg=200 g
+
+// Орехи и семена
+cashews | Кешью | nuts_seeds | Бакалея | dry | g | 1 | 553 18.2 43.9 30.2 3.3 0 0.5 0 0.9 0.42 0 25 | spoon=tbsp:10; pkg=150 g; allergens=tree_nuts
+hazelnuts | Фундук | nuts_seeds | Бакалея | dry | g | 1 | 628 15 60.8 16.7 9.7 1 6.3 0 15 0.56 0 113 | spoon=tbsp:9; pkg=150 g; allergens=tree_nuts
+pistachios | Фисташки очищенные | nuts_seeds | Бакалея | dry | g | 1 | 560 20.2 45.3 27.2 10.6 26 5.6 0 2.9 1.7 0 51 | spoon=tbsp:9; pkg=100 g; allergens=tree_nuts
+pine_nuts | Кедровые орехи | nuts_seeds | Бакалея | dry | g | 1 | 673 13.7 68.4 13.1 3.7 1 0.8 0 9.3 0.09 0 34 | spoon=tbsp:9,tsp:3; pkg=100 g; allergens=tree_nuts
+peanuts | Арахис очищенный | nuts_seeds | Бакалея | dry | g | 1 | 567 25.8 49.2 16.1 8.5 0 0 0 8.3 0.35 0 240 | spoon=tbsp:9; pkg=200 g; allergens=peanuts
+pumpkin_seeds | Семечки тыквенные очищенные | nuts_seeds | Бакалея | dry | g | 1 | 559 30.2 49 10.7 6 1 1.9 0 2.2 0.14 0 58 | spoon=tbsp:9,tsp:3; pkg=150 g
+flax_seeds | Семена льна | nuts_seeds | Бакалея | dry | g | 1 | 534 18.3 42.2 28.9 27.3 0 0.6 0 0.31 0.47 0 87 | spoon=tbsp:10,tsp:3; pkg=200 g
+poppy_seeds | Мак пищевой | nuts_seeds | Бакалея | dry | g | 1 | 525 18 41.6 28.1 19.5 0 1 0 1.8 0.25 0 82 | spoon=tbsp:9,tsp:3; pkg=100 g
+coconut_flakes | Кокосовая стружка | nuts_seeds | Бакалея | dry | g | 1 | 660 6.9 64.5 23.7 16.3 0 1.5 0 0.4 0.3 0 9 | spoon=tbsp:5,tsp:2; pkg=100 g
+
+// Масла и жиры
+sesame_oil | Масло кунжутное | oils_fats | Масла и специи | processed | ml | 1 | 884 0 100 0 0 0 0 0 1.4 0 0 0 | dens=0.92; spoon=tbsp:13.6,tsp:4.5; pkg=250 ml; allergens=sesame
+coconut_oil | Масло кокосовое | oils_fats | Масла и специи | processed | g | 1 | 892 0 99 0 0 0 0 0 0.1 0 0 0 | spoon=tbsp:13.5,tsp:4.5; pkg=300 g
+sunflower_oil_unrefined | Масло подсолнечное нерафинированное | oils_fats | Масла и специи | processed | ml | 1 | 884 0 100 0 0 0 0 0 41 0 0 0 | dens=0.92; spoon=tbsp:13.6,tsp:4.5; pkg=500 ml
+
+// Специи и сушёные травы
+garam_masala | Гарам масала | spices | Масла и специи | dry | g | 1 | 350 12 15 45 20 N N 0 N N 0 N | spoon=tsp:2,pinch:0.2; pkg=50 g
+hot_pepper_ground | Перец красный жгучий молотый | spices | Масла и специи | dry | g | 1 | 318 12 17.3 29.4 27.2 2081 76 0 29.8 2.45 0 106 | spoon=tsp:1.8,pinch:0.1; pkg=20 g
+smoked_paprika | Паприка копчёная | spices | Масла и специи | dry | g | 1 | 282 14.1 12.9 19 34.9 2463 0.9 0 29.1 2.14 0 49 | spoon=tsp:2.3,pinch:0.2; pkg=50 g
+cardamom | Кардамон молотый | spices | Масла и специи | dry | g | 1 | 311 10.8 6.7 40.5 28 0 21 0 N 0.23 0 N | spoon=tsp:2,pinch:0.2; pkg=20 g
+nutmeg | Мускатный орех молотый | spices | Масла и специи | dry | g | 1 | 525 5.8 36.3 49.3 20.8 5 3 0 N 0.16 0 76 | spoon=tsp:2.2,pinch:0.2; pkg=20 g
+cloves | Гвоздика | spices | Масла и специи | dry | g | 1 | 274 6 13 31.6 33.9 8 0.2 0 8.8 0.39 0 25 | piece=0.1; spoon=tsp:2,pinch:0.2; pkg=10 g
+star_anise | Бадьян (звёздчатый анис) | spices | Масла и специи | dry | g | 1 | 337 17.6 15.9 35.4 14.6 N N 0 N N 0 N | piece=0.5; pkg=10 g
+allspice | Перец душистый горошком | spices | Масла и специи | dry | g | 1 | 263 6.1 8.7 50.5 21.6 27 39 0 N 0.21 0 36 | piece=0.1; spoon=tsp:2; pkg=20 g
+ginger_ground | Имбирь молотый | spices | Масла и специи | dry | g | 1 | 335 9 4.2 71.6 14.1 30 0.7 0 18 0.63 0 13 | spoon=tsp:2,pinch:0.2; pkg=20 g
+garlic_dried | Чеснок сушёный гранулированный | spices | Масла и специи | dry | g | 1 | 331 16.6 0.7 72.7 9 0 1.2 0 0.67 1.65 0 47 | spoon=tsp:3,pinch:0.3; pkg=50 g
+mustard_powder | Горчичный порошок | spices | Масла и специи | dry | g | 1 | 508 26 36 28 12 N N 0 N N 0 N | spoon=tsp:3,pinch:0.3; pkg=100 g; allergens=mustard
+italian_herbs | Итальянские травы (смесь) | spices | Масла и специи | dry | g | 1 | 265 9 4.3 50 40 N N 0 N N 0 N | spoon=tsp:1,pinch:0.1; pkg=15 g
+thyme_dried | Тимьян сушёный | spices | Масла и специи | dry | g | 1 | 276 9.1 7.4 45 37 N N 0 N N 0 N | spoon=tsp:1,pinch:0.1; pkg=10 g
+
+// Соусы и приправы
+fish_sauce | Рыбный соус | condiments | Консервы и соусы | processed | ml | 1 | 35 5.1 0 3.6 0 N N N N N N N | dens=1.2; spoon=tbsp:18,tsp:6; pkg=200 ml; allergens=fish
+oyster_sauce | Устричный соус | condiments | Консервы и соусы | processed | g | 1 | 51 1.4 0.3 10.9 0.3 N N N N N N N | spoon=tbsp:18,tsp:6; pkg=250 g; allergens=molluscs,gluten,soy
+tamari | Соевый соус без глютена (тамари) | condiments | Консервы и соусы | processed | ml | 1 | 60 10.5 0.1 5.6 0.8 N 0 0 N N 0 N | dens=1.2; spoon=tbsp:18,tsp:6; pkg=250 ml; allergens=soy
+sriracha | Соус шрирача | condiments | Консервы и соусы | processed | g | 1 | 93 1.9 0.9 19.2 2.2 N N 0 N N 0 N | spoon=tbsp:17,tsp:6; pkg=200 g
+sweet_chili_sauce | Соус сладкий чили | condiments | Консервы и соусы | processed | g | 1 | 220 0.4 0.3 54 0.5 N N 0 N N 0 N | spoon=tbsp:18,tsp:6; pkg=300 g
+adjika | Аджика острая | condiments | Консервы и соусы | processed | g | 1 | 60 1.5 2 9 2 N N 0 N N 0 N | spoon=tbsp:16,tsp:5; pkg=200 g
+tkemali | Соус ткемали | condiments | Консервы и соусы | processed | g | 1 | 50 0.3 0.1 12 1 N N 0 N N 0 N | spoon=tbsp:17,tsp:6; pkg=300 g
+narsharab | Соус гранатовый наршараб | condiments | Консервы и соусы | processed | g | 1 | 260 0.5 0 64 0 N N 0 N N 0 N | spoon=tbsp:20,tsp:7; pkg=360 g
+pesto | Соус песто | condiments | Консервы и соусы | processed | g | 1 | 445 5 45 5 1 N N N N N N N | spoon=tbsp:15,tsp:5; pkg=190 g; allergens=milk,tree_nuts
+harissa | Паста хариса | condiments | Консервы и соусы | processed | g | 1 | 122 4 6 13 5 N N 0 N N 0 N | spoon=tbsp:16,tsp:5; pkg=100 g
+salsa | Соус сальса | condiments | Консервы и соусы | processed | g | 1 | 36 1.5 0.2 7 1.9 N N 0 N N 0 N | spoon=tbsp:17,tsp:6; pkg=300 g
+// Рецептуры барбекю сильно различаются (горчица, вустерский соус, сельдерей).
+bbq_sauce | Соус барбекю | condiments | Консервы и соусы | processed | g | 1 | 172 0.8 0.6 40.8 0.9 N N 0 N N 0 N | spoon=tbsp:17,tsp:6; pkg=300 g; known=0
+worcestershire_sauce | Вустерширский соус | condiments | Консервы и соусы | processed | ml | 1 | 78 0 0 19.5 0 N N 0 N N 0 N | dens=1.1; spoon=tbsp:17,tsp:5.5; pkg=150 ml; allergens=fish,gluten
+tabasco | Соус табаско | condiments | Консервы и соусы | processed | ml | 1 | 12 1.3 0.8 0.8 0.6 N N 0 N N 0 N | dens=1; spoon=tsp:5; pkg=60 ml
+horseradish | Хрен столовый | condiments | Консервы и соусы | processed | g | 1 | 48 1.2 0.7 11 3.3 N N 0 N N 0 N | spoon=tbsp:15,tsp:5; pkg=200 g
+grain_mustard | Горчица зернистая | condiments | Консервы и соусы | processed | g | 1 | 140 7 9 8 4 N N 0 N N 0 N | spoon=tbsp:15,tsp:6; pkg=170 g; allergens=mustard
+wasabi | Паста васаби | condiments | Консервы и соусы | processed | g | 1 | 285 2.7 10 46 6 N N 0 N N 0 N | spoon=tsp:5; pkg=43 g; allergens=mustard
+miso | Паста мисо | condiments | Консервы и соусы | processed | g | 1 | 199 11.7 6 26.5 5.4 N N N N N N N | spoon=tbsp:18,tsp:6; pkg=300 g; allergens=soy,gluten
+// Тайские пасты карри обычно содержат креветочную пасту и рыбный соус.
+red_curry_paste | Паста карри красная | condiments | Консервы и соусы | processed | g | 1 | 100 2 5 12 3 N N 0 N N 0 N | spoon=tbsp:16,tsp:5; pkg=100 g; allergens=crustaceans,fish
+green_curry_paste | Паста карри зелёная | condiments | Консервы и соусы | processed | g | 1 | 100 2 5 12 3 N N 0 N N 0 N | spoon=tbsp:16,tsp:5; pkg=100 g; allergens=crustaceans,fish
+mirin | Мирин (сладкая рисовая приправа) | condiments | Консервы и соусы | processed | ml | 1 | 230 0.2 0 55 0 0 0 0 0 0 0 0 | dens=1.15; spoon=tbsp:17,tsp:6; pkg=300 ml; contains=rice_round_dry
+balsamic_vinegar | Уксус бальзамический | condiments | Масла и специи | processed | ml | 1 | 88 0.5 0 17 0 0 0 0 0 0 0 0 | dens=1.06; spoon=tbsp:16,tsp:5; pkg=250 ml; allergens=sulphites
+rice_vinegar | Уксус рисовый | condiments | Масла и специи | processed | ml | 1 | 18 0 0 0 0 0 0 0 0 0 0 0 | dens=1.01; spoon=tbsp:15,tsp:5; pkg=300 ml; contains=rice_round_dry
+apple_vinegar | Уксус яблочный 6% | condiments | Масла и специи | processed | ml | 1 | 21 0 0 0.9 0 0 0 0 0 0 0 0 | dens=1.01; spoon=tbsp:15,tsp:5; pkg=500 ml
+wine_vinegar | Уксус винный | condiments | Масла и специи | processed | ml | 1 | 19 0 0 0.3 0 0 0 0 0 0 0 0 | dens=1.01; spoon=tbsp:15,tsp:5; pkg=500 ml; allergens=sulphites
+agar | Агар-агар | condiments | Бакалея | dry | g | 1 | 306 6.2 0.3 80.9 7.7 0 0 0 0.9 0.3 0 580 | spoon=tsp:2,pinch:0.3; pkg=25 g
+fresh_yeast | Дрожжи прессованные | condiments | Бакалея | processed | g | 1 | 109 12.7 2.7 8.5 8.1 0 0 N N N N N | pkg=100 g
+
+// Сладкое
+dark_chocolate | Шоколад горький 70% | sweets | Бакалея | processed | g | 1 | 598 7.8 42.6 45.9 10.9 2 0 0 0.6 0.04 0.3 N | pkg=100 g; allergens=milk,soy
+milk_chocolate | Шоколад молочный | sweets | Бакалея | processed | g | 1 | 535 7.6 29.7 59.4 3.4 59 0 0 0.5 0.04 0.75 11 | pkg=90 g; allergens=milk,soy
+chocolate_hazelnut_spread | Шоколадно-ореховая паста | sweets | Бакалея | processed | g | 1 | 539 6.3 30.9 57.5 3.4 N N N N N N N | spoon=tbsp:18,tsp:6; pkg=350 g; allergens=milk,tree_nuts,soy
+powdered_sugar | Сахарная пудра | sweets | Бакалея | processed | g | 1 | 389 0 0 99.8 0 0 0 0 0 0 0 0 | spoon=tbsp:8,tsp:3; pkg=200 g; contains=sugar
+cane_sugar | Сахар тростниковый | sweets | Бакалея | processed | g | 1 | 380 0.1 0 98 0 0 0 0 0 0 0 0 | spoon=tbsp:12,tsp:4; pkg=900 g
+maple_syrup | Сироп кленовый | sweets | Бакалея | processed | ml | 1 | 260 0 0.1 67 0 0 0 0 0 0 0 0 | dens=1.33; spoon=tbsp:20,tsp:7; pkg=250 ml
+
+// Чай, кофе, соки и другие напитки
+tea_black | Чай чёрный листовой | beverages | Бакалея | dry | g | 1 | 140 20 5.1 6.9 N N N 0 N N 0 N | spoon=tsp:2; pkg=100 g
+tea_green | Чай зелёный листовой | beverages | Бакалея | dry | g | 1 | 141 20 5.1 4 N N N 0 N N 0 N | spoon=tsp:2; pkg=100 g
+coffee_ground | Кофе натуральный молотый | beverages | Бакалея | dry | g | 1 | 331 13.9 14.4 29.5 N 0 0 0 N N 0 N | spoon=tbsp:7,tsp:2.5; pkg=250 g
+coffee_instant | Кофе растворимый | beverages | Бакалея | dry | g | 1 | 353 12.2 0.5 75.4 0 0 0 0 0 0.03 0 0 | spoon=tsp:2; pkg=95 g
+apple_juice | Сок яблочный | beverages | Другое | processed | ml | 1 | 46 0.1 0.1 11.3 0.2 1 0.9 0 0.01 0.02 0 0 | dens=1.04; spoon=tbsp:15.5; pkg=1000 ml
+orange_juice | Сок апельсиновый | beverages | Другое | processed | ml | 1 | 45 0.7 0.2 10.4 0.2 10 50 0 0.04 0.04 0 30 | dens=1.04; spoon=tbsp:15.5; pkg=1000 ml
+tomato_juice | Сок томатный | beverages | Другое | processed | ml | 1 | 17 0.9 0.3 3.5 0.4 N 10 0 N N 0 N | dens=1.03; pkg=1000 ml
+pomegranate_juice | Сок гранатовый | beverages | Другое | processed | ml | 1 | 54 0.2 0.3 13.1 0.1 0 0.1 0 0.38 0.04 0 24 | dens=1.05; spoon=tbsp:15.5; pkg=1000 ml
+kvass | Квас хлебный | beverages | Другое | processed | ml | 1 | 27 0.2 0 5.2 0 0 0 0 0 0 0 N | dens=1.01; pkg=1500 ml; allergens=gluten
+sparkling_water | Вода минеральная газированная | beverages | Другое | processed | ml | 1 | 0 0 0 0 0 0 0 0 0 0 0 0 | dens=1; pkg=1500 ml

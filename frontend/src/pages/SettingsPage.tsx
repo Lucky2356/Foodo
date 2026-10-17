@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import type { PlanSettings, Product } from '../engine';
 import type { HouseholdSettings, NewPrice } from '../data/types';
 import { chainsForCity, detectCity, loadChains, loadCities, searchCities } from '../data/geo';
@@ -26,7 +26,7 @@ const WEEK = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 const KIND_NAMES: Record<string, string> = { manual: 'вручную', receipt: 'чек', community: 'пользователи Foodo', scraped: 'сайт сети', rosstat: 'Росстат, средняя цена (оценка)' };
 
 export default function SettingsPage() {
-  const { household, gateway, refreshHousehold, reportError } = useApp();
+  const { household, gateway, catalog, refreshHousehold, reportError } = useApp();
   const location = useLocation();
   const [settings, setSettings] = useState<HouseholdSettings | null>(household?.settings ?? null);
   const [status, setStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
@@ -74,6 +74,15 @@ export default function SettingsPage() {
           </span>
         }
       />
+      <section className="card row between wrap">
+        <div className="grow">
+          <h2>Анкета</h2>
+          <p className="muted small">Ответьте на вопросы заново — настройки и участники обновятся, затем составится новое меню.</p>
+        </div>
+        <Link className="btn" to="/start">
+          <Icon name="list" size={18} /> Пройти анкету заново
+        </Link>
+      </section>
       <section className="card stack">
         <h2>Приёмы пищи</h2>
         <div className="chips">
@@ -126,10 +135,23 @@ export default function SettingsPage() {
           <p className="muted small">Блюда без нагрева доступны всегда. Если у рецепта есть способ для вашей техники (например, аэрогриль вместо духовки), подставятся его шаги и время.</p>
         </div>
         <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Максимальное время готовки</span>
+          <span className="label">Максимальное время готовки в будни</span>
           <div className="chips">
             {[null, 20, 30, 45, 60, 90].map((t) => (
               <Chip key={String(t)} on={plan.max_total_min === t} onClick={() => setPlan({ max_total_min: t })}>
+                {t === null ? 'Без ограничения' : `до ${t} мин`}
+              </Chip>
+            ))}
+          </div>
+        </div>
+        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+          <span className="label">В субботу и воскресенье</span>
+          <div className="chips">
+            <Chip on={plan.max_total_min_weekend === undefined || plan.max_total_min_weekend === plan.max_total_min} onClick={() => setPlan({ max_total_min_weekend: plan.max_total_min })}>
+              Как в будни
+            </Chip>
+            {[null, 30, 45, 60, 90, 120].map((t) => (
+              <Chip key={String(t)} on={plan.max_total_min_weekend !== undefined && plan.max_total_min_weekend !== plan.max_total_min && plan.max_total_min_weekend === t} onClick={() => setPlan({ max_total_min_weekend: t })}>
                 {t === null ? 'Без ограничения' : `до ${t} мин`}
               </Chip>
             ))}
@@ -139,12 +161,33 @@ export default function SettingsPage() {
 
       <section className="card stack">
         <h2>Питание</h2>
-        <Segmented label="Режим питания" value={plan.diet_mode} onChange={(v) => setPlan({ diet_mode: v })} options={[{ value: 'regular', label: 'Обычное' }, { value: 'balanced', label: 'Сбалансированное (ПП)' }]} />
+        <Segmented
+          label="Режим питания"
+          value={plan.diet_mode}
+          onChange={(v) => setPlan({ diet_mode: v })}
+          options={[
+            { value: 'regular', label: 'Обычное' },
+            { value: 'balanced', label: 'Сбалансированное (ПП)' },
+            { value: 'high_protein', label: 'Больше белка' },
+          ]}
+        />
         <p className="muted small">
           {plan.diet_mode === 'balanced'
             ? 'Выше в выборе — цельнозерновые крупы, овощи, нежирный белок, бобовые и рыба; ниже — жареное, добавленный сахар, белая мука и жирные соусы. Это предпочтение, а не диета: запреты и аллергены работают в любом режиме.'
-            : 'Без поправок на ПП: учитываются запреты, вкусы, разнообразие и время.'}
+            : plan.diet_mode === 'high_protein'
+              ? 'Выше в выборе — нежирное мясо, птица, рыба, творог и бобовые; ниже — сладкое и белая мука. Порции не увеличиваются: меняется только выбор блюд.'
+              : 'Без поправок на ПП: учитываются запреты, вкусы, разнообразие и время.'}
         </p>
+        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+          <span className="label">Любимые кухни (такие блюда будут чаще)</span>
+          <div className="chips">
+            {(catalog.reference.cuisines ?? []).map((c) => (
+              <Chip key={c.id} on={(plan.cuisines ?? []).includes(c.id)} onClick={() => setPlan({ cuisines: toggleIn(plan.cuisines ?? [], c.id) })}>
+                {c.name}
+              </Chip>
+            ))}
+          </div>
+        </div>
         <div className="stack" style={{ ['--gap' as string]: '8px' }}>
           <span className="label">Повторы блюд</span>
           <Segmented

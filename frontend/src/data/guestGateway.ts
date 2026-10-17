@@ -536,4 +536,10 @@ function validateMember(m: Member): void {
   if (m.portion_mode === 'target' && m.age !== null && m.age < 18 && m.goal === 'lose') {
     throw new ApiError('validation_error', 'Для несовершеннолетних цель «снижение веса» не рассчитывается автоматически. Используйте простые порции.', 400);
   }
+  const tol = m.spice_tolerance;
+  if (tol !== undefined && !(Number.isInteger(tol) && tol >= 0 && tol <= 2)) throw new ApiError('validation_error', 'Острота — от 0 до 2.', 400);
+  const types = m.diet_types;
+  if (types !== undefined && !(Array.isArray(types) && types.length <= 10 && types.every((t) => typeof t === 'string'))) {
+    throw new ApiError('validation_error', 'Типы питания — не больше 10.', 400);
+  }
 }

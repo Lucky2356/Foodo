@@ -126,7 +126,30 @@
   ],
   "diet_modes": [
     {"id": "regular", "name": "Обычное"},
-    {"id": "balanced", "name": "Сбалансированное (ПП)"}
+    {"id": "balanced", "name": "Сбалансированное (ПП)"},
+    {"id": "high_protein", "name": "Больше белка"}
+  ],
+  "diet_types": [
+    {"id": "no_pork", "name": "Без свинины", "categories": ["pork", "processed_meat"], "allergens": [], "products": []},
+    {"id": "pescatarian", "name": "Без мяса, рыба можно", "categories": ["meat"], "allergens": [], "products": []},
+    {"id": "vegetarian", "name": "Вегетарианское", "categories": ["meat", "fish_seafood"], "allergens": ["fish", "crustaceans", "molluscs"], "products": []},
+    {"id": "fasting", "name": "Постное", "categories": ["meat", "fish_seafood", "dairy", "eggs"], "allergens": ["milk", "eggs", "fish", "crustaceans", "molluscs"], "products": []},
+    {"id": "vegan", "name": "Веганское", "categories": ["meat", "fish_seafood", "dairy", "eggs"], "allergens": ["milk", "eggs", "fish", "crustaceans", "molluscs"], "products": ["honey"]},
+    {"id": "gluten_free", "name": "Без глютена", "categories": [], "allergens": ["gluten"], "products": []},
+    {"id": "dairy_free", "name": "Без молочных продуктов", "categories": ["dairy"], "allergens": ["milk"], "products": []}
+  ],
+  "cuisines": [
+    {"id": "russian", "name": "Русская и домашняя"},
+    {"id": "european", "name": "Европейская"},
+    {"id": "italian", "name": "Итальянская"},
+    {"id": "mediterranean", "name": "Средиземноморская"},
+    {"id": "caucasian", "name": "Кавказская"},
+    {"id": "central_asian", "name": "Среднеазиатская"},
+    {"id": "asian", "name": "Азиатская"},
+    {"id": "indian", "name": "Индийская"},
+    {"id": "middle_eastern", "name": "Ближневосточная"},
+    {"id": "mexican", "name": "Мексиканская"},
+    {"id": "american", "name": "Американская"}
   ],
   "diet_tags": [
     {"id": "whole_grain", "name": "Цельнозерновые крупы"},
@@ -152,7 +175,14 @@
       "white_flour": -0.6,
       "creamy": -0.8
     },
-    "regular": {}
+    "regular": {},
+    "high_protein": {
+      "lean_protein": 1.4,
+      "fish": 0.8,
+      "legumes": 0.6,
+      "refined_sugar": -0.8,
+      "white_flour": -0.4
+    }
   },
   "meal_slots": [
     {"id": "breakfast", "name": "Завтрак", "energy_share": 0.25},
@@ -165,7 +195,10 @@
     {"id": "soup", "name": "Супы"},
     {"id": "main", "name": "Вторые блюда"},
     {"id": "salad", "name": "Салаты"},
-    {"id": "snack", "name": "Перекусы"}
+    {"id": "snack", "name": "Перекусы"},
+    {"id": "dessert", "name": "Десерты"},
+    {"id": "baking", "name": "Выпечка"},
+    {"id": "drink", "name": "Напитки"}
   ],
   "stores": [
     {"id": "none", "name": "Без привязки к магазину"},
