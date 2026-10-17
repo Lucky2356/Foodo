@@ -50,6 +50,7 @@
   --hero-bg: linear-gradient(135deg, #18a84e 0%, #13893f 55%, #0e6e32 100%);
   --hero-ink: #ffffff;
   --hero-muted: rgb(255 255 255 / 80%);
+  --hero-btn-ink: #14532d;
   --landing-bg: linear-gradient(140deg, #fff1d6 0%, #fffbf2 48%, #e7f6ec 100%);
   --toast-bg: #1f2a1f;
   --toast-ink: #f5f7f2;
@@ -113,6 +114,7 @@
     --hero-bg: linear-gradient(135deg, #3b2407 0%, #1d1307 55%, #141414 100%);
     --hero-ink: #fff3e0;
     --hero-muted: rgb(255 243 224 / 72%);
+    --hero-btn-ink: #3b2407;
     --landing-bg: linear-gradient(140deg, #1c1206 0%, #0a0a0a 55%, #06140b 100%);
     --toast-bg: #262626;
     --toast-ink: #f5f5f5;
@@ -167,6 +169,7 @@
   --hero-bg: linear-gradient(135deg, #3b2407 0%, #1d1307 55%, #141414 100%);
   --hero-ink: #fff3e0;
   --hero-muted: rgb(255 243 224 / 72%);
+    --hero-btn-ink: #3b2407;
   --landing-bg: linear-gradient(140deg, #1c1206 0%, #0a0a0a 55%, #06140b 100%);
   --toast-bg: #262626;
   --toast-ink: #f5f5f5;
@@ -1214,6 +1217,12 @@ textarea.input {
   position: relative;
 }
 
+/* The photo or drawing fills the 16:10 box, so a large photo cannot stretch its card. */
+.recipe-card .cover > * {
+  position: absolute;
+  inset: 0;
+}
+
 .recipe-card .body {
   padding: 14px 16px 16px;
   display: flex;
@@ -2104,4 +2113,233 @@ hr.sep {
   to {
     transform: translateX(250%);
   }
+}
+
+/* ===== Drawn recipe covers ============================================== */
+/* Each category has its own palette; covers are flat drawings, never presented as photos. */
+.cover-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.cover-art {
+  display: block;
+  --c-plate: #ffffff;
+}
+
+.cover-art.cat-breakfast { --c-bg: #ffe9bf; --c-light: #fff7e2; --c-mid: #ffc15e; --c-ink: #e07a10; }
+.cover-art.cat-soup { --c-bg: #ffe0d6; --c-light: #fff1ea; --c-mid: #ff9a7a; --c-ink: #d9472b; }
+.cover-art.cat-main { --c-bg: #e2f3e4; --c-light: #f6fbf3; --c-mid: #ffb347; --c-ink: #2f8f4e; }
+.cover-art.cat-salad { --c-bg: #e8f6d2; --c-light: #fdfdf0; --c-mid: #ef5b45; --c-ink: #4f9a1e; }
+.cover-art.cat-snack { --c-bg: #fdebd1; --c-light: #fff8ea; --c-mid: #8bc34a; --c-ink: #c46a12; }
+.cover-art.cat-dessert { --c-bg: #fbe3ee; --c-light: #fff6fa; --c-mid: #f7a6c4; --c-ink: #c2416f; }
+.cover-art.cat-baking { --c-bg: #f7e6cf; --c-light: #fff4e2; --c-mid: #e1a35a; --c-ink: #8a5524; }
+.cover-art.cat-drink { --c-bg: #dff1fb; --c-light: #f4fbff; --c-mid: #ffb648; --c-ink: #2b8fc4; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .cover-art { --c-plate: #2a2a2a; }
+  :root:not([data-theme='light']) .cover-art.cat-breakfast { --c-bg: #24190a; --c-light: #4a3412; --c-mid: #ffc15e; --c-ink: #ffa42b; }
+  :root:not([data-theme='light']) .cover-art.cat-soup { --c-bg: #26130e; --c-light: #4a2219; --c-mid: #ff9a7a; --c-ink: #ff7a5c; }
+  :root:not([data-theme='light']) .cover-art.cat-main { --c-bg: #1d1710; --c-light: #3a3022; --c-mid: #ff7a66; --c-ink: #ffa42b; }
+  :root:not([data-theme='light']) .cover-art.cat-salad { --c-bg: #121c0e; --c-light: #26361d; --c-mid: #ff7a66; --c-ink: #7fcf5a; }
+  :root:not([data-theme='light']) .cover-art.cat-snack { --c-bg: #22180b; --c-light: #3f2d14; --c-mid: #ffd166; --c-ink: #ff9f1c; }
+  :root:not([data-theme='light']) .cover-art.cat-dessert { --c-bg: #24121a; --c-light: #43202f; --c-mid: #f7a6c4; --c-ink: #ff6f9f; }
+  :root:not([data-theme='light']) .cover-art.cat-baking { --c-bg: #21170c; --c-light: #3e2c17; --c-mid: #e1a35a; --c-ink: #ffb86b; }
+  :root:not([data-theme='light']) .cover-art.cat-drink { --c-bg: #0e1a22; --c-light: #1c3140; --c-mid: #ffb648; --c-ink: #5cc0f2; }
+}
+
+:root[data-theme='dark'] .cover-art { --c-plate: #2a2a2a; }
+:root[data-theme='dark'] .cover-art.cat-breakfast { --c-bg: #24190a; --c-light: #4a3412; --c-mid: #ffc15e; --c-ink: #ffa42b; }
+:root[data-theme='dark'] .cover-art.cat-soup { --c-bg: #26130e; --c-light: #4a2219; --c-mid: #ff9a7a; --c-ink: #ff7a5c; }
+:root[data-theme='dark'] .cover-art.cat-main { --c-bg: #1d1710; --c-light: #3a3022; --c-mid: #ff7a66; --c-ink: #ffa42b; }
+:root[data-theme='dark'] .cover-art.cat-salad { --c-bg: #121c0e; --c-light: #26361d; --c-mid: #ff7a66; --c-ink: #7fcf5a; }
+:root[data-theme='dark'] .cover-art.cat-snack { --c-bg: #22180b; --c-light: #3f2d14; --c-mid: #ffd166; --c-ink: #ff9f1c; }
+:root[data-theme='dark'] .cover-art.cat-dessert { --c-bg: #24121a; --c-light: #43202f; --c-mid: #f7a6c4; --c-ink: #ff6f9f; }
+:root[data-theme='dark'] .cover-art.cat-baking { --c-bg: #21170c; --c-light: #3e2c17; --c-mid: #e1a35a; --c-ink: #ffb86b; }
+:root[data-theme='dark'] .cover-art.cat-drink { --c-bg: #0e1a22; --c-light: #1c3140; --c-mid: #ffb648; --c-ink: #5cc0f2; }
+
+.cover-art .steam {
+  animation: steam 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: bottom;
+}
+
+.recipe-card .cover-img,
+.recipe-card .cover-motif {
+  transition: transform 0.5s var(--ease);
+}
+
+.recipe-card:hover .cover-img {
+  transform: scale(1.05);
+}
+
+.recipe-card:hover .cover-motif {
+  transform: translateY(-4px);
+}
+
+/* ===== Motion ============================================================ */
+/* Route changes fade up; lists reveal with a short stagger. Reduced motion turns all of it off
+   through the global rule near the top of this file. */
+.page {
+  animation: fade-up 0.36s var(--ease) both;
+}
+
+.grid > *,
+.bento > * {
+  animation: fade-up 0.45s var(--ease) both;
+}
+
+.grid > :nth-child(2),
+.bento > :nth-child(2) { animation-delay: 0.04s; }
+.grid > :nth-child(3),
+.bento > :nth-child(3) { animation-delay: 0.08s; }
+.grid > :nth-child(4),
+.bento > :nth-child(4) { animation-delay: 0.12s; }
+.grid > :nth-child(5),
+.bento > :nth-child(5) { animation-delay: 0.16s; }
+.grid > :nth-child(6),
+.bento > :nth-child(6) { animation-delay: 0.2s; }
+.grid > :nth-child(n + 7),
+.bento > :nth-child(n + 7) { animation-delay: 0.24s; }
+
+.btn {
+  transition:
+    transform 0.16s var(--ease),
+    background-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.chip {
+  transition:
+    transform 0.16s var(--ease),
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.chip:active {
+  transform: scale(0.95);
+}
+
+.chip[aria-pressed='true'] {
+  animation: pop 0.3s var(--ease-spring);
+}
+
+/* ===== Wide screens (Full HD → 4K) ====================================== */
+@media (min-width: 1600px) {
+  .main {
+    max-width: 1440px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .main {
+    max-width: 1680px;
+  }
+}
+
+/* On very wide viewports (4K at 100 % scaling) the whole interface scales up, so text and touch
+   targets keep a comfortable physical size instead of turning into a narrow strip. */
+@media (min-width: 2400px) {
+  html {
+    zoom: 1.25;
+  }
+}
+
+@media (min-width: 3200px) {
+  html {
+    zoom: 1.5;
+  }
+}
+
+/* ===== Landing extras ==================================================== */
+.landing-art {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .landing-art {
+    display: block;
+    position: absolute;
+    right: clamp(24px, 5vw, 72px);
+    top: 50%;
+    width: clamp(240px, 28vw, 420px);
+    transform: translateY(-50%);
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-50%);
+  }
+
+  50% {
+    transform: translateY(calc(-50% - 10px));
+  }
+}
+
+.dish-strip {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 720px) {
+  .dish-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.dish-tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  animation: fade-up 0.45s var(--ease) both;
+}
+
+.dish-tile:nth-child(2n) {
+  animation-delay: 0.06s;
+}
+
+.dish-tile:nth-child(3n) {
+  animation-delay: 0.12s;
+}
+
+.dish-tile > span {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 28px 12px 10px;
+  font-weight: 650;
+  font-size: 14px;
+  line-height: 1.25;
+  /* Text sits on a dark scrim over a photo, so it stays white in both themes. */
+  background: linear-gradient(transparent, rgb(0 0 0 / 70%));
+}
+
+.dish-tile .cover-img {
+  transition: transform 0.6s var(--ease);
+}
+
+.dish-tile:hover .cover-img {
+  transform: scale(1.06);
+}
+
+.dish-tile:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
 }

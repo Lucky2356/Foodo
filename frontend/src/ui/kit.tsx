@@ -194,77 +194,123 @@ export function Banner({ tone = 'info', icon = 'info', children }: { tone?: 'inf
   );
 }
 
-const COVER_PALETTES: Record<string, [string, string, string]> = {
-  breakfast: ['#ffe7b8', '#ffc979', '#c9761a'],
-  soup: ['#ffd9cc', '#ff9f80', '#b3442a'],
-  main: ['#dcefdc', '#9fd0a8', '#2e6a4e'],
-  salad: ['#e6f5cf', '#b7dd7c', '#4f7f18'],
-  snack: ['#f1e2fb', '#cfa9ee', '#6c3d94'],
-};
-
 /** Catalog photos are stored as `photos/<id>.webp` next to the app: resolve them against the
  * app base (`/` on the server, `/Foodo/` on GitHub Pages), not against the current route. */
 export function photoUrl(url: string): string {
   return /^https:\/\//.test(url) ? url : `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
 }
 
-/** Recipe photo, or a clearly illustrative cover (never a fake photo). The author and licence
- * are shown as a full line on the recipe page. */
+/** Small deterministic hash so the same recipe always gets the same drawn variant. */
+function variantOf(text: string, n: number): number {
+  let h = 0;
+  for (let i = 0; i < text.length; i += 1) h = (h * 31 + text.charCodeAt(i)) >>> 0;
+  return h % n;
+}
+
+const COVER_ART: Record<string, ReactNode> = {
+  breakfast: (
+    <>
+      <ellipse cx="100" cy="98" rx="58" ry="40" fill="var(--c-plate)" />
+      <ellipse cx="88" cy="94" rx="26" ry="20" fill="var(--c-light)" />
+      <circle cx="90" cy="96" r="10" fill="var(--c-ink)" />
+      <rect x="114" y="78" width="34" height="30" rx="8" fill="var(--c-mid)" transform="rotate(12 131 93)" />
+      <rect x="119" y="83" width="24" height="20" rx="5" fill="var(--c-light)" transform="rotate(12 131 93)" />
+    </>
+  ),
+  soup: (
+    <>
+      <path d="M44 88h112c0 32-25 50-56 50s-56-18-56-50z" fill="var(--c-ink)" />
+      <ellipse cx="100" cy="88" rx="56" ry="11" fill="var(--c-mid)" />
+      <circle cx="84" cy="87" r="5" fill="var(--c-light)" />
+      <circle cx="108" cy="89" r="4" fill="var(--c-plate)" />
+      <circle cx="124" cy="86" r="4.5" fill="var(--c-light)" />
+      <path className="steam" d="M78 66c-6-9 6-13 0-22M100 62c-6-9 6-13 0-22M122 66c-6-9 6-13 0-22" stroke="var(--c-plate)" strokeWidth="5" strokeLinecap="round" fill="none" />
+    </>
+  ),
+  main: (
+    <>
+      <ellipse cx="96" cy="100" rx="62" ry="38" fill="var(--c-plate)" />
+      <ellipse cx="96" cy="98" rx="44" ry="26" fill="var(--c-light)" />
+      <path d="M70 100c6-16 30-22 46-12 10 6 10 18-2 22-14 6-38 6-44-10z" fill="var(--c-ink)" />
+      <circle cx="112" cy="90" r="6" fill="var(--c-mid)" />
+      <circle cx="80" cy="88" r="5" fill="var(--c-mid)" />
+      <path d="M168 54v74M178 54v24c0 8-10 8-10 0" stroke="var(--c-plate)" strokeWidth="5" strokeLinecap="round" fill="none" />
+    </>
+  ),
+  salad: (
+    <>
+      <path d="M42 94h116c0 30-26 48-58 48s-58-18-58-48z" fill="var(--c-plate)" />
+      <path d="M60 94c4-22 22-30 34-20 6-16 30-16 36 2 14-6 26 6 22 18z" fill="var(--c-ink)" />
+      <circle cx="82" cy="86" r="8" fill="var(--c-light)" />
+      <circle cx="118" cy="84" r="7" fill="var(--c-mid)" />
+      <circle cx="102" cy="78" r="5" fill="var(--c-light)" />
+    </>
+  ),
+  snack: (
+    <>
+      <path d="M56 104l44-40 44 40z" fill="var(--c-mid)" />
+      <rect x="56" y="102" width="88" height="14" rx="6" fill="var(--c-ink)" />
+      <rect x="52" y="114" width="96" height="16" rx="8" fill="var(--c-plate)" />
+      <circle cx="88" cy="96" r="6" fill="var(--c-light)" />
+      <circle cx="110" cy="90" r="5" fill="var(--c-light)" />
+    </>
+  ),
+  dessert: (
+    <>
+      <path d="M60 120l36-62 50 30v32z" fill="var(--c-light)" />
+      <path d="M60 120l36-62 50 30" fill="none" stroke="var(--c-ink)" strokeWidth="8" strokeLinejoin="round" />
+      <path d="M68 104h76M76 90h56" stroke="var(--c-mid)" strokeWidth="6" />
+      <circle cx="96" cy="52" r="9" fill="var(--c-ink)" />
+      <ellipse cx="104" cy="126" rx="56" ry="9" fill="var(--c-plate)" />
+    </>
+  ),
+  baking: (
+    <>
+      <path d="M48 118c0-34 24-54 52-54s52 20 52 54z" fill="var(--c-mid)" />
+      <path d="M72 84c6 6 6 14 0 20M100 78c6 6 6 16 0 24M128 84c6 6 6 14 0 20" stroke="var(--c-light)" strokeWidth="5" strokeLinecap="round" fill="none" />
+      <rect x="40" y="116" width="120" height="14" rx="7" fill="var(--c-ink)" />
+    </>
+  ),
+  drink: (
+    <>
+      <path d="M72 56h56l-8 78a8 8 0 0 1-8 7H88a8 8 0 0 1-8-7z" fill="var(--c-plate)" />
+      <path d="M76 82h48l-5 52a6 6 0 0 1-6 5H87a6 6 0 0 1-6-5z" fill="var(--c-ink)" />
+      <path d="M112 40l-8 52" stroke="var(--c-light)" strokeWidth="6" strokeLinecap="round" />
+      <circle cx="134" cy="62" r="13" fill="var(--c-mid)" />
+    </>
+  ),
+};
+
+// Decorative bubbles move between four placements so neighbouring covers don't look identical.
+const COVER_DOTS = [
+  [24, 26, 30],
+  [176, 22, 40],
+  [30, 140, 26],
+  [180, 136, 34],
+] as const;
+
+/** Recipe photo, or a clearly drawn cover (never a fake photo). The author and licence of a photo
+ * are shown as a full line on the recipe page. Cover colours come from theme tokens per category. */
 export function RecipeCover({ recipe, rounded = false }: { recipe: Pick<Recipe, 'name' | 'category' | 'image'>; rounded?: boolean }) {
   if (recipe.image?.url) {
     return (
-      <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: rounded ? 18 : 0, overflow: 'hidden', background: 'var(--surface-2)' }}>
+      <div className="cover-photo" style={{ borderRadius: rounded ? 18 : 0 }}>
         <img className="cover-img" src={photoUrl(recipe.image.url)} alt={recipe.name} loading="lazy" decoding="async" />
       </div>
     );
   }
-  const [a, b, ink] = COVER_PALETTES[recipe.category] ?? COVER_PALETTES.main as [string, string, string];
-  const motif: Record<string, ReactNode> = {
-    soup: (
-      <>
-        <path d="M40 92h120c0 34-26 52-60 52S40 126 40 92z" fill={ink} opacity="0.88" />
-        <path d="M70 70c-6-10 6-14 0-24M100 66c-6-10 6-14 0-24M130 70c-6-10 6-14 0-24" stroke={ink} strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.6" />
-      </>
-    ),
-    salad: (
-      <>
-        <path d="M44 100h112c0 30-25 46-56 46s-56-16-56-46z" fill={ink} opacity="0.85" />
-        <circle cx="78" cy="92" r="16" fill="#fff" opacity="0.5" />
-        <circle cx="112" cy="86" r="20" fill="#fff" opacity="0.35" />
-        <path d="M96 60c18-14 34-8 38 6-16 6-28 4-38-6z" fill={ink} opacity="0.7" />
-      </>
-    ),
-    breakfast: (
-      <>
-        <circle cx="100" cy="100" r="48" fill="#fff" opacity="0.75" />
-        <circle cx="100" cy="100" r="20" fill={ink} opacity="0.85" />
-      </>
-    ),
-    snack: (
-      <>
-        <path d="M100 60c26-14 52 6 46 40-4 30-26 46-46 38-20 8-42-8-46-38-6-34 20-54 46-40z" fill={ink} opacity="0.82" />
-        <path d="M100 60c0-12 6-20 16-24" stroke={ink} strokeWidth="6" strokeLinecap="round" fill="none" />
-      </>
-    ),
-    main: (
-      <>
-        <ellipse cx="100" cy="106" rx="66" ry="30" fill="#fff" opacity="0.65" />
-        <ellipse cx="100" cy="100" rx="40" ry="18" fill={ink} opacity="0.85" />
-        <path d="M152 52v66M164 52v26c0 8-12 8-12 0" stroke={ink} strokeWidth="5" strokeLinecap="round" fill="none" opacity="0.6" />
-      </>
-    ),
-  };
+  const category = COVER_ART[recipe.category] ? recipe.category : 'main';
+  const v = variantOf(recipe.name, 4);
+  const [x1, y1, r1] = COVER_DOTS[v]!;
+  const [x2, y2, r2] = COVER_DOTS[(v + 2) % 4]!;
   return (
-    <svg viewBox="0 0 200 160" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label={`${recipe.name} — иллюстрация, не фотография`} style={{ display: 'block', borderRadius: rounded ? 18 : 0 }}>
-      <defs>
-        <linearGradient id={`g-${recipe.category}`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor={a} />
-          <stop offset="1" stopColor={b} />
-        </linearGradient>
-      </defs>
-      <rect width="200" height="160" fill={`url(#g-${recipe.category})`} />
-      <circle cx="180" cy="20" r="44" fill="#fff" opacity="0.18" />
-      {motif[recipe.category] ?? motif.main}
+    <svg className={`cover-art cat-${category}`} viewBox="0 0 200 160" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label={`${recipe.name} — рисунок, не фотография`} style={{ borderRadius: rounded ? 18 : 0 }}>
+      <rect width="200" height="160" fill="var(--c-bg)" />
+      <circle cx={x1} cy={y1} r={r1} fill="var(--c-light)" opacity="0.5" />
+      <circle cx={x2} cy={y2} r={r2 * 0.6} fill="var(--c-mid)" opacity="0.35" />
+      <g transform={v % 2 ? 'translate(200 0) scale(-1 1)' : undefined}>
+        <g className="cover-motif">{COVER_ART[category]}</g>
+      </g>
     </svg>
   );
 }
