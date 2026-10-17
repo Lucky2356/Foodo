@@ -89,6 +89,11 @@ jobs:
           ruff check scripts
           ruff format --check scripts
           python -m pytest -p no:django -p no:cacheprovider -q scripts/prices/tests scripts/photos/tests
+      - name: Catalog sources are valid and shared/data is rebuilt from them
+        working-directory: .
+        run: |
+          python -m scripts.catalog.build
+          git diff --exit-code -- shared/data
       - run: pytest
 
   e2e-guest:
