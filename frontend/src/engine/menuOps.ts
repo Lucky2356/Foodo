@@ -1,7 +1,7 @@
 import { compareStr, isIsoDate } from './basics';
 import { addToSnapshot, findMethod, selectMethod, recipeSkillRank, skillAllows, snapshotCatalog } from './catalog';
 import { generateMenu, menuViolations, rankCandidates } from './generator';
-import { recipeViolations } from './restrictions';
+import { effectiveRestrictions, recipeSpice, recipeViolations, spiceTolerance } from './restrictions';
 import { EngineError } from './types';
 import type { Catalog, Member, Menu, MenuBatch, MenuItem, MenuMeal, PlanRequest, PriceProfile, PantryItem } from './types';
 
@@ -88,7 +88,10 @@ function checkManualChoice(menu: Menu, catalog: Catalog, recipeId: string, metho
   const recipe = catalog.recipes[recipeId];
   if (!recipe) throw new EngineError('recipe_not_found', 'Рецепт не найден.');
   for (const m of people) {
-    const v = recipeViolations(catalog, recipe, m.restrictions);
+    if (recipeSpice(recipe) > spiceTolerance(m)) {
+      throw new EngineError('too_spicy', `«${recipe.name}» острее, чем допускает участник «${m.name}».`, { member_id: m.id });
+    }
+    const v = recipeViolations(catalog, recipe, effectiveRestrictions(catalog, m));
     if (v.length > 0) {
       throw new EngineError('restriction_violation', `«${recipe.name}» нельзя участнику «${m.name}»: блюдо нарушает его запреты или его состав не проверен.`, {
         member_id: m.id,

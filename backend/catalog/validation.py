@@ -106,6 +106,7 @@ def validate_recipes(recipes: Any, products: set[str], reference: dict[str, Any]
     equipment = set(reference.get("equipment_ids", []))
     techniques = set(reference.get("technique_ids", []))
     diet_tags = set(reference.get("diet_tag_ids", []))
+    cuisines = {c["id"] for c in reference.get("cuisines", [])}
     categories = {c["id"] for c in reference.get("recipe_categories", [])}
     seen: set[str] = set()
     for index, r in enumerate(recipes):
@@ -185,6 +186,14 @@ def validate_recipes(recipes: Any, products: set[str], reference: dict[str, Any]
             _err(errors, f"{path}.diet_tags", "unknown_diet_tag", "Теги режима питания должны быть из справочника.")
         if not isinstance(r.get("container_ok"), bool):
             _err(errors, f"{path}.container_ok", "invalid_bool", "Ожидается true или false.")
+        cuisine = r.get("cuisine")
+        if cuisine is not None and cuisine not in cuisines:
+            _err(errors, f"{path}.cuisine", "unknown_cuisine", "Кухня должна быть из справочника.")
+        spicy = r.get("spicy", 0)
+        if not isinstance(spicy, int) or isinstance(spicy, bool) or not 0 <= spicy <= 2:
+            _err(errors, f"{path}.spicy", "invalid_spicy", "Острота: 0, 1 или 2.")
+        if not isinstance(r.get("kid_friendly", False), bool):
+            _err(errors, f"{path}.kid_friendly", "invalid_bool", "Ожидается true или false.")
         image = r.get("image")
         if image is not None:
             if not isinstance(image, dict) or not all(isinstance(image.get(k), str) and image.get(k) for k in ("url", "source", "license")):

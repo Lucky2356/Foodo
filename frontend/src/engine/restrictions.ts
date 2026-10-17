@@ -52,8 +52,46 @@ export function recipeViolations(catalog: Catalog, recipe: Recipe, restrictions:
   return violations;
 }
 
+/**
+ * The member's own restrictions plus those of every selected diet type (vegetarian, gluten-free, …).
+ * Unknown diet type ids are rejected by request validation, so they never weaken a restriction.
+ */
+export function effectiveRestrictions(catalog: Catalog, member: Member): Restrictions {
+  const types = member.diet_types ?? [];
+  if (types.length === 0) return member.restrictions;
+  const refs = catalog.reference.diet_types ?? [];
+  const parts: Restrictions[] = [member.restrictions];
+  for (const id of types) {
+    const t = refs.find((x) => x.id === id);
+    if (t) parts.push({ products: t.products, categories: t.categories, allergens: t.allergens });
+  }
+  return mergeRestrictions(parts);
+}
+
+export const DEFAULT_SPICE_TOLERANCE = 1;
+
+export function spiceTolerance(member: Member): number {
+  return member.spice_tolerance ?? DEFAULT_SPICE_TOLERANCE;
+}
+
+export function recipeSpice(recipe: Recipe): number {
+  return recipe.spicy ?? 0;
+}
+
+/** Hard check for one member: restrictions (with diet types) and the spiciness they accept. */
 export function isRecipeSafeFor(catalog: Catalog, recipe: Recipe, member: Member): boolean {
-  return recipeViolations(catalog, recipe, member.restrictions).length === 0;
+  if (recipeSpice(recipe) > spiceTolerance(member)) return false;
+  return recipeViolations(catalog, recipe, effectiveRestrictions(catalog, member)).length === 0;
+}
+
+export function recipeHasLikedProduct(catalog: Catalog, recipe: Recipe, member: Member): boolean {
+  const liked = member.preferences.liked_products ?? [];
+  if (liked.length === 0) return false;
+  for (const ing of recipe.ingredients) {
+    const closure = productClosure(catalog, ing.product);
+    for (const p of liked) if (closure.productIds.has(p)) return true;
+  }
+  return false;
 }
 
 export function recipeHasDislikedProduct(catalog: Catalog, recipe: Recipe, member: Member): boolean {
@@ -103,4 +141,5 @@ export const REASON_MESSAGES: Record<string, string> = {
   restriction: 'содержит запрещённый продукт, категорию или аллерген',
   composition_unknown: 'состав ингредиента неизвестен, безопасность не подтверждена',
   repeat: 'уже использован (режим повторов)',
+  spicy: 'острее, чем допускает участник',
 };

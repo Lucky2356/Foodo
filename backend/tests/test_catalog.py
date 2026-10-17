@@ -232,3 +232,38 @@ def test_import_accepts_only_https_or_self_hosted_photo_urls() -> None:
     assert image_errors("javascript:alert(1)") != []
     assert image_errors("http://example.com/x.jpg") != []
     assert image_errors("photos/../../secret.webp") != []
+
+
+def test_recipe_filters_by_diet_type_cuisine_spice_and_kids() -> None:
+    client = APIClient()
+
+    def ids(params: dict) -> set[str]:
+        out: set[str] = set()
+        page = 1
+        while True:
+            r = client.get("/api/catalog/recipes/", {**params, "page_size": 100, "page": page})
+            assert r.status_code == 200, r.content
+            body = r.json()
+            out |= {x["id"] for x in body["results"]}
+            if not body.get("next"):
+                return out
+            page += 1
+
+    everything = ids({})
+    vegetarian = ids({"diet_types": "vegetarian"})
+    assert vegetarian and vegetarian < everything
+    catalog = engine_catalog()
+    for rid in vegetarian:
+        for ing in catalog.recipes[rid]["ingredients"]:
+            cats = catalog.products[ing["product"]]["category"]
+            assert cats not in {"beef", "pork", "poultry", "lamb", "meat", "offal", "processed_meat", "fish", "seafood", "fish_seafood"}
+    assert client.get("/api/catalog/recipes/", {"diet_types": "paleo"}).status_code == 400
+    assert client.get("/api/catalog/recipes/", {"max_spicy": "9"}).status_code == 400
+    first = Recipe.objects.prefetch_related("ingredients", "methods").order_by("id").first()
+    assert first is not None
+    save_recipe({**recipe_to_json(first), "cuisine": "italian", "spicy": 2, "kid_friendly": True})
+    assert ids({"cuisine": "italian"}) >= {first.id}
+    assert first.id not in ids({"max_spicy": "1"})
+    assert first.id in ids({"kids": "1"})
+    summary = client.get("/api/catalog/recipes/", {"cuisine": "italian"}).json()["results"][0]
+    assert {"cuisine", "spicy", "kid_friendly"} <= set(summary)

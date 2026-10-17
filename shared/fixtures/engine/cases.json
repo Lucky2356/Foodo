@@ -1307,6 +1307,167 @@
     }
    },
    "ops": []
+  },
+  {
+   "id": "preferences-14d",
+   "request": {
+    "start_date": "2026-10-19",
+    "days": 14,
+    "seed": 7,
+    "slots": [
+     "breakfast",
+     "lunch",
+     "snack",
+     "dinner"
+    ],
+    "pins": [],
+    "pantry": [],
+    "prices": null,
+    "slot_members": null,
+    "members": [
+     {
+      "id": "m1",
+      "name": "Аня",
+      "age": 34,
+      "sex": "female",
+      "height_cm": 168,
+      "weight_kg": 62,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": [],
+       "liked_products": [
+        "pumpkin",
+        "chickpeas_canned"
+       ]
+      },
+      "vitamin_targets_manual": null,
+      "diet_types": [
+       "vegetarian",
+       "gluten_free"
+      ],
+      "spice_tolerance": 2
+     },
+     {
+      "id": "m2",
+      "name": "Борис",
+      "age": 36,
+      "sex": "male",
+      "height_cm": 182,
+      "weight_kg": 80,
+      "activity": "moderate",
+      "goal": "maintain",
+      "portion_mode": "simple",
+      "portion_factor": 1,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": []
+      },
+      "vitamin_targets_manual": null,
+      "diet_types": [
+       "no_pork"
+      ],
+      "spice_tolerance": 1
+     },
+     {
+      "id": "m3",
+      "name": "Миша",
+      "age": 8,
+      "sex": "male",
+      "height_cm": 128,
+      "weight_kg": 26,
+      "activity": "high",
+      "goal": null,
+      "portion_mode": "simple",
+      "portion_factor": 0.6,
+      "kcal_target": null,
+      "restrictions": {
+       "products": [],
+       "categories": [],
+       "allergens": []
+      },
+      "preferences": {
+       "liked_recipes": [],
+       "disliked_products": [],
+       "liked_products": [
+        "banana"
+       ]
+      },
+      "vitamin_targets_manual": null,
+      "diet_types": [],
+      "spice_tolerance": 0
+     }
+    ],
+    "settings": {
+     "skill": "any",
+     "diet_mode": "high_protein",
+     "equipment": [
+      "stove",
+      "oven",
+      "microwave"
+     ],
+     "max_total_min": 40,
+     "repeat": {
+      "mode": "allow",
+      "max_uses": 2,
+      "min_gap_days": 3,
+      "cook_days": [],
+      "batch_days": 2,
+      "batch_slots": [
+       "lunch",
+       "dinner"
+      ]
+     },
+     "container_days": [],
+     "vitamins": {
+      "enabled": false,
+      "target_set": null,
+      "demo": false
+     },
+     "budget": {
+      "limit_kop": null,
+      "currency": "RUB"
+     },
+     "tolerances": {
+      "energy_pct": 10,
+      "macro_pct": 20
+     },
+     "portion_min": 0.5,
+     "portion_max": 2,
+     "max_total_min_weekend": null,
+     "cuisines": [
+      "italian",
+      "mediterranean"
+     ]
+    }
+   },
+   "ops": [
+    {
+     "op": "replace",
+     "item_id": "FIRST_DINNER",
+     "recipe_id": null
+    },
+    {
+     "op": "replace",
+     "item_id": "FIRST_LUNCH",
+     "recipe_id": null
+    }
+   ]
   }
  ]
 }

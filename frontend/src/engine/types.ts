@@ -86,6 +86,12 @@ export interface Recipe {
   /** A licensed photo: `source` names the author and origin, links lead to the file page and licence. */
   image?: { url: string; source: string; license: string; license_url?: string; page_url?: string } | null;
   source: string;
+  /** Cuisine id from reference.cuisines (a soft preference, never a restriction). */
+  cuisine?: string | null;
+  /** 0 — not spicy, 1 — mild heat (garlic, black pepper, mustard), 2 — hot (chili). Missing means 0. */
+  spicy?: number;
+  /** Suitable for children: no noticeable heat, no raw fish or meat, a familiar taste. */
+  kid_friendly?: boolean;
   visibility?: 'public' | 'private';
   owner?: string | null;
 }
@@ -127,11 +133,22 @@ export interface Reference {
   skill_levels: { id: SkillLevel; rank: number; name: string }[];
   techniques: TechniqueRef[];
   diet_modes: { id: DietMode; name: string }[];
+  /** Diet types are named presets of hard restrictions (vegetarian, gluten-free, …). */
+  diet_types?: DietTypeRef[];
+  cuisines?: { id: string; name: string }[];
   diet_tags: { id: string; name: string }[];
-  diet_rules: { version: string; balanced: Record<string, number>; regular: Record<string, number> };
+  diet_rules: { version: string } & Partial<Record<DietMode, Record<string, number>>>;
   meal_slots: MealSlotRef[];
   recipe_categories: { id: string; name: string }[];
   stores: { id: string; name: string }[];
+}
+
+export interface DietTypeRef {
+  id: string;
+  name: string;
+  categories: string[];
+  allergens: string[];
+  products: string[];
 }
 
 export interface NutrientTarget {
@@ -164,7 +181,7 @@ export interface Catalog {
 }
 
 export type SkillLevel = 'beginner' | 'confident' | 'any';
-export type DietMode = 'regular' | 'balanced';
+export type DietMode = 'regular' | 'balanced' | 'high_protein';
 export type RepeatMode = 'unique' | 'allow' | 'batch';
 
 export interface Restrictions {
@@ -176,6 +193,8 @@ export interface Restrictions {
 export interface Preferences {
   liked_recipes: string[];
   disliked_products: string[];
+  /** Products the member likes: recipes with them rank higher (soft). */
+  liked_products?: string[];
 }
 
 export interface Member {
@@ -192,6 +211,10 @@ export interface Member {
   kcal_target: number | null;
   macro_targets?: { protein?: number | null; fat?: number | null; carbs?: number | null } | null;
   restrictions: Restrictions;
+  /** Ids from reference.diet_types; each adds its hard restrictions to `restrictions`. */
+  diet_types?: string[];
+  /** Highest acceptable spiciness 0–2; missing means 1 (mild heat is fine). */
+  spice_tolerance?: number;
   preferences: Preferences;
   vitamin_targets_manual?: NutrientTarget[] | null;
   water_goal_ml?: number | null;
@@ -212,6 +235,10 @@ export interface PlanSettings {
   diet_mode: DietMode;
   equipment: string[];
   max_total_min: number | null;
+  /** Time limit on Saturdays and Sundays; null — no limit; missing — same as `max_total_min`. */
+  max_total_min_weekend?: number | null;
+  /** Preferred cuisines (soft preference); empty or missing — no preference. */
+  cuisines?: string[];
   repeat: RepeatSettings;
   container_days: number[];
   vitamins: { enabled: boolean; target_set: string | null; demo: boolean };
