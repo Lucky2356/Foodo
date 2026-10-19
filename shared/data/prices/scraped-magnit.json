@@ -2,15 +2,15 @@
  "format": "foodo-price-observations",
  "version": 1,
  "kind": "scraped",
- "collected_at": "2026-10-16T20:53:12+00:00",
+ "collected_at": "2026-10-19T09:01:33+00:00",
  "summary": {
   "store": "992301",
   "city_id": "2300000100000",
   "city": "Краснодар",
   "categories": 80,
   "categories_failed": 0,
-  "offers": 1954,
-  "products": 71,
+  "offers": 1935,
+  "products": 70,
   "requests": 83
  },
  "observations": [
@@ -22,7 +22,7 @@
    "package_size": 150.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Бекон Великолукский МК из свинины сырокопченый нарезка 150г",
    "source_url": "https://magnit.ru/product/1000302965-bekon_iz_svininy_velikolukskiy_mk_syrokopchenyy_narezka_150g",
    "external_id": "https://magnit.ru/product/1000302965-bekon_iz_svininy_velikolukskiy_mk_syrokopchenyy_narezka_150g"
@@ -35,10 +35,23 @@
    "package_size": 12.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Разрыхлитель теста Haas 12г",
    "source_url": "https://magnit.ru/product/1000314985-khaas_razrykhlitel_testa_228080_dlya_vypechki_poroshok_belyy_12g_pachka_pets_khaas_ooo_70",
    "external_id": "https://magnit.ru/product/1000314985-khaas_razrykhlitel_testa_228080_dlya_vypechki_poroshok_belyy_12g_pachka_pets_khaas_ooo_70"
+  },
+  {
+   "product_id": "beans_canned",
+   "chain_id": "magnit",
+   "city_id": "2300000100000",
+   "price_kop": 12999,
+   "package_size": 400.0,
+   "package_unit": "g",
+   "loose": false,
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Фасоль красная натуральная кидни Premiere of taste 400г",
+   "source_url": "https://magnit.ru/product/8000105119-premiere_of_taste_fasol_krasnaya_naturalnaya_400g_zh_b_s_kl",
+   "external_id": "https://magnit.ru/product/8000105119-premiere_of_taste_fasol_krasnaya_naturalnaya_400g_zh_b_s_kl"
   },
   {
    "product_id": "beef_mince",
@@ -48,7 +61,7 @@
    "package_size": 400.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Фарш М Свежесть говяжий 400г",
    "source_url": "https://magnit.ru/product/1000289907-farsh_eatmeat_govyazhiy_400g",
    "external_id": "https://magnit.ru/product/1000289907-farsh_eatmeat_govyazhiy_400g"
@@ -61,7 +74,7 @@
    "package_size": 600.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Свекла на подложке 600г",
    "source_url": "https://magnit.ru/product/3412180006-svekla_podlozhka_0_6_kg_tsena_za_sht_8",
    "external_id": "https://magnit.ru/product/3412180006-svekla_podlozhka_0_6_kg_tsena_za_sht_8"
@@ -74,7 +87,7 @@
    "package_size": 1.0,
    "package_unit": "pcs",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Перец сладкий 1шт в ассортименте",
    "source_url": "https://magnit.ru/product/1000177839-perets_miks_fasovannyy_1sht",
    "external_id": "https://magnit.ru/product/1000177839-perets_miks_fasovannyy_1sht"
@@ -87,7 +100,7 @@
    "package_size": 3.0,
    "package_unit": "kg",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Крупа гречневая ядрица Экстра Увелка 3кг",
    "source_url": "https://magnit.ru/product/8000064637-uvelka_krupa_grechnevaya_yadritsa_ekstra_3kg_p_up_resurs_2",
    "external_id": "https://magnit.ru/product/8000064637-uvelka_krupa_grechnevaya_yadritsa_ekstra_3kg_p_up_resurs_2"
@@ -100,7 +113,7 @@
    "package_size": 400.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Булгур по-турецки с вермишелью Мистраль 400г",
    "source_url": "https://magnit.ru/product/8000118310-mistral_bulgur_po_turetski_s_vermishelyu_var_pak_400g_k_up",
    "external_id": "https://magnit.ru/product/8000118310-mistral_bulgur_po_turetski_s_vermishelyu_var_pak_400g_k_up"
@@ -109,40 +122,40 @@
    "product_id": "butter",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 19999,
-   "package_size": 180.0,
+   "price_kop": 33999,
+   "package_size": 320.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Масло сливочное Экомилк 82.5% 180г",
-   "source_url": "https://magnit.ru/product/1899900309-maslo_ekomilk_slivochnoe_82_5_180g",
-   "external_id": "https://magnit.ru/product/1899900309-maslo_ekomilk_slivochnoe_82_5_180g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Масло сливочное Волгодонское Традиционное 82.5% 320г",
+   "source_url": "https://magnit.ru/product/8000024914-volgodonskoe_maslo_trad_sliv_82_5_320g",
+   "external_id": "https://magnit.ru/product/8000024914-volgodonskoe_maslo_trad_sliv_82_5_320g"
   },
   {
    "product_id": "canned_tomatoes",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 13499,
-   "package_size": 680.0,
+   "price_kop": 12599,
+   "package_size": 400.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Томаты Green Ray Кубанские в собственном соку 680г",
-   "source_url": "https://magnit.ru/product/1000192626-tomaty_green_ray_neochishchennye_680g",
-   "external_id": "https://magnit.ru/product/1000192626-tomaty_green_ray_neochishchennye_680g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Томаты резаные в собственном соку Premiere of Taste 400г",
+   "source_url": "https://magnit.ru/product/1000216768-tomaty_premier_of_taste_rezanye_v_sobstvennom_soku_400g",
+   "external_id": "https://magnit.ru/product/1000216768-tomaty_premier_of_taste_rezanye_v_sobstvennom_soku_400g"
   },
   {
    "product_id": "carrot",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 7999,
-   "package_size": 600.0,
-   "package_unit": "g",
+   "price_kop": 7499,
+   "package_size": 1.0,
+   "package_unit": "kg",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Морковь 600г",
-   "source_url": "https://magnit.ru/product/1155435501-morkov_podlozhka_0_6_kg_tsena_za_sht_10",
-   "external_id": "https://magnit.ru/product/1155435501-morkov_podlozhka_0_6_kg_tsena_za_sht_10"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Морковь мытая 1кг",
+   "source_url": "https://magnit.ru/product/1445100176-morkov_mytaya_fasovannaya_1upak",
+   "external_id": "https://magnit.ru/product/1445100176-morkov_mytaya_fasovannaya_1upak"
   },
   {
    "product_id": "champignons",
@@ -152,7 +165,7 @@
    "package_size": 400.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Шампиньоны М Свежесть 400г",
    "source_url": "https://magnit.ru/product/9019013117-griby_shampinony_400g",
    "external_id": "https://magnit.ru/product/9019013117-griby_shampinony_400g"
@@ -161,14 +174,14 @@
    "product_id": "cheese_hard",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 15999,
+   "price_kop": 14999,
    "package_size": 180.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Сыр Молокавоз Гауда Голд 45% 180г",
-   "source_url": "https://magnit.ru/product/8000032665-moloka_voz_syr_gauda_gold_45_180g_flp_belsyr",
-   "external_id": "https://magnit.ru/product/8000032665-moloka_voz_syr_gauda_gold_45_180g_flp_belsyr"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Сыр Николаевские сыроварни Российский 50% 180г",
+   "source_url": "https://magnit.ru/product/1000531310-nikolaevskie_syrovarni_syr_rossiyskiy_50_180g",
+   "external_id": "https://magnit.ru/product/1000531310-nikolaevskie_syrovarni_syr_rossiyskiy_50_180g"
   },
   {
    "product_id": "chicken_liver",
@@ -178,7 +191,7 @@
    "package_size": 900.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Печень цыпленка-бройлера Благояр замороженная 900г",
    "source_url": "https://magnit.ru/product/1000067206-blagoyar_pechen_m315_tsb_zam_900g_lotok_ptitsekombinat_ooo_stavropolskiy_broyler_zao_10",
    "external_id": "https://magnit.ru/product/1000067206-blagoyar_pechen_m315_tsb_zam_900g_lotok_ptitsekombinat_ooo_stavropolskiy_broyler_zao_10"
@@ -188,13 +201,13 @@
    "chain_id": "magnit",
    "city_id": "2300000100000",
    "price_kop": 19999,
-   "package_size": 900.0,
+   "package_size": 750.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Фарш куриный Моя цена Обыкновенный замороженный 900г",
-   "source_url": "https://magnit.ru/product/1000313381-farsh_kurinyy_moya_tsena_obyknovennyy_zamorozhennyy_900g",
-   "external_id": "https://magnit.ru/product/1000313381-farsh_kurinyy_moya_tsena_obyknovennyy_zamorozhennyy_900g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Фарш куриный Мираторг Домашний 750г",
+   "source_url": "https://magnit.ru/product/1000226365-1000226365",
+   "external_id": "https://magnit.ru/product/1000226365-1000226365"
   },
   {
    "product_id": "cocoa_powder",
@@ -204,7 +217,7 @@
    "package_size": 100.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Какао-порошок Золотой ярлык 100г",
    "source_url": "https://magnit.ru/product/1000125976-kakao_naturalnyy_zolotoy_yarlyk_100g",
    "external_id": "https://magnit.ru/product/1000125976-kakao_naturalnyy_zolotoy_yarlyk_100g"
@@ -217,7 +230,7 @@
    "package_size": 300.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Треска Borealis филе без кожи без кости 300г",
    "source_url": "https://magnit.ru/product/1000371918-borealis_treska_file_blok_b_k_b_kost_s_m_300g_vakuumnaya_upakovka_ao_norebo_ru_10",
    "external_id": "https://magnit.ru/product/1000371918-borealis_treska_file_blok_b_k_b_kost_s_m_300g_vakuumnaya_upakovka_ao_norebo_ru_10"
@@ -230,7 +243,7 @@
    "package_size": 340.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Кукуруза Globus сладкая в зернах 340г",
    "source_url": "https://magnit.ru/product/1000064338-kukuruza_globus_sladkaya_v_zernakh_425ml",
    "external_id": "https://magnit.ru/product/1000064338-kukuruza_globus_sladkaya_v_zernakh_425ml"
@@ -243,7 +256,7 @@
    "package_size": 180.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Творог Коровка из Кореновки 5% 180г",
    "source_url": "https://magnit.ru/product/1000091079-korovka_iz_korenovki_tvorog_5_180g_fl_p_kmkk_12",
    "external_id": "https://magnit.ru/product/1000091079-korovka_iz_korenovki_tvorog_5_180g_fl_p_kmkk_12"
@@ -256,7 +269,7 @@
    "package_size": 450.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Кус-кус Premiere of Taste 450г",
    "source_url": "https://magnit.ru/product/1000567643-premiere_of_taste_kus_kus_0_45kg_p_up",
    "external_id": "https://magnit.ru/product/1000567643-premiere_of_taste_kus_kus_0_45kg_p_up"
@@ -269,7 +282,7 @@
    "package_size": 200.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Крабовые палочки Русское море охлажденные 200г",
    "source_url": "https://magnit.ru/product/7505551301-russkoe_more_krabovye_palochki_okhl_200g_v_u_santa_bremor_8",
    "external_id": "https://magnit.ru/product/7505551301-russkoe_more_krabovye_palochki_okhl_200g_v_u_santa_bremor_8"
@@ -282,7 +295,7 @@
    "package_size": 300.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Клюква садовая быстрозамороженная Premiere of Taste 300г",
    "source_url": "https://magnit.ru/product/1000517887-premiere_of_taste_klyukva_sadovaya_zamorozh_300g_fl_p",
    "external_id": "https://magnit.ru/product/1000517887-premiere_of_taste_klyukva_sadovaya_zamorozh_300g_fl_p"
@@ -295,7 +308,7 @@
    "package_size": 450.0,
    "package_unit": "ml",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Сливки Кубанский молочник пастеризованные 10% 450мл",
    "source_url": "https://magnit.ru/product/1000371887-kubanskiy_molochnik_slivki_25080124005002_450g_pyur_pak_zao_sk_leningradskiy_6",
    "external_id": "https://magnit.ru/product/1000371887-kubanskiy_molochnik_slivki_25080124005002_450g_pyur_pak_zao_sk_leningradskiy_6"
@@ -308,7 +321,7 @@
    "package_size": 480.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Сливки стерилизованные Домик в деревне 20% 480г",
    "source_url": "https://magnit.ru/product/1000071969-slivki_domik_v_derevne_ultrapasterizovannye_20_480g",
    "external_id": "https://magnit.ru/product/1000071969-slivki_domik_v_derevne_ultrapasterizovannye_20_480g"
@@ -317,27 +330,27 @@
    "product_id": "cucumber",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 12799,
-   "package_size": 600.0,
+   "price_kop": 10999,
+   "package_size": 450.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Огурцы среднеплодные пупырчатые 600г",
-   "source_url": "https://magnit.ru/product/1000218055-ogurtsy_sredneplodnye_pupyrchatye_600g",
-   "external_id": "https://magnit.ru/product/1000218055-ogurtsy_sredneplodnye_pupyrchatye_600g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Огурцы короткоплодные тепличные 450г",
+   "source_url": "https://magnit.ru/product/1000227406-ogurtsy_korotkoplodnye_teplichnye_450g",
+   "external_id": "https://magnit.ru/product/1000227406-ogurtsy_korotkoplodnye_teplichnye_450g"
   },
   {
    "product_id": "dill",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 7999,
-   "package_size": 70.0,
+   "price_kop": 9599,
+   "package_size": 100.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Укроп и зелёный лук М Свежесть 70г",
-   "source_url": "https://magnit.ru/product/8000017555-ukrop_luk_zelyenyy_70g",
-   "external_id": "https://magnit.ru/product/8000017555-ukrop_luk_zelyenyy_70g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Укроп М Свежесть 100г",
+   "source_url": "https://magnit.ru/product/1000198550-ukrop-m-svezhest-100g",
+   "external_id": "https://magnit.ru/product/1000198550-ukrop-m-svezhest-100g"
   },
   {
    "product_id": "eggplant",
@@ -347,7 +360,7 @@
    "package_size": 1.0,
    "package_unit": "kg",
    "loose": true,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Баклажаны весовые",
    "source_url": "https://magnit.ru/product/3412100008-baklazhany",
    "external_id": "https://magnit.ru/product/3412100008-baklazhany"
@@ -360,7 +373,7 @@
    "package_size": 10.0,
    "package_unit": "pcs",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Яйца куриные Птицефабрика Новороссийск Станичные С1 10шт",
    "source_url": "https://magnit.ru/product/1000315734-ptitsefabrika_novorossiysk_yaytsa_kurinye_stanichnye_s1_10sht_20",
    "external_id": "https://magnit.ru/product/1000315734-ptitsefabrika_novorossiysk_yaytsa_kurinye_stanichnye_s1_10sht_20"
@@ -373,7 +386,7 @@
    "package_size": 400.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Сыр Фетакса без рассола 45% 400г",
    "source_url": "https://magnit.ru/product/1000270400-produkt_syrnyy_hochland_fetaksa_60_400g",
    "external_id": "https://magnit.ru/product/1000270400-produkt_syrnyy_hochland_fetaksa_60_400g"
@@ -382,14 +395,14 @@
    "product_id": "frankfurters",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 16799,
-   "package_size": 400.0,
+   "price_kop": 27999,
+   "package_size": 525.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Сосиски Черкизово Премиум Молочные Экстра 400г",
-   "source_url": "https://magnit.ru/product/1000514932-cherkizovo_premium_sosiski_molochnye_ekstra_0_4kg",
-   "external_id": "https://magnit.ru/product/1000514932-cherkizovo_premium_sosiski_molochnye_ekstra_0_4kg"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Сосиски Сочинский МК Классические вареные 525г",
+   "source_url": "https://magnit.ru/product/1000262872-sosiski_sosiski_klassicheskie_sochinskiy_0_525kg_vakuumnaya_upakovka_oao_sochinskiy_mk_16",
+   "external_id": "https://magnit.ru/product/1000262872-sosiski_sosiski_klassicheskie_sochinskiy_0_525kg_vakuumnaya_upakovka_oao_sochinskiy_mk_16"
   },
   {
    "product_id": "frozen_veg_mix",
@@ -399,7 +412,7 @@
    "package_size": 400.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Смесь овощная 4 Сезона 8 овощей быстрозамороженная 400г",
    "source_url": "https://magnit.ru/product/1000257292-4sezona_ovoshchn_smes_8_ovoshchey_bystrozam0_4kg_fl_p_zapadn_20",
    "external_id": "https://magnit.ru/product/1000257292-4sezona_ovoshchn_smes_8_ovoshchey_bystrozam0_4kg_fl_p_zapadn_20"
@@ -412,23 +425,10 @@
    "package_size": 100.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Чеснок 3шт 100г",
    "source_url": "https://magnit.ru/product/3062160105-chesnok_3sht",
    "external_id": "https://magnit.ru/product/3062160105-chesnok_3sht"
-  },
-  {
-   "product_id": "green_onion",
-   "chain_id": "magnit",
-   "city_id": "2300000100000",
-   "price_kop": 11999,
-   "package_size": 150.0,
-   "package_unit": "g",
-   "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Лук зелёный М Свежесть 150г",
-   "source_url": "https://magnit.ru/product/8000017745-luk_zelyenyy_150g",
-   "external_id": "https://magnit.ru/product/8000017745-luk_zelyenyy_150g"
   },
   {
    "product_id": "green_peas_canned",
@@ -438,7 +438,7 @@
    "package_size": 370.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Горошек зеленый Кубаночка 370г",
    "source_url": "https://magnit.ru/product/8000062419-kubanochka_goroshek_zelenyy_kons_370g_st_ban_grandstar",
    "external_id": "https://magnit.ru/product/8000062419-kubanochka_goroshek_zelenyy_kons_370g_st_ban_grandstar"
@@ -451,7 +451,7 @@
    "package_size": 180.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Сельдь Фрегат а-ля лосось филе-кусочки в майонезе 180г",
    "source_url": "https://magnit.ru/product/5551115703-fregat_seld_a_lya_losos_f_kus_mayon_180g_pl_ban_machekhin_6",
    "external_id": "https://magnit.ru/product/5551115703-fregat_seld_a_lya_losos_f_kus_mayon_180g_pl_ban_machekhin_6"
@@ -464,7 +464,7 @@
    "package_size": 360.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Варенье Ратибор Клубника 360г",
    "source_url": "https://magnit.ru/product/1000416647-ratibor_varene_klubnika_360g_st_ban",
    "external_id": "https://magnit.ru/product/1000416647-ratibor_varene_klubnika_360g_st_ban"
@@ -477,7 +477,7 @@
    "package_size": 900.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Кефир Кореновочка 2.5% 900г",
    "source_url": "https://magnit.ru/product/1854400010-korovka_iz_korenovki_kefir_0_9kg_f_p_kmkk_12",
    "external_id": "https://magnit.ru/product/1854400010-korovka_iz_korenovki_kefir_0_9kg_f_p_kmkk_12"
@@ -490,7 +490,7 @@
    "package_size": 800.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Кетчуп Томатный Heinz 800г",
    "source_url": "https://magnit.ru/product/1000472603-heinz_ketchup_tomatnyy_800g",
    "external_id": "https://magnit.ru/product/1000472603-heinz_ketchup_tomatnyy_800g"
@@ -503,7 +503,7 @@
    "package_size": 2.0,
    "package_unit": "pcs",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Лимон M Свежесть 2шт",
    "source_url": "https://magnit.ru/product/8000059289-limon_fasovannyy_2_sht",
    "external_id": "https://magnit.ru/product/8000059289-limon_fasovannyy_2_sht"
@@ -512,14 +512,14 @@
    "product_id": "mackerel",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 14999,
+   "price_kop": 10499,
    "package_size": 250.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Скумбрия Русский рыбный мир курильская натуральная 250г",
-   "source_url": "https://magnit.ru/product/1000573676-russkiy_rybnyy_mir_skumbriya_kurilskaya_nat_250g_zh_b",
-   "external_id": "https://magnit.ru/product/1000573676-russkiy_rybnyy_mir_skumbriya_kurilskaya_nat_250g_zh_b"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Скумбрия натуральная в масле 250г",
+   "source_url": "https://magnit.ru/product/3060811108-skumbriya_naturalnaya_v_masle_250g",
+   "external_id": "https://magnit.ru/product/3060811108-skumbriya_naturalnaya_v_masle_250g"
   },
   {
    "product_id": "mayonnaise",
@@ -529,7 +529,7 @@
    "package_size": 340.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Майонез Mr. Ricco на перепелином яйце 67% 340г",
    "source_url": "https://magnit.ru/product/8000034059-mr_ricco_mayonez_na_perep_yaytse_67_340g_d_p",
    "external_id": "https://magnit.ru/product/8000034059-mr_ricco_mayonez_na_perep_yaytse_67_340g_d_p"
@@ -538,14 +538,14 @@
    "product_id": "milk",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 9999,
-   "package_size": 930.0,
-   "package_unit": "g",
+   "price_kop": 15799,
+   "package_size": 1.4,
+   "package_unit": "l",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Молоко Чабан Халяль 2.5% 930г",
-   "source_url": "https://magnit.ru/product/1000354477-chaban_moloko_pitevoe_pasterizovannoe_massovaya_dolya_zhira_2_5_930g_plastikovaya_kanistra_ooo_nalch",
-   "external_id": "https://magnit.ru/product/1000354477-chaban_moloko_pitevoe_pasterizovannoe_massovaya_dolya_zhira_2_5_930g_plastikovaya_kanistra_ooo_nalch"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Молоко пастеризованное Кубанская Буренка 2.5% 1.4л",
+   "source_url": "https://magnit.ru/product/1000143304-kubanskaya_burenka_moloko_past_2_5_1_4l_pl_but_vbd_6",
+   "external_id": "https://magnit.ru/product/1000143304-kubanskaya_burenka_moloko_past_2_5_1_4l_pl_but_vbd_6"
   },
   {
    "product_id": "millet_dry",
@@ -555,7 +555,7 @@
    "package_size": 800.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Пшено Увелка шлифованное 800г",
    "source_url": "https://magnit.ru/product/1393100204-psheno_uvelka_shlifovannoe_800g",
    "external_id": "https://magnit.ru/product/1393100204-psheno_uvelka_shlifovannoe_800g"
@@ -568,7 +568,7 @@
    "package_size": 600.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Фарш Домашний свино-говяжий Агроэко 600г",
    "source_url": "https://magnit.ru/product/8000069544-agroeko_farsh_domashniy_svin_gov_okhl_600g_mgs",
    "external_id": "https://magnit.ru/product/8000069544-agroeko_farsh_domashniy_svin_gov_okhl_600g_mgs"
@@ -581,7 +581,7 @@
    "package_size": 200.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Сыр Моцарелла Premiere of Taste 200г",
    "source_url": "https://magnit.ru/product/1000397214-premiere_of_taste_syr_motsarella_200g_v_u",
    "external_id": "https://magnit.ru/product/1000397214-premiere_of_taste_syr_motsarella_200g_v_u"
@@ -594,7 +594,7 @@
    "package_size": 100.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Горчица Магнит столовая 100г",
    "source_url": "https://magnit.ru/product/1000518306-magnit_gorchitsa_stolovaya_100g",
    "external_id": "https://magnit.ru/product/1000518306-magnit_gorchitsa_stolovaya_100g"
@@ -603,27 +603,14 @@
    "product_id": "olive_oil",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 62999,
+   "price_kop": 59999,
    "package_size": 500.0,
    "package_unit": "ml",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Масло оливковое Costa dOro Extra Virgin 500мл",
-   "source_url": "https://magnit.ru/product/1000382425-costa_d_oro_maslo_olivkovoe_neraf_ekstraverdzhine_0_5l_st_but",
-   "external_id": "https://magnit.ru/product/1000382425-costa_d_oro_maslo_olivkovoe_neraf_ekstraverdzhine_0_5l_st_but"
-  },
-  {
-   "product_id": "parsley",
-   "chain_id": "magnit",
-   "city_id": "2300000100000",
-   "price_kop": 8999,
-   "package_size": 100.0,
-   "package_unit": "g",
-   "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Петрушка М Свежесть 100г",
-   "source_url": "https://magnit.ru/product/1000198549-petrushka-m-svezhest-100g",
-   "external_id": "https://magnit.ru/product/1000198549-petrushka-m-svezhest-100g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Масло оливковое Monini EV Il Poggiolo 500мл",
+   "source_url": "https://magnit.ru/product/1000349403-monini_maslo_olivkovoe_ev_il_poggiolo_500ml_steklyannaya_butylka_6",
+   "external_id": "https://magnit.ru/product/1000349403-monini_maslo_olivkovoe_ev_il_poggiolo_500ml_steklyannaya_butylka_6"
   },
   {
    "product_id": "pearl_barley_dry",
@@ -633,7 +620,7 @@
    "package_size": 800.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Крупа Перловая 800г",
    "source_url": "https://magnit.ru/product/3139480002-krupa-perlovaya-800g",
    "external_id": "https://magnit.ru/product/3139480002-krupa-perlovaya-800g"
@@ -642,27 +629,27 @@
    "product_id": "pickled_cucumbers",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 15999,
-   "package_size": 680.0,
+   "price_kop": 24999,
+   "package_size": 950.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Огурцы Кубаночка маринованные 680г",
-   "source_url": "https://magnit.ru/product/1000220102-ogurtsy_kubanochka_marinovannye_680g",
-   "external_id": "https://magnit.ru/product/1000220102-ogurtsy_kubanochka_marinovannye_680g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Огурцы Дядя Ваня маринованные 950г",
+   "source_url": "https://magnit.ru/product/1000371409-dyadya_vanya_ogurtsy_marinovannye_pasterizovannye_950g_steklyannaya_banka_ooo_konservnoe_predpriyati",
+   "external_id": "https://magnit.ru/product/1000371409-dyadya_vanya_ogurtsy_marinovannye_pasterizovannye_950g_steklyannaya_banka_ooo_konservnoe_predpriyati"
   },
   {
    "product_id": "pollock_fillet",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 34999,
-   "package_size": 600.0,
+   "price_kop": 34699,
+   "package_size": 400.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Минтай Магнит/Северная гавань филе 600г",
-   "source_url": "https://magnit.ru/product/1000239562-mintay_file_b_kozh_s_m_600g_poli_up_6",
-   "external_id": "https://magnit.ru/product/1000239562-mintay_file_b_kozh_s_m_600g_poli_up_6"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Филе минтая без кожи 400г",
+   "source_url": "https://magnit.ru/product/1000200904-file_mintaya_s_m_400g_v_u_6",
+   "external_id": "https://magnit.ru/product/1000200904-file_mintaya_s_m_400g_v_u_6"
   },
   {
    "product_id": "potato",
@@ -672,7 +659,7 @@
    "package_size": 2.0,
    "package_unit": "kg",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Картофель красный мытый 2кг",
    "source_url": "https://magnit.ru/product/8000090136-kartofel_krasnyy_mytyy_2kg",
    "external_id": "https://magnit.ru/product/8000090136-kartofel_krasnyy_mytyy_2kg"
@@ -685,7 +672,7 @@
    "package_size": 450.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Чечевица Красная колотая Premiere of Taste 450г",
    "source_url": "https://magnit.ru/product/1000567452-premiere_of_taste_chechevitsa_krasnaya_kolot_0_45kg_p_up",
    "external_id": "https://magnit.ru/product/1000567452-premiere_of_taste_chechevitsa_krasnaya_kolot_0_45kg_p_up"
@@ -694,14 +681,14 @@
    "product_id": "rice_round_dry",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 12999,
-   "package_size": 500.0,
+   "price_kop": 16799,
+   "package_size": 900.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Рис Мистраль Самарканд красный круглозерный 500г",
-   "source_url": "https://magnit.ru/product/1000154805-mistral_ris_samarkand_krasnyy_krugl_500g_p_up_mistral_12",
-   "external_id": "https://magnit.ru/product/1000154805-mistral_ris_samarkand_krasnyy_krugl_500g_p_up_mistral_12"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Рис Националь Краснодарский белый круглозерный 900г",
+   "source_url": "https://magnit.ru/product/2400008529-ris_kruglozernyy_natsional_krasnodarskiy_900g",
+   "external_id": "https://magnit.ru/product/2400008529-ris_kruglozernyy_natsional_krasnodarskiy_900g"
   },
   {
    "product_id": "rice_white_dry",
@@ -711,7 +698,7 @@
    "package_size": 800.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Рис Националь Лазер длиннозерный 800г",
    "source_url": "https://magnit.ru/product/1000330141-natsional_ris_lazer_dlinnozernyy_800g",
    "external_id": "https://magnit.ru/product/1000330141-natsional_ris_lazer_dlinnozernyy_800g"
@@ -724,7 +711,7 @@
    "package_size": 900.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Ряженка Вкуснотеево 3.2% 900г",
    "source_url": "https://magnit.ru/product/1000454893-vkusnoteevo_ryazhenka_3_2_900g_pl_but",
    "external_id": "https://magnit.ru/product/1000454893-vkusnoteevo_ryazhenka_3_2_900g_pl_but"
@@ -733,14 +720,14 @@
    "product_id": "salt",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 3499,
+   "price_kop": 3979,
    "package_size": 1.0,
    "package_unit": "kg",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Соль Илецкая высший сорт 1кг",
-   "source_url": "https://magnit.ru/product/1000561754-iletskaya_sol_vysshiy_sort_1kg_k_up_russol",
-   "external_id": "https://magnit.ru/product/1000561754-iletskaya_sol_vysshiy_sort_1kg_k_up_russol"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Соль Экстра пищевая 1кг",
+   "source_url": "https://magnit.ru/product/3367460006-sol_ekstra_pishchevaya_1kg",
+   "external_id": "https://magnit.ru/product/3367460006-sol_ekstra_pishchevaya_1kg"
   },
   {
    "product_id": "semolina",
@@ -750,7 +737,7 @@
    "package_size": 800.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Крупа Манная 800г",
    "source_url": "https://magnit.ru/product/3139480006-krupa-mannaya-800g",
    "external_id": "https://magnit.ru/product/3139480006-krupa-mannaya-800g"
@@ -759,27 +746,27 @@
    "product_id": "shrimp",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 49999,
-   "package_size": 500.0,
+   "price_kop": 59999,
+   "package_size": 450.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Креветки Vici королевские в панцире варено-мороженные 40/50 500г",
-   "source_url": "https://magnit.ru/product/1000457348-vici_krevetki_korolev_v_pants_v_m_40_50_500g",
-   "external_id": "https://magnit.ru/product/1000457348-vici_krevetki_korolev_v_pants_v_m_40_50_500g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Креветки аргентинские без головы в панцире Vici 450г",
+   "source_url": "https://magnit.ru/product/1000312009-vici_krevetki_argentinskie_v_pantsire_bez_golovy_450g_floupak_vichyunay_rus_ooo_6",
+   "external_id": "https://magnit.ru/product/1000312009-vici_krevetki_argentinskie_v_pantsire_bez_golovy_450g_floupak_vichyunay_rus_ooo_6"
   },
   {
    "product_id": "sour_cream",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 13999,
-   "package_size": 400.0,
+   "price_kop": 24999,
+   "package_size": 700.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Сметана Чабан Халяль 15% 400г",
-   "source_url": "https://magnit.ru/product/1000230320-chaban_smetana_15_gost_400g_plastikovyy_stakan_ooo_nalchikskiy_molochnyy_kombinat_12",
-   "external_id": "https://magnit.ru/product/1000230320-chaban_smetana_15_gost_400g_plastikovyy_stakan_ooo_nalchikskiy_molochnyy_kombinat_12"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Сметана Платье в горошек термостатная 20% 700г",
+   "source_url": "https://magnit.ru/product/1000429900-plate_v_goroshek_smetana_20_700g",
+   "external_id": "https://magnit.ru/product/1000429900-plate_v_goroshek_smetana_20_700g"
   },
   {
    "product_id": "spinach",
@@ -789,7 +776,7 @@
    "package_size": 50.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Шпинат М Свежесть 50г",
    "source_url": "https://magnit.ru/product/1445100134-shpinat_50g",
    "external_id": "https://magnit.ru/product/1445100134-shpinat_50g"
@@ -798,27 +785,27 @@
    "product_id": "split_peas_dry",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 3199,
+   "price_kop": 7699,
    "package_size": 800.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Горох колотый 800г",
-   "source_url": "https://magnit.ru/product/3139480010-krupa_gorokh_fas_800g_6",
-   "external_id": "https://magnit.ru/product/3139480010-krupa_gorokh_fas_800g_6"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Горох Увелка колотый 800г",
+   "source_url": "https://magnit.ru/product/1000126552-gorokh_kolotyy_uvelka_800g",
+   "external_id": "https://magnit.ru/product/1000126552-gorokh_kolotyy_uvelka_800g"
   },
   {
    "product_id": "squid",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 39999,
-   "package_size": 500.0,
+   "price_kop": 10999,
+   "package_size": 150.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Кальмар Polar тушка неочищенная 500г",
-   "source_url": "https://magnit.ru/product/1000444769-polar_kalmar_tushka_neochishchennaya_500g_p_up",
-   "external_id": "https://magnit.ru/product/1000444769-polar_kalmar_tushka_neochishchennaya_500g_p_up"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Кальмар Санта Бремор в сливочном соусе с креветкой 150г",
+   "source_url": "https://magnit.ru/product/1000422677-santa_bremor_kalmar_v_sliv_souse_s_krevetkoy_150g_pl_ban_6",
+   "external_id": "https://magnit.ru/product/1000422677-santa_bremor_kalmar_v_sliv_souse_s_krevetkoy_150g_pl_ban_6"
   },
   {
    "product_id": "strawberries_frozen",
@@ -828,7 +815,7 @@
    "package_size": 300.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Клубника Green Ribbon быстрозамороженная 300г",
    "source_url": "https://magnit.ru/product/1000543024-green_ribbon_klubnika_zamor_300g",
    "external_id": "https://magnit.ru/product/1000543024-green_ribbon_klubnika_zamor_300g"
@@ -837,14 +824,14 @@
    "product_id": "sugar",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 14999,
+   "price_kop": 10999,
    "package_size": 1.0,
    "package_unit": "kg",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Сахар-рафинад Чайкофский 1кг",
-   "source_url": "https://magnit.ru/product/2400015902-chaykofskiy_sakhar_rafinad_1kg_20",
-   "external_id": "https://magnit.ru/product/2400015902-chaykofskiy_sakhar_rafinad_1kg_20"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Сахар Русский белый прессованный 1кг",
+   "source_url": "https://magnit.ru/product/1000378869-russkiy_sakhar_belyy_pressovannyy_1000g_kartonnaya_upakovka_rusagro_belgorod_ooo_rusagro_tambov_ooo_",
+   "external_id": "https://magnit.ru/product/1000378869-russkiy_sakhar_belyy_pressovannyy_1000g_kartonnaya_upakovka_rusagro_belgorod_ooo_rusagro_tambov_ooo_"
   },
   {
    "product_id": "sunflower_oil",
@@ -854,7 +841,7 @@
    "package_size": 1.8,
    "package_unit": "l",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Масло подсолнечное Слобода 1.8л",
    "source_url": "https://magnit.ru/product/1799900109-maslo_podsolnechnoe_sloboda_rafinirovannoe_1_8l",
    "external_id": "https://magnit.ru/product/1799900109-maslo_podsolnechnoe_sloboda_rafinirovannoe_1_8l"
@@ -863,40 +850,40 @@
    "product_id": "tomato",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 14999,
-   "package_size": 350.0,
+   "price_kop": 16999,
+   "package_size": 600.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Томаты Коктейльные шоколадные M Свежесть Original 350г",
-   "source_url": "https://magnit.ru/product/8000011970-tomaty_kokteylnye_shokoladnye_350g",
-   "external_id": "https://magnit.ru/product/8000011970-tomaty_kokteylnye_shokoladnye_350g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Томаты розовые М Свежесть 600г",
+   "source_url": "https://magnit.ru/product/1000557425-tomaty_rozovye_600g",
+   "external_id": "https://magnit.ru/product/1000557425-tomaty_rozovye_600g"
   },
   {
    "product_id": "tomato_paste",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 4699,
-   "package_size": 140.0,
+   "price_kop": 2499,
+   "package_size": 70.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Томатная паста Baisad Оригинальная 140г",
-   "source_url": "https://magnit.ru/product/8000038156-baysad_tomatnaya_pasta_originalnaya_140g",
-   "external_id": "https://magnit.ru/product/8000038156-baysad_tomatnaya_pasta_originalnaya_140g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Томатная паста Магнит 70г",
+   "source_url": "https://magnit.ru/product/1000316545-magnit_tomatnaya_pasta_70g_sashet_35",
+   "external_id": "https://magnit.ru/product/1000316545-magnit_tomatnaya_pasta_70g_sashet_35"
   },
   {
    "product_id": "tuna_canned",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 22099,
-   "package_size": 170.0,
+   "price_kop": 33099,
+   "package_size": 200.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Тунец желтоперый натуральный филе-кусочки Магуро 170г",
-   "source_url": "https://magnit.ru/product/1000279455-file_tuntsa_maguro_naturalnoe_170g",
-   "external_id": "https://magnit.ru/product/1000279455-file_tuntsa_maguro_naturalnoe_170g"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Тунец Магуро в оливковом масле 200г",
+   "source_url": "https://magnit.ru/product/1000202799-maguro_tunets_file_v_oliv_masle_200g_st_ban_dalpromryba_12",
+   "external_id": "https://magnit.ru/product/1000202799-maguro_tunets_file_v_oliv_masle_200g_st_ban_dalpromryba_12"
   },
   {
    "product_id": "walnuts",
@@ -906,7 +893,7 @@
    "package_size": 100.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Грецкий орех натуральный Premiere of Taste 100г",
    "source_url": "https://magnit.ru/product/1000493578-premier_of_taste_gretskiy_orekh_100g",
    "external_id": "https://magnit.ru/product/1000493578-premier_of_taste_gretskiy_orekh_100g"
@@ -915,14 +902,14 @@
    "product_id": "wheat_flour",
    "chain_id": "magnit",
    "city_id": "2300000100000",
-   "price_kop": 11999,
+   "price_kop": 5499,
    "package_size": 2.0,
    "package_unit": "kg",
    "loose": false,
-   "observed_on": "2026-10-16",
-   "source": "magnit.ru, магазин 992301: Мука пшеничная Увелка 2кг",
-   "source_url": "https://magnit.ru/product/8000102699-uvelka_muka_pshenich_khlebopekar_v_s_2kg_bum_up_korotoyaksk",
-   "external_id": "https://magnit.ru/product/8000102699-uvelka_muka_pshenich_khlebopekar_v_s_2kg_bum_up_korotoyaksk"
+   "observed_on": "2026-10-19",
+   "source": "magnit.ru, магазин 992301: Мука Пшеничная 2кг в ассортименте",
+   "source_url": "https://magnit.ru/product/1042229921-muka_pshenichnaya_khlebopekarnaya_2kg",
+   "external_id": "https://magnit.ru/product/1042229921-muka_pshenichnaya_khlebopekarnaya_2kg"
   },
   {
    "product_id": "yogurt_plain",
@@ -932,7 +919,7 @@
    "package_size": 125.0,
    "package_unit": "g",
    "loose": false,
-   "observed_on": "2026-10-16",
+   "observed_on": "2026-10-19",
    "source": "magnit.ru, магазин 992301: Йогурт греческий персик с высоким содержанием белка Neo 2% 125г",
    "source_url": "https://magnit.ru/product/1000543313-yogurt_neo_persik_grecheskiy_1_7_125g",
    "external_id": "https://magnit.ru/product/1000543313-yogurt_neo_persik_grecheskiy_1_7_125g"

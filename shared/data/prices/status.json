@@ -16,9 +16,9 @@
    ],
    "period": "2026-09",
    "file": "https://rosstat.gov.ru/storage/mediabank/sred_potreb_cen_09-2026.xlsx",
-   "checked_at": "2026-10-16T20:49:04+00:00",
+   "checked_at": "2026-10-19T08:57:10+00:00",
    "ok": true,
-   "updated_at": "2026-10-16T20:49:04+00:00"
+   "updated_at": "2026-10-19T08:57:10+00:00"
   },
   "magnit": {
    "name": "Магнит, magnit.ru",
@@ -27,12 +27,12 @@
    "city": "Краснодар",
    "categories": 80,
    "categories_failed": 0,
-   "offers": 1954,
-   "products": 71,
+   "offers": 1935,
+   "products": 70,
    "requests": 83,
-   "checked_at": "2026-10-16T20:53:12+00:00",
+   "checked_at": "2026-10-19T09:01:33+00:00",
    "ok": true,
-   "updated_at": "2026-10-16T20:53:12+00:00"
+   "updated_at": "2026-10-19T09:01:33+00:00"
   },
   "pyaterochka": {
    "name": "pyaterochka",
@@ -40,7 +40,7 @@
    "reachable": false,
    "detail": "HTTP 403 https://5ka.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-16T20:53:12+00:00"
+   "checked_at": "2026-10-19T09:01:34+00:00"
   },
   "perekrestok": {
    "name": "perekrestok",
@@ -48,7 +48,7 @@
    "reachable": false,
    "detail": "HTTP 403 https://www.perekrestok.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-16T20:53:13+00:00"
+   "checked_at": "2026-10-19T09:01:35+00:00"
   },
   "lenta": {
    "name": "lenta",
@@ -56,7 +56,7 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Сайт отвечает, сбор цен ещё не реализован.",
-   "checked_at": "2026-10-16T20:53:14+00:00"
+   "checked_at": "2026-10-19T09:01:35+00:00"
   },
   "auchan": {
    "name": "auchan",
@@ -64,7 +64,7 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Сайт отвечает, сбор цен ещё не реализован.",
-   "checked_at": "2026-10-16T20:53:16+00:00"
+   "checked_at": "2026-10-19T09:01:37+00:00"
   },
   "okey": {
    "name": "okey",
@@ -72,7 +72,7 @@
    "reachable": false,
    "detail": "HTTP 403 https://www.okeydostavka.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-16T20:53:17+00:00"
+   "checked_at": "2026-10-19T09:01:38+00:00"
   },
   "metro": {
    "name": "metro",
@@ -80,7 +80,7 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Сайт отвечает, сбор цен ещё не реализован.",
-   "checked_at": "2026-10-16T20:53:19+00:00"
+   "checked_at": "2026-10-19T09:01:39+00:00"
   },
   "dixy": {
    "name": "dixy",
@@ -88,7 +88,7 @@
    "reachable": false,
    "detail": "HTTP 403 https://dixy.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-16T20:53:20+00:00"
+   "checked_at": "2026-10-19T09:01:40+00:00"
   },
   "vkusvill": {
    "name": "vkusvill",
@@ -96,7 +96,7 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Сайт доступен, но вес и единица товара не публикуются в машиночитаемом виде — без них цена за кг была бы догадкой.",
-   "checked_at": "2026-10-16T20:53:22+00:00"
+   "checked_at": "2026-10-19T09:01:41+00:00"
   },
   "monetka": {
    "name": "monetka",
@@ -104,15 +104,15 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Сайт отвечает, сбор цен ещё не реализован.",
-   "checked_at": "2026-10-16T20:53:23+00:00"
+   "checked_at": "2026-10-19T09:01:42+00:00"
   },
   "globus": {
    "name": "globus",
    "collected": false,
    "reachable": false,
-   "detail": "URLError: <urlopen error [Errno 104] Connection reset by peer> (https://online.globus.ru/robots.txt)",
+   "detail": "URLError: <urlopen error timed out> (https://online.globus.ru/robots.txt)",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-16T20:53:24+00:00"
+   "checked_at": "2026-10-19T09:02:02+00:00"
   },
   "spar": {
    "name": "spar",
@@ -120,7 +120,7 @@
    "reachable": false,
    "detail": "HTTP 307 https://myspar.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-16T20:53:30+00:00"
+   "checked_at": "2026-10-19T09:02:07+00:00"
   },
   "maria_ra": {
    "name": "maria_ra",
@@ -128,8 +128,8 @@
    "reachable": false,
    "detail": "HTTP 404 https://www.maria-ra.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-16T20:53:31+00:00"
+   "checked_at": "2026-10-19T09:02:08+00:00"
   }
  },
- "generated_at": "2026-10-16T20:53:31+00:00"
+ "generated_at": "2026-10-19T09:02:08+00:00"
 }
