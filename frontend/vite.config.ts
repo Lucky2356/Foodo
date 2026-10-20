@@ -92,9 +92,9 @@ export default defineConfig(({ mode }) => {
             },
             {
               // Recipe photos (self-hosted WebP copies from Wikimedia Commons): cached once seen.
-              urlPattern: ({ url }) => /\/photos\/[^/]+\.webp$/.test(url.pathname),
+              urlPattern: ({ url }) => /\/photos\/(thumb\/)?[^/]+\.webp$/.test(url.pathname),
               handler: 'CacheFirst',
-              options: { cacheName: 'foodo-photos', expiration: { maxEntries: 400 } },
+              options: { cacheName: 'foodo-photos', expiration: { maxEntries: 800 } },
             },
             {
               urlPattern: ({ url }) => url.pathname.startsWith('/api/catalog/'),

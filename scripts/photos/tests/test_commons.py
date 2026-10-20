@@ -67,3 +67,22 @@ def test_openverse_items_map_to_the_same_candidate_shape() -> None:
     assert c["mime"] == "image/jpeg" and c["provider"] == "Flickr"
     assert acceptable(c)
     assert describe({**item, "license": "by-nc-nd"}) is None
+
+
+def test_every_catalog_photo_has_a_card_thumbnail() -> None:
+    import json
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[3]
+    recipes = json.loads(
+        (root / "shared/data/recipes.json").read_text(encoding="utf-8")
+    )["recipes"]
+    public = root / "frontend" / "public"
+    for r in recipes:
+        url = (r.get("image") or {}).get("url", "")
+        if url.startswith("photos/"):
+            name = url.removeprefix("photos/")
+            assert (public / "photos" / name).is_file(), url
+            assert (public / "photos" / "thumb" / name).is_file(), (
+                f"no thumbnail for {url}"
+            )

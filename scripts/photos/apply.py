@@ -5,7 +5,8 @@ WebP copy and returns the credit data for the recipe.
 
 Input: shared/data/photos/selection.json — {"recipe-id": "File:Title.jpg" | "openverse:<id>" | null}. null means
 «no suitable free photo»: the recipe keeps the drawn placeholder (never presented as a photo).
-Output: OUT_DIR/photos/<recipe-id>.webp and OUT_DIR/credits.json."""
+Output: OUT_DIR/photos/<recipe-id>.webp, OUT_DIR/photos/thumb/<recipe-id>.webp (400 px) and
+OUT_DIR/credits.json."""
 
 from __future__ import annotations
 
@@ -21,11 +22,12 @@ from .commons import acceptable, author_name, download, file_info, license_link
 
 ROOT = Path(__file__).resolve().parents[2]
 WIDTH = 800
+THUMB = 400
 
 
 def main(argv: list[str]) -> int:
     out = Path(argv[1])
-    (out / "photos").mkdir(parents=True, exist_ok=True)
+    (out / "photos" / "thumb").mkdir(parents=True, exist_ok=True)
     selection = json.loads(
         (ROOT / "shared/data/photos/selection.json").read_text(encoding="utf-8")
     )
@@ -48,6 +50,9 @@ def main(argv: list[str]) -> int:
         ).convert("RGB")
         img.thumbnail((WIDTH, WIDTH))
         img.save(out / "photos" / f"{rid}.webp", "WEBP", quality=78, method=6)
+        # A 400 px copy for recipe cards and lists (srcset in RecipeCover).
+        img.thumbnail((THUMB, THUMB))
+        img.save(out / "photos" / "thumb" / f"{rid}.webp", "WEBP", quality=72, method=6)
         credit = {
             "url": f"photos/{rid}.webp",
             "source": f"Фото: {author_name(info['artist']) or 'автор не указан'}, "

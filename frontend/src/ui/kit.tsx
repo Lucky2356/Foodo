@@ -200,6 +200,12 @@ export function photoUrl(url: string): string {
   return /^https:\/\//.test(url) ? url : `${import.meta.env.BASE_URL}${url.replace(/^\/+/, '')}`;
 }
 
+/** Catalog photos have a 400 px copy in photos/thumb/ for cards; the browser picks by width. */
+export function photoSrcSet(url: string): string | undefined {
+  const m = /^photos\/([a-z0-9-]+)\.webp$/.exec(url);
+  return m ? `${photoUrl(`photos/thumb/${m[1]}.webp`)} 400w, ${photoUrl(url)} 800w` : undefined;
+}
+
 /** Small deterministic hash so the same recipe always gets the same drawn variant. */
 function variantOf(text: string, n: number): number {
   let h = 0;
@@ -295,7 +301,7 @@ export function RecipeCover({ recipe, rounded = false }: { recipe: Pick<Recipe, 
   if (recipe.image?.url) {
     return (
       <div className="cover-photo" style={{ borderRadius: rounded ? 18 : 0 }}>
-        <img className="cover-img" src={photoUrl(recipe.image.url)} alt={recipe.name} loading="lazy" decoding="async" />
+        <img className="cover-img" src={photoUrl(recipe.image.url)} srcSet={photoSrcSet(recipe.image.url)} sizes="(max-width: 560px) 92vw, 400px" alt={recipe.name} loading="lazy" decoding="async" />
       </div>
     );
   }
