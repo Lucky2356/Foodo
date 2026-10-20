@@ -26,7 +26,7 @@
 | `Release` (`release.yml`) | вручную на `main` | все проверки CI → образы в GHCR → подписанный APK (`android.yml`) → архив сайта, APK и `SHA256SUMS` → Sigstore-аттестации → тег `vX.Y.Z` и GitHub Release |
 | `Android signing key` (`android-signing-key.yml`) | вручную, один раз | создаёт ключ подписи APK прямо в GitHub и сохраняет его в секретах — [`docs/ANDROID.md`](docs/ANDROID.md) |
 | `Prices` (`prices.yml`) | еженедельно, вручную; пробный прогон в PR | средние цены Росстата по регионам и городам, цены сайта «Магнита»; коммит в `shared/data/prices` и пересборка Pages — [`docs/PRICES.md`](docs/PRICES.md) |
-| `Photos` (`photos.yml`) | вручную; в PR при изменении выбора | кандидаты из Wikimedia Commons на контактных листах для проверки и применение выбранных фото с авторством и лицензией — [`docs/PHOTOS.md`](docs/PHOTOS.md) |
+| `Photos` (`photos.yml`) | вручную; в PR при изменении выбора | кандидаты из Wikimedia Commons и Openverse на контактных листах для проверки и применение выбранных фото с авторством и лицензией — [`docs/PHOTOS.md`](docs/PHOTOS.md) |
 
 Выпуск версии: обновить `VERSION`, `frontend/package.json` и раздел в `CHANGELOG.md` через PR, слить, затем **Actions → Release → Run workflow** (ветка `main`).
 
@@ -54,10 +54,11 @@ frontend/           React 19 + TypeScript + Vite 7, PWA
 shared/data/        Стартовые данные: справочники, продукты, рецепты, нормы, города, сети
 shared/fixtures/    Общие тест-кейсы движка и ожидаемые результаты (TS ⇄ Python)
 deploy/             nginx и Caddy для production
+scripts/catalog/    Сборщик каталога из текстовых источников (docs/CATALOG.md)
 scripts/prices/     Сбор цен (Росстат, сайты сетей) и публикация для статического сайта
-scripts/photos/     Поиск и применение фотографий из Wikimedia Commons
+scripts/photos/     Поиск и применение фотографий из Wikimedia Commons и Openverse
 docs/               Задание, архитектура, правила питания, витамины, цены, фото, развёртывание, статус
-.github/workflows/  CI, Pages, Android, Release
+.github/workflows/  CI, CodeQL, Pages, Android, Photos, Prices, Release
 ```
 
 ## Команды разработчика
@@ -90,6 +91,7 @@ python manage.py migrate
 python manage.py load_seed        # идемпотентно: справочники, продукты, рецепты, нормы, города, сети
 python manage.py runserver
 ruff check . && ruff format --check . && mypy
+pip-audit -r requirements.txt --require-hashes --disable-pip   # известные уязвимости зависимостей
 pytest                             # только PostgreSQL
 
 # Весь стек в Docker: http://localhost:8080
@@ -103,6 +105,13 @@ pip install --require-hashes -r scripts/prices/requirements.txt
 python -m scripts.prices.run --dry-run          # собрать и показать сводку, ничего не записывая
 python -m scripts.prices.publish frontend/public/data/prices
 python -m pytest -p no:django scripts/prices/tests scripts/photos/tests
+```
+
+Каталог продуктов и рецептов пишется в текстовых источниках `scripts/catalog/sources` (формат — [`docs/CATALOG.md`](docs/CATALOG.md)):
+
+```sh
+python -m scripts.catalog.build --check   # проверить источники
+python -m scripts.catalog.build           # проверить и пересобрать shared/data (CI проверяет, что они совпадают)
 ```
 
 Импорт данных администратором: `python manage.py import_catalog <file.json>` (продукты/рецепты, с проверкой связей и единиц, без дублей при повторе) и `python manage.py import_prices <file.json> --kind scraped|rosstat`. Те же импорты доступны в Django Admin.
