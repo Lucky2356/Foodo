@@ -23,6 +23,21 @@ test.describe('guest mode (static site, no server)', () => {
     }
   });
 
+  test('the Content Security Policy blocks nothing the app needs (security)', async ({ page }) => {
+    const violations: string[] = [];
+    page.on('console', (m) => {
+      if (/Content Security Policy/i.test(m.text())) violations.push(m.text());
+    });
+    await onboard(page);
+    for (const path of ['#/recipes', '#/shopping', '#/settings', '#/profile', '#/']) {
+      await page.goto(`./${path}`);
+      await page.waitForTimeout(400);
+    }
+    const csp = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content');
+    expect(csp).toContain("script-src 'self'");
+    expect(violations).toEqual([]);
+  });
+
   test('one-tap replace with undo updates the menu (check 6)', async ({ page }) => {
     await onboard(page);
     const before = await page.locator('.dish-title').first().innerText();

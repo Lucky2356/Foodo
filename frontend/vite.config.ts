@@ -1,9 +1,34 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import type { Plugin } from 'vite';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = fileURLToPath(new URL('..', import.meta.url));
+
+// Content Security Policy for built pages. GitHub Pages cannot send headers, so the policy is a
+// <meta> tag; nginx sends the same policy as a header (plus frame-ancestors, which a meta tag
+// cannot carry). Not applied to the dev server, whose hot reload needs inline scripts.
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self'",
+  // React style={…} props are inline style attributes.
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self' data:",
+  "connect-src 'self'",
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join('; ');
+
+const cspMeta: Plugin = {
+  name: 'foodo-csp-meta',
+  apply: 'build',
+  transformIndexHtml: () => [{ tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: CSP }, injectTo: 'head-prepend' }],
+};
 
 // Modes:
 //  - default (server): the SPA is served by nginx next to the Django API (/api);
@@ -18,6 +43,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
+      cspMeta,
       VitePWA({
         registerType: 'prompt',
         injectRegister: null,
@@ -30,8 +56,8 @@ export default defineConfig(({ mode }) => {
           start_url: '.',
           scope: '.',
           display: 'standalone',
-          background_color: '#f7f5ef',
-          theme_color: '#2f6b4f',
+          background_color: '#fffbf2',
+          theme_color: '#16a34a',
           icons: [
             { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
             { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
