@@ -1,47 +1,44 @@
 import { defineConfig } from 'vitest/config';
-import type { Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import type { Plugin } from 'vite';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = fileURLToPath(new URL('..', import.meta.url));
 
-// The Android WebView has no nginx in front of it, so the policy travels as a meta tag. It mirrors
-// deploy/nginx-security-headers.conf without the server-only parts (no remote images, no API host;
-// frame-ancestors is ignored in a meta tag). Capacitor's bridge script is injected by the WebView
-// before this tag is parsed, so 'self' is enough for scripts.
-const NATIVE_CSP = [
+// Content Security Policy for built pages. GitHub Pages cannot send headers, so the policy is a
+// <meta> tag; nginx sends the same policy as a header (plus frame-ancestors, which a meta tag
+// cannot carry). Not applied to the dev server, whose hot reload needs inline scripts.
+// The Android app (mode "android") uses the same policy inside its WebView: the page is served
+// from https://localhost ('self'), and the updater's requests to GitHub are made by native
+// Java code, which the page's CSP does not govern, so no extra source is needed. Capacitor
+// injects its bridge script before this tag is parsed.
+const CSP = [
   "default-src 'self'",
   "script-src 'self'",
+  // React style={…} props are inline style attributes.
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "connect-src 'self'",
   "worker-src 'self' blob:",
+  "manifest-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
 ].join('; ');
 
-function nativeCsp(): Plugin {
-  return {
-    name: 'foodo-native-csp',
-    transformIndexHtml: {
-      order: 'post',
-      handler(html) {
-        const anchor = '<meta charset="UTF-8" />';
-        if (!html.includes(anchor)) throw new Error('index.html: charset meta not found, cannot add the CSP meta tag');
-        return html.replace(anchor, `${anchor}\n    <meta http-equiv="Content-Security-Policy" content="${NATIVE_CSP}" />`);
-      },
-    },
-  };
-}
+const cspMeta: Plugin = {
+  name: 'foodo-csp-meta',
+  apply: 'build',
+  transformIndexHtml: () => [{ tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: CSP }, injectTo: 'head-prepend' }],
+};
 
 // Modes:
 //  - default (server): the SPA is served by nginx next to the Django API (/api);
 //  - "static": GitHub Pages build — guest mode only, relative base path, hash routing;
 //  - "android": the same guest-mode build packaged into the Android APK (frontend/android):
-//    no service worker (updates come with the APK), CSP meta tag, native updater UI.
+//    no service worker (updates come with the APK), native updater UI.
 export default defineConfig(({ mode }) => {
   const isAndroid = mode === 'android';
   const isStatic = mode === 'static' || isAndroid;
@@ -54,7 +51,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
-      isAndroid ? nativeCsp() : null,
+      cspMeta,
       VitePWA({
         disable: isAndroid,
         registerType: 'prompt',
@@ -68,8 +65,8 @@ export default defineConfig(({ mode }) => {
           start_url: '.',
           scope: '.',
           display: 'standalone',
-          background_color: '#f7f5ef',
-          theme_color: '#2f6b4f',
+          background_color: '#fffbf2',
+          theme_color: '#16a34a',
           icons: [
             { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
             { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },

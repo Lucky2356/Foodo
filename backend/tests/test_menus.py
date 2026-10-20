@@ -7,6 +7,7 @@ import pytest
 from django.db import connection
 from rest_framework.test import APIClient
 
+from common.errors import ApiError
 from households.models import CookConfirmation, PantryItem
 
 from .conftest import add_member, household_id
@@ -168,3 +169,18 @@ def test_budget_with_own_prices_and_unconfirmed_state(alice: Any) -> None:
     priced = client.get(f"/api/households/{hid}/menus/{menu['id']}/shopping/").json()
     unpriced = [ln for ln in priced["lines"] if ln["purchase_cost_kop"] is None and ln["to_buy"] > 0]
     assert priced["budget"]["status"] == ("exceeded" if not unpriced else "unconfirmed")
+
+
+def test_member_diet_types_spice_and_weekend_limit_round_trip() -> None:
+    from households.validation import validate_member, validate_plan_settings
+
+    m = validate_member({"name": "Миша", "age": 7, "diet_types": ["vegetarian"], "spice_tolerance": 0, "preferences": {"liked_products": ["banana"]}})
+    assert m["diet_types"] == ["vegetarian"] and m["spice_tolerance"] == 0
+    assert m["preferences"]["liked_products"] == ["banana"]
+    with pytest.raises(ApiError):
+        validate_member({"name": "X", "spice_tolerance": 3})
+    # Settings saved before the weekend limit existed keep one limit for every day.
+    legacy = validate_plan_settings({"max_total_min": 30})
+    assert legacy["max_total_min_weekend"] == 30
+    fresh = validate_plan_settings({"max_total_min": 30, "max_total_min_weekend": None, "cuisines": ["italian"], "diet_mode": "high_protein"})
+    assert fresh["max_total_min_weekend"] is None and fresh["cuisines"] == ["italian"]

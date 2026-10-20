@@ -12,7 +12,7 @@ from engine.generator import DEFAULT_SETTINGS
 JSON = dict[str, Any]
 SLOTS = ("breakfast", "lunch", "snack", "dinner")
 SKILLS = ("beginner", "confident", "any")
-DIETS = ("regular", "balanced")
+DIETS = ("regular", "balanced", "high_protein")
 REPEATS = ("unique", "allow", "batch")
 EQUIPMENT_IDS = ("stove", "oven", "microwave", "multicooker", "blender", "airfryer")
 ACTIVITIES = ("low", "light", "moderate", "high", "very_high")
@@ -51,6 +51,9 @@ def validate_plan_settings(data: Any) -> JSON:
     if not isinstance(data, dict):
         _fail("settings", "Настройки должны быть объектом.")
     s = copy.deepcopy(DEFAULT_SETTINGS)
+    # Settings saved before the weekend limit existed keep one limit for every day of the week.
+    if "max_total_min_weekend" not in data:
+        s["max_total_min_weekend"] = data.get("max_total_min")
     for key, value in data.items():
         if key in s and isinstance(s[key], dict) and isinstance(value, dict):
             s[key] = {**s[key], **value}
@@ -62,6 +65,8 @@ def validate_plan_settings(data: Any) -> JSON:
         _fail("diet_mode", "Неизвестный режим питания.")
     s["equipment"] = _str_list(s["equipment"], "equipment", EQUIPMENT_IDS)
     s["max_total_min"] = _int(s["max_total_min"], "max_total_min", 5, 600, nullable=True)
+    s["max_total_min_weekend"] = _int(s["max_total_min_weekend"], "max_total_min_weekend", 5, 600, nullable=True)
+    s["cuisines"] = _str_list(s["cuisines"], "cuisines", max_len=20)
     r = s["repeat"]
     if r.get("mode") not in REPEATS:
         _fail("repeat.mode", "Неизвестный режим повторов.")
@@ -171,7 +176,13 @@ def validate_member(data: Any, partial: bool = False) -> JSON:
         out["preferences"] = {
             "liked_recipes": _str_list(p.get("liked_recipes", []), "preferences.liked_recipes"),
             "disliked_products": _str_list(p.get("disliked_products", []), "preferences.disliked_products"),
+            "liked_products": _str_list(p.get("liked_products", []), "preferences.liked_products"),
         }
+    if "diet_types" in data or not partial:
+        out["diet_types"] = _str_list(data.get("diet_types") or [], "diet_types", max_len=10)
+    if "spice_tolerance" in data or not partial:
+        tol = data.get("spice_tolerance", 1)
+        out["spice_tolerance"] = 1 if tol is None else _int(tol, "spice_tolerance", 0, 2)
     if "vitamin_targets_manual" in data:
         v = data["vitamin_targets_manual"]
         if v is not None:
@@ -212,7 +223,9 @@ def member_json(m: Any) -> JSON:
         "kcal_target": m.kcal_target,
         "macro_targets": m.macro_targets,
         "restrictions": {"products": [], "categories": [], "allergens": [], **(m.restrictions or {})},
-        "preferences": {"liked_recipes": [], "disliked_products": [], **(m.preferences or {})},
+        "diet_types": list(m.diet_types or []),
+        "spice_tolerance": m.spice_tolerance,
+        "preferences": {"liked_recipes": [], "disliked_products": [], "liked_products": [], **(m.preferences or {})},
         "vitamin_targets_manual": m.vitamin_targets_manual,
         "water_goal_ml": m.water_goal_ml,
         "timezone": m.timezone,

@@ -100,6 +100,9 @@ def recipe_to_json(r: Recipe) -> JSON:
         "storage": r.storage,
         "image": r.image,
         "source": r.source,
+        "cuisine": r.cuisine or None,
+        "spicy": r.spicy,
+        "kid_friendly": r.kid_friendly,
         "visibility": r.visibility,
         **({"owner": str(r.owner_household_id)} if r.owner_household_id else {}),
     }
@@ -149,6 +152,7 @@ def build_reference() -> JSON:
         "version": ref.get("diet_rules", {}).get("version", "db"),
         "balanced": {t.id: t.balanced_weight for t in tags if t.balanced_weight is not None},
         "regular": {t.id: t.regular_weight for t in tags if t.regular_weight is not None},
+        "high_protein": {t.id: t.high_protein_weight for t in tags if t.high_protein_weight is not None},
     }
     return ref
 
@@ -240,6 +244,7 @@ def load_reference(reference: JSON) -> None:
                 "position": i,
                 "balanced_weight": rules.get("balanced", {}).get(t["id"]),
                 "regular_weight": rules.get("regular", {}).get(t["id"]),
+                "high_protein_weight": rules.get("high_protein", {}).get(t["id"]),
             },
         )
 
@@ -330,6 +335,9 @@ def save_recipe(data: JSON, owner_household_id: Any | None = None) -> tuple[Reci
     recipe.storage = data.get("storage")
     recipe.image = data.get("image")
     recipe.source = data.get("source", "user")
+    recipe.cuisine = data.get("cuisine") or ""
+    recipe.spicy = int(data.get("spicy") or 0)
+    recipe.kid_friendly = bool(data.get("kid_friendly", False))
     recipe.visibility = "private" if owner_household_id else "public"
     recipe.owner_household_id = owner_household_id
     recipe.save()

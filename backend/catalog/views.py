@@ -9,6 +9,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from common.errors import ApiError
 from common.pagination import StandardPagination
 from engine.catalog import Catalog, product_closure
 from engine.nutrition import recipe_nutrition
@@ -68,6 +69,9 @@ def recipe_summary(catalog: Catalog, recipe: dict[str, Any]) -> dict[str, Any]:
         "active_min": first["active_min"],
         "equipment": first["equipment"],
         "diet_tags": recipe["diet_tags"],
+        "cuisine": recipe.get("cuisine"),
+        "spicy": recipe.get("spicy", 0),
+        "kid_friendly": recipe.get("kid_friendly", False),
         "image": recipe.get("image"),
         "per_serving": per_serving,
         "allergens": sorted(allergens),
@@ -77,7 +81,8 @@ def recipe_summary(catalog: Catalog, recipe: dict[str, Any]) -> dict[str, Any]:
 
 class RecipeListView(APIView):
     """Search and filters: ?search=, category=, meal=, max_time=, max_kcal=, exclude_products=,
-    exclude_categories=, exclude_allergens=, equipment=, ordering=name|time|kcal, page="""
+    exclude_categories=, exclude_allergens=, diet_types=, cuisine=, max_spicy=, kids=1, equipment=,
+    ordering=name|time|kcal, page="""
 
     authentication_classes: list = []
 
@@ -88,12 +93,32 @@ class RecipeListView(APIView):
         excluded_products = set(_csv(q.get("exclude_products")))
         excluded_categories = set(_csv(q.get("exclude_categories")))
         excluded_allergens = set(_csv(q.get("exclude_allergens")))
+        # A diet type is a named set of hard restrictions (reference.diet_types); unknown ids are rejected.
+        presets = {t["id"]: t for t in catalog.reference.get("diet_types") or []}
+        for tid in _csv(q.get("diet_types")):
+            preset = presets.get(tid)
+            if preset is None:
+                raise ApiError("unknown_diet_type", f"Неизвестный тип питания: {tid}.", 400)
+            excluded_products |= set(preset["products"])
+            excluded_categories |= set(preset["categories"])
+            excluded_allergens |= set(preset["allergens"])
+        cuisines = set(_csv(q.get("cuisine")))
+        max_spicy = q.get("max_spicy")
+        if max_spicy is not None and max_spicy not in ("0", "1", "2"):
+            raise ApiError("invalid_spicy", "Острота: 0, 1 или 2.", 400)
+        kids_only = q.get("kids") == "1"
         equipment = q.get("equipment")
         items = []
         for recipe in catalog.recipes.values():
             if q.get("category") and recipe["category"] != q["category"]:
                 continue
             if q.get("meal") and q["meal"] not in recipe["meal_types"]:
+                continue
+            if cuisines and recipe.get("cuisine") not in cuisines:
+                continue
+            if max_spicy is not None and (recipe.get("spicy") or 0) > int(max_spicy):
+                continue
+            if kids_only and recipe.get("kid_friendly") is not True:
                 continue
             if search:
                 names = " ".join(catalog.products[i["product"]]["name"] for i in recipe["ingredients"] if i["product"] in catalog.products)

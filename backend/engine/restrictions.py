@@ -18,7 +18,10 @@ REASON_MESSAGES = {
     "restriction": "содержит запрещённый продукт, категорию или аллерген",
     "composition_unknown": "состав ингредиента неизвестен, безопасность не подтверждена",
     "repeat": "уже использован (режим повторов)",
+    "spicy": "острее, чем допускает участник",
 }
+
+DEFAULT_SPICE_TOLERANCE = 1
 
 
 def has_restrictions(r: JSON) -> bool:
@@ -45,8 +48,57 @@ def recipe_violations(catalog: Catalog, recipe: JSON, restrictions: JSON) -> lis
     return violations
 
 
+def merge_restrictions(items: list[JSON]) -> JSON:
+    products: set[str] = set()
+    categories: set[str] = set()
+    allergens: set[str] = set()
+    for r in items:
+        products.update(r["products"])
+        categories.update(r["categories"])
+        allergens.update(r["allergens"])
+    return {"products": sorted(products), "categories": sorted(categories), "allergens": sorted(allergens)}
+
+
+def effective_restrictions(catalog: Catalog, member: JSON) -> JSON:
+    """The member's own restrictions plus those of every selected diet type (vegetarian, gluten-free, …)."""
+    types = member.get("diet_types") or []
+    if not types:
+        return member["restrictions"]
+    refs = catalog.reference.get("diet_types") or []
+    parts: list[JSON] = [member["restrictions"]]
+    for tid in types:
+        t = next((x for x in refs if x["id"] == tid), None)
+        if t is not None:
+            parts.append({"products": t["products"], "categories": t["categories"], "allergens": t["allergens"]})
+    return merge_restrictions(parts)
+
+
+def spice_tolerance(member: JSON) -> int:
+    tol = member.get("spice_tolerance")
+    return DEFAULT_SPICE_TOLERANCE if tol is None else int(tol)
+
+
+def recipe_spice(recipe: JSON) -> int:
+    return int(recipe.get("spicy") or 0)
+
+
 def is_recipe_safe_for(catalog: Catalog, recipe: JSON, member: JSON) -> bool:
-    return len(recipe_violations(catalog, recipe, member["restrictions"])) == 0
+    """Hard check for one member: restrictions (with diet types) and the spiciness they accept."""
+    if recipe_spice(recipe) > spice_tolerance(member):
+        return False
+    return len(recipe_violations(catalog, recipe, effective_restrictions(catalog, member))) == 0
+
+
+def recipe_has_liked_product(catalog: Catalog, recipe: JSON, member: JSON) -> bool:
+    liked = member["preferences"].get("liked_products") or []
+    if not liked:
+        return False
+    for ing in recipe["ingredients"]:
+        closure = product_closure(catalog, ing["product"])
+        for p in liked:
+            if p in closure.product_ids:
+                return True
+    return False
 
 
 def recipe_has_disliked_product(catalog: Catalog, recipe: JSON, member: JSON) -> bool:

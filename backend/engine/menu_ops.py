@@ -9,7 +9,7 @@ from .basics import is_iso_date
 from .catalog import Catalog, add_to_snapshot, find_method, recipe_skill_rank, select_method, skill_allows, snapshot_catalog
 from .errors import EngineError
 from .generator import generate_menu, menu_violations, rank_candidates
-from .restrictions import recipe_violations
+from .restrictions import effective_restrictions, recipe_spice, recipe_violations, spice_tolerance
 
 JSON = dict[str, Any]
 
@@ -68,7 +68,9 @@ def _check_manual_choice(menu: JSON, catalog: Catalog, recipe_id: str, method_id
     if recipe is None:
         raise EngineError("recipe_not_found", "Рецепт не найден.")
     for m in people:
-        v = recipe_violations(catalog, recipe, m["restrictions"])
+        if recipe_spice(recipe) > spice_tolerance(m):
+            raise EngineError("too_spicy", f"«{recipe['name']}» острее, чем допускает участник «{m['name']}».", {"member_id": m["id"]})
+        v = recipe_violations(catalog, recipe, effective_restrictions(catalog, m))
         if v:
             raise EngineError(
                 "restriction_violation",

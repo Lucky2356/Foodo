@@ -72,7 +72,7 @@ class MethodInline(admin.StackedInline):
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ("name", "id", "category", "version", "visibility")
-    list_filter = ("category", "visibility", "container_ok")
+    list_filter = ("category", "cuisine", "spicy", "kid_friendly", "visibility", "container_ok")
     search_fields = ("name", "id")
     inlines = [IngredientInline, MethodInline]
     readonly_fields = ("version",)
@@ -119,7 +119,7 @@ for model in (Category, Allergen, Equipment, Technique):
 
 @admin.register(DietTag)
 class DietTagAdmin(admin.ModelAdmin):
-    list_display = ("name", "id", "balanced_weight", "regular_weight")
+    list_display = ("name", "id", "balanced_weight", "regular_weight", "high_protein_weight")
 
 
 @admin.register(NutrientTargetSet)

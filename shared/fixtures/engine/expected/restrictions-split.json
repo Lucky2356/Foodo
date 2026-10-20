@@ -137,7 +137,7 @@
    },
    {
     "id": "b10",
-    "recipe_id": "chili-s-fasolyu",
+    "recipe_id": "chechevichnyy-sup-s-tomatami",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
@@ -462,15 +462,15 @@
   "warnings": [],
   "stats": {
    "attempts": 6,
-   "evaluated": 3533,
-   "score": 11.622323500182633,
+   "evaluated": 3589,
+   "score": 21.1187756377544,
    "budget_status": "none"
   },
   "snapshot_ids": {
    "recipes": [
     "baklazhany-tushyonye-s-pomidorami",
     "borshch-postnyy",
-    "chili-s-fasolyu",
+    "chechevichnyy-sup-s-tomatami",
     "granola-domashnyaya",
     "guakamole-s-tostami",
     "ovsyanka-s-orehami-i-myodom",
@@ -502,7 +502,6 @@
     "chickpeas_canned",
     "cilantro",
     "cinnamon",
-    "corn_canned",
     "cucumber",
     "cumin",
     "dill",
@@ -519,6 +518,7 @@
     "peanut_butter",
     "potato",
     "raisins",
+    "red_lentils_dry",
     "salt",
     "sugar",
     "sunflower_oil",
@@ -526,6 +526,7 @@
     "tomato",
     "tomato_paste",
     "tuna_canned",
+    "turmeric",
     "vinegar",
     "walnuts",
     "water",
@@ -841,9 +842,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 112.5,
+    "needed": 135,
     "from_pantry": 0,
-    "to_buy": 112.5,
+    "to_buy": 135,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -859,6 +860,13 @@
       "recipe_id": "vitaminnyy-salat",
       "recipe_name": "Витаминный салат с яблоком",
       "cook_date": "2026-10-19",
+      "qty": 22.5
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "cook_date": "2026-10-21",
       "qty": 22.5
      },
      {
@@ -935,8 +943,8 @@
      },
      {
       "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 37.5
      },
@@ -981,9 +989,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 140,
+    "needed": 170,
     "from_pantry": 0,
-    "to_buy": 140,
+    "to_buy": 170,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -1024,6 +1032,13 @@
       "recipe_id": "tomatnyy-sup-s-fasolyu",
       "recipe_name": "Томатный суп с фасолью",
       "cook_date": "2026-10-20",
+      "qty": 30
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "cook_date": "2026-10-21",
       "qty": 30
      },
      {
@@ -1086,9 +1101,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 168.75,
+    "needed": 112.5,
     "from_pantry": 0,
-    "to_buy": 168.75,
+    "to_buy": 112.5,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -1104,13 +1119,6 @@
       "recipe_id": "tushenaya-fasol-s-ovoshchami",
       "recipe_name": "Тушёная фасоль с овощами",
       "cook_date": "2026-10-20",
-      "qty": 56.25
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-21",
       "qty": 56.25
      },
      {
@@ -1396,8 +1404,8 @@
      },
      {
       "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 3.75
      },
@@ -1763,6 +1771,43 @@
     "changed": false
    },
    {
+    "id": "auto:red_lentils_dry:g",
+    "product_id": "red_lentils_dry",
+    "name": "Чечевица красная",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 75,
+    "from_pantry": 0,
+    "to_buy": 75,
+    "package": {
+     "size": 450,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "cook_date": "2026-10-21",
+      "qty": 75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
     "id": "auto:bread_wholegrain:g",
     "product_id": "bread_wholegrain",
     "name": "Хлеб цельнозерновой",
@@ -1836,43 +1881,6 @@
       "recipe_name": "Свежая капуста с огурцом и горошком",
       "cook_date": "2026-10-20",
       "qty": 75
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:corn_canned:g",
-    "product_id": "corn_canned",
-    "name": "Кукуруза консервированная",
-    "department": "Консервы и соусы",
-    "unit": "g",
-    "convertible": true,
-    "needed": 127.5,
-    "from_pantry": 0,
-    "to_buy": 127.5,
-    "package": {
-     "size": 340,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-21",
-      "qty": 127.5
      }
     ],
     "purchased": false,
@@ -2001,8 +2009,8 @@
      },
      {
       "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 150
      }
@@ -2056,13 +2064,13 @@
     "department": "Консервы и соусы",
     "unit": "g",
     "convertible": true,
-    "needed": 1050,
+    "needed": 750,
     "from_pantry": 0,
-    "to_buy": 1050,
+    "to_buy": 750,
     "package": {
      "size": 400,
      "unit": "g",
-     "count": 3
+     "count": 2
     },
     "package_note": null,
     "price_kop": null,
@@ -2092,13 +2100,6 @@
       "recipe_id": "tushenaya-fasol-s-ovoshchami",
       "recipe_name": "Тушёная фасоль с овощами",
       "cook_date": "2026-10-20",
-      "qty": 300
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-21",
       "qty": 300
      },
      {
@@ -2140,8 +2141,8 @@
     "sources": [
      {
       "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 0.75
      }
@@ -2188,6 +2189,43 @@
       "recipe_name": "Овсяное печенье с бананом без сахара",
       "cook_date": "2026-10-22",
       "qty": 0.075
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:turmeric:g",
+    "product_id": "turmeric",
+    "name": "Куркума",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.5625,
+    "from_pantry": 0,
+    "to_buy": 0.5625,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "cook_date": "2026-10-21",
+      "qty": 0.5625
      }
     ],
     "purchased": false,
@@ -2265,8 +2303,8 @@
      },
      {
       "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 11.126374
      },
@@ -2383,9 +2421,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 3.45,
+    "needed": 1.725,
     "from_pantry": 0,
-    "to_buy": 3.45,
+    "to_buy": 1.725,
     "package": {
      "size": 50,
      "unit": "g",
@@ -2413,13 +2451,6 @@
       "recipe_name": "Тушёная фасоль с овощами",
       "cook_date": "2026-10-20",
       "qty": 0.8625
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-21",
-      "qty": 1.725
      }
     ],
     "purchased": false,
@@ -2509,8 +2540,8 @@
      },
      {
       "batch_id": "b10",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 2.25
      },
@@ -2640,8 +2671,9 @@
     "auto:sunflower_seeds:g",
     "auto:cinnamon:g",
     "auto:raisins:g",
-    "auto:corn_canned:g",
+    "auto:red_lentils_dry:g",
     "auto:cumin:g",
+    "auto:turmeric:g",
     "auto:avocado:g",
     "auto:tomato:g",
     "auto:tuna_canned:g",
@@ -2830,40 +2862,39 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 988.4404999999999,
+       "value": 1013.876,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 40.671350000000004,
+       "value": 43.882975,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 44.628125000000004,
+       "value": 44.425850000000004,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 115.73195000000001,
+       "value": 120.24080000000001,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 27.53035,
+       "value": 25.665925,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 168.85825,
+       "value": 241.49874999999997,
        "complete": false,
        "missing": [
-        "corn_canned",
         "cumin"
        ]
       },
       "vit_c": {
-       "value": 103.40955,
+       "value": 68.58272500000001,
        "complete": false,
        "missing": [
         "cumin"
@@ -2875,21 +2906,20 @@
        "missing": []
       },
       "vit_e": {
-       "value": 9.524745,
+       "value": 9.109504999999999,
        "complete": false,
        "missing": [
-        "beans_canned",
-        "corn_canned",
         "canned_tomatoes",
-        "cumin"
+        "cumin",
+        "beans_canned"
        ]
       },
       "vit_b6": {
-       "value": 1.00245,
+       "value": 1.091105,
        "complete": false,
        "missing": [
-        "beans_canned",
-        "cumin"
+        "cumin",
+        "beans_canned"
        ]
       },
       "vit_b12": {
@@ -2898,15 +2928,15 @@
        "missing": []
       },
       "folate": {
-       "value": 187.14075,
+       "value": 252.27875,
        "complete": false,
        "missing": [
-        "beans_canned",
-        "cumin"
+        "cumin",
+        "beans_canned"
        ]
       }
      },
-     "portion_mass_g": 731.25,
+     "portion_mass_g": 806.25,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2983,41 +3013,40 @@
    ],
    "period": {
     "kcal": {
-     "value": 3161.2370416666663,
+     "value": 3186.672541666667,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 105.54669166666666,
+     "value": 108.75831666666666,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 135.6714125,
+     "value": 135.4691375,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 414.9940583333333,
+     "value": 419.5029083333334,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 93.7266875,
+     "value": 91.86226250000001,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 1207.27325,
+     "value": 1279.91375,
      "complete": false,
      "missing": [
       "bay_leaf",
-      "corn_canned",
       "cumin"
      ]
     },
     "vit_c": {
-     "value": 471.0246833333333,
+     "value": 436.19785833333333,
      "complete": false,
      "missing": [
       "bay_leaf",
@@ -3030,19 +3059,18 @@
      "missing": []
     },
     "vit_e": {
-     "value": 37.43253833333333,
+     "value": 37.01729833333333,
      "complete": false,
      "missing": [
       "dill",
       "beans_canned",
       "bay_leaf",
       "canned_tomatoes",
-      "corn_canned",
       "cumin"
      ]
     },
     "vit_b6": {
-     "value": 4.4002291666666675,
+     "value": 4.488884166666667,
      "complete": false,
      "missing": [
       "beans_canned",
@@ -3056,7 +3084,7 @@
      "missing": []
     },
     "folate": {
-     "value": 784.5516250000001,
+     "value": 849.689625,
      "complete": false,
      "missing": [
       "beans_canned",
@@ -3071,13 +3099,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 1207.27325,
+     "period_value": 1279.91375,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
-      "corn_canned",
       "cumin"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3088,7 +3115,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 471.0246833333333,
+     "period_value": 436.19785833333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3117,7 +3144,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 37.43253833333333,
+     "period_value": 37.01729833333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3125,7 +3152,6 @@
       "bay_leaf",
       "beans_canned",
       "canned_tomatoes",
-      "corn_canned",
       "cumin",
       "dill"
      ],
@@ -3137,7 +3163,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 4.4002291666666675,
+     "period_value": 4.488884166666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3167,7 +3193,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 784.5516250000001,
+     "period_value": 849.689625,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3349,40 +3375,39 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 494.22024999999996,
+       "value": 506.938,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 20.335675000000002,
+       "value": 21.9414875,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 22.314062500000002,
+       "value": 22.212925000000002,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 57.865975000000006,
+       "value": 60.120400000000004,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 13.765175,
+       "value": 12.8329625,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 84.429125,
+       "value": 120.74937499999999,
        "complete": false,
        "missing": [
-        "corn_canned",
         "cumin"
        ]
       },
       "vit_c": {
-       "value": 51.704775,
+       "value": 34.291362500000005,
        "complete": false,
        "missing": [
         "cumin"
@@ -3394,21 +3419,20 @@
        "missing": []
       },
       "vit_e": {
-       "value": 4.7623725,
+       "value": 4.554752499999999,
        "complete": false,
        "missing": [
-        "beans_canned",
-        "corn_canned",
         "canned_tomatoes",
-        "cumin"
+        "cumin",
+        "beans_canned"
        ]
       },
       "vit_b6": {
-       "value": 0.501225,
+       "value": 0.5455525,
        "complete": false,
        "missing": [
-        "beans_canned",
-        "cumin"
+        "cumin",
+        "beans_canned"
        ]
       },
       "vit_b12": {
@@ -3417,15 +3441,15 @@
        "missing": []
       },
       "folate": {
-       "value": 93.570375,
+       "value": 126.139375,
        "complete": false,
        "missing": [
-        "beans_canned",
-        "cumin"
+        "cumin",
+        "beans_canned"
        ]
       }
      },
-     "portion_mass_g": 365.625,
+     "portion_mass_g": 403.125,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3502,41 +3526,40 @@
    ],
    "period": {
     "kcal": {
-     "value": 1580.6185208333332,
+     "value": 1593.3362708333334,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 52.77334583333333,
+     "value": 54.37915833333333,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 67.83570625,
+     "value": 67.73456875,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 207.49702916666666,
+     "value": 209.7514541666667,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 46.86334375,
+     "value": 45.93113125000001,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 603.636625,
+     "value": 639.956875,
      "complete": false,
      "missing": [
       "bay_leaf",
-      "corn_canned",
       "cumin"
      ]
     },
     "vit_c": {
-     "value": 235.51234166666666,
+     "value": 218.09892916666666,
      "complete": false,
      "missing": [
       "bay_leaf",
@@ -3549,19 +3572,18 @@
      "missing": []
     },
     "vit_e": {
-     "value": 18.716269166666667,
+     "value": 18.508649166666665,
      "complete": false,
      "missing": [
       "dill",
       "beans_canned",
       "bay_leaf",
       "canned_tomatoes",
-      "corn_canned",
       "cumin"
      ]
     },
     "vit_b6": {
-     "value": 2.2001145833333338,
+     "value": 2.2444420833333334,
      "complete": false,
      "missing": [
       "beans_canned",
@@ -3575,7 +3597,7 @@
      "missing": []
     },
     "folate": {
-     "value": 392.27581250000003,
+     "value": 424.8448125,
      "complete": false,
      "missing": [
       "beans_canned",
@@ -3590,13 +3612,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 603.636625,
+     "period_value": 639.956875,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
-      "corn_canned",
       "cumin"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3607,7 +3628,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 235.51234166666666,
+     "period_value": 218.09892916666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3636,7 +3657,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 18.716269166666667,
+     "period_value": 18.508649166666665,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3644,7 +3665,6 @@
       "bay_leaf",
       "beans_canned",
       "canned_tomatoes",
-      "corn_canned",
       "cumin",
       "dill"
      ],
@@ -3656,7 +3676,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2.2001145833333338,
+     "period_value": 2.2444420833333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3686,7 +3706,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 392.27581250000003,
+     "period_value": 424.8448125,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3841,7 +3861,7 @@
      },
      {
       "id": "b10",
-      "recipe_id": "chili-s-fasolyu",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4155,15 +4175,15 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 3533,
-     "score": 11.622323500182633,
+     "evaluated": 3589,
+     "score": 21.1187756377544,
      "budget_status": "none"
     },
     "snapshot_ids": {
      "recipes": [
       "baklazhany-tushyonye-s-pomidorami",
       "borshch-postnyy",
-      "chili-s-fasolyu",
+      "chechevichnyy-sup-s-tomatami",
       "granola-domashnyaya",
       "guakamole-s-tostami",
       "ovsyanka-s-orehami-i-myodom",
@@ -4195,7 +4215,6 @@
       "chickpeas_canned",
       "cilantro",
       "cinnamon",
-      "corn_canned",
       "cucumber",
       "cumin",
       "dill",
@@ -4212,6 +4231,7 @@
       "peanut_butter",
       "potato",
       "raisins",
+      "red_lentils_dry",
       "salt",
       "sugar",
       "sunflower_oil",
@@ -4219,6 +4239,7 @@
       "tomato",
       "tomato_paste",
       "tuna_canned",
+      "turmeric",
       "vinegar",
       "walnuts",
       "water",
@@ -4263,11 +4284,12 @@
      "auto:sunflower_seeds:g",
      "auto:cinnamon:g",
      "auto:raisins:g",
-     "auto:corn_canned:g",
+     "auto:red_lentils_dry:g",
      "auto:cumin:g",
+     "auto:turmeric:g",
+     "auto:lemon:g",
      "auto:avocado:g",
      "auto:tomato:g",
-     "auto:lemon:g",
      "auto:tuna_canned:g",
      "auto:cherry_tomatoes:g",
      "auto:parsley:g",

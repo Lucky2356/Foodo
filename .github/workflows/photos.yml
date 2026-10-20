@@ -1,6 +1,6 @@
 name: Photos
 
-# Recipe photos from Wikimedia Commons, in two reviewed steps (docs/PHOTOS.md):
+# Recipe photos from Wikimedia Commons and Openverse, in two reviewed steps (docs/PHOTOS.md):
 # 1. candidates: free-licensed candidates per recipe → numbered contact sheets (artifact);
 # 2. apply: the photos chosen in shared/data/photos/selection.json are downloaded, resized to
 #    WebP and returned with author/license data (artifact) to be committed after review.
@@ -33,9 +33,16 @@ jobs:
           python-version: "3.13"
       - run: pip install --require-hashes -r scripts/photos/requirements.txt
       - name: Candidates for recipes without a decision
+        env:
+          # Optional Openverse API credentials raise its rate limit; without them the anonymous limit applies.
+          OPENVERSE_CLIENT_ID: ${{ secrets.OPENVERSE_CLIENT_ID }}
+          OPENVERSE_CLIENT_SECRET: ${{ secrets.OPENVERSE_CLIENT_SECRET }}
         run: python -m scripts.photos.candidates out/candidates
       - name: Apply the reviewed selection
         if: hashFiles('shared/data/photos/selection.json') != ''
+        env:
+          OPENVERSE_CLIENT_ID: ${{ secrets.OPENVERSE_CLIENT_ID }}
+          OPENVERSE_CLIENT_SECRET: ${{ secrets.OPENVERSE_CLIENT_SECRET }}
         run: python -m scripts.photos.apply out/applied
       - uses: actions/upload-artifact@v7
         with:

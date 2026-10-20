@@ -3,11 +3,15 @@ import { addToSnapshot, findMethod, recipeIds } from './catalog';
 import { NutritionCache } from './nutrition';
 import type { NutrientTable } from './nutrition';
 import {
+  effectiveRestrictions,
   isRecipeSafeFor,
   kitchenCheck,
   REASON_MESSAGES,
   recipeHasDislikedProduct,
+  recipeHasLikedProduct,
+  recipeSpice,
   recipeViolations,
+  spiceTolerance,
 } from './restrictions';
 import type { KitchenCheck } from './restrictions';
 import { computeShopping, emptyShoppingState, unitPriceKop } from './shopping';
@@ -34,7 +38,8 @@ import { toBase } from './units';
 //
 // 1. Filter: hard restrictions of every participant (composition closure), meal type, equipment,
 //    skill, time, container lunches and the repeat mode.
-// 2. Score the remaining candidates: diet mode rules, likes/dislikes, variety, shared ingredients,
+// 2. Score the remaining candidates: diet mode rules, likes/dislikes (recipes and products),
+//    preferred cuisines, child-friendly dishes when children eat, variety, shared ingredients,
 //    cooking time, estimated cost (when a budget is set) and vitamin coverage gain (when enabled),
 //    plus a small seeded jitter.
 // 3. Portions: simple factor, or the member's energy target split across meal slots, clamped to the
@@ -46,6 +51,9 @@ import { toBase } from './units';
 export const SCORE = {
   liked: 1.5,
   disliked: -2,
+  likedProduct: 0.6,
+  cuisine: 0.8,
+  kidFriendly: 0.6,
   sameCategorySameDay: -0.5,
   repeatUse: -1,
   sharedIngredient: 0.15,
@@ -63,6 +71,8 @@ export const DEFAULT_SETTINGS: PlanRequest['settings'] = {
   diet_mode: 'regular',
   equipment: ['stove', 'oven', 'microwave'],
   max_total_min: null,
+  max_total_min_weekend: null,
+  cuisines: [],
   repeat: { mode: 'unique', max_uses: 2, min_gap_days: 2, cook_days: [], batch_days: 2, batch_slots: ['lunch', 'dinner'] },
   container_days: [],
   vitamins: { enabled: false, target_set: null, demo: false },
@@ -111,6 +121,28 @@ export function validatePlanRequest(req: PlanRequest, catalog: Catalog): void {
   }
   if (s.budget.limit_kop !== null && (!Number.isInteger(s.budget.limit_kop) || s.budget.limit_kop < 0)) {
     throw new EngineError('invalid_budget', 'Бюджет должен быть неотрицательной суммой.');
+  }
+  if (!catalog.reference.diet_modes.some((m) => m.id === s.diet_mode)) {
+    throw new EngineError('unknown_diet_mode', 'Неизвестный режим питания.');
+  }
+  for (const limit of [s.max_total_min, s.max_total_min_weekend ?? null]) {
+    if (limit !== null && (!Number.isInteger(limit) || limit < 5 || limit > 1440)) {
+      throw new EngineError('invalid_time_limit', 'Лимит времени готовки должен быть от 5 до 1440 минут.');
+    }
+  }
+  const cuisines = new Set((catalog.reference.cuisines ?? []).map((c) => c.id));
+  for (const c of s.cuisines ?? []) {
+    if (!cuisines.has(c)) throw new EngineError('unknown_cuisine', `Неизвестная кухня: ${c}.`);
+  }
+  const dietTypes = new Set((catalog.reference.diet_types ?? []).map((t) => t.id));
+  for (const m of req.members) {
+    for (const t of m.diet_types ?? []) {
+      if (!dietTypes.has(t)) throw new EngineError('unknown_diet_type', `Неизвестный тип питания у участника «${m.name}»: ${t}.`);
+    }
+    const tol = m.spice_tolerance;
+    if (tol !== undefined && tol !== null && (!Number.isInteger(tol) || tol < 0 || tol > 2)) {
+      throw new EngineError('invalid_spice_tolerance', `Допустимая острота у участника «${m.name}» должна быть 0, 1 или 2.`);
+    }
   }
   if (s.vitamins.enabled && s.vitamins.target_set) {
     const set = catalog.targetSets[s.vitamins.target_set];
@@ -211,8 +243,19 @@ class Planner {
     return list;
   }
 
-  kitchen(recipeId: string, slot: string, container: boolean): KitchenCheck {
-    const key = `${recipeId}|${slot}|${container ? 1 : 0}`;
+  /** Saturday and Sunday may have their own cooking time limit. */
+  isWeekend(day: number): boolean {
+    return isoWeekday(this.dates[day] as string) >= 6;
+  }
+
+  timeLimit(weekend: boolean): number | null {
+    const s = this.req.settings;
+    // A missing weekend limit (older settings) means «same as weekdays»; null means «no limit».
+    return weekend && s.max_total_min_weekend !== undefined ? s.max_total_min_weekend : s.max_total_min;
+  }
+
+  kitchen(recipeId: string, slot: string, container: boolean, weekend = false): KitchenCheck {
+    const key = `${recipeId}|${slot}|${container ? 1 : 0}|${weekend ? 1 : 0}`;
     let check = this.kitchenCache.get(key);
     if (!check) {
       const s = this.req.settings;
@@ -220,7 +263,7 @@ class Planner {
         slot,
         equipment: s.equipment,
         skill: s.skill,
-        maxTotalMin: s.max_total_min,
+        maxTotalMin: this.timeLimit(weekend),
         container,
       });
       this.kitchenCache.set(key, check);
@@ -331,13 +374,17 @@ class Planner {
     for (const p of people) {
       if (p.member.preferences.liked_recipes.includes(recipeId)) score += SCORE.liked;
       if (recipeHasDislikedProduct(this.catalog, recipe, p.member)) score += SCORE.disliked;
+      if (recipeHasLikedProduct(this.catalog, recipe, p.member)) score += SCORE.likedProduct;
+      if (recipe.kid_friendly === true && p.member.age !== null && p.member.age < 12) score += SCORE.kidFriendly;
     }
+    const cuisines = s.cuisines ?? [];
+    if (cuisines.length > 0 && recipe.cuisine && cuisines.includes(recipe.cuisine)) score += SCORE.cuisine;
     if (state.categoriesByDay.get(day)?.has(recipe.category)) score += SCORE.sameCategorySameDay;
     score += SCORE.repeatUse * (state.uses.get(recipeId) ?? 0);
     let shared = 0;
     for (const pid of this.recipeProducts.get(recipeId) ?? []) if (state.products.has(pid)) shared += 1;
     score += Math.min(shared * SCORE.sharedIngredient, SCORE.sharedIngredientCap);
-    const method = this.kitchen(recipeId, slot, container).method;
+    const method = this.kitchen(recipeId, slot, container, this.isWeekend(day)).method;
     if (method) score -= (method.total_min / 120) * SCORE.timePer120Min;
     const portions = new Map<string, number>();
     let total = 0;
@@ -386,7 +433,7 @@ class Planner {
   candidatesFor(state: BuildState, people: Participant[], day: number, slot: string, container: boolean): string[] {
     const out: string[] = [];
     for (const id of this.recipes) {
-      if (this.kitchen(id, slot, container).method === null) continue;
+      if (this.kitchen(id, slot, container, this.isWeekend(day)).method === null) continue;
       if (!people.every((p) => this.safe(id, p.member))) continue;
       if (!this.repeatAllowed(state, id, day)) continue;
       out.push(id);
@@ -398,15 +445,17 @@ class Planner {
     const counts: Record<string, number> = {};
     let repeatOnly = 0;
     for (const id of this.recipes) {
-      const check = this.kitchen(id, slot, container);
+      const check = this.kitchen(id, slot, container, this.isWeekend(day));
       if (check.reasons.length > 0) {
         for (const r of check.reasons) counts[r] = (counts[r] ?? 0) + 1;
         continue;
       }
       const blocked = people.filter((p) => !this.safe(id, p.member));
       if (blocked.length > 0) {
+        const recipe = this.catalog.recipes[id] as Recipe;
         for (const p of blocked) {
-          const key = `restriction:${p.member.name}`;
+          const tooSpicy = recipeSpice(recipe) > spiceTolerance(p.member);
+          const key = `${tooSpicy ? 'spicy' : 'restriction'}:${p.member.name}`;
           counts[key] = (counts[key] ?? 0) + 1;
         }
         continue;
@@ -420,6 +469,7 @@ class Planner {
     for (const key of Object.keys(counts).sort(compareStr)) {
       const n = counts[key] as number;
       if (key.startsWith('restriction:')) parts.push(`${n} — запреты участника «${key.slice(12)}»`);
+      else if (key.startsWith('spicy:')) parts.push(`${n} — острее, чем допускает участник «${key.slice(6)}»`);
       else parts.push(`${n} — ${REASON_MESSAGES[key] ?? key}`);
     }
     const slotName = this.slotRef(slot).name;
@@ -570,7 +620,7 @@ class Planner {
           const candidates = this.candidatesFor(state, people, day, slot, container);
           const best = this.pickBest(state, candidates, people, day, slot, container, rng, costWeight, budgetPerMeal);
           if (best) {
-            const method = this.kitchen(best.recipeId, slot, container).method;
+            const method = this.kitchen(best.recipeId, slot, container, this.isWeekend(day)).method;
             const batch = this.newBatch(state, best.recipeId, method?.id ?? '', date, slot);
             this.addItem(state, meal, batch, people, day, false, true, null);
             state.score += best.score;
@@ -584,7 +634,7 @@ class Planner {
               const own = this.candidatesFor(state, [p], day, slot, container);
               const pick = this.pickBest(state, own, [p], day, slot, container, rng, costWeight, budgetPerMeal);
               if (pick) {
-                const method = this.kitchen(pick.recipeId, slot, container).method;
+                const method = this.kitchen(pick.recipeId, slot, container, this.isWeekend(day)).method;
                 const batch = this.newBatch(state, pick.recipeId, method?.id ?? '', date, slot);
                 this.addItem(state, meal, batch, [p], day, false, true, null);
                 state.score += pick.score;
@@ -692,7 +742,7 @@ export function rankCandidates(
   const budgetPerMeal = s.budget.limit_kop !== null ? s.budget.limit_kop / (req.days * req.slots.length) : 0;
   const ranked: RankedCandidate[] = [];
   for (const id of planner.candidatesFor(state, participants, day, slot, container)) {
-    const method = planner.kitchen(id, slot, container).method;
+    const method = planner.kitchen(id, slot, container, planner.isWeekend(day)).method;
     if (!method) continue;
     ranked.push({ recipe_id: id, method_id: method.id, score: planner.score(state, id, participants, day, slot, container, s.budget.limit_kop !== null ? 0.75 : 0, budgetPerMeal) });
   }
@@ -725,8 +775,9 @@ export function menuViolations(menu: Menu, catalog: Catalog, members: Member[]):
           errors.push(`${meal.date}: порция для неизвестного участника.`);
           continue;
         }
-        const v = recipeViolations(catalog, recipe, member.restrictions);
+        const v = recipeViolations(catalog, recipe, effectiveRestrictions(catalog, member));
         if (v.length > 0) errors.push(`${meal.date}: «${recipe.name}» нарушает запреты участника «${member.name}».`);
+        else if (recipeSpice(recipe) > spiceTolerance(member)) errors.push(`${meal.date}: «${recipe.name}» острее, чем допускает участник «${member.name}».`);
       }
     }
   }

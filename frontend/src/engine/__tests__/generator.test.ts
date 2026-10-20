@@ -352,3 +352,106 @@ describe('vitamins', () => {
     }
   });
 });
+
+describe('food preferences from the questionnaire', () => {
+  const p = product({ id: 'p' });
+  const meat = product({ id: 'beef_x', category: 'beef' });
+  const wheat = product({ id: 'wheat_x', category: 'flour', allergens: ['gluten'] });
+  const ing = (id: string) => [{ product: id, qty: 100, unit: 'g' as const }];
+
+  it('diet types are hard restrictions: vegetarian and gluten-free remove meat and gluten', () => {
+    const cat = miniCatalog(
+      [recipe({ id: 'stew', ingredients: ing('beef_x') }), recipe({ id: 'pie', ingredients: ing('wheat_x') }), recipe({ id: 'veg', ingredients: ing('p') })],
+      [p, meat, wheat],
+    );
+    const m = member({ diet_types: ['vegetarian', 'gluten_free'] });
+    const menu = generateMenu(request({ members: [m], days: 3, slots: ['lunch'], settings: settings({ repeat: { ...settings().repeat, mode: 'allow', max_uses: 3, min_gap_days: 0 } }) }), cat).menu;
+    expect(new Set(menuRecipes(menu, cat).map((r) => r.id))).toEqual(new Set(['veg']));
+  });
+
+  it('an unknown diet type is rejected instead of being ignored', () => {
+    const m = member({ diet_types: ['paleo'] });
+    expect(() => generateMenu(request({ members: [m], days: 1, slots: ['lunch'] }), catalog())).toThrow(/Неизвестный тип питания/);
+  });
+
+  it('a shared dish respects the lowest spice tolerance; the reason is explained', () => {
+    const cat = miniCatalog([recipe({ id: 'chili', spicy: 2, ingredients: ing('p') }), recipe({ id: 'mild', spicy: 0, ingredients: ing('p') })], [p]);
+    const adult = member({ spice_tolerance: 2 });
+    const child = member({ id: 'm2', name: 'Миша', age: 7, spice_tolerance: 0 });
+    const menu = generateMenu(request({ members: [adult, child], days: 1, slots: ['lunch'] }), cat).menu;
+    expect(menuRecipes(menu, cat).map((r) => r.id)).toEqual(['mild']);
+    const only = miniCatalog([recipe({ id: 'chili', spicy: 2, ingredients: ing('p') })], [p]);
+    const empty = generateMenu(request({ members: [child], days: 1, slots: ['lunch'] }), only).menu;
+    expect(empty.unfilled[0]?.message).toMatch(/острее, чем допускает участник «Миша»/);
+  });
+
+  it('a hand-picked dish that is too spicy is refused', () => {
+    const cat = miniCatalog([recipe({ id: 'chili', spicy: 2, ingredients: ing('p') }), recipe({ id: 'mild', ingredients: ing('p') })], [p]);
+    const child = member({ age: 7, spice_tolerance: 0 });
+    const req = request({ members: [child], days: 1, slots: ['lunch'] });
+    const menu = generateMenu(req, cat).menu;
+    const itemId = menu.meals[0]!.items[0]!.id;
+    expect(() => applyMenuOp(menu, { op: 'replace', item_id: itemId, recipe_id: 'chili' }, { catalog: cat, members: [child] })).toThrow(/острее/);
+  });
+
+  it('weekends can have their own cooking time limit', () => {
+    const cat = miniCatalog(
+      [
+        recipe({ id: 'quick', ingredients: ing('p') }),
+        recipe({ id: 'slow', ingredients: ing('p'), methods: [{ id: 'oven', name: 'В духовке', equipment: ['oven'], active_min: 20, total_min: 90, steps: ['Шаг', 'Шаг'] }] }),
+      ],
+      [p],
+    );
+    // 2026-10-24 is a Saturday. Weekdays are limited to 30 minutes, weekends are not.
+    const repeat = { ...settings().repeat, mode: 'allow' as const, max_uses: 2, min_gap_days: 0 };
+    const base = request({ start_date: '2026-10-23', members: [member()], days: 2, slots: ['dinner'], settings: settings({ max_total_min: 30, max_total_min_weekend: null, repeat }) });
+    const menu = generateMenu(base, cat).menu;
+    const friday = menu.meals.find((m) => m.date === '2026-10-23')!.items[0]!.id;
+    const saturday = menu.meals.find((m) => m.date === '2026-10-24')!.items[0]!.id;
+    const ids = (d: string, item: string) => rankCandidates(base, cat, menu, d, 'dinner', [member()], item).map((c) => c.recipe_id);
+    expect(ids('2026-10-23', friday)).toEqual(['quick']);
+    expect(ids('2026-10-24', saturday).sort()).toEqual(['quick', 'slow']);
+    // Older settings without the weekend field keep one limit for every day.
+    const legacy = { ...base, settings: { ...base.settings } };
+    delete legacy.settings.max_total_min_weekend;
+    expect(rankCandidates(legacy, cat, menu, '2026-10-24', 'dinner', [member()], saturday).map((c) => c.recipe_id)).toEqual(['quick']);
+  });
+
+  it('preferred cuisines, liked products and child-friendly dishes raise the ranking, never lifting bans', () => {
+    const cat = miniCatalog(
+      [
+        recipe({ id: 'plain', ingredients: ing('p') }),
+        recipe({ id: 'pasta', cuisine: 'italian', ingredients: ing('p') }),
+        recipe({ id: 'pumpkin', ingredients: ing('pumpkin_x') }),
+        recipe({ id: 'kids', kid_friendly: true, ingredients: ing('p') }),
+        recipe({ id: 'meat', cuisine: 'italian', kid_friendly: true, ingredients: ing('beef_x') }),
+      ],
+      [p, meat, product({ id: 'pumpkin_x' })],
+    );
+    const adult = member({ diet_types: ['vegetarian'], preferences: { liked_recipes: [], disliked_products: [], liked_products: ['pumpkin_x'] } });
+    const base = request({ members: [adult], days: 1, slots: ['lunch'], settings: settings({ cuisines: ['italian'] }) });
+    const menu = generateMenu(base, cat).menu;
+    const ranked = rankCandidates(base, cat, menu, base.start_date, 'lunch', [adult], menu.meals[0]!.items[0]!.id).map((c) => c.recipe_id);
+    expect(ranked.indexOf('pasta')).toBeLessThan(ranked.indexOf('plain'));
+    expect(ranked.indexOf('pumpkin')).toBeLessThan(ranked.indexOf('plain'));
+    expect(ranked).not.toContain('meat');
+    const child = member({ id: 'm2', name: 'Миша', age: 6 });
+    const kidReq = request({ members: [child], days: 1, slots: ['lunch'] });
+    const kidMenu = generateMenu(kidReq, cat).menu;
+    const forChild = rankCandidates(kidReq, cat, kidMenu, kidReq.start_date, 'lunch', [child], kidMenu.meals[0]!.items[0]!.id).map((c) => c.recipe_id);
+    expect(forChild.indexOf('kids')).toBeLessThan(forChild.indexOf('plain'));
+  });
+
+  it('the «Больше белка» mode is a known diet mode with its own rules', () => {
+    const cat = miniCatalog(
+      [recipe({ id: 'lean', diet_tags: ['lean_protein'], ingredients: ing('p') }), recipe({ id: 'sweet', diet_tags: ['refined_sugar'], ingredients: ing('p') })],
+      [p],
+    );
+    const base = request({ members: [member()], days: 1, slots: ['lunch'], settings: settings({ diet_mode: 'high_protein' }) });
+    const menu = generateMenu(base, cat).menu;
+    expect(menuRecipes(menu, cat).map((r) => r.id)).toEqual(['lean']);
+    const regular = { ...base, settings: settings({ diet_mode: 'regular' }) };
+    const ranked = rankCandidates(regular, cat, menu, base.start_date, 'lunch', [member()], menu.meals[0]!.items[0]!.id);
+    expect(new Set(ranked.map((c) => c.score)).size).toBe(1);
+  });
+});
