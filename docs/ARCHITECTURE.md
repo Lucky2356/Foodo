@@ -89,7 +89,7 @@ OpenAPI-схема: `/api/schema/`, Swagger UI: `/api/docs/`. Ошибки: `{"c
 
 ## Android-приложение
 
-`frontend/android/` — проект Capacitor 8 вокруг гостевой сборки (`vite build --mode android`: то же, что статическая сборка, плюс CSP в meta-теге, без service worker, с флагом `__FOODO_NATIVE__`). Код только для приложения лежит в `frontend/src/native/` и подключается лениво за флагом `NATIVE_BUILD`, поэтому веб-сборки его не содержат.
+`frontend/android/` — проект Capacitor 8 вокруг гостевой сборки (`vite build --mode android`: то же, что статическая сборка с той же CSP в meta-теге, но без service worker и с флагом `__FOODO_NATIVE__`). Код только для приложения лежит в `frontend/src/native/` и подключается лениво за флагом `NATIVE_BUILD`, поэтому веб-сборки его не содержат.
 
 - Плагин `FoodoUpdater` (Java): проверка GitHub Releases, загрузка, проверка SHA-256, пакета, versionCode и сертификата, установка через PackageInstaller. Правила выбора релиза — в `UpdatePolicy` (чистая Java без Android, unit-тесты). JavaScript не передаёт плагину адреса: он скачивает только релиз, принятый последней проверкой.
 - Плагин `FoodoFiles`: сохранение экспортов через системное окно «Сохранить» (WebView не умеет скачивать blob:-ссылки).
