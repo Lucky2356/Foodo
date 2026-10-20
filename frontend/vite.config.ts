@@ -9,6 +9,10 @@ const repoRoot = fileURLToPath(new URL('..', import.meta.url));
 // Content Security Policy for built pages. GitHub Pages cannot send headers, so the policy is a
 // <meta> tag; nginx sends the same policy as a header (plus frame-ancestors, which a meta tag
 // cannot carry). Not applied to the dev server, whose hot reload needs inline scripts.
+// The Android app (mode "android") uses the same policy inside its WebView: the page is served
+// from https://localhost ('self'), and the updater's requests to GitHub are made by native
+// Java code, which the page's CSP does not govern, so no extra source is needed. Capacitor
+// injects its bridge script before this tag is parsed.
 const CSP = [
   "default-src 'self'",
   "script-src 'self'",
@@ -32,19 +36,24 @@ const cspMeta: Plugin = {
 
 // Modes:
 //  - default (server): the SPA is served by nginx next to the Django API (/api);
-//  - "static": GitHub Pages build — guest mode only, relative base path, hash routing.
+//  - "static": GitHub Pages build — guest mode only, relative base path, hash routing;
+//  - "android": the same guest-mode build packaged into the Android APK (frontend/android):
+//    no service worker (updates come with the APK), native updater UI.
 export default defineConfig(({ mode }) => {
-  const isStatic = mode === 'static';
+  const isAndroid = mode === 'android';
+  const isStatic = mode === 'static' || isAndroid;
   return {
     base: isStatic ? './' : '/',
     define: {
       __FOODO_STATIC__: JSON.stringify(isStatic),
+      __FOODO_NATIVE__: JSON.stringify(isAndroid),
       __FOODO_VERSION__: JSON.stringify(process.env.FOODO_VERSION ?? 'dev'),
     },
     plugins: [
       react(),
       cspMeta,
       VitePWA({
+        disable: isAndroid,
         registerType: 'prompt',
         injectRegister: null,
         includeAssets: ['icons/*.png', 'icons/*.svg', 'offline.html'],
@@ -111,7 +120,7 @@ export default defineConfig(({ mode }) => {
         '/static/admin': process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000',
       },
     },
-    build: { outDir: isStatic ? 'dist-static' : 'dist', sourcemap: false, chunkSizeWarningLimit: 1500 },
+    build: { outDir: isAndroid ? 'dist-android' : isStatic ? 'dist-static' : 'dist', sourcemap: false, chunkSizeWarningLimit: 1500 },
     test: {
       environment: 'node',
       include: ['src/**/*.test.ts'],

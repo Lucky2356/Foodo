@@ -12,6 +12,7 @@ import type { ThemeChoice } from '../lib/theme';
 import { num } from '../lib/format';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, toggleQuickExclusion } from '../lib/recipes';
 import { deviceTimeZone } from '../lib/dates';
+import { NATIVE_BUILD } from '../lib/config';
 
 const TIMEZONES = ['Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Samara', 'Asia/Yekaterinburg', 'Asia/Omsk', 'Asia/Krasnoyarsk', 'Asia/Irkutsk', 'Asia/Yakutsk', 'Asia/Vladivostok', 'Asia/Magadan', 'Asia/Kamchatka'];
 
@@ -135,10 +136,21 @@ export default function ProfilePage() {
         <section className="card stack">
           <h2>Мои данные на этом устройстве</h2>
           <Banner icon="info">
-            Без аккаунта данные хранятся только в этом браузере и не синхронизируются. Очистка данных браузера удалит их — сохраняйте резервную копию.
+            {NATIVE_BUILD
+              ? 'Данные хранятся только на этом телефоне и не синхронизируются. Удаление приложения удалит их — сохраняйте резервную копию.'
+              : 'Без аккаунта данные хранятся только в этом браузере и не синхронизируются. Очистка данных браузера удалит их — сохраняйте резервную копию.'}
           </Banner>
           <div className="row wrap">
-            <button className="btn" onClick={async () => downloadJson(`foodo-backup-${new Date().toISOString().slice(0, 10)}.json`, await exportGuestData())}>
+            <button
+              className="btn"
+              onClick={async () => {
+                try {
+                  await downloadJson(`foodo-backup-${new Date().toISOString().slice(0, 10)}.json`, await exportGuestData());
+                } catch (e) {
+                  reportError(e);
+                }
+              }}
+            >
               <Icon name="download" size={18} /> Резервная копия (JSON)
             </button>
             <button className="btn ghost" onClick={() => fileRef.current?.click()}>

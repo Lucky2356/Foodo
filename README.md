@@ -1,6 +1,6 @@
 # Foodo
 
-**Foodo** («Фудо») — бесплатный сервис планирования питания для человека и семьи: меню на 1–35 дней, порции и КБЖУ для каждого, рецепты, учёт того, что есть дома, список покупок с ценами вашего города и экспорт в PDF/XLSX. Сайт и устанавливаемое PWA на русском языке.
+**Foodo** («Фудо») — бесплатный сервис планирования питания для человека и семьи: меню на 1–35 дней, порции и КБЖУ для каждого, рецепты, учёт того, что есть дома, список покупок с ценами вашего города и экспорт в PDF/XLSX. Сайт, устанавливаемое PWA и приложение для Android (APK — оболочка гостевой версии сайта) на русском языке.
 
 - Без регистрации работает всё: данные гостя хранятся в браузере (IndexedDB) и не уходят на сервер.
 - Аккаунт (по желанию, на собственном сервере) — серверное хранение, синхронизация и общий доступ семьи.
@@ -13,7 +13,7 @@
 | Что | Где |
 | --- | --- |
 | Тестовый сайт (гостевой режим, GitHub Pages) | `https://lucky2356.github.io/Foodo/` — публикуется workflow **Pages** после слияния в `main` |
-| Релизы (архив сайта, `SHA256SUMS`, compose) | вкладка **Releases** репозитория |
+| Релизы (архив сайта, Android-приложение `foodo-X.Y.Z.apk`, `SHA256SUMS`, compose) | вкладка **Releases** репозитория; установка и обновления APK — [`docs/ANDROID.md`](docs/ANDROID.md) |
 | Docker-образы | `ghcr.io/lucky2356/foodo-api`, `ghcr.io/lucky2356/foodo-web` |
 
 ## Путь через GitHub Actions (на компьютере владельца ничего не нужно)
@@ -22,7 +22,9 @@
 | --- | --- | --- |
 | `CI` (`.github/workflows/ci.yml`) | каждый PR и push в `main` | ESLint, TypeScript, vitest; ruff, mypy, проверка миграций, pytest на PostgreSQL 16; Playwright (гость и аккаунт); сборка Docker-образов, чистый запуск, health, перезапуск с сохранением БД |
 | `Pages` (`pages.yml`) | push в `main`, вручную | статическая сборка (гостевой режим) → GitHub Pages → проверка опубликованного сайта: HTTPS, ресурсы, гостевой путь и офлайн (Playwright) |
-| `Release` (`release.yml`) | вручную на `main` | все проверки CI → образы в GHCR → архив сайта и `SHA256SUMS` → Sigstore-аттестации → тег `vX.Y.Z` и GitHub Release |
+| `Android` (`android.yml`) | PR и push в `main` с изменениями `frontend/`, `shared/`, `VERSION`; вручную; из `Release` | веб-сборка → Capacitor → debug-APK и минифицированный APK, unit-тесты обновления, проверка манифеста; смоук-тест на эмуляторе Android 14 со снимком экрана; при вызове из `Release` — APK, подписанный ключом из секретов, проверка `apksigner` — [`docs/ANDROID.md`](docs/ANDROID.md) |
+| `Release` (`release.yml`) | вручную на `main` | все проверки CI → образы в GHCR → подписанный APK (`android.yml`) → архив сайта, APK и `SHA256SUMS` → Sigstore-аттестации → тег `vX.Y.Z` и GitHub Release |
+| `Android signing key` (`android-signing-key.yml`) | вручную, один раз | создаёт ключ подписи APK прямо в GitHub и сохраняет его в секретах — [`docs/ANDROID.md`](docs/ANDROID.md) |
 | `Prices` (`prices.yml`) | еженедельно, вручную; пробный прогон в PR | средние цены Росстата по регионам и городам, цены сайта «Магнита»; коммит в `shared/data/prices` и пересборка Pages — [`docs/PRICES.md`](docs/PRICES.md) |
 | `Photos` (`photos.yml`) | вручную; в PR при изменении выбора | кандидаты из Wikimedia Commons на контактных листах для проверки и применение выбранных фото с авторством и лицензией — [`docs/PHOTOS.md`](docs/PHOTOS.md) |
 
@@ -32,6 +34,7 @@
 
 ```sh
 gh attestation verify foodo-web-static-0.1.0.zip -R Lucky2356/Foodo
+gh attestation verify foodo-X.Y.Z.apk -R Lucky2356/Foodo   # начиная с первого релиза с APK
 gh attestation verify oci://ghcr.io/lucky2356/foodo-api:0.1.0 -R Lucky2356/Foodo
 ```
 
@@ -43,6 +46,8 @@ gh attestation verify oci://ghcr.io/lucky2356/foodo-api:0.1.0 -R Lucky2356/Foodo
 backend/            Django 5.2 + DRF: API, аккаунты, семьи, меню, покупки, цены, админка
   engine/           Python-версия движка планирования (паритет с TypeScript)
 frontend/           React 19 + TypeScript + Vite 7, PWA
+  android/          Android-приложение (Capacitor 8): плагины обновления и сохранения файлов, unit-тесты
+  src/native/       Интерфейс обновления APK (только в сборке для Android)
   src/engine/       TypeScript-движок: генератор меню, КБЖУ, покупки, витамины
   src/data/         IndexedDB гостя, шлюзы гостя и аккаунта, импорт/экспорт
   e2e/              Playwright: гостевой и аккаунт-сценарии
@@ -52,7 +57,7 @@ deploy/             nginx и Caddy для production
 scripts/prices/     Сбор цен (Росстат, сайты сетей) и публикация для статического сайта
 scripts/photos/     Поиск и применение фотографий из Wikimedia Commons
 docs/               Задание, архитектура, правила питания, витамины, цены, фото, развёртывание, статус
-.github/workflows/  CI, Pages, Release
+.github/workflows/  CI, Pages, Android, Release
 ```
 
 ## Команды разработчика
@@ -69,6 +74,8 @@ npm run typecheck
 npm test               # vitest: движок, хранилище гостя, экспорт
 npm run build          # сборка для сервера (nginx + API)
 npm run build:static   # сборка для GitHub Pages (только гостевой режим)
+npm run build:android  # сборка для Android + cap sync (дальше Gradle в frontend/android, нужен Android SDK)
+android/scripts/run-unit-tests.sh  # unit-тесты обновления APK без Android SDK (javac + JUnit)
 npm run e2e            # Playwright, гостевой режим
 E2E_BASE_URL=https://lucky2356.github.io/Foodo/ npx playwright test -g "family → menu → shopping|works offline"  # то же на опубликованном сайте
 E2E_ACCOUNT=1 npm run e2e   # Playwright, аккаунт (нужен API на :8000 с данными)

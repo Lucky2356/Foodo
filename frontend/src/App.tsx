@@ -5,7 +5,7 @@ import { Icon } from './ui/icons';
 import type { IconName } from './ui/icons';
 import { Banner, Loading, Toasts } from './ui/kit';
 import { usePwaUpdate } from './lib/pwa';
-import { APP_NAME } from './lib/config';
+import { APP_NAME, NATIVE_BUILD } from './lib/config';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const StartPage = lazy(() => import('./pages/StartPage'));
@@ -23,6 +23,8 @@ const ArticlesPage = lazy(() => import('./pages/ArticlesPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
 const HabitsPage = lazy(() => import('./pages/HabitsPage'));
+// Android app only: updates come as signed APKs from GitHub Releases (the web build has no such code).
+const UpdateBanner = NATIVE_BUILD ? lazy(() => import('./native/UpdateBanner')) : null;
 
 const NAV: { to: string; label: string; icon: IconName; end?: boolean; mobile: boolean }[] = [
   { to: '/', label: 'Главная', icon: 'home', end: true, mobile: true },
@@ -119,6 +121,11 @@ function Shell() {
                 </button>
               </div>
             </div>
+          )}
+          {UpdateBanner && (
+            <Suspense fallback={null}>
+              <UpdateBanner />
+            </Suspense>
           )}
           {bootError && <Banner tone="error">{bootError}</Banner>}
           {!ready ? (

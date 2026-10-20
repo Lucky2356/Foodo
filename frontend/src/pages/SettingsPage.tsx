@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import type { PlanSettings, Product } from '../engine';
 import type { HouseholdSettings, NewPrice } from '../data/types';
@@ -13,6 +13,10 @@ import { rub } from '../lib/format';
 import { SLOT_NAMES } from '../lib/recipes';
 import { fetchPriceSourcesStatus } from '../data/prices';
 import type { PriceSourceStatus } from '../data/prices';
+import { NATIVE_BUILD } from '../lib/config';
+
+// Android app only (not part of the web builds).
+const AppUpdatesSection = NATIVE_BUILD ? lazy(() => import('../native/AppUpdatesSection')) : null;
 
 const EQUIPMENT = [
   ['stove', 'Плита'],
@@ -274,6 +278,11 @@ export default function SettingsPage() {
       <StoreSection />
       <BudgetSection plan={plan} setPlan={setPlan} />
       <PricesSection />
+      {AppUpdatesSection && (
+        <Suspense fallback={null}>
+          <AppUpdatesSection />
+        </Suspense>
+      )}
     </div>
   );
 }
