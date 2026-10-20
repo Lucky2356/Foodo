@@ -472,6 +472,17 @@ def build(write: bool) -> int:
     prods_doc["products"] = [products[i] for i in order]
     # Existing recipes keep their position; source recipes are appended in source order.
     recs_doc["recipes"] = old_recipes + new_recipes
+    # Photos chosen in the reviewed selection (workflow Photos → credits.json) attach to recipes by
+    # id, whether the recipe came from recipes.json or from a source file.
+    credits_path = DATA / "photos" / "credits.json"
+    credits = (
+        json.loads(credits_path.read_text(encoding="utf-8"))
+        if credits_path.exists()
+        else {}
+    )
+    for r in recs_doc["recipes"]:
+        if r["id"] in credits:
+            r["image"] = credits[r["id"]]
     print(
         f"products: {len(prods_doc['products'])}, recipes: {len(recs_doc['recipes'])} ({len(new_recipes)} from sources)"
     )
