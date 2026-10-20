@@ -18,6 +18,8 @@ from .commons import USER_AGENT
 
 API = "https://api.openverse.org/v1"
 PREFIX = "openverse:"
+# Short timeout: when Openverse does not answer runners, the run must not stall on it.
+TIMEOUT = 20
 # Openverse license codes the app can honour by showing author, license and a link.
 LICENSES = {"cc0": "CC0", "pdm": "Public domain", "by": "CC BY", "by-sa": "CC BY-SA"}
 MIME = {
@@ -58,7 +60,7 @@ def _auth_header() -> dict[str, str]:
         req = urllib.request.Request(
             f"{API}/auth_tokens/token/", data=body, headers={"User-Agent": USER_AGENT}
         )
-        with urllib.request.urlopen(req, timeout=60) as r:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
             _token = json.loads(r.read())["access_token"]
     return {"Authorization": f"Bearer {_token}"}
 
@@ -74,7 +76,7 @@ def _get(path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
         url, headers={"User-Agent": USER_AGENT, **_auth_header()}
     )
     try:
-        with urllib.request.urlopen(req, timeout=60) as r:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
             return json.loads(r.read())
     except urllib.error.HTTPError as e:
         if e.code == 429:

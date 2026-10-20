@@ -59,6 +59,7 @@ def main(argv: list[str]) -> int:
     q = queries()
     result: dict[str, list[dict]] = {}
     use_openverse = True
+    openverse_failures = 0
     todo = [
         r for r in recipes if r["id"] not in decided and (not only or r["id"] in only)
     ]
@@ -89,7 +90,16 @@ def main(argv: list[str]) -> int:
                     file=sys.stderr,
                 )
             except Exception as e:  # noqa: BLE001 — one failed query must not stop the run
+                openverse_failures += 1
                 print(f"{r['id']}: Openverse search failed: {e}", file=sys.stderr)
+                if openverse_failures >= 3:
+                    use_openverse = False
+                    print(
+                        "Openverse: 3 failures in a row, Commons only for the rest of the run",
+                        file=sys.stderr,
+                    )
+            else:
+                openverse_failures = 0
         result[r["id"]] = [{"n": i + 1, **c} for i, c in enumerate(found[:PER_RECIPE])]
         print(f"{r['id']}: {len(result[r['id']])} candidates")
     (out / "candidates.json").write_text(
