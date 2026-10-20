@@ -111,7 +111,9 @@ def _all_recipe_ids(client: APIClient, **params: str) -> set[str]:
 def test_recipe_search_and_filters_use_ids_not_names() -> None:
     client = APIClient()
     r = client.get("/api/catalog/recipes/", {"search": "плов"})
-    assert {x["id"] for x in r.json()["results"]} == {"plov-s-govyadinoy", "plov-s-kuritsey"}
+    found = r.json()["results"]
+    assert {"plov-s-govyadinoy", "plov-s-kuritsey"} <= {x["id"] for x in found}
+    assert all("плов" in x["name"].lower() for x in found)
     everything = _all_recipe_ids(client)
     assert len(everything) >= 300
     ids = _all_recipe_ids(client, exclude_categories="rice,pasta")

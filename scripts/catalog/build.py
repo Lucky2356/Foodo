@@ -25,6 +25,9 @@ from .dump import dump_products, dump_recipes
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "shared" / "data"
 SOURCES = Path(__file__).resolve().parent / "sources"
+# Ids the previous build took from the sources. A record removed or renamed in a source is dropped
+# from shared/data on the next build instead of lingering there.
+BUILT = SOURCES / "built.json"
 
 NUTRIENTS = [
     "kcal",
@@ -416,6 +419,18 @@ def build(write: bool) -> int:
                     f"{x['_where']}: {kind} {x['id']} also defined at {seen[x['id']]}"
                 )
             seen[x["id"]] = x["_where"]
+    built = (
+        json.loads(BUILT.read_text(encoding="utf-8"))
+        if BUILT.exists()
+        else {"products": [], "recipes": []}
+    )
+    built_products, built_recipes = set(built["products"]), set(built["recipes"])
+    prods_doc["products"] = [
+        p for p in prods_doc["products"] if p["id"] not in built_products
+    ]
+    recs_doc["recipes"] = [
+        r for r in recs_doc["recipes"] if r["id"] not in built_recipes
+    ]
     products = {p["id"]: p for p in prods_doc["products"]}
     old_recipe_names = {r["id"]: r["name"] for r in recs_doc["recipes"]}
     # Rebuilding replaces a record with the same id and name; a different name under an existing id
@@ -463,6 +478,18 @@ def build(write: bool) -> int:
     if write:
         (DATA / "products.json").write_text(dump_products(prods_doc), encoding="utf-8")
         (DATA / "recipes.json").write_text(dump_recipes(recs_doc), encoding="utf-8")
+        BUILT.write_text(
+            json.dumps(
+                {
+                    "products": sorted(p["id"] for p in new_products),
+                    "recipes": sorted(r["id"] for r in new_recipes),
+                },
+                ensure_ascii=False,
+                indent=1,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
     return 0
 
 

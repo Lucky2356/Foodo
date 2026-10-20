@@ -112,9 +112,9 @@ describe('hard restrictions', () => {
 
   it('incompatible restrictions produce an explanation, not forbidden food (check 10)', () => {
     const cat = catalog();
-    const strict = member({
-      restrictions: { products: [], categories: ['grains', 'vegetables', 'dairy', 'meat', 'fish_seafood', 'eggs', 'legumes', 'fruits', 'nuts_seeds', 'mushrooms'], allergens: [] },
-    });
+    // Every root category is banned, so no dish of the catalog can be safe.
+    const roots = cat.reference.categories.filter((c) => c.parent === null).map((c) => c.id);
+    const strict = member({ restrictions: { products: [], categories: roots, allergens: [] } });
     const { menu } = generateMenu(request({ members: [strict], days: 2 }), cat);
     expect(menu.batches).toEqual([]);
     expect(menu.unfilled).toHaveLength(8);

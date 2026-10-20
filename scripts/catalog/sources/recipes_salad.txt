@@ -839,21 +839,6 @@
 
 // Фруктово-овощные салаты
 
-@ arbuz-s-fetoy-i-myatoy | Салат из арбуза с фетой и мятой | salad | lunch dinner snack | 4 | 840 | no_cook knife_basic mix | - | 0 | mediterranean | 0 | 1
-Летний салат из охлаждённого арбуза, солоноватой феты, красного лука и мяты с соком лайма.
-- watermelon 1000 g
-- feta 150 g
-- red_onion 0.5 pcs
-- mint 10 g
-- lime 1 pcs
-- olive_oil 1 tbsp
-- black_pepper 1 pinch
-# no-heat | Без нагрева | - | 10 | 10
-1. Срежьте с арбуза корку, удалите крупные косточки и нарежьте мякоть кубиками.
-2. Лук нарежьте очень тонкими полукольцами, фету — кубиками или раскрошите.
-3. Соедините арбуз, фету и лук, сбрызните соком лайма и маслом, поперчите и посыпьте листьями мяты.
-! Собирайте салат перед подачей, иначе арбуз пустит много сока.
-
 @ salat-so-shpinatom-i-klubnikoy | Салат со шпинатом и клубникой | salad | lunch dinner snack | 3 | 550 | no_cook knife_basic mix | vegetable_rich | 0 | american | 0 | 1
 Молодой шпинат с клубникой, фетой и миндалём под бальзамической заправкой с маком.
 - spinach 120 g
@@ -1427,7 +1412,7 @@
 
 // Мексиканские салаты
 
-@ kinoa-s-fasolyu-i-kukuruzoy | Мексиканский салат с киноа, фасолью и кукурузой | salad | lunch dinner | 5 | 1130 | boil knife_basic mix | whole_grain legumes vegetable_rich | 1 | mexican | 1 | 0
+@ salat-s-kinoa-fasolyu-i-kukuruzoy | Мексиканский салат с киноа, фасолью и кукурузой | salad | lunch dinner | 5 | 1130 | boil knife_basic mix | whole_grain legumes vegetable_rich | 1 | mexican | 1 | 0
 Сытный постный салат из киноа, красной фасоли, кукурузы и перца с кинзой, лаймом, кумином и халапеньо.
 - quinoa_dry 150 g
 - water 300 ml
