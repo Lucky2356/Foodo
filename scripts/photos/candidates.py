@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import io
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -51,13 +52,17 @@ def main(argv: list[str]) -> int:
         if selection_path.exists()
         else {}
     )
-    only = set(argv[2].split(",")) if len(argv) > 2 else None
+    only = set(argv[2].split(",")) if len(argv) > 2 and argv[2] else None
+    # One run handles a bounded batch so it always finishes within the job time limit; the next
+    # run continues with recipes that still have no decision in selection.json.
+    limit = int(os.environ.get("PHOTO_BATCH", "0")) or None
     q = queries()
     result: dict[str, list[dict]] = {}
     use_openverse = True
-    for r in recipes:
-        if r["id"] in decided or (only and r["id"] not in only):
-            continue
+    todo = [
+        r for r in recipes if r["id"] not in decided and (not only or r["id"] in only)
+    ]
+    for r in todo[:limit]:
         seen, found = set(), []
         for query in q.get(r["id"], []):
             try:
