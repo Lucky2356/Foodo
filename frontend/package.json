@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit -p tsconfig.json && vite build",
     "build:static": "tsc --noEmit -p tsconfig.json && vite build --mode static",
+    "build:android": "tsc --noEmit -p tsconfig.json && vite build --mode android && cap sync android",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "eslint .",
@@ -16,6 +17,8 @@
     "fixtures:write": "FOODO_WRITE_FIXTURES=1 vitest run src/engine/__tests__/parity.test.ts"
   },
   "dependencies": {
+    "@capacitor/android": "8.5.3",
+    "@capacitor/core": "8.5.3",
     "@fontsource-variable/onest": "5.3.1",
     "exceljs": "4.4.0",
     "idb": "8.0.4",
@@ -26,6 +29,7 @@
     "react-router-dom": "7.18.4"
   },
   "devDependencies": {
+    "@capacitor/cli": "8.5.3",
     "@eslint/js": "9.39.5",
     "@playwright/test": "1.56.1",
     "@types/node": "22.20.5",

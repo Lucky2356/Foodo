@@ -1,24 +1,62 @@
 import { defineConfig } from 'vitest/config';
+import type { Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = fileURLToPath(new URL('..', import.meta.url));
 
+// The Android WebView has no nginx in front of it, so the policy travels as a meta tag. It mirrors
+// deploy/nginx-security-headers.conf without the server-only parts (no remote images, no API host;
+// frame-ancestors is ignored in a meta tag). Capacitor's bridge script is injected by the WebView
+// before this tag is parsed, so 'self' is enough for scripts.
+const NATIVE_CSP = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self' data:",
+  "connect-src 'self'",
+  "worker-src 'self' blob:",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join('; ');
+
+function nativeCsp(): Plugin {
+  return {
+    name: 'foodo-native-csp',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        const anchor = '<meta charset="UTF-8" />';
+        if (!html.includes(anchor)) throw new Error('index.html: charset meta not found, cannot add the CSP meta tag');
+        return html.replace(anchor, `${anchor}\n    <meta http-equiv="Content-Security-Policy" content="${NATIVE_CSP}" />`);
+      },
+    },
+  };
+}
+
 // Modes:
 //  - default (server): the SPA is served by nginx next to the Django API (/api);
-//  - "static": GitHub Pages build — guest mode only, relative base path, hash routing.
+//  - "static": GitHub Pages build — guest mode only, relative base path, hash routing;
+//  - "android": the same guest-mode build packaged into the Android APK (frontend/android):
+//    no service worker (updates come with the APK), CSP meta tag, native updater UI.
 export default defineConfig(({ mode }) => {
-  const isStatic = mode === 'static';
+  const isAndroid = mode === 'android';
+  const isStatic = mode === 'static' || isAndroid;
   return {
     base: isStatic ? './' : '/',
     define: {
       __FOODO_STATIC__: JSON.stringify(isStatic),
+      __FOODO_NATIVE__: JSON.stringify(isAndroid),
       __FOODO_VERSION__: JSON.stringify(process.env.FOODO_VERSION ?? 'dev'),
     },
     plugins: [
       react(),
+      isAndroid ? nativeCsp() : null,
       VitePWA({
+        disable: isAndroid,
         registerType: 'prompt',
         injectRegister: null,
         includeAssets: ['icons/*.png', 'icons/*.svg', 'offline.html'],
@@ -85,7 +123,7 @@ export default defineConfig(({ mode }) => {
         '/static/admin': process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000',
       },
     },
-    build: { outDir: isStatic ? 'dist-static' : 'dist', sourcemap: false, chunkSizeWarningLimit: 1500 },
+    build: { outDir: isAndroid ? 'dist-android' : isStatic ? 'dist-static' : 'dist', sourcemap: false, chunkSizeWarningLimit: 1500 },
     test: {
       environment: 'node',
       include: ['src/**/*.test.ts'],

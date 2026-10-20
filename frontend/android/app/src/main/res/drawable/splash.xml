@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launch screen before the WebView is ready (Android 11 and older; Android 12+ uses the
+     windowSplashScreen* attributes of the launch theme). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/foodo_splash_background" />
+    <item
+        android:width="144dp"
+        android:height="144dp"
+        android:gravity="center"
+        android:drawable="@drawable/ic_launcher_foreground" />
+</layer-list>

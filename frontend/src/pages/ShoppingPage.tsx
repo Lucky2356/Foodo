@@ -146,10 +146,10 @@ export default function ShoppingPage() {
         }
       } else if (kind === 'xlsx') {
         const { buildXlsx } = await import('../export/files');
-        downloadBlob(`foodo-${record.menu.start_date}.xlsx`, await buildXlsx(model));
+        await downloadBlob(`foodo-${record.menu.start_date}.xlsx`, await buildXlsx(model));
       } else {
         const { buildPdf } = await import('../export/files');
-        downloadBlob(`foodo-${record.menu.start_date}.pdf`, await buildPdf(model));
+        await downloadBlob(`foodo-${record.menu.start_date}.pdf`, await buildPdf(model));
       }
     } catch (e) {
       if (!(e instanceof DOMException && e.name === 'AbortError')) reportError(e);

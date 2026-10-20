@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+
+// Version from the repository's VERSION file (X.Y.Z), shared with the web app and the release.
+// versionCode = X*10000 + Y*100 + Z: monotonic while Y and Z stay below 100, which is enforced
+// here. The same rule lives in UpdatePolicy.versionCode (unit-tested) for the in-app updater.
+def foodoVersionName = rootProject.file('../../VERSION').text.trim()
+def foodoVersionMatch = foodoVersionName =~ /^(0|[1-9]\d{0,4})\.(0|[1-9]\d?)\.(0|[1-9]\d?)$/
+if (!foodoVersionMatch.matches()) {
+    throw new GradleException("VERSION must be X.Y.Z with Y and Z below 100, got '${foodoVersionName}'")
+}
+def foodoVersionCode = (foodoVersionMatch.group(1) as int) * 10000 + (foodoVersionMatch.group(2) as int) * 100 + (foodoVersionMatch.group(3) as int)
+if (foodoVersionCode < 1 || foodoVersionCode > 2100000000) {
+    throw new GradleException("versionCode ${foodoVersionCode} is outside 1..2100000000")
+}
+
+// Release signing comes only from environment variables set by the release job of
+// .github/workflows/android.yml. Nothing secret is stored in the repository. Without them the
+// release APK is left unsigned (and the release job's apksigner check fails), unless
+// -PfoodoDebugSignRelease=true is given: pull-request CI uses that to run the minified release
+// variant on the emulator with the public debug key. Both at once are refused.
+def releaseKeystore = System.getenv('FOODO_KEYSTORE_FILE')
+def releaseSigning = releaseKeystore != null && !releaseKeystore.isEmpty()
+def debugSignRelease = project.findProperty('foodoDebugSignRelease') == 'true'
+if (releaseSigning && debugSignRelease) {
+    throw new GradleException('FOODO_KEYSTORE_FILE and foodoDebugSignRelease must not be used together')
+}
+
+android {
+    namespace = "io.github.lucky2356.foodo"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "io.github.lucky2356.foodo"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode foodoVersionCode
+        versionName foodoVersionName
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    signingConfigs {
+        if (releaseSigning) {
+            release {
+                storeFile file(releaseKeystore)
+                storeType 'pkcs12'
+                // PKCS12: one password for the store and the key.
+                storePassword System.getenv('FOODO_KEYSTORE_PASSWORD')
+                keyPassword System.getenv('FOODO_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('FOODO_KEY_ALIAS')
+                // minSdk 24 verifies v2; v3 keeps the door open for key rotation. No JAR (v1) signing.
+                enableV1Signing false
+                enableV2Signing true
+                enableV3Signing true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (releaseSigning) {
+                signingConfig signingConfigs.release
+            } else if (debugSignRelease) {
+                signingConfig signingConfigs.debug
+            }
+        }
+    }
+    buildFeatures {
+        buildConfig true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+    testOptions {
+        unitTests.all {
+            testLogging {
+                events "passed", "failed", "skipped"
+                exceptionFormat "full"
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.activity:activity:$androidxActivityVersion"
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core:$androidxCoreVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
