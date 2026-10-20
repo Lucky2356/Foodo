@@ -69,7 +69,7 @@ console.log('FoodoUpdater.getInfo():', JSON.stringify(info));
 try {
   console.log('FoodoUpdater.check():', JSON.stringify(await evaluate(ws, 'window.Capacitor.Plugins.FoodoUpdater.check()')));
 } catch (e) {
-  console.log('FoodoUpdater.check() rejected (not fatal here):', e.message);
+  console.log('FoodoUpdater.check() rejected (not fatal here):', JSON.stringify(String(e.message)));
 }
 ws.close();
 
@@ -80,7 +80,8 @@ if (!state.native) failures.push('Capacitor native bridge missing');
 if (!state.updater || !state.files) failures.push('Foodo plugins not registered');
 if (state.serviceWorkers !== 0) failures.push('a service worker is registered');
 if (!state.csp) failures.push('CSP meta tag missing');
-if (info.versionName !== expectedVersion) failures.push(`versionName ${info.versionName} != ${expectedVersion}`);
+// JSON.stringify escapes line breaks, so a value from the app cannot forge extra log lines.
+if (info.versionName !== expectedVersion) failures.push(`versionName ${JSON.stringify(info.versionName)} != ${JSON.stringify(expectedVersion)}`);
 if (failures.length) {
   console.error('FAILED:', failures.join('; '));
   process.exit(1);
