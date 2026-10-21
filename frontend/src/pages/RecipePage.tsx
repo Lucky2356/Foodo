@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { availableDisplayUnits, convertQuantity, recipeNutrition, selectMethod, UNIT_NAMES, VITAMIN_IDS } from '../engine';
 import type { CookingMethod, Recipe, RecipeUnit } from '../engine';
@@ -276,12 +277,16 @@ function CookMode({ recipe, method, onClose }: { recipe: Recipe; method: Cooking
       if (e.key === 'Escape') onClose();
     };
     document.addEventListener('keydown', onKey);
+    // The page under the full-screen overlay must not scroll.
+    document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
       void lock?.release();
     };
   }, [method.steps.length, onClose]);
-  return (
+  // A full-screen overlay rendered into <body>, out of reach of transformed ancestors.
+  return createPortal(
     <div className="cook-mode" role="dialog" aria-modal="true" aria-label={`Режим готовки: ${recipe.name}`}>
       <div className="row between">
         <div>
@@ -314,7 +319,8 @@ function CookMode({ recipe, method, onClose }: { recipe: Recipe; method: Cooking
           </button>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

@@ -120,6 +120,19 @@ test.describe('guest mode (static site, no server)', () => {
     await context.setOffline(false);
   });
 
+  test('bottom sheets and cooking mode open on screen at phone width', async ({ page }) => {
+    // A transformed page ancestor used to become the containing block of these fixed overlays and
+    // pushed their buttons below the screen.
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('./#/recipes');
+    await page.getByRole('button', { name: /^Фильтры/ }).click();
+    await expect(page.getByRole('button', { name: /^Показать \d+/ })).toBeInViewport();
+    await page.keyboard.press('Escape');
+    await page.locator('a[href*="#/recipes/"]:not([href$="/new"])').first().click();
+    await page.getByRole('button', { name: 'Режим готовки' }).click();
+    await expect(page.getByText(/^Шаг 1 из \d+/)).toBeInViewport();
+  });
+
   test('beginner with only a stove gets no oven dishes (check 21)', async ({ page }) => {
     await page.goto('./');
     await page.getByRole('link', { name: 'Составить меню бесплатно' }).first().click();

@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import type { ReactNode } from 'react';
 import type { Recipe } from '../engine';
 import { useApp } from '../state/app';
@@ -50,7 +51,9 @@ export function Sheet({ open, onClose, title, children, footer }: { open: boolea
     };
   }, [open, onClose]);
   if (!open) return null;
-  return (
+  // Rendered into <body>: a transformed ancestor (a page or card animation) would otherwise become
+  // the containing block of this fixed overlay and push it off screen.
+  return createPortal(
     <div className="sheet-backdrop" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div className="sheet" role="dialog" aria-modal="true" aria-labelledby={titleId} ref={ref}>
         <div className="sheet-grip" />
@@ -62,10 +65,12 @@ export function Sheet({ open, onClose, title, children, footer }: { open: boolea
             <Icon name="close" />
           </button>
         </div>
-        {children}
-        {footer && <div className="row wrap" style={{ marginTop: 18, justifyContent: 'flex-end' }}>{footer}</div>}
+        {/* Only the body scrolls: the title and the action buttons stay on screen however long it is. */}
+        <div className="sheet-body">{children}</div>
+        {footer && <div className="sheet-footer row wrap">{footer}</div>}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
