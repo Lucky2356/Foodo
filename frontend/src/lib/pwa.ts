@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import { STATIC_BUILD } from './config';
+import { NATIVE_BUILD, STATIC_BUILD } from './config';
 
 /**
  * Registers the service worker with an explicit update prompt: a new version is activated only
  * when the user presses «Обновить», so an open menu is never reloaded unexpectedly. Updating the
- * app never touches IndexedDB (guest data stays).
+ * app never touches IndexedDB (guest data stays). The Android app registers no service worker:
+ * its updates come as APKs (src/native/updateStore.ts).
  */
 export function usePwaUpdate(): { needRefresh: boolean; update: () => void } {
   const [needRefresh, setNeedRefresh] = useState(false);
   const [updater, setUpdater] = useState<null | ((reload?: boolean) => Promise<void>)>(null);
   useEffect(() => {
-    if (!('serviceWorker' in navigator) || import.meta.env.DEV) return;
+    if (NATIVE_BUILD || !('serviceWorker' in navigator) || import.meta.env.DEV) return;
     let cancelled = false;
     import('virtual:pwa-register')
       .then(({ registerSW }) => {

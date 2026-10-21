@@ -2,7 +2,8 @@ name: Release
 
 # Run manually on main (Actions → Release → Run workflow). The version comes from the VERSION file
 # and must have a section in CHANGELOG.md. Everything is built and signed here, in GitHub:
-#   - the static site archive and SHA256SUMS → GitHub Release assets;
+#   - the static site archive, the signed Android APK (foodo-X.Y.Z.apk) and SHA256SUMS →
+#     GitHub Release assets (the APK is built and signed by android.yml, docs/ANDROID.md);
 #   - the API and web images → ghcr.io/<owner>/foodo-api and foodo-web;
 #   - Sigstore build provenance for all of them (keyless, nothing stored outside GitHub).
 on:
@@ -26,7 +27,7 @@ jobs:
     outputs:
       version: ${{ steps.v.outputs.version }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -40,6 +41,19 @@ jobs:
           if git rev-parse -q --verify "refs/tags/v$version" >/dev/null; then echo "::error::Tag v$version already exists"; exit 1; fi
           grep -q "\"version\": \"$version\"" frontend/package.json || { echo "::error::frontend/package.json version differs from VERSION"; exit 1; }
           echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  android:
+    name: Android APK (signed)
+    needs: [checks, prepare]
+    uses: ./.github/workflows/android.yml
+    permissions:
+      contents: read
+    with:
+      release: true
+    secrets:
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
 
   images:
     name: Images → GHCR (${{ matrix.image }})
@@ -58,19 +72,19 @@ jobs:
           - image: foodo-web
             dockerfile: frontend/Dockerfile
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           persist-credentials: false
       - id: name
         run: echo "image=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/${{ matrix.image }}" >> "$GITHUB_OUTPUT"
-      - uses: docker/setup-buildx-action@v4
-      - uses: docker/login-action@v4
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - id: meta
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         with:
           images: ${{ steps.name.outputs.image }}
           tags: |
@@ -81,7 +95,7 @@ jobs:
             org.opencontainers.image.title=${{ matrix.image }}
             org.opencontainers.image.version=${{ needs.prepare.outputs.version }}
       - id: build
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           file: ${{ matrix.dockerfile }}
@@ -90,7 +104,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: FOODO_VERSION=${{ needs.prepare.outputs.version }}
           provenance: false
-      - uses: actions/attest-build-provenance@v4
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-name: ${{ steps.name.outputs.image }}
           subject-digest: ${{ steps.build.outputs.digest }}
@@ -98,7 +112,7 @@ jobs:
 
   publish:
     name: Static site, attestations, GitHub Release
-    needs: [checks, prepare, images]
+    needs: [checks, prepare, images, android]
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -107,15 +121,15 @@ jobs:
     env:
       VERSION: ${{ needs.prepare.outputs.version }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: "22"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.13"
       - name: Publish collected prices for the static site
@@ -127,9 +141,26 @@ jobs:
         run: |
           npm ci --no-audit --no-fund
           npx vite build --mode static --outDir dist-static
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: foodo-release-apk
+          path: apk
+      - name: Check the signed APK again before publishing
+        run: |
+          set -euo pipefail
+          apk="apk/foodo-$VERSION.apk"
+          if [ ! -s "$apk" ]; then echo "::error::$apk is missing"; exit 1; fi
+          tools="$ANDROID_HOME/build-tools/$(ls -1 "$ANDROID_HOME/build-tools" | sort -V | tail -1)"
+          "$tools/apksigner" verify --print-certs "$apk" > apksigner.txt
+          grep -q '^Verified using v2 scheme (APK Signature Scheme v2): true' apksigner.txt
+          grep -q '^Verified using v3 scheme (APK Signature Scheme v3): true' apksigner.txt
+          cert="$(awk -F': ' '/^Signer #1 certificate SHA-256 digest:/ {print $2; exit}' apksigner.txt)"
+          if [ "$cert" != "$(cat apk/signing-cert-sha256.txt)" ]; then echo "::error::APK certificate changed between jobs"; exit 1; fi
+          echo "APK_CERT_SHA256=$cert" >> "$GITHUB_ENV"
       - name: Package
         run: |
           mkdir -p release
+          cp "apk/foodo-$VERSION.apk" release/
           (cd frontend/dist-static && zip -qr "../../release/foodo-web-static-$VERSION.zip" .)
           # No leading dot: «release/*» and «sha256sum *» skip dotfiles, so .env.example was not uploaded.
           cp docker-compose.prod.yml release/ && cp .env.example release/env.example
@@ -139,6 +170,10 @@ jobs:
           owner="${GITHUB_REPOSITORY_OWNER,,}"
           {
             echo
+            echo "### Android"
+            echo "- \`foodo-$VERSION.apk\` — приложение для Android 7.0+ (гостевой режим, данные на телефоне). Установка и обновления — docs/ANDROID.md."
+            echo "- SHA-256 сертификата подписи: \`$APK_CERT_SHA256\`"
+            echo
             echo "### Образы"
             echo "- \`ghcr.io/$owner/foodo-api:$VERSION\`"
             echo "- \`ghcr.io/$owner/foodo-web:$VERSION\`"
@@ -146,13 +181,15 @@ jobs:
             echo "### Проверка подписи (Sigstore, GitHub artifact attestations)"
             echo '```'
             echo "gh attestation verify foodo-web-static-$VERSION.zip -R $GITHUB_REPOSITORY"
+            echo "gh attestation verify foodo-$VERSION.apk -R $GITHUB_REPOSITORY"
             echo "gh attestation verify oci://ghcr.io/$owner/foodo-api:$VERSION -R $GITHUB_REPOSITORY"
             echo '```'
           } >> release-notes.md
-      - uses: actions/attest-build-provenance@v4
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-path: |
             release/foodo-web-static-*.zip
+            release/foodo-*.apk
             release/docker-compose.prod.yml
             release/env.example
       - name: Create the tag and the release

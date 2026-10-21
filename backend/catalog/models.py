@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from django.core.validators import MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -115,6 +115,7 @@ class DietTag(models.Model):
     name = models.CharField("Название", max_length=100)
     balanced_weight = models.FloatField("Вес в режиме «Сбалансированное (ПП)»", null=True, blank=True)
     regular_weight = models.FloatField("Вес в режиме «Обычное»", null=True, blank=True)
+    high_protein_weight = models.FloatField("Вес в режиме «Больше белка»", null=True, blank=True)
     position = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -174,6 +175,9 @@ class Recipe(models.Model):
     techniques = models.JSONField("Кулинарные приёмы", null=True, blank=True)
     diet_tags = models.JSONField("Теги режима питания", default=list, blank=True)
     container_ok = models.BooleanField("Подходит для контейнера", default=True)
+    cuisine = models.CharField("Кухня", max_length=40, blank=True)
+    spicy = models.PositiveSmallIntegerField("Острота", default=0, validators=[MaxValueValidator(2)], help_text="0 — не острое, 1 — умеренно, 2 — остро")
+    kid_friendly = models.BooleanField("Подходит детям", default=False)
     tip = models.TextField("Совет", blank=True)
     storage = models.JSONField("Хранение (только проверенные сведения)", null=True, blank=True)
     image = models.JSONField("Изображение и лицензия", null=True, blank=True)

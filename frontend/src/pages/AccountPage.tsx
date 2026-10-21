@@ -5,7 +5,7 @@ import { downloadJson, exportGuestData } from '../data/backup';
 import type { GuestExport } from '../data/backup';
 import { account } from '../data/remoteGateway';
 import { useApp } from '../state/app';
-import { STATIC_BUILD } from '../lib/config';
+import { NATIVE_BUILD, STATIC_BUILD } from '../lib/config';
 import { Icon } from '../ui/icons';
 import { Banner, Field, PageHead, Segmented } from '../ui/kit';
 
@@ -314,7 +314,7 @@ function AccountSettings() {
           style={{ alignSelf: 'flex-start' }}
           onClick={async () => {
             try {
-              downloadJson('foodo-account-export.json', await account.exportData());
+              await downloadJson('foodo-account-export.json', await account.exportData());
             } catch (e) {
               reportError(e);
             }
@@ -362,7 +362,7 @@ export default function AccountPage() {
       <PageHead eyebrow="Аккаунт" title={user ? 'Аккаунт и безопасность' : 'Вход и синхронизация'} subtitle={user ? undefined : 'Аккаунт не обязателен: всё работает и без него. Он нужен, чтобы видеть меню на нескольких устройствах и вести его вместе с семьёй.'} />
       {!server ? (
         <Banner icon="info">
-          {STATIC_BUILD ? 'Это гостевая версия сайта: аккаунты работают на полной версии с сервером.' : 'Сервер недоступен — сейчас можно пользоваться гостевым режимом.'} Данные хранятся в этом браузере — сохраните{' '}
+          {NATIVE_BUILD ? 'Приложение работает в гостевом режиме: аккаунты — на полной версии сайта с сервером.' : STATIC_BUILD ? 'Это гостевая версия сайта: аккаунты работают на полной версии с сервером.' : 'Сервер недоступен — сейчас можно пользоваться гостевым режимом.'} Данные хранятся {NATIVE_BUILD ? 'на этом телефоне' : 'в этом браузере'} — сохраните{' '}
           <Link to="/profile">резервную копию</Link>, чтобы не потерять их.
         </Banner>
       ) : uid && token ? (

@@ -14,7 +14,17 @@ from .basics import Rng, add_days, clamp, is_iso_date, iso_weekday
 from .catalog import Catalog, add_to_snapshot, find_method, recipe_ids
 from .errors import EngineError
 from .nutrition import VITAMIN_IDS, NutritionCache, Table
-from .restrictions import REASON_MESSAGES, is_recipe_safe_for, kitchen_check, recipe_has_disliked_product, recipe_violations
+from .restrictions import (
+    REASON_MESSAGES,
+    effective_restrictions,
+    is_recipe_safe_for,
+    kitchen_check,
+    recipe_has_disliked_product,
+    recipe_has_liked_product,
+    recipe_spice,
+    recipe_violations,
+    spice_tolerance,
+)
 from .shopping import compute_shopping, empty_shopping_state, unit_price_kop
 from .targets import resolve_vitamin_targets
 from .units import to_base
@@ -24,6 +34,9 @@ JSON = dict[str, Any]
 SCORE = {
     "liked": 1.5,
     "disliked": -2,
+    "likedProduct": 0.6,
+    "cuisine": 0.8,
+    "kidFriendly": 0.6,
     "sameCategorySameDay": -0.5,
     "repeatUse": -1,
     "sharedIngredient": 0.15,
@@ -41,6 +54,8 @@ DEFAULT_SETTINGS: JSON = {
     "diet_mode": "regular",
     "equipment": ["stove", "oven", "microwave"],
     "max_total_min": None,
+    "max_total_min_weekend": None,
+    "cuisines": [],
     "repeat": {"mode": "unique", "max_uses": 2, "min_gap_days": 2, "cook_days": [], "batch_days": 2, "batch_slots": ["lunch", "dinner"]},
     "container_days": [],
     "vitamins": {"enabled": False, "target_set": None, "demo": False},
@@ -91,6 +106,23 @@ def validate_plan_request(req: JSON, catalog: Catalog) -> None:
     limit = s["budget"]["limit_kop"]
     if limit is not None and (not _is_int(limit) or limit < 0):
         raise EngineError("invalid_budget", "Бюджет должен быть неотрицательной суммой.")
+    if not any(m["id"] == s["diet_mode"] for m in catalog.reference["diet_modes"]):
+        raise EngineError("unknown_diet_mode", "Неизвестный режим питания.")
+    for limit_value in (s["max_total_min"], s.get("max_total_min_weekend")):
+        if limit_value is not None and (not _is_int(limit_value) or limit_value < 5 or limit_value > 1440):
+            raise EngineError("invalid_time_limit", "Лимит времени готовки должен быть от 5 до 1440 минут.")
+    cuisines = {c["id"] for c in catalog.reference.get("cuisines") or []}
+    for c in s.get("cuisines") or []:
+        if c not in cuisines:
+            raise EngineError("unknown_cuisine", f"Неизвестная кухня: {c}.")
+    diet_types = {t["id"] for t in catalog.reference.get("diet_types") or []}
+    for m in req["members"]:
+        for t in m.get("diet_types") or []:
+            if t not in diet_types:
+                raise EngineError("unknown_diet_type", f"Неизвестный тип питания у участника «{m['name']}»: {t}.")
+        tol = m.get("spice_tolerance")
+        if tol is not None and (not _is_int(tol) or tol < 0 or tol > 2):
+            raise EngineError("invalid_spice_tolerance", f"Допустимая острота у участника «{m['name']}» должна быть 0, 1 или 2.")
     vit = s["vitamins"]
     if vit["enabled"] and vit["target_set"]:
         target_set = catalog.target_sets.get(vit["target_set"])
@@ -164,12 +196,23 @@ class _Planner:
         ids = slot_members.get(slot)
         return [m for m in self.req["members"] if ids is None or m["id"] in ids]
 
-    def kitchen(self, recipe_id: str, slot: str, container: bool) -> JSON:
-        key = f"{recipe_id}|{slot}|{1 if container else 0}"
+    def is_weekend(self, day: int) -> bool:
+        """Saturday and Sunday may have their own cooking time limit."""
+        return iso_weekday(self.dates[day]) >= 6
+
+    def time_limit(self, weekend: bool) -> int | None:
+        s = self.req["settings"]
+        # A missing weekend limit (older settings) means «same as weekdays»; None means «no limit».
+        if weekend and "max_total_min_weekend" in s:
+            return s["max_total_min_weekend"]
+        return s["max_total_min"]
+
+    def kitchen(self, recipe_id: str, slot: str, container: bool, weekend: bool = False) -> JSON:
+        key = f"{recipe_id}|{slot}|{1 if container else 0}|{1 if weekend else 0}"
         check = self.kitchen_cache.get(key)
         if check is None:
             s = self.req["settings"]
-            check = kitchen_check(self.catalog, self.catalog.recipes[recipe_id], slot, s["equipment"], s["skill"], s["max_total_min"], container)
+            check = kitchen_check(self.catalog, self.catalog.recipes[recipe_id], slot, s["equipment"], s["skill"], self.time_limit(weekend), container)
             self.kitchen_cache[key] = check
         return check
 
@@ -265,6 +308,13 @@ class _Planner:
                 score += SCORE["liked"]
             if recipe_has_disliked_product(self.catalog, recipe, m):
                 score += SCORE["disliked"]
+            if recipe_has_liked_product(self.catalog, recipe, m):
+                score += SCORE["likedProduct"]
+            if recipe.get("kid_friendly") is True and m.get("age") is not None and m["age"] < 12:
+                score += SCORE["kidFriendly"]
+        cuisines = s.get("cuisines") or []
+        if cuisines and recipe.get("cuisine") and recipe["cuisine"] in cuisines:
+            score += SCORE["cuisine"]
         if recipe["category"] in state.categories_by_day.get(day, set()):
             score += SCORE["sameCategorySameDay"]
         score += SCORE["repeatUse"] * state.uses.get(recipe_id, 0)
@@ -273,7 +323,7 @@ class _Planner:
             if pid in state.products:
                 shared += 1
         score += min(shared * SCORE["sharedIngredient"], SCORE["sharedIngredientCap"])
-        method = self.kitchen(recipe_id, slot, container)["method"]
+        method = self.kitchen(recipe_id, slot, container, self.is_weekend(day))["method"]
         if method is not None:
             score -= method["total_min"] / 120 * SCORE["timePer120Min"]
         portions: dict[str, float] = {}
@@ -315,7 +365,7 @@ class _Planner:
     def candidates_for(self, state: _State, people: list[JSON], day: int, slot: str, container: bool) -> list[str]:
         out: list[str] = []
         for rid in self.recipes:
-            if self.kitchen(rid, slot, container)["method"] is None:
+            if self.kitchen(rid, slot, container, self.is_weekend(day))["method"] is None:
                 continue
             if not all(self.safe(rid, m) for m in people):
                 continue
@@ -328,15 +378,17 @@ class _Planner:
         counts: dict[str, int] = {}
         repeat_only = 0
         for rid in self.recipes:
-            check = self.kitchen(rid, slot, container)
+            check = self.kitchen(rid, slot, container, self.is_weekend(day))
             if check["reasons"]:
                 for r in check["reasons"]:
                     counts[r] = counts.get(r, 0) + 1
                 continue
             blocked = [m for m in people if not self.safe(rid, m)]
             if blocked:
+                recipe = self.catalog.recipes[rid]
                 for m in blocked:
-                    key = f"restriction:{m['name']}"
+                    too_spicy = recipe_spice(recipe) > spice_tolerance(m)
+                    key = f"{'spicy' if too_spicy else 'restriction'}:{m['name']}"
                     counts[key] = counts.get(key, 0) + 1
                 continue
             if not self.repeat_allowed(state, rid, day):
@@ -347,6 +399,8 @@ class _Planner:
             n = counts[key]
             if key.startswith("restriction:"):
                 parts.append(f"{n} — запреты участника «{key[12:]}»")
+            elif key.startswith("spicy:"):
+                parts.append(f"{n} — острее, чем допускает участник «{key[6:]}»")
             else:
                 parts.append(f"{n} — {REASON_MESSAGES.get(key, key)}")
         slot_name = self.slot_ref(slot)["name"]
@@ -480,7 +534,7 @@ class _Planner:
                     candidates = self.candidates_for(state, people, day, slot, container)
                     best = self.pick_best(state, candidates, people, day, slot, container, rng, cost_weight, budget_per_meal)
                     if best is not None:
-                        method = self.kitchen(best[0], slot, container)["method"]
+                        method = self.kitchen(best[0], slot, container, self.is_weekend(day))["method"]
                         batch = self.new_batch(state, best[0], method["id"] if method else "", date, slot)
                         self.add_item(state, meal, batch, people, day, False, True, None)
                         state.score += best[1]
@@ -492,7 +546,7 @@ class _Planner:
                             own = self.candidates_for(state, [m], day, slot, container)
                             pick = self.pick_best(state, own, [m], day, slot, container, rng, cost_weight, budget_per_meal)
                             if pick is not None:
-                                method = self.kitchen(pick[0], slot, container)["method"]
+                                method = self.kitchen(pick[0], slot, container, self.is_weekend(day))["method"]
                                 batch = self.new_batch(state, pick[0], method["id"] if method else "", date, slot)
                                 self.add_item(state, meal, batch, [m], day, False, True, None)
                                 state.score += pick[1]
@@ -574,7 +628,7 @@ def rank_candidates(req: JSON, catalog: Catalog, menu: JSON, date: str, slot: st
     budget_per_meal = limit / (req["days"] * len(req["slots"])) if limit is not None else 0
     ranked: list[JSON] = []
     for rid in planner.candidates_for(state, participants, day, slot, container):
-        method = planner.kitchen(rid, slot, container)["method"]
+        method = planner.kitchen(rid, slot, container, planner.is_weekend(day))["method"]
         if method is None:
             continue
         ranked.append(
@@ -612,8 +666,10 @@ def menu_violations(menu: JSON, catalog: Catalog, members: list[JSON]) -> list[s
                 if member is None:
                     errors.append(f"{meal['date']}: порция для неизвестного участника.")
                     continue
-                if recipe_violations(catalog, recipe, member["restrictions"]):
+                if recipe_violations(catalog, recipe, effective_restrictions(catalog, member)):
                     errors.append(f"{meal['date']}: «{recipe['name']}» нарушает запреты участника «{member['name']}».")
+                elif recipe_spice(recipe) > spice_tolerance(member):
+                    errors.append(f"{meal['date']}: «{recipe['name']}» острее, чем допускает участник «{member['name']}».")
     for batch in menu["batches"]:
         eaten: float = 0
         for meal in menu["meals"]:

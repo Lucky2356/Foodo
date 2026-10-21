@@ -79,6 +79,8 @@ class Member(models.Model):
     kcal_target = models.PositiveIntegerField(null=True, blank=True, validators=[MinValueValidator(500), MaxValueValidator(6000)])
     macro_targets = models.JSONField(null=True, blank=True)
     restrictions = models.JSONField(default=dict)
+    diet_types = models.JSONField(default=list, blank=True)
+    spice_tolerance = models.PositiveSmallIntegerField(default=1, validators=[MaxValueValidator(2)])
     preferences = models.JSONField(default=dict)
     vitamin_targets_manual = models.JSONField(null=True, blank=True)
     water_goal_ml = models.PositiveIntegerField(null=True, blank=True)

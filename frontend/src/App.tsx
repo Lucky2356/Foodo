@@ -5,7 +5,7 @@ import { Icon } from './ui/icons';
 import type { IconName } from './ui/icons';
 import { Banner, Loading, Toasts } from './ui/kit';
 import { usePwaUpdate } from './lib/pwa';
-import { APP_NAME } from './lib/config';
+import { APP_NAME, NATIVE_BUILD } from './lib/config';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const StartPage = lazy(() => import('./pages/StartPage'));
@@ -23,6 +23,8 @@ const ArticlesPage = lazy(() => import('./pages/ArticlesPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
 const HabitsPage = lazy(() => import('./pages/HabitsPage'));
+// Android app only: updates come as signed APKs from GitHub Releases (the web build has no such code).
+const UpdateBanner = NATIVE_BUILD ? lazy(() => import('./native/UpdateBanner')) : null;
 
 const NAV: { to: string; label: string; icon: IconName; end?: boolean; mobile: boolean }[] = [
   { to: '/', label: 'Главная', icon: 'home', end: true, mobile: true },
@@ -61,6 +63,7 @@ function ScrollTop() {
 function Shell() {
   const { ready, bootError, online, user, server } = useApp();
   const { needRefresh, update } = usePwaUpdate();
+  const { pathname } = useLocation();
   return (
     <div className="shell">
       <a className="skip-link" href="#main">Перейти к содержимому</a>
@@ -119,33 +122,40 @@ function Shell() {
               </div>
             </div>
           )}
+          {UpdateBanner && (
+            <Suspense fallback={null}>
+              <UpdateBanner />
+            </Suspense>
+          )}
           {bootError && <Banner tone="error">{bootError}</Banner>}
           {!ready ? (
             <Loading />
           ) : (
             <Suspense fallback={<Loading />}>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/start" element={<StartPage />} />
-                <Route path="/menu" element={<MenuPage />} />
-                <Route path="/menu/history" element={<MenuHistoryPage />} />
-                <Route path="/menu/:menuId" element={<MenuPage />} />
-                <Route path="/recipes" element={<RecipesPage />} />
-                <Route path="/recipes/new" element={<RecipeEditorPage />} />
-                <Route path="/recipes/:recipeId" element={<RecipePage />} />
-                <Route path="/shopping" element={<ShoppingPage />} />
-                <Route path="/pantry" element={<PantryPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/habits" element={<HabitsPage />} />
-                <Route path="/favorites" element={<FavoritesPage />} />
-                <Route path="/account/*" element={<AccountPage />} />
-                <Route path="/reset-password" element={<AccountPage />} />
-                <Route path="/articles" element={<ArticlesPage />} />
-                <Route path="/articles/:articleId" element={<ArticlesPage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="*" element={<HomePage />} />
-              </Routes>
+              <div className="page" key={pathname}>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/start" element={<StartPage />} />
+                  <Route path="/menu" element={<MenuPage />} />
+                  <Route path="/menu/history" element={<MenuHistoryPage />} />
+                  <Route path="/menu/:menuId" element={<MenuPage />} />
+                  <Route path="/recipes" element={<RecipesPage />} />
+                  <Route path="/recipes/new" element={<RecipeEditorPage />} />
+                  <Route path="/recipes/:recipeId" element={<RecipePage />} />
+                  <Route path="/shopping" element={<ShoppingPage />} />
+                  <Route path="/pantry" element={<PantryPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                  <Route path="/habits" element={<HabitsPage />} />
+                  <Route path="/favorites" element={<FavoritesPage />} />
+                  <Route path="/account/*" element={<AccountPage />} />
+                  <Route path="/reset-password" element={<AccountPage />} />
+                  <Route path="/articles" element={<ArticlesPage />} />
+                  <Route path="/articles/:articleId" element={<ArticlesPage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="*" element={<HomePage />} />
+                </Routes>
+              </div>
             </Suspense>
           )}
         </main>

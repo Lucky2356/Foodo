@@ -3,6 +3,7 @@ import { ApiError } from './api';
 import { GUEST_FORMAT_VERSION, openGuestDb } from './localDb';
 import type { GuestDb, GuestHousehold, StoredMenu, StoredWater } from './localDb';
 import type { HabitView, OwnPrice, PantryRecord } from './types';
+import { NATIVE_BUILD } from '../lib/config';
 
 // Versioned guest backup. The same file is used for «Резервная копия» and for the explicit transfer
 // of guest data into an account (POST /households/<id>/import-guest/).
@@ -120,12 +121,18 @@ export async function importGuestData(raw: unknown, mode: 'replace' | 'merge', d
   return { members, menus };
 }
 
-export function downloadJson(filename: string, data: unknown): void {
+export function downloadJson(filename: string, data: unknown): Promise<void> {
   const blob = new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' });
-  downloadBlob(filename, blob);
+  return downloadBlob(filename, blob);
 }
 
-export function downloadBlob(filename: string, blob: Blob): void {
+/** Saves a file: a browser download on the web, the system «Сохранить» dialog in the Android app. */
+export async function downloadBlob(filename: string, blob: Blob): Promise<void> {
+  if (NATIVE_BUILD) {
+    const { saveFileNative } = await import('../native/files');
+    await saveFileNative(filename, blob);
+    return;
+  }
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;

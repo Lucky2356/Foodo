@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { estimateEnergy } from '../engine';
+import { estimateEnergy, spiceTolerance } from '../engine';
 import type { Member } from '../engine';
 import { useApp } from '../state/app';
 import { downloadJson, exportGuestData, importGuestData } from '../data/backup';
@@ -12,6 +12,7 @@ import type { ThemeChoice } from '../lib/theme';
 import { num } from '../lib/format';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, toggleQuickExclusion } from '../lib/recipes';
 import { deviceTimeZone } from '../lib/dates';
+import { NATIVE_BUILD } from '../lib/config';
 
 const TIMEZONES = ['Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Samara', 'Asia/Yekaterinburg', 'Asia/Omsk', 'Asia/Krasnoyarsk', 'Asia/Irkutsk', 'Asia/Yakutsk', 'Asia/Vladivostok', 'Asia/Magadan', 'Asia/Kamchatka'];
 
@@ -135,10 +136,21 @@ export default function ProfilePage() {
         <section className="card stack">
           <h2>Мои данные на этом устройстве</h2>
           <Banner icon="info">
-            Без аккаунта данные хранятся только в этом браузере и не синхронизируются. Очистка данных браузера удалит их — сохраняйте резервную копию.
+            {NATIVE_BUILD
+              ? 'Данные хранятся только на этом телефоне и не синхронизируются. Удаление приложения удалит их — сохраняйте резервную копию.'
+              : 'Без аккаунта данные хранятся только в этом браузере и не синхронизируются. Очистка данных браузера удалит их — сохраняйте резервную копию.'}
           </Banner>
           <div className="row wrap">
-            <button className="btn" onClick={async () => downloadJson(`foodo-backup-${new Date().toISOString().slice(0, 10)}.json`, await exportGuestData())}>
+            <button
+              className="btn"
+              onClick={async () => {
+                try {
+                  await downloadJson(`foodo-backup-${new Date().toISOString().slice(0, 10)}.json`, await exportGuestData());
+                } catch (e) {
+                  reportError(e);
+                }
+              }}
+            >
               <Icon name="download" size={18} /> Резервная копия (JSON)
             </button>
             <button className="btn ghost" onClick={() => fileRef.current?.click()}>
@@ -199,7 +211,9 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
       portion_factor: 1,
       kcal_target: null,
       restrictions: { products: [], categories: [], allergens: [] },
-      preferences: { liked_recipes: [], disliked_products: [] },
+      preferences: { liked_recipes: [], disliked_products: [], liked_products: [] },
+      diet_types: [],
+      spice_tolerance: 1,
       vitamin_targets_manual: null,
       water_goal_ml: 2000,
       timezone: deviceTimeZone(),
@@ -299,6 +313,32 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
           )}
         </div>
         <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+          <span className="label">Тип питания (строгое правило)</span>
+          <div className="chips">
+            {(catalog.reference.diet_types ?? []).map((t) => {
+              const on = (m.diet_types ?? []).includes(t.id);
+              return (
+                <Chip key={t.id} tone="ban" on={on} onClick={() => set('diet_types', on ? (m.diet_types ?? []).filter((x) => x !== t.id) : [...(m.diet_types ?? []), t.id])}>
+                  {t.name}
+                </Chip>
+              );
+            })}
+          </div>
+        </div>
+        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+          <span className="label">Острота</span>
+          <Segmented
+            label="Острота"
+            value={String(spiceTolerance(m))}
+            onChange={(v) => set('spice_tolerance', Number(v))}
+            options={[
+              { value: '0', label: 'Без остроты' },
+              { value: '1', label: 'Немного' },
+              { value: '2', label: 'Острое' },
+            ]}
+          />
+        </div>
+        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
           <span className="label">Нельзя (жёсткие запреты)</span>
           <div className="chips">
             {QUICK_EXCLUSIONS.map((q) => (
@@ -322,6 +362,22 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
               ))}
             </div>
           )}
+        </div>
+        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+          <span className="label">Люблю (такие блюда будут чаще)</span>
+          <ProductPicker
+            label="Добавить любимый продукт"
+            value={null}
+            exclude={m.preferences.liked_products ?? []}
+            onChange={(p) => set('preferences', { ...m.preferences, liked_products: [...(m.preferences.liked_products ?? []), p.id], disliked_products: m.preferences.disliked_products.filter((x) => x !== p.id) })}
+          />
+          <div className="chips">
+            {(m.preferences.liked_products ?? []).map((id) => (
+              <Chip key={id} on onClick={() => set('preferences', { ...m.preferences, liked_products: (m.preferences.liked_products ?? []).filter((x) => x !== id) })}>
+                {catalog.products[id]?.name ?? id}
+              </Chip>
+            ))}
+          </div>
         </div>
         <div className="stack" style={{ ['--gap' as string]: '8px' }}>
           <span className="label">Не люблю (влияет только на выбор)</span>

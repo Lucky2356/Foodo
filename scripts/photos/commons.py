@@ -6,6 +6,7 @@ import html
 import json
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from typing import Any
@@ -46,6 +47,27 @@ def download(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=60) as r:
         return r.read()
+
+
+_last_download = 0.0
+
+
+def download_politely(url: str) -> bytes:
+    """Image download with a pause between requests and retries on 403/429: Wikimedia's media
+    servers throttle bursts of thumbnail requests from shared CI runners."""
+    global _last_download
+    for attempt in range(5):
+        wait = 0.5 - (time.monotonic() - _last_download)
+        if wait > 0:
+            time.sleep(wait)
+        _last_download = time.monotonic()
+        try:
+            return download(url)
+        except urllib.error.HTTPError as e:
+            if e.code not in (403, 429) or attempt == 4:
+                raise
+            time.sleep(5 * 2**attempt)
+    raise AssertionError("unreachable")
 
 
 def plain(value: str) -> str:

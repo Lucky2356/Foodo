@@ -1,4 +1,5 @@
-"""Finds Commons photo candidates for every recipe and draws numbered contact sheets for review.
+"""Finds photo candidates for every recipe and draws numbered contact sheets for review. Commons is
+searched first; Openverse fills the remaining places with the first (most precise) query.
 
     python -m scripts.photos.candidates OUT_DIR
 
@@ -9,12 +10,14 @@ from __future__ import annotations
 
 import io
 import json
+import os
 import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-from .commons import acceptable, download, search
+from . import openverse
+from .commons import acceptable, download_politely, search
 
 ROOT = Path(__file__).resolve().parents[2]
 FONT = ROOT / "frontend" / "public" / "fonts" / "DejaVuSans.ttf"
@@ -24,10 +27,13 @@ CELL_W, CELL_H, LABEL_W = 240, 180, 260
 
 
 def queries() -> dict[str, list[str]]:
+    """queries.txt plus queries_*.txt (one file per batch of recipes)."""
+    here = Path(__file__).parent
+    lines: list[str] = []
+    for f in [here / "queries.txt", *sorted(here.glob("queries_*.txt"))]:
+        lines += f.read_text(encoding="utf-8").splitlines()
     out = {}
-    for line in (
-        (Path(__file__).parent / "queries.txt").read_text(encoding="utf-8").splitlines()
-    ):
+    for line in lines:
         if line.strip() and not line.startswith("#"):
             rid, _, rest = line.partition(":")
             out[rid.strip()] = [q.strip() for q in rest.split(";") if q.strip()]
@@ -46,12 +52,18 @@ def main(argv: list[str]) -> int:
         if selection_path.exists()
         else {}
     )
-    only = set(argv[2].split(",")) if len(argv) > 2 else None
+    only = set(argv[2].split(",")) if len(argv) > 2 and argv[2] else None
+    # One run handles a bounded batch so it always finishes within the job time limit; the next
+    # run continues with recipes that still have no decision in selection.json.
+    limit = int(os.environ.get("PHOTO_BATCH", "0")) or None
     q = queries()
     result: dict[str, list[dict]] = {}
-    for r in recipes:
-        if r["id"] in decided or (only and r["id"] not in only):
-            continue
+    use_openverse = True
+    openverse_failures = 0
+    todo = [
+        r for r in recipes if r["id"] not in decided and (not only or r["id"] in only)
+    ]
+    for r in todo[:limit]:
         seen, found = set(), []
         for query in q.get(r["id"], []):
             try:
@@ -65,6 +77,29 @@ def main(argv: list[str]) -> int:
                     found.append(c)
             if len(found) >= PER_RECIPE:
                 break
+        if len(found) < PER_RECIPE and use_openverse and q.get(r["id"]):
+            try:
+                for c in openverse.search(q[r["id"]][0]):
+                    if c["title"] not in seen and acceptable(c):
+                        seen.add(c["title"])
+                        found.append(c)
+            except openverse.RateLimited:
+                use_openverse = False
+                print(
+                    "Openverse: rate limit reached, Commons only for the rest of the run",
+                    file=sys.stderr,
+                )
+            except Exception as e:  # noqa: BLE001 — one failed query must not stop the run
+                openverse_failures += 1
+                print(f"{r['id']}: Openverse search failed: {e}", file=sys.stderr)
+                if openverse_failures >= 3:
+                    use_openverse = False
+                    print(
+                        "Openverse: 3 failures in a row, Commons only for the rest of the run",
+                        file=sys.stderr,
+                    )
+            else:
+                openverse_failures = 0
         result[r["id"]] = [{"n": i + 1, **c} for i, c in enumerate(found[:PER_RECIPE])]
         print(f"{r['id']}: {len(result[r['id']])} candidates")
     (out / "candidates.json").write_text(
@@ -98,7 +133,9 @@ def main(argv: list[str]) -> int:
             for c in result[rid]:
                 x = LABEL_W + (c["n"] - 1) * (CELL_W + 6)
                 try:
-                    img = Image.open(io.BytesIO(download(c["thumb"]))).convert("RGB")
+                    img = Image.open(io.BytesIO(download_politely(c["thumb"]))).convert(
+                        "RGB"
+                    )
                     img.thumbnail((CELL_W, CELL_H - 18))
                     sheet.paste(img, (x, y + 18))
                 except Exception as e:  # noqa: BLE001

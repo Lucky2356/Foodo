@@ -2,6 +2,7 @@
 node_modules/
 frontend/dist/
 frontend/dist-static/
+frontend/dist-android/
 frontend/dev-dist/
 frontend/test-results/
 frontend/playwright-report/
@@ -29,3 +30,6 @@ htmlcov/
 
 # Generated from shared/data/prices by scripts/prices/publish.py at build time
 frontend/public/data/prices/
+
+# Local agent worktrees
+.claude/worktrees/
