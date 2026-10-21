@@ -33,9 +33,9 @@
 Проверка подписи релиза (любой компьютер с `gh`):
 
 ```sh
-gh attestation verify foodo-web-static-0.1.0.zip -R Lucky2356/Foodo
-gh attestation verify foodo-X.Y.Z.apk -R Lucky2356/Foodo   # начиная с первого релиза с APK
-gh attestation verify oci://ghcr.io/lucky2356/foodo-api:0.1.0 -R Lucky2356/Foodo
+gh attestation verify foodo-web-static-0.2.0.zip -R Lucky2356/Foodo
+gh attestation verify foodo-0.2.0.apk -R Lucky2356/Foodo
+gh attestation verify oci://ghcr.io/lucky2356/foodo-api:0.2.0 -R Lucky2356/Foodo
 ```
 
 Первый запуск **Pages** требует один раз включить Pages: *Settings → Pages → Build and deployment → Source: GitHub Actions*.
