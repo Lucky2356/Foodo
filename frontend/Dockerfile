@@ -10,7 +10,7 @@ ARG FOODO_VERSION=dev
 ENV FOODO_VERSION=${FOODO_VERSION}
 RUN npm run build
 
-FROM nginx:1.27-alpine
+FROM nginx:1.31-alpine
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
 COPY deploy/nginx-security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=build /app/frontend/dist /usr/share/nginx/html
