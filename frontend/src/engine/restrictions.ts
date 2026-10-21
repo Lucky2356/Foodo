@@ -116,12 +116,14 @@ export interface KitchenContext {
   skill: SkillLevel;
   maxTotalMin: number | null;
   container: boolean;
+  /** false when the slot needs a main course and the dish is not one (see the generator). */
+  mainCourse?: boolean;
 }
 
 /** Household-level checks: meal type, equipment, required skill, time limit and container lunches. */
 export function kitchenCheck(catalog: Catalog, recipe: Recipe, ctx: KitchenContext): KitchenCheck {
   const reasons: KitchenReason[] = [];
-  if (!recipe.meal_types.includes(ctx.slot)) reasons.push('meal_type');
+  if (!recipe.meal_types.includes(ctx.slot) || ctx.mainCourse === false) reasons.push('meal_type');
   const method = selectMethod(recipe, ctx.equipment);
   if (!method) reasons.push('equipment');
   const rank = recipeSkillRank(catalog.reference, recipe);

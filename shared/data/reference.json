@@ -186,9 +186,9 @@
   },
   "meal_slots": [
     {"id": "breakfast", "name": "Завтрак", "energy_share": 0.25},
-    {"id": "lunch", "name": "Обед", "energy_share": 0.35},
+    {"id": "lunch", "name": "Обед", "energy_share": 0.35, "main_course": {"categories": ["main", "soup"], "hearty_kcal": 350, "hearty_protein": 20}},
     {"id": "snack", "name": "Перекус", "energy_share": 0.1},
-    {"id": "dinner", "name": "Ужин", "energy_share": 0.3}
+    {"id": "dinner", "name": "Ужин", "energy_share": 0.3, "main_course": {"categories": ["main", "soup"], "hearty_kcal": 350, "hearty_protein": 20}}
   ],
   "recipe_categories": [
     {"id": "breakfast", "name": "Завтраки"},
