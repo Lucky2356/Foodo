@@ -113,9 +113,19 @@ def recipe_has_disliked_product(catalog: Catalog, recipe: JSON, member: JSON) ->
     return False
 
 
-def kitchen_check(catalog: Catalog, recipe: JSON, slot: str, equipment: list[str], skill: str, max_total_min: int | None, container: bool) -> JSON:
+def kitchen_check(
+    catalog: Catalog,
+    recipe: JSON,
+    slot: str,
+    equipment: list[str],
+    skill: str,
+    max_total_min: int | None,
+    container: bool,
+    main_course: bool = True,
+) -> JSON:
     reasons: list[str] = []
-    if slot not in recipe["meal_types"]:
+    # main_course is False when the slot needs a main course and the dish is not one (see the generator).
+    if slot not in recipe["meal_types"] or not main_course:
         reasons.append("meal_type")
     method = select_method(recipe, equipment)
     if method is None:

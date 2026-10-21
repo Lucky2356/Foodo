@@ -4,6 +4,7 @@ import { applyMenuOp } from '../menuOps';
 import { productClosure } from '../catalog';
 import { computeShopping, emptyShoppingState } from '../shopping';
 import { menuReport } from '../report';
+import { recipeNutrition } from '../nutrition';
 import type { Catalog, Menu, Recipe } from '../types';
 import { catalog, member, miniCatalog, product, recipe, request, settings } from './helpers';
 
@@ -50,6 +51,26 @@ describe('generator: guest family scenario (check 1)', () => {
     const c = generateMenu(request({ seed: 8 }), cat).menu;
     expect(JSON.stringify(a)).toBe(JSON.stringify(b));
     expect(JSON.stringify(a.batches)).not.toBe(JSON.stringify(c.batches));
+  });
+});
+
+describe('meal structure', () => {
+  it('lunch and dinner are a soup, a main dish or a hearty dish, never a light salad', () => {
+    const cat = catalog();
+    const { menu } = generateMenu(request({ days: 14 }), cat);
+    const batches = new Map(menu.batches.map((b) => [b.id, b]));
+    let checked = 0;
+    for (const meal of menu.meals.filter((m) => m.slot === 'lunch' || m.slot === 'dinner')) {
+      for (const item of meal.items) {
+        const r = cat.recipes[batches.get(item.batch_id)!.recipe_id]!;
+        checked += 1;
+        if (r.category === 'main' || r.category === 'soup') continue;
+        const serving = recipeNutrition(cat, r, 1).perServing;
+        expect(serving.kcal.value, r.id).toBeGreaterThanOrEqual(350);
+        expect(serving.protein.value, r.id).toBeGreaterThanOrEqual(20);
+      }
+    }
+    expect(checked).toBe(28);
   });
 });
 

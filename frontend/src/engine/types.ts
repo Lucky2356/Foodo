@@ -112,6 +112,8 @@ export interface MealSlotRef {
   id: string;
   name: string;
   energy_share: number;
+  /** Lunch and dinner need a main course: a dish of these categories, or one hearty enough per serving. */
+  main_course?: { categories: string[]; hearty_kcal: number; hearty_protein: number };
 }
 
 export interface NutrientRef {

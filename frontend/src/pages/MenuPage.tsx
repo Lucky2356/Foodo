@@ -223,8 +223,8 @@ export default function MenuPage() {
         <>
           <div className="day-strip" role="group" aria-label="Дни меню">
             {dates.map((d) => (
-              <button key={d} className="day-pill" aria-pressed={d === current} onClick={() => setDate(d)}>
-                <span className="tiny">{d === today ? 'сег.' : weekdayShort(d)}</span>
+              <button key={d} className={`day-pill${d === today ? ' today' : ''}`} aria-pressed={d === current} aria-current={d === today ? 'date' : undefined} onClick={() => setDate(d)}>
+                <span className="tiny">{weekdayShort(d)}</span>
                 <b>{Number(d.slice(8))}</b>
               </button>
             ))}
@@ -477,11 +477,12 @@ function WeekView({ record, members, who, today, onOpen }: { record: MenuRecord;
                     {SLOT_NAMES[slot]}
                   </div>
                   {refs.map((ref) => (
-                    <button
-                      key={ref.item.id}
-                      onClick={() => onOpen(ref, d, slot)}
-                      style={{ display: 'block', border: 0, background: 'none', padding: '2px 0', textAlign: 'left', cursor: 'pointer', fontWeight: 600, color: 'var(--text)' }}
-                    >
+                    <button key={ref.item.id} className="week-dish" onClick={() => onOpen(ref, d, slot)}>
+                      {ref.recipe && (
+                        <span className="week-thumb" aria-hidden="true">
+                          <RecipeCover recipe={ref.recipe} />
+                        </span>
+                      )}
                       {ref.recipe?.name}
                       {ref.item.pinned && ' 📌'}
                       {members.length > 1 && Object.keys(ref.item.portions).length < members.length && (

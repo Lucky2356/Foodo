@@ -212,9 +212,30 @@ class _Planner:
         check = self.kitchen_cache.get(key)
         if check is None:
             s = self.req["settings"]
-            check = kitchen_check(self.catalog, self.catalog.recipes[recipe_id], slot, s["equipment"], s["skill"], self.time_limit(weekend), container)
+            check = kitchen_check(
+                self.catalog,
+                self.catalog.recipes[recipe_id],
+                slot,
+                s["equipment"],
+                s["skill"],
+                self.time_limit(weekend),
+                container,
+                self.main_course(recipe_id, slot),
+            )
             self.kitchen_cache[key] = check
         return check
+
+    def main_course(self, recipe_id: str, slot: str) -> bool:
+        """Lunch and dinner are built around a main course: a soup or a main dish, or another dish that is
+        hearty enough on its own (a Caesar salad with chicken, not a radish salad). A partial nutrient
+        total is a lower bound, so reaching the threshold with it still proves the dish is hearty."""
+        rule = self.slot_ref(slot).get("main_course")
+        if rule is None:
+            return True
+        if self.catalog.recipes[recipe_id]["category"] in rule["categories"]:
+            return True
+        serving = self.per_serving(recipe_id)
+        return bool(serving["kcal"]["value"] >= rule["hearty_kcal"] and serving["protein"]["value"] >= rule["hearty_protein"])
 
     def safe(self, recipe_id: str, member: JSON) -> bool:
         key = f"{recipe_id}|{member['id']}"

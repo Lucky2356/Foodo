@@ -519,6 +519,12 @@ textarea {
   min-width: 0;
 }
 
+/* In a wrapping row the growing part wraps below its neighbours before it gets narrower than
+   this, instead of squeezing text into a one-word column. */
+.row.wrap > .grow {
+  flex: 1 1 220px;
+}
+
 .page-head {
   display: flex;
   flex-wrap: wrap;
@@ -557,6 +563,11 @@ textarea {
   display: grid;
   gap: 14px;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+}
+
+/* Six feature cards: three per row on a wide screen, so no row is left half empty. */
+.grid.features-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 }
 
 .bento {
@@ -637,6 +648,11 @@ textarea {
 .card-link:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
+}
+
+/* A link card laid out as a row (icon · text · chevron) keeps the row layout. */
+.card-link.row {
+  display: flex;
 }
 
 /* ===== Buttons =========================================================== */
@@ -916,6 +932,23 @@ textarea.input {
   background: var(--surface);
   color: var(--text);
   box-shadow: var(--shadow-sm);
+}
+
+/* Phones: options share the full width and long labels wrap to two lines instead of being cut off;
+   with many options the control still scrolls sideways. */
+@media (max-width: 559px) {
+  .segmented {
+    display: flex;
+    width: 100%;
+  }
+
+  .segmented button {
+    flex: 1 1 0;
+    min-width: 76px;
+    padding: 7px 8px;
+    line-height: 1.2;
+    white-space: normal;
+  }
 }
 
 .switch {
@@ -1236,6 +1269,49 @@ textarea.input {
   line-height: 1.25;
 }
 
+/* Phones: two compact cards per row, so the catalogue is browsed, not scrolled through one photo at a time. */
+@media (max-width: 559px) {
+  .grid.recipe-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .recipe-list .recipe-card .cover {
+    aspect-ratio: 4 / 3;
+  }
+
+  .recipe-list .recipe-card .body {
+    padding: 10px 12px 12px;
+    gap: 6px;
+  }
+
+  .recipe-list .recipe-card .body > .tiny {
+    display: none;
+  }
+
+  .recipe-list .recipe-card h3 {
+    font-size: 14.5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .recipe-list .recipe-card .meta {
+    font-size: 12.5px;
+    gap: 4px 10px;
+  }
+
+  .recipe-list .recipe-card .meta > span:nth-child(3) {
+    display: none;
+  }
+
+  .recipe-list .recipe-card .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 .cover-img {
   width: 100%;
   height: 100%;
@@ -1362,6 +1438,8 @@ textarea.input {
   padding-left: var(--gutter);
   padding-right: var(--gutter);
   scroll-snap-type: x mandatory;
+  /* Snap to the padded edge, otherwise the first (selected) day is cut off at the screen edge. */
+  scroll-padding-inline: var(--gutter);
   scrollbar-width: none;
 }
 
@@ -1399,6 +1477,23 @@ textarea.input {
 
 .day-pill[aria-pressed='true'] b {
   color: var(--bg);
+}
+
+/* Today: a small mango dot under the date instead of a cramped «сег.» label. */
+.day-pill.today {
+  position: relative;
+}
+
+.day-pill.today::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .meal {
@@ -1454,7 +1549,7 @@ textarea.input {
 .week-table {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(7, minmax(150px, 1fr));
+  grid-template-columns: repeat(7, minmax(128px, 1fr));
   overflow-x: auto;
   padding-bottom: 6px;
 }
@@ -1466,12 +1561,56 @@ textarea.input {
 }
 
 .week-cell {
-  padding: 10px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 8px;
   border-radius: 14px;
   background: var(--surface);
   border: 1px solid var(--border);
   font-size: 13.5px;
   min-height: 64px;
+}
+
+.week-cell .meal-slot {
+  margin: 2px 2px 0;
+}
+
+/* A dish in the week grid: photo (or drawn cover) above the name. */
+.week-dish {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.week-thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.week-thumb > * {
+  position: absolute;
+  inset: 0;
+}
+
+.week-dish:hover .cover-img {
+  transform: scale(1.05);
+}
+
+.week-thumb .cover-img {
+  transition: transform 0.5s var(--ease);
 }
 
 /* ===== Shopping ========================================================== */
@@ -1484,17 +1623,35 @@ textarea.input {
   margin: 18px 0 8px;
 }
 
+.shop-count {
+  margin-left: 4px;
+  font-weight: 650;
+  letter-spacing: 0;
+  color: var(--faint);
+}
+
+/* One card per department with hairline rows: a long list stays scannable on a phone. */
+.shop-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
 .shop-line {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 12px;
   align-items: center;
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  margin-bottom: 8px;
+  min-height: 56px;
+  padding: 8px 14px;
+  border-top: 1px solid var(--border);
   transition: opacity 0.25s var(--ease), background 0.25s;
+}
+
+.shop-line:first-child {
+  border-top: 0;
 }
 
 .shop-line.done {
@@ -2045,6 +2202,43 @@ hr.sep {
   .wizard-nav {
     bottom: 12px;
   }
+}
+
+/* The questionnaire hides the tab bar, so its action bar sits at the bottom edge. */
+.focus-mode .main {
+  padding-bottom: calc(24px + env(safe-area-inset-bottom));
+}
+
+.focus-mode .wizard-nav {
+  bottom: calc(10px + env(safe-area-inset-bottom));
+}
+
+/* Taste chips cycle «neutral → like → dislike»; the state is in the icon and the colour. */
+.chip.like[aria-pressed='true'] {
+  background: var(--primary-soft);
+  color: var(--primary-soft-ink);
+}
+
+.chip.dislike {
+  background: var(--accent-soft);
+  border-color: transparent;
+  color: var(--accent-ink);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* A light sweep across the final call-to-action. */

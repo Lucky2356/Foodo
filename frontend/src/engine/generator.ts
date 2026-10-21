@@ -265,10 +265,25 @@ class Planner {
         skill: s.skill,
         maxTotalMin: this.timeLimit(weekend),
         container,
+        mainCourse: this.mainCourse(recipeId, slot),
       });
       this.kitchenCache.set(key, check);
     }
     return check;
+  }
+
+  /**
+   * Lunch and dinner are built around a main course: a soup or a main dish, or another dish that is
+   * hearty enough on its own (a Caesar salad with chicken, not a radish salad). A partial nutrient
+   * total is a lower bound, so reaching the threshold with it still proves the dish is hearty.
+   */
+  mainCourse(recipeId: string, slot: string): boolean {
+    const rule = this.slotRef(slot).main_course;
+    if (!rule) return true;
+    const recipe = this.catalog.recipes[recipeId] as Recipe;
+    if (rule.categories.includes(recipe.category)) return true;
+    const serving = this.perServing(recipeId);
+    return serving.kcal.value >= rule.hearty_kcal && serving.protein.value >= rule.hearty_protein;
   }
 
   safe(recipeId: string, member: Member): boolean {

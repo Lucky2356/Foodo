@@ -152,7 +152,7 @@ export default function RecipesPage() {
           <input
             className="input"
             type="search"
-            placeholder="Блюдо или продукт, например «гречка»"
+            placeholder="Блюдо или продукт"
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -188,7 +188,7 @@ export default function RecipesPage() {
           Попробуйте другое слово или ослабьте фильтры.
         </Empty>
       ) : (
-        <div className="grid">
+        <div className="grid recipe-list">
           {results.slice(0, limit).map((r) => (
             <RecipeCard key={r.id} recipe={r} />
           ))}

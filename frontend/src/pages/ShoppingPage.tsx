@@ -166,14 +166,14 @@ export default function ShoppingPage() {
         subtitle={total === 0 ? 'Покупать ничего не нужно' : `Осталось купить: ${remaining} из ${total}`}
         actions={
           <>
-            <button className="btn ghost" onClick={() => void doExport('share')} disabled={exporting !== null}>
-              <Icon name="share" size={18} /> Поделиться
+            <button className="btn ghost small" onClick={() => void doExport('share')} disabled={exporting !== null}>
+              <Icon name="share" size={16} /> Поделиться
             </button>
-            <button className="btn ghost" onClick={() => void doExport('pdf')} disabled={exporting !== null}>
-              {exporting === 'pdf' ? <span className="spinner" /> : <Icon name="download" size={18} />} PDF
+            <button className="btn ghost small" onClick={() => void doExport('pdf')} disabled={exporting !== null}>
+              {exporting === 'pdf' ? <span className="spinner" /> : <Icon name="download" size={16} />} PDF
             </button>
-            <button className="btn ghost" onClick={() => void doExport('xlsx')} disabled={exporting !== null}>
-              {exporting === 'xlsx' ? <span className="spinner" /> : <Icon name="download" size={18} />} XLSX
+            <button className="btn ghost small" onClick={() => void doExport('xlsx')} disabled={exporting !== null}>
+              {exporting === 'xlsx' ? <span className="spinner" /> : <Icon name="download" size={16} />} XLSX
             </button>
           </>
         }
@@ -184,8 +184,9 @@ export default function ShoppingPage() {
       <div className="bento">
         <div className="card span-3">
           <div className="muted small">На кассе (упаковки)</div>
-          <div style={{ fontSize: 28, fontWeight: 750, letterSpacing: '-.03em' }}>{rub(view.totals.purchase_kop)}</div>
-          <div className="muted small">Стоимость использованного: {rub(view.totals.usage_kop)}</div>
+          {/* Without any price a «0 ₽» total would read as «free»: show a dash instead. */}
+          <div style={{ fontSize: 28, fontWeight: 750, letterSpacing: '-.03em' }}>{anyPrice ? rub(view.totals.purchase_kop) : '—'}</div>
+          {anyPrice && <div className="muted small">Стоимость использованного: {rub(view.totals.usage_kop)}</div>}
           {!view.totals.complete && (
             <div className="badge yellow" style={{ marginTop: 8 }}>
               {anyPrice ? `Итог неполный: цен нет для ${view.totals.missing_prices.length} позиций` : 'Цены ещё не заданы'}
@@ -264,7 +265,10 @@ export default function ShoppingPage() {
       </div>
       {[...grouped.entries()].map(([dept, lines]) => (
         <section key={dept}>
-          <h2 className="shop-dept">{dept}</h2>
+          <h2 className="shop-dept">
+            {dept} <span className="shop-count">{lines.length}</span>
+          </h2>
+          <div className="shop-group">
           {lines.map((l) => {
             const done = l.purchased || l.at_home || l.to_buy === 0;
             return (
@@ -287,11 +291,13 @@ export default function ShoppingPage() {
               </div>
             );
           })}
+          </div>
         </section>
       ))}
       {view.manual_lines.length > 0 && (
         <section>
           <h2 className="shop-dept">Добавлено вручную</h2>
+          <div className="shop-group">
           {view.manual_lines.map((l) => (
             <div key={l.id} className={`shop-line ${l.purchased ? 'done' : ''}`}>
               <input className="check" type="checkbox" checked={l.purchased} onChange={() => toggle(l.id, 'purchased')} aria-label={`Куплено: ${l.name}`} />
@@ -303,6 +309,7 @@ export default function ShoppingPage() {
               </button>
             </div>
           ))}
+          </div>
         </section>
       )}
       <p className="muted tiny">

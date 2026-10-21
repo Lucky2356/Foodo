@@ -70,7 +70,7 @@ test.describe('guest mode (static site, no server)', () => {
   test('guest planning sends no profile data anywhere (check 18)', async ({ page }) => {
     const requests: { url: string; method: string; body: string | null }[] = [];
     page.on('request', (r) => requests.push({ url: r.url(), method: r.method(), body: r.postData() }));
-    await onboard(page, ['Без молочного']);
+    await onboard(page, ['Молоко и лактоза']);
     await page.goto('./#/account');
     await page.waitForTimeout(500);
     for (const r of requests) {
