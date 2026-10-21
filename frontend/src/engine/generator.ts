@@ -488,7 +488,8 @@ class Planner {
       else parts.push(`${n} — ${REASON_MESSAGES[key] ?? key}`);
     }
     const slotName = this.slotRef(slot).name;
-    const message = `Для «${slotName}» не найдено подходящего блюда. Из ${this.recipes.length} рецептов отсеяны: ${parts.join('; ')}.`;
+    // A recipe can fail several checks, so the counts may add up to more than the catalogue size.
+    const message = `На ${slotName.toLowerCase()} не нашлось подходящего блюда. Причины отсева среди ${this.recipes.length} рецептов (у рецепта их может быть несколько): ${parts.join('; ')}.`;
     return { code: repeatOnly > 0 ? 'repeat_exhausted' : 'no_candidates', message };
   }
 

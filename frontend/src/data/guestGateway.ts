@@ -155,9 +155,12 @@ export class GuestGateway implements Gateway {
 
   async addMember(data: Partial<Member> & { name: string }): Promise<Member> {
     const db = await this.db();
-    const count = (await db.getAllKeys('members')).length;
+    const all = await db.getAll('members');
+    const count = all.length;
     if (count >= 20) throw new ApiError('limit', 'В семье может быть не больше 20 участников.', 400);
-    const m = { ...blankMember(data.name, count), ...data, id: newId('m'), position: count };
+    // After a removal positions have gaps: the next one goes after the last, never onto an existing one.
+    const position = all.reduce((max, x) => Math.max(max, (x.position ?? 0) + 1), 0);
+    const m = { ...blankMember(data.name, position), ...data, id: newId('m'), position };
     validateMember(m);
     await db.put('members', m);
     return m;

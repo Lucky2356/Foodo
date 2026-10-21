@@ -425,7 +425,11 @@ class _Planner:
             else:
                 parts.append(f"{n} — {REASON_MESSAGES.get(key, key)}")
         slot_name = self.slot_ref(slot)["name"]
-        message = f"Для «{slot_name}» не найдено подходящего блюда. Из {len(self.recipes)} рецептов отсеяны: {'; '.join(parts)}."
+        # A recipe can fail several checks, so the counts may add up to more than the catalogue size.
+        message = (
+            f"На {slot_name.lower()} не нашлось подходящего блюда. Причины отсева среди {len(self.recipes)} рецептов "
+            f"(у рецепта их может быть несколько): {'; '.join(parts)}."
+        )
         return ("repeat_exhausted" if repeat_only > 0 else "no_candidates", message)
 
     def new_batch(self, state: _State, recipe_id: str, method_id: str, date: str, slot: str) -> JSON:

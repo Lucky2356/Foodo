@@ -20,6 +20,8 @@ const TIMEZONES = ['Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Samara', 'Asia
 export default function ProfilePage() {
   const { household, gateway, user, reportError, toast, refreshHousehold, bump } = useApp();
   const [editing, setEditing] = useState<Member | 'new' | null>(null);
+  // Removal is confirmed first: undoing it would give the person a new id and detach them from the menu.
+  const [removing, setRemoving] = useState<Member | null>(null);
   const [theme, setTheme] = useState<ThemeChoice>(storedTheme());
   const fileRef = useRef<HTMLInputElement>(null);
   if (!household) return <Loading />;
@@ -27,14 +29,11 @@ export default function ProfilePage() {
   const removeMember = async (m: Member) => {
     try {
       await gateway.deleteMember(m.id);
+      setRemoving(null);
       await refreshHousehold();
-      toast(`${m.name} удалён(а) из семьи`, {
-        undo: async () => {
-          const { id: _id, ...rest } = m;
-          await gateway.addMember(rest);
-          await refreshHousehold();
-        },
-      });
+      toast(`${m.name}: удалено из семьи.`, { tone: 'success' });
+      // Focus goes to the heading of the list instead of being lost with the removed card.
+      document.getElementById('members-title')?.focus();
     } catch (e) {
       reportError(e);
     }
@@ -45,7 +44,9 @@ export default function ProfilePage() {
       <PageHead eyebrow={user ? user.email : 'Гостевой режим'} title={household.name} subtitle="Семья, настройки подбора и ваши данные" />
       <section className="stack">
         <div className="section-title">
-          <h2>Кто ест</h2>
+          <h2 id="members-title" tabIndex={-1}>
+            Кто ест
+          </h2>
           <button className="btn small primary" onClick={() => setEditing('new')}>
             <Icon name="plus" size={16} /> Добавить
           </button>
@@ -70,7 +71,7 @@ export default function ProfilePage() {
                   <Icon name="edit" size={18} />
                 </button>
                 {household.members.length > 1 && (
-                  <button className="icon-btn small" onClick={() => void removeMember(m)} aria-label={`Удалить: ${m.name}`}>
+                  <button className="icon-btn small" onClick={() => setRemoving(m)} aria-label={`Удалить: ${m.name}`}>
                     <Icon name="trash" size={18} />
                   </button>
                 )}
@@ -182,6 +183,25 @@ export default function ProfilePage() {
       <Link to="/account" className="btn ghost big">
         <Icon name={user ? 'shield' : 'user'} size={20} /> {user ? 'Аккаунт и безопасность' : 'Аккаунт: вход и синхронизация'}
       </Link>
+      {removing && (
+        <Sheet
+          open
+          onClose={() => setRemoving(null)}
+          title={`Удалить: ${removing.name}?`}
+          footer={
+            <>
+              <button className="btn ghost" onClick={() => setRemoving(null)}>
+                Отмена
+              </button>
+              <button className="btn danger" onClick={() => void removeMember(removing)}>
+                Удалить
+              </button>
+            </>
+          }
+        >
+          <p>Запреты, вкусы и порции этого человека перестанут учитываться в новых меню. В уже составленном меню его порции останутся (они помечены «удалённый участник») — чтобы убрать их, составьте меню заново.</p>
+        </Sheet>
+      )}
       {editing && (
         <MemberSheet
           member={editing === 'new' ? null : editing}

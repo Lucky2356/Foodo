@@ -80,7 +80,7 @@ export default function MenuPage() {
 
   const snap = useMemo(() => (record ? snapshotCatalog(record.menu, catalog) : catalog), [record, catalog]);
   const members = household?.members ?? [];
-  const memberName = (id: string) => members.find((m) => m.id === id)?.name ?? '—';
+  const memberName = (id: string) => members.find((m) => m.id === id)?.name ?? 'удалённый участник';
 
   const runOp = async (op: MenuOp, opts: { undo?: MenuOp; message?: string } = {}) => {
     if (!record) return null;
@@ -327,7 +327,7 @@ function DishCard({ refData, members, who, kcalFor, busy, onReplace, onOpen }: {
           ) : (
             <span>
               <Icon name="users" size={15} />
-              {portions.length === members.length && portions.every(([, f]) => f === 1) ? 'всем по порции' : portions.map(([id, f]) => `${members.find((m) => m.id === id)?.name ?? '—'} ${num(f, 2)}`).join(' · ')}
+              {portions.length === members.length && portions.every(([, f]) => f === 1) ? 'всем по порции' : portions.map(([id, f]) => `${members.find((m) => m.id === id)?.name ?? 'удалённый участник'} ${num(f, 2)}`).join(' · ')}
             </span>
           )}
           {refData.item.pinned && <span className="badge blue">закреплено</span>}
@@ -534,7 +534,7 @@ function DishSheet({
     }
   };
   const eaters = Object.keys(ref.item.portions);
-  const name = (id: string) => members.find((m) => m.id === id)?.name ?? '—';
+  const name = (id: string) => members.find((m) => m.id === id)?.name ?? 'удалённый участник';
   const dates = [...new Set(menu.meals.map((m) => m.date))];
   return (
     <Sheet open onClose={onClose} title={recipe?.name ?? 'Блюдо'}>
