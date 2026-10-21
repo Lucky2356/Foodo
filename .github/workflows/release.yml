@@ -151,12 +151,13 @@ jobs:
           apk="apk/foodo-$VERSION.apk"
           if [ ! -s "$apk" ]; then echo "::error::$apk is missing"; exit 1; fi
           tools="$ANDROID_HOME/build-tools/$(ls -1 "$ANDROID_HOME/build-tools" | sort -V | tail -1)"
-          "$tools/apksigner" verify --print-certs "$apk" > apksigner.txt
-          grep -q '^Verified using v2 scheme (APK Signature Scheme v2): true' apksigner.txt
-          grep -q '^Verified using v3 scheme (APK Signature Scheme v3): true' apksigner.txt
+          # --verbose: without it apksigner does not print which signature schemes it verified.
+          "$tools/apksigner" verify --verbose --print-certs "$apk" | tee apksigner.txt
+          grep -q '^Verified using v2 scheme (APK Signature Scheme v2): true' apksigner.txt || { echo "::error::APK is not signed with scheme v2"; exit 1; }
+          grep -q '^Verified using v3 scheme (APK Signature Scheme v3): true' apksigner.txt || { echo "::error::APK is not signed with scheme v3"; exit 1; }
           # apksigner prints «Signer #1 certificate …» (older versions) or «V3.0 Signer: certificate …» (newer).
           cert="$(sed -nE 's/^(Signer #1|V3\.0 Signer:?|V2 Signer:?|Signer) ?certificate SHA-256 digest: *([0-9a-f]{64})$/\2/p' apksigner.txt | head -1)"
-          if [ "$cert" != "$(cat apk/signing-cert-sha256.txt)" ]; then echo "::error::APK certificate changed between jobs"; exit 1; fi
+          if [ -z "$cert" ] || [ "$cert" != "$(cat apk/signing-cert-sha256.txt)" ]; then echo "::error::APK certificate «$cert» differs from the one checked in the Android job"; exit 1; fi
           echo "APK_CERT_SHA256=$cert" >> "$GITHUB_ENV"
       - name: Package
         run: |
