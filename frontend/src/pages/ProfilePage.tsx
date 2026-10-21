@@ -10,7 +10,7 @@ import { rangeError } from '../lib/numbers';
 import { ProductPicker } from '../ui/ProductPicker';
 import { applyTheme, storedTheme } from '../lib/theme';
 import type { ThemeChoice } from '../lib/theme';
-import { num } from '../lib/format';
+import { num, plural } from '../lib/format';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, toggleQuickExclusion } from '../lib/recipes';
 import { deviceTimeZone } from '../lib/dates';
 import { NATIVE_BUILD } from '../lib/config';
@@ -62,7 +62,7 @@ export default function ProfilePage() {
                   <h3>{m.name}</h3>
                   <p className="muted small">
                     {m.portion_mode === 'target' && m.kcal_target ? `${num(m.kcal_target)} ккал/день` : `порция ×${num(m.portion_factor, 2)}`}
-                    {m.age !== null ? ` · ${m.age} лет` : ''}
+                    {m.age !== null ? ` · ${m.age} ${plural(m.age, 'год', 'года', 'лет')}` : ''}
                     {bans > 0 ? ` · запретов: ${bans}` : ''}
                   </p>
                 </div>
@@ -331,7 +331,7 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
             {(catalog.reference.diet_types ?? []).map((t) => {
               const on = (m.diet_types ?? []).includes(t.id);
               return (
-                <Chip key={t.id} tone="ban" on={on} onClick={() => set('diet_types', on ? (m.diet_types ?? []).filter((x) => x !== t.id) : [...(m.diet_types ?? []), t.id])}>
+                <Chip key={t.id} on={on} onClick={() => set('diet_types', on ? (m.diet_types ?? []).filter((x) => x !== t.id) : [...(m.diet_types ?? []), t.id])}>
                   {t.name}
                 </Chip>
               );
