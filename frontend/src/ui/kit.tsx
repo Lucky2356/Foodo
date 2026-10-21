@@ -1,6 +1,7 @@
-import { useEffect, useId, useRef } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import type { ReactNode } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
+import { formatNumberInput, parseNumberInput } from '../lib/numbers';
 import type { Recipe } from '../engine';
 import { useApp } from '../state/app';
 import { Icon } from './icons';
@@ -43,7 +44,12 @@ export function Sheet({ open, onClose, title, children, footer }: { open: boolea
     };
     document.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
-    setTimeout(() => ref.current?.querySelector<HTMLElement>('[data-autofocus], input, button')?.focus(), 30);
+    // A marked field first; otherwise the first field of the body, not the «Закрыть» button in the head.
+    setTimeout(() => {
+      const root = ref.current;
+      const target = root?.querySelector<HTMLElement>('[data-autofocus]') ?? root?.querySelector<HTMLElement>('.sheet-body input, .sheet-body select, .sheet-body textarea, .sheet-body button') ?? root?.querySelector<HTMLElement>('button');
+      target?.focus();
+    }, 30);
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
@@ -105,14 +111,53 @@ export function Stepper({ value, onChange, min, max, step, format, label }: { va
   const clampRound = (v: number) => Math.min(max, Math.max(min, Math.round(v / step) * step));
   return (
     <div className="stepper" role="group" aria-label={label}>
-      <button type="button" onClick={() => onChange(clampRound(value - step))} disabled={value <= min} aria-label={`Уменьшить: ${label}`}>
+      {/* aria-disabled instead of disabled: a disabled button would drop keyboard focus at the limit. */}
+      <button type="button" onClick={() => value > min && onChange(clampRound(value - step))} aria-disabled={value <= min} aria-label={`Уменьшить: ${label}`}>
         −
       </button>
       <output aria-live="polite">{format ? format(value) : value}</output>
-      <button type="button" onClick={() => onChange(clampRound(value + step))} disabled={value >= max} aria-label={`Увеличить: ${label}`}>
+      <button type="button" onClick={() => value < max && onChange(clampRound(value + step))} aria-disabled={value >= max} aria-label={`Увеличить: ${label}`}>
         +
       </button>
     </div>
+  );
+}
+
+/**
+ * A number field that keeps exactly what the user types («70,», «1,5») and reports the parsed value:
+ * null when empty, NaN when the text is not a number. Parsing on every keystroke would drop a
+ * trailing comma and turn «70,5» into 705.
+ */
+export function NumberInput({
+  value,
+  onChange,
+  decimal = false,
+  invalid = false,
+  ...rest
+}: { value: number | null; onChange: (v: number | null) => void; decimal?: boolean; invalid?: boolean } & Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>) {
+  const [text, setText] = useState(() => formatNumberInput(value));
+  const [reported, setReported] = useState<number | null>(value);
+  // The value changed from outside (reset, another field): show it instead of the stale text.
+  if (!Object.is(reported, value)) {
+    setReported(value);
+    if (!Object.is(parseNumberInput(text), value)) setText(formatNumberInput(value));
+  }
+  const bad = invalid || (text.trim() !== '' && Number.isNaN(parseNumberInput(text)));
+  return (
+    <input
+      className="input"
+      inputMode={decimal ? 'decimal' : 'numeric'}
+      autoComplete="off"
+      {...rest}
+      value={text}
+      aria-invalid={bad || undefined}
+      onChange={(e) => {
+        const parsed = parseNumberInput(e.target.value);
+        setText(e.target.value);
+        setReported(parsed);
+        onChange(parsed);
+      }}
+    />
   );
 }
 

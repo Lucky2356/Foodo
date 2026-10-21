@@ -17,7 +17,10 @@ GOAL_FACTORS = {"maintain": 1, "lose": 0.85, "gain": 1.1}
 def estimate_energy(member: JSON) -> JSON:
     method = "Миффлин — Сан Жеор (1990) × коэффициент активности × коэффициент цели (Foodo)"
     age = member.get("age")
-    if age is None or age < 18:
+    # An adult who has not entered an age yet is asked for it, not told that children get no estimate.
+    if age is None:
+        return {"available": False, "kcal": None, "method": method, "reason": "Нужны возраст, пол, вес, рост и активность."}
+    if age < 18:
         return {
             "available": False,
             "kcal": None,

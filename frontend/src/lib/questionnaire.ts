@@ -131,7 +131,8 @@ export function planSettings(a: Answers, base: PlanSettings): PlanSettings {
     cuisines: [...a.cuisines],
     repeat: { ...base.repeat, mode: a.repeat },
     container_days: a.slots.includes('lunch') ? [...a.container_days].sort() : [],
-    budget: { ...base.budget, limit_kop: a.budget_rub === null ? null : Math.round(a.budget_rub * 100) },
+    // 0 ₽ means «no limit», the same as an empty field (the summary shows both as «Без лимита»).
+    budget: { ...base.budget, limit_kop: a.budget_rub === null || a.budget_rub === 0 ? null : Math.round(a.budget_rub * 100) },
     vitamins: { ...base.vitamins, enabled: a.vitamins },
   };
 }

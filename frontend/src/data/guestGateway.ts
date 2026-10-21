@@ -33,6 +33,9 @@ import type {
   ShoppingView,
   WaterView,
 } from './types';
+import { MEMBER_LIMITS, rangeError } from '../lib/numbers';
+import { customRecipeErrors } from '../lib/recipeValidation';
+import type { MemberLimitKey } from '../lib/numbers';
 
 export const DEFAULT_HOUSEHOLD_SETTINGS: HouseholdSettings = {
   slots: ['breakfast', 'lunch', 'snack', 'dinner'],
@@ -459,6 +462,8 @@ export class GuestGateway implements Gateway {
   }
 
   async saveCustomRecipe(recipe: Recipe): Promise<Recipe> {
+    const errors = customRecipeErrors(recipe, this.baseCatalog());
+    if (errors.length > 0) throw new ApiError('validation_error', errors.join(' '), 400);
     const db = await this.db();
     const existing = recipe.id ? await db.get('recipes', recipe.id) : undefined;
     const saved: Recipe = { ...recipe, id: existing?.id ?? (recipe.id?.startsWith('u-') ? recipe.id : newId('u')), version: (existing?.version ?? 0) + 1, visibility: 'private', source: 'user' };
@@ -531,8 +536,11 @@ export class GuestGateway implements Gateway {
 function validateMember(m: Member): void {
   if (!m.name.trim() || m.name.length > 60) throw new ApiError('validation_error', 'Имя или псевдоним — от 1 до 60 символов.', 400);
   if (!(m.portion_factor >= 0.25 && m.portion_factor <= 3)) throw new ApiError('validation_error', 'Простая порция — от 0,25 до 3.', 400);
-  if (m.age !== null && (m.age < 0 || m.age > 120)) throw new ApiError('validation_error', 'Возраст — от 0 до 120 лет.', 400);
-  if (m.kcal_target !== null && (m.kcal_target < 500 || m.kcal_target > 6000)) throw new ApiError('validation_error', 'Цель по калориям — от 500 до 6000 ккал.', 400);
+  // Same ranges as the server model; NaN (text that is not a number) fails them too.
+  for (const key of Object.keys(MEMBER_LIMITS) as MemberLimitKey[]) {
+    const error = rangeError(key, m[key]);
+    if (error) throw new ApiError('validation_error', error, 400);
+  }
   if (m.portion_mode === 'target' && m.age !== null && m.age < 18 && m.goal === 'lose') {
     throw new ApiError('validation_error', 'Для несовершеннолетних цель «снижение веса» не рассчитывается автоматически. Используйте простые порции.', 400);
   }

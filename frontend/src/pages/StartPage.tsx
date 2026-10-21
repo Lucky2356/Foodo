@@ -9,7 +9,8 @@ import { Icon } from '../ui/icons';
 import type { IconName } from '../ui/icons';
 import { Illustration } from '../ui/illustrations';
 import type { IllustrationName } from '../ui/illustrations';
-import { Chip, Stepper } from '../ui/kit';
+import { Chip, NumberInput, Stepper } from '../ui/kit';
+import { budgetError, rangeError } from '../lib/numbers';
 import { ProductPicker } from '../ui/ProductPicker';
 import { deviceTimeZone, localDate } from '../lib/dates';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, SLOT_NAMES, toggleQuickExclusion } from '../lib/recipes';
@@ -111,11 +112,6 @@ function toggle<T>(list: T[], value: T): T[] {
   return list.includes(value) ? list.filter((x) => x !== value) : [...list, value];
 }
 
-function numOrNull(v: string): number | null {
-  const n = Number(v.replace(',', '.'));
-  return v.trim() === '' || !Number.isFinite(n) ? null : n;
-}
-
 /**
  * «Анкета»: the user describes the family, goal, diet, bans, tastes, kitchen and plan first; the
  * menu is generated only after the summary is confirmed. Answers pre-fill from an existing
@@ -159,9 +155,17 @@ export default function StartPage() {
     setStep(to);
   };
 
+  // Personal data is checked on its own step, before anything is saved (the server rules are the same).
+  const meErrors = {
+    age: rangeError('age', answers.me.age) ?? (answers.me.age !== null && answers.me.age !== undefined && answers.me.age < 18 ? 'Расчёт нормы — только для взрослых (18+).' : null),
+    height_cm: rangeError('height_cm', answers.me.height_cm),
+    weight_kg: rangeError('weight_kg', answers.me.weight_kg),
+  };
+  const budgetErr = budgetError(answers.budget_rub);
   const canContinue = (() => {
     if (STEPS[step]?.id === 'family') return answers.adults + answers.children.length > 0;
-    if (STEPS[step]?.id === 'plan') return answers.slots.length > 0;
+    if (STEPS[step]?.id === 'goal') return answers.goal === 'simple' || !Object.values(meErrors).some(Boolean);
+    if (STEPS[step]?.id === 'plan') return answers.slots.length > 0 && !budgetErr;
     return true;
   })();
 
@@ -313,15 +317,18 @@ export default function StartPage() {
                   </label>
                   <label className="field">
                     <span>Возраст, лет</span>
-                    <input className="input" inputMode="numeric" value={answers.me.age ?? ''} onChange={(e) => set('me', { ...answers.me, age: numOrNull(e.target.value) })} />
+                    <NumberInput value={answers.me.age ?? null} invalid={!!meErrors.age} onChange={(v) => set('me', { ...answers.me, age: v })} />
+                    {meErrors.age && <span className="field-error">{meErrors.age}</span>}
                   </label>
                   <label className="field">
                     <span>Рост, см</span>
-                    <input className="input" inputMode="numeric" value={answers.me.height_cm ?? ''} onChange={(e) => set('me', { ...answers.me, height_cm: numOrNull(e.target.value) })} />
+                    <NumberInput value={answers.me.height_cm ?? null} invalid={!!meErrors.height_cm} onChange={(v) => set('me', { ...answers.me, height_cm: v })} />
+                    {meErrors.height_cm && <span className="field-error">{meErrors.height_cm}</span>}
                   </label>
                   <label className="field">
                     <span>Вес, кг</span>
-                    <input className="input" inputMode="decimal" value={answers.me.weight_kg ?? ''} onChange={(e) => set('me', { ...answers.me, weight_kg: numOrNull(e.target.value) })} />
+                    <NumberInput decimal value={answers.me.weight_kg ?? null} invalid={!!meErrors.weight_kg} onChange={(v) => set('me', { ...answers.me, weight_kg: v })} />
+                    {meErrors.weight_kg && <span className="field-error">{meErrors.weight_kg}</span>}
                   </label>
                   <label className="field">
                     <span>Активность</span>
@@ -560,7 +567,8 @@ export default function StartPage() {
             <div className="form-grid">
               <label className="field">
                 <span>Бюджет на покупки за период, ₽ (необязательно)</span>
-                <input className="input" inputMode="numeric" placeholder="Без лимита" value={answers.budget_rub ?? ''} onChange={(e) => set('budget_rub', numOrNull(e.target.value))} />
+                <NumberInput placeholder="Без лимита" value={answers.budget_rub} invalid={!!budgetErr} onChange={(v) => set('budget_rub', v)} />
+                {budgetErr && <span className="field-error">{budgetErr}</span>}
               </label>
               <label className="switch-row">
                 <span className="grow">
@@ -578,6 +586,11 @@ export default function StartPage() {
         {current.id === 'summary' && <Summary answers={answers} onEdit={go} />}
       </div>
 
+      {!canContinue && (
+        <p className="small muted" role="status" style={{ textAlign: 'center' }}>
+          {current.id === 'family' ? 'Добавьте хотя бы одного человека.' : current.id === 'plan' && answers.slots.length === 0 ? 'Выберите хотя бы один приём пищи.' : 'Исправьте отмеченные поля.'}
+        </p>
+      )}
       <div className="wizard-nav">
         {step > 0 && (
           <button type="button" className="btn ghost big" onClick={() => go(step - 1)}>

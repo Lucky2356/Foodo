@@ -1,21 +1,22 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { availableDisplayUnits, convertQuantity, recipeNutrition, selectMethod, UNIT_NAMES, VITAMIN_IDS } from '../engine';
 import type { CookingMethod, Recipe, RecipeUnit } from '../engine';
-import { useApp, useLoad } from '../state/app';
+import { useApp } from '../state/app';
 import { useCurrentMenu } from '../state/menu';
 import { Icon } from '../ui/icons';
 import { Banner, Empty, Loading, RecipeCover, Segmented, Sheet, Stepper } from '../ui/kit';
 import { humanDate } from '../lib/dates';
 import { minutes, num } from '../lib/format';
 import { allergenName, CATEGORY_NAMES, equipmentName, SKILL_NAMES, SLOT_NAMES, summarize } from '../lib/recipes';
-import { withCustomRecipes } from '../data/catalogSource';
+import { useFullCatalog } from '../state/catalog';
 
 type Basis = 'serving' | '100g' | 'total';
 const VIT_LABEL: Record<string, string> = { vit_a: 'Витамин A, мкг RAE', vit_c: 'Витамин C, мг', vit_d: 'Витамин D, мкг', vit_e: 'Витамин E, мг α-ТФ', vit_b6: 'Витамин B6, мг', vit_b12: 'Витамин B12, мкг', folate: 'Фолаты, мкг' };
 
 function fmtQty(qty: number): string {
+  if (qty > 0 && qty < 0.01) return '< 0,01';
   if (qty >= 100) return num(Math.round(qty));
   if (qty >= 10) return num(qty, 1);
   return num(qty, 2);
@@ -23,9 +24,9 @@ function fmtQty(qty: number): string {
 
 export default function RecipePage() {
   const { recipeId = '' } = useParams();
-  const { catalog: base, gateway, household, favorites, toggleFavorite } = useApp();
-  const custom = useLoad(() => gateway.listCustomRecipes(), [gateway]);
-  const catalog = useMemo(() => withCustomRecipes(base, custom.data ?? []), [base, custom.data]);
+  const { gateway, household, favorites, toggleFavorite, reportError, toast, bump } = useApp();
+  const custom = useFullCatalog();
+  const catalog = custom.catalog;
   const recipe = catalog.recipes[recipeId];
   const navigate = useNavigate();
   const equipment = household?.settings.plan.equipment ?? ['stove', 'oven', 'microwave'];
@@ -35,6 +36,7 @@ export default function RecipePage() {
   const [units, setUnits] = useState<Record<number, RecipeUnit>>({});
   const [cooking, setCooking] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   useEffect(() => {
     if (recipe) {
@@ -101,6 +103,16 @@ export default function RecipePage() {
             <button className={`btn ghost ${fav ? 'active' : ''}`} aria-pressed={fav} onClick={() => void toggleFavorite(recipe.id)}>
               <Icon name="heart" size={18} fill={fav ? 'currentColor' : 'none'} /> {fav ? 'В избранном' : 'В избранное'}
             </button>
+            {recipe.visibility === 'private' && (
+              <>
+                <Link className="btn ghost" to={`/recipes/${recipe.id}/edit`}>
+                  <Icon name="edit" size={18} /> Изменить
+                </Link>
+                <button className="btn ghost" onClick={() => setDeleteOpen(true)}>
+                  <Icon name="trash" size={18} /> Удалить
+                </button>
+              </>
+            )}
           </div>
           {recipe.image && (
             <p className="tiny muted">
@@ -151,7 +163,7 @@ export default function RecipePage() {
         ) : (
           <Banner icon="info">Выход готового блюда неизвестен, поэтому значение на 100 г не рассчитывается. Смотрите значение на порцию.</Banner>
         )}
-        {nutrition.yieldG && (
+        {nutrition.yieldG !== null && nutrition.yieldG > 0 && (
           <p className="muted small">
             Выход: {num(nutrition.yieldG)} г, порция ≈ {num(nutrition.yieldG / portions)} г
           </p>
@@ -173,7 +185,13 @@ export default function RecipePage() {
           <ul className="ingredients">
             {recipe.ingredients.map((ing, i) => {
               const product = catalog.products[ing.product];
-              const options = product ? availableDisplayUnits(product).filter((u) => convertQuantity(product, ing.qty * scale, ing.unit, u) !== null) : [];
+              // Only units in which the amount reads sensibly: 1 tsp of sugar is not «0 кг».
+              const options = product
+                ? availableDisplayUnits(product).filter((u) => {
+                    const c = convertQuantity(product, ing.qty * scale, ing.unit, u);
+                    return c !== null && c.qty >= 0.01;
+                  })
+                : [];
               const unit = units[i] ?? ing.unit;
               const shown = product ? convertQuantity(product, ing.qty * scale, ing.unit, unit) : null;
               const value = shown ?? { qty: ing.qty * scale, unit: ing.unit, approximate: false };
@@ -261,6 +279,38 @@ export default function RecipePage() {
 
       {cooking && <CookMode recipe={recipe} method={method} onClose={() => setCooking(false)} />}
       {addOpen && <AddToMenuSheet recipe={recipe} onClose={() => setAddOpen(false)} />}
+      {deleteOpen && (
+        <Sheet
+          open
+          onClose={() => setDeleteOpen(false)}
+          title="Удалить рецепт?"
+          footer={
+            <>
+              <button className="btn ghost" onClick={() => setDeleteOpen(false)}>
+                Отмена
+              </button>
+              <button
+                className="btn danger"
+                onClick={async () => {
+                  try {
+                    await gateway.deleteCustomRecipe(recipe.id);
+                    if (fav) await toggleFavorite(recipe.id);
+                    toast(`Рецепт «${recipe.name}» удалён.`, { tone: 'success' });
+                    bump();
+                    navigate('/recipes');
+                  } catch (e) {
+                    reportError(e);
+                  }
+                }}
+              >
+                Удалить
+              </button>
+            </>
+          }
+        >
+          <p>«{recipe.name}» исчезнет из каталога и больше не будет подбираться в новые меню. В уже составленных меню блюдо останется: в них хранится его копия.</p>
+        </Sheet>
+      )}
     </article>
   );
 }
@@ -349,13 +399,19 @@ function AddToMenuSheet({ recipe, onClose }: { recipe: Recipe; onClose: () => vo
       onClose={onClose}
       title="Добавить в меню"
       footer={
-        <button className="btn primary" disabled={!target || who.length === 0} onClick={() => void add()}>
-          Добавить
-        </button>
+        record ? (
+          <button className="btn primary" disabled={!target || who.length === 0} onClick={() => void add()}>
+            Добавить
+          </button>
+        ) : (
+          <Link className="btn primary" to="/menu" onClick={onClose}>
+            Составить меню
+          </Link>
+        )
       }
     >
       {!record ? (
-        <p className="muted">Сначала составьте меню — тогда блюдо можно будет добавить в любой день.</p>
+        <p className="muted">Меню ещё нет. Составьте его — тогда это блюдо можно будет добавить в любой день.</p>
       ) : (
         <div className="stack">
           <div className="chips">

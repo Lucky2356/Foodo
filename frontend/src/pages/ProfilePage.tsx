@@ -5,7 +5,8 @@ import type { Member } from '../engine';
 import { useApp } from '../state/app';
 import { downloadJson, exportGuestData, importGuestData } from '../data/backup';
 import { Icon } from '../ui/icons';
-import { Banner, Chip, Field, Loading, PageHead, Segmented, Sheet, Stepper } from '../ui/kit';
+import { Banner, Chip, Field, Loading, NumberInput, PageHead, Segmented, Sheet, Stepper } from '../ui/kit';
+import { rangeError } from '../lib/numbers';
 import { ProductPicker } from '../ui/ProductPicker';
 import { applyTheme, storedTheme } from '../lib/theme';
 import type { ThemeChoice } from '../lib/theme';
@@ -221,7 +222,15 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
   );
   const [busy, setBusy] = useState(false);
   const set = <K extends keyof Member>(k: K, v: Member[K]) => setM((x) => ({ ...x, [k]: v }));
-  const numOrNull = (v: string) => (v.trim() === '' ? null : Number(v.replace(',', '.')));
+  // Checked as the user types, with the same ranges as the server; saving is blocked while any is wrong.
+  const errors = {
+    age: rangeError('age', m.age),
+    height_cm: rangeError('height_cm', m.height_cm),
+    weight_kg: rangeError('weight_kg', m.weight_kg),
+    kcal_target: rangeError('kcal_target', m.kcal_target),
+    water_goal_ml: rangeError('water_goal_ml', m.water_goal_ml),
+  };
+  const invalid = Object.values(errors).some(Boolean);
   const estimate = estimateEnergy(m);
   const active = quickExclusionsActive(m.restrictions);
   const save = async () => {
@@ -244,7 +253,7 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
       onClose={onClose}
       title={member ? member.name : 'Новый участник'}
       footer={
-        <button className="btn primary" onClick={() => void save()} disabled={busy || !m.name.trim()}>
+        <button className="btn primary" onClick={() => void save()} disabled={busy || !m.name.trim() || invalid}>
           Сохранить
         </button>
       }
@@ -255,7 +264,8 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
         </Field>
         <div className="row wrap" style={{ alignItems: 'flex-start' }}>
           <Field label="Возраст">
-            <input className="input" inputMode="numeric" style={{ width: 110 }} value={m.age ?? ''} onChange={(e) => set('age', numOrNull(e.target.value))} />
+            <NumberInput style={{ width: 110 }} value={m.age ?? null} invalid={!!errors.age} onChange={(v) => set('age', v)} />
+            {errors.age && <span className="field-error">{errors.age}</span>}
           </Field>
           <div className="field">
             <span>Пол</span>
@@ -274,10 +284,12 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
             <div className="stack" style={{ ['--gap' as string]: '10px' }}>
               <div className="row wrap" style={{ alignItems: 'flex-end' }}>
                 <Field label="Рост, см">
-                  <input className="input" inputMode="decimal" style={{ width: 110 }} value={m.height_cm ?? ''} onChange={(e) => set('height_cm', numOrNull(e.target.value))} />
+                  <NumberInput decimal style={{ width: 110 }} value={m.height_cm ?? null} invalid={!!errors.height_cm} onChange={(v) => set('height_cm', v)} />
+            {errors.height_cm && <span className="field-error">{errors.height_cm}</span>}
                 </Field>
                 <Field label="Вес, кг">
-                  <input className="input" inputMode="decimal" style={{ width: 110 }} value={m.weight_kg ?? ''} onChange={(e) => set('weight_kg', numOrNull(e.target.value))} />
+                  <NumberInput decimal style={{ width: 110 }} value={m.weight_kg ?? null} invalid={!!errors.weight_kg} onChange={(v) => set('weight_kg', v)} />
+            {errors.weight_kg && <span className="field-error">{errors.weight_kg}</span>}
                 </Field>
               </div>
               <Field label="Активность">
@@ -302,7 +314,8 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
               </Field>
               <Field label="Цель, ккал в день" hint="Можно задать вручную. Расчёт — ориентир, а не медицинская рекомендация.">
                 <div className="row">
-                  <input className="input" inputMode="numeric" value={m.kcal_target ?? ''} onChange={(e) => set('kcal_target', numOrNull(e.target.value))} />
+                  <NumberInput value={m.kcal_target ?? null} invalid={!!errors.kcal_target} onChange={(v) => set('kcal_target', v)} />
+            {errors.kcal_target && <span className="field-error">{errors.kcal_target}</span>}
                   <button type="button" className="btn small" disabled={!estimate.available} onClick={() => set('kcal_target', estimate.kcal)}>
                     Рассчитать
                   </button>
@@ -397,7 +410,8 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
         </div>
         <div className="row wrap" style={{ alignItems: 'flex-end' }}>
           <Field label="Вода в день, мл">
-            <input className="input" inputMode="numeric" style={{ width: 140 }} value={m.water_goal_ml ?? ''} onChange={(e) => set('water_goal_ml', numOrNull(e.target.value))} />
+            <NumberInput style={{ width: 140 }} value={m.water_goal_ml ?? null} invalid={!!errors.water_goal_ml} onChange={(v) => set('water_goal_ml', v)} />
+            {errors.water_goal_ml && <span className="field-error">{errors.water_goal_ml}</span>}
           </Field>
           <Field label="Часовой пояс">
             <select className="input" value={m.timezone ?? 'Europe/Moscow'} onChange={(e) => set('timezone', e.target.value)}>

@@ -1017,6 +1017,16 @@ textarea.input {
   background: var(--surface);
 }
 
+/* At the limit the button stays focusable (aria-disabled), it only looks inactive. */
+.stepper button[aria-disabled='true'] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.stepper button[aria-disabled='true']:hover {
+  background: transparent;
+}
+
 .stepper output {
   min-width: 44px;
   text-align: center;

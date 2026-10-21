@@ -28,7 +28,11 @@ export interface EnergyEstimate {
  */
 export function estimateEnergy(member: Member): EnergyEstimate {
   const method = 'Миффлин — Сан Жеор (1990) × коэффициент активности × коэффициент цели (Foodo)';
-  if (member.age === null || member.age < 18) {
+  // An adult who has not entered an age yet is asked for it, not told that children get no estimate.
+  if (member.age === null) {
+    return { available: false, kcal: null, method, reason: 'Нужны возраст, пол, вес, рост и активность.' };
+  }
+  if (member.age < 18) {
     return {
       available: false,
       kcal: null,

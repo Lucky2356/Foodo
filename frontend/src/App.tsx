@@ -143,6 +143,7 @@ function Shell() {
                   <Route path="/menu/:menuId" element={<MenuPage />} />
                   <Route path="/recipes" element={<RecipesPage />} />
                   <Route path="/recipes/new" element={<RecipeEditorPage />} />
+                  <Route path="/recipes/:recipeId/edit" element={<RecipeEditorPage />} />
                   <Route path="/recipes/:recipeId" element={<RecipePage />} />
                   <Route path="/shopping" element={<ShoppingPage />} />
                   <Route path="/pantry" element={<PantryPage />} />

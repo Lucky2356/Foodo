@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useApp, useLoad } from '../state/app';
+import { useApp } from '../state/app';
+import { useFullCatalog } from '../state/catalog';
 import { Icon } from '../ui/icons';
 import { Empty, PageHead } from '../ui/kit';
 import { RecipeCard } from './RecipesPage';
 
 export default function FavoritesPage() {
-  const { catalog, favorites, gateway } = useApp();
-  const custom = useLoad(() => gateway.listCustomRecipes(), [gateway]);
+  const { favorites } = useApp();
+  // Own recipes can be favourites too, so look them up in the catalogue that includes them.
+  const { catalog, custom } = useFullCatalog();
   const list = [...favorites].map((id) => catalog.recipes[id]).filter((r): r is NonNullable<typeof r> => Boolean(r));
   return (
     <div className="stack" style={{ ['--gap' as string]: '18px' }}>
@@ -22,16 +24,13 @@ export default function FavoritesPage() {
           ))}
         </div>
       )}
-      {(custom.data?.length ?? 0) > 0 && (
+      {custom.length > 0 && (
         <section className="stack">
           <h2>Мои рецепты</h2>
           <p className="muted small">Видны только вам и участвуют в подборе меню.</p>
           <div className="grid recipe-list">
-            {custom.data?.map((r) => (
-              <Link key={r.id} to={`/recipes/${r.id}`} className="card card-link">
-                <h3>{r.name}</h3>
-                <p className="muted small">{r.ingredients.length} ингредиентов</p>
-              </Link>
+            {custom.map((r) => (
+              <RecipeCard key={r.id} recipe={r} />
             ))}
           </div>
         </section>
