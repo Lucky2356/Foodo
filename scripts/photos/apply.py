@@ -13,6 +13,8 @@ from __future__ import annotations
 import io
 import json
 import sys
+import time
+import urllib.error
 from pathlib import Path
 
 from PIL import Image
@@ -31,48 +33,86 @@ def main(argv: list[str]) -> int:
     selection = json.loads(
         (ROOT / "shared/data/photos/selection.json").read_text(encoding="utf-8")
     )
+    # Photos already in the repository keep their reviewed credit: only new choices are downloaded,
+    # so a run makes a few dozen requests to Wikimedia instead of hundreds.
+    existing_path = ROOT / "shared/data/photos/credits.json"
+    existing = (
+        json.loads(existing_path.read_text(encoding="utf-8"))
+        if existing_path.exists()
+        else {}
+    )
+    public = ROOT / "frontend" / "public" / "photos"
     credits, problems = {}, []
     for rid, title in sorted(selection.items()):
         if not title:
             continue
-        from_openverse = title.startswith(openverse.PREFIX)
-        info = (
-            openverse.image_info(title) if from_openverse else file_info(title, WIDTH)
-        )
-        if info is None or not acceptable(info):
+        if (
+            rid in existing
+            and (public / f"{rid}.webp").is_file()
+            and (public / "thumb" / f"{rid}.webp").is_file()
+        ):
+            credits[rid] = existing[rid]
+            continue
+        try:
+            credit = fetch(rid, title, out)
+        except Exception as e:  # noqa: BLE001 — one failed file must not stop the others
+            problems.append(f"{rid}: {title} — {e}")
+            continue
+        if credit is None:
             problems.append(
                 f"{rid}: {title} — файл не найден или лицензия/формат не подходят"
             )
             continue
-        # Commons serves a ready 800 px rendition; Openverse links the original at the provider.
-        img = Image.open(
-            io.BytesIO(download(info["url"] if from_openverse else info["thumb"]))
-        ).convert("RGB")
-        img.thumbnail((WIDTH, WIDTH))
-        img.save(out / "photos" / f"{rid}.webp", "WEBP", quality=78, method=6)
-        # A 400 px copy for recipe cards and lists (srcset in RecipeCover).
-        img.thumbnail((THUMB, THUMB))
-        img.save(out / "photos" / "thumb" / f"{rid}.webp", "WEBP", quality=72, method=6)
-        credit = {
-            "url": f"photos/{rid}.webp",
-            "source": f"Фото: {author_name(info['artist']) or 'автор не указан'}, "
-            + (
-                f"{info['provider']} (через Openverse)"
-                if from_openverse
-                else "Wikimedia Commons"
-            ),
-            "license": info["license"],
-            "license_url": license_link(info["license_url"]),
-            "page_url": info["page_url"],
-        }
-        credits[rid] = {k: v for k, v in credit.items() if v is not None}
-        print(f"{rid}: {title} ({info['license']})")
+        credits[rid] = credit
+        print(f"{rid}: {title} ({credit['license']})")
     (out / "credits.json").write_text(
         json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8"
     )
     for p in problems:
         print(p, file=sys.stderr)
     return 1 if problems else 0
+
+
+def fetch(rid: str, title: str, out: Path) -> dict | None:
+    """Downloads one selected image and returns its credit, or None if it is no longer usable."""
+    from_openverse = title.startswith(openverse.PREFIX)
+    info = openverse.image_info(title) if from_openverse else file_info(title, WIDTH)
+    if info is None or not acceptable(info):
+        return None
+    # Commons serves a ready 800 px rendition; Openverse links the original at the provider.
+    img = Image.open(
+        io.BytesIO(fetch_bytes(info["url"] if from_openverse else info["thumb"]))
+    ).convert("RGB")
+    img.thumbnail((WIDTH, WIDTH))
+    img.save(out / "photos" / f"{rid}.webp", "WEBP", quality=78, method=6)
+    # A 400 px copy for recipe cards and lists (srcset in RecipeCover).
+    img.thumbnail((THUMB, THUMB))
+    img.save(out / "photos" / "thumb" / f"{rid}.webp", "WEBP", quality=72, method=6)
+    credit = {
+        "url": f"photos/{rid}.webp",
+        "source": f"Фото: {author_name(info['artist']) or 'автор не указан'}, "
+        + (
+            f"{info['provider']} (через Openverse)"
+            if from_openverse
+            else "Wikimedia Commons"
+        ),
+        "license": info["license"],
+        "license_url": license_link(info["license_url"]),
+        "page_url": info["page_url"],
+    }
+    return {k: v for k, v in credit.items() if v is not None}
+
+
+def fetch_bytes(url: str) -> bytes:
+    """Wikimedia answers 403/429 when downloads come too fast: wait and retry a few times."""
+    for attempt in range(4):
+        try:
+            return download(url)
+        except urllib.error.HTTPError as e:
+            if e.code not in (403, 429) or attempt == 3:
+                raise
+            time.sleep(5 * 2**attempt)
+    raise AssertionError("unreachable")
 
 
 if __name__ == "__main__":
