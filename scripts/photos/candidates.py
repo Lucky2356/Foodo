@@ -17,20 +17,28 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 from . import openverse
-from .commons import acceptable, download_politely, search
+from .commons import acceptable, category_files, download_politely, search
 
 ROOT = Path(__file__).resolve().parents[2]
 FONT = ROOT / "frontend" / "public" / "fonts" / "DejaVuSans.ttf"
-PER_RECIPE = 6
+# Candidates per recipe; a retry pass for recipes left without a photo may ask for more.
+PER_RECIPE = int(os.environ.get("PHOTO_PER_RECIPE", "6"))
 ROWS_PER_SHEET = 8
 CELL_W, CELL_H, LABEL_W = 240, 180, 260
 
 
-def queries() -> dict[str, list[str]]:
-    """queries.txt plus queries_*.txt (one file per batch of recipes)."""
-    here = Path(__file__).parent
+def queries(here: Path | None = None) -> dict[str, list[str]]:
+    """queries.txt plus queries_*.txt (one file per batch of recipes). retry.txt is read last:
+    its new queries replace the earlier ones of recipes that got no suitable photo."""
+    here = here or Path(__file__).parent
     lines: list[str] = []
-    for f in [here / "queries.txt", *sorted(here.glob("queries_*.txt"))]:
+    for f in [
+        here / "queries.txt",
+        *sorted(here.glob("queries_*.txt")),
+        here / "retry.txt",
+    ]:
+        if not f.exists():
+            continue
         lines += f.read_text(encoding="utf-8").splitlines()
     out = {}
     for line in lines:
@@ -58,6 +66,8 @@ def main(argv: list[str]) -> int:
     limit = int(os.environ.get("PHOTO_BATCH", "0")) or None
     q = queries()
     result: dict[str, list[dict]] = {}
+    # A photo already chosen for one recipe is not offered for another (docs/PHOTOS.md).
+    used = {v for v in decided.values() if v}
     use_openverse = True
     openverse_failures = 0
     todo = [
@@ -67,20 +77,33 @@ def main(argv: list[str]) -> int:
         seen, found = set(), []
         for query in q.get(r["id"], []):
             try:
-                hits = search(query)
+                # «category:Name» lists a Commons category; anything else is a full-text search.
+                hits = (
+                    category_files(query.split(":", 1)[1])
+                    if query.lower().startswith("category:")
+                    else search(query)
+                )
             except Exception as e:  # noqa: BLE001 — one failed query must not stop the run
                 print(f"{r['id']}: search failed for {query!r}: {e}", file=sys.stderr)
                 continue
             for c in hits:
-                if c["title"] not in seen and acceptable(c):
+                if c["title"] not in seen and c["title"] not in used and acceptable(c):
                     seen.add(c["title"])
                     found.append(c)
             if len(found) >= PER_RECIPE:
                 break
         if len(found) < PER_RECIPE and use_openverse and q.get(r["id"]):
             try:
-                for c in openverse.search(q[r["id"]][0]):
-                    if c["title"] not in seen and acceptable(c):
+                first = next(
+                    (x for x in q[r["id"]] if not x.lower().startswith("category:")),
+                    None,
+                )
+                for c in openverse.search(first) if first else []:
+                    if (
+                        c["title"] not in seen
+                        and c["title"] not in used
+                        and acceptable(c)
+                    ):
                         seen.add(c["title"])
                         found.append(c)
             except openverse.RateLimited:

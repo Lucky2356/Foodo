@@ -39,6 +39,8 @@ jobs:
           OPENVERSE_CLIENT_SECRET: ${{ secrets.OPENVERSE_CLIENT_SECRET }}
           # Recipes per run; the rest get candidates on the next run (after review of this batch).
           PHOTO_BATCH: "200"
+          # Retry pass for recipes left without a photo: more candidates per recipe.
+          PHOTO_PER_RECIPE: "8"
         run: python -m scripts.photos.candidates out/candidates
       - name: Apply the reviewed selection
         if: hashFiles('shared/data/photos/selection.json') != ''
