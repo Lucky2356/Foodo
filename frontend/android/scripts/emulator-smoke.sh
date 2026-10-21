@@ -21,11 +21,20 @@ for _ in $(seq 1 60); do
   sleep 2
 done
 adb uninstall "$pkg" >/dev/null 2>&1 || true
+# Removing the previous build finishes asynchronously: its task is destroyed a few seconds later
+# and that cleanup kills any new process of the same package ("Destroy timeout of remove-task").
+# Wait until the package is gone and the system has settled before installing the next build.
+for _ in $(seq 1 15); do
+  adb shell pm list packages "$pkg" | grep -q "$pkg" || break
+  sleep 1
+done
+sleep 5
 adb install -r "$apk"
 adb logcat -c
 adb shell am start -W -n "$pkg/.MainActivity"
 
 found=""
+relaunched=""
 for _ in $(seq 1 45); do
   sleep 2
   if adb shell uiautomator dump /sdcard/foodo-ui.xml >/dev/null 2>&1; then
@@ -37,6 +46,14 @@ for _ in $(seq 1 45); do
     fi
   fi
   if ! adb shell pidof "$pkg" >/dev/null 2>&1; then
+    # A process killed by the system (not crashed) is relaunched once; a crash still fails below.
+    if [ -z "$relaunched" ] && ! adb logcat -d | grep -A3 "FATAL EXCEPTION" | grep -q "$pkg"; then
+      echo "::warning::$pkg was stopped by the system right after start; relaunching once"
+      adb logcat -d | grep -E "Killing [0-9]+:$pkg" || true
+      relaunched=yes
+      adb shell am start -W -n "$pkg/.MainActivity"
+      continue
+    fi
     echo "::error::$pkg is not running"
     break
   fi
