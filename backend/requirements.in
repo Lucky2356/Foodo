@@ -1,5 +1,5 @@
 # Runtime dependencies. Lock with: uv pip compile requirements.in --generate-hashes -o requirements.txt
-Django>=5.2,<5.3
+Django>=6.1.2,<6.2
 djangorestframework>=3.16,<3.19
 drf-spectacular>=0.28,<0.31
 psycopg[binary]>=3.2,<3.4
