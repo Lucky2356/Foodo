@@ -1,6 +1,6 @@
 # Foodo web image: the built PWA served by nginx, which also proxies /api and /admin to the API.
 # Build context: repository root (the app bundles shared/data).
-FROM node:22-alpine AS build
+FROM node:26-alpine AS build
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci --no-audit --no-fund
