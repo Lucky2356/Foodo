@@ -14,8 +14,6 @@ import os
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
-
 from . import openverse
 from .commons import acceptable, category_files, download_politely, search
 
@@ -49,6 +47,9 @@ def queries(here: Path | None = None) -> dict[str, list[str]]:
 
 
 def main(argv: list[str]) -> int:
+    # Pillow is imported here: the query parsing above is tested in CI jobs without it.
+    from PIL import Image, ImageDraw, ImageFont
+
     out = Path(argv[1])
     out.mkdir(parents=True, exist_ok=True)
     recipes = json.loads(
