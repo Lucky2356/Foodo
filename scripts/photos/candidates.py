@@ -17,7 +17,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 from . import openverse
-from .commons import acceptable, download, search
+from .commons import acceptable, download_politely, search
 
 ROOT = Path(__file__).resolve().parents[2]
 FONT = ROOT / "frontend" / "public" / "fonts" / "DejaVuSans.ttf"
@@ -133,7 +133,9 @@ def main(argv: list[str]) -> int:
             for c in result[rid]:
                 x = LABEL_W + (c["n"] - 1) * (CELL_W + 6)
                 try:
-                    img = Image.open(io.BytesIO(download(c["thumb"]))).convert("RGB")
+                    img = Image.open(io.BytesIO(download_politely(c["thumb"]))).convert(
+                        "RGB"
+                    )
                     img.thumbnail((CELL_W, CELL_H - 18))
                     sheet.paste(img, (x, y + 18))
                 except Exception as e:  # noqa: BLE001

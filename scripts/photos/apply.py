@@ -13,14 +13,18 @@ from __future__ import annotations
 import io
 import json
 import sys
-import time
-import urllib.error
 from pathlib import Path
 
 from PIL import Image
 
 from . import openverse
-from .commons import acceptable, author_name, download, file_info, license_link
+from .commons import (
+    acceptable,
+    author_name,
+    download_politely,
+    file_info,
+    license_link,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 WIDTH = 800
@@ -81,7 +85,7 @@ def fetch(rid: str, title: str, out: Path) -> dict | None:
         return None
     # Commons serves a ready 800 px rendition; Openverse links the original at the provider.
     img = Image.open(
-        io.BytesIO(fetch_bytes(info["url"] if from_openverse else info["thumb"]))
+        io.BytesIO(download_politely(info["url"] if from_openverse else info["thumb"]))
     ).convert("RGB")
     img.thumbnail((WIDTH, WIDTH))
     img.save(out / "photos" / f"{rid}.webp", "WEBP", quality=78, method=6)
@@ -101,18 +105,6 @@ def fetch(rid: str, title: str, out: Path) -> dict | None:
         "page_url": info["page_url"],
     }
     return {k: v for k, v in credit.items() if v is not None}
-
-
-def fetch_bytes(url: str) -> bytes:
-    """Wikimedia answers 403/429 when downloads come too fast: wait and retry a few times."""
-    for attempt in range(4):
-        try:
-            return download(url)
-        except urllib.error.HTTPError as e:
-            if e.code not in (403, 429) or attempt == 3:
-                raise
-            time.sleep(5 * 2**attempt)
-    raise AssertionError("unreachable")
 
 
 if __name__ == "__main__":
