@@ -154,7 +154,8 @@ jobs:
           "$tools/apksigner" verify --print-certs "$apk" > apksigner.txt
           grep -q '^Verified using v2 scheme (APK Signature Scheme v2): true' apksigner.txt
           grep -q '^Verified using v3 scheme (APK Signature Scheme v3): true' apksigner.txt
-          cert="$(awk -F': ' '/^Signer #1 certificate SHA-256 digest:/ {print $2; exit}' apksigner.txt)"
+          # apksigner prints «Signer #1 certificate …» (older versions) or «V3.0 Signer: certificate …» (newer).
+          cert="$(sed -nE 's/^(Signer #1|V3\.0 Signer:?|V2 Signer:?|Signer) ?certificate SHA-256 digest: *([0-9a-f]{64})$/\2/p' apksigner.txt | head -1)"
           if [ "$cert" != "$(cat apk/signing-cert-sha256.txt)" ]; then echo "::error::APK certificate changed between jobs"; exit 1; fi
           echo "APK_CERT_SHA256=$cert" >> "$GITHUB_ENV"
       - name: Package
