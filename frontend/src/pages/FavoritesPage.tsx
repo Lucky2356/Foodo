@@ -16,7 +16,7 @@ export default function FavoritesPage() {
           Нажмите на сердечко у рецепта, чтобы сохранить его.
         </Empty>
       ) : (
-        <div className="grid">
+        <div className="grid recipe-list">
           {list.map((r) => (
             <RecipeCard key={r.id} recipe={r} />
           ))}
@@ -26,7 +26,7 @@ export default function FavoritesPage() {
         <section className="stack">
           <h2>Мои рецепты</h2>
           <p className="muted small">Видны только вам и участвуют в подборе меню.</p>
-          <div className="grid">
+          <div className="grid recipe-list">
             {custom.data?.map((r) => (
               <Link key={r.id} to={`/recipes/${r.id}`} className="card card-link">
                 <h3>{r.name}</h3>

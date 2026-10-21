@@ -64,8 +64,10 @@ function Shell() {
   const { ready, bootError, online, user, server } = useApp();
   const { needRefresh, update } = usePwaUpdate();
   const { pathname } = useLocation();
+  // The questionnaire is a focused flow: no tab bar under its own Back / Next bar.
+  const focus = pathname === '/start';
   return (
-    <div className="shell">
+    <div className={`shell${focus ? ' focus-mode' : ''}`}>
       <a className="skip-link" href="#main">Перейти к содержимому</a>
       <aside className="sidebar" aria-label="Основная навигация">
         <Brand />
@@ -160,16 +162,18 @@ function Shell() {
           )}
         </main>
       </div>
-      <nav className="bottom-nav" aria-label="Основная навигация">
-        {NAV.filter((n) => n.mobile).map((n) => (
-          <NavLink key={n.to} to={n.to} end={n.end} className="nav-link">
-            <span className="nav-icon">
-              <Icon name={n.icon} />
-            </span>
-            {n.label}
-          </NavLink>
-        ))}
-      </nav>
+      {!focus && (
+        <nav className="bottom-nav" aria-label="Основная навигация">
+          {NAV.filter((n) => n.mobile).map((n) => (
+            <NavLink key={n.to} to={n.to} end={n.end} className="nav-link">
+              <span className="nav-icon">
+                <Icon name={n.icon} />
+              </span>
+              {n.label}
+            </NavLink>
+          ))}
+        </nav>
+      )}
       <Toasts />
     </div>
   );

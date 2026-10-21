@@ -41,8 +41,8 @@ const STEPS: { id: string; title: string; hint: string; art: IllustrationName }[
   { id: 'family', title: 'Для кого готовим?', hint: 'Детям блюда подбираются без остроты, а порции меньше.', art: 'family' },
   { id: 'goal', title: 'Какая цель?', hint: 'Можно просто есть вкусно — считать калории не обязательно.', art: 'goal' },
   { id: 'diet', title: 'Как вы питаетесь?', hint: 'Тип питания — это строгое правило: такие продукты в меню не попадут.', art: 'diet' },
-  { id: 'ban', title: 'Чего нельзя?', hint: 'Аллергии и продукты, которые нельзя ни в каком виде. Проверяем по составу, а не по названию.', art: 'ban' },
-  { id: 'taste', title: 'Что вы любите?', hint: 'Любимое будет чаще, нелюбимое — реже. Это пожелания, а не запреты.', art: 'taste' },
+  { id: 'ban', title: 'Чего нельзя?', hint: 'Строгие запреты: такие продукты не попадут в меню ни в каком виде. Проверяем по составу, а не по названию.', art: 'ban' },
+  { id: 'taste', title: 'Что вы любите?', hint: 'Это пожелания, а не запреты: любимое будет чаще, нелюбимое — реже.', art: 'taste' },
   { id: 'kitchen', title: 'Кухня и время', hint: 'Подберём блюда под вашу технику и время, которое не жалко на готовку.', art: 'kitchen' },
   { id: 'plan', title: 'Меню и покупки', hint: 'На сколько дней составить меню и сколько раз в день вы едите.', art: 'calendar' },
   { id: 'summary', title: 'Проверьте ответы', hint: 'Всё можно поменять позже в профиле и настройках.', art: 'summary' },
@@ -141,6 +141,17 @@ export default function StartPage() {
   const cuisines = catalog.reference.cuisines ?? [];
   const dietTypes = catalog.reference.diet_types ?? [];
   const active = quickExclusionsActive(answers.restrictions);
+  // Allergens have their own list below; a combined quick exclusion (milk, gluten…) is shown only
+  // when an older profile has it on, so it can still be switched off.
+  const foodGroups = QUICK_EXCLUSIONS.filter((q) => !q.allergens || active.has(q.id));
+  const cycleTaste = (id: string) =>
+    setAnswers((a) => {
+      const liked = a.liked_products.includes(id);
+      const disliked = a.disliked_products.includes(id);
+      if (!liked && !disliked) return { ...a, liked_products: [...a.liked_products, id] };
+      if (liked) return { ...a, liked_products: a.liked_products.filter((x) => x !== id), disliked_products: [...a.disliked_products, id] };
+      return { ...a, disliked_products: a.disliked_products.filter((x) => x !== id) };
+    });
   const meEstimate = estimateEnergy({ ...(answers.me as Partial<Member>), goal: answers.goal === 'simple' ? null : answers.goal } as Member);
 
   const go = (to: number) => {
@@ -366,14 +377,7 @@ export default function StartPage() {
 
         {current.id === 'ban' && (
           <div className="stack">
-            <div className="chips" role="group" aria-label="Исключения">
-              {QUICK_EXCLUSIONS.map((q) => (
-                <Chip key={q.id} on={active.has(q.id)} onClick={() => set('restrictions', toggleQuickExclusion(answers.restrictions, q.id, !active.has(q.id)))} tone="ban">
-                  {q.label}
-                </Chip>
-              ))}
-            </div>
-            <Field label="Аллергены">
+            <Field label="Аллергия или непереносимость">
               <div className="chips">
                 {catalog.reference.allergens.map((a) => (
                   <Chip
@@ -383,6 +387,15 @@ export default function StartPage() {
                     onClick={() => set('restrictions', { ...answers.restrictions, allergens: toggle(answers.restrictions.allergens, a.id) })}
                   >
                     {a.name}
+                  </Chip>
+                ))}
+              </div>
+            </Field>
+            <Field label="Не едим совсем">
+              <div className="chips" role="group" aria-label="Исключения">
+                {foodGroups.map((q) => (
+                  <Chip key={q.id} on={active.has(q.id)} onClick={() => set('restrictions', toggleQuickExclusion(answers.restrictions, q.id, !active.has(q.id)))} tone="ban">
+                    {q.label}
                   </Chip>
                 ))}
               </div>
@@ -398,7 +411,7 @@ export default function StartPage() {
                 <div className="chips">
                   {answers.restrictions.products.map((id) => (
                     <Chip key={id} tone="ban" on onClick={() => set('restrictions', { ...answers.restrictions, products: answers.restrictions.products.filter((x) => x !== id) })}>
-                      {catalog.products[id]?.name ?? id} ✕
+                      {catalog.products[id]?.name ?? id}
                     </Chip>
                   ))}
                 </div>
@@ -409,6 +422,14 @@ export default function StartPage() {
 
         {current.id === 'taste' && (
           <div className="stack">
+            <Field label="Острота для взрослых">
+              <div className="option-grid three">
+                {SPICE.map((o) => (
+                  <OptionCard key={o.value} selected={answers.spice === o.value} onClick={() => set('spice', o.value)} title={o.title} text={o.text} />
+                ))}
+              </div>
+              {answers.children.length > 0 && <p className="small muted">Детям острые блюда не подбираются — это меняется в профиле ребёнка.</p>}
+            </Field>
             <Field label="Любимые кухни">
               <div className="chips">
                 {cuisines.map((c) => (
@@ -418,40 +439,36 @@ export default function StartPage() {
                 ))}
               </div>
             </Field>
-            <Field label="Люблю">
+            <Field label="Продукты">
+              <div className="legend" aria-hidden="true">
+                <span>
+                  <Icon name="heart" size={14} /> 1 нажатие — люблю
+                </span>
+                <span>
+                  <Icon name="close" size={14} /> 2 нажатия — не люблю
+                </span>
+              </div>
               <div className="chips">
-                {tasteProducts.map((id) => (
-                  <Chip
-                    key={id}
-                    on={answers.liked_products.includes(id)}
-                    onClick={() => setAnswers((a) => ({ ...a, liked_products: toggle(a.liked_products, id), disliked_products: a.disliked_products.filter((x) => x !== id) }))}
-                  >
-                    {catalog.products[id]!.name}
-                  </Chip>
-                ))}
+                {tasteProducts.map((id) => {
+                  const name = catalog.products[id]!.name;
+                  const liked = answers.liked_products.includes(id);
+                  const disliked = answers.disliked_products.includes(id);
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      className={`chip like${disliked ? ' dislike' : ''}`}
+                      aria-pressed={liked}
+                      aria-label={`${name}: ${liked ? 'люблю' : disliked ? 'не люблю' : 'без разницы'}`}
+                      onClick={() => cycleTaste(id)}
+                    >
+                      {liked && <Icon name="heart" size={16} />}
+                      {disliked && <Icon name="close" size={16} strokeWidth={2.4} />}
+                      {name}
+                    </button>
+                  );
+                })}
               </div>
-            </Field>
-            <Field label="Не люблю">
-              <div className="chips">
-                {tasteProducts.map((id) => (
-                  <Chip
-                    key={id}
-                    tone="ban"
-                    on={answers.disliked_products.includes(id)}
-                    onClick={() => setAnswers((a) => ({ ...a, disliked_products: toggle(a.disliked_products, id), liked_products: a.liked_products.filter((x) => x !== id) }))}
-                  >
-                    {catalog.products[id]!.name}
-                  </Chip>
-                ))}
-              </div>
-            </Field>
-            <Field label="Острота для взрослых">
-              <div className="option-grid three">
-                {SPICE.map((o) => (
-                  <OptionCard key={o.value} selected={answers.spice === o.value} onClick={() => set('spice', o.value)} title={o.title} text={o.text} />
-                ))}
-              </div>
-              {answers.children.length > 0 && <p className="small muted">Детям острые блюда не подбираются — это меняется в профиле ребёнка.</p>}
             </Field>
           </div>
         )}

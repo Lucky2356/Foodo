@@ -77,7 +77,7 @@ function Landing() {
           </div>
         </section>
       )}
-      <section className="grid" aria-label="Возможности">
+      <section className="grid features-grid" aria-label="Возможности">
         {FEATURES.map((f) => (
           <div key={f.title} className="card feature fade-in">
             <div className="ficon">
