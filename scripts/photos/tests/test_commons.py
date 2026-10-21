@@ -1,5 +1,7 @@
 """Credit formatting for Commons metadata (no network)."""
 
+from pathlib import Path
+
 from scripts.photos.commons import acceptable, author_name, license_link
 
 
@@ -86,3 +88,18 @@ def test_every_catalog_photo_has_a_card_thumbnail() -> None:
             assert (public / "photos" / "thumb" / name).is_file(), (
                 f"no thumbnail for {url}"
             )
+
+
+def test_retry_queries_replace_the_earlier_ones(tmp_path: Path) -> None:
+    from scripts.photos.candidates import queries
+
+    (tmp_path / "queries.txt").write_text(
+        "# comment\nshchi: shchi; щи\nborshch: borscht\n", encoding="utf-8"
+    )
+    (tmp_path / "queries_soup.txt").write_text("uha: ukha\n", encoding="utf-8")
+    (tmp_path / "retry.txt").write_text(
+        "shchi: category:Shchi; sauerkraut soup\n", encoding="utf-8"
+    )
+    q = queries(tmp_path)
+    assert q["shchi"] == ["category:Shchi", "sauerkraut soup"]
+    assert q["borshch"] == ["borscht"] and q["uha"] == ["ukha"]

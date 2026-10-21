@@ -23,7 +23,8 @@ concurrency:
 jobs:
   photos:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    # 200 recipes × 8 candidates: search and contact sheets take about 70 minutes.
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
@@ -39,13 +40,15 @@ jobs:
           OPENVERSE_CLIENT_SECRET: ${{ secrets.OPENVERSE_CLIENT_SECRET }}
           # Recipes per run; the rest get candidates on the next run (after review of this batch).
           PHOTO_BATCH: "200"
-        run: python -m scripts.photos.candidates out/candidates
+          # Retry pass for recipes left without a photo: more candidates per recipe.
+          PHOTO_PER_RECIPE: "8"
+        run: python -u -m scripts.photos.candidates out/candidates
       - name: Apply the reviewed selection
         if: hashFiles('shared/data/photos/selection.json') != ''
         env:
           OPENVERSE_CLIENT_ID: ${{ secrets.OPENVERSE_CLIENT_ID }}
           OPENVERSE_CLIENT_SECRET: ${{ secrets.OPENVERSE_CLIENT_SECRET }}
-        run: python -m scripts.photos.apply out/applied
+        run: python -u -m scripts.photos.apply out/applied
       - if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:

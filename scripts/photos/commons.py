@@ -151,6 +151,31 @@ def search(query: str, limit: int = 12, thumb_width: int = 240) -> list[dict[str
     return [c for c in (describe(p) for p in pages) if c]
 
 
+def category_files(
+    category: str, limit: int = 20, thumb_width: int = 240
+) -> list[dict[str, Any]]:
+    """Files directly in a Commons category («Category:Charlotte (cake)»). Dish categories are
+    curated by people, so they find photos that full-text search ranks too low."""
+    title = (
+        category if category.lower().startswith("category:") else f"Category:{category}"
+    )
+    data = _get(
+        {
+            "action": "query",
+            "generator": "categorymembers",
+            "gcmtitle": title,
+            "gcmtype": "file",
+            "gcmlimit": limit,
+            "prop": "imageinfo",
+            "iiprop": "url|size|mime|extmetadata",
+            "iiurlwidth": thumb_width,
+            "iiextmetadatafilter": "LicenseShortName|LicenseUrl|Artist|AttributionRequired|Restrictions",
+        }
+    )
+    pages = sorted(data.get("query", {}).get("pages", []), key=lambda p: p["title"])
+    return [c for c in (describe(p) for p in pages) if c]
+
+
 def file_info(title: str, width: int) -> dict[str, Any] | None:
     data = _get(
         {
