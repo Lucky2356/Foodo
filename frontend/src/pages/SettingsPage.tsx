@@ -171,7 +171,7 @@ export default function SettingsPage() {
           onChange={(v) => setPlan({ diet_mode: v })}
           options={[
             { value: 'regular', label: 'Обычное' },
-            { value: 'balanced', label: 'Сбалансированное (ПП)' },
+            { value: 'balanced', label: 'ПП' },
             { value: 'high_protein', label: 'Больше белка' },
           ]}
         />
