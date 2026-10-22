@@ -2584,6 +2584,7 @@ hr.sep {
 
 /* «Ещё разделы» in the profile: full-width rows with a comfortable tap target. */
 .more-link {
+  --gap: 12px;
   min-height: 48px;
   padding: 0 12px;
   border-radius: 12px;
@@ -2603,4 +2604,11 @@ hr.sep {
   font-size: 15px;
   font-weight: 750;
   margin: 0;
+}
+
+/* Icons keep their size in buttons and links: a long label wraps instead of squeezing the icon. */
+.btn > svg,
+.more-link > svg,
+.nav-link svg {
+  flex: none;
 }
