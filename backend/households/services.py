@@ -159,8 +159,15 @@ def apply_op(h: Household, menu_id: Any, op: JSON, expected_revision: int | None
 def shopping_for(h: Household, menu: Menu) -> JSON:
     catalog = engine_catalog(h.id)
     state = {**empty_shopping_state(), **(menu.shopping_state or {})}
-    result = compute_shopping(menu.data, catalog, pantry_json(h), price_profile(h), state)
-    transferred = set(menu.purchase_transfers.values_list("line_id", flat=True))
+    transfers = list(menu.purchase_transfers.values_list("line_id", "qty"))
+    # What this menu bought and moved to the pantry is not «already at home» for its own list.
+    bought: dict[str, float] = {}
+    for line_id, qty in transfers:
+        product_id = line_id.split(":")[1] if line_id.startswith("auto:") else None
+        if product_id:
+            bought[product_id] = bought.get(product_id, 0) + qty
+    result = compute_shopping(menu.data, catalog, pantry_json(h), price_profile(h), state, household_settings(h)["plan"]["budget"], bought)
+    transferred = {line_id for line_id, _ in transfers}
     for line in result["lines"]:
         line["transferred"] = line["id"] in transferred
     return {**result, "state": state, "shopping_revision": menu.shopping_revision}
@@ -191,18 +198,27 @@ def update_shopping_state(h: Household, menu_id: Any, patch: JSON, expected_revi
             raise ApiError("validation_error", "Слишком много ручных строк.")
         clean = []
         for ln in lines:
-            if not isinstance(ln, dict) or not isinstance(ln.get("name"), str) or not ln["name"].strip() or not str(ln.get("id", "")).startswith("manual:"):
+            if (
+                not isinstance(ln, dict)
+                or not isinstance(ln.get("name"), str)
+                or not ln["name"].strip()
+                or not str(ln.get("id", "")).startswith(("manual:", "manual-"))
+            ):
                 raise ApiError("validation_error", "Ручная строка: id «manual:…» и название обязательны.")
             price = ln.get("price_kop")
             qty = ln.get("qty")
+            if qty is not None and (not isinstance(qty, (int, float)) or isinstance(qty, bool) or not 0 < qty <= 100000):
+                raise ApiError("validation_error", "Ручная строка: количество — число больше нуля или пусто.")
+            if price is not None and (not isinstance(price, int) or isinstance(price, bool) or not 0 <= price <= 100_000_000):
+                raise ApiError("validation_error", "Ручная строка: цена — сумма в копейках, 0 или больше, или пусто.")
             clean.append(
                 {
                     "id": str(ln["id"])[:80],
                     "name": ln["name"].strip()[:120],
-                    "qty": qty if isinstance(qty, (int, float)) and not isinstance(qty, bool) else None,
+                    "qty": qty,
                     "unit": str(ln.get("unit") or "")[:10] or None,
                     "department": str(ln.get("department") or "Другое")[:60],
-                    "price_kop": price if isinstance(price, int) and not isinstance(price, bool) and price >= 0 else None,
+                    "price_kop": price,
                 }
             )
         state["manual_lines"] = clean
@@ -257,7 +273,7 @@ def confirm_cooking(h: Household, menu_id: Any, batch_id: str) -> tuple[CookConf
 
 @transaction.atomic
 def transfer_purchases(h: Household, menu_id: Any, line_ids: list[str]) -> JSON:
-    """Adds purchased quantities to the pantry once per shopping line."""
+    """Adds purchased quantities (whole packages) to the pantry once per shopping line."""
     menu = Menu.objects.select_for_update().get(pk=menu_id, household=h)
     shopping = shopping_for(h, menu)
     by_id = {ln["id"]: ln for ln in shopping["lines"]}
@@ -265,11 +281,12 @@ def transfer_purchases(h: Household, menu_id: Any, line_ids: list[str]) -> JSON:
     added, skipped = [], []
     for line_id in line_ids:
         line = by_id.get(line_id)
-        if line is None or line_id in done or not line["convertible"] or line["to_buy"] <= 0:
+        if line is None or line_id in done or not line["convertible"] or line["buy_qty"] <= 0:
             skipped.append(line_id)
             continue
-        PurchaseTransfer.objects.create(menu=menu, line_id=line_id, qty=line["to_buy"])
-        PantryItem.objects.create(household=h, product_id=line["product_id"], qty=line["to_buy"], unit=line["unit"], location="Куплено")
+        # Whole packages go to the pantry: the leftover after cooking stays at home.
+        PurchaseTransfer.objects.create(menu=menu, line_id=line_id, qty=line["buy_qty"])
+        PantryItem.objects.create(household=h, product_id=line["product_id"], qty=line["buy_qty"], unit=line["unit"], location="Куплено")
         added.append(line_id)
         done.add(line_id)
     return {"added": added, "skipped": skipped}

@@ -16,7 +16,18 @@ export interface GuestExport {
   exported_at: string;
   household: Omit<GuestHousehold, 'id'>;
   members: (Member & { position: number })[];
-  menus: { id: string; title: string; is_favorite: boolean; menu: StoredMenu['menu']; shopping_state: StoredMenu['shopping_state']; cooked_batches: string[]; transferred_lines: string[]; created_at: string }[];
+  menus: {
+    id: string;
+    title: string;
+    is_favorite: boolean;
+    menu: StoredMenu['menu'];
+    shopping_state: StoredMenu['shopping_state'];
+    cooked_batches: string[];
+    transferred_lines: string[];
+    /** Optional: files from before 0.2.2 do not have it. */
+    transferred_qty?: Record<string, number>;
+    created_at: string;
+  }[];
   pantry: (PantryRecord & { created_at?: string })[];
   prices: OwnPrice[];
   favorites: string[];
@@ -43,6 +54,7 @@ export async function exportGuestData(db?: GuestDb): Promise<GuestExport> {
       shopping_state: m.shopping_state,
       cooked_batches: m.cooked_batches,
       transferred_lines: m.transferred_lines,
+      transferred_qty: m.transferred_qty ?? {},
       created_at: m.created_at,
     })),
     pantry: await d.getAll('pantry'),
@@ -70,8 +82,9 @@ export function migrateExport(data: unknown): GuestExport {
 }
 
 /**
- * Restores a backup into this browser. «replace» clears guest data first; «merge» keeps existing
- * records and adds those with new ids. Everything happens in one IndexedDB transaction.
+ * Restores a backup into this browser. «replace» clears guest data first and restores the family
+ * settings (city, store, budget) from the file; «merge» keeps every existing record and setting and
+ * only adds records with new ids. Everything happens in one IndexedDB transaction.
  */
 export async function importGuestData(raw: unknown, mode: 'replace' | 'merge', db?: GuestDb): Promise<{ members: number; menus: number }> {
   const data = migrateExport(raw);
@@ -109,14 +122,17 @@ export async function importGuestData(raw: unknown, mode: 'replace' | 'merge', d
       cooked_batches: m.cooked_batches ?? [],
       shopping_state: m.shopping_state ?? { manual_lines: [], marks: {}, seen: {} },
       transferred_lines: m.transferred_lines ?? [],
+      transferred_qty: m.transferred_qty ?? {},
     });
     menus += 1;
   }
-  for (const p of data.pantry) await tx.objectStore('pantry').put({ ...p, created_at: p.created_at ?? new Date().toISOString() });
-  for (const p of data.prices) await tx.objectStore('prices').put(p);
-  for (const r of data.custom_recipes) await tx.objectStore('recipes').put(r);
-  for (const w of data.water) await tx.objectStore('water').put(w);
-  for (const h of data.habits) await tx.objectStore('habits').put(h);
+  // In «merge» a record that already exists here wins: the file never overwrites current data.
+  const keep = async (store: 'pantry' | 'prices' | 'recipes' | 'water' | 'habits', id: string) => mode === 'merge' && (await tx.objectStore(store).get(id)) !== undefined;
+  for (const p of data.pantry) if (!(await keep('pantry', p.id))) await tx.objectStore('pantry').put({ ...p, created_at: p.created_at ?? new Date().toISOString() });
+  for (const p of data.prices) if (!(await keep('prices', p.id))) await tx.objectStore('prices').put(p);
+  for (const r of data.custom_recipes) if (!(await keep('recipes', r.id))) await tx.objectStore('recipes').put(r);
+  for (const w of data.water) if (!(await keep('water', w.id))) await tx.objectStore('water').put(w);
+  for (const h of data.habits) if (!(await keep('habits', h.id))) await tx.objectStore('habits').put(h);
   await tx.done;
   return { members, menus };
 }

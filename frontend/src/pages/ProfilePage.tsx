@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { estimateEnergy, spiceTolerance } from '../engine';
 import type { Member } from '../engine';
 import { useApp } from '../state/app';
-import { downloadJson, exportGuestData, importGuestData } from '../data/backup';
+import { downloadJson, exportGuestData, importGuestData, migrateExport } from '../data/backup';
+import type { GuestExport } from '../data/backup';
+import { ApiError } from '../data/api';
 import { Icon } from '../ui/icons';
 import { Banner, Chip, Field, Loading, NumberInput, PageHead, Segmented, Sheet, Stepper } from '../ui/kit';
 import { rangeError } from '../lib/numbers';
@@ -18,7 +20,21 @@ import { NATIVE_BUILD } from '../lib/config';
 const TIMEZONES = ['Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Samara', 'Asia/Yekaterinburg', 'Asia/Omsk', 'Asia/Krasnoyarsk', 'Asia/Irkutsk', 'Asia/Yakutsk', 'Asia/Vladivostok', 'Asia/Magadan', 'Asia/Kamchatka'];
 
 export default function ProfilePage() {
-  const { household, gateway, user, reportError, toast, refreshHousehold, bump } = useApp();
+  const { household, gateway, user, reportError, toast, refreshHousehold, bump, setCurrentMenuId } = useApp();
+  const [restoring, setRestoring] = useState<GuestExport | null>(null);
+  const restore = async (mode: 'replace' | 'merge') => {
+    if (!restoring) return;
+    try {
+      const r = await importGuestData(restoring, mode);
+      setRestoring(null);
+      if (mode === 'replace') setCurrentMenuId(null);
+      await refreshHousehold();
+      bump();
+      toast(`Восстановлено: ${r.members} ${plural(r.members, 'участник', 'участника', 'участников')}, ${r.menus} меню`, { tone: 'success' });
+    } catch (err) {
+      reportError(err);
+    }
+  };
   const [editing, setEditing] = useState<Member | 'new' | null>(null);
   // Removal is confirmed first: undoing it would give the person a new id and detach them from the menu.
   const [removing, setRemoving] = useState<Member | null>(null);
@@ -168,10 +184,13 @@ export default function ProfilePage() {
                 e.target.value = '';
                 if (!file) return;
                 try {
-                  const r = await importGuestData(JSON.parse(await file.text()), 'merge');
-                  await refreshHousehold();
-                  bump();
-                  toast(`Восстановлено: участников ${r.members}, меню ${r.menus}`, { tone: 'success' });
+                  let parsed: unknown;
+                  try {
+                    parsed = JSON.parse(await file.text());
+                  } catch {
+                    throw new ApiError('invalid_import', 'Файл не читается как резервная копия Foodo (JSON).', 400);
+                  }
+                  setRestoring(migrateExport(parsed));
                 } catch (err) {
                   reportError(err);
                 }
@@ -183,6 +202,38 @@ export default function ProfilePage() {
       <Link to="/account" className="btn ghost big">
         <Icon name={user ? 'shield' : 'user'} size={20} /> {user ? 'Аккаунт и безопасность' : 'Аккаунт: вход и синхронизация'}
       </Link>
+      {restoring && (
+        <Sheet
+          open
+          onClose={() => setRestoring(null)}
+          title="Восстановить из файла"
+          footer={
+            <>
+              <button className="btn primary" onClick={() => void restore('replace')}>
+                Заменить
+              </button>
+              <button className="btn" onClick={() => void restore('merge')}>
+                Добавить к текущим
+              </button>
+              <button className="btn ghost" onClick={() => setRestoring(null)}>
+                Отмена
+              </button>
+            </>
+          }
+        >
+          <div className="stack">
+            <p>
+              В файле от {new Date(restoring.exported_at).toLocaleDateString('ru-RU')}: {restoring.members.length} {plural(restoring.members.length, 'участник', 'участника', 'участников')}, {restoring.menus.length} меню, {restoring.pantry.length} {plural(restoring.pantry.length, 'продукт', 'продукта', 'продуктов')} в остатках.
+            </p>
+            <p className="small">
+              <strong>Заменить</strong> — данные в этом {NATIVE_BUILD ? 'приложении' : 'браузере'} будут заменены содержимым файла, включая город, магазин и бюджет.
+            </p>
+            <p className="small">
+              <strong>Добавить к текущим</strong> — ничего не перезаписывается: добавятся только записи, которых здесь ещё нет; настройки семьи останутся текущими.
+            </p>
+          </div>
+        </Sheet>
+      )}
       {removing && (
         <Sheet
           open

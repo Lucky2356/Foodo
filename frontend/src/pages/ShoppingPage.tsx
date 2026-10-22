@@ -1,27 +1,24 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { UNIT_NAMES } from '../engine';
 import type { ManualLine } from '../engine';
 import type { ShoppingView } from '../data/types';
 import { downloadBlob } from '../data/backup';
 import { useApp } from '../state/app';
 import { useCurrentMenu } from '../state/menu';
 import { Icon } from '../ui/icons';
-import { Banner, Empty, ErrorBox, Loading, PageHead, Sheet } from '../ui/kit';
+import { Banner, Empty, ErrorBox, Field, Loading, NumberInput, PageHead, Sheet } from '../ui/kit';
 import { dayMonth } from '../lib/dates';
-import { newId, num, rub } from '../lib/format';
+import { newId, num, plural, quantity, rub } from '../lib/format';
 import { buildExportModel, shoppingText } from '../export/model';
 
 type Line = ShoppingView['lines'][number];
 
 const KIND_NAMES: Record<string, string> = { manual: 'ваша цена', receipt: 'чек', community: 'цены пользователей', scraped: 'сайт сети', rosstat: 'средняя цена Росстата (оценка)' };
 
-function qty(value: number, unit: string): string {
-  const u = (UNIT_NAMES as Record<string, string>)[unit] ?? unit;
-  if (unit === 'g' && value >= 1000) return `${num(value / 1000, 2)} кг`;
-  if (unit === 'ml' && value >= 1000) return `${num(value / 1000, 2)} л`;
-  return `${num(value, value < 10 ? 1 : 0)} ${u}`;
-}
+/** Units a hand-added line can have; the value is stored as typed, not converted. */
+const MANUAL_UNITS = ['шт.', 'уп.', 'г', 'кг', 'мл', 'л'];
+
+const qty = quantity;
 
 export default function ShoppingPage() {
   const { gateway, household, reportError, toast, bump } = useApp();
@@ -30,6 +27,7 @@ export default function ShoppingPage() {
   const [error, setError] = useState<string | null>(null);
   const [newItem, setNewItem] = useState('');
   const [detail, setDetail] = useState<Line | null>(null);
+  const [editing, setEditing] = useState<ManualLine | null>(null);
   const [hideDone, setHideDone] = useState(false);
   const [exporting, setExporting] = useState<string | null>(null);
   const seenSent = useRef<string | null>(null);
@@ -49,20 +47,26 @@ export default function ShoppingPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [record?.id, record?.revision, gateway]);
 
-  // Remember what the user has seen so later menu edits can highlight changed quantities.
+  // Remember the quantities the user has seen, so later menu edits can mark what changed. The marks
+  // stay until the user confirms them («Понятно»); without changes the record is kept up to date quietly.
   useEffect(() => {
     if (!view || !record) return;
     const key = `${record.id}:${record.revision}`;
     if (seenSent.current === key) return;
+    seenSent.current = key;
+    if (view.lines.some((l) => l.changed)) return;
     const seen: Record<string, number> = {};
     for (const l of view.lines) seen[l.id] = l.to_buy;
     const same = Object.keys(seen).length === Object.keys(view.state.seen).length && Object.entries(seen).every(([k, v]) => view.state.seen[k] === v);
-    seenSent.current = key;
-    if (!same) {
-      const t = setTimeout(() => void gateway.patchShopping(record.id, { seen }, null).catch(() => undefined), 4000);
-      return () => clearTimeout(t);
-    }
+    if (!same) void gateway.patchShopping(record.id, { seen }, null).catch(() => undefined);
   }, [view, record, gateway]);
+
+  const acknowledgeChanges = () => {
+    if (!view) return;
+    const seen: Record<string, number> = {};
+    for (const l of view.lines) seen[l.id] = l.to_buy;
+    void patch({ seen }, (v) => ({ ...v, lines: v.lines.map((l) => ({ ...l, changed: false })) }));
+  };
 
   const patch = async (p: Partial<ShoppingView['state']>, optimistic?: (v: ShoppingView) => ShoppingView) => {
     if (!record || !view) return;
@@ -89,9 +93,15 @@ export default function ShoppingPage() {
   const addManual = () => {
     const name = newItem.trim();
     if (!name || !view) return;
-    const line: ManualLine = { id: newId('manual'), name, qty: null, unit: null, department: 'Другое', price_kop: null };
+    const line: ManualLine = { id: `manual:${newId('line')}`, name, qty: null, unit: null, department: 'Другое', price_kop: null };
     setNewItem('');
     void patch({ manual_lines: [...view.state.manual_lines, line] });
+  };
+
+  const saveManual = (line: ManualLine) => {
+    if (!view) return;
+    setEditing(null);
+    void patch({ manual_lines: view.state.manual_lines.map((l) => (l.id === line.id ? line : l)) });
   };
 
   const removeManual = (id: string) => {
@@ -99,6 +109,18 @@ export default function ShoppingPage() {
     const before = view.state.manual_lines;
     void patch({ manual_lines: before.filter((l) => l.id !== id) });
     toast('Строка удалена', { undo: () => patch({ manual_lines: before }) });
+  };
+
+  const transfer = async (ids: string[]) => {
+    if (!record) return;
+    try {
+      const r = await gateway.transferPurchases(record.id, ids);
+      toast(r.added.length > 0 ? `В остатки добавлено: ${r.added.length} ${plural(r.added.length, 'продукт', 'продукта', 'продуктов')}` : 'Эти покупки уже перенесены в остатки', { tone: 'success' });
+      bump();
+      void load();
+    } catch (e) {
+      reportError(e);
+    }
   };
 
   const grouped = useMemo(() => {
@@ -127,7 +149,8 @@ export default function ShoppingPage() {
 
   const remaining = view.lines.filter((l) => !l.purchased && !l.at_home && l.to_buy > 0).length + view.manual_lines.filter((l) => !l.purchased && !l.at_home).length;
   const total = view.lines.filter((l) => l.to_buy > 0).length + view.manual_lines.length;
-  const purchasedIds = view.lines.filter((l) => l.purchased && !l.transferred && l.convertible && l.to_buy > 0).map((l) => l.id);
+  const purchasedIds = view.lines.filter((l) => l.purchased && !l.transferred && l.convertible && l.buy_qty > 0).map((l) => l.id);
+  const manualShown = view.manual_lines.filter((l) => !(hideDone && (l.purchased || l.at_home)));
   const changed = view.lines.filter((l) => l.changed).length;
   const budget = view.budget;
   const anyPrice = view.lines.some((l) => l.price_kop !== null);
@@ -161,9 +184,9 @@ export default function ShoppingPage() {
   return (
     <div className="stack" style={{ ['--gap' as string]: '14px' }}>
       <PageHead
-        eyebrow={`Меню ${dayMonth(record.menu.start_date)} · ${record.menu.days} дн.`}
+        eyebrow={`Меню с ${dayMonth(record.menu.start_date)} · ${record.menu.days} ${plural(record.menu.days, 'день', 'дня', 'дней')}`}
         title="Покупки"
-        subtitle={total === 0 ? 'Покупать ничего не нужно' : `Осталось купить: ${remaining} из ${total}`}
+        subtitle={total === 0 ? 'Покупать ничего не нужно' : `Осталось купить: ${remaining} из ${total} ${plural(total, 'позиции', 'позиций', 'позиций')}`}
         actions={
           <>
             <button className="btn ghost small" onClick={() => void doExport('share')} disabled={exporting !== null}>
@@ -178,7 +201,7 @@ export default function ShoppingPage() {
           </>
         }
       />
-      <div className="progress" aria-label="Куплено">
+      <div className="progress" role="progressbar" aria-label="Куплено" aria-valuemin={0} aria-valuemax={total} aria-valuenow={total - remaining} aria-valuetext={`Куплено ${total - remaining} из ${total}`}>
         <span style={{ width: `${total ? ((total - remaining) / total) * 100 : 100}%` }} />
       </div>
       <div className="bento">
@@ -189,7 +212,9 @@ export default function ShoppingPage() {
           {anyPrice && <div className="muted small">Стоимость использованного: {rub(view.totals.usage_kop)}</div>}
           {!view.totals.complete && (
             <div className="badge yellow" style={{ marginTop: 8 }}>
-              {anyPrice ? `Итог неполный: цен нет для ${view.totals.missing_prices.length} позиций` : 'Цены ещё не заданы'}
+              {anyPrice
+                ? `Итог неполный: нет цены у ${view.totals.missing_prices.length} ${plural(view.totals.missing_prices.length, 'позиции', 'позиций', 'позиций')}`
+                : 'Цены ещё не заданы'}
             </div>
           )}
           {!anyPrice && (
@@ -218,11 +243,19 @@ export default function ShoppingPage() {
                 Лимит {rub(budget.limit_kop)} · {budget.diff_kop !== null && budget.diff_kop >= 0 ? `запас ${rub(budget.diff_kop)}` : `больше на ${rub(Math.abs(budget.diff_kop ?? 0))}`}
               </div>
               {budget.status === 'unconfirmed' && <div className="small" style={{ marginTop: 4 }}>Известны не все цены — <Link to="/settings#prices">добавить цены</Link></div>}
+              {budget.status === 'exceeded' && !view.totals.complete && <div className="small" style={{ marginTop: 4 }}>Лимит превышен уже по известным ценам; с остальными сумма будет больше.</div>}
             </>
           )}
         </div>
       </div>
-      {changed > 0 && <Banner icon="info">После изменений меню обновились количества у {changed} позиций — они отмечены.</Banner>}
+      {changed > 0 && (
+        <Banner icon="info">
+          После изменений меню обновились количества у {changed} {plural(changed, 'позиции', 'позиций', 'позиций')} — они отмечены.{' '}
+          <button className="btn small ghost" onClick={acknowledgeChanges}>
+            Понятно
+          </button>
+        </Banner>
+      )}
       {view.expired_skipped.length > 0 && (
         <Banner tone="warn" icon="warn">
           Некоторые продукты из остатков просрочены к дню готовки и не учтены: {view.expired_skipped.map((e) => view.lines.find((l) => l.product_id === e.product_id)?.name ?? e.product_id).join(', ')}.
@@ -246,19 +279,7 @@ export default function ShoppingPage() {
           <span className="small">Скрыть купленное</span>
         </label>
         {purchasedIds.length > 0 && (
-          <button
-            className="btn small"
-            onClick={async () => {
-              try {
-                const r = await gateway.transferPurchases(record.id, purchasedIds);
-                toast(`В остатки добавлено: ${r.added.length}`, { tone: 'success' });
-                bump();
-                void load();
-              } catch (e) {
-                reportError(e);
-              }
-            }}
-          >
+          <button className="btn small" onClick={() => void transfer(purchasedIds)} title="Купленные упаковки целиком добавятся в «Остатки»">
             <Icon name="box" size={16} /> Купленное — в остатки ({purchasedIds.length})
           </button>
         )}
@@ -294,24 +315,34 @@ export default function ShoppingPage() {
           </div>
         </section>
       ))}
-      {view.manual_lines.length > 0 && (
+      {manualShown.length > 0 && (
         <section>
-          <h2 className="shop-dept">Добавлено вручную</h2>
+          <h2 className="shop-dept">
+            Добавлено вручную <span className="shop-count">{manualShown.length}</span>
+          </h2>
           <div className="shop-group">
-          {view.manual_lines.map((l) => (
-            <div key={l.id} className={`shop-line ${l.purchased ? 'done' : ''}`}>
-              <input className="check" type="checkbox" checked={l.purchased} onChange={() => toggle(l.id, 'purchased')} aria-label={`Куплено: ${l.name}`} />
-              <span className="shop-name" style={{ fontWeight: 650 }}>
-                {l.name}
-              </span>
-              <button className="icon-btn small" onClick={() => removeManual(l.id)} aria-label={`Удалить: ${l.name}`}>
-                <Icon name="trash" size={18} />
-              </button>
-            </div>
-          ))}
+            {manualShown.map((l) => (
+              <div key={l.id} className={`shop-line ${l.purchased ? 'done' : ''}`}>
+                <input className="check" type="checkbox" checked={l.purchased} onChange={() => toggle(l.id, 'purchased')} aria-label={`Куплено: ${l.name}`} />
+                <button
+                  onClick={() => setEditing(view.state.manual_lines.find((x) => x.id === l.id) ?? null)}
+                  style={{ textAlign: 'left', border: 0, background: 'none', padding: 0, cursor: 'pointer', minWidth: 0 }}
+                  aria-label={`Изменить: ${l.name}`}
+                >
+                  <div className="shop-name" style={{ fontWeight: 650 }}>
+                    {l.name}
+                  </div>
+                  <div className="muted small">{l.qty !== null ? `${num(l.qty, 2)} ${l.unit ?? ''}`.trim() : 'количество не указано'}</div>
+                </button>
+                <span className="num small" style={{ textAlign: 'right', fontWeight: 650 }}>
+                  {l.price_kop !== null ? rub(l.price_kop) : anyPrice ? <span className="faint">нет цены</span> : ''}
+                </span>
+              </div>
+            ))}
           </div>
         </section>
       )}
+      {editing && <ManualLineSheet line={editing} onClose={() => setEditing(null)} onSave={saveManual} onRemove={() => { setEditing(null); removeManual(editing.id); }} />}
       <p className="muted tiny">
         «Корзина покупок» — это список внутри Foodo: заказ и доставку мы не оформляем. Выбор магазина не загружает его реальные цены — источник каждой цены указан в строке.
       </p>
@@ -345,7 +376,9 @@ export default function ShoppingPage() {
                 <tr>
                   <td>Цена</td>
                   <td>
-                    {detail.price_kop !== null ? `${rub(detail.price_kop)} · ${KIND_NAMES[detail.price_kind ?? 'manual'] ?? detail.price_kind}, ${detail.price_date}` : 'неизвестна'}
+                    {detail.price_kop !== null
+                      ? `${rub(detail.price_kop)}${detail.price_per ? ` за ${qty(detail.price_per.size, detail.price_per.unit)}` : ''} · ${KIND_NAMES[detail.price_kind ?? 'manual'] ?? detail.price_kind}, ${detail.price_date ? new Date(detail.price_date).toLocaleDateString('ru-RU') : ''}`
+                      : 'неизвестна'}
                   </td>
                 </tr>
               </tbody>
@@ -373,5 +406,60 @@ export default function ShoppingPage() {
         </Sheet>
       )}
     </div>
+  );
+}
+
+/** A hand-added line: name, an optional amount as typed and the price paid for the whole line. */
+function ManualLineSheet({ line, onClose, onSave, onRemove }: { line: ManualLine; onClose: () => void; onSave: (l: ManualLine) => void; onRemove: () => void }) {
+  const [name, setName] = useState(line.name);
+  const [amount, setAmount] = useState<number | null>(line.qty);
+  const [unit, setUnit] = useState(line.unit ?? 'шт.');
+  const [price, setPrice] = useState<number | null>(line.price_kop === null ? null : line.price_kop / 100);
+  const amountBad = amount !== null && !(Number.isFinite(amount) && amount > 0 && amount <= 100000);
+  const priceBad = price !== null && !(Number.isFinite(price) && price >= 0 && price <= 1000000);
+  const invalid = !name.trim() || amountBad || priceBad;
+  return (
+    <Sheet
+      open
+      onClose={onClose}
+      title="Своя строка"
+      footer={
+        <>
+          <button
+            className="btn primary"
+            disabled={invalid}
+            onClick={() => onSave({ ...line, name: name.trim().slice(0, 120), qty: amount, unit: amount === null ? null : unit, price_kop: price === null ? null : Math.round(price * 100) })}
+          >
+            Сохранить
+          </button>
+          <button className="btn danger ghost" onClick={onRemove}>
+            Удалить строку
+          </button>
+        </>
+      }
+    >
+      <div className="stack">
+        <Field label="Название">
+          <input className="input" value={name} maxLength={120} onChange={(e) => setName(e.target.value)} />
+        </Field>
+        <div className="row wrap" style={{ alignItems: 'flex-end' }}>
+          <Field label="Количество (необязательно)" error={amountBad ? 'Число больше нуля.' : undefined}>
+            <NumberInput decimal value={amount} onChange={setAmount} invalid={amountBad} style={{ width: 140 }} />
+          </Field>
+          <Field label="Единица">
+            <select className="input" value={unit} onChange={(e) => setUnit(e.target.value)} style={{ width: 110 }}>
+              {MANUAL_UNITS.map((u) => (
+                <option key={u} value={u}>
+                  {u}
+                </option>
+              ))}
+            </select>
+          </Field>
+        </div>
+        <Field label="Цена за всю строку, ₽ (необязательно)" hint="Без цены итог и бюджет остаются неполными." error={priceBad ? 'Сумма в рублях, 0 или больше.' : undefined}>
+          <NumberInput decimal value={price} onChange={setPrice} invalid={priceBad} style={{ width: 160 }} />
+        </Field>
+      </div>
+    </Sheet>
   );
 }

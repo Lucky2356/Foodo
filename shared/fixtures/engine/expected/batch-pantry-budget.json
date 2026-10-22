@@ -497,6 +497,7 @@
     "needed": 45,
     "from_pantry": 0,
     "to_buy": 45,
+    "buy_qty": 50,
     "package": {
      "size": 50,
      "unit": "g",
@@ -504,6 +505,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -555,6 +557,7 @@
     "needed": 200,
     "from_pantry": 200,
     "to_buy": 0,
+    "buy_qty": 0,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -562,6 +565,11 @@
     },
     "package_note": null,
     "price_kop": 4990,
+    "price_per": {
+     "size": 1000,
+     "unit": "g",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",
@@ -599,9 +607,11 @@
     "needed": 240,
     "from_pantry": 0,
     "to_buy": 240,
+    "buy_qty": 240,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -632,6 +642,7 @@
     "needed": 210,
     "from_pantry": 0,
     "to_buy": 210,
+    "buy_qty": 250,
     "package": {
      "size": 250,
      "unit": "g",
@@ -639,6 +650,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -676,6 +688,7 @@
     "needed": 20,
     "from_pantry": 0,
     "to_buy": 20,
+    "buy_qty": 50,
     "package": {
      "size": 50,
      "unit": "g",
@@ -683,6 +696,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -727,6 +741,7 @@
     "needed": 100,
     "from_pantry": 0,
     "to_buy": 100,
+    "buy_qty": 180,
     "package": {
      "size": 180,
      "unit": "g",
@@ -734,6 +749,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -799,6 +815,7 @@
     "needed": 855.291262,
     "from_pantry": 500,
     "to_buy": 355.291262,
+    "buy_qty": 930,
     "package": {
      "size": 0.93,
      "unit": "l",
@@ -806,6 +823,11 @@
     },
     "package_note": null,
     "price_kop": 8990,
+    "price_per": {
+     "size": 0.93,
+     "unit": "l",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",
@@ -878,6 +900,7 @@
     "needed": 405,
     "from_pantry": 0,
     "to_buy": 405,
+    "buy_qty": 600,
     "package": {
      "size": 200,
      "unit": "g",
@@ -885,6 +908,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -943,6 +967,7 @@
     "needed": 27,
     "from_pantry": 4,
     "to_buy": 23,
+    "buy_qty": 30,
     "package": {
      "size": 10,
      "unit": "pcs",
@@ -950,6 +975,11 @@
     },
     "package_note": null,
     "price_kop": 11990,
+    "price_per": {
+     "size": 10,
+     "unit": "pcs",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",
@@ -1036,6 +1066,7 @@
     "needed": 100,
     "from_pantry": 0,
     "to_buy": 100,
+    "buy_qty": 300,
     "package": {
      "size": 300,
      "unit": "g",
@@ -1043,6 +1074,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1073,6 +1105,7 @@
     "needed": 1800,
     "from_pantry": 0,
     "to_buy": 1800,
+    "buy_qty": 2000,
     "package": {
      "size": 500,
      "unit": "g",
@@ -1080,6 +1113,11 @@
     },
     "package_note": null,
     "price_kop": 37900,
+    "price_per": {
+     "size": 500,
+     "unit": "g",
+     "loose": false
+    },
     "price_date": "2026-10-05",
     "price_source": "чек",
     "price_kind": "receipt",
@@ -1117,6 +1155,7 @@
     "needed": 1050,
     "from_pantry": 0,
     "to_buy": 1050,
+    "buy_qty": 1200,
     "package": {
      "size": 400,
      "unit": "g",
@@ -1124,6 +1163,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1154,6 +1194,7 @@
     "needed": 525,
     "from_pantry": 0,
     "to_buy": 525,
+    "buy_qty": 900,
     "package": {
      "size": 450,
      "unit": "g",
@@ -1161,6 +1202,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1191,6 +1233,7 @@
     "needed": 168,
     "from_pantry": 0,
     "to_buy": 168,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -1198,6 +1241,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1242,6 +1286,7 @@
     "needed": 105,
     "from_pantry": 0,
     "to_buy": 105,
+    "buy_qty": 200,
     "package": {
      "size": 200,
      "unit": "g",
@@ -1249,6 +1294,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1286,6 +1332,7 @@
     "needed": 175,
     "from_pantry": 0,
     "to_buy": 175,
+    "buy_qty": 400,
     "package": {
      "size": 400,
      "unit": "g",
@@ -1293,6 +1340,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1330,6 +1378,7 @@
     "needed": 90,
     "from_pantry": 0,
     "to_buy": 90,
+    "buy_qty": 270,
     "package": {
      "size": 270,
      "unit": "g",
@@ -1337,6 +1386,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1367,6 +1417,7 @@
     "needed": 325.217391,
     "from_pantry": 0,
     "to_buy": 325.217391,
+    "buy_qty": 1000,
     "package": {
      "size": 1,
      "unit": "l",
@@ -1374,6 +1425,11 @@
     },
     "package_note": null,
     "price_kop": 15990,
+    "price_per": {
+     "size": 1,
+     "unit": "l",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",
@@ -1425,6 +1481,7 @@
     "needed": 1.7,
     "from_pantry": 0,
     "to_buy": 1.7,
+    "buy_qty": 50,
     "package": {
      "size": 50,
      "unit": "g",
@@ -1432,6 +1489,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1490,6 +1548,7 @@
     "needed": 40.5,
     "from_pantry": 0,
     "to_buy": 40.5,
+    "buy_qty": 0,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -1497,6 +1556,11 @@
     },
     "package_note": null,
     "price_kop": 2490,
+    "price_per": {
+     "size": 1000,
+     "unit": "g",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",

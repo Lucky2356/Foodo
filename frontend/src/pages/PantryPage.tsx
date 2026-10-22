@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import type { Product } from '../engine';
+import { availableDisplayUnits, cleanQty, toBase, UNIT_NAMES } from '../engine';
+import type { Product, RecipeUnit } from '../engine';
 import { useApp, useLoad } from '../state/app';
 import type { PantryRecord } from '../data/types';
 import { Icon } from '../ui/icons';
-import { Empty, ErrorBox, Field, Loading, PageHead, Sheet } from '../ui/kit';
+import { Empty, ErrorBox, Field, Loading, NumberInput, PageHead, Sheet } from '../ui/kit';
 import { ProductPicker } from '../ui/ProductPicker';
 import { addDaysIso, dayMonth, deviceTimeZone, localDate } from '../lib/dates';
 import { num } from '../lib/format';
@@ -106,15 +107,21 @@ function PantrySheet({ item, onClose, onSaved }: { item: PantryRecord | null; on
   const { gateway, catalog, reportError, toast } = useApp();
   const [productId, setProductId] = useState<string | null>(item?.product_id ?? null);
   const product: Product | undefined = productId ? catalog.products[productId] : undefined;
-  const [qtyText, setQty] = useState(item ? String(item.qty) : '');
+  const [amount, setAmount] = useState<number | null>(item ? item.qty : null);
+  const [unit, setUnit] = useState<RecipeUnit>(item?.unit ?? 'g');
   const [location, setLocation] = useState(item?.location ?? 'Холодильник');
   const [expires, setExpires] = useState(item?.expires ?? '');
-  const qtyNum = Number(qtyText.replace(',', '.'));
-  const valid = product && qtyNum > 0;
+  // Kilograms, litres and pieces are accepted where the product allows them; the pantry stores the
+  // product's base unit (spoons are not offered: nobody keeps «3 ложки» of a product at home).
+  const units = product ? availableDisplayUnits(product).filter((u) => !['tbsp', 'tsp', 'pinch'].includes(u)) : [];
+  const chosen = units.includes(unit) ? unit : (product?.base_unit ?? 'g');
+  const baseQty = product && amount !== null && Number.isFinite(amount) && amount > 0 ? toBase(product, amount, chosen) : null;
+  const amountBad = amount !== null && (baseQty === null || baseQty > 1_000_000);
+  const valid = product && baseQty !== null && !amountBad;
   const save = async () => {
-    if (!product) return;
+    if (!product || baseQty === null) return;
     try {
-      const body = { product_id: product.id, qty: qtyNum, unit: product.base_unit, location, expires: expires || null };
+      const body = { product_id: product.id, qty: cleanQty(baseQty), unit: product.base_unit, location, expires: expires || null };
       if (item) await gateway.updatePantry(item.id, body);
       else await gateway.addPantry(body);
       toast('Сохранено', { tone: 'success' });
@@ -137,9 +144,20 @@ function PantrySheet({ item, onClose, onSaved }: { item: PantryRecord | null; on
       <form className="stack" onSubmit={(e) => { e.preventDefault(); if (valid) void save(); }}>
         {!item && <ProductPicker value={productId} onChange={(p) => setProductId(p.id)} />}
         {product && (
-          <Field label={`Количество, ${UNIT[product.base_unit]}`} hint={product.base_unit === 'pcs' ? 'В штуках' : product.base_unit === 'ml' ? 'В миллилитрах' : 'В граммах, с кожурой/упаковкой — как покупали'}>
-            <input className="input" inputMode="decimal" value={qtyText} onChange={(e) => setQty(e.target.value)} aria-invalid={qtyText !== '' && !(qtyNum > 0)} />
-          </Field>
+          <div className="row wrap" style={{ alignItems: 'flex-end' }}>
+            <Field label="Количество" hint="Как покупали: с кожурой и упаковкой" error={amountBad ? 'Число больше нуля.' : undefined}>
+              <NumberInput decimal value={amount} onChange={setAmount} invalid={amountBad} style={{ width: 140 }} />
+            </Field>
+            <Field label="Единица">
+              <select className="input" value={chosen} onChange={(e) => setUnit(e.target.value as RecipeUnit)} style={{ width: 100 }}>
+                {units.map((u) => (
+                  <option key={u} value={u}>
+                    {UNIT_NAMES[u]}
+                  </option>
+                ))}
+              </select>
+            </Field>
+          </div>
         )}
         <div className="chips" role="group" aria-label="Где хранится">
           {LOCATIONS.map((l) => (

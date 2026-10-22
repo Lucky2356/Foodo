@@ -1,5 +1,5 @@
 import type { ExportModel } from './model';
-import { safeText } from './model';
+import { safeText, toBuyRows } from './model';
 
 function isoToDate(iso: string): Date {
   return new Date(`${iso}T00:00:00Z`);
@@ -19,7 +19,7 @@ export async function buildXlsx(model: ExportModel): Promise<Blob> {
     { header: 'Приём пищи', key: 'slot', width: 13 },
     { header: 'Блюдо', key: 'dish', width: 40 },
     { header: 'Для кого (порции)', key: 'who', width: 34 },
-    { header: 'Всего порций', key: 'portions', width: 13, style: { numFmt: '0.##' } },
+    { header: 'Всего порций', key: 'portions', width: 13, style: { numFmt: 'General' } },
   ];
   for (const r of model.menu) menu.addRow({ ...r, date: isoToDate(r.date), dish: safeText(r.dish), who: safeText(r.who) });
 
@@ -27,13 +27,14 @@ export async function buildXlsx(model: ExportModel): Promise<Blob> {
   shop.columns = [
     { header: 'Отдел', key: 'department', width: 22 },
     { header: 'Продукт', key: 'name', width: 34 },
-    { header: 'Нужно', key: 'needed', width: 10, style: { numFmt: '0.##' } },
-    { header: 'Есть дома', key: 'fromPantry', width: 11, style: { numFmt: '0.##' } },
-    { header: 'Купить', key: 'toBuy', width: 10, style: { numFmt: '0.##' } },
+    { header: 'Нужно', key: 'needed', width: 10, style: { numFmt: 'General' } },
+    { header: 'Есть дома', key: 'fromPantry', width: 11, style: { numFmt: 'General' } },
+    { header: 'Купить', key: 'toBuy', width: 10, style: { numFmt: 'General' } },
     { header: 'Ед.', key: 'unit', width: 7 },
     { header: 'Упаковок', key: 'packages', width: 10 },
     { header: 'Упаковка', key: 'packageSize', width: 12 },
-    { header: 'Цена упаковки, ₽', key: 'pricePerPackageRub', width: 16, style: { numFmt: '#,##0.00' } },
+    { header: 'Цена, ₽', key: 'pricePerPackageRub', width: 12, style: { numFmt: '#,##0.00' } },
+    { header: 'Цена за', key: 'priceFor', width: 10 },
     { header: 'Сумма, ₽', key: 'costRub', width: 12, style: { numFmt: '#,##0.00' } },
     { header: 'Источник цены', key: 'priceSource', width: 30 },
     { header: 'Отметка', key: 'mark', width: 12 },
@@ -48,7 +49,7 @@ export async function buildXlsx(model: ExportModel): Promise<Blob> {
     { header: 'Дата готовки', key: 'date', width: 13, style: { numFmt: 'dd.mm.yyyy' } },
     { header: 'Блюдо', key: 'dish', width: 40 },
     { header: 'Способ', key: 'method', width: 22 },
-    { header: 'Порций в партии', key: 'portions', width: 15, style: { numFmt: '0.##' } },
+    { header: 'Порций в партии', key: 'portions', width: 15, style: { numFmt: 'General' } },
     { header: 'Время, мин', key: 'totalMin', width: 11 },
     { header: 'На какие приёмы пищи', key: 'feeds', width: 50 },
   ];
@@ -100,12 +101,18 @@ export async function buildPdf(model: ExportModel, fontBase = 'fonts/'): Promise
     ...common,
     startY: 64,
     head: [['', 'Продукт', 'Купить', 'Упаковки', 'Сумма, ₽']],
-    body: model.shopping.map((r) => [r.mark ? '✓' : '☐', `${r.name}${r.department ? `\n${r.department}` : ''}`, r.toBuy !== null ? `${Math.round(r.toBuy * 100) / 100} ${r.unit}` : '', r.packages ? `${r.packages} × ${r.packageSize}` : '', r.costRub !== null ? r.costRub.toFixed(2) : 'нет цены']),
+    body: toBuyRows(model).map((r) => [
+      r.mark ? '✓' : '☐',
+      `${r.name}${r.department ? `\n${r.department}` : ''}`,
+      r.toBuyText,
+      r.packages ? `${r.packages} × ${r.packageSize}` : '',
+      r.costRub !== null ? r.costRub.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 'нет цены',
+    ]),
   });
   const y = (doc as unknown as { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? 80;
   doc.setFont('DejaVu', 'normal');
   doc.setFontSize(10);
-  doc.text(`Итого (известные цены): ${model.totals.purchaseRub.toFixed(2)} ₽ — ${model.totals.complete ? 'все цены известны' : 'итог неполный'}; ${model.totals.budget}.`, 40, y + 20, { maxWidth: 515 });
+  doc.text(`Итого (известные цены): ${model.totals.purchaseText} — ${model.totals.complete ? 'все цены известны' : 'итог неполный'}; ${model.totals.budget}.`, 40, y + 20, { maxWidth: 515 });
   doc.addPage();
   doc.setFont('DejaVu', 'bold');
   doc.setFontSize(16);

@@ -6,10 +6,15 @@ import { chainsForCity, detectCity, loadChains, loadCities, searchCities } from 
 import type { Chain, City } from '../data/geo';
 import { useApp, useLoad } from '../state/app';
 import { Icon } from '../ui/icons';
-import { Banner, Chip, Field, Loading, PageHead, Segmented, Sheet, Switch } from '../ui/kit';
+import { Banner, Chip, Field, Loading, NumberInput, PageHead, Segmented, Sheet, Switch } from '../ui/kit';
 import { ProductPicker } from '../ui/ProductPicker';
 import { dayMonth } from '../lib/dates';
-import { rub } from '../lib/format';
+import { num, rub } from '../lib/format';
+import { budgetError } from '../lib/numbers';
+
+const PRICE_UNITS: Record<string, string> = { g: 'г', kg: 'кг', ml: 'мл', l: 'л', pcs: 'шт.' };
+/** «за 900 г», «за 1 кг» */
+const pricePer = (size: number, unit: string) => `за ${num(size, 3)} ${PRICE_UNITS[unit] ?? unit}`;
 import { SLOT_NAMES } from '../lib/recipes';
 import { fetchPriceSourcesStatus } from '../data/prices';
 import type { PriceSourceStatus } from '../data/prices';
@@ -431,22 +436,19 @@ function PriceSources() {
 }
 
 function BudgetSection({ plan, setPlan }: { plan: PlanSettings; setPlan: (p: Partial<PlanSettings>) => void }) {
-  const [text, setText] = useState(plan.budget.limit_kop !== null ? String(plan.budget.limit_kop / 100) : '');
+  const [value, setValue] = useState<number | null>(plan.budget.limit_kop !== null ? plan.budget.limit_kop / 100 : null);
+  const error = budgetError(value);
+  const commit = () => {
+    if (error) return;
+    // 0 ₽ means «no limit», the same as an empty field.
+    const limit = value === null || value === 0 ? null : Math.round(value * 100);
+    if (limit !== plan.budget.limit_kop) setPlan({ budget: { ...plan.budget, limit_kop: limit } });
+  };
   return (
     <section className="card stack" id="budget">
       <h2>Бюджет</h2>
-      <Field label="Лимит на покупки за весь период меню, ₽" hint="Для всей семьи. Проверяется по стоимости упаковок на кассе с учётом остатков дома.">
-        <input
-          className="input"
-          inputMode="decimal"
-          placeholder="Без лимита"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onBlur={() => {
-            const v = Number(text.replace(',', '.').replace(/\s/g, ''));
-            setPlan({ budget: { ...plan.budget, limit_kop: text.trim() === '' || !(v >= 0) ? null : Math.round(v * 100) } });
-          }}
-        />
+      <Field label="Лимит на покупки за весь период меню, ₽" hint="Для всей семьи. Проверяется по стоимости упаковок на кассе с учётом остатков дома. Пусто — без лимита." error={error}>
+        <NumberInput decimal placeholder="Без лимита" value={value} onChange={setValue} invalid={Boolean(error)} onBlur={commit} />
       </Field>
       <p className="muted small">Если известны не все цены, статус будет «Бюджет не подтверждён» — мы не утверждаем, что меню укладывается в лимит.</p>
     </section>
@@ -459,6 +461,8 @@ function PricesSection() {
   const prefill = new URLSearchParams(location.search).get('price');
   const { data, reload } = useLoad(() => gateway.listPrices(), [gateway, household?.store_chain_id, household?.city?.id]);
   const [open, setOpen] = useState(Boolean(prefill));
+  const chainsLoad = useLoad(() => loadChains(), []);
+  const chainNames = useMemo(() => new Map((chainsLoad.data ?? []).map((c) => [c.id, c.name])), [chainsLoad.data]);
   const own = data?.own ?? [];
   const publicEntries = (data?.profile.entries ?? []).filter((e) => e.kind && !['manual', 'receipt'].includes(e.kind));
   return (
@@ -489,13 +493,18 @@ function PricesSection() {
                 <tr key={p.id}>
                   <td>{catalog.products[p.product_id]?.name ?? p.product_id}</td>
                   <td className="num">
-                    {rub(p.price_kop)} за {p.package_size} {p.package_unit}
+                    {rub(p.price_kop)} {pricePer(p.package_size, p.package_unit)}
                   </td>
-                  <td>{dayMonth(p.date)}</td>
+                  <td className="small">
+                    {dayMonth(p.date)}
+                    <span className="muted" style={{ display: 'block' }}>
+                      {p.chain_id ? (chainNames.get(p.chain_id) ?? p.chain_id) : 'любой магазин'}
+                    </span>
+                  </td>
                   <td>
                     <button
                       className="icon-btn small"
-                      aria-label="Удалить цену"
+                      aria-label={`Удалить цену: ${catalog.products[p.product_id]?.name ?? p.product_id}`}
                       onClick={async () => {
                         try {
                           await gateway.deletePrice(p.id);
@@ -524,7 +533,7 @@ function PricesSection() {
                   <tr key={p.product_id}>
                     <td>{catalog.products[p.product_id]?.name ?? p.product_id}</td>
                     <td className="num">
-                      {rub(p.price_kop)} за {p.package_size} {p.package_unit}
+                      {rub(p.price_kop)} {pricePer(p.package_size, p.package_unit)}
                     </td>
                     <td className="small muted">
                       {KIND_NAMES[p.kind ?? ''] ?? p.source}, {dayMonth(p.date)}
@@ -539,6 +548,7 @@ function PricesSection() {
       {open && (
         <PriceSheet
           productId={prefill}
+          chainName={household?.store_chain_id ? (chainNames.get(household.store_chain_id) ?? null) : null}
           onClose={() => setOpen(false)}
           onSaved={(shared) => {
             setOpen(false);
@@ -551,26 +561,29 @@ function PricesSection() {
   );
 }
 
-function PriceSheet({ productId, onClose, onSaved }: { productId: string | null; onClose: () => void; onSaved: (shared: boolean) => void }) {
-  const { gateway, catalog, reportError } = useApp();
+function PriceSheet({ productId, chainName, onClose, onSaved }: { productId: string | null; chainName: string | null; onClose: () => void; onSaved: (shared: boolean) => void }) {
+  const { gateway, catalog, reportError, household } = useApp();
   const [product, setProduct] = useState<Product | null>(productId ? (catalog.products[productId] ?? null) : null);
-  const [price, setPrice] = useState('');
-  const [size, setSize] = useState('');
+  const [price, setPrice] = useState<number | null>(null);
+  const [size, setSize] = useState<number | null>(null);
   const [unit, setUnit] = useState<NewPrice['package_unit']>('g');
   const [kind, setKind] = useState<'manual' | 'receipt'>('manual');
+  // A price is either for the chosen chain or for any shop; nothing is tied to a chain silently.
+  const [scope, setScope] = useState<'chain' | 'any'>(household?.store_chain_id ? 'chain' : 'any');
   useEffect(() => {
     if (product) {
       setUnit(product.package?.unit ?? (product.base_unit === 'ml' ? 'ml' : product.base_unit === 'pcs' ? 'pcs' : 'g'));
-      setSize(product.package ? String(product.package.size) : '');
+      setSize(product.package ? product.package.size : null);
     }
   }, [product]);
-  const priceKop = Math.round(Number(price.replace(',', '.')) * 100);
-  const sizeNum = Number(size.replace(',', '.'));
-  const valid = product && priceKop > 0 && sizeNum > 0;
+  const priceBad = price !== null && !(Number.isFinite(price) && price > 0 && price <= 100000);
+  const sizeBad = size !== null && !(Number.isFinite(size) && size > 0 && size <= 100000);
+  const valid = product && price !== null && size !== null && !priceBad && !sizeBad;
   const save = async () => {
-    if (!product) return;
+    if (!product || price === null || size === null) return;
     try {
-      const r = await gateway.addPrices([{ product_id: product.id, price_kop: priceKop, package_size: sizeNum, package_unit: unit, kind }]);
+      const chain_id = scope === 'chain' ? (household?.store_chain_id ?? null) : null;
+      const r = await gateway.addPrices([{ product_id: product.id, price_kop: Math.round(price * 100), package_size: size, package_unit: unit, kind, chain_id }]);
       onSaved(r.shared > 0);
     } catch (e) {
       reportError(e);
@@ -581,11 +594,11 @@ function PriceSheet({ productId, onClose, onSaved }: { productId: string | null;
       <div className="stack">
         <ProductPicker value={product?.id ?? null} onChange={setProduct} />
         <div className="row wrap" style={{ alignItems: 'flex-end' }}>
-          <Field label="Цена, ₽">
-            <input className="input" inputMode="decimal" style={{ width: 130 }} value={price} onChange={(e) => setPrice(e.target.value)} />
+          <Field label="Цена, ₽" error={priceBad ? 'Больше нуля.' : undefined}>
+            <NumberInput decimal style={{ width: 130 }} value={price} onChange={setPrice} invalid={priceBad} />
           </Field>
-          <Field label="За упаковку">
-            <input className="input" inputMode="decimal" style={{ width: 110 }} value={size} onChange={(e) => setSize(e.target.value)} />
+          <Field label="За упаковку" error={sizeBad ? 'Больше нуля.' : undefined}>
+            <NumberInput decimal style={{ width: 110 }} value={size} onChange={setSize} invalid={sizeBad} />
           </Field>
           <Field label="Ед.">
             <select className="input" value={unit} onChange={(e) => setUnit(e.target.value as NewPrice['package_unit'])}>
@@ -598,6 +611,23 @@ function PriceSheet({ productId, onClose, onSaved }: { productId: string | null;
           </Field>
         </div>
         <Segmented label="Откуда цена" value={kind} onChange={setKind} options={[{ value: 'manual', label: 'Ввожу вручную' }, { value: 'receipt', label: 'Из чека' }]} />
+        {household?.store_chain_id ? (
+          <div className="stack" style={{ ['--gap' as string]: '6px' }}>
+            <span className="label">Для какого магазина</span>
+            <Segmented
+              label="Для какого магазина"
+              value={scope}
+              onChange={setScope}
+              options={[
+                { value: 'chain', label: `Только «${chainName ?? 'выбранная сеть'}»` },
+                { value: 'any', label: 'Любой магазин' },
+              ]}
+            />
+            <p className="muted tiny">Цена только для сети не применяется, если в настройках выбран другой магазин.</p>
+          </div>
+        ) : (
+          <p className="muted tiny">Магазин не выбран — цена будет действовать для любого магазина.</p>
+        )}
       </div>
     </Sheet>
   );

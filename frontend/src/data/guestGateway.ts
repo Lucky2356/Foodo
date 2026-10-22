@@ -307,7 +307,14 @@ export class GuestGateway implements Gateway {
 
   async getShopping(menuId: string): Promise<ShoppingView> {
     const stored = await this.stored(menuId);
-    const list = computeShopping(stored.menu, await this.catalog(), await this.listPantry(), await this.priceProfile(), stored.shopping_state);
+    const h = await this.householdRow();
+    // What this menu bought and moved to the pantry is not «already at home» for its own list.
+    const bought: Record<string, number> = {};
+    for (const [lineId, qty] of Object.entries(stored.transferred_qty ?? {})) {
+      const productId = lineId.startsWith('auto:') ? lineId.split(':')[1] : undefined;
+      if (productId) bought[productId] = (bought[productId] ?? 0) + qty;
+    }
+    const list = computeShopping(stored.menu, await this.catalog(), await this.listPantry(), await this.priceProfile(), stored.shopping_state, h.settings.plan.budget, bought);
     const transferred = new Set(stored.transferred_lines);
     return { ...list, lines: list.lines.map((l) => ({ ...l, transferred: transferred.has(l.id) })), state: stored.shopping_state, shopping_revision: stored.shopping_revision };
   }
@@ -338,19 +345,22 @@ export class GuestGateway implements Gateway {
     const tx = db.transaction(['menus', 'pantry'], 'readwrite');
     const stored = (await tx.objectStore('menus').get(menuId)) as StoredMenu;
     const done = new Set(stored.transferred_lines);
+    const qtys = { ...(stored.transferred_qty ?? {}) };
     const added: string[] = [];
     const skipped: string[] = [];
     for (const id of lineIds) {
       const line = shopping.lines.find((l) => l.id === id);
-      if (!line || done.has(id) || !line.convertible || line.to_buy <= 0) {
+      if (!line || done.has(id) || !line.convertible || line.buy_qty <= 0) {
         skipped.push(id);
         continue;
       }
-      await tx.objectStore('pantry').put({ id: newId('p'), product_id: line.product_id, qty: line.to_buy, unit: line.unit as PantryRecord['unit'], location: 'Куплено', expires: null, created_at: new Date().toISOString() });
+      // Whole packages go to the pantry: the leftover after cooking stays at home.
+      await tx.objectStore('pantry').put({ id: newId('p'), product_id: line.product_id, qty: line.buy_qty, unit: line.unit as PantryRecord['unit'], location: 'Куплено', expires: null, created_at: new Date().toISOString() });
       done.add(id);
+      qtys[id] = line.buy_qty;
       added.push(id);
     }
-    await tx.objectStore('menus').put({ ...stored, transferred_lines: [...done] });
+    await tx.objectStore('menus').put({ ...stored, transferred_lines: [...done], transferred_qty: qtys });
     await tx.done;
     return { added, skipped };
   }
@@ -436,7 +446,8 @@ export class GuestGateway implements Gateway {
         date: e.date ?? localDate(deviceTimeZone()),
         source: e.source ?? 'вручную',
         kind: e.kind ?? 'manual',
-        chain_id: e.chain_id ?? h.store_chain_id,
+        // An explicit null is «any shop»; only a price without the field follows the chosen chain.
+        chain_id: e.chain_id !== undefined ? e.chain_id : h.store_chain_id,
       });
     }
     return { shared: 0 };

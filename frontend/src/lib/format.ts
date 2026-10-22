@@ -1,3 +1,5 @@
+import { UNIT_NAMES } from '../engine';
+
 export function rub(kop: number | null | undefined): string {
   if (kop === null || kop === undefined) return 'нет цены';
   return `${(kop / 100).toLocaleString('ru-RU', { minimumFractionDigits: kop % 100 === 0 ? 0 : 2, maximumFractionDigits: 2 })} ₽`;
@@ -38,4 +40,12 @@ export function minutes(total: number): string {
 export function newId(prefix: string): string {
   const bytes = crypto.getRandomValues(new Uint8Array(8));
   return `${prefix}-${Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('')}`;
+}
+
+/** An amount in a base unit for people: 1 500 г → «1,5 кг», 2 000 мл → «2 л». */
+export function quantity(value: number, unit: string): string {
+  const name = (UNIT_NAMES as Record<string, string>)[unit] ?? unit;
+  if (unit === 'g' && value >= 1000) return `${num(value / 1000, 2)} кг`;
+  if (unit === 'ml' && value >= 1000) return `${num(value / 1000, 2)} л`;
+  return `${num(value, value < 10 ? 1 : 0)} ${name}`;
 }

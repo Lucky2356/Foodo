@@ -2,7 +2,8 @@ import { UNIT_NAMES } from '../engine';
 import type { Member } from '../engine';
 import type { MenuRecord, ShoppingView } from '../data/types';
 import { SLOT_NAMES } from '../lib/recipes';
-import { weekdayLong } from '../lib/dates';
+import { dayMonth, weekdayLong } from '../lib/dates';
+import { num, plural, quantity, rub } from '../lib/format';
 
 // One tabular model feeds the XLSX, PDF and plain-text exports so they always show the same,
 // current values.
@@ -22,10 +23,14 @@ export interface ShoppingRow {
   needed: number | null;
   fromPantry: number | null;
   toBuy: number | null;
+  /** «1,5 кг» — the amount to buy for printed and shared lists. */
+  toBuyText: string;
   unit: string;
   packages: number | null;
   packageSize: string;
   pricePerPackageRub: number | null;
+  /** What the price is paid for: «900 г», «1 кг». */
+  priceFor: string;
   costRub: number | null;
   priceSource: string;
   mark: string;
@@ -46,8 +51,11 @@ export interface ExportModel {
   menu: MenuRow[];
   shopping: ShoppingRow[];
   cooking: CookRow[];
-  totals: { purchaseRub: number; complete: boolean; budget: string };
+  totals: { purchaseRub: number; purchaseText: string; complete: boolean; budget: string };
 }
+
+/** Quantities in files keep two decimals at most; the screen shows the same rounding. */
+const round2 = (v: number) => Math.round((v + Number.EPSILON) * 100) / 100;
 
 const unitName = (u: string) => (UNIT_NAMES as Record<string, string>)[u] ?? u;
 
@@ -66,9 +74,9 @@ export function buildExportModel(record: MenuRecord, shopping: ShoppingView | nu
         slot: SLOT_NAMES[meal.slot] ?? meal.slot,
         dish: r?.name ?? '—',
         who: Object.entries(item.portions)
-          .map(([id, f]) => `${name(id)} ${f}`)
+          .map(([id, f]) => `${name(id)} ${num(f, 2)}`)
           .join(', '),
-        portions: Object.values(item.portions).reduce((a, b2) => a + b2, 0),
+        portions: round2(Object.values(item.portions).reduce((a, b2) => a + b2, 0)),
       });
     }
     if (meal.items.length === 0) rows.push({ date: meal.date, weekday: weekdayLong(meal.date), slot: SLOT_NAMES[meal.slot] ?? meal.slot, dish: 'нет подходящего блюда', who: '', portions: 0 });
@@ -78,13 +86,15 @@ export function buildExportModel(record: MenuRecord, shopping: ShoppingView | nu
     shoppingRows.push({
       department: l.department,
       name: l.name,
-      needed: l.needed,
-      fromPantry: l.from_pantry,
-      toBuy: l.at_home ? 0 : l.to_buy,
+      needed: round2(l.needed),
+      fromPantry: round2(l.from_pantry),
+      toBuy: round2(l.at_home ? 0 : l.to_buy),
+      toBuyText: l.at_home ? 'есть дома' : l.to_buy === 0 ? 'всё есть дома' : quantity(l.to_buy, l.unit),
       unit: unitName(l.unit),
       packages: l.package ? l.package.count : null,
-      packageSize: l.package ? `${l.package.size} ${unitName(l.package.unit)}` : '',
+      packageSize: l.package ? quantity(l.package.size, l.package.unit) : '',
       pricePerPackageRub: l.price_kop !== null ? l.price_kop / 100 : null,
+      priceFor: l.price_per ? quantity(l.price_per.size, l.price_per.unit) : '',
       costRub: l.purchase_cost_kop !== null ? l.purchase_cost_kop / 100 : null,
       priceSource: l.price_source ?? '',
       mark: l.purchased ? 'куплено' : l.at_home ? 'есть дома' : '',
@@ -97,10 +107,12 @@ export function buildExportModel(record: MenuRecord, shopping: ShoppingView | nu
       needed: m.qty,
       fromPantry: null,
       toBuy: m.qty,
+      toBuyText: m.qty !== null ? `${num(m.qty, 2)} ${m.unit ?? ''}`.trim() : '',
       unit: m.unit ?? '',
       packages: null,
       packageSize: '',
       pricePerPackageRub: null,
+      priceFor: '',
       costRub: m.price_kop !== null ? m.price_kop / 100 : null,
       priceSource: 'добавлено вручную',
       mark: m.purchased ? 'куплено' : m.at_home ? 'есть дома' : '',
@@ -112,20 +124,25 @@ export function buildExportModel(record: MenuRecord, shopping: ShoppingView | nu
       const method = r?.methods.find((m) => m.id === b.method_id);
       const feeds = menu.meals
         .filter((m) => m.items.some((i) => i.batch_id === b.id))
-        .map((m) => `${m.date} ${SLOT_NAMES[m.slot] ?? m.slot}`)
+        .map((m) => `${dayMonth(m.date)}, ${(SLOT_NAMES[m.slot] ?? m.slot).toLowerCase()}`)
         .join('; ');
-      return { date: b.cook_date, dish: r?.name ?? '—', method: method?.name ?? '', portions: b.portions, totalMin: method?.total_min ?? null, feeds };
+      return { date: b.cook_date, dish: r?.name ?? '—', method: method?.name ?? '', portions: round2(b.portions), totalMin: method?.total_min ?? null, feeds };
     })
     .sort((a, b) => a.date.localeCompare(b.date));
   const budget = shopping?.budget;
   const budgetText = !budget || budget.status === 'none' ? 'бюджет не задан' : budget.status === 'ok' ? 'укладывается в бюджет' + (budget.estimated ? ' (по оценочным ценам)' : '') : budget.status === 'exceeded' ? 'превышает бюджет' : 'бюджет не подтверждён: известны не все цены';
   return {
-    title: record.title || `Меню с ${menu.start_date} на ${menu.days} дн.`,
+    title: record.title || `Меню с ${dayMonth(menu.start_date)} на ${menu.days} ${plural(menu.days, 'день', 'дня', 'дней')}`,
     generatedAt: new Date().toISOString(),
     menu: rows,
     shopping: shoppingRows,
     cooking,
-    totals: { purchaseRub: (shopping?.totals.purchase_kop ?? 0) / 100, complete: shopping?.totals.complete ?? false, budget: budgetText },
+    totals: {
+      purchaseRub: (shopping?.totals.purchase_kop ?? 0) / 100,
+      purchaseText: rub(shopping?.totals.purchase_kop ?? 0),
+      complete: shopping?.totals.complete ?? false,
+      budget: budgetText,
+    },
   };
 }
 
@@ -137,14 +154,18 @@ export function safeText(value: string): string {
 export function shoppingText(model: ExportModel): string {
   const lines = [`Покупки — ${model.title}`];
   let dept = '';
-  for (const r of model.shopping) {
+  for (const r of toBuyRows(model)) {
     if (r.mark) continue;
     if (r.department !== dept) {
       dept = r.department;
       lines.push('', dept.toUpperCase());
     }
-    const qty = r.toBuy !== null ? `${Math.round((r.toBuy + Number.EPSILON) * 100) / 100} ${r.unit}` : '';
-    lines.push(`☐ ${r.name}${qty ? ` — ${qty}` : ''}${r.packages ? ` (${r.packages} уп. по ${r.packageSize})` : ''}`);
+    lines.push(`☐ ${r.name}${r.toBuyText ? ` — ${r.toBuyText}` : ''}${r.packages ? ` (${r.packages} уп. по ${r.packageSize})` : ''}`);
   }
   return lines.join('\n');
+}
+
+/** Rows that still need buying: lines fully covered at home stay out of printed and shared lists. */
+export function toBuyRows(model: ExportModel): ShoppingRow[] {
+  return model.shopping.filter((r) => r.toBuy !== 0);
 }
