@@ -132,7 +132,15 @@ def create_menu(h: Household, req: JSON, title: str = "") -> Menu:
 
 
 def op_context(h: Household, catalog: Catalog) -> JSON:
-    return {"catalog": catalog, "members": members_json(h), "pantry": pantry_json(h), "prices": price_profile(h)}
+    cfg = household_settings(h)
+    return {
+        "catalog": catalog,
+        "members": members_json(h),
+        "pantry": pantry_json(h),
+        "prices": price_profile(h),
+        "settings": cfg["plan"],
+        "slot_members": cfg["slot_members"],
+    }
 
 
 @transaction.atomic

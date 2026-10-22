@@ -114,6 +114,8 @@ export interface MealSlotRef {
   energy_share: number;
   /** Lunch and dinner need a main course: a dish of these categories, or one hearty enough per serving. */
   main_course?: { categories: string[]; hearty_kcal: number; hearty_protein: number };
+  /** Score bonus of a recipe category in this meal: soup is a lunch dish, a main course suits dinner. */
+  category_bonus?: Record<string, number>;
 }
 
 export interface NutrientRef {

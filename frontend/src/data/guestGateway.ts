@@ -260,10 +260,13 @@ export class GuestGateway implements Gateway {
       throw new ApiError('revision_conflict', 'Меню изменилось в другой вкладке. Обновите страницу.', 409);
     }
     const catalog = await this.catalog();
+    const h = await this.householdRow();
     let menu;
     try {
       menu = applyMenuOp(stored.menu, op as Parameters<typeof applyMenuOp>[1], {
         catalog,
+        settings: h.settings.plan,
+        slot_members: h.settings.slot_members,
         members: await this.members(),
         pantry: await this.listPantry(),
         prices: await this.priceProfile(),

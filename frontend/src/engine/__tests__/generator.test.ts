@@ -476,3 +476,79 @@ describe('food preferences from the questionnaire', () => {
     expect(new Set(ranked.map((c) => c.score)).size).toBe(1);
   });
 });
+
+describe('editing a menu', () => {
+  it('repeated «Заменить» walks through different dishes instead of bouncing between two', () => {
+    const cat = catalog();
+    const req = request({ days: 3 });
+    let menu = generateMenu(req, cat).menu;
+    const dinner = menu.meals.find((m) => m.slot === 'dinner')!;
+    const itemId = dinner.items[0]!.id;
+    const recipeOf = (m: Menu) => {
+      const item = m.meals.flatMap((x) => x.items).find((i) => i.id === itemId)!;
+      return m.batches.find((b) => b.id === item.batch_id)!.recipe_id;
+    };
+    const seen = [recipeOf(menu)];
+    for (let i = 0; i < 4; i += 1) {
+      menu = applyMenuOp(menu, { op: 'replace', item_id: itemId, recipe_id: null, avoid: [...seen] }, { catalog: cat, members: req.members });
+      seen.push(recipeOf(menu));
+    }
+    expect(new Set(seen).size).toBe(5);
+  });
+
+  it('a replacement keeps the calorie target: portions follow the new dish', () => {
+    const cat = catalog();
+    const me = member({ portion_mode: 'target', kcal_target: 2400 });
+    const req = request({ days: 2, members: [me] });
+    let menu = generateMenu(req, cat).menu;
+    const lunch = menu.meals.find((m) => m.slot === 'lunch')!;
+    const itemId = lunch.items[0]!.id;
+    menu = applyMenuOp(menu, { op: 'replace', item_id: itemId, recipe_id: null }, { catalog: cat, members: [me] });
+    const item = menu.meals.flatMap((m) => m.items).find((i) => i.id === itemId)!;
+    const recipe = cat.recipes[menu.batches.find((b) => b.id === item.batch_id)!.recipe_id]!;
+    const perServing = recipeNutrition(cat, recipe).perServing.kcal.value;
+    const expected = Math.min(2, Math.max(0.5, Math.floor(((2400 * 0.35) / perServing) * 20 + 0.5) / 20));
+    expect(item.portions[me.id]).toBe(expected);
+  });
+
+  it('undo of «Убрать» restores the same portions, pin and shared batch', () => {
+    const cat = catalog();
+    const req = request({ days: 2 });
+    let menu = generateMenu(req, cat).menu;
+    const meal = menu.meals.find((m) => m.slot === 'dinner')!;
+    const item = meal.items[0]!;
+    const batch = menu.batches.find((b) => b.id === item.batch_id)!;
+    const ctx = { catalog: cat, members: req.members };
+    menu = applyMenuOp(menu, { op: 'set_portion', item_id: item.id, member_id: 'm1', portion: 1.5 }, ctx);
+    menu = applyMenuOp(menu, { op: 'pin', item_id: item.id, pinned: true }, ctx);
+    menu = applyMenuOp(menu, { op: 'remove', item_id: item.id }, ctx);
+    menu = applyMenuOp(
+      menu,
+      { op: 'add', date: meal.date, slot: meal.slot, recipe_id: batch.recipe_id, member_ids: ['m1', 'm2'], method_id: batch.method_id, portions: { m1: 1.5, m2: item.portions.m2! }, pinned: true, batch_id: batch.id },
+      ctx,
+    );
+    const restored = menu.meals.find((m) => m.date === meal.date && m.slot === meal.slot)!.items[0]!;
+    expect(restored.pinned).toBe(true);
+    expect(restored.portions).toEqual({ m1: 1.5, m2: item.portions.m2 });
+    expect(menu.batches.find((b) => b.id === restored.batch_id)!.recipe_id).toBe(batch.recipe_id);
+  });
+
+  it('«Пересобрать» applies the current settings, not the ones saved with the menu', () => {
+    const cat = catalog();
+    const req = request({ days: 3 });
+    const menu = generateMenu(req, cat).menu;
+    const noAppliances = settings({ equipment: [] });
+    const next = applyMenuOp(menu, { op: 'regenerate', seed: 7 }, { catalog: cat, members: req.members, settings: noAppliances });
+    expect(next.settings.equipment).toEqual([]);
+    for (const r of menuRecipes(next, cat)) expect(r.methods.some((m) => m.equipment.length === 0)).toBe(true);
+  });
+
+  it('lunch and dinner of a family with calorie targets stay close to the daily target', () => {
+    const cat = catalog();
+    const me = member({ portion_mode: 'target', kcal_target: 2000 });
+    const req = request({ days: 7, members: [me] });
+    const { menu } = generateMenu(req, cat);
+    const days = menuReport(menu, cat, [me])[0]!.days;
+    for (const d of days) expect(Math.abs(d.energy_deviation_pct ?? 100)).toBeLessThanOrEqual(10);
+  });
+});

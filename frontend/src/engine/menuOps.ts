@@ -1,21 +1,34 @@
 import { compareStr, isIsoDate } from './basics';
 import { addToSnapshot, findMethod, selectMethod, recipeSkillRank, skillAllows, snapshotCatalog } from './catalog';
-import { generateMenu, menuViolations, rankCandidates } from './generator';
+import { generateMenu, memberPortions, menuViolations, rankCandidates } from './generator';
 import { effectiveRestrictions, recipeSpice, recipeViolations, spiceTolerance } from './restrictions';
 import { EngineError } from './types';
-import type { Catalog, Member, Menu, MenuBatch, MenuItem, MenuMeal, PlanRequest, PriceProfile, PantryItem } from './types';
+import type { Catalog, Member, Menu, MenuBatch, MenuItem, MenuMeal, PlanRequest, PlanSettings, PriceProfile, PantryItem } from './types';
 
 // Editing operations on a saved menu. Each operation returns a new menu (revision + 1) and never
 // mutates its input. Hard restrictions, equipment and skill are re-checked for every dish the user
 // picks by hand; batch portions stay consistent with the meals that eat from them.
 
 export type MenuOp =
-  | { op: 'replace'; item_id: string; recipe_id: string | null; method_id?: string | null }
+  /** avoid: dishes already offered for this meal, so repeated «Заменить» walks the list instead of
+   *  bouncing between two dishes; when every candidate was offered, the list starts over. */
+  | { op: 'replace'; item_id: string; recipe_id: string | null; method_id?: string | null; avoid?: string[] }
   | { op: 'set_portion'; item_id: string; member_id: string; portion: number }
   | { op: 'move'; from: { date: string; slot: string }; to: { date: string; slot: string } }
   | { op: 'pin'; item_id: string; pinned: boolean }
   | { op: 'split'; item_id: string; member_id: string; recipe_id: string | null }
-  | { op: 'add'; date: string; slot: string; recipe_id: string; member_ids: string[]; method_id?: string | null }
+  /** portions, pinned and batch_id restore a removed dish exactly (undo of «Убрать»). */
+  | {
+      op: 'add';
+      date: string;
+      slot: string;
+      recipe_id: string;
+      member_ids: string[];
+      method_id?: string | null;
+      portions?: Record<string, number>;
+      pinned?: boolean;
+      batch_id?: string | null;
+    }
   | { op: 'remove'; item_id: string }
   | { op: 'regenerate'; seed: number };
 
@@ -24,6 +37,9 @@ export interface OpContext {
   members: Member[];
   pantry?: PantryItem[];
   prices?: PriceProfile | null;
+  /** The household's current settings: «Пересобрать» applies them, other edits keep the menu's own. */
+  settings?: PlanSettings;
+  slot_members?: Record<string, string[]> | null;
 }
 
 function clone(menu: Menu): Menu {
@@ -126,14 +142,15 @@ function newBatchFor(menu: Menu, catalog: Catalog, recipeId: string, methodId: s
   return batch;
 }
 
-function planRequestFromMenu(menu: Menu, ctx: OpContext, seed: number): PlanRequest {
+function planRequestFromMenu(menu: Menu, ctx: OpContext, seed: number, current = false): PlanRequest {
   return {
     start_date: menu.start_date,
     days: menu.days,
     seed,
     slots: [...menu.slots],
     members: ctx.members.filter((m) => menu.member_ids.includes(m.id)),
-    settings: menu.settings,
+    slot_members: ctx.slot_members ?? null,
+    settings: current && ctx.settings ? ctx.settings : menu.settings,
     pins: [],
     pantry: ctx.pantry ?? [],
     prices: ctx.prices ?? null,
@@ -153,7 +170,9 @@ export function applyMenuOp(menu: Menu, op: MenuOp, ctx: OpContext): Menu {
       let methodId = op.method_id ?? null;
       if (recipeId === null) {
         const ranked = rankCandidates(planRequestFromMenu(next, ctx, next.seed), ctx.catalog, next, meal.date, meal.slot, people, item.id);
-        const pick = ranked.find((c) => c.recipe_id !== current.recipe_id);
+        const others = ranked.filter((c) => c.recipe_id !== current.recipe_id);
+        const avoid = new Set(op.avoid ?? []);
+        const pick = others.find((c) => !avoid.has(c.recipe_id)) ?? others[0];
         if (!pick) throw new EngineError('no_replacement', 'Нет другого подходящего блюда с учётом запретов, техники и режима повторов.');
         recipeId = pick.recipe_id;
         methodId = pick.method_id;
@@ -161,6 +180,9 @@ export function applyMenuOp(menu: Menu, op: MenuOp, ctx: OpContext): Menu {
       const { method } = checkManualChoice(next, ctx.catalog, recipeId, methodId, people);
       const batch = newBatchFor(next, ctx.catalog, recipeId, method.id, meal.date, meal.slot);
       item.batch_id = batch.id;
+      // A calorie target is met by the portion size, which depends on the dish: recompute it.
+      const fresh = memberPortions(planRequestFromMenu(next, ctx, next.seed), ctx.catalog, people, recipeId, meal.slot);
+      for (const m of people) if (m.portion_mode === 'target' && m.kcal_target) item.portions[m.id] = fresh[m.id] as number;
       break;
     }
     case 'set_portion': {
@@ -222,10 +244,17 @@ export function applyMenuOp(menu: Menu, op: MenuOp, ctx: OpContext): Menu {
       const people = op.member_ids.map((id) => members.get(id)).filter((m): m is Member => Boolean(m));
       if (people.length === 0) throw new EngineError('no_members', 'Выберите, для кого это блюдо.');
       const { method } = checkManualChoice(next, ctx.catalog, op.recipe_id, op.method_id, people);
-      const batch = newBatchFor(next, ctx.catalog, op.recipe_id, method.id, meal.date, meal.slot);
-      const portions: Record<string, number> = {};
-      for (const m of people) portions[m.id] = m.portion_mode === 'simple' ? Math.min(3, Math.max(0.25, m.portion_factor)) : 1;
-      meal.items.push({ id: nextId('i', allItems(next).map((x) => x.item.id)), batch_id: batch.id, portions, pinned: false, alternative_for: null });
+      // A batch still eaten elsewhere (a removed meal of a shared batch) is joined again, not cooked twice.
+      const existing = op.batch_id ? next.batches.find((b) => b.id === op.batch_id && b.recipe_id === op.recipe_id && b.cook_date <= meal.date) : undefined;
+      const batch = existing ?? newBatchFor(next, ctx.catalog, op.recipe_id, method.id, meal.date, meal.slot);
+      const portions = memberPortions(planRequestFromMenu(next, ctx, next.seed), ctx.catalog, people, op.recipe_id, meal.slot);
+      for (const m of people) {
+        const given = op.portions?.[m.id];
+        if (given === undefined) continue;
+        if (!(given >= 0.25 && given <= 3)) throw new EngineError('invalid_portion', 'Порция должна быть от 0,25 до 3 стандартных порций.');
+        portions[m.id] = given;
+      }
+      meal.items.push({ id: nextId('i', allItems(next).map((x) => x.item.id)), batch_id: batch.id, portions, pinned: op.pinned === true, alternative_for: null });
       next.unfilled = next.unfilled.filter((u) => !(u.date === meal.date && u.slot === meal.slot));
       break;
     }
@@ -235,7 +264,7 @@ export function applyMenuOp(menu: Menu, op: MenuOp, ctx: OpContext): Menu {
       break;
     }
     case 'regenerate': {
-      const req = planRequestFromMenu(next, ctx, op.seed);
+      const req = planRequestFromMenu(next, ctx, op.seed, true);
       req.pins = [];
       for (const { meal, item } of allItems(next)) {
         if (!item.pinned) continue;

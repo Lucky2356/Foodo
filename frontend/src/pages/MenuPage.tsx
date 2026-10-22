@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { snapshotCatalog } from '../engine';
+import { isRecipeSafeFor, isoWeekday, recipeSkillRank, selectMethod, skillAllows, snapshotCatalog } from '../engine';
 import type { Member, MemberReport, Menu, MenuItem, RankedCandidate, Recipe } from '../engine';
 import type { MenuOp } from '../engine/menuOps';
 import type { MenuRecord } from '../data/types';
@@ -9,8 +9,9 @@ import { useCurrentMenu } from '../state/menu';
 import { Icon } from '../ui/icons';
 import { Banner, Empty, ErrorBox, Loading, PageHead, RecipeCover, Segmented, Sheet, Stepper } from '../ui/kit';
 import { addDaysIso, dateRange, dayMonth, deviceTimeZone, humanDate, localDate, weekdayShort } from '../lib/dates';
-import { kcal, minutes, num, portionLabel } from '../lib/format';
-import { SLOT_NAMES, summarize } from '../lib/recipes';
+import { kcal, minutes, num, plural, portionLabel } from '../lib/format';
+import { matchesSearch, searchTokens, SLOT_NAMES, summarize } from '../lib/recipes';
+import { useFullCatalog } from '../state/catalog';
 
 const VITAMIN_NAMES: Record<string, string> = { vit_a: 'Витамин A', vit_c: 'Витамин C', vit_d: 'Витамин D', vit_e: 'Витамин E', vit_b6: 'Витамин B6', vit_b12: 'Витамин B12', folate: 'Фолаты' };
 
@@ -64,8 +65,9 @@ export default function MenuPage() {
   const [who, setWho] = useState<string>('all');
   const [date, setDate] = useState<string | null>(null);
   const [report, setReport] = useState<MemberReport[] | null>(null);
-  const [dish, setDish] = useState<{ ref: DishRef; date: string; slot: string } | null>(null);
+  const [dish, setDish] = useState<{ itemId: string; date: string; slot: string } | null>(null);
   const [newOpen, setNewOpen] = useState(false);
+  const [adding, setAdding] = useState<{ date: string; slot: string; memberIds: string[] } | null>(null);
   const [busy, setBusy] = useState(false);
   const tz = household?.city?.timezone ?? deviceTimeZone();
   const today = localDate(tz);
@@ -82,26 +84,36 @@ export default function MenuPage() {
   const members = household?.members ?? [];
   const memberName = (id: string) => members.find((m) => m.id === id)?.name ?? 'удалённый участник';
 
+  // The latest record, for «Отменить» in a toast that may be pressed after later edits.
+  const latest = useRef(record);
+  latest.current = record;
+  // Dishes «Заменить» has already offered for each meal item, so repeated taps go down the list.
+  const offered = useRef(new Map<string, string[]>());
+  useEffect(() => offered.current.clear(), [record?.id]);
+
+  const undoAction = (next: MenuRecord, undo: MenuOp | undefined) =>
+    undo
+      ? async () => {
+          // Undo only the last edit: after a later one the old revision would be stale.
+          if (latest.current?.id !== next.id || latest.current.revision !== next.revision) {
+            toast('Отменить уже нельзя: после этого меню снова изменилось.', { tone: 'error' });
+            return;
+          }
+          try {
+            setRecord(await gateway.applyOp(next.id, undo, next.revision));
+          } catch (e) {
+            reportError(e);
+          }
+        }
+      : undefined;
+
   const runOp = async (op: MenuOp, opts: { undo?: MenuOp; message?: string } = {}) => {
     if (!record) return null;
     setBusy(true);
     try {
       const next = await gateway.applyOp(record.id, op, record.revision);
       setRecord(next);
-      if (opts.message) {
-        toast(opts.message, {
-          tone: 'success',
-          undo: opts.undo
-            ? async () => {
-                try {
-                  setRecord(await gateway.applyOp(next.id, opts.undo as MenuOp, next.revision));
-                } catch (e) {
-                  reportError(e);
-                }
-              }
-            : undefined,
-        });
-      }
+      if (opts.message) toast(opts.message, { tone: 'success', undo: undoAction(next, opts.undo) });
       return next;
     } catch (e) {
       reportError(e);
@@ -113,19 +125,16 @@ export default function MenuPage() {
 
   const quickReplace = async (ref: DishRef) => {
     if (!ref.recipe) return;
-    const next = await runOp({ op: 'replace', item_id: ref.item.id, recipe_id: null }, { undo: { op: 'replace', item_id: ref.item.id, recipe_id: ref.recipe.id, method_id: ref.methodId } });
+    const seen = [...new Set([...(offered.current.get(ref.item.id) ?? []), ref.recipe.id])];
+    const next = await runOp({ op: 'replace', item_id: ref.item.id, recipe_id: null, avoid: seen });
     if (next) {
       const batch = next.menu.batches.find((b) => b.id === next.menu.meals.flatMap((m) => m.items).find((i) => i.id === ref.item.id)?.batch_id);
       const name = batch ? next.menu.snapshot.recipes[batch.recipe_id]?.name : '';
+      // Once every candidate was offered the engine starts over; so does the memory.
+      offered.current.set(ref.item.id, batch && seen.includes(batch.recipe_id) ? [batch.recipe_id] : [...seen, ...(batch ? [batch.recipe_id] : [])]);
       toast(`Заменили на «${name}»`, {
         tone: 'success',
-        undo: async () => {
-          try {
-            setRecord(await gateway.applyOp(next.id, { op: 'replace', item_id: ref.item.id, recipe_id: ref.recipe?.id ?? null, method_id: ref.methodId }, next.revision));
-          } catch (e) {
-            reportError(e);
-          }
-        },
+        undo: undoAction(next, { op: 'replace', item_id: ref.item.id, recipe_id: ref.recipe.id, method_id: ref.methodId }),
       });
     }
   };
@@ -156,7 +165,10 @@ export default function MenuPage() {
   const dates = [...new Set(menu.meals.map((m) => m.date))];
   const current = date ?? dates[0] ?? today;
   const end = addDaysIso(menu.start_date, menu.days - 1);
-  const memberFilter = (ref: DishRef) => who === 'all' || ref.item.portions[who] !== undefined;
+  // A family of one has no «Все»: show that person's calories right away.
+  const viewer = members.length === 1 ? (members[0] as Member).id : who;
+  const memberFilter = (ref: DishRef) => viewer === 'all' || ref.item.portions[viewer] !== undefined;
+  const dishRef = dish ? dishRefs(menu, record.cooked_batches, dish.date, dish.slot).find((r) => r.item.id === dish.itemId) : undefined;
   const itemKcal = (ref: DishRef, memberId: string) => (ref.recipe ? summarize(snap, ref.recipe).perServing.kcal.value * (ref.item.portions[memberId] ?? 0) : 0);
 
   const problems = (
@@ -200,7 +212,7 @@ export default function MenuPage() {
       <PageHead
         eyebrow={record.title || 'Меню'}
         title={dateRange(menu.start_date, end)}
-        subtitle={`${menu.days} ${menu.days === 1 ? 'день' : menu.days < 5 ? 'дня' : 'дней'} · ${members.length} ${members.length === 1 ? 'человек' : 'чел.'}`}
+        subtitle={`${menu.days} ${plural(menu.days, 'день', 'дня', 'дней')} · ${menu.member_ids.length} ${plural(menu.member_ids.length, 'человек', 'человека', 'человек')}`}
         actions={
           <>
             <Link className="btn ghost" to="/menu/history">
@@ -233,57 +245,81 @@ export default function MenuPage() {
           <div className="stack">
             {menu.slots.map((slot) => {
               const refs = dishRefs(menu, record.cooked_batches, current, slot).filter(memberFilter);
-              const unfilled = menu.unfilled.filter((u) => u.date === current && u.slot === slot && (who === 'all' || u.member_ids.includes(who)));
+              const unfilled = unfilledNotes(menu, current, slot, viewer);
+              const container = isContainerMeal(menu, current, slot);
               return (
                 <section key={slot} className="meal">
                   <div className="meal-head">
                     <span className="meal-slot">{SLOT_NAMES[slot]}</span>
+                    {container && <span className="badge">в контейнер</span>}
                   </div>
                   {refs.map((ref) => (
                     <DishCard
                       key={ref.item.id}
                       refData={ref}
                       members={members}
-                      who={who}
+                      who={viewer}
+                      today={today}
                       kcalFor={(id) => itemKcal(ref, id)}
                       busy={busy}
                       onReplace={() => void quickReplace(ref)}
-                      onOpen={() => setDish({ ref, date: current, slot })}
+                      onOpen={() => setDish({ itemId: ref.item.id, date: current, slot })}
                     />
                   ))}
-                  {unfilled.map((u, i) => (
-                    <div key={i} className="card flat" style={{ borderStyle: 'dashed' }}>
+                  {unfilled.map((u) => (
+                    <div key={u.message} className="card flat" style={{ borderStyle: 'dashed' }}>
                       <p className="small">
-                        <strong>Нет блюда{u.member_ids.length < members.length ? ` для: ${u.member_ids.map(memberName).join(', ')}` : ''}.</strong> {u.message}
+                        <strong>Нет блюда{u.member_ids.length < menu.member_ids.length ? ` для: ${u.member_ids.map(memberName).join(', ')}` : ''}.</strong> {u.message}
                       </p>
                     </div>
                   ))}
                   {refs.length === 0 && unfilled.length === 0 && <p className="muted small">Ничего не запланировано.</p>}
+                  {(refs.length === 0 || unfilled.length > 0) && (
+                    <div>
+                      <button className="btn small" onClick={() => setAdding({ date: current, slot, memberIds: unfilled.length > 0 ? [...new Set(unfilled.flatMap((u) => u.member_ids))] : menu.member_ids })}>
+                        <Icon name="plus" size={16} /> Добавить блюдо
+                      </button>
+                    </div>
+                  )}
                 </section>
               );
             })}
           </div>
-          <DayNutrition report={report} members={members} who={who} date={current} />
+          <DayNutrition report={report} members={members} who={viewer} date={current} />
         </>
       ) : (
-        <WeekView record={record} members={members} who={who} today={today} onOpen={(ref, d, slot) => setDish({ ref, date: d, slot })} />
+        <WeekView
+          key={record.id}
+          record={record}
+          members={members}
+          who={viewer}
+          today={today}
+          onOpen={(ref, d, slot) => setDish({ itemId: ref.item.id, date: d, slot })}
+          onDay={(d) => {
+            setDate(d);
+            setView('day');
+          }}
+        />
       )}
       <VitaminPanel report={report} members={members} who={who} enabled={menu.settings.vitamins.enabled} targetSet={menu.settings.vitamins.target_set} />
-      {dish && (
+      {dish && dishRef && (
         <DishSheet
+          key={dish.itemId}
           record={record}
-          dish={dish}
+          dish={{ ref: dishRef, date: dish.date, slot: dish.slot }}
           members={members}
           busy={busy}
+          today={today}
           onClose={() => setDish(null)}
           runOp={async (op, opts) => {
             const r = await runOp(op, opts);
-            if (r) setDish(null);
+            // The portion steppers stay open for a few taps; every other action finishes the sheet.
+            if (r && op.op !== 'set_portion') setDish(null);
             return r;
           }}
           onCook={async () => {
             try {
-              const r = await gateway.cook(record.id, dish.ref.batchId);
+              const r = await gateway.cook(record.id, dishRef.batchId);
               toast(r.created ? 'Отмечено: продукты списаны из остатков дома' : 'Это блюдо уже отмечено приготовленным', { tone: 'success' });
               setDish(null);
               reload();
@@ -294,16 +330,62 @@ export default function MenuPage() {
           onRecipe={(id) => navigate(`/recipes/${id}`)}
         />
       )}
+      {adding && (
+        <AddDishSheet
+          target={adding}
+          menu={menu}
+          busy={busy}
+          onClose={() => setAdding(null)}
+          onAdd={async (recipeId) => {
+            const r = await runOp({ op: 'add', date: adding.date, slot: adding.slot, recipe_id: recipeId, member_ids: adding.memberIds }, { message: 'Блюдо добавлено' });
+            if (r) setAdding(null);
+          }}
+        />
+      )}
       <NewMenuSheet open={newOpen} onClose={() => setNewOpen(false)} record={record} onCreated={(r) => { setCurrentMenuId(r.id); setRecord(r); navigate('/menu'); }} />
     </div>
   );
 }
 
-function DishCard({ refData, members, who, kcalFor, busy, onReplace, onOpen }: { refData: DishRef; members: Member[]; who: string; kcalFor: (id: string) => number; busy: boolean; onReplace: () => void; onOpen: () => void }) {
-  const { catalog } = useApp();
+/** Unfilled notes of one meal, merged: the generator writes one per member with the same reason. */
+function unfilledNotes(menu: Menu, date: string, slot: string, viewer: string): { message: string; member_ids: string[] }[] {
+  const out: { message: string; member_ids: string[] }[] = [];
+  for (const u of menu.unfilled) {
+    if (u.date !== date || u.slot !== slot || (viewer !== 'all' && !u.member_ids.includes(viewer))) continue;
+    const same = out.find((x) => x.message === u.message);
+    if (same) same.member_ids = [...new Set([...same.member_ids, ...u.member_ids])];
+    else out.push({ message: u.message, member_ids: [...u.member_ids] });
+  }
+  return out;
+}
+
+function isContainerMeal(menu: Menu, date: string, slot: string): boolean {
+  return slot === 'lunch' && menu.settings.container_days.includes(isoWeekday(date));
+}
+
+function DishCard({
+  refData,
+  members,
+  who,
+  today,
+  kcalFor,
+  busy,
+  onReplace,
+  onOpen,
+}: {
+  refData: DishRef;
+  members: Member[];
+  who: string;
+  today: string;
+  kcalFor: (id: string) => number;
+  busy: boolean;
+  onReplace: () => void;
+  onOpen: () => void;
+}) {
   const r = refData.recipe;
   if (!r) return null;
-  const s = summarize(catalog.recipes[r.id] ? catalog : { ...catalog, recipes: { ...catalog.recipes, [r.id]: r } }, r);
+  // The time of the cooking method chosen for this menu, not of the fastest one in the recipe.
+  const method = r.methods.find((m) => m.id === refData.methodId) ?? r.methods[0];
   const portions = Object.entries(refData.item.portions);
   return (
     <div className="card dish fade-in">
@@ -317,7 +399,7 @@ function DishCard({ refData, members, who, kcalFor, busy, onReplace, onOpen }: {
         <div className="meta" style={{ marginTop: 4 }}>
           <span>
             <Icon name="clock" size={15} />
-            {minutes(s.totalMin)}
+            {method ? minutes(method.total_min) : '—'}
           </span>
           {who !== 'all' ? (
             <span>
@@ -327,12 +409,12 @@ function DishCard({ refData, members, who, kcalFor, busy, onReplace, onOpen }: {
           ) : (
             <span>
               <Icon name="users" size={15} />
-              {portions.length === members.length && portions.every(([, f]) => f === 1) ? 'всем по порции' : portions.map(([id, f]) => `${members.find((m) => m.id === id)?.name ?? 'удалённый участник'} ${num(f, 2)}`).join(' · ')}
+              {portions.length === members.length && portions.every(([, f]) => f === 1) ? 'всем по порции' : portions.map(([id, f]) => `${members.find((m) => m.id === id)?.name ?? 'удалённый участник'} — ${portionLabel(f)}`).join(' · ')}
             </span>
           )}
           {refData.item.pinned && <span className="badge blue">закреплено</span>}
           {refData.item.alternative_for && <span className="badge yellow">отдельное блюдо</span>}
-          {refData.shared && <span className="badge">из партии</span>}
+          {refData.shared && <span className="badge">{batchNote(refData, today)}</span>}
           {refData.cooked && <span className="badge green">приготовлено</span>}
         </div>
         <div className="dish-actions">
@@ -346,6 +428,12 @@ function DishCard({ refData, members, who, kcalFor, busy, onReplace, onOpen }: {
       </div>
     </div>
   );
+}
+
+/** «из партии» with when it is cooked: a future batch is not «приготовлена» yet. */
+function batchNote(ref: DishRef, today: string): string {
+  if (ref.cooked) return `партия от ${dayMonth(ref.cookDate)}`;
+  return ref.cookDate >= today ? `партия: готовим ${ref.cookDate === today ? 'сегодня' : dayMonth(ref.cookDate)}` : `партия от ${dayMonth(ref.cookDate)}`;
 }
 
 function DayNutrition({ report, members, who, date }: { report: MemberReport[] | null; members: Member[]; who: string; date: string }) {
@@ -442,7 +530,21 @@ function VitaminPanel({ report, members, who, enabled, targetSet }: { report: Me
   );
 }
 
-function WeekView({ record, members, who, today, onOpen }: { record: MenuRecord; members: Member[]; who: string; today: string; onOpen: (ref: DishRef, date: string, slot: string) => void }) {
+function WeekView({
+  record,
+  members,
+  who,
+  today,
+  onOpen,
+  onDay,
+}: {
+  record: MenuRecord;
+  members: Member[];
+  who: string;
+  today: string;
+  onOpen: (ref: DishRef, date: string, slot: string) => void;
+  onDay: (date: string) => void;
+}) {
   const menu = record.menu;
   const dates = [...new Set(menu.meals.map((m) => m.date))];
   const [page, setPage] = useState(0);
@@ -470,7 +572,7 @@ function WeekView({ record, members, who, today, onOpen }: { record: MenuRecord;
             </div>
             {menu.slots.map((slot) => {
               const refs = dishRefs(menu, record.cooked_batches, d, slot).filter((r) => who === 'all' || r.item.portions[who] !== undefined);
-              const empty = menu.unfilled.some((u) => u.date === d && u.slot === slot);
+              const notes = unfilledNotes(menu, d, slot, who);
               return (
                 <div key={slot} className="week-cell" role="cell">
                   <div className="meal-slot tiny" style={{ marginBottom: 4 }}>
@@ -490,7 +592,13 @@ function WeekView({ record, members, who, today, onOpen }: { record: MenuRecord;
                       )}
                     </button>
                   ))}
-                  {empty && <span className="tiny" style={{ color: 'var(--accent)' }}>нет блюда</span>}
+                  {notes.length > 0 && (
+                    <button className="week-dish" onClick={() => onDay(d)} title={notes.map((n) => n.message).join(' ')}>
+                      <span className="tiny" style={{ color: 'var(--accent)' }}>
+                        нет блюда — почему?
+                      </span>
+                    </button>
+                  )}
                 </div>
               );
             })}
@@ -506,6 +614,7 @@ function DishSheet({
   dish,
   members,
   busy,
+  today,
   onClose,
   runOp,
   onCook,
@@ -515,6 +624,7 @@ function DishSheet({
   dish: { ref: DishRef; date: string; slot: string };
   members: Member[];
   busy: boolean;
+  today: string;
   onClose: () => void;
   runOp: (op: MenuOp, opts?: { undo?: MenuOp; message?: string }) => Promise<MenuRecord | null>;
   onCook: () => Promise<void>;
@@ -541,7 +651,8 @@ function DishSheet({
       <div className="stack">
         <p className="muted small">
           {humanDate(dish.date)} · {SLOT_NAMES[dish.slot]}
-          {ref.shared ? ` · партия приготовлена ${dayMonth(ref.cookDate)}` : ''}
+          {ref.shared ? ` · ${batchNote(ref, today)}` : ''}
+          {isContainerMeal(menu, dish.date, dish.slot) ? ' · в контейнер' : ''}
         </p>
         <div className="stack" style={{ ['--gap' as string]: '10px' }}>
           <span className="label">Порции</span>
@@ -580,7 +691,19 @@ function DishSheet({
           <button className="btn" onClick={() => void onCook()} disabled={ref.cooked}>
             <Icon name="check" size={18} /> {ref.cooked ? 'Приготовлено' : 'Приготовлено — списать продукты'}
           </button>
-          <button className="btn danger" onClick={() => void runOp({ op: 'remove', item_id: ref.item.id }, { message: 'Блюдо убрано из меню', undo: recipe ? { op: 'add', date: dish.date, slot: dish.slot, recipe_id: recipe.id, member_ids: eaters, method_id: ref.methodId } : undefined })}>
+          <button
+            className="btn danger"
+            onClick={() =>
+              void runOp(
+                { op: 'remove', item_id: ref.item.id },
+                {
+                  message: 'Блюдо убрано из меню',
+                  // Undo puts back the same dish: its portions, pin and batch.
+                  undo: recipe ? { op: 'add', date: dish.date, slot: dish.slot, recipe_id: recipe.id, member_ids: eaters, method_id: ref.methodId, portions: { ...ref.item.portions }, pinned: ref.item.pinned, batch_id: ref.batchId } : undefined,
+                },
+              )
+            }
+          >
             <Icon name="trash" size={18} /> Убрать
           </button>
         </div>
@@ -707,11 +830,13 @@ function NewMenuSheet({ open, onClose, record, onCreated }: { open: boolean; onC
         <div className="stack" style={{ ['--gap' as string]: '8px' }}>
           <span className="label">На сколько дней</span>
           <div className="chips">
-            {[1, 3, 7, 14, 28, 35].map((d) => (
-              <button key={d} className="chip" aria-pressed={days === d} onClick={() => setDays(d)}>
-                {d}
-              </button>
-            ))}
+            {[...new Set([1, 3, 7, 14, 30, 35, household?.settings.days ?? 7])]
+              .sort((a, b) => a - b)
+              .map((d) => (
+                <button key={d} className="chip" aria-pressed={days === d} onClick={() => setDays(d)}>
+                  {d} {plural(d, 'день', 'дня', 'дней')}
+                </button>
+              ))}
           </div>
         </div>
         <button className="btn primary big" onClick={() => void generate()} disabled={busy}>
@@ -728,6 +853,55 @@ function NewMenuSheet({ open, onClose, record, onCreated }: { open: boolean; onC
             </button>
           </>
         )}
+      </div>
+    </Sheet>
+  );
+}
+
+/** A dish for an empty meal: recipes for this meal that are safe for everyone eating it. */
+function AddDishSheet({ target, menu, busy, onClose, onAdd }: { target: { date: string; slot: string; memberIds: string[] }; menu: Menu; busy: boolean; onClose: () => void; onAdd: (recipeId: string) => Promise<void> }) {
+  const { household } = useApp();
+  const { catalog } = useFullCatalog();
+  const [query, setQuery] = useState('');
+  const settings = menu.settings;
+  const fitting = useMemo(() => {
+    const people = (household?.members ?? []).filter((m) => target.memberIds.includes(m.id));
+    return Object.values(catalog.recipes)
+      .filter(
+        (r) =>
+          r.meal_types.includes(target.slot) &&
+          selectMethod(r, settings.equipment) !== null &&
+          skillAllows(settings.skill, recipeSkillRank(catalog.reference, r)) &&
+          people.every((m) => isRecipeSafeFor(catalog, r, m)),
+      )
+      .sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+  }, [catalog, target, household, settings]);
+  const tokens = searchTokens(query);
+  const shown = fitting.filter((r) => matchesSearch(r.name, tokens)).slice(0, 30);
+  return (
+    <Sheet open onClose={onClose} title={`${SLOT_NAMES[target.slot]}, ${humanDate(target.date)}`}>
+      <div className="stack">
+        <input className="input" type="search" placeholder="Блюдо или продукт" aria-label="Поиск блюда" value={query} onChange={(e) => setQuery(e.target.value)} data-autofocus />
+        <p className="muted small">
+          {fitting.length > 0
+            ? `Подходят ${fitting.length} ${plural(fitting.length, 'рецепт', 'рецепта', 'рецептов')}: с учётом запретов, техники и уровня готовки.`
+            : 'Ни один рецепт не подходит под запреты, технику и уровень готовки для этого приёма пищи.'}
+        </p>
+        {shown.map((r) => (
+          <button key={r.id} className="card flat row" style={{ textAlign: 'left', cursor: 'pointer', padding: 10 }} disabled={busy} onClick={() => void onAdd(r.id)}>
+            <span style={{ width: 52, height: 52, flex: 'none' }}>
+              <RecipeCover recipe={r} rounded />
+            </span>
+            <span className="grow">
+              <strong>{r.name}</strong>
+              <span className="muted small" style={{ display: 'block' }}>
+                {minutes(summarize(catalog, r).totalMin)}
+              </span>
+            </span>
+            <Icon name="plus" size={18} />
+          </button>
+        ))}
+        {query && fitting.length > 0 && shown.length === 0 && <p className="muted small">Ничего не нашлось — попробуйте другое слово.</p>}
       </div>
     </Sheet>
   );
