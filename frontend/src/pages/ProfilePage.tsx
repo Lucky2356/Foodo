@@ -16,6 +16,15 @@ import { num, plural } from '../lib/format';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, toggleQuickExclusion } from '../lib/recipes';
 import { deviceTimeZone } from '../lib/dates';
 import { NATIVE_BUILD } from '../lib/config';
+import type { IconName } from '../ui/icons';
+
+const MORE_LINKS: { to: string; label: string; icon: IconName }[] = [
+  { to: '/favorites', label: 'Избранные рецепты', icon: 'heart' },
+  { to: '/menu/history', label: 'История и избранные меню', icon: 'list' },
+  { to: '/habits', label: 'Вода и привычки', icon: 'drop' },
+  { to: '/articles', label: 'Статьи о питании', icon: 'leaf' },
+  { to: '/about', label: 'О сервисе', icon: 'info' },
+];
 
 const TIMEZONES = ['Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Samara', 'Asia/Yekaterinburg', 'Asia/Omsk', 'Asia/Krasnoyarsk', 'Asia/Irkutsk', 'Asia/Yakutsk', 'Asia/Vladivostok', 'Asia/Magadan', 'Asia/Kamchatka'];
 
@@ -134,6 +143,16 @@ export default function ProfilePage() {
           <Icon name="chevron" size={18} />
         </Link>
       </section>
+      {/* On a phone the tab bar has five places; the rest of the app is reachable from here. */}
+      <nav className="card stack more-links" aria-label="Ещё разделы" style={{ ['--gap' as string]: '0px', padding: 6 }}>
+        {MORE_LINKS.map((l) => (
+          <Link key={l.to} to={l.to} className="row more-link">
+            <Icon name={l.icon} size={20} />
+            <span className="grow">{l.label}</span>
+            <Icon name="chevron" size={16} />
+          </Link>
+        ))}
+      </nav>
       <section className="card stack">
         <h2>Оформление</h2>
         <Segmented<ThemeChoice>

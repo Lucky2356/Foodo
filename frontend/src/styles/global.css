@@ -16,10 +16,10 @@
   --surface-raised: #ffffff;
   --text: #1f2a1f;
   --muted: #5f6b5f;
-  --faint: #8a948a;
+  --faint: #687268;
   --border: #ece5d3;
-  --primary: #16a34a;
-  --primary-hover: #15803d;
+  --primary: #15803d;
+  --primary-hover: #166534;
   --primary-ink: #ffffff;
   --primary-soft: #e3f6e9;
   --primary-soft-ink: #14532d;
@@ -85,7 +85,7 @@
     --surface-raised: #1a1a1a;
     --text: #f5f5f5;
     --muted: #a3a3a3;
-    --faint: #737373;
+    --faint: #8f8f8f;
     --border: #262626;
     --primary: #ffa42b;
     --primary-hover: #ffb54d;
@@ -144,7 +144,7 @@
   --surface-raised: #1a1a1a;
   --text: #f5f5f5;
   --muted: #a3a3a3;
-  --faint: #737373;
+  --faint: #8f8f8f;
   --border: #262626;
   --primary: #ffa42b;
   --primary-hover: #ffb54d;
@@ -743,7 +743,7 @@ textarea {
 }
 
 .btn.small {
-  min-height: 36px;
+  min-height: 40px;
   padding: 6px 12px;
   font-size: 14px;
   border-radius: 11px;
@@ -777,8 +777,8 @@ textarea {
 }
 
 .icon-btn.small {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 11px;
 }
 
@@ -1015,8 +1015,8 @@ textarea.input {
 }
 
 .stepper button {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border: 0;
   border-radius: 11px;
   background: transparent;
@@ -1351,8 +1351,8 @@ textarea.input {
   }
 
   .recipe-list .recipe-card .icon-btn {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -2580,4 +2580,27 @@ hr.sep {
 .dish-tile:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
+}
+
+/* «Ещё разделы» in the profile: full-width rows with a comfortable tap target. */
+.more-link {
+  min-height: 48px;
+  padding: 0 12px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.more-link:hover {
+  background: var(--surface-2);
+}
+.more-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.week-day {
+  font-size: 15px;
+  font-weight: 750;
+  margin: 0;
 }

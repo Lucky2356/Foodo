@@ -564,17 +564,20 @@ function WeekView({
           </button>
         </div>
       )}
-      <div className="week-table" role="table" aria-label="Меню на неделю">
+      {/* Each day is its own labelled section: the grid is a visual layout, not a data table. */}
+      <div className="week-table">
         {pageDates.map((d) => (
-          <div key={d} className="week-col" role="rowgroup">
-            <div className="row between" role="columnheader">
-              <strong>{d === today ? 'Сегодня' : `${weekdayShort(d)}, ${Number(d.slice(8))}`}</strong>
+          <section key={d} className="week-col" aria-labelledby={`week-${d}`}>
+            <div className="row between">
+              <h3 id={`week-${d}`} className="week-day">
+                {d === today ? 'Сегодня' : `${weekdayShort(d)}, ${Number(d.slice(8))}`}
+              </h3>
             </div>
             {menu.slots.map((slot) => {
               const refs = dishRefs(menu, record.cooked_batches, d, slot).filter((r) => who === 'all' || r.item.portions[who] !== undefined);
               const notes = unfilledNotes(menu, d, slot, who);
               return (
-                <div key={slot} className="week-cell" role="cell">
+                <div key={slot} className="week-cell">
                   <div className="meal-slot tiny" style={{ marginBottom: 4 }}>
                     {SLOT_NAMES[slot]}
                   </div>
@@ -602,7 +605,7 @@ function WeekView({
                 </div>
               );
             })}
-          </div>
+          </section>
         ))}
       </div>
     </section>

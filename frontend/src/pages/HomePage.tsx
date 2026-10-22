@@ -9,7 +9,7 @@ import { Loading, RecipeCover } from '../ui/kit';
 import { Illustration } from '../ui/illustrations';
 import { APP_NAME, STATIC_BUILD } from '../lib/config';
 import { deviceTimeZone, humanDate, localDate } from '../lib/dates';
-import { kcal, num } from '../lib/format';
+import { kcal, num, plural } from '../lib/format';
 import { SLOT_NAMES } from '../lib/recipes';
 
 const FEATURES: { icon: IconName; title: string; text: string }[] = [
@@ -125,20 +125,20 @@ function WaterQuick({ member }: { member: Member }) {
           Подробнее
         </Link>
       </div>
-      <div className="row" style={{ marginTop: 12, ['--gap' as string]: '16px' }}>
+      <div className="row wrap" style={{ marginTop: 12, ['--gap' as string]: '16px' }}>
         <div className="ring" style={{ ['--p' as string]: String(Math.min(100, Math.round((total / goal) * 100))) }}>
           <span className="small">{num(total / 1000, 2)} л</span>
         </div>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+        <div className="stack" style={{ ['--gap' as string]: '8px', minWidth: 0 }}>
           <span className="muted small">
             {member.name}: цель {num(goal / 1000, 1)} л
           </span>
-          <div className="row">
-            <button className="btn small primary" onClick={() => void add(250)}>
-              +250
+          <div className="row wrap">
+            <button className="btn small primary" onClick={() => void add(250)} aria-label="Добавить 250 мл воды">
+              +250 мл
             </button>
-            <button className="btn small" onClick={() => void add(500)}>
-              +500
+            <button className="btn small" onClick={() => void add(500)} aria-label="Добавить 500 мл воды">
+              +500 мл
             </button>
           </div>
         </div>
@@ -185,7 +185,7 @@ function Dashboard() {
           <div className="row between" style={{ alignItems: 'flex-start' }}>
             <div>
               <div className="muted small">{menu ? (inRange ? 'Сегодня в меню' : 'Первый день меню') : 'Меню ещё нет'}</div>
-              <h2 style={{ marginTop: 6 }}>{menu ? `${meals.reduce((s, m) => s + m.items.length, 0)} блюд` : 'Составим за пару секунд'}</h2>
+              <h2 style={{ marginTop: 6 }}>{menu ? dishCount(meals.reduce((s, m) => s + m.items.length, 0)) : 'Составим за пару секунд'}</h2>
             </div>
             {day && (
               <div style={{ textAlign: 'right' }}>
@@ -285,4 +285,8 @@ export default function HomePage() {
   if (!household) return <Loading />;
   if (household.members.length === 0) return <Landing />;
   return <Dashboard />;
+}
+
+function dishCount(n: number): string {
+  return n === 0 ? 'Блюд нет' : `${n} ${plural(n, 'блюдо', 'блюда', 'блюд')}`;
 }

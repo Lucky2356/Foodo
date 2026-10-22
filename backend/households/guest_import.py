@@ -71,7 +71,8 @@ def preview_guest_import(h: Household, data: Any) -> JSON:
                 "start_date": doc.get("start_date"),
                 "days": doc.get("days"),
                 "conflict": {"existing_id": str(clash.id)} if clash else None,
-                "default": "add",
+                # A menu with the same start is most likely this one transferred before: skip by default.
+                "default": "skip" if clash else "add",
             }
         )
     return {

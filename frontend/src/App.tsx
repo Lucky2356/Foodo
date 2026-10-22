@@ -1,9 +1,10 @@
-import { lazy, Suspense, useEffect } from 'react';
-import { HashRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { Component, lazy, Suspense, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import { HashRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { AppProvider, useApp } from './state/app';
 import { Icon } from './ui/icons';
 import type { IconName } from './ui/icons';
-import { Banner, Loading, Toasts } from './ui/kit';
+import { Banner, Empty, Loading, Toasts } from './ui/kit';
 import { usePwaUpdate } from './lib/pwa';
 import { APP_NAME, NATIVE_BUILD } from './lib/config';
 
@@ -52,6 +53,71 @@ function Brand() {
   );
 }
 
+/** Tab titles by route; a recipe or an article keeps the section name (their own title needs data). */
+const TITLES: [RegExp, string][] = [
+  [/^\/$/, 'Главная'],
+  [/^\/start/, 'Анкета'],
+  [/^\/menu\/history/, 'История меню'],
+  [/^\/menu/, 'Меню'],
+  [/^\/recipes\/new/, 'Новый рецепт'],
+  [/^\/recipes/, 'Рецепты'],
+  [/^\/shopping/, 'Покупки'],
+  [/^\/pantry/, 'Дома'],
+  [/^\/profile/, 'Профиль'],
+  [/^\/settings/, 'Настройки'],
+  [/^\/habits/, 'Вода и привычки'],
+  [/^\/favorites/, 'Избранное'],
+  [/^\/(account|reset-password)/, 'Аккаунт'],
+  [/^\/articles/, 'Статьи'],
+  [/^\/about/, 'О сервисе'],
+];
+
+function DocumentTitle() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const title = TITLES.find(([re]) => re.test(pathname))?.[1] ?? 'Страница не найдена';
+    document.title = `${title} — ${APP_NAME}`;
+  }, [pathname]);
+  return null;
+}
+
+/**
+ * A screen that failed to load (its code chunk was not reachable, e.g. offline before the app was
+ * cached) shows an explanation and a retry instead of an empty page. Reset when the route changes.
+ */
+class ScreenBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  override state = { failed: false };
+
+  static getDerivedStateFromError(): { failed: boolean } {
+    return { failed: true };
+  }
+
+  override render() {
+    if (!this.state.failed) return this.props.children;
+    return (
+      <Empty
+        icon="offline"
+        title="Экран не загрузился"
+        action={
+          <button className="btn primary" onClick={() => window.location.reload()}>
+            Обновить страницу
+          </button>
+        }
+      >
+        {navigator.onLine ? 'Не удалось загрузить часть приложения. Обновите страницу.' : 'Нет сети, а этот экран ещё не сохранён на устройстве. Подключитесь к интернету и обновите страницу.'}
+      </Empty>
+    );
+  }
+}
+
+function NotFound() {
+  return (
+    <Empty icon="info" title="Такой страницы нет" action={<Link className="btn primary" to="/">На главную</Link>}>
+      Возможно, ссылка устарела или в ней опечатка.
+    </Empty>
+  );
+}
+
 function ScrollTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -68,7 +134,17 @@ function Shell() {
   const focus = pathname === '/start';
   return (
     <div className={`shell${focus ? ' focus-mode' : ''}`}>
-      <a className="skip-link" href="#main">Перейти к содержимому</a>
+      {/* With HashRouter «#main» is a route, so the link moves focus itself instead of navigating. */}
+      <a
+        className="skip-link"
+        href="#main"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('main')?.focus();
+        }}
+      >
+        Перейти к содержимому
+      </a>
       <aside className="sidebar" aria-label="Основная навигация">
         <Brand />
         {NAV.map((n) => (
@@ -109,7 +185,10 @@ function Shell() {
           {!online && (
             <div style={{ marginBottom: 14 }}>
               <Banner tone="warn" icon="offline">
-                Нет сети. {user ? 'Данные аккаунта доступны только для чтения — изменения сохранятся, когда сеть вернётся и вы повторите действие.' : 'Гостевой режим работает полностью: меню, каталог и покупки хранятся на этом устройстве.'}
+                Нет сети.{' '}
+                {user
+                  ? 'Данные аккаунта можно только смотреть: изменения не сохранятся, пока сеть не вернётся.'
+                  : 'Меню, каталог и покупки работают на этом устройстве; цены магазинов, новые фото и вход в аккаунт — после подключения.'}
               </Banner>
             </div>
           )}
@@ -133,6 +212,7 @@ function Shell() {
           {!ready ? (
             <Loading />
           ) : (
+            <ScreenBoundary key={pathname}>
             <Suspense fallback={<Loading />}>
               <div className="page" key={pathname}>
                 <Routes>
@@ -156,10 +236,11 @@ function Shell() {
                   <Route path="/articles" element={<ArticlesPage />} />
                   <Route path="/articles/:articleId" element={<ArticlesPage />} />
                   <Route path="/about" element={<AboutPage />} />
-                  <Route path="*" element={<HomePage />} />
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>
             </Suspense>
+            </ScreenBoundary>
           )}
         </main>
       </div>
@@ -185,6 +266,7 @@ export function App() {
     <AppProvider>
       <HashRouter>
         <ScrollTop />
+        <DocumentTitle />
         <Shell />
       </HashRouter>
     </AppProvider>

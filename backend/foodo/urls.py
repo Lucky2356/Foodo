@@ -34,6 +34,7 @@ urlpatterns = [
     path("api/auth/login/", acc.LoginView.as_view()),
     path("api/auth/logout/", acc.LogoutView.as_view()),
     path("api/auth/me/", acc.MeView.as_view()),
+    path("api/auth/session/", acc.SessionView.as_view()),
     path("api/auth/password/reset/", acc.PasswordResetRequestView.as_view()),
     path("api/auth/password/reset/confirm/", acc.PasswordResetConfirmView.as_view()),
     path("api/auth/password/change/", acc.PasswordChangeView.as_view()),
