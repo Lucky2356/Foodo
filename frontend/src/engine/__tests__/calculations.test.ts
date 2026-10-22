@@ -73,7 +73,7 @@ describe('recipe nutrition', () => {
   });
 
   it('does not invent per-100 g when the yield is unknown', () => {
-    const n = recipeNutrition(cat, cat.recipes['pirog-s-kapustoy']!, 1);
+    const n = recipeNutrition(cat, { ...cat.recipes['pirog-s-kapustoy']!, yield_g: null }, 1);
     expect(n.per100g).toBeNull();
     expect(n.perServing.kcal.value).toBeGreaterThan(0);
   });

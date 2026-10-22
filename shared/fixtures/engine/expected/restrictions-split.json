@@ -56,7 +56,7 @@
   "batches": [
    {
     "id": "b1",
-    "recipe_id": "fasol-v-tomate-na-toste",
+    "recipe_id": "pan-kon-tomate",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
@@ -65,7 +65,7 @@
    },
    {
     "id": "b2",
-    "recipe_id": "meksikanskiy-sup-s-fasolyu",
+    "recipe_id": "ovoshchnoy-sup-s-kinoa",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
@@ -74,16 +74,16 @@
    },
    {
     "id": "b3",
-    "recipe_id": "brusketta-s-shampinyonami",
+    "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
     "recipe_version": 1,
-    "method_id": "stove",
+    "method_id": "oven",
     "cook_date": "2026-10-19",
     "slot": "snack",
     "portions": 1.5
    },
    {
     "id": "b4",
-    "recipe_id": "tushenaya-fasol-s-ovoshchami",
+    "recipe_id": "kuskus-s-ovoshchami",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
@@ -92,7 +92,7 @@
    },
    {
     "id": "b5",
-    "recipe_id": "tost-s-shampinonami-i-timyanom",
+    "recipe_id": "tofu-skrembl-s-ovoshchami",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
@@ -101,7 +101,7 @@
    },
    {
     "id": "b6",
-    "recipe_id": "chechevichnyy-sup-s-tomatami",
+    "recipe_id": "sup-s-nutom-i-shpinatom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
@@ -110,16 +110,16 @@
    },
    {
     "id": "b7",
-    "recipe_id": "guakamole-s-tostami",
+    "recipe_id": "salat-s-nutom",
     "recipe_version": 1,
-    "method_id": "nocook",
+    "method_id": "no-heat",
     "cook_date": "2026-10-20",
     "slot": "snack",
     "portions": 1.5
    },
    {
     "id": "b8",
-    "recipe_id": "kuskus-s-ovoshchami",
+    "recipe_id": "indeyka-s-kabachkami",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
@@ -128,7 +128,7 @@
    },
    {
     "id": "b9",
-    "recipe_id": "tofu-skrembl-s-ovoshchami",
+    "recipe_id": "tost-s-shampinonami-i-timyanom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
@@ -137,7 +137,7 @@
    },
    {
     "id": "b10",
-    "recipe_id": "tomatnyy-sup-s-fasolyu",
+    "recipe_id": "chechevichnyy-sup-s-tomatami",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
@@ -146,16 +146,16 @@
    },
    {
     "id": "b11",
-    "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+    "recipe_id": "guakamole-s-tostami",
     "recipe_version": 1,
-    "method_id": "oven",
+    "method_id": "nocook",
     "cook_date": "2026-10-21",
     "slot": "snack",
     "portions": 1.5
    },
    {
     "id": "b12",
-    "recipe_id": "nut-so-shpinatom-po-andaluzski",
+    "recipe_id": "treska-na-paru-s-ovoshchami",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
@@ -164,7 +164,7 @@
    },
    {
     "id": "b13",
-    "recipe_id": "pan-kon-tomate",
+    "recipe_id": "fasol-v-tomate-na-toste",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-22",
@@ -173,7 +173,7 @@
    },
    {
     "id": "b14",
-    "recipe_id": "indeyka-s-kabachkami",
+    "recipe_id": "chechevichnyy-sup",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-22",
@@ -182,9 +182,9 @@
    },
    {
     "id": "b15",
-    "recipe_id": "salat-s-nutom",
+    "recipe_id": "salat-iz-pomidorov-s-lukom",
     "recipe_version": 1,
-    "method_id": "no-heat",
+    "method_id": "nocook",
     "cook_date": "2026-10-22",
     "slot": "snack",
     "portions": 1.5
@@ -462,65 +462,64 @@
   "warnings": [],
   "stats": {
    "attempts": 6,
-   "evaluated": 9133,
-   "score": 32.61142449929611,
+   "evaluated": 9097,
+   "score": 32.486968671608096,
    "budget_status": "none"
   },
   "snapshot_ids": {
    "recipes": [
     "brusketta-s-pomidorami-i-bazilikom",
-    "brusketta-s-shampinyonami",
     "bulgur-s-kabachkom-i-pertsem",
+    "chechevichnyy-sup",
     "chechevichnyy-sup-s-tomatami",
     "fasol-v-tomate-na-toste",
     "guakamole-s-tostami",
     "indeyka-s-kabachkami",
     "kuskus-s-ovoshchami",
-    "meksikanskiy-sup-s-fasolyu",
-    "nut-so-shpinatom-po-andaluzski",
+    "ovoshchnoy-sup-s-kinoa",
     "pan-kon-tomate",
+    "salat-iz-pomidorov-s-lukom",
     "salat-s-nutom",
+    "sup-s-nutom-i-shpinatom",
     "tofu-skrembl-s-ovoshchami",
-    "tomatnyy-sup-s-fasolyu",
     "tost-s-shampinonami-i-timyanom",
-    "tushenaya-fasol-s-ovoshchami"
+    "treska-na-paru-s-ovoshchami"
    ],
    "products": [
-    "almonds",
     "avocado",
     "baguette",
     "basil",
-    "beans_canned",
     "beans_in_tomato",
     "bell_pepper",
     "black_pepper",
     "bread_wholegrain",
+    "broccoli",
     "bulgur_dry",
     "canned_tomatoes",
     "carrot",
     "champignons",
     "chickpeas_canned",
-    "chili_flakes",
     "cilantro",
-    "corn_canned",
+    "cod_fillet",
     "couscous_dry",
     "cucumber",
     "cumin",
+    "dill",
     "garlic",
+    "green_beans_frozen",
     "green_onion",
+    "italian_herbs",
     "lemon",
-    "lime",
     "mint",
     "olive_oil",
     "onion",
-    "paprika",
     "parsley",
+    "quinoa_dry",
     "red_lentils_dry",
     "salt",
     "smoked_paprika",
     "spinach",
     "spinach_frozen",
-    "sugar",
     "sunflower_oil",
     "tamari",
     "thyme",
@@ -531,7 +530,6 @@
     "turmeric",
     "water",
     "wheat_flour",
-    "wine_vinegar",
     "zucchini"
    ]
   }
@@ -559,10 +557,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b7",
+      "batch_id": "b11",
       "recipe_id": "guakamole-s-tostami",
       "recipe_name": "Гуакамоле с хлебцами",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
       "qty": 150
      }
     ],
@@ -578,9 +576,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 11.25,
+    "needed": 10,
     "from_pantry": 0,
-    "to_buy": 11.25,
+    "to_buy": 10,
     "package": {
      "size": 30,
      "unit": "g",
@@ -596,25 +594,62 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-21",
-      "qty": 3.75
+      "batch_id": "b2",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
+      "cook_date": "2026-10-19",
+      "qty": 2.5
      },
      {
-      "batch_id": "b11",
+      "batch_id": "b3",
       "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
       "recipe_name": "Брускетта с помидорами и базиликом",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-19",
       "qty": 3.75
      },
      {
-      "batch_id": "b14",
+      "batch_id": "b8",
       "recipe_id": "indeyka-s-kabachkami",
       "recipe_name": "Индейка, тушённая с кабачками",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-20",
       "qty": 3.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:broccoli:g",
+    "product_id": "broccoli",
+    "name": "Брокколи",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 100,
+    "from_pantry": 0,
+    "to_buy": 100,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
+      "cook_date": "2026-10-21",
+      "qty": 100
      }
     ],
     "purchased": false,
@@ -629,9 +664,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 450,
+    "needed": 675,
     "from_pantry": 0,
-    "to_buy": 450,
+    "to_buy": 675,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -643,18 +678,32 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
+      "batch_id": "b2",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
+      "cook_date": "2026-10-19",
+      "qty": 75
+     },
+     {
+      "batch_id": "b4",
       "recipe_id": "kuskus-s-ovoshchami",
       "recipe_name": "Кускус с овощами и нутом",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-19",
       "qty": 112.5
      },
      {
-      "batch_id": "b14",
+      "batch_id": "b8",
       "recipe_id": "indeyka-s-kabachkami",
       "recipe_name": "Индейка, тушённая с кабачками",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-20",
       "qty": 225
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
+      "cook_date": "2026-10-21",
+      "qty": 150
      },
      {
       "batch_id": "b16",
@@ -676,9 +725,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 12.5,
+    "needed": 3.75,
     "from_pantry": 0,
-    "to_buy": 12.5,
+    "to_buy": 3.75,
     "package": {
      "size": 50,
      "unit": "g",
@@ -694,58 +743,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-19",
-      "qty": 5
-     },
-     {
-      "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
-      "cook_date": "2026-10-19",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b7",
+      "batch_id": "b11",
       "recipe_id": "guakamole-s-tostami",
       "recipe_name": "Гуакамоле с хлебцами",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
       "qty": 3.75
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:lime:g",
-    "product_id": "lime",
-    "name": "Лайм",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 17.5,
-    "from_pantry": 0,
-    "to_buy": 17.5,
-    "package": null,
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-19",
-      "qty": 17.5
      }
     ],
     "purchased": false,
@@ -760,9 +762,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 112.5,
+    "needed": 157.5,
     "from_pantry": 0,
-    "to_buy": 112.5,
+    "to_buy": 157.5,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -774,39 +776,46 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
-      "cook_date": "2026-10-19",
-      "qty": 7.5
-     },
-     {
-      "batch_id": "b5",
-      "recipe_id": "tost-s-shampinonami-i-timyanom",
-      "recipe_name": "Тост с шампиньонами и тимьяном",
-      "cook_date": "2026-10-20",
-      "qty": 22.5
-     },
-     {
       "batch_id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
-      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
       "cook_date": "2026-10-20",
       "qty": 22.5
      },
      {
       "batch_id": "b7",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 15
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "tost-s-shampinonami-i-timyanom",
+      "recipe_name": "Тост с шампиньонами и тимьяном",
+      "cook_date": "2026-10-21",
+      "qty": 22.5
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "cook_date": "2026-10-21",
+      "qty": 22.5
+     },
+     {
+      "batch_id": "b11",
       "recipe_id": "guakamole-s-tostami",
       "recipe_name": "Гуакамоле с хлебцами",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
       "qty": 45
      },
      {
-      "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 15
+      "batch_id": "b12",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
+      "cook_date": "2026-10-21",
+      "qty": 30
      }
     ],
     "purchased": false,
@@ -839,10 +848,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b5",
       "recipe_id": "tofu-skrembl-s-ovoshchami",
       "recipe_name": "Тофу-скрэмбл с овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-20",
       "qty": 7.5
      }
     ],
@@ -858,9 +867,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 306.25,
+    "needed": 331.25,
     "from_pantry": 0,
-    "to_buy": 306.25,
+    "to_buy": 331.25,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -877,59 +886,66 @@
     "sources": [
      {
       "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
       "cook_date": "2026-10-19",
       "qty": 25
      },
      {
       "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
+      "recipe_id": "kuskus-s-ovoshchami",
+      "recipe_name": "Кускус с овощами и нутом",
       "cook_date": "2026-10-19",
       "qty": 37.5
      },
      {
-      "batch_id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
-      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "batch_id": "b5",
+      "recipe_id": "tofu-skrembl-s-ovoshchami",
+      "recipe_name": "Тофу-скрэмбл с овощами",
       "cook_date": "2026-10-20",
       "qty": 37.5
      },
      {
-      "batch_id": "b7",
-      "recipe_id": "guakamole-s-tostami",
-      "recipe_name": "Гуакамоле с хлебцами",
+      "batch_id": "b6",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
       "cook_date": "2026-10-20",
-      "qty": 18.75
+      "qty": 37.5
      },
      {
       "batch_id": "b8",
-      "recipe_id": "kuskus-s-ovoshchami",
-      "recipe_name": "Кускус с овощами и нутом",
+      "recipe_id": "indeyka-s-kabachkami",
+      "recipe_name": "Индейка, тушённая с кабачками",
       "cook_date": "2026-10-20",
-      "qty": 37.5
-     },
-     {
-      "batch_id": "b9",
-      "recipe_id": "tofu-skrembl-s-ovoshchami",
-      "recipe_name": "Тофу-скрэмбл с овощами",
-      "cook_date": "2026-10-21",
       "qty": 37.5
      },
      {
       "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 37.5
      },
      {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 18.75
+     },
+     {
       "batch_id": "b14",
-      "recipe_id": "indeyka-s-kabachkami",
-      "recipe_name": "Индейка, тушённая с кабачками",
+      "recipe_id": "chechevichnyy-sup",
+      "recipe_name": "Суп из красной чечевицы",
       "cook_date": "2026-10-22",
       "qty": 37.5
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-22",
+      "qty": 25
      },
      {
       "batch_id": "b16",
@@ -951,9 +967,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 60,
+    "needed": 190,
     "from_pantry": 0,
-    "to_buy": 60,
+    "to_buy": 190,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -969,17 +985,38 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b2",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
+      "cook_date": "2026-10-19",
+      "qty": 20
+     },
+     {
       "batch_id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
-      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
       "cook_date": "2026-10-20",
       "qty": 30
      },
      {
       "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
+      "qty": 30
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
+      "cook_date": "2026-10-21",
+      "qty": 80
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "chechevichnyy-sup",
+      "recipe_name": "Суп из красной чечевицы",
+      "cook_date": "2026-10-22",
       "qty": 30
      }
     ],
@@ -1046,10 +1083,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b15",
+      "batch_id": "b7",
       "recipe_id": "salat-s-nutom",
       "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-20",
       "qty": 60
      }
     ],
@@ -1065,9 +1102,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 375,
+    "needed": 318.75,
     "from_pantry": 0,
-    "to_buy": 375,
+    "to_buy": 318.75,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -1080,30 +1117,23 @@
     "sources": [
      {
       "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
       "cook_date": "2026-10-19",
       "qty": 37.5
      },
      {
       "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
+      "recipe_id": "kuskus-s-ovoshchami",
+      "recipe_name": "Кускус с овощами и нутом",
       "cook_date": "2026-10-19",
       "qty": 56.25
      },
      {
-      "batch_id": "b8",
-      "recipe_id": "kuskus-s-ovoshchami",
-      "recipe_name": "Кускус с овощами и нутом",
-      "cook_date": "2026-10-20",
-      "qty": 56.25
-     },
-     {
-      "batch_id": "b9",
+      "batch_id": "b5",
       "recipe_id": "tofu-skrembl-s-ovoshchami",
       "recipe_name": "Тофу-скрэмбл с овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-20",
       "qty": 112.5
      },
      {
@@ -1126,9 +1156,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 30.625,
+    "needed": 26.875,
     "from_pantry": 0,
-    "to_buy": 30.625,
+    "to_buy": 26.875,
     "package": {
      "size": 50,
      "unit": "g",
@@ -1144,39 +1174,32 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
-      "recipe_id": "fasol-v-tomate-na-toste",
-      "recipe_name": "Фасоль в томате на тосте",
-      "cook_date": "2026-10-19",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
-      "cook_date": "2026-10-19",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b5",
-      "recipe_id": "tost-s-shampinonami-i-timyanom",
-      "recipe_name": "Тост с шампиньонами и тимьяном",
-      "cook_date": "2026-10-20",
-      "qty": 7.5
-     },
-     {
-      "batch_id": "b8",
+      "batch_id": "b4",
       "recipe_id": "kuskus-s-ovoshchami",
       "recipe_name": "Кускус с овощами и нутом",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-19",
       "qty": 5.625
      },
      {
-      "batch_id": "b15",
+      "batch_id": "b7",
       "recipe_id": "salat-s-nutom",
       "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-20",
       "qty": 10
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "tost-s-shampinonami-i-timyanom",
+      "recipe_name": "Тост с шампиньонами и тимьяном",
+      "cook_date": "2026-10-21",
+      "qty": 7.5
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "fasol-v-tomate-na-toste",
+      "recipe_name": "Фасоль в томате на тосте",
+      "cook_date": "2026-10-22",
+      "qty": 3.75
      }
     ],
     "purchased": false,
@@ -1191,9 +1214,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 615,
+    "needed": 855,
     "from_pantry": 0,
-    "to_buy": 615,
+    "to_buy": 855,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -1205,32 +1228,39 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b7",
-      "recipe_id": "guakamole-s-tostami",
-      "recipe_name": "Гуакамоле с хлебцами",
-      "cook_date": "2026-10-20",
-      "qty": 90
-     },
-     {
-      "batch_id": "b11",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
-      "recipe_name": "Брускетта с помидорами и базиликом",
-      "cook_date": "2026-10-21",
-      "qty": 135
-     },
-     {
-      "batch_id": "b13",
+      "batch_id": "b1",
       "recipe_id": "pan-kon-tomate",
       "recipe_name": "Пан кон томате",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-19",
       "qty": 180
      },
      {
-      "batch_id": "b15",
+      "batch_id": "b3",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
+      "cook_date": "2026-10-19",
+      "qty": 135
+     },
+     {
+      "batch_id": "b7",
       "recipe_id": "salat-s-nutom",
       "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-20",
       "qty": 120
+     },
+     {
+      "batch_id": "b11",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 90
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-22",
+      "qty": 240
      },
      {
       "batch_id": "b16",
@@ -1252,9 +1282,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 3.375,
+    "needed": 2.25,
     "from_pantry": 0,
-    "to_buy": 3.375,
+    "to_buy": 2.25,
     "package": {
      "size": 20,
      "unit": "g",
@@ -1270,18 +1300,55 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
-      "cook_date": "2026-10-19",
-      "qty": 1.125
-     },
-     {
-      "batch_id": "b5",
+      "batch_id": "b9",
       "recipe_id": "tost-s-shampinonami-i-timyanom",
       "recipe_name": "Тост с шампиньонами и тимьяном",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
       "qty": 2.25
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:dill:g",
+    "product_id": "dill",
+    "name": "Укроп",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 7.5,
+    "from_pantry": 0,
+    "to_buy": 7.5,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
+      "cook_date": "2026-10-21",
+      "qty": 5
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-22",
+      "qty": 2.5
      }
     ],
     "purchased": false,
@@ -1296,9 +1363,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 43.75,
+    "needed": 26.875,
     "from_pantry": 0,
-    "to_buy": 43.75,
+    "to_buy": 26.875,
     "package": {
      "size": 100,
      "unit": "g",
@@ -1314,80 +1381,59 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b1",
+      "recipe_id": "pan-kon-tomate",
+      "recipe_name": "Пан кон томате",
+      "cook_date": "2026-10-19",
+      "qty": 3.75
+     },
+     {
       "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
       "cook_date": "2026-10-19",
       "qty": 2.5
      },
      {
       "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
       "cook_date": "2026-10-19",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
-      "cook_date": "2026-10-19",
-      "qty": 3.75
+      "qty": 1.875
      },
      {
       "batch_id": "b5",
-      "recipe_id": "tost-s-shampinonami-i-timyanom",
-      "recipe_name": "Тост с шампиньонами и тимьяном",
+      "recipe_id": "tofu-skrembl-s-ovoshchami",
+      "recipe_name": "Тофу-скрэмбл с овощами",
       "cook_date": "2026-10-20",
       "qty": 3.75
      },
      {
       "batch_id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
-      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
+      "cook_date": "2026-10-20",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "indeyka-s-kabachkami",
+      "recipe_name": "Индейка, тушённая с кабачками",
       "cook_date": "2026-10-20",
       "qty": 3.75
      },
      {
       "batch_id": "b9",
-      "recipe_id": "tofu-skrembl-s-ovoshchami",
-      "recipe_name": "Тофу-скрэмбл с овощами",
+      "recipe_id": "tost-s-shampinonami-i-timyanom",
+      "recipe_name": "Тост с шампиньонами и тимьяном",
       "cook_date": "2026-10-21",
       "qty": 3.75
      },
      {
       "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b11",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
-      "recipe_name": "Брускетта с помидорами и базиликом",
-      "cook_date": "2026-10-21",
-      "qty": 1.875
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-21",
-      "qty": 9.375
-     },
-     {
-      "batch_id": "b13",
-      "recipe_id": "pan-kon-tomate",
-      "recipe_name": "Пан кон томате",
-      "cook_date": "2026-10-22",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b14",
-      "recipe_id": "indeyka-s-kabachkami",
-      "recipe_name": "Индейка, тушённая с кабачками",
-      "cook_date": "2026-10-22",
       "qty": 3.75
      }
     ],
@@ -1403,9 +1449,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 300,
+    "needed": 187.5,
     "from_pantry": 0,
-    "to_buy": 300,
+    "to_buy": 187.5,
     "package": {
      "size": 400,
      "unit": "g",
@@ -1421,17 +1467,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
-      "cook_date": "2026-10-19",
-      "qty": 112.5
-     },
-     {
-      "batch_id": "b5",
+      "batch_id": "b9",
       "recipe_id": "tost-s-shampinonami-i-timyanom",
       "recipe_name": "Тост с шампиньонами и тимьяном",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
       "qty": 187.5
      }
     ],
@@ -1465,10 +1504,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b5",
       "recipe_id": "tofu-skrembl-s-ovoshchami",
       "recipe_name": "Тофу-скрэмбл с овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-20",
       "qty": 45
      }
     ],
@@ -1502,10 +1541,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b5",
       "recipe_id": "tofu-skrembl-s-ovoshchami",
       "recipe_name": "Тофу-скрэмбл с овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-20",
       "qty": 225
      }
     ],
@@ -1539,11 +1578,48 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b14",
+      "batch_id": "b8",
       "recipe_id": "indeyka-s-kabachkami",
       "recipe_name": "Индейка, тушённая с кабачками",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-20",
       "qty": 187.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cod_fillet:g",
+    "product_id": "cod_fillet",
+    "name": "Треска, филе",
+    "department": "Рыба",
+    "unit": "g",
+    "convertible": true,
+    "needed": 225,
+    "from_pantry": 0,
+    "to_buy": 225,
+    "package": {
+     "size": 500,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
+      "cook_date": "2026-10-21",
+      "qty": 225
      }
     ],
     "purchased": false,
@@ -1589,6 +1665,43 @@
     "changed": false
    },
    {
+    "id": "auto:quinoa_dry:g",
+    "product_id": "quinoa_dry",
+    "name": "Киноа",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 25,
+    "from_pantry": 0,
+    "to_buy": 25,
+    "package": {
+     "size": 350,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
+      "cook_date": "2026-10-19",
+      "qty": 25
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
     "id": "auto:couscous_dry:g",
     "product_id": "couscous_dry",
     "name": "Кускус",
@@ -1613,85 +1726,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
+      "batch_id": "b4",
       "recipe_id": "kuskus-s-ovoshchami",
       "recipe_name": "Кускус с овощами и нутом",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-19",
       "qty": 75
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:almonds:g",
-    "product_id": "almonds",
-    "name": "Миндаль",
-    "department": "Бакалея",
-    "unit": "g",
-    "convertible": true,
-    "needed": 11.25,
-    "from_pantry": 0,
-    "to_buy": 11.25,
-    "package": {
-     "size": 150,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-21",
-      "qty": 11.25
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:sugar:g",
-    "product_id": "sugar",
-    "name": "Сахар",
-    "department": "Бакалея",
-    "unit": "g",
-    "convertible": true,
-    "needed": 1.575,
-    "from_pantry": 0,
-    "to_buy": 1.575,
-    "package": {
-     "size": 1000,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-21",
-      "qty": 1.575
      }
     ],
     "purchased": false,
@@ -1706,9 +1745,9 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 75,
+    "needed": 150,
     "from_pantry": 0,
-    "to_buy": 75,
+    "to_buy": 150,
     "package": {
      "size": 450,
      "unit": "g",
@@ -1724,10 +1763,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b6",
+      "batch_id": "b10",
       "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_name": "Чечевичный суп с томатами и кумином",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
+      "qty": 75
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "chechevichnyy-sup",
+      "recipe_name": "Суп из красной чечевицы",
+      "cook_date": "2026-10-22",
       "qty": 75
      }
     ],
@@ -1743,9 +1789,9 @@
     "department": "Хлеб",
     "unit": "g",
     "convertible": true,
-    "needed": 243.75,
+    "needed": 168.75,
     "from_pantry": 0,
-    "to_buy": 243.75,
+    "to_buy": 168.75,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -1757,25 +1803,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
-      "cook_date": "2026-10-19",
-      "qty": 75
-     },
-     {
-      "batch_id": "b11",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
-      "recipe_name": "Брускетта с помидорами и базиликом",
-      "cook_date": "2026-10-21",
-      "qty": 75
-     },
-     {
-      "batch_id": "b13",
+      "batch_id": "b1",
       "recipe_id": "pan-kon-tomate",
       "recipe_name": "Пан кон томате",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-19",
       "qty": 93.75
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
+      "cook_date": "2026-10-19",
+      "qty": 75
      }
     ],
     "purchased": false,
@@ -1808,62 +1847,25 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
-      "recipe_id": "fasol-v-tomate-na-toste",
-      "recipe_name": "Фасоль в томате на тосте",
-      "cook_date": "2026-10-19",
-      "qty": 45
-     },
-     {
-      "batch_id": "b5",
+      "batch_id": "b9",
       "recipe_id": "tost-s-shampinonami-i-timyanom",
       "recipe_name": "Тост с шампиньонами и тимьяном",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
       "qty": 45
      },
      {
-      "batch_id": "b7",
+      "batch_id": "b11",
       "recipe_id": "guakamole-s-tostami",
       "recipe_name": "Гуакамоле с хлебцами",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
       "qty": 45
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:corn_canned:g",
-    "product_id": "corn_canned",
-    "name": "Кукуруза консервированная",
-    "department": "Консервы и соусы",
-    "unit": "g",
-    "convertible": true,
-    "needed": 50,
-    "from_pantry": 0,
-    "to_buy": 50,
-    "package": {
-     "size": 340,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
+     },
      {
-      "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-19",
-      "qty": 50
+      "batch_id": "b13",
+      "recipe_id": "fasol-v-tomate-na-toste",
+      "recipe_name": "Фасоль в томате на тосте",
+      "cook_date": "2026-10-22",
+      "qty": 45
      }
     ],
     "purchased": false,
@@ -1878,9 +1880,9 @@
     "department": "Консервы и соусы",
     "unit": "g",
     "convertible": true,
-    "needed": 650,
+    "needed": 500,
     "from_pantry": 0,
-    "to_buy": 650,
+    "to_buy": 500,
     "package": {
      "size": 400,
      "unit": "g",
@@ -1896,24 +1898,24 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
+      "batch_id": "b4",
       "recipe_id": "kuskus-s-ovoshchami",
       "recipe_name": "Кускус с овощами и нутом",
+      "cook_date": "2026-10-19",
+      "qty": 150
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
       "cook_date": "2026-10-20",
       "qty": 150
      },
      {
-      "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-21",
-      "qty": 300
-     },
-     {
-      "batch_id": "b15",
+      "batch_id": "b7",
       "recipe_id": "salat-s-nutom",
       "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-20",
       "qty": 200
      }
     ],
@@ -1947,10 +1949,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b5",
       "recipe_id": "tofu-skrembl-s-ovoshchami",
       "recipe_name": "Тофу-скрэмбл с овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-20",
       "qty": 11.25
      }
     ],
@@ -2003,13 +2005,13 @@
     "department": "Консервы и соусы",
     "unit": "g",
     "convertible": true,
-    "needed": 925,
+    "needed": 700,
     "from_pantry": 0,
-    "to_buy": 925,
+    "to_buy": 700,
     "package": {
      "size": 400,
      "unit": "g",
-     "count": 3
+     "count": 2
     },
     "package_note": null,
     "price_kop": null,
@@ -2022,43 +2024,36 @@
     "sources": [
      {
       "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
       "cook_date": "2026-10-19",
       "qty": 100
      },
      {
-      "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
-      "cook_date": "2026-10-19",
+      "batch_id": "b6",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
+      "cook_date": "2026-10-20",
       "qty": 150
      },
      {
-      "batch_id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
-      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "batch_id": "b8",
+      "recipe_id": "indeyka-s-kabachkami",
+      "recipe_name": "Индейка, тушённая с кабачками",
       "cook_date": "2026-10-20",
       "qty": 150
      },
      {
       "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
-      "qty": 300
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-21",
-      "qty": 75
+      "qty": 150
      },
      {
       "batch_id": "b14",
-      "recipe_id": "indeyka-s-kabachkami",
-      "recipe_name": "Индейка, тушённая с кабачками",
+      "recipe_id": "chechevichnyy-sup",
+      "recipe_name": "Суп из красной чечевицы",
       "cook_date": "2026-10-22",
       "qty": 150
      }
@@ -2093,62 +2088,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
+      "batch_id": "b13",
       "recipe_id": "fasol-v-tomate-na-toste",
       "recipe_name": "Фасоль в томате на тосте",
-      "cook_date": "2026-10-19",
+      "cook_date": "2026-10-22",
       "qty": 300
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:beans_canned:g",
-    "product_id": "beans_canned",
-    "name": "Фасоль красная консервированная",
-    "department": "Консервы и соусы",
-    "unit": "g",
-    "convertible": true,
-    "needed": 650,
-    "from_pantry": 0,
-    "to_buy": 650,
-    "package": {
-     "size": 400,
-     "unit": "g",
-     "count": 2
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-19",
-      "qty": 200
-     },
-     {
-      "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
-      "cook_date": "2026-10-19",
-      "qty": 300
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-21",
-      "qty": 150
      }
     ],
     "purchased": false,
@@ -2163,9 +2107,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 2.75,
+    "needed": 2.625,
     "from_pantry": 0,
-    "to_buy": 2.75,
+    "to_buy": 2.625,
     "package": {
      "size": 50,
      "unit": "g",
@@ -2181,32 +2125,69 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "batch_id": "b4",
+      "recipe_id": "kuskus-s-ovoshchami",
+      "recipe_name": "Кускус с овощами и нутом",
       "cook_date": "2026-10-19",
-      "qty": 0.5
+      "qty": 0.75
      },
      {
       "batch_id": "b6",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
+      "cook_date": "2026-10-20",
+      "qty": 0.375
+     },
+     {
+      "batch_id": "b10",
       "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_name": "Чечевичный суп с томатами и кумином",
-      "cook_date": "2026-10-20",
-      "qty": 0.75
-     },
-     {
-      "batch_id": "b8",
-      "recipe_id": "kuskus-s-ovoshchami",
-      "recipe_name": "Кускус с овощами и нутом",
-      "cook_date": "2026-10-20",
-      "qty": 0.75
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
       "cook_date": "2026-10-21",
       "qty": 0.75
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "chechevichnyy-sup",
+      "recipe_name": "Суп из красной чечевицы",
+      "cook_date": "2026-10-22",
+      "qty": 0.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:italian_herbs:g",
+    "product_id": "italian_herbs",
+    "name": "Итальянские травы (смесь)",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.25,
+    "from_pantry": 0,
+    "to_buy": 0.25,
+    "package": {
+     "size": 15,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
+      "cook_date": "2026-10-19",
+      "qty": 0.25
      }
     ],
     "purchased": false,
@@ -2239,18 +2220,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
-      "recipe_name": "Чечевичный суп с томатами и кумином",
-      "cook_date": "2026-10-20",
-      "qty": 0.5625
-     },
-     {
-      "batch_id": "b9",
+      "batch_id": "b5",
       "recipe_id": "tofu-skrembl-s-ovoshchami",
       "recipe_name": "Тофу-скрэмбл с овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-20",
       "qty": 1.125
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "cook_date": "2026-10-21",
+      "qty": 0.5625
      }
     ],
     "purchased": false,
@@ -2265,9 +2246,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 187.293956,
+    "needed": 166.895604,
     "from_pantry": 0,
-    "to_buy": 187.293956,
+    "to_buy": 166.895604,
     "package": {
      "size": 500,
      "unit": "ml",
@@ -2284,87 +2265,87 @@
     "sources": [
      {
       "batch_id": "b1",
-      "recipe_id": "fasol-v-tomate-na-toste",
-      "recipe_name": "Фасоль в томате на тосте",
+      "recipe_id": "pan-kon-tomate",
+      "recipe_name": "Пан кон томате",
       "cook_date": "2026-10-19",
-      "qty": 3.708791
+      "qty": 22.252747
      },
      {
       "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
       "cook_date": "2026-10-19",
       "qty": 7.417582
      },
      {
       "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
       "cook_date": "2026-10-19",
       "qty": 16.68956
      },
      {
-      "batch_id": "b5",
-      "recipe_id": "tost-s-shampinonami-i-timyanom",
-      "recipe_name": "Тост с шампиньонами и тимьяном",
-      "cook_date": "2026-10-20",
-      "qty": 22.252747
+      "batch_id": "b4",
+      "recipe_id": "kuskus-s-ovoshchami",
+      "recipe_name": "Кускус с овощами и нутом",
+      "cook_date": "2026-10-19",
+      "qty": 16.68956
      },
      {
       "batch_id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
-      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
       "cook_date": "2026-10-20",
       "qty": 11.126374
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 14.835165
      },
      {
       "batch_id": "b8",
-      "recipe_id": "kuskus-s-ovoshchami",
-      "recipe_name": "Кускус с овощами и нутом",
+      "recipe_id": "indeyka-s-kabachkami",
+      "recipe_name": "Индейка, тушённая с кабачками",
       "cook_date": "2026-10-20",
-      "qty": 16.68956
+      "qty": 5.563187
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "tost-s-shampinonami-i-timyanom",
+      "recipe_name": "Тост с шампиньонами и тимьяном",
+      "cook_date": "2026-10-21",
+      "qty": 22.252747
      },
      {
       "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 11.126374
      },
      {
-      "batch_id": "b11",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
-      "recipe_name": "Брускетта с помидорами и базиликом",
-      "cook_date": "2026-10-21",
-      "qty": 16.68956
-     },
-     {
       "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
       "cook_date": "2026-10-21",
-      "qty": 22.252747
+      "qty": 7.417582
      },
      {
       "batch_id": "b13",
-      "recipe_id": "pan-kon-tomate",
-      "recipe_name": "Пан кон томате",
+      "recipe_id": "fasol-v-tomate-na-toste",
+      "recipe_name": "Фасоль в томате на тосте",
       "cook_date": "2026-10-22",
-      "qty": 22.252747
+      "qty": 3.708791
      },
      {
       "batch_id": "b14",
-      "recipe_id": "indeyka-s-kabachkami",
-      "recipe_name": "Индейка, тушённая с кабачками",
+      "recipe_id": "chechevichnyy-sup",
+      "recipe_name": "Суп из красной чечевицы",
       "cook_date": "2026-10-22",
-      "qty": 5.563187
-     },
-     {
-      "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 14.835165
+      "qty": 11.126374
      },
      {
       "batch_id": "b16",
@@ -2386,9 +2367,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 22.173913,
+    "needed": 25.869565,
     "from_pantry": 0,
-    "to_buy": 22.173913,
+    "to_buy": 25.869565,
     "package": {
      "size": 1000,
      "unit": "ml",
@@ -2404,18 +2385,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
-      "cook_date": "2026-10-19",
+      "batch_id": "b5",
+      "recipe_id": "tofu-skrembl-s-ovoshchami",
+      "recipe_name": "Тофу-скрэмбл с овощами",
+      "cook_date": "2026-10-20",
       "qty": 11.086957
      },
      {
-      "batch_id": "b9",
-      "recipe_id": "tofu-skrembl-s-ovoshchami",
-      "recipe_name": "Тофу-скрэмбл с овощами",
-      "cook_date": "2026-10-21",
-      "qty": 11.086957
+      "batch_id": "b15",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-22",
+      "qty": 14.782609
      }
     ],
     "purchased": false,
@@ -2430,9 +2411,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 2.01875,
+    "needed": 1.0125,
     "from_pantry": 0,
-    "to_buy": 2.01875,
+    "to_buy": 1.0125,
     "package": {
      "size": 50,
      "unit": "g",
@@ -2448,106 +2429,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
+      "batch_id": "b6",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
+      "cook_date": "2026-10-20",
+      "qty": 0.8625
+     },
+     {
+      "batch_id": "b13",
       "recipe_id": "fasol-v-tomate-na-toste",
       "recipe_name": "Фасоль в томате на тосте",
-      "cook_date": "2026-10-19",
+      "cook_date": "2026-10-22",
       "qty": 0.15
-     },
-     {
-      "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-19",
-      "qty": 0.575
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-21",
-      "qty": 1.29375
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:paprika:g",
-    "product_id": "paprika",
-    "name": "Паприка молотая",
-    "department": "Масла и специи",
-    "unit": "g",
-    "convertible": true,
-    "needed": 1.725,
-    "from_pantry": 0,
-    "to_buy": 1.725,
-    "package": {
-     "size": 50,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
-      "cook_date": "2026-10-19",
-      "qty": 0.8625
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-21",
-      "qty": 0.8625
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:chili_flakes:g",
-    "product_id": "chili_flakes",
-    "name": "Перец чили хлопья",
-    "department": "Масла и специи",
-    "unit": "g",
-    "convertible": true,
-    "needed": 0.225,
-    "from_pantry": 0,
-    "to_buy": 0.225,
-    "package": {
-     "size": 20,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-19",
-      "qty": 0.225
      }
     ],
     "purchased": false,
@@ -2562,9 +2455,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 0.75,
+    "needed": 0.975,
     "from_pantry": 0,
-    "to_buy": 0.75,
+    "to_buy": 0.975,
     "package": {
      "size": 50,
      "unit": "g",
@@ -2580,39 +2473,53 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b2",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
+      "cook_date": "2026-10-19",
+      "qty": 0.1
+     },
+     {
       "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
       "cook_date": "2026-10-19",
       "qty": 0.075
      },
      {
       "batch_id": "b5",
-      "recipe_id": "tost-s-shampinonami-i-timyanom",
-      "recipe_name": "Тост с шампиньонами и тимьяном",
+      "recipe_id": "tofu-skrembl-s-ovoshchami",
+      "recipe_name": "Тофу-скрэмбл с овощами",
+      "cook_date": "2026-10-20",
+      "qty": 0.15
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "indeyka-s-kabachkami",
+      "recipe_name": "Индейка, тушённая с кабачками",
       "cook_date": "2026-10-20",
       "qty": 0.15
      },
      {
       "batch_id": "b9",
-      "recipe_id": "tofu-skrembl-s-ovoshchami",
-      "recipe_name": "Тофу-скрэмбл с овощами",
+      "recipe_id": "tost-s-shampinonami-i-timyanom",
+      "recipe_name": "Тост с шампиньонами и тимьяном",
       "cook_date": "2026-10-21",
       "qty": 0.15
      },
      {
-      "batch_id": "b11",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
-      "recipe_name": "Брускетта с помидорами и базиликом",
+      "batch_id": "b12",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
       "cook_date": "2026-10-21",
-      "qty": 0.075
+      "qty": 0.1
      },
      {
-      "batch_id": "b14",
-      "recipe_id": "indeyka-s-kabachkami",
-      "recipe_name": "Индейка, тушённая с кабачками",
+      "batch_id": "b15",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
       "cook_date": "2026-10-22",
-      "qty": 0.15
+      "qty": 0.1
      },
      {
       "batch_id": "b16",
@@ -2634,9 +2541,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 19.625,
+    "needed": 20.25,
     "from_pantry": 0,
-    "to_buy": 19.625,
+    "to_buy": 20.25,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -2652,95 +2559,95 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b1",
+      "recipe_id": "pan-kon-tomate",
+      "recipe_name": "Пан кон томате",
+      "cook_date": "2026-10-19",
+      "qty": 0.375
+     },
+     {
       "batch_id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
       "cook_date": "2026-10-19",
       "qty": 1.5
      },
      {
       "batch_id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
-      "recipe_name": "Брускетта с шампиньонами и тимьяном",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
       "cook_date": "2026-10-19",
       "qty": 0.375
      },
      {
       "batch_id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
-      "recipe_name": "Тушёная фасоль с овощами",
+      "recipe_id": "kuskus-s-ovoshchami",
+      "recipe_name": "Кускус с овощами и нутом",
       "cook_date": "2026-10-19",
       "qty": 2.25
      },
      {
-      "batch_id": "b5",
-      "recipe_id": "tost-s-shampinonami-i-timyanom",
-      "recipe_name": "Тост с шампиньонами и тимьяном",
-      "cook_date": "2026-10-20",
-      "qty": 0.375
-     },
-     {
       "batch_id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
-      "recipe_name": "Чечевичный суп с томатами и кумином",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
       "cook_date": "2026-10-20",
       "qty": 2.25
      },
      {
       "batch_id": "b7",
-      "recipe_id": "guakamole-s-tostami",
-      "recipe_name": "Гуакамоле с хлебцами",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
       "cook_date": "2026-10-20",
-      "qty": 0.375
+      "qty": 0.5
      },
      {
       "batch_id": "b8",
-      "recipe_id": "kuskus-s-ovoshchami",
-      "recipe_name": "Кускус с овощами и нутом",
+      "recipe_id": "indeyka-s-kabachkami",
+      "recipe_name": "Индейка, тушённая с кабачками",
       "cook_date": "2026-10-20",
       "qty": 2.25
      },
      {
+      "batch_id": "b9",
+      "recipe_id": "tost-s-shampinonami-i-timyanom",
+      "recipe_name": "Тост с шампиньонами и тимьяном",
+      "cook_date": "2026-10-21",
+      "qty": 0.375
+     },
+     {
       "batch_id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_name": "Чечевичный суп с томатами и кумином",
       "cook_date": "2026-10-21",
       "qty": 2.25
      },
      {
       "batch_id": "b11",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
-      "recipe_name": "Брускетта с помидорами и базиликом",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
       "cook_date": "2026-10-21",
       "qty": 0.375
      },
      {
       "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
+      "recipe_name": "Треска на пару с овощами",
       "cook_date": "2026-10-21",
-      "qty": 2.25
-     },
-     {
-      "batch_id": "b13",
-      "recipe_id": "pan-kon-tomate",
-      "recipe_name": "Пан кон томате",
-      "cook_date": "2026-10-22",
-      "qty": 0.375
+      "qty": 3
      },
      {
       "batch_id": "b14",
-      "recipe_id": "indeyka-s-kabachkami",
-      "recipe_name": "Индейка, тушённая с кабачками",
+      "recipe_id": "chechevichnyy-sup",
+      "recipe_name": "Суп из красной чечевицы",
       "cook_date": "2026-10-22",
       "qty": 2.25
      },
      {
       "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
       "cook_date": "2026-10-22",
-      "qty": 0.5
+      "qty": 0.25
      },
      {
       "batch_id": "b16",
@@ -2756,52 +2663,15 @@
     "changed": false
    },
    {
-    "id": "auto:wine_vinegar:ml",
-    "product_id": "wine_vinegar",
-    "name": "Уксус винный",
-    "department": "Масла и специи",
-    "unit": "ml",
-    "convertible": true,
-    "needed": 5.569307,
-    "from_pantry": 0,
-    "to_buy": 5.569307,
-    "package": {
-     "size": 500,
-     "unit": "ml",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-21",
-      "qty": 5.569307
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:spinach_frozen:g",
-    "product_id": "spinach_frozen",
-    "name": "Шпинат замороженный",
+    "id": "auto:green_beans_frozen:g",
+    "product_id": "green_beans_frozen",
+    "name": "Фасоль стручковая замороженная",
     "department": "Заморозка",
     "unit": "g",
     "convertible": true,
-    "needed": 150,
+    "needed": 50,
     "from_pantry": 0,
-    "to_buy": 150,
+    "to_buy": 50,
     "package": {
      "size": 400,
      "unit": "g",
@@ -2817,11 +2687,48 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-21",
-      "qty": 150
+      "batch_id": "b2",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
+      "recipe_name": "Овощной суп с киноа",
+      "cook_date": "2026-10-19",
+      "qty": 50
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:spinach_frozen:g",
+    "product_id": "spinach_frozen",
+    "name": "Шпинат замороженный",
+    "department": "Заморозка",
+    "unit": "g",
+    "convertible": true,
+    "needed": 75,
+    "from_pantry": 0,
+    "to_buy": 75,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
+      "recipe_name": "Суп с нутом и шпинатом",
+      "cook_date": "2026-10-20",
+      "qty": 75
      }
     ],
     "purchased": false,
@@ -2837,48 +2744,46 @@
    "complete": false,
    "estimated": false,
    "missing_prices": [
-    "auto:beans_in_tomato:g",
-    "auto:bread_wholegrain:g",
-    "auto:olive_oil:ml",
-    "auto:smoked_paprika:g",
-    "auto:parsley:g",
-    "auto:beans_canned:g",
-    "auto:corn_canned:g",
-    "auto:canned_tomatoes:g",
-    "auto:bell_pepper:g",
-    "auto:onion:g",
-    "auto:garlic:g",
-    "auto:cumin:g",
-    "auto:chili_flakes:g",
-    "auto:lime:g",
-    "auto:cilantro:g",
-    "auto:salt:g",
     "auto:baguette:g",
-    "auto:champignons:g",
-    "auto:thyme:g",
-    "auto:lemon:g",
-    "auto:black_pepper:g",
-    "auto:paprika:g",
-    "auto:sunflower_oil:ml",
-    "auto:red_lentils_dry:g",
-    "auto:carrot:g",
-    "auto:turmeric:g",
-    "auto:avocado:g",
     "auto:tomato:g",
+    "auto:garlic:g",
+    "auto:olive_oil:ml",
+    "auto:salt:g",
+    "auto:quinoa_dry:g",
+    "auto:zucchini:g",
+    "auto:carrot:g",
+    "auto:onion:g",
+    "auto:bell_pepper:g",
+    "auto:green_beans_frozen:g",
+    "auto:canned_tomatoes:g",
+    "auto:italian_herbs:g",
+    "auto:black_pepper:g",
+    "auto:basil:g",
     "auto:couscous_dry:g",
     "auto:chickpeas_canned:g",
-    "auto:zucchini:g",
+    "auto:cumin:g",
+    "auto:parsley:g",
     "auto:tofu:g",
     "auto:spinach:g",
+    "auto:turmeric:g",
     "auto:tamari:ml",
+    "auto:sunflower_oil:ml",
     "auto:green_onion:g",
-    "auto:sugar:g",
-    "auto:basil:g",
     "auto:spinach_frozen:g",
-    "auto:almonds:g",
-    "auto:wine_vinegar:ml",
-    "auto:turkey_mince:g",
+    "auto:smoked_paprika:g",
+    "auto:lemon:g",
     "auto:cucumber:g",
+    "auto:turkey_mince:g",
+    "auto:bread_wholegrain:g",
+    "auto:champignons:g",
+    "auto:thyme:g",
+    "auto:red_lentils_dry:g",
+    "auto:avocado:g",
+    "auto:cilantro:g",
+    "auto:cod_fillet:g",
+    "auto:broccoli:g",
+    "auto:dill:g",
+    "auto:beans_in_tomato:g",
     "auto:bulgur_dry:g",
     "auto:tomato_paste:g",
     "auto:mint:g"
@@ -2903,97 +2808,91 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 879.4137499999999,
+       "value": 1101.3217916666667,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 37.07452500000001,
+       "value": 30.25591666666667,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 29.30171666666667,
+       "value": 45.433045833333324,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 121.93535833333334,
+       "value": 147.68531666666667,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 26.225275000000003,
+       "value": 17.833220833333336,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 159.90208333333334,
+       "value": 312.9554166666667,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "corn_canned",
-        "cumin",
-        "black_pepper"
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       },
       "vit_c": {
-       "value": 100.61170833333334,
+       "value": 131.4053166666667,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "cumin",
-        "black_pepper"
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       },
       "vit_d": {
-       "value": 0.1425,
+       "value": 0,
        "complete": true,
        "missing": []
       },
       "vit_e": {
-       "value": 6.670459166666666,
+       "value": 8.389197500000002,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "beans_canned",
-        "corn_canned",
-        "canned_tomatoes",
-        "cumin",
         "baguette",
-        "thyme",
-        "black_pepper"
+        "canned_tomatoes",
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       },
       "vit_b6": {
-       "value": 0.6356558333333333,
+       "value": 1.1694991666666668,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "beans_canned",
-        "cumin",
         "baguette",
-        "black_pepper"
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       },
       "vit_b12": {
-       "value": 0.0285,
+       "value": 0,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 91.00866666666667,
+       "value": 191.61737499999998,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "beans_canned",
-        "cumin",
         "baguette",
-        "black_pepper"
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       }
      },
-     "portion_mass_g": 930,
+     "portion_mass_g": 940,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3002,118 +2901,32 @@
      "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 1116.7365,
+       "value": 977.2912499999999,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 39.888875000000006,
+       "value": 64.228125,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 47.47772499999999,
+       "value": 52.6301,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 143.160475,
+       "value": 71.4016,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 27.608200000000004,
+       "value": 20.7501,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 283.90525,
-       "complete": false,
-       "missing": [
-        "black_pepper",
-        "cumin"
-       ]
-      },
-      "vit_c": {
-       "value": 119.18722500000001,
-       "complete": false,
-       "missing": [
-        "black_pepper",
-        "cumin"
-       ]
-      },
-      "vit_d": {
-       "value": 0.2375,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 7.68719,
-       "complete": false,
-       "missing": [
-        "thyme",
-        "black_pepper",
-        "canned_tomatoes",
-        "cumin"
-       ]
-      },
-      "vit_b6": {
-       "value": 1.5205425,
-       "complete": false,
-       "missing": [
-        "black_pepper",
-        "cumin"
-       ]
-      },
-      "vit_b12": {
-       "value": 0.0475,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 331.132,
-       "complete": false,
-       "missing": [
-        "black_pepper",
-        "cumin"
-       ]
-      }
-     },
-     "portion_mass_g": 930,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
-     "date": "2026-10-21",
-     "totals": {
-      "kcal": {
-       "value": 1092.253,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 48.7759375,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 59.029712499999995,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 101.935475,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 24.5490625,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 475.615625,
+       "value": 481.63725,
        "complete": false,
        "missing": [
         "tamari",
@@ -3123,107 +2936,12 @@
        ]
       },
       "vit_c": {
-       "value": 128.45908750000004,
+       "value": 164.50162500000005,
        "complete": false,
        "missing": [
         "black_pepper",
         "spinach_frozen",
         "cumin"
-       ]
-      },
-      "vit_d": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 12.014125,
-       "complete": false,
-       "missing": [
-        "tamari",
-        "black_pepper",
-        "canned_tomatoes",
-        "beans_canned",
-        "baguette",
-        "spinach_frozen",
-        "cumin"
-       ]
-      },
-      "vit_b6": {
-       "value": 1.5860024999999998,
-       "complete": false,
-       "missing": [
-        "tamari",
-        "black_pepper",
-        "beans_canned",
-        "baguette",
-        "spinach_frozen",
-        "cumin"
-       ]
-      },
-      "vit_b12": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 253.87962499999998,
-       "complete": false,
-       "missing": [
-        "tamari",
-        "black_pepper",
-        "beans_canned",
-        "baguette",
-        "spinach_frozen",
-        "cumin"
-       ]
-      }
-     },
-     "portion_mass_g": 1025,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
-     "date": "2026-10-22",
-     "totals": {
-      "kcal": {
-       "value": 1113.4384999999997,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 50.507200000000005,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 51.88935000000001,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 121.21400000000001,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 22.02845,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 267.78,
-       "complete": false,
-       "missing": [
-        "black_pepper"
-       ]
-      },
-      "vit_c": {
-       "value": 175.09969999999998,
-       "complete": false,
-       "missing": [
-        "black_pepper"
        ]
       },
       "vit_d": {
@@ -3234,22 +2952,25 @@
        ]
       },
       "vit_e": {
-       "value": 8.22018,
+       "value": 8.465132500000001,
        "complete": false,
        "missing": [
-        "baguette",
-        "turkey_mince",
-        "canned_tomatoes",
+        "tamari",
         "black_pepper",
-        "mint"
+        "spinach_frozen",
+        "canned_tomatoes",
+        "cumin",
+        "turkey_mince"
        ]
       },
       "vit_b6": {
-       "value": 2.14934,
+       "value": 2.4399049999999995,
        "complete": false,
        "missing": [
-        "baguette",
-        "black_pepper"
+        "tamari",
+        "black_pepper",
+        "spinach_frozen",
+        "cumin"
        ]
       },
       "vit_b12": {
@@ -3258,15 +2979,196 @@
        "missing": []
       },
       "folate": {
-       "value": 219.2505,
+       "value": 314.97150000000005,
        "complete": false,
        "missing": [
-        "baguette",
+        "tamari",
+        "black_pepper",
+        "spinach_frozen",
+        "cumin"
+       ]
+      }
+     },
+     "portion_mass_g": 1225,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-21",
+     "totals": {
+      "kcal": {
+       "value": 945.4398333333334,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 57.70279166666667,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 41.123625,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 96.91211666666666,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 23.48949166666667,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 662.3931666666667,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "cumin"
+       ]
+      },
+      "vit_c": {
+       "value": 140.503375,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "cumin"
+       ]
+      },
+      "vit_d": {
+       "value": 1.5875,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 7.885949999999999,
+       "complete": false,
+       "missing": [
+        "thyme",
+        "black_pepper",
+        "canned_tomatoes",
+        "cumin",
+        "dill"
+       ]
+      },
+      "vit_b6": {
+       "value": 1.6381116666666666,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "cumin"
+       ]
+      },
+      "vit_b12": {
+       "value": 1.4124999999999999,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 324.58433333333335,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "cumin"
+       ]
+      }
+     },
+     "portion_mass_g": 996.6666666666667,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-22",
+     "totals": {
+      "kcal": {
+       "value": 960.4356666666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 37.49783333333334,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 33.38976666666666,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 137.02051666666668,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 28.36511666666667,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 370.69550000000004,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "cumin",
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 138.4443,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "cumin",
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 9.352759166666667,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "canned_tomatoes",
+        "cumin",
+        "black_pepper",
+        "dill",
+        "mint"
+       ]
+      },
+      "vit_b6": {
+       "value": 1.1042550000000002,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "cumin",
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 234.473,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "cumin",
         "black_pepper"
        ]
       }
      },
-     "portion_mass_g": 977.5,
+     "portion_mass_g": 1117.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3274,106 +3176,107 @@
    ],
    "period": {
     "kcal": {
-     "value": 4201.84175,
+     "value": 3984.4885416666666,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 176.24653750000002,
+     "value": 189.68466666666671,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 187.69850416666665,
+     "value": 172.57653749999997,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 488.2453083333333,
+     "value": 453.01955,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 100.4109875,
+     "value": 90.43792916666666,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 1187.2029583333333,
+     "value": 1827.6813333333334,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "corn_canned",
-      "cumin",
+      "italian_herbs",
       "black_pepper",
+      "cumin",
       "tamari",
-      "spinach_frozen"
+      "spinach_frozen",
+      "beans_in_tomato"
      ]
     },
     "vit_c": {
-     "value": 523.3577208333334,
+     "value": 574.8546166666667,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "cumin",
+      "italian_herbs",
       "black_pepper",
-      "spinach_frozen"
+      "cumin",
+      "spinach_frozen",
+      "beans_in_tomato"
      ]
     },
     "vit_d": {
-     "value": 0.38,
+     "value": 1.5875,
      "complete": false,
      "missing": [
       "turkey_mince"
      ]
     },
     "vit_e": {
-     "value": 34.59195416666667,
+     "value": 34.09303916666667,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "beans_canned",
-      "corn_canned",
-      "canned_tomatoes",
-      "cumin",
       "baguette",
-      "thyme",
+      "canned_tomatoes",
+      "italian_herbs",
       "black_pepper",
+      "cumin",
       "tamari",
       "spinach_frozen",
       "turkey_mince",
+      "thyme",
+      "dill",
+      "beans_in_tomato",
       "mint"
      ]
     },
     "vit_b6": {
-     "value": 5.891540833333333,
+     "value": 6.351770833333333,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "beans_canned",
-      "cumin",
       "baguette",
+      "italian_herbs",
       "black_pepper",
+      "cumin",
       "tamari",
-      "spinach_frozen"
+      "spinach_frozen",
+      "beans_in_tomato"
      ]
     },
     "vit_b12": {
-     "value": 1.576,
+     "value": 2.9124999999999996,
      "complete": true,
      "missing": []
     },
     "folate": {
-     "value": 895.2707916666667,
+     "value": 1065.6462083333333,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "beans_canned",
-      "cumin",
       "baguette",
+      "italian_herbs",
       "black_pepper",
+      "cumin",
       "tamari",
-      "spinach_frozen"
+      "spinach_frozen",
+      "beans_in_tomato"
      ]
     }
    },
@@ -3383,15 +3286,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 1187.2029583333333,
+     "period_value": 1827.6813333333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beans_in_tomato",
       "black_pepper",
-      "corn_canned",
       "cumin",
+      "italian_herbs",
       "spinach_frozen",
       "tamari"
      ],
@@ -3403,7 +3306,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 523.3577208333334,
+     "period_value": 574.8546166666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3411,6 +3314,7 @@
       "beans_in_tomato",
       "black_pepper",
       "cumin",
+      "italian_herbs",
       "spinach_frozen"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3421,7 +3325,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 0.38,
+     "period_value": 1.5875,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3436,18 +3340,18 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 34.59195416666667,
+     "period_value": 34.09303916666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "baguette",
-      "beans_canned",
       "beans_in_tomato",
       "black_pepper",
       "canned_tomatoes",
-      "corn_canned",
       "cumin",
+      "dill",
+      "italian_herbs",
       "mint",
       "spinach_frozen",
       "tamari",
@@ -3462,16 +3366,16 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 5.891540833333333,
+     "period_value": 6.351770833333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "baguette",
-      "beans_canned",
       "beans_in_tomato",
       "black_pepper",
       "cumin",
+      "italian_herbs",
       "spinach_frozen",
       "tamari"
      ],
@@ -3483,7 +3387,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 1.576,
+     "period_value": 2.9124999999999996,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": true,
@@ -3496,16 +3400,16 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 895.2707916666667,
+     "period_value": 1065.6462083333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "baguette",
-      "beans_canned",
       "beans_in_tomato",
       "black_pepper",
       "cumin",
+      "italian_herbs",
       "spinach_frozen",
       "tamari"
      ],
@@ -3522,97 +3426,91 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 439.70687499999997,
+       "value": 550.6608958333334,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 18.537262500000004,
+       "value": 15.127958333333336,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 14.650858333333336,
+       "value": 22.716522916666662,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 60.96767916666667,
+       "value": 73.84265833333333,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 13.112637500000002,
+       "value": 8.916610416666668,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 79.95104166666667,
+       "value": 156.47770833333334,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "corn_canned",
-        "cumin",
-        "black_pepper"
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       },
       "vit_c": {
-       "value": 50.30585416666667,
+       "value": 65.70265833333335,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "cumin",
-        "black_pepper"
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       },
       "vit_d": {
-       "value": 0.07125,
+       "value": 0,
        "complete": true,
        "missing": []
       },
       "vit_e": {
-       "value": 3.335229583333333,
+       "value": 4.194598750000001,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "beans_canned",
-        "corn_canned",
-        "canned_tomatoes",
-        "cumin",
         "baguette",
-        "thyme",
-        "black_pepper"
+        "canned_tomatoes",
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       },
       "vit_b6": {
-       "value": 0.31782791666666665,
+       "value": 0.5847495833333334,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "beans_canned",
-        "cumin",
         "baguette",
-        "black_pepper"
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       },
       "vit_b12": {
-       "value": 0.01425,
+       "value": 0,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 45.504333333333335,
+       "value": 95.80868749999999,
        "complete": false,
        "missing": [
-        "beans_in_tomato",
-        "beans_canned",
-        "cumin",
         "baguette",
-        "black_pepper"
+        "italian_herbs",
+        "black_pepper",
+        "cumin"
        ]
       }
      },
-     "portion_mass_g": 465,
+     "portion_mass_g": 470,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3621,118 +3519,32 @@
      "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 558.36825,
+       "value": 488.64562499999994,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 19.944437500000003,
+       "value": 32.1140625,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 23.738862499999996,
+       "value": 26.31505,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 71.5802375,
+       "value": 35.7008,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 13.804100000000002,
+       "value": 10.37505,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 141.952625,
-       "complete": false,
-       "missing": [
-        "black_pepper",
-        "cumin"
-       ]
-      },
-      "vit_c": {
-       "value": 59.593612500000006,
-       "complete": false,
-       "missing": [
-        "black_pepper",
-        "cumin"
-       ]
-      },
-      "vit_d": {
-       "value": 0.11875,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 3.843595,
-       "complete": false,
-       "missing": [
-        "thyme",
-        "black_pepper",
-        "canned_tomatoes",
-        "cumin"
-       ]
-      },
-      "vit_b6": {
-       "value": 0.76027125,
-       "complete": false,
-       "missing": [
-        "black_pepper",
-        "cumin"
-       ]
-      },
-      "vit_b12": {
-       "value": 0.02375,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 165.566,
-       "complete": false,
-       "missing": [
-        "black_pepper",
-        "cumin"
-       ]
-      }
-     },
-     "portion_mass_g": 465,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
-     "date": "2026-10-21",
-     "totals": {
-      "kcal": {
-       "value": 546.1265,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 24.38796875,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 29.514856249999998,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 50.9677375,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 12.27453125,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 237.8078125,
+       "value": 240.818625,
        "complete": false,
        "missing": [
         "tamari",
@@ -3742,107 +3554,12 @@
        ]
       },
       "vit_c": {
-       "value": 64.22954375000002,
+       "value": 82.25081250000002,
        "complete": false,
        "missing": [
         "black_pepper",
         "spinach_frozen",
         "cumin"
-       ]
-      },
-      "vit_d": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 6.0070625,
-       "complete": false,
-       "missing": [
-        "tamari",
-        "black_pepper",
-        "canned_tomatoes",
-        "beans_canned",
-        "baguette",
-        "spinach_frozen",
-        "cumin"
-       ]
-      },
-      "vit_b6": {
-       "value": 0.7930012499999999,
-       "complete": false,
-       "missing": [
-        "tamari",
-        "black_pepper",
-        "beans_canned",
-        "baguette",
-        "spinach_frozen",
-        "cumin"
-       ]
-      },
-      "vit_b12": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 126.93981249999999,
-       "complete": false,
-       "missing": [
-        "tamari",
-        "black_pepper",
-        "beans_canned",
-        "baguette",
-        "spinach_frozen",
-        "cumin"
-       ]
-      }
-     },
-     "portion_mass_g": 512.5,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
-     "date": "2026-10-22",
-     "totals": {
-      "kcal": {
-       "value": 556.7192499999999,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 25.253600000000002,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 25.944675000000004,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 60.607000000000006,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 11.014225,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 133.89,
-       "complete": false,
-       "missing": [
-        "black_pepper"
-       ]
-      },
-      "vit_c": {
-       "value": 87.54984999999999,
-       "complete": false,
-       "missing": [
-        "black_pepper"
        ]
       },
       "vit_d": {
@@ -3853,22 +3570,25 @@
        ]
       },
       "vit_e": {
-       "value": 4.11009,
+       "value": 4.2325662500000005,
        "complete": false,
        "missing": [
-        "baguette",
-        "turkey_mince",
-        "canned_tomatoes",
+        "tamari",
         "black_pepper",
-        "mint"
+        "spinach_frozen",
+        "canned_tomatoes",
+        "cumin",
+        "turkey_mince"
        ]
       },
       "vit_b6": {
-       "value": 1.07467,
+       "value": 1.2199524999999998,
        "complete": false,
        "missing": [
-        "baguette",
-        "black_pepper"
+        "tamari",
+        "black_pepper",
+        "spinach_frozen",
+        "cumin"
        ]
       },
       "vit_b12": {
@@ -3877,15 +3597,196 @@
        "missing": []
       },
       "folate": {
-       "value": 109.62525,
+       "value": 157.48575000000002,
        "complete": false,
        "missing": [
-        "baguette",
+        "tamari",
+        "black_pepper",
+        "spinach_frozen",
+        "cumin"
+       ]
+      }
+     },
+     "portion_mass_g": 612.5,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-21",
+     "totals": {
+      "kcal": {
+       "value": 472.7199166666667,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 28.851395833333335,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 20.5618125,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 48.45605833333333,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 11.744745833333335,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 331.19658333333336,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "cumin"
+       ]
+      },
+      "vit_c": {
+       "value": 70.2516875,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "cumin"
+       ]
+      },
+      "vit_d": {
+       "value": 0.79375,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 3.9429749999999997,
+       "complete": false,
+       "missing": [
+        "thyme",
+        "black_pepper",
+        "canned_tomatoes",
+        "cumin",
+        "dill"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.8190558333333333,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "cumin"
+       ]
+      },
+      "vit_b12": {
+       "value": 0.7062499999999999,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 162.29216666666667,
+       "complete": false,
+       "missing": [
+        "black_pepper",
+        "cumin"
+       ]
+      }
+     },
+     "portion_mass_g": 498.33333333333337,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-10-22",
+     "totals": {
+      "kcal": {
+       "value": 480.2178333333334,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 18.74891666666667,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 16.69488333333333,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 68.51025833333334,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 14.182558333333334,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 185.34775000000002,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "cumin",
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 69.22215,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "cumin",
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 4.6763795833333335,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "canned_tomatoes",
+        "cumin",
+        "black_pepper",
+        "dill",
+        "mint"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.5521275000000001,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "cumin",
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 117.2365,
+       "complete": false,
+       "missing": [
+        "beans_in_tomato",
+        "cumin",
         "black_pepper"
        ]
       }
      },
-     "portion_mass_g": 488.75,
+     "portion_mass_g": 558.75,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3893,106 +3794,107 @@
    ],
    "period": {
     "kcal": {
-     "value": 2100.920875,
+     "value": 1992.2442708333333,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 88.12326875000001,
+     "value": 94.84233333333336,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 93.84925208333333,
+     "value": 86.28826874999999,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 244.12265416666665,
+     "value": 226.509775,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 50.20549375,
+     "value": 45.21896458333333,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 593.6014791666666,
+     "value": 913.8406666666667,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "corn_canned",
-      "cumin",
+      "italian_herbs",
       "black_pepper",
+      "cumin",
       "tamari",
-      "spinach_frozen"
+      "spinach_frozen",
+      "beans_in_tomato"
      ]
     },
     "vit_c": {
-     "value": 261.6788604166667,
+     "value": 287.4273083333334,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "cumin",
+      "italian_herbs",
       "black_pepper",
-      "spinach_frozen"
+      "cumin",
+      "spinach_frozen",
+      "beans_in_tomato"
      ]
     },
     "vit_d": {
-     "value": 0.19,
+     "value": 0.79375,
      "complete": false,
      "missing": [
       "turkey_mince"
      ]
     },
     "vit_e": {
-     "value": 17.295977083333334,
+     "value": 17.046519583333335,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "beans_canned",
-      "corn_canned",
-      "canned_tomatoes",
-      "cumin",
       "baguette",
-      "thyme",
+      "canned_tomatoes",
+      "italian_herbs",
       "black_pepper",
+      "cumin",
       "tamari",
       "spinach_frozen",
       "turkey_mince",
+      "thyme",
+      "dill",
+      "beans_in_tomato",
       "mint"
      ]
     },
     "vit_b6": {
-     "value": 2.9457704166666665,
+     "value": 3.1758854166666666,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "beans_canned",
-      "cumin",
       "baguette",
+      "italian_herbs",
       "black_pepper",
+      "cumin",
       "tamari",
-      "spinach_frozen"
+      "spinach_frozen",
+      "beans_in_tomato"
      ]
     },
     "vit_b12": {
-     "value": 0.788,
+     "value": 1.4562499999999998,
      "complete": true,
      "missing": []
     },
     "folate": {
-     "value": 447.63539583333335,
+     "value": 532.8231041666667,
      "complete": false,
      "missing": [
-      "beans_in_tomato",
-      "beans_canned",
-      "cumin",
       "baguette",
+      "italian_herbs",
       "black_pepper",
+      "cumin",
       "tamari",
-      "spinach_frozen"
+      "spinach_frozen",
+      "beans_in_tomato"
      ]
     }
    },
@@ -4002,15 +3904,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 593.6014791666666,
+     "period_value": 913.8406666666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beans_in_tomato",
       "black_pepper",
-      "corn_canned",
       "cumin",
+      "italian_herbs",
       "spinach_frozen",
       "tamari"
      ],
@@ -4022,7 +3924,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 261.6788604166667,
+     "period_value": 287.4273083333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -4030,6 +3932,7 @@
       "beans_in_tomato",
       "black_pepper",
       "cumin",
+      "italian_herbs",
       "spinach_frozen"
      ],
      "message": "Целевая норма не выбрана.",
@@ -4040,7 +3943,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 0.19,
+     "period_value": 0.79375,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -4055,18 +3958,18 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 17.295977083333334,
+     "period_value": 17.046519583333335,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "baguette",
-      "beans_canned",
       "beans_in_tomato",
       "black_pepper",
       "canned_tomatoes",
-      "corn_canned",
       "cumin",
+      "dill",
+      "italian_herbs",
       "mint",
       "spinach_frozen",
       "tamari",
@@ -4081,16 +3984,16 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2.9457704166666665,
+     "period_value": 3.1758854166666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "baguette",
-      "beans_canned",
       "beans_in_tomato",
       "black_pepper",
       "cumin",
+      "italian_herbs",
       "spinach_frozen",
       "tamari"
      ],
@@ -4102,7 +4005,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 0.788,
+     "period_value": 1.4562499999999998,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": true,
@@ -4115,16 +4018,16 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 447.63539583333335,
+     "period_value": 532.8231041666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "baguette",
-      "beans_canned",
       "beans_in_tomato",
       "black_pepper",
       "cumin",
+      "italian_herbs",
       "spinach_frozen",
       "tamari"
      ],
@@ -4194,7 +4097,7 @@
     "batches": [
      {
       "id": "b1",
-      "recipe_id": "fasol-v-tomate-na-toste",
+      "recipe_id": "pan-kon-tomate",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-19",
@@ -4203,7 +4106,7 @@
      },
      {
       "id": "b2",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
+      "recipe_id": "ovoshchnoy-sup-s-kinoa",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-19",
@@ -4212,16 +4115,16 @@
      },
      {
       "id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "oven",
       "cook_date": "2026-10-19",
       "slot": "snack",
       "portions": 1.5
      },
      {
       "id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_id": "kuskus-s-ovoshchami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-19",
@@ -4230,7 +4133,7 @@
      },
      {
       "id": "b5",
-      "recipe_id": "tost-s-shampinonami-i-timyanom",
+      "recipe_id": "tofu-skrembl-s-ovoshchami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4239,7 +4142,7 @@
      },
      {
       "id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4248,16 +4151,16 @@
      },
      {
       "id": "b7",
-      "recipe_id": "guakamole-s-tostami",
+      "recipe_id": "salat-s-nutom",
       "recipe_version": 1,
-      "method_id": "nocook",
+      "method_id": "no-heat",
       "cook_date": "2026-10-20",
       "slot": "snack",
       "portions": 1.5
      },
      {
       "id": "b8",
-      "recipe_id": "kuskus-s-ovoshchami",
+      "recipe_id": "indeyka-s-kabachkami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4266,7 +4169,7 @@
      },
      {
       "id": "b9",
-      "recipe_id": "tofu-skrembl-s-ovoshchami",
+      "recipe_id": "tost-s-shampinonami-i-timyanom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4275,7 +4178,7 @@
      },
      {
       "id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4284,16 +4187,16 @@
      },
      {
       "id": "b11",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_id": "guakamole-s-tostami",
       "recipe_version": 1,
-      "method_id": "oven",
+      "method_id": "nocook",
       "cook_date": "2026-10-21",
       "slot": "snack",
       "portions": 1.5
      },
      {
       "id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4302,7 +4205,7 @@
      },
      {
       "id": "b13",
-      "recipe_id": "pan-kon-tomate",
+      "recipe_id": "fasol-v-tomate-na-toste",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-22",
@@ -4311,7 +4214,7 @@
      },
      {
       "id": "b14",
-      "recipe_id": "indeyka-s-kabachkami",
+      "recipe_id": "chechevichnyy-sup",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-22",
@@ -4320,9 +4223,9 @@
      },
      {
       "id": "b15",
-      "recipe_id": "salat-s-nutom",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
       "recipe_version": 1,
-      "method_id": "no-heat",
+      "method_id": "nocook",
       "cook_date": "2026-10-22",
       "slot": "snack",
       "portions": 1.5
@@ -4617,71 +4520,70 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 9133,
-     "score": 32.61142449929611,
+     "evaluated": 9097,
+     "score": 32.486968671608096,
      "budget_status": "none"
     },
     "snapshot_ids": {
      "recipes": [
       "brusketta-s-pomidorami-i-bazilikom",
-      "brusketta-s-shampinyonami",
       "bulgur-s-kabachkom-i-pertsem",
+      "chechevichnyy-sup",
       "chechevichnyy-sup-s-tomatami",
       "fasol-v-tomate-na-toste",
       "guakamole-s-tostami",
       "indeyka-s-kabachkami",
       "kuskus-s-ovoshchami",
-      "meksikanskiy-sup-s-fasolyu",
-      "nut-so-shpinatom-po-andaluzski",
+      "ovoshchnoy-sup-s-kinoa",
       "pan-kon-tomate",
+      "salat-iz-pomidorov-s-lukom",
       "salat-s-nutom",
+      "sup-s-nutom-i-shpinatom",
       "tofu-skrembl-s-ovoshchami",
-      "tomatnyy-sup-s-fasolyu",
       "tost-s-shampinonami-i-timyanom",
-      "tushenaya-fasol-s-ovoshchami",
+      "treska-na-paru-s-ovoshchami",
       "upma"
      ],
      "products": [
-      "almonds",
       "avocado",
       "baguette",
       "basil",
-      "beans_canned",
       "beans_in_tomato",
       "bell_pepper",
       "black_pepper",
       "bread_wholegrain",
+      "broccoli",
       "bulgur_dry",
       "canned_tomatoes",
       "carrot",
       "cashews",
       "champignons",
       "chickpeas_canned",
-      "chili_flakes",
       "chili_pepper",
       "cilantro",
-      "corn_canned",
+      "cod_fillet",
       "couscous_dry",
       "cucumber",
       "cumin",
+      "dill",
       "garlic",
       "ginger",
+      "green_beans_frozen",
       "green_onion",
       "green_peas_frozen",
+      "italian_herbs",
       "lemon",
-      "lime",
       "mint",
       "olive_oil",
       "onion",
-      "paprika",
       "parsley",
+      "quinoa_dry",
       "red_lentils_dry",
       "salt",
       "semolina",
       "smoked_paprika",
       "spinach",
       "spinach_frozen",
-      "sugar",
       "sunflower_oil",
       "tamari",
       "thyme",
@@ -4692,7 +4594,6 @@
       "turmeric",
       "water",
       "wheat_flour",
-      "wine_vinegar",
       "zucchini"
      ]
     }
@@ -4703,53 +4604,51 @@
     "complete": false,
     "estimated": false,
     "missing_prices": [
-     "auto:beans_in_tomato:g",
-     "auto:bread_wholegrain:g",
-     "auto:olive_oil:ml",
-     "auto:smoked_paprika:g",
-     "auto:parsley:g",
-     "auto:beans_canned:g",
-     "auto:corn_canned:g",
-     "auto:canned_tomatoes:g",
-     "auto:bell_pepper:g",
-     "auto:onion:g",
-     "auto:garlic:g",
-     "auto:cumin:g",
-     "auto:chili_flakes:g",
-     "auto:lime:g",
-     "auto:cilantro:g",
-     "auto:salt:g",
      "auto:baguette:g",
-     "auto:champignons:g",
-     "auto:thyme:g",
-     "auto:lemon:g",
-     "auto:black_pepper:g",
-     "auto:paprika:g",
-     "auto:sunflower_oil:ml",
-     "auto:semolina:g",
+     "auto:tomato:g",
+     "auto:garlic:g",
+     "auto:olive_oil:ml",
+     "auto:salt:g",
+     "auto:quinoa_dry:g",
+     "auto:zucchini:g",
      "auto:carrot:g",
+     "auto:onion:g",
+     "auto:bell_pepper:g",
+     "auto:green_beans_frozen:g",
+     "auto:canned_tomatoes:g",
+     "auto:italian_herbs:g",
+     "auto:black_pepper:g",
+     "auto:basil:g",
+     "auto:couscous_dry:g",
+     "auto:chickpeas_canned:g",
+     "auto:cumin:g",
+     "auto:parsley:g",
+     "auto:semolina:g",
      "auto:green_peas_frozen:g",
      "auto:ginger:g",
      "auto:chili_pepper:g",
+     "auto:sunflower_oil:ml",
      "auto:cashews:g",
      "auto:turmeric:g",
-     "auto:red_lentils_dry:g",
-     "auto:avocado:g",
-     "auto:tomato:g",
-     "auto:couscous_dry:g",
-     "auto:chickpeas_canned:g",
-     "auto:zucchini:g",
+     "auto:lemon:g",
+     "auto:cilantro:g",
      "auto:tofu:g",
      "auto:spinach:g",
      "auto:tamari:ml",
      "auto:green_onion:g",
-     "auto:sugar:g",
-     "auto:basil:g",
      "auto:spinach_frozen:g",
-     "auto:almonds:g",
-     "auto:wine_vinegar:ml",
-     "auto:turkey_mince:g",
+     "auto:smoked_paprika:g",
      "auto:cucumber:g",
+     "auto:turkey_mince:g",
+     "auto:bread_wholegrain:g",
+     "auto:champignons:g",
+     "auto:thyme:g",
+     "auto:red_lentils_dry:g",
+     "auto:avocado:g",
+     "auto:cod_fillet:g",
+     "auto:broccoli:g",
+     "auto:dill:g",
+     "auto:beans_in_tomato:g",
      "auto:bulgur_dry:g",
      "auto:tomato_paste:g",
      "auto:mint:g"
@@ -4819,7 +4718,7 @@
     "batches": [
      {
       "id": "b1",
-      "recipe_id": "fasol-v-tomate-na-toste",
+      "recipe_id": "pan-kon-tomate",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-19",
@@ -4828,16 +4727,16 @@
      },
      {
       "id": "b3",
-      "recipe_id": "brusketta-s-shampinyonami",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "oven",
       "cook_date": "2026-10-19",
       "slot": "snack",
       "portions": 1.5
      },
      {
       "id": "b4",
-      "recipe_id": "tushenaya-fasol-s-ovoshchami",
+      "recipe_id": "kuskus-s-ovoshchami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-19",
@@ -4846,7 +4745,7 @@
      },
      {
       "id": "b5",
-      "recipe_id": "tost-s-shampinonami-i-timyanom",
+      "recipe_id": "tofu-skrembl-s-ovoshchami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4855,7 +4754,7 @@
      },
      {
       "id": "b6",
-      "recipe_id": "chechevichnyy-sup-s-tomatami",
+      "recipe_id": "sup-s-nutom-i-shpinatom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4864,16 +4763,16 @@
      },
      {
       "id": "b7",
-      "recipe_id": "guakamole-s-tostami",
+      "recipe_id": "salat-s-nutom",
       "recipe_version": 1,
-      "method_id": "nocook",
+      "method_id": "no-heat",
       "cook_date": "2026-10-20",
       "slot": "snack",
       "portions": 1.5
      },
      {
       "id": "b8",
-      "recipe_id": "kuskus-s-ovoshchami",
+      "recipe_id": "indeyka-s-kabachkami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4882,7 +4781,7 @@
      },
      {
       "id": "b9",
-      "recipe_id": "tofu-skrembl-s-ovoshchami",
+      "recipe_id": "tost-s-shampinonami-i-timyanom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4891,7 +4790,7 @@
      },
      {
       "id": "b10",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4900,16 +4799,16 @@
      },
      {
       "id": "b11",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_id": "guakamole-s-tostami",
       "recipe_version": 1,
-      "method_id": "oven",
+      "method_id": "nocook",
       "cook_date": "2026-10-21",
       "slot": "snack",
       "portions": 1.5
      },
      {
       "id": "b12",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
+      "recipe_id": "treska-na-paru-s-ovoshchami",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4918,7 +4817,7 @@
      },
      {
       "id": "b13",
-      "recipe_id": "pan-kon-tomate",
+      "recipe_id": "fasol-v-tomate-na-toste",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-22",
@@ -4927,7 +4826,7 @@
      },
      {
       "id": "b14",
-      "recipe_id": "indeyka-s-kabachkami",
+      "recipe_id": "chechevichnyy-sup",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-22",
@@ -4936,9 +4835,9 @@
      },
      {
       "id": "b15",
-      "recipe_id": "salat-s-nutom",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
       "recipe_version": 1,
-      "method_id": "no-heat",
+      "method_id": "nocook",
       "cook_date": "2026-10-22",
       "slot": "snack",
       "portions": 1.5
@@ -5222,71 +5121,70 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 9133,
-     "score": 32.61142449929611,
+     "evaluated": 9097,
+     "score": 32.486968671608096,
      "budget_status": "none"
     },
     "snapshot_ids": {
      "recipes": [
       "brusketta-s-pomidorami-i-bazilikom",
-      "brusketta-s-shampinyonami",
       "bulgur-s-kabachkom-i-pertsem",
+      "chechevichnyy-sup",
       "chechevichnyy-sup-s-tomatami",
       "fasol-v-tomate-na-toste",
       "guakamole-s-tostami",
       "indeyka-s-kabachkami",
       "kuskus-s-ovoshchami",
-      "meksikanskiy-sup-s-fasolyu",
-      "nut-so-shpinatom-po-andaluzski",
+      "ovoshchnoy-sup-s-kinoa",
       "pan-kon-tomate",
+      "salat-iz-pomidorov-s-lukom",
       "salat-s-nutom",
+      "sup-s-nutom-i-shpinatom",
       "tofu-skrembl-s-ovoshchami",
-      "tomatnyy-sup-s-fasolyu",
       "tost-s-shampinonami-i-timyanom",
-      "tushenaya-fasol-s-ovoshchami",
+      "treska-na-paru-s-ovoshchami",
       "upma"
      ],
      "products": [
-      "almonds",
       "avocado",
       "baguette",
       "basil",
-      "beans_canned",
       "beans_in_tomato",
       "bell_pepper",
       "black_pepper",
       "bread_wholegrain",
+      "broccoli",
       "bulgur_dry",
       "canned_tomatoes",
       "carrot",
       "cashews",
       "champignons",
       "chickpeas_canned",
-      "chili_flakes",
       "chili_pepper",
       "cilantro",
-      "corn_canned",
+      "cod_fillet",
       "couscous_dry",
       "cucumber",
       "cumin",
+      "dill",
       "garlic",
       "ginger",
+      "green_beans_frozen",
       "green_onion",
       "green_peas_frozen",
+      "italian_herbs",
       "lemon",
-      "lime",
       "mint",
       "olive_oil",
       "onion",
-      "paprika",
       "parsley",
+      "quinoa_dry",
       "red_lentils_dry",
       "salt",
       "semolina",
       "smoked_paprika",
       "spinach",
       "spinach_frozen",
-      "sugar",
       "sunflower_oil",
       "tamari",
       "thyme",
@@ -5297,7 +5195,6 @@
       "turmeric",
       "water",
       "wheat_flour",
-      "wine_vinegar",
       "zucchini"
      ]
     }
@@ -5308,50 +5205,48 @@
     "complete": false,
     "estimated": false,
     "missing_prices": [
-     "auto:beans_in_tomato:g",
-     "auto:bread_wholegrain:g",
-     "auto:olive_oil:ml",
-     "auto:smoked_paprika:g",
-     "auto:parsley:g",
      "auto:baguette:g",
-     "auto:champignons:g",
+     "auto:tomato:g",
      "auto:garlic:g",
-     "auto:thyme:g",
-     "auto:lemon:g",
+     "auto:olive_oil:ml",
      "auto:salt:g",
+     "auto:basil:g",
      "auto:black_pepper:g",
-     "auto:beans_canned:g",
-     "auto:canned_tomatoes:g",
-     "auto:onion:g",
+     "auto:couscous_dry:g",
+     "auto:chickpeas_canned:g",
+     "auto:zucchini:g",
      "auto:bell_pepper:g",
-     "auto:paprika:g",
-     "auto:sunflower_oil:ml",
-     "auto:cilantro:g",
+     "auto:onion:g",
+     "auto:cumin:g",
+     "auto:parsley:g",
      "auto:semolina:g",
      "auto:carrot:g",
      "auto:green_peas_frozen:g",
      "auto:ginger:g",
      "auto:chili_pepper:g",
+     "auto:sunflower_oil:ml",
      "auto:cashews:g",
      "auto:turmeric:g",
-     "auto:red_lentils_dry:g",
-     "auto:cumin:g",
-     "auto:avocado:g",
-     "auto:tomato:g",
-     "auto:couscous_dry:g",
-     "auto:chickpeas_canned:g",
-     "auto:zucchini:g",
+     "auto:lemon:g",
+     "auto:cilantro:g",
      "auto:tofu:g",
      "auto:spinach:g",
      "auto:tamari:ml",
      "auto:green_onion:g",
-     "auto:sugar:g",
-     "auto:basil:g",
      "auto:spinach_frozen:g",
-     "auto:almonds:g",
-     "auto:wine_vinegar:ml",
-     "auto:turkey_mince:g",
+     "auto:canned_tomatoes:g",
+     "auto:smoked_paprika:g",
      "auto:cucumber:g",
+     "auto:turkey_mince:g",
+     "auto:bread_wholegrain:g",
+     "auto:champignons:g",
+     "auto:thyme:g",
+     "auto:red_lentils_dry:g",
+     "auto:avocado:g",
+     "auto:cod_fillet:g",
+     "auto:broccoli:g",
+     "auto:dill:g",
+     "auto:beans_in_tomato:g",
      "auto:bulgur_dry:g",
      "auto:tomato_paste:g",
      "auto:mint:g"

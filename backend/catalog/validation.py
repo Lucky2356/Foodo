@@ -108,6 +108,7 @@ def validate_recipes(recipes: Any, products: set[str], reference: dict[str, Any]
     diet_tags = set(reference.get("diet_tag_ids", []))
     cuisines = {c["id"] for c in reference.get("cuisines", [])}
     categories = {c["id"] for c in reference.get("recipe_categories", [])}
+    hot_products = set(reference.get("hot_products", []))
     seen: set[str] = set()
     for index, r in enumerate(recipes):
         path = f"recipes[{index}]"
@@ -194,6 +195,11 @@ def validate_recipes(recipes: Any, products: set[str], reference: dict[str, Any]
             _err(errors, f"{path}.spicy", "invalid_spicy", "Острота: 0, 1 или 2.")
         if not isinstance(r.get("kid_friendly", False), bool):
             _err(errors, f"{path}.kid_friendly", "invalid_bool", "Ожидается true или false.")
+        ingredients = r.get("ingredients") if isinstance(r.get("ingredients"), list) else []
+        if spicy == 0 and any(isinstance(i, dict) and i.get("product") in hot_products for i in ingredients):
+            _err(errors, f"{path}.spicy", "spicy_mismatch", "В составе есть острый продукт — острота должна быть «Немного» или «Острое».")
+        if isinstance(spicy, int) and spicy > 0 and r.get("kid_friendly") is True:
+            _err(errors, f"{path}.kid_friendly", "spicy_for_kids", "Острое блюдо нельзя отметить как подходящее детям.")
         image = r.get("image")
         if image is not None:
             if not isinstance(image, dict) or not all(isinstance(image.get(k), str) and image.get(k) for k in ("url", "source", "license")):

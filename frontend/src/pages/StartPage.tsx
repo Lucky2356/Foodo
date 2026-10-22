@@ -64,8 +64,8 @@ const DIET_MODES: { value: DietMode; title: string; text: string }[] = [
 ];
 
 const SPICE: { value: number; title: string; text: string }[] = [
-  { value: 0, title: 'Без остроты', text: 'Никакого перца и чили' },
-  { value: 1, title: 'Немного', text: 'Чеснок и чёрный перец — можно' },
+  { value: 0, title: 'Без остроты', text: 'Без чили и острых соусов; чеснок и чёрный перец — как обычно' },
+  { value: 1, title: 'Немного', text: 'Щепотка чили, умеренно острые блюда' },
   { value: 2, title: 'Люблю острое', text: 'Чили, аджика и острые соусы' },
 ];
 

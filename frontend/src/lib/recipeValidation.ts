@@ -25,5 +25,7 @@ export function customRecipeErrors(r: Recipe, catalog: Catalog): string[] {
     else if (method.active_min > method.total_min) errors.push('Активное время не может быть больше общего.');
   }
   if (r.spicy !== undefined && ![0, 1, 2].includes(r.spicy)) errors.push('Острота — 0, 1 или 2.');
+  const hot = r.ingredients.map((i) => catalog.products[i.product]).filter((p) => p && catalog.reference.hot_products?.includes(p.id));
+  if ((r.spicy ?? 0) === 0 && hot.length > 0) errors.push(`В составе есть острый продукт (${hot.map((p) => p!.name.toLowerCase()).join(', ')}) — отметьте остроту «Немного» или «Острое».`);
   return errors;
 }
