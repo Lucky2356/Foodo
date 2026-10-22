@@ -58,21 +58,21 @@
   "batches": [
    {
     "id": "b1",
-    "recipe_id": "shakshuka",
+    "recipe_id": "omlet-s-brokkoli-i-fetoy",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
     "slot": "breakfast",
-    "portions": 3.5
+    "portions": 3.6
    },
    {
     "id": "b2",
-    "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
+    "recipe_id": "bulgur-s-nutom-i-ovoshchami",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
     "slot": "lunch",
-    "portions": 4
+    "portions": 3.75
    },
    {
     "id": "b3",
@@ -85,12 +85,12 @@
    },
    {
     "id": "b4",
-    "recipe_id": "gribnoy-sup-s-perlovkoy",
+    "recipe_id": "shakshuka",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
     "slot": "dinner",
-    "portions": 4
+    "portions": 3.8
    },
    {
     "id": "b5",
@@ -103,12 +103,12 @@
    },
    {
     "id": "b6",
-    "recipe_id": "bulgur-s-kuritsey",
+    "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
     "slot": "lunch",
-    "portions": 3.45
+    "portions": 4
    },
    {
     "id": "b7",
@@ -121,30 +121,30 @@
    },
    {
     "id": "b8",
-    "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
+    "recipe_id": "bulgur-s-kuritsey",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
     "slot": "dinner",
-    "portions": 3.4
+    "portions": 3.15
    },
    {
     "id": "b9",
-    "recipe_id": "omlet-s-brokkoli-i-fetoy",
+    "recipe_id": "menemen",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
     "slot": "breakfast",
-    "portions": 3.6
+    "portions": 3
    },
    {
     "id": "b10",
-    "recipe_id": "bulgur-s-nutom-i-ovoshchami",
+    "recipe_id": "shaurma-domashnyaya",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
     "slot": "lunch",
-    "portions": 3.75
+    "portions": 3.15
    },
    {
     "id": "b11",
@@ -157,30 +157,30 @@
    },
    {
     "id": "b12",
-    "recipe_id": "shchi-iz-svezhey-kapusty",
+    "recipe_id": "steyk-tuntsa-s-kinoa",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
     "slot": "dinner",
-    "portions": 4
+    "portions": 2.4
    },
    {
     "id": "b13",
-    "recipe_id": "menemen",
+    "recipe_id": "pshyonnaya-kasha-s-tykvoy",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-22",
     "slot": "breakfast",
-    "portions": 3
+    "portions": 3.25
    },
    {
     "id": "b14",
-    "recipe_id": "steyk-tuntsa-s-kinoa",
+    "recipe_id": "kinoa-s-ovoshchami",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-22",
     "slot": "lunch",
-    "portions": 2.8
+    "portions": 3.75
    },
    {
     "id": "b15",
@@ -193,48 +193,48 @@
    },
    {
     "id": "b16",
-    "recipe_id": "kinoa-s-ovoshchami",
+    "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-22",
     "slot": "dinner",
-    "portions": 3.5
+    "portions": 3.85
    },
    {
     "id": "b17",
-    "recipe_id": "tost-s-avokado-i-yaytsom",
+    "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-23",
     "slot": "breakfast",
-    "portions": 3.15
+    "portions": 2.6500000000000004
    },
    {
     "id": "b18",
-    "recipe_id": "treska-na-paru-s-ovoshchami",
+    "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-23",
     "slot": "lunch",
-    "portions": 4
+    "portions": 3.65
    },
    {
     "id": "b19",
-    "recipe_id": "kinoa-s-granatom-i-myatoy",
+    "recipe_id": "perepelinye-yaytsa-s-cherri",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-23",
     "slot": "snack",
-    "portions": 1.35
+    "portions": 2.8
    },
    {
     "id": "b20",
-    "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
+    "recipe_id": "treska-s-zelyonoy-chechevitsey",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-23",
     "slot": "dinner",
-    "portions": 3.85
+    "portions": 3.05
    }
   ],
   "meals": [
@@ -246,7 +246,7 @@
       "id": "i1",
       "batch_id": "b1",
       "portions": {
-       "m1": 1.5,
+       "m1": 1.6,
        "m2": 2
       },
       "pinned": false,
@@ -262,7 +262,7 @@
       "id": "i2",
       "batch_id": "b2",
       "portions": {
-       "m1": 2,
+       "m1": 1.75,
        "m2": 2
       },
       "pinned": false,
@@ -294,7 +294,7 @@
       "id": "i4",
       "batch_id": "b4",
       "portions": {
-       "m1": 2,
+       "m1": 1.8,
        "m2": 2
       },
       "pinned": false,
@@ -326,7 +326,7 @@
       "id": "i6",
       "batch_id": "b6",
       "portions": {
-       "m1": 1.45,
+       "m1": 2,
        "m2": 2
       },
       "pinned": false,
@@ -358,8 +358,8 @@
       "id": "i8",
       "batch_id": "b8",
       "portions": {
-       "m1": 1.4,
-       "m2": 2
+       "m1": 1.25,
+       "m2": 1.9
       },
       "pinned": false,
       "alternative_for": null
@@ -374,8 +374,8 @@
       "id": "i9",
       "batch_id": "b9",
       "portions": {
-       "m1": 1.6,
-       "m2": 2
+       "m1": 1.2,
+       "m2": 1.8
       },
       "pinned": false,
       "alternative_for": null
@@ -390,8 +390,8 @@
       "id": "i10",
       "batch_id": "b10",
       "portions": {
-       "m1": 1.75,
-       "m2": 2
+       "m1": 1.25,
+       "m2": 1.9
       },
       "pinned": false,
       "alternative_for": null
@@ -422,8 +422,8 @@
       "id": "i12",
       "batch_id": "b12",
       "portions": {
-       "m1": 2,
-       "m2": 2
+       "m1": 0.95,
+       "m2": 1.45
       },
       "pinned": false,
       "alternative_for": null
@@ -438,8 +438,8 @@
       "id": "i13",
       "batch_id": "b13",
       "portions": {
-       "m1": 1.2,
-       "m2": 1.8
+       "m1": 1.3,
+       "m2": 1.95
       },
       "pinned": false,
       "alternative_for": null
@@ -454,8 +454,8 @@
       "id": "i14",
       "batch_id": "b14",
       "portions": {
-       "m1": 1.1,
-       "m2": 1.7
+       "m1": 1.75,
+       "m2": 2
       },
       "pinned": false,
       "alternative_for": null
@@ -486,7 +486,7 @@
       "id": "i16",
       "batch_id": "b16",
       "portions": {
-       "m1": 1.5,
+       "m1": 1.85,
        "m2": 2
       },
       "pinned": false,
@@ -502,8 +502,8 @@
       "id": "i17",
       "batch_id": "b17",
       "portions": {
-       "m1": 1.25,
-       "m2": 1.9
+       "m1": 1.05,
+       "m2": 1.6
       },
       "pinned": false,
       "alternative_for": null
@@ -518,7 +518,7 @@
       "id": "i18",
       "batch_id": "b18",
       "portions": {
-       "m1": 2,
+       "m1": 1.65,
        "m2": 2
       },
       "pinned": false,
@@ -534,8 +534,8 @@
       "id": "i19",
       "batch_id": "b19",
       "portions": {
-       "m1": 0.55,
-       "m2": 0.8
+       "m1": 1.1,
+       "m2": 1.7
       },
       "pinned": false,
       "alternative_for": null
@@ -550,8 +550,8 @@
       "id": "i20",
       "batch_id": "b20",
       "portions": {
-       "m1": 1.85,
-       "m2": 2
+       "m1": 1.2,
+       "m2": 1.85
       },
       "pinned": false,
       "alternative_for": null
@@ -564,34 +564,35 @@
   "warnings": [],
   "stats": {
    "attempts": 6,
-   "evaluated": 24928,
-   "score": 110.53266931285646,
+   "evaluated": 24987,
+   "score": 116.90850544774614,
    "budget_status": "none"
   },
   "snapshot_ids": {
    "recipes": [
+    "boul-s-kinoa-avokado-i-yaytsom",
     "bulgur-s-kuritsey",
     "bulgur-s-nutom-i-ovoshchami",
-    "gribnoy-sup-s-perlovkoy",
     "hek-tushyonyy-s-morkovyu-i-lukom",
-    "kinoa-s-granatom-i-myatoy",
     "kinoa-s-ovoshchami",
     "kuritsa-s-ovoshchami-v-multivarke",
     "menemen",
     "omlet-s-brokkoli-i-fetoy",
+    "perepelinye-yaytsa-s-cherri",
+    "pshyonnaya-kasha-s-tykvoy",
     "salat-s-nutom",
     "shakshuka",
-    "shchi-iz-svezhey-kapusty",
+    "shaurma-domashnyaya",
     "shopskiy-salat",
     "steyk-tuntsa-s-kinoa",
     "tabule",
     "teplyy-salat-s-tuntsom-v-kunzhute",
-    "tost-s-avokado-i-yaytsom",
-    "treska-na-paru-s-ovoshchami",
+    "treska-s-zelyonoy-chechevitsey",
     "yaytsa-vsmyatku-s-tostom",
     "yaytso-s-ogurtsom"
    ],
    "products": [
+    "arugula",
     "avocado",
     "bay_leaf",
     "bell_pepper",
@@ -603,14 +604,13 @@
     "cabbage",
     "canned_tomatoes",
     "carrot",
-    "champignons",
+    "celery_stalk",
     "cherry_tomatoes",
     "chicken_breast",
     "chickpeas_canned",
     "chili_flakes",
     "cod_fillet",
     "cucumber",
-    "dill",
     "eggs",
     "feta",
     "garlic",
@@ -619,17 +619,18 @@
     "green_onion",
     "hake_fillet",
     "honey",
+    "lavash",
     "lemon",
+    "lentils_green_dry",
     "milk",
-    "mint",
+    "millet_dry",
     "olive_oil",
     "onion",
     "paprika",
     "parsley",
-    "pearl_barley_dry",
-    "pistachios",
-    "pomegranate",
     "potato",
+    "pumpkin",
+    "quail_eggs",
     "quinoa_dry",
     "rice_round_dry",
     "rice_vinegar",
@@ -638,13 +639,17 @@
     "sesame_oil",
     "sesame_seeds",
     "soy_sauce",
+    "spinach",
+    "sugar",
     "sunflower_oil",
+    "thyme_dried",
     "tomato",
     "tomato_paste",
     "tuna_steak",
     "vinegar",
     "water",
     "wheat_flour",
+    "yogurt_plain",
     "zucchini"
    ]
   }
@@ -658,12 +663,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 541.666667,
+    "needed": 508.333333,
     "from_pantry": 0,
-    "to_buy": 541.666667,
+    "to_buy": 508.333333,
+    "buy_qty": 508.333333,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -672,18 +679,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
-      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
-      "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 226.666667
+      "batch_id": "b17",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
+      "cook_date": "2026-10-23",
+      "qty": 265
      },
      {
-      "batch_id": "b17",
-      "recipe_id": "tost-s-avokado-i-yaytsom",
-      "recipe_name": "Тост с авокадо и яйцом",
+      "batch_id": "b18",
+      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
+      "recipe_name": "Тёплый салат с тунцом в кунжуте",
       "cook_date": "2026-10-23",
-      "qty": 315
+      "qty": 243.333333
      }
     ],
     "purchased": false,
@@ -698,16 +705,18 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 828.333333,
+    "needed": 582.5,
     "from_pantry": 0,
-    "to_buy": 828.333333,
+    "to_buy": 582.5,
+    "buy_qty": 800,
     "package": {
      "size": 400,
      "unit": "g",
-     "count": 3
+     "count": 2
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -716,58 +725,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b1",
       "recipe_id": "omlet-s-brokkoli-i-fetoy",
       "recipe_name": "Омлет с брокколи и фетой",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-19",
       "qty": 270
      },
      {
-      "batch_id": "b16",
+      "batch_id": "b14",
       "recipe_id": "kinoa-s-ovoshchami",
       "recipe_name": "Киноа с овощами",
       "cook_date": "2026-10-22",
-      "qty": 291.666667
-     },
-     {
-      "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
-      "cook_date": "2026-10-23",
-      "qty": 266.666667
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:pomegranate:g",
-    "product_id": "pomegranate",
-    "name": "Гранат",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 101.25,
-    "from_pantry": 0,
-    "to_buy": 101.25,
-    "package": null,
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
-      "cook_date": "2026-10-23",
-      "qty": 101.25
+      "qty": 312.5
      }
     ],
     "purchased": false,
@@ -782,12 +751,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 11.333333,
+    "needed": 12.166667,
     "from_pantry": 0,
-    "to_buy": 11.333333,
+    "to_buy": 12.166667,
+    "buy_qty": 12.166667,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -796,11 +767,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
+      "batch_id": "b18",
       "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
       "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 11.333333
+      "cook_date": "2026-10-23",
+      "qty": 12.166667
      }
     ],
     "purchased": false,
@@ -815,12 +786,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 981.25,
+    "needed": 581.25,
     "from_pantry": 0,
-    "to_buy": 981.25,
+    "to_buy": 581.25,
+    "buy_qty": 581.25,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -830,24 +803,17 @@
     "sources": [
      {
       "batch_id": "b2",
-      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
-      "recipe_name": "Курица с овощами в мультиварке",
-      "cook_date": "2026-10-19",
-      "qty": 300
-     },
-     {
-      "batch_id": "b10",
       "recipe_id": "bulgur-s-nutom-i-ovoshchami",
       "recipe_name": "Булгур с нутом и овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-19",
       "qty": 281.25
      },
      {
-      "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
-      "cook_date": "2026-10-23",
-      "qty": 400
+      "batch_id": "b6",
+      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
+      "recipe_name": "Курица с овощами в мультиварке",
+      "cook_date": "2026-10-20",
+      "qty": 300
      }
     ],
     "purchased": false,
@@ -862,12 +828,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 400,
+    "needed": 177.1875,
     "from_pantry": 0,
-    "to_buy": 400,
+    "to_buy": 177.1875,
+    "buy_qty": 177.1875,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -876,11 +844,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b12",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
       "cook_date": "2026-10-21",
-      "qty": 400
+      "qty": 177.1875
      }
     ],
     "purchased": false,
@@ -895,9 +863,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 1250,
+    "needed": 500,
     "from_pantry": 0,
-    "to_buy": 1250,
+    "to_buy": 500,
+    "buy_qty": 2000,
     "package": {
      "size": 2000,
      "unit": "g",
@@ -905,6 +874,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -913,25 +883,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b2",
+      "batch_id": "b6",
       "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
       "recipe_name": "Курица с овощами в мультиварке",
-      "cook_date": "2026-10-19",
+      "cook_date": "2026-10-20",
       "qty": 500
-     },
-     {
-      "batch_id": "b4",
-      "recipe_id": "gribnoy-sup-s-perlovkoy",
-      "recipe_name": "Грибной суп с перловкой",
-      "cook_date": "2026-10-19",
-      "qty": 300
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-21",
-      "qty": 450
      }
     ],
     "purchased": false,
@@ -946,12 +902,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 290.125,
+    "needed": 246.5,
     "from_pantry": 0,
-    "to_buy": 290.125,
+    "to_buy": 246.5,
+    "buy_qty": 246.5,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -967,11 +925,11 @@
       "qty": 69
      },
      {
-      "batch_id": "b14",
+      "batch_id": "b12",
       "recipe_id": "steyk-tuntsa-s-kinoa",
       "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
-      "cook_date": "2026-10-22",
-      "qty": 84
+      "cook_date": "2026-10-21",
+      "qty": 72
      },
      {
       "batch_id": "b15",
@@ -982,24 +940,17 @@
      },
      {
       "batch_id": "b17",
-      "recipe_id": "tost-s-avokado-i-yaytsom",
-      "recipe_name": "Тост с авокадо и яйцом",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
       "cook_date": "2026-10-23",
-      "qty": 23.625
+      "qty": 39.75
      },
      {
-      "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
       "cook_date": "2026-10-23",
-      "qty": 80
-     },
-     {
-      "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
-      "cook_date": "2026-10-23",
-      "qty": 13.5
+      "qty": 45.75
      }
     ],
     "purchased": false,
@@ -1014,9 +965,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 18.25,
+    "needed": 11.5,
     "from_pantry": 0,
-    "to_buy": 18.25,
+    "to_buy": 11.5,
+    "buy_qty": 50,
     "package": {
      "size": 50,
      "unit": "g",
@@ -1024,6 +976,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1037,13 +990,6 @@
       "recipe_name": "Табуле",
       "cook_date": "2026-10-21",
       "qty": 11.5
-     },
-     {
-      "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
-      "cook_date": "2026-10-23",
-      "qty": 6.75
      }
     ],
     "purchased": false,
@@ -1058,9 +1004,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 956.666667,
+    "needed": 840.416667,
     "from_pantry": 0,
-    "to_buy": 956.666667,
+    "to_buy": 840.416667,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -1068,6 +1015,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1076,18 +1024,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
-      "recipe_id": "shakshuka",
-      "recipe_name": "Шакшука",
-      "cook_date": "2026-10-19",
-      "qty": 175
-     },
-     {
       "batch_id": "b2",
-      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
-      "recipe_name": "Курица с овощами в мультиварке",
+      "recipe_id": "bulgur-s-nutom-i-ovoshchami",
+      "recipe_name": "Булгур с нутом и овощами",
       "cook_date": "2026-10-19",
-      "qty": 100
+      "qty": 93.75
      },
      {
       "batch_id": "b3",
@@ -1098,45 +1039,45 @@
      },
      {
       "batch_id": "b4",
-      "recipe_id": "gribnoy-sup-s-perlovkoy",
-      "recipe_name": "Грибной суп с перловкой",
+      "recipe_id": "shakshuka",
+      "recipe_name": "Шакшука",
       "cook_date": "2026-10-19",
-      "qty": 100
+      "qty": 190
      },
      {
       "batch_id": "b6",
-      "recipe_id": "bulgur-s-kuritsey",
-      "recipe_name": "Булгур с курицей и овощами",
+      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
+      "recipe_name": "Курица с овощами в мультиварке",
       "cook_date": "2026-10-20",
-      "qty": 86.25
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "bulgur-s-nutom-i-ovoshchami",
-      "recipe_name": "Булгур с нутом и овощами",
-      "cook_date": "2026-10-21",
-      "qty": 93.75
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-21",
       "qty": 100
      },
      {
-      "batch_id": "b13",
+      "batch_id": "b8",
+      "recipe_id": "bulgur-s-kuritsey",
+      "recipe_name": "Булгур с курицей и овощами",
+      "cook_date": "2026-10-20",
+      "qty": 78.75
+     },
+     {
+      "batch_id": "b9",
       "recipe_id": "menemen",
       "recipe_name": "Менемен",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-21",
       "qty": 75
      },
      {
-      "batch_id": "b20",
+      "batch_id": "b16",
       "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
       "recipe_name": "Хек, тушённый с морковью и луком",
-      "cook_date": "2026-10-23",
+      "cook_date": "2026-10-22",
       "qty": 192.5
+     },
+     {
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
+      "cook_date": "2026-10-23",
+      "qty": 76.25
      }
     ],
     "purchased": false,
@@ -1151,9 +1092,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 777.666667,
+    "needed": 472,
     "from_pantry": 0,
-    "to_buy": 777.666667,
+    "to_buy": 472,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -1161,6 +1103,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1169,83 +1112,32 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b2",
+      "batch_id": "b6",
       "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
       "recipe_name": "Курица с овощами в мультиварке",
-      "cook_date": "2026-10-19",
+      "cook_date": "2026-10-20",
       "qty": 80
      },
      {
-      "batch_id": "b4",
-      "recipe_id": "gribnoy-sup-s-perlovkoy",
-      "recipe_name": "Грибной суп с перловкой",
-      "cook_date": "2026-10-19",
-      "qty": 80
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-21",
-      "qty": 80
-     },
-     {
-      "batch_id": "b16",
+      "batch_id": "b14",
       "recipe_id": "kinoa-s-ovoshchami",
       "recipe_name": "Киноа с овощами",
       "cook_date": "2026-10-22",
-      "qty": 93.333333
+      "qty": 100
      },
      {
-      "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
-      "cook_date": "2026-10-23",
-      "qty": 213.333333
+      "batch_id": "b16",
+      "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
+      "recipe_name": "Хек, тушённый с морковью и луком",
+      "cook_date": "2026-10-22",
+      "qty": 231
      },
      {
       "batch_id": "b20",
-      "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
-      "recipe_name": "Хек, тушённый с морковью и луком",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
       "cook_date": "2026-10-23",
-      "qty": 231
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:mint:g",
-    "product_id": "mint",
-    "name": "Мята свежая",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 5.0625,
-    "from_pantry": 0,
-    "to_buy": 5.0625,
-    "package": {
-     "size": 30,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
-      "cook_date": "2026-10-23",
-      "qty": 5.0625
+      "qty": 61
      }
     ],
     "purchased": false,
@@ -1260,12 +1152,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 725.5,
+    "needed": 789.5,
     "from_pantry": 0,
-    "to_buy": 725.5,
+    "to_buy": 789.5,
+    "buy_qty": 789.5,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1288,11 +1182,11 @@
       "qty": 318
      },
      {
-      "batch_id": "b8",
-      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
-      "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 136
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
+      "cook_date": "2026-10-21",
+      "qty": 94.5
      },
      {
       "batch_id": "b11",
@@ -1309,11 +1203,11 @@
       "qty": 80
      },
      {
-      "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
+      "batch_id": "b18",
+      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
+      "recipe_name": "Тёплый салат с тунцом в кунжуте",
       "cook_date": "2026-10-23",
-      "qty": 40.5
+      "qty": 146
      }
     ],
     "purchased": false,
@@ -1328,12 +1222,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 1010,
+    "needed": 1021.25,
     "from_pantry": 0,
-    "to_buy": 1010,
+    "to_buy": 1021.25,
+    "buy_qty": 1021.25,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1342,18 +1238,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
-      "recipe_id": "shakshuka",
-      "recipe_name": "Шакшука",
-      "cook_date": "2026-10-19",
-      "qty": 262.5
-     },
-     {
       "batch_id": "b2",
-      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
-      "recipe_name": "Курица с овощами в мультиварке",
+      "recipe_id": "bulgur-s-nutom-i-ovoshchami",
+      "recipe_name": "Булгур с нутом и овощами",
       "cook_date": "2026-10-19",
-      "qty": 150
+      "qty": 140.625
      },
      {
       "batch_id": "b3",
@@ -1363,24 +1252,31 @@
       "qty": 102.5
      },
      {
+      "batch_id": "b4",
+      "recipe_id": "shakshuka",
+      "recipe_name": "Шакшука",
+      "cook_date": "2026-10-19",
+      "qty": 285
+     },
+     {
       "batch_id": "b6",
+      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
+      "recipe_name": "Курица с овощами в мультиварке",
+      "cook_date": "2026-10-20",
+      "qty": 150
+     },
+     {
+      "batch_id": "b8",
       "recipe_id": "bulgur-s-kuritsey",
       "recipe_name": "Булгур с курицей и овощами",
       "cook_date": "2026-10-20",
-      "qty": 129.375
+      "qty": 118.125
      },
      {
-      "batch_id": "b10",
-      "recipe_id": "bulgur-s-nutom-i-ovoshchami",
-      "recipe_name": "Булгур с нутом и овощами",
-      "cook_date": "2026-10-21",
-      "qty": 140.625
-     },
-     {
-      "batch_id": "b13",
+      "batch_id": "b9",
       "recipe_id": "menemen",
       "recipe_name": "Менемен",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-21",
       "qty": 225
      }
     ],
@@ -1396,9 +1292,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 90.416667,
+    "needed": 76.166667,
     "from_pantry": 0,
-    "to_buy": 90.416667,
+    "to_buy": 76.166667,
+    "buy_qty": 100,
     "package": {
      "size": 50,
      "unit": "g",
@@ -1406,6 +1303,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1421,11 +1319,11 @@
       "qty": 6.833333
      },
      {
-      "batch_id": "b6",
+      "batch_id": "b8",
       "recipe_id": "bulgur-s-kuritsey",
       "recipe_name": "Булгур с курицей и овощами",
       "cook_date": "2026-10-20",
-      "qty": 8.625
+      "qty": 7.875
      },
      {
       "batch_id": "b11",
@@ -1436,17 +1334,10 @@
      },
      {
       "batch_id": "b12",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-21",
-      "qty": 10
-     },
-     {
-      "batch_id": "b14",
       "recipe_id": "steyk-tuntsa-s-kinoa",
       "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
-      "cook_date": "2026-10-22",
-      "qty": 7
+      "cook_date": "2026-10-21",
+      "qty": 6
      },
      {
       "batch_id": "b15",
@@ -1456,11 +1347,11 @@
       "qty": 13.333333
      },
      {
-      "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
       "cook_date": "2026-10-23",
-      "qty": 10.125
+      "qty": 7.625
      }
     ],
     "purchased": false,
@@ -1475,12 +1366,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 1084,
+    "needed": 1273,
     "from_pantry": 0,
-    "to_buy": 1084,
+    "to_buy": 1273,
+    "buy_qty": 1273,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1496,18 +1389,25 @@
       "qty": 246
      },
      {
+      "batch_id": "b9",
+      "recipe_id": "menemen",
+      "recipe_name": "Менемен",
+      "cook_date": "2026-10-21",
+      "qty": 540
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
+      "cook_date": "2026-10-21",
+      "qty": 189
+     },
+     {
       "batch_id": "b11",
       "recipe_id": "tabule",
       "recipe_name": "Табуле",
       "cook_date": "2026-10-21",
       "qty": 138
-     },
-     {
-      "batch_id": "b13",
-      "recipe_id": "menemen",
-      "recipe_name": "Менемен",
-      "cook_date": "2026-10-22",
-      "qty": 540
      },
      {
       "batch_id": "b15",
@@ -1529,16 +1429,18 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 241,
+    "needed": 605,
     "from_pantry": 0,
-    "to_buy": 241,
+    "to_buy": 605,
+    "buy_qty": 750,
     "package": {
      "size": 250,
      "unit": "g",
-     "count": 1
+     "count": 3
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1547,18 +1449,71 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
-      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
-      "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 136
-     },
-     {
-      "batch_id": "b14",
+      "batch_id": "b12",
       "recipe_id": "steyk-tuntsa-s-kinoa",
       "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
-      "cook_date": "2026-10-22",
-      "qty": 105
+      "cook_date": "2026-10-21",
+      "qty": 90
+     },
+     {
+      "batch_id": "b17",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
+      "cook_date": "2026-10-23",
+      "qty": 159
+     },
+     {
+      "batch_id": "b18",
+      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
+      "recipe_name": "Тёплый салат с тунцом в кунжуте",
+      "cook_date": "2026-10-23",
+      "qty": 146
+     },
+     {
+      "batch_id": "b19",
+      "recipe_id": "perepelinye-yaytsa-s-cherri",
+      "recipe_name": "Перепелиные яйца с черри и рукколой",
+      "cook_date": "2026-10-23",
+      "qty": 210
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:arugula:g",
+    "product_id": "arugula",
+    "name": "Руккола",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 42,
+    "from_pantry": 0,
+    "to_buy": 42,
+    "buy_qty": 100,
+    "package": {
+     "size": 100,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b19",
+      "recipe_id": "perepelinye-yaytsa-s-cherri",
+      "recipe_name": "Перепелиные яйца с черри и рукколой",
+      "cook_date": "2026-10-23",
+      "qty": 42
      }
     ],
     "purchased": false,
@@ -1573,49 +1528,14 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 113.333333,
+    "needed": 121.666667,
     "from_pantry": 0,
-    "to_buy": 113.333333,
+    "to_buy": 121.666667,
+    "buy_qty": 121.666667,
     "package": null,
     "package_note": null,
     "price_kop": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b8",
-      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
-      "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 113.333333
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:dill:g",
-    "product_id": "dill",
-    "name": "Укроп",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 13.333333,
-    "from_pantry": 0,
-    "to_buy": 13.333333,
-    "package": {
-     "size": 50,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1625,10 +1545,84 @@
     "sources": [
      {
       "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
+      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
+      "recipe_name": "Тёплый салат с тунцом в кунжуте",
       "cook_date": "2026-10-23",
-      "qty": 13.333333
+      "qty": 121.666667
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:celery_stalk:g",
+    "product_id": "celery_stalk",
+    "name": "Сельдерей черешковый",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 30.5,
+    "from_pantry": 0,
+    "to_buy": 30.5,
+    "buy_qty": 400,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
+      "cook_date": "2026-10-23",
+      "qty": 30.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:pumpkin:g",
+    "product_id": "pumpkin",
+    "name": "Тыква",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 325,
+    "from_pantry": 0,
+    "to_buy": 325,
+    "buy_qty": 325,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b13",
+      "recipe_id": "pshyonnaya-kasha-s-tykvoy",
+      "recipe_name": "Пшённая каша с тыквой",
+      "cook_date": "2026-10-22",
+      "qty": 325
      }
     ],
     "purchased": false,
@@ -1643,9 +1637,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 15.166667,
+    "needed": 31,
     "from_pantry": 0,
-    "to_buy": 15.166667,
+    "to_buy": 31,
+    "buy_qty": 100,
     "package": {
      "size": 100,
      "unit": "g",
@@ -1653,6 +1648,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1661,18 +1657,32 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b14",
-      "recipe_id": "steyk-tuntsa-s-kinoa",
-      "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
-      "cook_date": "2026-10-22",
-      "qty": 3.5
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
+      "cook_date": "2026-10-21",
+      "qty": 7.875
      },
      {
-      "batch_id": "b16",
+      "batch_id": "b12",
+      "recipe_id": "steyk-tuntsa-s-kinoa",
+      "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 3
+     },
+     {
+      "batch_id": "b14",
       "recipe_id": "kinoa-s-ovoshchami",
       "recipe_name": "Киноа с овощами",
       "cook_date": "2026-10-22",
-      "qty": 11.666667
+      "qty": 12.5
+     },
+     {
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
+      "cook_date": "2026-10-23",
+      "qty": 7.625
      }
     ],
     "purchased": false,
@@ -1681,22 +1691,24 @@
     "changed": false
    },
    {
-    "id": "auto:champignons:g",
-    "product_id": "champignons",
-    "name": "Шампиньоны",
+    "id": "auto:spinach:g",
+    "product_id": "spinach",
+    "name": "Шпинат",
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 400,
+    "needed": 53,
     "from_pantry": 0,
-    "to_buy": 400,
+    "to_buy": 53,
+    "buy_qty": 150,
     "package": {
-     "size": 400,
+     "size": 150,
      "unit": "g",
      "count": 1
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1705,11 +1717,50 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b4",
-      "recipe_id": "gribnoy-sup-s-perlovkoy",
-      "recipe_name": "Грибной суп с перловкой",
-      "cook_date": "2026-10-19",
-      "qty": 400
+      "batch_id": "b17",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
+      "cook_date": "2026-10-23",
+      "qty": 53
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:yogurt_plain:g",
+    "product_id": "yogurt_plain",
+    "name": "Йогурт натуральный 2%",
+    "department": "Молочные продукты и яйца",
+    "unit": "g",
+    "convertible": true,
+    "needed": 118.125,
+    "from_pantry": 0,
+    "to_buy": 118.125,
+    "buy_qty": 300,
+    "package": {
+     "size": 300,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
+      "cook_date": "2026-10-21",
+      "qty": 118.125
      }
     ],
     "purchased": false,
@@ -1724,9 +1775,10 @@
     "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 15,
+    "needed": 31.25,
     "from_pantry": 0,
-    "to_buy": 15,
+    "to_buy": 31.25,
+    "buy_qty": 180,
     "package": {
      "size": 180,
      "unit": "g",
@@ -1734,6 +1786,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1742,11 +1795,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b13",
+      "batch_id": "b9",
       "recipe_id": "menemen",
       "recipe_name": "Менемен",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-21",
       "qty": 15
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "pshyonnaya-kasha-s-tykvoy",
+      "recipe_name": "Пшённая каша с тыквой",
+      "cook_date": "2026-10-22",
+      "qty": 16.25
      }
     ],
     "purchased": false,
@@ -1761,9 +1821,10 @@
     "department": "Молочные продукты и яйца",
     "unit": "ml",
     "convertible": true,
-    "needed": 90,
+    "needed": 523.333333,
     "from_pantry": 0,
-    "to_buy": 90,
+    "to_buy": 523.333333,
+    "buy_qty": 930,
     "package": {
      "size": 930,
      "unit": "ml",
@@ -1771,6 +1832,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1779,11 +1841,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b1",
       "recipe_id": "omlet-s-brokkoli-i-fetoy",
       "recipe_name": "Омлет с брокколи и фетой",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-19",
       "qty": 90
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "pshyonnaya-kasha-s-tykvoy",
+      "recipe_name": "Пшённая каша с тыквой",
+      "cook_date": "2026-10-22",
+      "qty": 433.333333
      }
     ],
     "purchased": false,
@@ -1801,6 +1870,7 @@
     "needed": 158.333333,
     "from_pantry": 0,
     "to_buy": 158.333333,
+    "buy_qty": 200,
     "package": {
      "size": 200,
      "unit": "g",
@@ -1808,6 +1878,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1816,18 +1887,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b1",
+      "recipe_id": "omlet-s-brokkoli-i-fetoy",
+      "recipe_name": "Омлет с брокколи и фетой",
+      "cook_date": "2026-10-19",
+      "qty": 90
+     },
+     {
       "batch_id": "b3",
       "recipe_id": "shopskiy-salat",
       "recipe_name": "Шопский салат",
       "cook_date": "2026-10-19",
       "qty": 68.333333
-     },
-     {
-      "batch_id": "b9",
-      "recipe_id": "omlet-s-brokkoli-i-fetoy",
-      "recipe_name": "Омлет с брокколи и фетой",
-      "cook_date": "2026-10-21",
-      "qty": 90
      }
     ],
     "purchased": false,
@@ -1842,9 +1913,10 @@
     "department": "Молочные продукты и яйца",
     "unit": "pcs",
     "convertible": true,
-    "needed": 35.55,
+    "needed": 35.65,
     "from_pantry": 0,
-    "to_buy": 35.55,
+    "to_buy": 35.65,
+    "buy_qty": 40,
     "package": {
      "size": 10,
      "unit": "pcs",
@@ -1852,6 +1924,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1861,10 +1934,17 @@
     "sources": [
      {
       "batch_id": "b1",
+      "recipe_id": "omlet-s-brokkoli-i-fetoy",
+      "recipe_name": "Омлет с брокколи и фетой",
+      "cook_date": "2026-10-19",
+      "qty": 7.2
+     },
+     {
+      "batch_id": "b4",
       "recipe_id": "shakshuka",
       "recipe_name": "Шакшука",
       "cook_date": "2026-10-19",
-      "qty": 7
+      "qty": 7.6
      },
      {
       "batch_id": "b5",
@@ -1882,24 +1962,56 @@
      },
      {
       "batch_id": "b9",
-      "recipe_id": "omlet-s-brokkoli-i-fetoy",
-      "recipe_name": "Омлет с брокколи и фетой",
-      "cook_date": "2026-10-21",
-      "qty": 7.2
-     },
-     {
-      "batch_id": "b13",
       "recipe_id": "menemen",
       "recipe_name": "Менемен",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-21",
       "qty": 6
      },
      {
       "batch_id": "b17",
-      "recipe_id": "tost-s-avokado-i-yaytsom",
-      "recipe_name": "Тост с авокадо и яйцом",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
       "cook_date": "2026-10-23",
-      "qty": 3.15
+      "qty": 2.65
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:quail_eggs:pcs",
+    "product_id": "quail_eggs",
+    "name": "Яйца перепелиные",
+    "department": "Молочные продукты и яйца",
+    "unit": "pcs",
+    "convertible": true,
+    "needed": 14,
+    "from_pantry": 0,
+    "to_buy": 14,
+    "buy_qty": 20,
+    "package": {
+     "size": 20,
+     "unit": "pcs",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b19",
+      "recipe_id": "perepelinye-yaytsa-s-cherri",
+      "recipe_name": "Перепелиные яйца с черри и рукколой",
+      "cook_date": "2026-10-23",
+      "qty": 14
      }
     ],
     "purchased": false,
@@ -1914,16 +2026,18 @@
     "department": "Мясо и птица",
     "unit": "g",
     "convertible": true,
-    "needed": 845,
+    "needed": 1208.75,
     "from_pantry": 0,
-    "to_buy": 845,
+    "to_buy": 1208.75,
+    "buy_qty": 1500,
     "package": {
      "size": 500,
      "unit": "g",
-     "count": 2
+     "count": 3
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1932,18 +2046,25 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b2",
+      "batch_id": "b6",
       "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
       "recipe_name": "Курица с овощами в мультиварке",
-      "cook_date": "2026-10-19",
+      "cook_date": "2026-10-20",
       "qty": 500
      },
      {
-      "batch_id": "b6",
+      "batch_id": "b8",
       "recipe_id": "bulgur-s-kuritsey",
       "recipe_name": "Булгур с курицей и овощами",
       "cook_date": "2026-10-20",
-      "qty": 345
+      "qty": 315
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
+      "cook_date": "2026-10-21",
+      "qty": 393.75
      }
     ],
     "purchased": false,
@@ -1958,16 +2079,18 @@
     "department": "Рыба",
     "unit": "g",
     "convertible": true,
-    "needed": 600,
+    "needed": 457.5,
     "from_pantry": 0,
-    "to_buy": 600,
+    "to_buy": 457.5,
+    "buy_qty": 500,
     "package": {
      "size": 500,
      "unit": "g",
-     "count": 2
+     "count": 1
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -1976,11 +2099,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
       "cook_date": "2026-10-23",
-      "qty": 600
+      "qty": 457.5
      }
     ],
     "purchased": false,
@@ -1995,12 +2118,14 @@
     "department": "Рыба",
     "unit": "g",
     "convertible": true,
-    "needed": 1013.333333,
+    "needed": 966.666667,
     "from_pantry": 0,
-    "to_buy": 1013.333333,
+    "to_buy": 966.666667,
+    "buy_qty": 966.666667,
     "package": null,
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2009,18 +2134,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
-      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
-      "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 453.333333
-     },
-     {
-      "batch_id": "b14",
+      "batch_id": "b12",
       "recipe_id": "steyk-tuntsa-s-kinoa",
       "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
-      "cook_date": "2026-10-22",
-      "qty": 560
+      "cook_date": "2026-10-21",
+      "qty": 480
+     },
+     {
+      "batch_id": "b18",
+      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
+      "recipe_name": "Тёплый салат с тунцом в кунжуте",
+      "cook_date": "2026-10-23",
+      "qty": 486.666667
      }
     ],
     "purchased": false,
@@ -2038,6 +2163,7 @@
     "needed": 577.5,
     "from_pantry": 0,
     "to_buy": 577.5,
+    "buy_qty": 800,
     "package": {
      "size": 400,
      "unit": "g",
@@ -2045,6 +2171,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2053,10 +2180,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b20",
+      "batch_id": "b16",
       "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
       "recipe_name": "Хек, тушённый с морковью и луком",
-      "cook_date": "2026-10-23",
+      "cook_date": "2026-10-22",
       "qty": 577.5
      }
     ],
@@ -2072,9 +2199,10 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 449.125,
+    "needed": 430.375,
     "from_pantry": 0,
-    "to_buy": 449.125,
+    "to_buy": 430.375,
+    "buy_qty": 500,
     "package": {
      "size": 500,
      "unit": "g",
@@ -2082,6 +2210,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2090,18 +2219,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b6",
+      "batch_id": "b2",
+      "recipe_id": "bulgur-s-nutom-i-ovoshchami",
+      "recipe_name": "Булгур с нутом и овощами",
+      "cook_date": "2026-10-19",
+      "qty": 187.5
+     },
+     {
+      "batch_id": "b8",
       "recipe_id": "bulgur-s-kuritsey",
       "recipe_name": "Булгур с курицей и овощами",
       "cook_date": "2026-10-20",
-      "qty": 215.625
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "bulgur-s-nutom-i-ovoshchami",
-      "recipe_name": "Булгур с нутом и овощами",
-      "cook_date": "2026-10-21",
-      "qty": 187.5
+      "qty": 196.875
      },
      {
       "batch_id": "b11",
@@ -2123,9 +2252,10 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 400.625,
+    "needed": 451,
     "from_pantry": 0,
-    "to_buy": 400.625,
+    "to_buy": 451,
+    "buy_qty": 700,
     "package": {
      "size": 350,
      "unit": "g",
@@ -2133,6 +2263,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2141,25 +2272,25 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b14",
+      "batch_id": "b12",
       "recipe_id": "steyk-tuntsa-s-kinoa",
       "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
-      "cook_date": "2026-10-22",
-      "qty": 140
+      "cook_date": "2026-10-21",
+      "qty": 120
      },
      {
-      "batch_id": "b16",
+      "batch_id": "b14",
       "recipe_id": "kinoa-s-ovoshchami",
       "recipe_name": "Киноа с овощами",
       "cook_date": "2026-10-22",
-      "qty": 210
+      "qty": 225
      },
      {
-      "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
+      "batch_id": "b17",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
       "cook_date": "2026-10-23",
-      "qty": 50.625
+      "qty": 106
      }
     ],
     "purchased": false,
@@ -2174,9 +2305,10 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 30.6,
+    "needed": 32.85,
     "from_pantry": 0,
-    "to_buy": 30.6,
+    "to_buy": 32.85,
+    "buy_qty": 100,
     "package": {
      "size": 100,
      "unit": "g",
@@ -2184,6 +2316,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2192,11 +2325,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
+      "batch_id": "b18",
       "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
       "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 30.6
+      "cook_date": "2026-10-23",
+      "qty": 32.85
      }
     ],
     "purchased": false,
@@ -2214,6 +2347,7 @@
     "needed": 15.4,
     "from_pantry": 0,
     "to_buy": 15.4,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -2221,6 +2355,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2229,10 +2364,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b20",
+      "batch_id": "b16",
       "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
       "recipe_name": "Хек, тушённый с морковью и луком",
-      "cook_date": "2026-10-23",
+      "cook_date": "2026-10-22",
       "qty": 15.4
      }
     ],
@@ -2248,9 +2383,10 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 7.933333,
+    "needed": 8.516667,
     "from_pantry": 0,
-    "to_buy": 7.933333,
+    "to_buy": 8.516667,
+    "buy_qty": 250,
     "package": {
      "size": 250,
      "unit": "g",
@@ -2258,6 +2394,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2266,11 +2403,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
+      "batch_id": "b18",
       "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
       "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 7.933333
+      "cook_date": "2026-10-23",
+      "qty": 8.516667
      }
     ],
     "purchased": false,
@@ -2279,15 +2416,16 @@
     "changed": false
    },
    {
-    "id": "auto:pearl_barley_dry:g",
-    "product_id": "pearl_barley_dry",
-    "name": "Перловая крупа",
+    "id": "auto:millet_dry:g",
+    "product_id": "millet_dry",
+    "name": "Пшено",
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 80,
+    "needed": 162.5,
     "from_pantry": 0,
-    "to_buy": 80,
+    "to_buy": 162.5,
+    "buy_qty": 800,
     "package": {
      "size": 800,
      "unit": "g",
@@ -2295,6 +2433,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2303,11 +2442,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b4",
-      "recipe_id": "gribnoy-sup-s-perlovkoy",
-      "recipe_name": "Грибной суп с перловкой",
-      "cook_date": "2026-10-19",
-      "qty": 80
+      "batch_id": "b13",
+      "recipe_id": "pshyonnaya-kasha-s-tykvoy",
+      "recipe_name": "Пшённая каша с тыквой",
+      "cook_date": "2026-10-22",
+      "qty": 162.5
      }
     ],
     "purchased": false,
@@ -2316,22 +2455,24 @@
     "changed": false
    },
    {
-    "id": "auto:pistachios:g",
-    "product_id": "pistachios",
-    "name": "Фисташки очищенные",
+    "id": "auto:sugar:g",
+    "product_id": "sugar",
+    "name": "Сахар",
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 10.125,
+    "needed": 13.541667,
     "from_pantry": 0,
-    "to_buy": 10.125,
+    "to_buy": 13.541667,
+    "buy_qty": 1000,
     "package": {
-     "size": 100,
+     "size": 1000,
      "unit": "g",
      "count": 1
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2340,11 +2481,89 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
+      "batch_id": "b13",
+      "recipe_id": "pshyonnaya-kasha-s-tykvoy",
+      "recipe_name": "Пшённая каша с тыквой",
+      "cook_date": "2026-10-22",
+      "qty": 13.541667
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:lentils_green_dry:g",
+    "product_id": "lentils_green_dry",
+    "name": "Чечевица зелёная",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 152.5,
+    "from_pantry": 0,
+    "to_buy": 152.5,
+    "buy_qty": 450,
+    "package": {
+     "size": 450,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
       "cook_date": "2026-10-23",
-      "qty": 10.125
+      "qty": 152.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:lavash:g",
+    "product_id": "lavash",
+    "name": "Лаваш тонкий",
+    "department": "Хлеб",
+    "unit": "g",
+    "convertible": true,
+    "needed": 283.5,
+    "from_pantry": 0,
+    "to_buy": 283.5,
+    "buy_qty": 540,
+    "package": {
+     "size": 270,
+     "unit": "g",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
+      "cook_date": "2026-10-21",
+      "qty": 283.5
      }
     ],
     "purchased": false,
@@ -2359,9 +2578,10 @@
     "department": "Хлеб",
     "unit": "g",
     "convertible": true,
-    "needed": 396,
+    "needed": 207,
     "from_pantry": 0,
-    "to_buy": 396,
+    "to_buy": 207,
+    "buy_qty": 400,
     "package": {
      "size": 400,
      "unit": "g",
@@ -2369,6 +2589,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2382,13 +2603,6 @@
       "recipe_name": "Яйца всмятку с цельнозерновым тостом",
       "cook_date": "2026-10-20",
       "qty": 207
-     },
-     {
-      "batch_id": "b17",
-      "recipe_id": "tost-s-avokado-i-yaytsom",
-      "recipe_name": "Тост с авокадо и яйцом",
-      "cook_date": "2026-10-23",
-      "qty": 189
      }
     ],
     "purchased": false,
@@ -2406,6 +2620,7 @@
     "needed": 641.666667,
     "from_pantry": 0,
     "to_buy": 641.666667,
+    "buy_qty": 800,
     "package": {
      "size": 400,
      "unit": "g",
@@ -2413,6 +2628,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2421,10 +2637,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b10",
+      "batch_id": "b2",
       "recipe_id": "bulgur-s-nutom-i-ovoshchami",
       "recipe_name": "Булгур с нутом и овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-19",
       "qty": 375
      },
      {
@@ -2447,9 +2663,10 @@
     "department": "Консервы и соусы",
     "unit": "ml",
     "convertible": true,
-    "needed": 46.951567,
+    "needed": 50.37037,
     "from_pantry": 0,
-    "to_buy": 46.951567,
+    "to_buy": 50.37037,
+    "buy_qty": 150,
     "package": {
      "size": 150,
      "unit": "ml",
@@ -2457,6 +2674,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2465,18 +2683,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
-      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
-      "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 30.997151
-     },
-     {
-      "batch_id": "b16",
+      "batch_id": "b14",
       "recipe_id": "kinoa-s-ovoshchami",
       "recipe_name": "Киноа с овощами",
       "cook_date": "2026-10-22",
-      "qty": 15.954416
+      "qty": 17.094017
+     },
+     {
+      "batch_id": "b18",
+      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
+      "recipe_name": "Тёплый салат с тунцом в кунжуте",
+      "cook_date": "2026-10-23",
+      "qty": 33.276353
      }
     ],
     "purchased": false,
@@ -2491,9 +2709,10 @@
     "department": "Консервы и соусы",
     "unit": "g",
     "convertible": true,
-    "needed": 45.2,
+    "needed": 28,
     "from_pantry": 0,
-    "to_buy": 45.2,
+    "to_buy": 28,
+    "buy_qty": 140,
     "package": {
      "size": 140,
      "unit": "g",
@@ -2501,6 +2720,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2509,24 +2729,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b6",
+      "batch_id": "b8",
       "recipe_id": "bulgur-s-kuritsey",
       "recipe_name": "Булгур с курицей и овощами",
       "cook_date": "2026-10-20",
-      "qty": 13.8
+      "qty": 12.6
      },
      {
-      "batch_id": "b12",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-21",
-      "qty": 16
-     },
-     {
-      "batch_id": "b20",
+      "batch_id": "b16",
       "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
       "recipe_name": "Хек, тушённый с морковью и луком",
-      "cook_date": "2026-10-23",
+      "cook_date": "2026-10-22",
       "qty": 15.4
      }
     ],
@@ -2542,16 +2755,18 @@
     "department": "Консервы и соусы",
     "unit": "g",
     "convertible": true,
-    "needed": 700,
+    "needed": 912.5,
     "from_pantry": 0,
-    "to_buy": 700,
+    "to_buy": 912.5,
+    "buy_qty": 1200,
     "package": {
      "size": 400,
      "unit": "g",
-     "count": 2
+     "count": 3
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2560,11 +2775,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
+      "batch_id": "b4",
       "recipe_id": "shakshuka",
       "recipe_name": "Шакшука",
       "cook_date": "2026-10-19",
-      "qty": 700
+      "qty": 760
+     },
+     {
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
+      "cook_date": "2026-10-23",
+      "qty": 152.5
      }
     ],
     "purchased": false,
@@ -2582,6 +2804,7 @@
     "needed": 0.1925,
     "from_pantry": 0,
     "to_buy": 0.1925,
+    "buy_qty": 10,
     "package": {
      "size": 10,
      "unit": "g",
@@ -2589,6 +2812,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2597,10 +2821,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b20",
+      "batch_id": "b16",
       "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
       "recipe_name": "Хек, тушённый с морковью и луком",
-      "cook_date": "2026-10-23",
+      "cook_date": "2026-10-22",
       "qty": 0.1925
      }
     ],
@@ -2616,9 +2840,10 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 5.543478,
+    "needed": 5.951087,
     "from_pantry": 0,
-    "to_buy": 5.543478,
+    "to_buy": 5.951087,
+    "buy_qty": 250,
     "package": {
      "size": 250,
      "unit": "ml",
@@ -2626,6 +2851,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2634,11 +2860,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
+      "batch_id": "b18",
       "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
       "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 5.543478
+      "cook_date": "2026-10-23",
+      "qty": 5.951087
      }
     ],
     "purchased": false,
@@ -2653,9 +2879,10 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 278.715659,
+    "needed": 316.298077,
     "from_pantry": 0,
-    "to_buy": 278.715659,
+    "to_buy": 316.298077,
+    "buy_qty": 500,
     "package": {
      "size": 500,
      "unit": "ml",
@@ -2663,6 +2890,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2672,31 +2900,38 @@
     "sources": [
      {
       "batch_id": "b1",
-      "recipe_id": "shakshuka",
-      "recipe_name": "Шакшука",
-      "cook_date": "2026-10-19",
-      "qty": 25.961538
-     },
-     {
-      "batch_id": "b6",
-      "recipe_id": "bulgur-s-kuritsey",
-      "recipe_name": "Булгур с курицей и овощами",
-      "cook_date": "2026-10-20",
-      "qty": 25.590659
-     },
-     {
-      "batch_id": "b9",
       "recipe_id": "omlet-s-brokkoli-i-fetoy",
       "recipe_name": "Омлет с брокколи и фетой",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-19",
       "qty": 8.901099
      },
      {
-      "batch_id": "b10",
+      "batch_id": "b2",
       "recipe_id": "bulgur-s-nutom-i-ovoshchami",
       "recipe_name": "Булгур с нутом и овощами",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-19",
       "qty": 27.815934
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "shakshuka",
+      "recipe_name": "Шакшука",
+      "cook_date": "2026-10-19",
+      "qty": 28.186813
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "bulgur-s-kuritsey",
+      "recipe_name": "Булгур с курицей и овощами",
+      "cook_date": "2026-10-20",
+      "qty": 23.365385
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "menemen",
+      "recipe_name": "Менемен",
+      "cook_date": "2026-10-21",
+      "qty": 44.505495
      },
      {
       "batch_id": "b11",
@@ -2706,18 +2941,18 @@
       "qty": 25.590659
      },
      {
-      "batch_id": "b13",
-      "recipe_id": "menemen",
-      "recipe_name": "Менемен",
-      "cook_date": "2026-10-22",
-      "qty": 44.505495
+      "batch_id": "b12",
+      "recipe_id": "steyk-tuntsa-s-kinoa",
+      "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 26.703297
      },
      {
       "batch_id": "b14",
-      "recipe_id": "steyk-tuntsa-s-kinoa",
-      "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
+      "recipe_id": "kinoa-s-ovoshchami",
+      "recipe_name": "Киноа с овощами",
       "cook_date": "2026-10-22",
-      "qty": 31.153846
+      "qty": 37.087912
      },
      {
       "batch_id": "b15",
@@ -2727,25 +2962,25 @@
       "qty": 19.78022
      },
      {
-      "batch_id": "b16",
-      "recipe_id": "kinoa-s-ovoshchami",
-      "recipe_name": "Киноа с овощами",
-      "cook_date": "2026-10-22",
-      "qty": 34.615385
-     },
-     {
-      "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
+      "batch_id": "b17",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
       "cook_date": "2026-10-23",
-      "qty": 19.78022
+      "qty": 19.656593
      },
      {
       "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
+      "recipe_id": "perepelinye-yaytsa-s-cherri",
+      "recipe_name": "Перепелиные яйца с черри и рукколой",
       "cook_date": "2026-10-23",
-      "qty": 15.020604
+      "qty": 20.769231
+     },
+     {
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
+      "cook_date": "2026-10-23",
+      "qty": 33.93544
      }
     ],
     "purchased": false,
@@ -2760,9 +2995,10 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 123.98913,
+    "needed": 107.297101,
     "from_pantry": 0,
-    "to_buy": 123.98913,
+    "to_buy": 107.297101,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "ml",
@@ -2770,6 +3006,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2778,13 +3015,6 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b2",
-      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
-      "recipe_name": "Курица с овощами в мультиварке",
-      "cook_date": "2026-10-19",
-      "qty": 14.782609
-     },
-     {
       "batch_id": "b3",
       "recipe_id": "shopskiy-salat",
       "recipe_name": "Шопский салат",
@@ -2792,32 +3022,32 @@
       "qty": 20.202899
      },
      {
-      "batch_id": "b4",
-      "recipe_id": "gribnoy-sup-s-perlovkoy",
-      "recipe_name": "Грибной суп с перловкой",
-      "cook_date": "2026-10-19",
-      "qty": 14.782609
-     },
-     {
-      "batch_id": "b8",
-      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
-      "recipe_name": "Тёплый салат с тунцом в кунжуте",
+      "batch_id": "b6",
+      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
+      "recipe_name": "Курица с овощами в мультиварке",
       "cook_date": "2026-10-20",
-      "qty": 16.753623
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-21",
       "qty": 14.782609
      },
      {
-      "batch_id": "b20",
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
+      "cook_date": "2026-10-21",
+      "qty": 11.641304
+     },
+     {
+      "batch_id": "b16",
       "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
       "recipe_name": "Хек, тушённый с морковью и луком",
-      "cook_date": "2026-10-23",
+      "cook_date": "2026-10-22",
       "qty": 42.684783
+     },
+     {
+      "batch_id": "b18",
+      "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
+      "recipe_name": "Тёплый салат с тунцом в кунжуте",
+      "cook_date": "2026-10-23",
+      "qty": 17.985507
      }
     ],
     "purchased": false,
@@ -2832,9 +3062,10 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 8.30875,
+    "needed": 10.2925,
     "from_pantry": 0,
-    "to_buy": 8.30875,
+    "to_buy": 10.2925,
+    "buy_qty": 50,
     "package": {
      "size": 50,
      "unit": "g",
@@ -2842,6 +3073,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2850,25 +3082,32 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
+      "batch_id": "b4",
       "recipe_id": "shakshuka",
       "recipe_name": "Шакшука",
       "cook_date": "2026-10-19",
-      "qty": 4.025
-     },
-     {
-      "batch_id": "b2",
-      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
-      "recipe_name": "Курица с овощами в мультиварке",
-      "cook_date": "2026-10-19",
-      "qty": 2.3
+      "qty": 4.37
      },
      {
       "batch_id": "b6",
+      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
+      "recipe_name": "Курица с овощами в мультиварке",
+      "cook_date": "2026-10-20",
+      "qty": 2.3
+     },
+     {
+      "batch_id": "b8",
       "recipe_id": "bulgur-s-kuritsey",
       "recipe_name": "Булгур с курицей и овощами",
       "cook_date": "2026-10-20",
-      "qty": 1.98375
+      "qty": 1.81125
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
+      "cook_date": "2026-10-21",
+      "qty": 1.81125
      }
     ],
     "purchased": false,
@@ -2886,6 +3125,7 @@
     "needed": 0.15,
     "from_pantry": 0,
     "to_buy": 0.15,
+    "buy_qty": 20,
     "package": {
      "size": 20,
      "unit": "g",
@@ -2893,6 +3133,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2901,10 +3142,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b13",
+      "batch_id": "b9",
       "recipe_id": "menemen",
       "recipe_name": "Менемен",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-21",
       "qty": 0.15
      }
     ],
@@ -2920,9 +3161,10 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 1.386667,
+    "needed": 1.595,
     "from_pantry": 0,
-    "to_buy": 1.386667,
+    "to_buy": 1.595,
+    "buy_qty": 50,
     "package": {
      "size": 50,
      "unit": "g",
@@ -2930,6 +3172,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2938,32 +3181,39 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b14",
+      "batch_id": "b12",
       "recipe_id": "steyk-tuntsa-s-kinoa",
       "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
+      "cook_date": "2026-10-21",
+      "qty": 0.36
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
+      "recipe_name": "Хек, тушённый с морковью и луком",
       "cook_date": "2026-10-22",
-      "qty": 0.42
+      "qty": 0.385
      },
      {
       "batch_id": "b17",
-      "recipe_id": "tost-s-avokado-i-yaytsom",
-      "recipe_name": "Тост с авокадо и яйцом",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
       "cook_date": "2026-10-23",
-      "qty": 0.315
+      "qty": 0.265
      },
      {
-      "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
+      "batch_id": "b19",
+      "recipe_id": "perepelinye-yaytsa-s-cherri",
+      "recipe_name": "Перепелиные яйца с черри и рукколой",
       "cook_date": "2026-10-23",
-      "qty": 0.266667
+      "qty": 0.28
      },
      {
       "batch_id": "b20",
-      "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
-      "recipe_name": "Хек, тушённый с морковью и луком",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
       "cook_date": "2026-10-23",
-      "qty": 0.385
+      "qty": 0.305
      }
     ],
     "purchased": false,
@@ -2978,9 +3228,10 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 70.964583,
+    "needed": 64.75,
     "from_pantry": 0,
-    "to_buy": 70.964583,
+    "to_buy": 64.75,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -2988,6 +3239,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -2997,17 +3249,17 @@
     "sources": [
      {
       "batch_id": "b1",
-      "recipe_id": "shakshuka",
-      "recipe_name": "Шакшука",
+      "recipe_id": "omlet-s-brokkoli-i-fetoy",
+      "recipe_name": "Омлет с брокколи и фетой",
       "cook_date": "2026-10-19",
-      "qty": 1.75
+      "qty": 0.9
      },
      {
       "batch_id": "b2",
-      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
-      "recipe_name": "Курица с овощами в мультиварке",
+      "recipe_id": "bulgur-s-nutom-i-ovoshchami",
+      "recipe_name": "Булгур с нутом и овощами",
       "cook_date": "2026-10-19",
-      "qty": 6
+      "qty": 5.625
      },
      {
       "batch_id": "b3",
@@ -3018,10 +3270,10 @@
      },
      {
       "batch_id": "b4",
-      "recipe_id": "gribnoy-sup-s-perlovkoy",
-      "recipe_name": "Грибной суп с перловкой",
+      "recipe_id": "shakshuka",
+      "recipe_name": "Шакшука",
       "cook_date": "2026-10-19",
-      "qty": 6
+      "qty": 1.9
      },
      {
       "batch_id": "b5",
@@ -3032,10 +3284,10 @@
      },
      {
       "batch_id": "b6",
-      "recipe_id": "bulgur-s-kuritsey",
-      "recipe_name": "Булгур с курицей и овощами",
+      "recipe_id": "kuritsa-s-ovoshchami-v-multivarke",
+      "recipe_name": "Курица с овощами в мультиварке",
       "cook_date": "2026-10-20",
-      "qty": 5.175
+      "qty": 6
      },
      {
       "batch_id": "b7",
@@ -3045,18 +3297,25 @@
       "qty": 1.325
      },
      {
+      "batch_id": "b8",
+      "recipe_id": "bulgur-s-kuritsey",
+      "recipe_name": "Булгур с курицей и овощами",
+      "cook_date": "2026-10-20",
+      "qty": 4.725
+     },
+     {
       "batch_id": "b9",
-      "recipe_id": "omlet-s-brokkoli-i-fetoy",
-      "recipe_name": "Омлет с брокколи и фетой",
+      "recipe_id": "menemen",
+      "recipe_name": "Менемен",
       "cook_date": "2026-10-21",
-      "qty": 0.9
+      "qty": 0.75
      },
      {
       "batch_id": "b10",
-      "recipe_id": "bulgur-s-nutom-i-ovoshchami",
-      "recipe_name": "Булгур с нутом и овощами",
+      "recipe_id": "shaurma-domashnyaya",
+      "recipe_name": "Шаурма домашняя с курицей",
       "cook_date": "2026-10-21",
-      "qty": 5.625
+      "qty": 4.725
      },
      {
       "batch_id": "b11",
@@ -3067,24 +3326,24 @@
      },
      {
       "batch_id": "b12",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
+      "recipe_id": "steyk-tuntsa-s-kinoa",
+      "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
       "cook_date": "2026-10-21",
-      "qty": 6
+      "qty": 5.4
      },
      {
       "batch_id": "b13",
-      "recipe_id": "menemen",
-      "recipe_name": "Менемен",
+      "recipe_id": "pshyonnaya-kasha-s-tykvoy",
+      "recipe_name": "Пшённая каша с тыквой",
       "cook_date": "2026-10-22",
-      "qty": 0.75
+      "qty": 0.541667
      },
      {
       "batch_id": "b14",
-      "recipe_id": "steyk-tuntsa-s-kinoa",
-      "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
+      "recipe_id": "kinoa-s-ovoshchami",
+      "recipe_name": "Киноа с овощами",
       "cook_date": "2026-10-22",
-      "qty": 6.3
+      "qty": 7.5
      },
      {
       "batch_id": "b15",
@@ -3095,38 +3354,70 @@
      },
      {
       "batch_id": "b16",
-      "recipe_id": "kinoa-s-ovoshchami",
-      "recipe_name": "Киноа с овощами",
+      "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
+      "recipe_name": "Хек, тушённый с морковью и луком",
       "cook_date": "2026-10-22",
-      "qty": 7
+      "qty": 8.6625
      },
      {
       "batch_id": "b17",
-      "recipe_id": "tost-s-avokado-i-yaytsom",
-      "recipe_name": "Тост с авокадо и яйцом",
+      "recipe_id": "boul-s-kinoa-avokado-i-yaytsom",
+      "recipe_name": "Боул с киноа, авокадо и яйцом",
       "cook_date": "2026-10-23",
-      "qty": 0.7875
-     },
-     {
-      "batch_id": "b18",
-      "recipe_id": "treska-na-paru-s-ovoshchami",
-      "recipe_name": "Треска на пару с овощами",
-      "cook_date": "2026-10-23",
-      "qty": 8
+      "qty": 0.6625
      },
      {
       "batch_id": "b19",
-      "recipe_id": "kinoa-s-granatom-i-myatoy",
-      "recipe_name": "Салат с киноа, гранатом и мятой",
+      "recipe_id": "perepelinye-yaytsa-s-cherri",
+      "recipe_name": "Перепелиные яйца с черри и рукколой",
       "cook_date": "2026-10-23",
-      "qty": 0.50625
+      "qty": 0.7
      },
      {
       "batch_id": "b20",
-      "recipe_id": "hek-tushyonyy-s-morkovyu-i-lukom",
-      "recipe_name": "Хек, тушённый с морковью и луком",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
       "cook_date": "2026-10-23",
-      "qty": 8.6625
+      "qty": 9.15
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:thyme_dried:g",
+    "product_id": "thyme_dried",
+    "name": "Тимьян сушёный",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.38125,
+    "from_pantry": 0,
+    "to_buy": 0.38125,
+    "buy_qty": 10,
+    "package": {
+     "size": 10,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b20",
+      "recipe_id": "treska-s-zelyonoy-chechevitsey",
+      "recipe_name": "Треска с зелёной чечевицей и томатами",
+      "cook_date": "2026-10-23",
+      "qty": 0.38125
      }
     ],
     "purchased": false,
@@ -3141,9 +3432,10 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 16.831683,
+    "needed": 18.069307,
     "from_pantry": 0,
-    "to_buy": 16.831683,
+    "to_buy": 18.069307,
+    "buy_qty": 300,
     "package": {
      "size": 300,
      "unit": "ml",
@@ -3151,6 +3443,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -3159,11 +3452,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
+      "batch_id": "b18",
       "recipe_id": "teplyy-salat-s-tuntsom-v-kunzhute",
       "recipe_name": "Тёплый салат с тунцом в кунжуте",
-      "cook_date": "2026-10-20",
-      "qty": 16.831683
+      "cook_date": "2026-10-23",
+      "qty": 18.069307
      }
     ],
     "purchased": false,
@@ -3181,6 +3474,7 @@
     "needed": 3.382838,
     "from_pantry": 0,
     "to_buy": 3.382838,
+    "buy_qty": 500,
     "package": {
      "size": 500,
      "unit": "ml",
@@ -3188,6 +3482,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -3215,9 +3510,10 @@
     "department": "Заморозка",
     "unit": "g",
     "convertible": true,
-    "needed": 210,
+    "needed": 180,
     "from_pantry": 0,
-    "to_buy": 210,
+    "to_buy": 180,
+    "buy_qty": 400,
     "package": {
      "size": 400,
      "unit": "g",
@@ -3225,6 +3521,7 @@
     },
     "package_note": null,
     "price_kop": null,
+    "price_per": null,
     "price_date": null,
     "price_source": null,
     "price_kind": null,
@@ -3233,11 +3530,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b14",
+      "batch_id": "b12",
       "recipe_id": "steyk-tuntsa-s-kinoa",
       "recipe_name": "Стейк тунца с киноа и стручковой фасолью",
-      "cook_date": "2026-10-22",
-      "qty": 210
+      "cook_date": "2026-10-21",
+      "qty": 180
      }
     ],
     "purchased": false,
@@ -3254,57 +3551,62 @@
    "estimated": false,
    "missing_prices": [
     "auto:eggs:pcs",
-    "auto:canned_tomatoes:g",
-    "auto:bell_pepper:g",
-    "auto:onion:g",
-    "auto:paprika:g",
+    "auto:broccoli:g",
+    "auto:feta:g",
+    "auto:milk:ml",
     "auto:olive_oil:ml",
     "auto:salt:g",
-    "auto:chicken_breast:g",
-    "auto:potato:g",
+    "auto:bulgur_dry:g",
+    "auto:chickpeas_canned:g",
+    "auto:bell_pepper:g",
     "auto:zucchini:g",
-    "auto:carrot:g",
-    "auto:sunflower_oil:ml",
+    "auto:onion:g",
     "auto:tomato:g",
     "auto:cucumber:g",
-    "auto:feta:g",
     "auto:parsley:g",
+    "auto:sunflower_oil:ml",
     "auto:vinegar:ml",
-    "auto:champignons:g",
-    "auto:pearl_barley_dry:g",
+    "auto:canned_tomatoes:g",
+    "auto:paprika:g",
     "auto:bread_wholegrain:g",
-    "auto:bulgur_dry:g",
+    "auto:chicken_breast:g",
+    "auto:potato:g",
+    "auto:carrot:g",
     "auto:tomato_paste:g",
+    "auto:butter:g",
+    "auto:chili_flakes:g",
+    "auto:lavash:g",
+    "auto:cabbage:g",
+    "auto:yogurt_plain:g",
+    "auto:garlic:g",
+    "auto:green_onion:g",
+    "auto:lemon:g",
     "auto:tuna_steak:g",
-    "auto:sesame_seeds:g",
-    "auto:avocado:g",
-    "auto:romaine_lettuce:g",
+    "auto:quinoa_dry:g",
+    "auto:green_beans_frozen:g",
     "auto:cherry_tomatoes:g",
-    "auto:ginger:g",
+    "auto:black_pepper:g",
+    "auto:millet_dry:g",
+    "auto:pumpkin:g",
+    "auto:sugar:g",
     "auto:soy_sauce:ml",
+    "auto:hake_fillet:g",
+    "auto:wheat_flour:g",
+    "auto:bay_leaf:g",
+    "auto:avocado:g",
+    "auto:spinach:g",
+    "auto:sesame_seeds:g",
+    "auto:romaine_lettuce:g",
+    "auto:ginger:g",
     "auto:rice_vinegar:ml",
     "auto:sesame_oil:ml",
     "auto:honey:g",
-    "auto:broccoli:g",
-    "auto:milk:ml",
-    "auto:chickpeas_canned:g",
-    "auto:green_onion:g",
-    "auto:lemon:g",
-    "auto:cabbage:g",
-    "auto:butter:g",
-    "auto:chili_flakes:g",
-    "auto:quinoa_dry:g",
-    "auto:green_beans_frozen:g",
-    "auto:garlic:g",
-    "auto:black_pepper:g",
+    "auto:quail_eggs:pcs",
+    "auto:arugula:g",
     "auto:cod_fillet:g",
-    "auto:dill:g",
-    "auto:pomegranate:g",
-    "auto:mint:g",
-    "auto:pistachios:g",
-    "auto:hake_fillet:g",
-    "auto:wheat_flour:g",
-    "auto:bay_leaf:g"
+    "auto:lentils_green_dry:g",
+    "auto:celery_stalk:g",
+    "auto:thyme_dried:g"
    ]
   },
   "budget": {
@@ -3326,474 +3628,493 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 1552.238233333333,
+       "value": 1705.8542433333332,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 106.02886166666667,
+       "value": 84.98913366666667,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 61.83890833333333,
+       "value": 90.12245333333334,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 151.44497333333334,
+       "value": 151.18368733333335,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 30.533675000000002,
+       "value": 33.275655,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 1335.6445833333335,
+       "value": 1125.8721333333333,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 383.86907500000007,
+       "value": 411.867855,
        "complete": true,
        "missing": []
       },
       "vit_d": {
-       "value": 3.549066666666666,
-       "complete": false,
-       "missing": [
-        "chicken_breast"
-       ]
-      },
-      "vit_e": {
-       "value": 18.026611833333334,
-       "complete": false,
-       "missing": [
-        "canned_tomatoes"
-       ]
-      },
-      "vit_b6": {
-       "value": 5.175869,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b12": {
-       "value": 2.414434666666667,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 386.56548333333336,
-       "complete": true,
-       "missing": []
-      }
-     },
-     "portion_mass_g": 2385,
-     "energy_target": 1700,
-     "energy_deviation_pct": -8.691868627450997,
-     "energy_status": "ok"
-    },
-    {
-     "date": "2026-10-20",
-     "totals": {
-      "kcal": {
-       "value": 1706.9786083333333,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 140.61533708333332,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 68.11959708333333,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 137.42084916666664,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 27.078217916666667,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 771.1579875,
-       "complete": true,
-       "missing": []
-      },
-      "vit_c": {
-       "value": 84.27500541666666,
-       "complete": true,
-       "missing": []
-      },
-      "vit_d": {
-       "value": 8.277333333333331,
-       "complete": false,
-       "missing": [
-        "chicken_breast"
-       ]
-      },
-      "vit_e": {
-       "value": 11.329843583333332,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b6": {
-       "value": 4.442540833333333,
-       "complete": false,
-       "missing": [
-        "soy_sauce"
-       ]
-      },
-      "vit_b12": {
-       "value": 6.49578,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 362.6837041666666,
-       "complete": false,
-       "missing": [
-        "soy_sauce"
-       ]
-      }
-     },
-     "portion_mass_g": 1287.6666666666665,
-     "energy_target": 1700,
-     "energy_deviation_pct": 0.41050637254902006,
-     "energy_status": "ok"
-    },
-    {
-     "date": "2026-10-21",
-     "totals": {
-      "kcal": {
-       "value": 1469.82179,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 61.101603,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 62.45956,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 181.031546,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 37.323025,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 848.5753,
-       "complete": true,
-       "missing": []
-      },
-      "vit_c": {
-       "value": 319.097625,
-       "complete": true,
-       "missing": []
-      },
-      "vit_d": {
-       "value": 3.4265600000000003,
+       "value": 7.208106666666667,
        "complete": false,
        "missing": [
         "milk"
        ]
       },
       "vit_e": {
-       "value": 11.521606499999999,
-       "complete": true,
-       "missing": []
+       "value": 16.15723908333333,
+       "complete": false,
+       "missing": [
+        "canned_tomatoes"
+       ]
       },
       "vit_b6": {
-       "value": 2.8438526,
+       "value": 3.3154804,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 2.2944192,
+       "value": 4.380407466666667,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 458.18791,
+       "value": 528.0937233333334,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 2043,
+     "portion_mass_g": 1686.75,
      "energy_target": 1700,
-     "energy_deviation_pct": -13.539894705882356,
-     "energy_status": "below"
+     "energy_deviation_pct": 0.34436725490195386,
+     "energy_status": "ok"
     },
     {
-     "date": "2026-10-22",
+     "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 1696.0051424999997,
+       "value": 1710.3823750000001,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 104.226191,
+       "value": 146.13151875,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 78.03662625,
+       "value": 54.74141875,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 149.9273945,
+       "value": 159.8876125,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 27.14141125,
+       "value": 26.560356249999998,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 905.55185,
+       "value": 970.2179374999998,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 203.76459375,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 5.103999999999999,
+       "complete": false,
+       "missing": [
+        "chicken_breast"
+       ]
+      },
+      "vit_e": {
+       "value": 11.92045125,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b6": {
+       "value": 5.2481475,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 3.0587800000000005,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 334.5791875,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 1517,
+     "energy_target": 1700,
+     "energy_deviation_pct": 0.6107279411764788,
+     "energy_status": "ok"
+    },
+    {
+     "date": "2026-10-21",
+     "totals": {
+      "kcal": {
+       "value": 1707.3711737499998,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 126.05486725,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 67.722480625,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 149.31592575,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 20.055918124999998,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 667.6322875,
        "complete": false,
        "missing": [
         "black_pepper"
        ]
       },
       "vit_c": {
-       "value": 264.677005,
+       "value": 216.33814124999998,
        "complete": false,
        "missing": [
         "black_pepper"
        ]
       },
       "vit_d": {
-       "value": 6.18992,
+       "value": 5.679919999999999,
        "complete": false,
        "missing": [
-        "butter"
+        "butter",
+        "chicken_breast",
+        "yogurt_plain"
        ]
       },
       "vit_e": {
-       "value": 16.76420375,
+       "value": 14.915851374999999,
        "complete": false,
        "missing": [
         "black_pepper"
        ]
       },
       "vit_b6": {
-       "value": 4.2277742,
+       "value": 4.503588950000001,
        "complete": false,
        "missing": [
-        "black_pepper",
-        "soy_sauce"
+        "black_pepper"
        ]
       },
       "vit_b12": {
-       "value": 5.720414400000001,
+       "value": 5.6060394,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 566.9728575,
+       "value": 359.59383875,
        "complete": false,
        "missing": [
-        "black_pepper",
-        "soy_sauce"
+        "black_pepper"
        ]
       }
      },
-     "portion_mass_g": 1413.75,
+     "portion_mass_g": 1210.625,
      "energy_target": 1700,
-     "energy_deviation_pct": -0.2349916176470769,
+     "energy_deviation_pct": 0.433598455882341,
+     "energy_status": "ok"
+    },
+    {
+     "date": "2026-10-22",
+     "totals": {
+      "kcal": {
+       "value": 1710.4537249999998,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 87.21067333333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 70.00969333333333,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 191.38512166666666,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 27.711864166666665,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 1746.2726666666667,
+       "complete": false,
+       "missing": [
+        "bay_leaf",
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 150.18935333333334,
+       "complete": false,
+       "missing": [
+        "bay_leaf",
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 2.7750000000000004,
+       "complete": false,
+       "missing": [
+        "milk",
+        "butter"
+       ]
+      },
+      "vit_e": {
+       "value": 18.647505666666667,
+       "complete": false,
+       "missing": [
+        "bay_leaf",
+        "black_pepper"
+       ]
+      },
+      "vit_b6": {
+       "value": 2.695928666666667,
+       "complete": false,
+       "missing": [
+        "soy_sauce",
+        "bay_leaf",
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 3.5001833333333336,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 480.78028333333333,
+       "complete": false,
+       "missing": [
+        "soy_sauce",
+        "bay_leaf",
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 1519.1666666666667,
+     "energy_target": 1700,
+     "energy_deviation_pct": 0.6149249999999912,
      "energy_status": "ok"
     },
     {
      "date": "2026-10-23",
      "totals": {
       "kcal": {
-       "value": 1550.7746416666664,
+       "value": 1701.2588100000003,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 132.63662333333335,
+       "value": 132.92870699999997,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 68.4040725,
+       "value": 84.12732499999998,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 109.88062583333334,
+       "value": 110.63009400000001,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 26.741368333333334,
+       "value": 28.646115,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 1874.0320833333335,
+       "value": 840.9560999999999,
        "complete": false,
        "missing": [
         "black_pepper",
-        "bay_leaf"
+        "thyme_dried"
        ]
       },
       "vit_c": {
-       "value": 192.56929499999995,
+       "value": 85.35468999999999,
        "complete": false,
        "missing": [
         "black_pepper",
-        "bay_leaf"
+        "thyme_dried"
        ]
       },
       "vit_d": {
-       "value": 6.7509999999999994,
+       "value": 7.19414,
        "complete": true,
        "missing": []
       },
       "vit_e": {
-       "value": 19.123324625,
+       "value": 16.04089625,
        "complete": false,
        "missing": [
         "black_pepper",
-        "dill",
-        "mint",
-        "bay_leaf"
+        "canned_tomatoes",
+        "thyme_dried"
        ]
       },
       "vit_b6": {
-       "value": 3.180474083333334,
+       "value": 4.176641900000001,
        "complete": false,
        "missing": [
         "black_pepper",
-        "bay_leaf"
+        "soy_sauce",
+        "thyme_dried"
        ]
       },
       "vit_b12": {
-       "value": 6.07282,
+       "value": 7.606168799999999,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 421.41499166666677,
+       "value": 755.0320899999999,
        "complete": false,
        "missing": [
         "black_pepper",
-        "bay_leaf"
+        "soy_sauce",
+        "thyme_dried"
        ]
       }
      },
-     "portion_mass_g": 1443.2083333333335,
+     "portion_mass_g": 1380.25,
      "energy_target": 1700,
-     "energy_deviation_pct": -8.777962254901976,
+     "energy_deviation_pct": 0.07404764705883922,
      "energy_status": "ok"
     }
    ],
    "period": {
     "kcal": {
-     "value": 7975.818415833333,
+     "value": 8535.320327083333,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 544.6086160833333,
+     "value": 577.3149,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 338.8587641666667,
+     "value": 366.72337104166667,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 729.7053888333332,
+     "value": 762.40244125,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 148.8176975,
+     "value": 136.24990854166666,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 5734.961804166667,
+     "value": 5350.951125,
      "complete": false,
      "missing": [
       "black_pepper",
-      "bay_leaf"
+      "bay_leaf",
+      "thyme_dried"
      ]
     },
     "vit_c": {
-     "value": 1244.4880054166667,
+     "value": 1067.5146333333332,
      "complete": false,
      "missing": [
       "black_pepper",
-      "bay_leaf"
+      "bay_leaf",
+      "thyme_dried"
      ]
     },
     "vit_d": {
-     "value": 28.19388,
+     "value": 27.961166666666667,
      "complete": false,
      "missing": [
-      "chicken_breast",
       "milk",
-      "butter"
+      "chicken_breast",
+      "butter",
+      "yogurt_plain"
      ]
     },
     "vit_e": {
-     "value": 76.76559029166667,
+     "value": 77.68194362499999,
      "complete": false,
      "missing": [
       "canned_tomatoes",
       "black_pepper",
-      "dill",
-      "mint",
-      "bay_leaf"
+      "bay_leaf",
+      "thyme_dried"
      ]
     },
     "vit_b6": {
-     "value": 19.870510716666665,
+     "value": 19.939787416666668,
      "complete": false,
      "missing": [
-      "soy_sauce",
       "black_pepper",
-      "bay_leaf"
+      "soy_sauce",
+      "bay_leaf",
+      "thyme_dried"
      ]
     },
     "vit_b12": {
-     "value": 22.997868266666668,
+     "value": 24.151578999999998,
      "complete": true,
      "missing": []
     },
     "folate": {
-     "value": 2195.8249466666666,
+     "value": 2458.0791229166666,
      "complete": false,
      "missing": [
-      "soy_sauce",
       "black_pepper",
-      "bay_leaf"
+      "soy_sauce",
+      "bay_leaf",
+      "thyme_dried"
      ]
     }
    },
@@ -3803,13 +4124,14 @@
      "status": "incomplete_data",
      "daily_target": 700,
      "period_target": 3500,
-     "period_value": 5734.961804166667,
+     "period_value": 5350.951125,
      "coverage_pct": null,
-     "lower_bound_pct": 163.85605154761907,
+     "lower_bound_pct": 152.88431785714286,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
-      "black_pepper"
+      "black_pepper",
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -3819,13 +4141,14 @@
      "status": "incomplete_data",
      "daily_target": 90,
      "period_target": 450,
-     "period_value": 1244.4880054166667,
+     "period_value": 1067.5146333333332,
      "coverage_pct": null,
-     "lower_bound_pct": 276.55289009259263,
+     "lower_bound_pct": 237.22547407407407,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
-      "black_pepper"
+      "black_pepper",
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -3835,14 +4158,15 @@
      "status": "incomplete_data",
      "daily_target": 10,
      "period_target": 50,
-     "period_value": 28.19388,
+     "period_value": 27.961166666666667,
      "coverage_pct": null,
-     "lower_bound_pct": 56.38776,
+     "lower_bound_pct": 55.92233333333333,
      "data_complete": false,
      "missing_products": [
       "butter",
       "chicken_breast",
-      "milk"
+      "milk",
+      "yogurt_plain"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -3852,16 +4176,15 @@
      "status": "incomplete_data",
      "daily_target": 12,
      "period_target": 60,
-     "period_value": 76.76559029166667,
+     "period_value": 77.68194362499999,
      "coverage_pct": null,
-     "lower_bound_pct": 127.9426504861111,
+     "lower_bound_pct": 129.46990604166663,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
       "canned_tomatoes",
-      "dill",
-      "mint"
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -3871,14 +4194,15 @@
      "status": "incomplete_data",
      "daily_target": 1.5,
      "period_target": 7.5,
-     "period_value": 19.870510716666665,
+     "period_value": 19.939787416666668,
      "coverage_pct": null,
-     "lower_bound_pct": 264.94014288888883,
+     "lower_bound_pct": 265.86383222222224,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
-      "soy_sauce"
+      "soy_sauce",
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -3888,8 +4212,8 @@
      "status": "ok",
      "daily_target": 2.5,
      "period_target": 12.5,
-     "period_value": 22.997868266666668,
-     "coverage_pct": 183.98294613333334,
+     "period_value": 24.151578999999998,
+     "coverage_pct": 193.21263199999999,
      "lower_bound_pct": null,
      "data_complete": true,
      "missing_products": [],
@@ -3901,14 +4225,15 @@
      "status": "incomplete_data",
      "daily_target": 300,
      "period_target": 1500,
-     "period_value": 2195.8249466666666,
+     "period_value": 2458.0791229166666,
      "coverage_pct": null,
-     "lower_bound_pct": 146.38832977777778,
+     "lower_bound_pct": 163.87194152777778,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
-      "soy_sauce"
+      "soy_sauce",
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -3923,474 +4248,493 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 1789.8966333333333,
+       "value": 2050.0144333333333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 117.09462666666667,
+       "value": 101.68153666666666,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 78.01563333333334,
+       "value": 110.68418333333332,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 165.00010333333333,
+       "value": 176.70532333333333,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 33.98525,
+       "value": 38.9677,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 1562.6653333333334,
+       "value": 1362.8868333333335,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 465.63715,
+       "value": 498.7882,
        "complete": true,
        "missing": []
       },
       "vit_d": {
-       "value": 4.629866666666667,
-       "complete": false,
-       "missing": [
-        "chicken_breast"
-       ]
-      },
-      "vit_e": {
-       "value": 21.973758333333333,
-       "complete": false,
-       "missing": [
-        "canned_tomatoes"
-       ]
-      },
-      "vit_b6": {
-       "value": 5.671337,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b12": {
-       "value": 3.122190666666667,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 462.2175333333334,
-       "complete": true,
-       "missing": []
-      }
-     },
-     "portion_mass_g": 2650,
-     "energy_target": 2600,
-     "energy_deviation_pct": -31.157821794871797,
-     "energy_status": "below"
-    },
-    {
-     "date": "2026-10-20",
-     "totals": {
-      "kcal": {
-       "value": 2403.912173333333,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 198.5723713333333,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 96.71024333333332,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 191.16358266666668,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 37.82131666666667,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 1100.9783,
-       "complete": true,
-       "missing": []
-      },
-      "vit_c": {
-       "value": 117.58001666666667,
-       "complete": true,
-       "missing": []
-      },
-      "vit_d": {
-       "value": 11.883093333333333,
-       "complete": false,
-       "missing": [
-        "chicken_breast"
-       ]
-      },
-      "vit_e": {
-       "value": 16.033047333333332,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b6": {
-       "value": 6.264602933333333,
-       "complete": false,
-       "missing": [
-        "soy_sauce"
-       ]
-      },
-      "vit_b12": {
-       "value": 9.2906432,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 515.4075266666666,
-       "complete": false,
-       "missing": [
-        "soy_sauce"
-       ]
-      }
-     },
-     "portion_mass_g": 1826.6666666666665,
-     "energy_target": 2600,
-     "energy_deviation_pct": -7.5418394871794945,
-     "energy_status": "ok"
-    },
-    {
-     "date": "2026-10-21",
-     "totals": {
-      "kcal": {
-       "value": 1754.0848,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 73.50876,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 77.4246,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 208.91472,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 43.129900000000006,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 992.0550000000001,
-       "complete": true,
-       "missing": []
-      },
-      "vit_c": {
-       "value": 372.90700000000004,
-       "complete": true,
-       "missing": []
-      },
-      "vit_d": {
-       "value": 4.2832,
+       "value": 8.533066666666667,
        "complete": false,
        "missing": [
         "milk"
        ]
       },
       "vit_e": {
-       "value": 13.6933925,
-       "complete": true,
-       "missing": []
+       "value": 20.30601833333333,
+       "complete": false,
+       "missing": [
+        "canned_tomatoes"
+       ]
       },
       "vit_b6": {
-       "value": 3.2539119999999997,
+       "value": 3.948839,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 2.868024,
+       "value": 5.389214666666667,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 538.4352,
+       "value": 632.9582333333334,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 2287.5,
+     "portion_mass_g": 2010,
      "energy_target": 2600,
-     "energy_deviation_pct": -32.535199999999996,
+     "energy_deviation_pct": -21.15329102564103,
      "energy_status": "below"
+    },
+    {
+     "date": "2026-10-20",
+     "totals": {
+      "kcal": {
+       "value": 2233.87469,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 185.02983049999997,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 73.3781425,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 211.17169099999998,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 34.875407499999994,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 1206.817325,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 234.02183250000002,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 7.34976,
+       "complete": false,
+       "missing": [
+        "chicken_breast"
+       ]
+      },
+      "vit_e": {
+       "value": 14.794321499999999,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b6": {
+       "value": 6.283876599999999,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 4.194643200000001,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 433.639185,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 1910,
+     "energy_target": 2600,
+     "energy_deviation_pct": -14.081742692307689,
+     "energy_status": "below"
+    },
+    {
+     "date": "2026-10-21",
+     "totals": {
+      "kcal": {
+       "value": 2595.71126375,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 191.708519,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 102.69828187499999,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 227.58494174999998,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 30.579399375000005,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 1009.33505,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_c": {
+       "value": 327.79617,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_d": {
+       "value": 8.60488,
+       "complete": false,
+       "missing": [
+        "butter",
+        "chicken_breast",
+        "yogurt_plain"
+       ]
+      },
+      "vit_e": {
+       "value": 22.635843125,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b6": {
+       "value": 6.851796800000001,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      },
+      "vit_b12": {
+       "value": 8.5243716,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 546.1708112499999,
+       "complete": false,
+       "missing": [
+        "black_pepper"
+       ]
+      }
+     },
+     "portion_mass_g": 1840.625,
+     "energy_target": 2600,
+     "energy_deviation_pct": -0.16495139423077138,
+     "energy_status": "ok"
     },
     {
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 2485.6471408333327,
+       "value": 2138.584083333333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 156.44614233333334,
+       "value": 103.33083333333333,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 114.52065875,
+       "value": 86.24545,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 215.37870216666664,
+       "value": 247.88166666666666,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 39.37307708333333,
+       "value": 35.40483333333333,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 1308.4178166666666,
+       "value": 2127.987666666667,
        "complete": false,
        "missing": [
+        "bay_leaf",
         "black_pepper"
        ]
       },
       "vit_c": {
-       "value": 383.001335,
+       "value": 181.01260000000002,
        "complete": false,
        "missing": [
+        "bay_leaf",
         "black_pepper"
        ]
       },
       "vit_d": {
-       "value": 9.45488,
+       "value": 3,
        "complete": false,
        "missing": [
+        "milk",
         "butter"
        ]
       },
       "vit_e": {
-       "value": 24.47742725,
+       "value": 21.71624,
        "complete": false,
        "missing": [
+        "bay_leaf",
         "black_pepper"
        ]
       },
       "vit_b6": {
-       "value": 6.334543466666666,
+       "value": 3.2861866666666666,
        "complete": false,
        "missing": [
-        "black_pepper",
-        "soy_sauce"
+        "soy_sauce",
+        "bay_leaf",
+        "black_pepper"
        ]
       },
       "vit_b12": {
-       "value": 8.7906216,
+       "value": 4.087775000000001,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 817.8241258333333,
+       "value": 594.7128333333333,
        "complete": false,
        "missing": [
-        "black_pepper",
-        "soy_sauce"
+        "soy_sauce",
+        "bay_leaf",
+        "black_pepper"
        ]
       }
      },
-     "portion_mass_g": 2074.5833333333335,
+     "portion_mass_g": 1918.3333333333335,
      "energy_target": 2600,
-     "energy_deviation_pct": -4.398186891025664,
-     "energy_status": "ok"
+     "energy_deviation_pct": -17.74676602564103,
+     "energy_status": "below"
     },
     {
      "date": "2026-10-23",
      "totals": {
       "kcal": {
-       "value": 1891.0129966666666,
+       "value": 2420.8593908333332,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 148.6607943333333,
+       "value": 184.60188108333335,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 85.790515,
+       "value": 119.32569458333332,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 142.14344033333333,
+       "value": 162.9061071666667,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 34.12200333333333,
+       "value": 40.96045041666667,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 2009.3826833333333,
+       "value": 1201.333625,
        "complete": false,
        "missing": [
         "black_pepper",
-        "bay_leaf"
+        "thyme_dried"
        ]
       },
       "vit_c": {
-       "value": 205.00434999999996,
+       "value": 124.42237666666668,
        "complete": false,
        "missing": [
         "black_pepper",
-        "bay_leaf"
+        "thyme_dried"
        ]
       },
       "vit_d": {
-       "value": 7.639519999999999,
+       "value": 9.842213333333333,
        "complete": true,
        "missing": []
       },
       "vit_e": {
-       "value": 22.082100499999996,
+       "value": 22.776443458333333,
        "complete": false,
        "missing": [
         "black_pepper",
-        "dill",
-        "mint",
-        "bay_leaf"
+        "canned_tomatoes",
+        "thyme_dried"
        ]
       },
       "vit_b6": {
-       "value": 3.6176325333333335,
+       "value": 5.611450883333334,
        "complete": false,
        "missing": [
         "black_pepper",
-        "bay_leaf"
+        "soy_sauce",
+        "thyme_dried"
        ]
       },
       "vit_b12": {
-       "value": 6.5930864,
+       "value": 10.1984596,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 523.0646366666666,
+       "value": 1107.9711091666666,
        "complete": false,
        "missing": [
         "black_pepper",
-        "bay_leaf"
+        "soy_sauce",
+        "thyme_dried"
        ]
       }
      },
-     "portion_mass_g": 1653.3333333333335,
+     "portion_mass_g": 1962.9166666666665,
      "energy_target": 2600,
-     "energy_deviation_pct": -27.2687308974359,
-     "energy_status": "below"
+     "energy_deviation_pct": -6.890023429487183,
+     "energy_status": "ok"
     }
    ],
    "period": {
     "kcal": {
-     "value": 10324.553744166666,
+     "value": 11439.04386125,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 694.2826946666667,
+     "value": 766.3526005833332,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 452.46165041666666,
+     "value": 492.3317522916666,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 922.6005484999998,
+     "value": 1026.2497299166666,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 188.43154708333333,
+     "value": 180.787790625,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 6973.499133333333,
+     "value": 6908.360500000001,
      "complete": false,
      "missing": [
       "black_pepper",
-      "bay_leaf"
+      "bay_leaf",
+      "thyme_dried"
      ]
     },
     "vit_c": {
-     "value": 1544.1298516666666,
+     "value": 1366.0411791666668,
      "complete": false,
      "missing": [
       "black_pepper",
-      "bay_leaf"
+      "bay_leaf",
+      "thyme_dried"
      ]
     },
     "vit_d": {
-     "value": 37.89056,
+     "value": 37.32992,
      "complete": false,
      "missing": [
-      "chicken_breast",
       "milk",
-      "butter"
+      "chicken_breast",
+      "butter",
+      "yogurt_plain"
      ]
     },
     "vit_e": {
-     "value": 98.25972591666667,
+     "value": 102.22886641666666,
      "complete": false,
      "missing": [
       "canned_tomatoes",
       "black_pepper",
-      "dill",
-      "mint",
-      "bay_leaf"
+      "bay_leaf",
+      "thyme_dried"
      ]
     },
     "vit_b6": {
-     "value": 25.14202793333333,
+     "value": 25.98214995,
      "complete": false,
      "missing": [
-      "soy_sauce",
       "black_pepper",
-      "bay_leaf"
+      "soy_sauce",
+      "bay_leaf",
+      "thyme_dried"
      ]
     },
     "vit_b12": {
-     "value": 30.664565866666667,
+     "value": 32.39446406666667,
      "complete": true,
      "missing": []
     },
     "folate": {
-     "value": 2856.9490225,
+     "value": 3315.4521720833336,
      "complete": false,
      "missing": [
-      "soy_sauce",
       "black_pepper",
-      "bay_leaf"
+      "soy_sauce",
+      "bay_leaf",
+      "thyme_dried"
      ]
     }
    },
@@ -4400,13 +4744,14 @@
      "status": "incomplete_data",
      "daily_target": 700,
      "period_target": 3500,
-     "period_value": 6973.499133333333,
+     "period_value": 6908.360500000001,
      "coverage_pct": null,
-     "lower_bound_pct": 199.24283238095236,
+     "lower_bound_pct": 197.3817285714286,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
-      "black_pepper"
+      "black_pepper",
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -4416,13 +4761,14 @@
      "status": "incomplete_data",
      "daily_target": 90,
      "period_target": 450,
-     "period_value": 1544.1298516666666,
+     "period_value": 1366.0411791666668,
      "coverage_pct": null,
-     "lower_bound_pct": 343.139967037037,
+     "lower_bound_pct": 303.56470648148155,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
-      "black_pepper"
+      "black_pepper",
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -4432,14 +4778,15 @@
      "status": "incomplete_data",
      "daily_target": 10,
      "period_target": 50,
-     "period_value": 37.89056,
+     "period_value": 37.32992,
      "coverage_pct": null,
-     "lower_bound_pct": 75.78112,
+     "lower_bound_pct": 74.65984,
      "data_complete": false,
      "missing_products": [
       "butter",
       "chicken_breast",
-      "milk"
+      "milk",
+      "yogurt_plain"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -4449,16 +4796,15 @@
      "status": "incomplete_data",
      "daily_target": 12,
      "period_target": 60,
-     "period_value": 98.25972591666667,
+     "period_value": 102.22886641666666,
      "coverage_pct": null,
-     "lower_bound_pct": 163.76620986111112,
+     "lower_bound_pct": 170.38144402777777,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
       "canned_tomatoes",
-      "dill",
-      "mint"
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -4468,14 +4814,15 @@
      "status": "incomplete_data",
      "daily_target": 1.5,
      "period_target": 7.5,
-     "period_value": 25.14202793333333,
+     "period_value": 25.98214995,
      "coverage_pct": null,
-     "lower_bound_pct": 335.2270391111111,
+     "lower_bound_pct": 346.428666,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
-      "soy_sauce"
+      "soy_sauce",
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"
@@ -4485,8 +4832,8 @@
      "status": "ok",
      "daily_target": 2.5,
      "period_target": 12.5,
-     "period_value": 30.664565866666667,
-     "coverage_pct": 245.31652693333334,
+     "period_value": 32.39446406666667,
+     "coverage_pct": 259.15571253333337,
      "lower_bound_pct": null,
      "data_complete": true,
      "missing_products": [],
@@ -4498,14 +4845,15 @@
      "status": "incomplete_data",
      "daily_target": 300,
      "period_target": 1500,
-     "period_value": 2856.9490225,
+     "period_value": 3315.4521720833336,
      "coverage_pct": null,
-     "lower_bound_pct": 190.46326816666667,
+     "lower_bound_pct": 221.03014480555555,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
-      "soy_sauce"
+      "soy_sauce",
+      "thyme_dried"
      ],
      "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "demo"

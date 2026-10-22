@@ -142,9 +142,14 @@ def test_purchase_transfer_is_idempotent(alice: Any) -> None:
     url = f"/api/households/{hid}/menus/{menu['id']}/shopping/transfer/"
     assert client.post(url, {"line_ids": [target["id"]]}, format="json").json()["added"] == [target["id"]]
     assert client.post(url, {"line_ids": [target["id"]]}, format="json").json()["skipped"] == [target["id"]]
-    assert PantryItem.objects.filter(household_id=hid, product_id=target["product_id"]).count() == 1
+    items = PantryItem.objects.filter(household_id=hid, product_id=target["product_id"])
+    assert items.count() == 1
+    # Whole packages go to the pantry, and this menu's list and budget stay as they were.
+    assert items.get().qty == target["buy_qty"]
     after = client.get(f"/api/households/{hid}/menus/{menu['id']}/shopping/").json()
-    assert next(ln for ln in after["lines"] if ln["id"] == target["id"])["to_buy"] == 0
+    moved = next(ln for ln in after["lines"] if ln["id"] == target["id"])
+    assert moved["to_buy"] == target["to_buy"]
+    assert moved["transferred"] is True
 
 
 def test_budget_with_own_prices_and_unconfirmed_state(alice: Any) -> None:

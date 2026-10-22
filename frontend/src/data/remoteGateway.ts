@@ -207,6 +207,8 @@ export interface AccountUser {
 
 export const account = {
   me: () => api<AccountUser>('/auth/me/'),
+  /** The signed-in user or null; answers 200 for a guest too. */
+  session: () => api<{ user: AccountUser | null }>('/auth/session/').then((r) => r.user),
   login: (email: string, password: string) => api<AccountUser>('/auth/login/', { method: 'POST', body: { email, password } }),
   register: (email: string, password: string, name: string) => api<AccountUser>('/auth/register/', { method: 'POST', body: { email, password, name } }),
   logout: () => api<{ ok: boolean }>('/auth/logout/', { method: 'POST' }),

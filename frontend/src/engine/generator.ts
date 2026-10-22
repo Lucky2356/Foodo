@@ -60,6 +60,8 @@ export const SCORE = {
   sharedIngredientCap: 1,
   timePer120Min: 1,
   vitamins: 1,
+  /** Penalty per 100 % mismatch between the portion's energy and the member's share of the target. */
+  energyFit: 2,
   jitter: 0.35,
   unfilledPenalty: 100,
   budgetExceededPenalty: 1000,
@@ -320,6 +322,27 @@ class Planner {
     return clamp(member.portion_factor, 0.25, 3);
   }
 
+  /**
+   * How far the portions miss the calorie targets of this meal, averaged over members with a target
+   * (0 = exact, capped at 1 per member). Portions are clamped to a realistic range, so a light salad
+   * cannot become a full dinner by size alone; this term prefers dishes that fit without the clamp.
+   */
+  energyMismatch(recipeId: string, slot: string, portions: Map<string, number>, people: Participant[]): number {
+    const serving = this.perServing(recipeId).kcal.value;
+    if (!(serving > 0)) return 0;
+    let sum = 0;
+    let n = 0;
+    for (const p of people) {
+      const target = this.kcalTargets.get(p.member.id) ?? null;
+      if (target === null) continue;
+      const mealKcal = target * (this.slotShare.get(slot) ?? 0);
+      if (!(mealKcal > 0)) continue;
+      sum += Math.min(1, Math.abs((portions.get(p.member.id) ?? 0) * serving - mealKcal) / mealKcal);
+      n += 1;
+    }
+    return n === 0 ? 0 : sum / n;
+  }
+
   repeatAllowed(state: BuildState, recipeId: string, day: number): boolean {
     const r = this.req.settings.repeat;
     const uses = state.uses.get(recipeId) ?? 0;
@@ -394,6 +417,7 @@ class Planner {
     }
     const cuisines = s.cuisines ?? [];
     if (cuisines.length > 0 && recipe.cuisine && cuisines.includes(recipe.cuisine)) score += SCORE.cuisine;
+    score += this.slotRef(slot).category_bonus?.[recipe.category] ?? 0;
     if (state.categoriesByDay.get(day)?.has(recipe.category)) score += SCORE.sameCategorySameDay;
     score += SCORE.repeatUse * (state.uses.get(recipeId) ?? 0);
     let shared = 0;
@@ -411,6 +435,7 @@ class Planner {
     if (costWeight > 0 && budgetPerMeal > 0) {
       score -= (costWeight * this.estimateCost(recipeId, total)) / budgetPerMeal;
     }
+    score -= SCORE.energyFit * this.energyMismatch(recipeId, slot, portions, people);
     if (s.vitamins.enabled) {
       // Averaged per participant. Coverage above the target adds nothing (the gain saturates).
       score += (SCORE.vitamins * this.vitaminGain(state, recipeId, portions, people)) / people.length;
@@ -488,7 +513,8 @@ class Planner {
       else parts.push(`${n} — ${REASON_MESSAGES[key] ?? key}`);
     }
     const slotName = this.slotRef(slot).name;
-    const message = `Для «${slotName}» не найдено подходящего блюда. Из ${this.recipes.length} рецептов отсеяны: ${parts.join('; ')}.`;
+    // A recipe can fail several checks, so the counts may add up to more than the catalogue size.
+    const message = `На ${slotName.toLowerCase()} не нашлось подходящего блюда. Причины отсева среди ${this.recipes.length} рецептов (у рецепта их может быть несколько): ${parts.join('; ')}.`;
     return { code: repeatOnly > 0 ? 'repeat_exhausted' : 'no_candidates', message };
   }
 
@@ -763,6 +789,17 @@ export function rankCandidates(
   }
   ranked.sort((a, b) => b.score - a.score || compareStr(a.recipe_id, b.recipe_id));
   return ranked;
+}
+
+/**
+ * Portions of a dish chosen by hand or as a replacement: a member with a calorie target gets the
+ * portion the generator would give for this dish and meal, others keep their simple portion factor.
+ */
+export function memberPortions(req: PlanRequest, catalog: Catalog, people: Member[], recipeId: string, slot: string): Record<string, number> {
+  const planner = new Planner(req, catalog);
+  const out: Record<string, number> = {};
+  for (const m of people) out[m.id] = planner.portion(m, recipeId, slot);
+  return out;
 }
 
 function attemptsFor(days: number): number {

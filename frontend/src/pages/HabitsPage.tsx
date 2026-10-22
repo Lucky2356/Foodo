@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { Member } from '../engine';
 import { useApp, useLoad } from '../state/app';
 import { Icon } from '../ui/icons';
 import { Empty, Loading, PageHead, Segmented } from '../ui/kit';
-import { addDaysIso, localDate, weekdayShort } from '../lib/dates';
+import { addDaysIso, dayMonth, localDate, weekdayShort } from '../lib/dates';
 import { num } from '../lib/format';
 
 function WaterCard({ member }: { member: Member }) {
@@ -66,6 +67,8 @@ function WaterCard({ member }: { member: Member }) {
   );
 }
 
+const HABIT_IDEAS = ['Овощи к обеду', 'Прогулка 30 минут', 'Без сладкого после ужина'];
+
 export default function HabitsPage() {
   const { household, gateway, reportError } = useApp();
   const members = household?.members ?? [];
@@ -73,7 +76,26 @@ export default function HabitsPage() {
   const habits = useLoad(() => gateway.habits(), [gateway]);
   const [name, setName] = useState('');
   if (!household) return <Loading />;
-  if (members.length === 0) return <Empty icon="users" title="Сначала добавьте участников семьи" />;
+  if (members.length === 0)
+    return (
+      <>
+        <PageHead eyebrow="Каждый день" title="Вода и привычки" />
+        <Empty icon="users" title="Сначала семья" action={<Link className="btn primary" to="/start">Начать</Link>}>
+          Вода и привычки ведутся для каждого участника отдельно — укажите, кто в семье.
+        </Empty>
+      </>
+    );
+  const addHabit = async (habitName: string) => {
+    const clean = habitName.trim();
+    if (!clean) return;
+    try {
+      await gateway.addHabit(member.id, clean);
+      setName('');
+      habits.reload();
+    } catch (err) {
+      reportError(err);
+    }
+  };
   const member = members.find((m) => m.id === who) ?? (members[0] as Member);
   const today = localDate(member.timezone ?? 'Europe/Moscow');
   const days = Array.from({ length: 14 }, (_, i) => addDaysIso(today, i - 13));
@@ -85,7 +107,18 @@ export default function HabitsPage() {
       <WaterCard key={member.id} member={member} />
       <section className="card stack">
         <h3>Привычки</h3>
-        {mine.length === 0 && <p className="muted small">Например: «Овощи к обеду», «Прогулка 30 минут».</p>}
+        {mine.length === 0 && (
+          <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+            <p className="muted small">Пока привычек нет. Добавьте свою или начните с готовой:</p>
+            <div className="chips">
+              {HABIT_IDEAS.map((idea) => (
+                <button key={idea} className="chip" onClick={() => void addHabit(idea)}>
+                  <Icon name="plus" size={14} /> {idea}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         {mine.map((h) => {
           const done = h.marks.includes(today);
           return (
@@ -117,9 +150,9 @@ export default function HabitsPage() {
                   <Icon name="trash" size={16} />
                 </button>
               </div>
-              <div className="row" style={{ ['--gap' as string]: '4px' }} aria-label="Две недели">
+              <div className="row" style={{ ['--gap' as string]: '4px' }} role="img" aria-label={`За две недели отмечено ${days.filter((d) => h.marks.includes(d)).length} из 14 дней`}>
                 {days.map((d) => (
-                  <span key={d} title={d} style={{ width: 14, height: 14, borderRadius: 4, background: h.marks.includes(d) ? 'var(--primary)' : 'var(--surface-3)' }} />
+                  <span key={d} title={dayMonth(d)} style={{ width: 14, height: 14, borderRadius: 4, background: h.marks.includes(d) ? 'var(--primary)' : 'var(--surface-3)' }} />
                 ))}
               </div>
             </div>
@@ -127,19 +160,12 @@ export default function HabitsPage() {
         })}
         <form
           className="row"
-          onSubmit={async (e) => {
+          onSubmit={(e) => {
             e.preventDefault();
-            if (!name.trim()) return;
-            try {
-              await gateway.addHabit(member.id, name);
-              setName('');
-              habits.reload();
-            } catch (err) {
-              reportError(err);
-            }
+            void addHabit(name);
           }}
         >
-          <input className="input grow" placeholder="Новая привычка" value={name} onChange={(e) => setName(e.target.value)} aria-label="Новая привычка" />
+          <input className="input grow" placeholder="Новая привычка" value={name} maxLength={80} onChange={(e) => setName(e.target.value)} aria-label="Новая привычка" />
           <button className="btn primary" type="submit" disabled={!name.trim()} aria-label="Добавить привычку">
             <Icon name="plus" size={18} />
           </button>

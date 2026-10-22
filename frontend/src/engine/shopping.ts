@@ -63,9 +63,13 @@ export interface ShoppingLine {
   needed: number;
   from_pantry: number;
   to_buy: number;
+  /** What is actually bought, in base units: whole packages when the product is sold in them. */
+  buy_qty: number;
   package: { size: number; unit: string; count: number } | null;
   package_note: string | null;
   price_kop: number | null;
+  /** What price_kop is paid for: a package, or a weight for loose goods (e.g. 1 kg). */
+  price_per: { size: number; unit: string; loose: boolean } | null;
   price_date: string | null;
   price_source: string | null;
   price_kind: string | null;
@@ -161,8 +165,12 @@ interface Lot {
   remaining: number;
 }
 
-/** Pantry lots per product, converted to base units, sorted by expiry (unknown expiry last), then id. */
-function pantryLots(catalog: Catalog, pantry: PantryItem[]): Map<string, Lot[]> {
+/**
+ * Pantry lots per product, converted to base units, sorted by expiry (unknown expiry last), then id.
+ * `reserved` (base units per product) is taken off the end of each product's lots first: purchases
+ * of this very menu moved to the pantry are not counted as «already at home» for its own list.
+ */
+function pantryLots(catalog: Catalog, pantry: PantryItem[], reserved: Record<string, number> = {}): Map<string, Lot[]> {
   const lots = new Map<string, Lot[]>();
   for (const item of pantry) {
     const product = catalog.products[item.product_id];
@@ -185,6 +193,16 @@ function pantryLots(catalog: Catalog, pantry: PantryItem[]): Map<string, Lot[]> 
       return compareStr(a.item.id, b.item.id);
     });
   }
+  for (const [productId, qty] of Object.entries(reserved)) {
+    let left = qty;
+    const list = lots.get(productId) ?? [];
+    for (let i = list.length - 1; i >= 0 && left > 1e-9; i -= 1) {
+      const lot = list[i] as Lot;
+      const take = Math.min(lot.remaining, left);
+      lot.remaining -= take;
+      left -= take;
+    }
+  }
   return lots;
 }
 
@@ -193,8 +211,9 @@ export function allocatePantry(
   catalog: Catalog,
   needs: Need[],
   pantry: PantryItem[],
+  reserved: Record<string, number> = {},
 ): { covered: number[]; allocations: PantryAllocation[]; expired: ExpiredSkip[] } {
-  const lots = pantryLots(catalog, pantry);
+  const lots = pantryLots(catalog, pantry, reserved);
   const covered: number[] = [];
   const allocations: PantryAllocation[] = [];
   const expired: ExpiredSkip[] = [];
@@ -236,11 +255,15 @@ export function computeShopping(
   pantry: PantryItem[],
   prices: PriceProfile | null,
   state: ShoppingState,
+  /** The household's current budget; the menu's saved one is used only when it is not given. */
+  budget?: { limit_kop: number | null },
+  /** Base quantities per product bought for this menu and already moved to the pantry. */
+  transferred: Record<string, number> = {},
 ): ShoppingList {
   // Saved menus are calculated from their own recipe snapshot, never from later catalog edits.
   const catalog = snapshotCatalog(menu, baseCatalog);
   const needs = batchNeeds(menu, catalog);
-  const { covered, allocations, expired } = allocatePantry(catalog, needs, pantry);
+  const { covered, allocations, expired } = allocatePantry(catalog, needs, pantry, transferred);
 
   const byKey = new Map<string, ShoppingLine>();
   const keys: string[] = [];
@@ -257,9 +280,11 @@ export function computeShopping(
         needed: 0,
         from_pantry: 0,
         to_buy: 0,
+        buy_qty: 0,
         package: null,
         package_note: null,
         price_kop: null,
+        price_per: null,
         price_date: null,
         price_source: null,
         price_kind: null,
@@ -298,22 +323,32 @@ export function computeShopping(
     line.previous_to_buy = seen === undefined ? null : seen;
     line.changed = seen !== undefined && Math.abs(seen - line.to_buy) > 1e-6;
     const effective = line.at_home ? 0 : line.to_buy;
+    line.buy_qty = effective;
 
     const entry = latestPrice(prices, product.id);
     const pkg = entry ? { size: entry.package_size, unit: entry.package_unit } : (product.package ?? null);
     if (line.convertible && pkg) {
       const sizeBase = toBase(product, pkg.size, pkg.unit);
       if (sizeBase !== null && sizeBase > 0) {
+        // A price per kilogram (Rosstat averages) still buys the product in its usual package when it
+        // has one (pasta, flour); only a product without a package is bought by weight.
         const loose = Boolean(entry?.loose);
-        const count = effective > 0 ? Math.ceil(effective / sizeBase - 1e-9) : 0;
-        line.package = loose ? null : { size: pkg.size, unit: pkg.unit, count };
+        const own = loose && product.package ? product.package : null;
+        const ownBase = own ? toBase(product, own.size, own.unit) : null;
+        const buyPkg = loose ? (own && ownBase !== null && ownBase > 0 ? { ...own, base: ownBase } : null) : { ...pkg, base: sizeBase };
+        const count = buyPkg && effective > 0 ? Math.ceil(effective / buyPkg.base - 1e-9) : 0;
+        line.package = buyPkg ? { size: buyPkg.size, unit: buyPkg.unit, count } : null;
+        if (buyPkg) line.buy_qty = cleanQty(count * buyPkg.base);
         if (entry) {
           line.price_kop = entry.price_kop;
+          line.price_per = { size: entry.package_size, unit: entry.package_unit, loose };
           line.price_date = entry.date;
           line.price_source = entry.source;
           line.price_kind = entry.kind ?? 'manual';
           line.estimated = ESTIMATED_PRICE_KINDS.includes(entry.kind ?? 'manual');
-          line.purchase_cost_kop = loose ? roundKop((effective * entry.price_kop) / sizeBase) : count * entry.price_kop;
+          if (!loose) line.purchase_cost_kop = count * entry.price_kop;
+          else if (buyPkg) line.purchase_cost_kop = roundKop((count * buyPkg.base * entry.price_kop) / sizeBase);
+          else line.purchase_cost_kop = roundKop((effective * entry.price_kop) / sizeBase);
           line.usage_cost_kop = roundKop((line.needed * entry.price_kop) / sizeBase);
         }
       } else {
@@ -346,11 +381,12 @@ export function computeShopping(
       compareStr(a.id, b.id),
   );
 
-  const limit = menu.settings.budget.limit_kop;
+  const limit = budget ? budget.limit_kop : menu.settings.budget.limit_kop;
   let status: BudgetStatus = 'none';
   if (limit !== null) {
-    if (missing.length > 0) status = 'unconfirmed';
-    else status = purchaseKop > limit ? 'exceeded' : 'ok';
+    // Known prices alone already over the limit is an overrun, whatever the missing prices add.
+    if (purchaseKop > limit) status = 'exceeded';
+    else status = missing.length > 0 ? 'unconfirmed' : 'ok';
   }
   return {
     lines,

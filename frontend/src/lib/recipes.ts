@@ -111,3 +111,25 @@ export function toggleQuickExclusion<T extends { products: string[]; categories:
   }
   return { ...r, categories: [...cats], allergens: [...alls] };
 }
+
+
+function normalizeText(text: string): string {
+  return text.toLowerCase().replace(/ё/g, 'е');
+}
+
+/**
+ * Search words with their endings cut, so «курица» also finds «с курицей» and «творожный сыр»
+ * finds «Сыр творожный». Words of 1–3 letters are kept whole.
+ */
+export function searchTokens(query: string): string[] {
+  return normalizeText(query)
+    .split(/[^a-zа-я0-9]+/)
+    .filter(Boolean)
+    .map((w) => (w.length >= 6 ? w.slice(0, -2) : w.length >= 4 ? w.slice(0, -1) : w));
+}
+
+/** Every token must start some word of the text (not sit inside one: «ёж» must not find «свежий»). */
+export function matchesSearch(text: string, tokens: string[]): boolean {
+  const words = normalizeText(text).split(/[^a-zа-я0-9]+/);
+  return tokens.every((t) => words.some((w) => w.startsWith(t)));
+}

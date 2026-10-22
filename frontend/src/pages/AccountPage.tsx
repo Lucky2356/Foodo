@@ -8,8 +8,12 @@ import { useApp } from '../state/app';
 import { NATIVE_BUILD, STATIC_BUILD } from '../lib/config';
 import { Icon } from '../ui/icons';
 import { Banner, Field, PageHead, Segmented } from '../ui/kit';
+import { dayMonth } from '../lib/dates';
+import { plural } from '../lib/format';
 
 type Mode = 'login' | 'register' | 'reset';
+
+const ROLE_NAMES: Record<string, string> = { owner: 'владелец', editor: 'может изменять', viewer: 'просмотр' };
 
 function ResetConfirm({ uid, token }: { uid: string; token: string }) {
   const { reportError, toast } = useApp();
@@ -76,7 +80,15 @@ function AuthForms() {
         void submit();
       }}
     >
-      <Segmented<Mode> label="Действие" value={mode} onChange={setMode} options={[{ value: 'login', label: 'Вход' }, { value: 'register', label: 'Регистрация' }, { value: 'reset', label: 'Забыли пароль' }]} />
+      <Segmented<Mode>
+        label="Действие"
+        value={mode}
+        onChange={(m) => {
+          // An error of one form means nothing in another.
+          setError(null);
+          setMode(m);
+        }}
+        options={[{ value: 'login', label: 'Вход' }, { value: 'register', label: 'Регистрация' }, { value: 'reset', label: 'Забыли пароль' }]} />
       {mode === 'register' && (
         <Field label="Имя (необязательно)">
           <input className="input" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={60} />
@@ -110,17 +122,47 @@ interface Preview {
   counts: Record<string, number>;
 }
 
+/** When guest data was last moved into this account from this device (local only). */
+function transferKey(userId: number): string {
+  return `foodo:guest-transferred:${userId}`;
+}
+
+function readTransfer(userId: number): string | null {
+  try {
+    return localStorage.getItem(transferKey(userId));
+  } catch {
+    return null;
+  }
+}
+
 function GuestTransfer() {
   const { user, reportError, toast, refreshHousehold, bump } = useApp();
   const [guest, setGuest] = useState<GuestExport | null>(null);
   const [preview, setPreview] = useState<Preview | null>(null);
   const [resolution, setResolution] = useState<{ members: Record<string, string>; menus: Record<string, string> }>({ members: {}, menus: {} });
   const [busy, setBusy] = useState(false);
-  const householdId = user?.households[0]?.id;
+  const [again, setAgain] = useState(false);
+  const { activeHouseholdId: householdId } = useApp();
+  const transferredAt = user ? readTransfer(user.id) : null;
   useEffect(() => {
     void exportGuestData().then((d) => setGuest(d.members.length + d.menus.length + d.pantry.length > 0 ? d : null));
   }, []);
-  if (!guest || !householdId) return null;
+  if (!guest || !householdId || !user) return null;
+  if (transferredAt && !again) {
+    return (
+      <section className="card stack">
+        <h2>Гостевые данные</h2>
+        <p className="muted small">
+          Данные с этого устройства уже переносились в аккаунт {new Date(transferredAt).toLocaleDateString('ru-RU')}. Повторный перенос снова добавит остатки, цены и записи воды.
+        </p>
+        <div>
+          <button className="btn small ghost" onClick={() => setAgain(true)}>
+            Перенести ещё раз
+          </button>
+        </div>
+      </section>
+    );
+  }
   const doPreview = async () => {
     setBusy(true);
     try {
@@ -137,6 +179,11 @@ function GuestTransfer() {
     setBusy(true);
     try {
       await account.importGuest(householdId, guest, 'apply', resolution);
+      try {
+        localStorage.setItem(transferKey(user.id), new Date().toISOString());
+      } catch {
+        // without storage the reminder is simply not shown next time
+      }
       toast('Данные перенесены в аккаунт. На устройстве они тоже остались.', { tone: 'success' });
       setGuest(null);
       setPreview(null);
@@ -184,7 +231,7 @@ function GuestTransfer() {
           {preview.menus.map((m) => (
             <div key={m.guest_id} className="row wrap between">
               <span>
-                Меню с {m.start_date} на {m.days} дн.{m.conflict && <span className="muted small"> — в аккаунте уже есть меню с этой даты</span>}
+                Меню с {dayMonth(m.start_date)} на {m.days} {plural(m.days, 'день', 'дня', 'дней')}{m.conflict && <span className="muted small"> — в аккаунте уже есть меню с этой даты</span>}
               </span>
               <Segmented
                 label={`Меню с ${m.start_date}`}
@@ -210,7 +257,7 @@ function GuestTransfer() {
 }
 
 function AccountSettings() {
-  const { user, logout, reportError, toast, household } = useApp();
+  const { user, logout, login, reportError, toast, household, activeHouseholdId, setActiveHousehold } = useApp();
   const navigate = useNavigate();
   const [oldPw, setOldPw] = useState('');
   const [newPw, setNewPw] = useState('');
@@ -231,13 +278,30 @@ function AccountSettings() {
         <button
           className="btn ghost"
           onClick={async () => {
-            await logout();
-            navigate('/');
+            try {
+              await logout();
+              navigate('/');
+            } catch (e) {
+              reportError(e);
+            }
           }}
         >
           <Icon name="logout" size={18} /> Выйти
         </button>
       </section>
+      {user.households.length > 1 && (
+        <section className="card stack">
+          <h2>Семья</h2>
+          <p className="muted small">Вы участник нескольких семей. Меню, покупки и остатки показываются для выбранной.</p>
+          <div className="chips" role="group" aria-label="Выбор семьи">
+            {user.households.map((h) => (
+              <button key={h.id} className="chip" aria-pressed={h.id === activeHouseholdId} onClick={() => setActiveHousehold(h.id)}>
+                {h.name} · {ROLE_NAMES[h.role] ?? h.role}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
       <GuestTransfer />
       {household?.role === 'owner' && (
         <section className="card stack">
@@ -250,7 +314,7 @@ function AccountSettings() {
               className="btn"
               onClick={async () => {
                 try {
-                  setInviteCode((await account.invite(user.households[0]?.id ?? '', inviteEmail, inviteRole)).token);
+                  setInviteCode((await account.invite(activeHouseholdId ?? '', inviteEmail, inviteRole)).token);
                 } catch (e) {
                   reportError(e);
                 }
@@ -274,8 +338,11 @@ function AccountSettings() {
             className="btn"
             onClick={async () => {
               try {
-                await account.acceptInvitation(acceptCode.trim());
-                toast('Вы присоединились к семье. Обновите страницу, чтобы переключиться.', { tone: 'success' });
+                const r = await account.acceptInvitation(acceptCode.trim());
+                const fresh = await account.session();
+                setAcceptCode('');
+                if (fresh) await login(fresh, r.household_id);
+                toast('Вы присоединились к семье — она открыта. Переключаться между семьями можно здесь же.', { tone: 'success' });
               } catch (e) {
                 reportError(e);
               }

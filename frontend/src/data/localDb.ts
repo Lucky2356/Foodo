@@ -15,6 +15,8 @@ export const GUEST_FORMAT_VERSION = 1;
 export interface StoredMenu extends MenuRecord {
   shopping_state: ShoppingState;
   transferred_lines: string[];
+  /** Base quantity moved to the pantry per shopping line; absent in menus saved before 0.2.2. */
+  transferred_qty?: Record<string, number>;
 }
 
 export interface StoredWater {

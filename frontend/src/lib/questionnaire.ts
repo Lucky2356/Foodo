@@ -71,13 +71,33 @@ export const TASTE_PRODUCTS = [
   'olives',
 ] as const;
 
+/** Adults are 18+ or of unknown age; children have an age under 18. */
+export function isAdult(m: Pick<Member, 'age'>): boolean {
+  return m.age === null || m.age >= 18;
+}
+
+function common(lists: string[][]): string[] {
+  if (lists.length === 0) return [];
+  return lists[0]!.filter((x) => lists.every((l) => l.includes(x)));
+}
+
+/** A member's list after the questionnaire: shared items removed or added there, own items kept. */
+function applyDiff(current: string[], initial: string[], next: string[]): string[] {
+  const removed = new Set(initial.filter((x) => !next.includes(x)));
+  const added = next.filter((x) => !initial.includes(x));
+  return [...new Set([...current.filter((x) => !removed.has(x)), ...added])];
+}
+
 export function defaultAnswers(household: HouseholdView | null): Answers {
   const settings: HouseholdSettings | null = household?.settings ?? null;
   const plan: PlanSettings = settings?.plan ?? structuredClone(DEFAULT_SETTINGS);
   const members = household?.members ?? [];
-  const adults = members.filter((m) => m.age === null || m.age >= 18);
-  const kids = members.filter((m) => m.age !== null && m.age < 18);
+  const adults = members.filter(isAdult);
+  const kids = members.filter((m) => !isAdult(m));
   const first = adults[0] ?? members[0] ?? null;
+  // Shared answers show what everyone has in common; a member's own bans and tastes are kept aside
+  // and preserved when the questionnaire is taken again (see planHousehold).
+  const allOf = (pick: (m: Member) => string[]) => common(members.map(pick));
   const goal: Goal = first?.portion_mode === 'target' && first.goal ? first.goal : 'simple';
   const weekend: number | null | 'same' =
     plan.max_total_min_weekend === undefined || plan.max_total_min_weekend === plan.max_total_min ? 'same' : plan.max_total_min_weekend;
@@ -93,12 +113,16 @@ export function defaultAnswers(household: HouseholdView | null): Answers {
       activity: first?.activity ?? 'moderate',
     },
     diet_mode: plan.diet_mode,
-    diet_types: first?.diet_types ?? [],
-    restrictions: first ? structuredClone(first.restrictions) : { products: [], categories: [], allergens: [] },
+    diet_types: allOf((m) => m.diet_types ?? []),
+    restrictions: {
+      products: allOf((m) => m.restrictions.products),
+      categories: allOf((m) => m.restrictions.categories),
+      allergens: allOf((m) => m.restrictions.allergens),
+    },
     cuisines: plan.cuisines ?? [],
-    liked_products: first?.preferences.liked_products ?? [],
-    disliked_products: first?.preferences.disliked_products ?? [],
-    spice: first?.spice_tolerance ?? 1,
+    liked_products: allOf((m) => m.preferences.liked_products ?? []),
+    disliked_products: allOf((m) => m.preferences.disliked_products ?? []),
+    spice: first && isAdult(first) ? (first.spice_tolerance ?? 1) : 1,
     skill: plan.skill,
     equipment: [...plan.equipment],
     weekday_min: plan.max_total_min,
@@ -131,7 +155,8 @@ export function planSettings(a: Answers, base: PlanSettings): PlanSettings {
     cuisines: [...a.cuisines],
     repeat: { ...base.repeat, mode: a.repeat },
     container_days: a.slots.includes('lunch') ? [...a.container_days].sort() : [],
-    budget: { ...base.budget, limit_kop: a.budget_rub === null ? null : Math.round(a.budget_rub * 100) },
+    // 0 ₽ means «no limit», the same as an empty field (the summary shows both as «Без лимита»).
+    budget: { ...base.budget, limit_kop: a.budget_rub === null || a.budget_rub === 0 ? null : Math.round(a.budget_rub * 100) },
     vitamins: { ...base.vitamins, enabled: a.vitamins },
   };
 }
@@ -189,4 +214,90 @@ export function memberDrafts(a: Answers, timezone: string): MemberDraft[] {
 
 export function slotsInOrder(slots: string[]): string[] {
   return SLOT_ORDER.filter((s) => slots.includes(s));
+}
+
+export interface HouseholdPlan {
+  update: { member: Member; patch: Partial<Member> }[];
+  add: MemberDraft[];
+  remove: Member[];
+}
+
+/**
+ * What taking the questionnaire again does to an existing family.
+ * - Adults and children are matched separately, in their order; the last extra ones are removed
+ *   (the summary names them before anything is saved).
+ * - Shared answers apply as changes: a shared ban removed in the questionnaire is removed from
+ *   everyone, a new one is added to everyone, a member's own bans, diet types and tastes stay.
+ * - Spice applies to adults, and only when it was changed; children keep theirs.
+ * - The calorie goal applies to the first adult; «Просто вкусно» switches their target off.
+ * A family without members simply gets the drafts of memberDrafts().
+ */
+export function planHousehold(a: Answers, initial: Answers, members: Member[], timezone: string): HouseholdPlan {
+  if (members.length === 0) return { update: [], add: memberDrafts(a, timezone), remove: [] };
+  const drafts = memberDrafts(a, timezone);
+  const adultDrafts = drafts.slice(0, a.adults);
+  const childDrafts = drafts.slice(a.adults);
+  const adults = members.filter(isAdult);
+  const kids = members.filter((m) => !isAdult(m));
+  const plan: HouseholdPlan = { update: [], add: [], remove: [] };
+
+  const sharedPatch = (m: Member): Partial<Member> => {
+    const liked = applyDiff(m.preferences.liked_products ?? [], initial.liked_products, a.liked_products);
+    const disliked = applyDiff(m.preferences.disliked_products ?? [], initial.disliked_products, a.disliked_products);
+    // A product just marked «люблю» leaves the member's «не люблю», and the other way round.
+    const newlyLiked = new Set(a.liked_products.filter((x) => !initial.liked_products.includes(x)));
+    const newlyDisliked = new Set(a.disliked_products.filter((x) => !initial.disliked_products.includes(x)));
+    return {
+      diet_types: applyDiff(m.diet_types ?? [], initial.diet_types, a.diet_types),
+      restrictions: {
+        products: applyDiff(m.restrictions.products, initial.restrictions.products, a.restrictions.products),
+        categories: applyDiff(m.restrictions.categories, initial.restrictions.categories, a.restrictions.categories),
+        allergens: applyDiff(m.restrictions.allergens, initial.restrictions.allergens, a.restrictions.allergens),
+      },
+      preferences: {
+        ...m.preferences,
+        liked_products: liked.filter((x) => !newlyDisliked.has(x)),
+        disliked_products: disliked.filter((x) => !newlyLiked.has(x)),
+      },
+    };
+  };
+
+  adults.forEach((m, i) => {
+    if (i >= a.adults) {
+      plan.remove.push(m);
+      return;
+    }
+    const patch = sharedPatch(m);
+    if (a.spice !== initial.spice) patch.spice_tolerance = a.spice;
+    if (i === 0) {
+      const draft = adultDrafts[0]!;
+      if (a.goal !== 'simple') {
+        Object.assign(patch, a.me, { goal: a.goal, portion_mode: draft.portion_mode, kcal_target: draft.kcal_target });
+      } else if (m.portion_mode === 'target' || m.goal) {
+        Object.assign(patch, { goal: null, portion_mode: 'simple', kcal_target: null });
+      }
+    }
+    plan.update.push({ member: m, patch });
+  });
+  for (let i = adults.length; i < a.adults; i += 1) {
+    plan.add.push({ ...adultDrafts[i]!, name: i === 0 ? 'Я' : `Взрослый ${i + 1}` });
+  }
+
+  kids.forEach((m, i) => {
+    const child = a.children[i];
+    if (!child) {
+      plan.remove.push(m);
+      return;
+    }
+    const patch = sharedPatch(m);
+    if (child.age !== m.age) {
+      patch.age = child.age;
+      if (m.portion_mode === 'simple') patch.portion_factor = childPortion(child.age);
+    }
+    plan.update.push({ member: m, patch });
+  });
+  for (let i = kids.length; i < a.children.length; i += 1) {
+    plan.add.push({ ...childDrafts[i]!, name: a.children.length === 1 ? 'Ребёнок' : `Ребёнок ${i + 1}` });
+  }
+  return plan;
 }

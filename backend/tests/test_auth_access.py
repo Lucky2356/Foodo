@@ -35,9 +35,12 @@ def test_login_logout_and_wrong_password() -> None:
     )
     assert client.post("/api/auth/login/", {"email": "DANA@example.com", "password": TEST_PASSWORD}, format="json").status_code == 200
     assert client.get("/api/auth/me/").status_code == 200
+    assert client.get("/api/auth/session/").json()["user"]["email"] == "dana@example.com"
     r = client.post("/api/auth/logout/")
     assert r["Clear-Site-Data"] == '"cache"'
     assert client.get("/api/auth/me/").status_code == 403 or client.get("/api/auth/me/").status_code == 401
+    session = client.get("/api/auth/session/")
+    assert session.status_code == 200 and session.json() == {"user": None}
 
 
 def test_login_is_rate_limited() -> None:

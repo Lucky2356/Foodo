@@ -184,11 +184,12 @@
       "white_flour": -0.4
     }
   },
+  "hot_products": ["adjika", "chili_flakes", "chili_pepper", "green_curry_paste", "harissa", "horseradish", "hot_pepper_ground", "jalapeno_pickled", "kimchi", "red_curry_paste", "sriracha", "tabasco", "tom_yum_paste", "wasabi"],
   "meal_slots": [
-    {"id": "breakfast", "name": "Завтрак", "energy_share": 0.25},
-    {"id": "lunch", "name": "Обед", "energy_share": 0.35, "main_course": {"categories": ["main", "soup"], "hearty_kcal": 350, "hearty_protein": 20}},
-    {"id": "snack", "name": "Перекус", "energy_share": 0.1},
-    {"id": "dinner", "name": "Ужин", "energy_share": 0.3, "main_course": {"categories": ["main", "soup"], "hearty_kcal": 350, "hearty_protein": 20}}
+    {"id": "breakfast", "name": "Завтрак", "energy_share": 0.25, "category_bonus": {"breakfast": 0.6}},
+    {"id": "lunch", "name": "Обед", "energy_share": 0.35, "main_course": {"categories": ["main", "soup"], "hearty_kcal": 350, "hearty_protein": 20}, "category_bonus": {"soup": 0.55, "main": 0.45}},
+    {"id": "snack", "name": "Перекус", "energy_share": 0.1, "category_bonus": {"snack": 0.4, "dessert": 0.3, "drink": 0.2, "baking": 0.2, "salad": 0.1}},
+    {"id": "dinner", "name": "Ужин", "energy_share": 0.3, "main_course": {"categories": ["main", "soup"], "hearty_kcal": 350, "hearty_protein": 20}, "category_bonus": {"main": 0.8, "soup": 0.1}}
   ],
   "recipe_categories": [
     {"id": "breakfast", "name": "Завтраки"},

@@ -596,7 +596,7 @@
         ]}
       ],
       "techniques": ["bake_simple", "knife_basic"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kotlety-iz-indeyki", "version": 1, "name": "Котлеты из индейки",
@@ -697,7 +697,7 @@
         ]}
       ],
       "techniques": ["simmer", "fry_simple", "knife_basic"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/chili-s-fasolyu.webp", "source": "Фото: Aerith, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Chili_con_carne_cuisson.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/chili-s-fasolyu.webp", "source": "Фото: Aerith, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Chili_con_carne_cuisson.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "grechka-s-gribami", "version": 1, "name": "Гречка с грибами",
@@ -867,7 +867,7 @@
         ]}
       ],
       "techniques": ["simmer", "fry_simple", "knife_basic"], "diet_tags": ["vegetable_rich", "lean_protein"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/shakshuka.webp", "source": "Фото: Calliopejen1, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Shakshuka_by_Calliopejen1.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/shakshuka.webp", "source": "Фото: Calliopejen1, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Shakshuka_by_Calliopejen1.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "perlovka-s-kuritsey-v-multivarke", "version": 1, "name": "Перловка с курицей в мультиварке",
@@ -941,7 +941,7 @@
     {
       "id": "pirog-s-kapustoy", "version": 1, "name": "Пирог с капустой на дрожжевом тесте",
       "description": "Домашний закрытый пирог с тушёной капустой и яйцом.",
-      "category": "main", "meal_types": ["lunch", "dinner", "snack"], "servings": 8, "yield_g": null,
+      "category": "baking", "meal_types": ["lunch", "dinner", "snack"], "servings": 8, "yield_g": 1500,
       "ingredients": [
         {"product": "wheat_flour", "qty": 500, "unit": "g"},
         {"product": "milk", "qty": 250, "unit": "ml"},
@@ -1076,7 +1076,7 @@
         ]}
       ],
       "techniques": ["no_cook", "knife_basic", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "salat-s-nutom", "version": 1, "name": "Салат с нутом и свежими овощами",
@@ -1164,7 +1164,7 @@
         ]}
       ],
       "techniques": ["blend", "knife_basic"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/hummus-s-ovoshchami.webp", "source": "Фото: Jennifer from Vancouver, Canada, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Vegetables_and_Hummus_(7271118362).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/hummus-s-ovoshchami.webp", "source": "Фото: Jennifer from Vancouver, Canada, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Vegetables_and_Hummus_(7271118362).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "yogurt-s-orehami-i-myodom", "version": 1, "name": "Йогурт с орехами и мёдом",
@@ -2284,7 +2284,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/solyanka-myasnaya.webp", "source": "Фото: Pannet, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Soljanka_food_05.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/solyanka-myasnaya.webp", "source": "Фото: Pannet, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Soljanka_food_05.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "rassolnik", "version": 1, "name": "Рассольник с перловкой",
@@ -2345,7 +2345,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "simmer"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/harcho.webp", "source": "Фото: N509FZ, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Kharcho_at_White_Nights,_Beijing_(20210223170939).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/harcho.webp", "source": "Фото: N509FZ, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Kharcho_at_White_Nights,_Beijing_(20210223170939).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "sup-s-frikadelkami", "version": 1, "name": "Суп с фрикадельками",
@@ -2565,7 +2565,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "blend", "no_cook"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/gaspacho.webp", "source": "Фото: Juan Emilio Prades Bel, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Gazpacho_andaluz.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/gaspacho.webp", "source": "Фото: Juan Emilio Prades Bel, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Gazpacho_andaluz.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "okroshka-na-kefire", "version": 1, "name": "Окрошка на кефире",
@@ -2594,7 +2594,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "no_cook"], "diet_tags": ["vegetable_rich", "lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/okroshka-na-kefire.webp", "source": "Фото: Nikkolo, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%BA%D1%80%D0%BE%D1%88%D0%BA%D0%B0_Okroshka_05.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/okroshka-na-kefire.webp", "source": "Фото: Nikkolo, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%BA%D1%80%D0%BE%D1%88%D0%BA%D0%B0_Okroshka_05.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "svekolnik-holodnyy", "version": 1, "name": "Свекольник холодный",
@@ -3125,7 +3125,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/shurpa.webp", "source": "Фото: Bgelo777, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chorba_cooked_in_the_home_kitchen.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/shurpa.webp", "source": "Фото: Bgelo777, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chorba_cooked_in_the_home_kitchen.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kotlety-kurinye", "version": 1, "name": "Котлеты куриные",
@@ -3407,7 +3407,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/azu-po-tatarski.webp", "source": "Фото: Ds02006, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:AzuVealMeal.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/azu-po-tatarski.webp", "source": "Фото: Ds02006, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:AzuVealMeal.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "plov-s-kuritsey", "version": 1, "name": "Плов с курицей",
@@ -3757,7 +3757,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer", "boil"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/lagman.webp", "source": "Фото: Sebleouf, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Lagman_avec_salade_et_chou_ferment%C3%A9,_restaurant_Boukhara,_Lyon_(2021).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/lagman.webp", "source": "Фото: Sebleouf, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Lagman_avec_salade_et_chou_ferment%C3%A9,_restaurant_Boukhara,_Lyon_(2021).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "minty-zapechyonnyy-s-ovoshchami", "version": 1, "name": "Минтай, запечённый с овощами",
@@ -3987,7 +3987,7 @@
         ]}
       ],
       "techniques": ["boil", "fry_simple", "sauce_emulsion"], "diet_tags": [], "container_ok": false,
-      "tip": "Сковорода должна быть снята с огня, иначе яйца свернутся.", "storage": null, "image": {"url": "photos/pasta-karbonara.webp", "source": "Фото: Javier Somoza, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Espaguetis_carbonara.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 1, "kid_friendly": true
+      "tip": "Сковорода должна быть снята с огня, иначе яйца свернутся.", "storage": null, "image": {"url": "photos/pasta-karbonara.webp", "source": "Фото: Javier Somoza, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Espaguetis_carbonara.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "lazanya", "version": 1, "name": "Лазанья с мясным соусом",
@@ -4072,7 +4072,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "boil"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/lapsha-s-ovoshchami-vok.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Pad_Ciew_Noodles_with_Chicken_-_Little_Thai_2024-06-14.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/lapsha-s-ovoshchami-vok.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Pad_Ciew_Noodles_with_Chicken_-_Little_Thai_2024-06-14.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "grechka-po-kupecheski", "version": 1, "name": "Гречка по-купечески",
@@ -4209,7 +4209,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "simmer"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "nut-karri", "version": 1, "name": "Карри из нута со шпинатом",
@@ -4236,7 +4236,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "simmer"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/nut-karri.webp", "source": "Фото: Kari Sullivan from Austin, TX, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Spinach-Chickpea_Curry_(3117324894).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/nut-karri.webp", "source": "Фото: Kari Sullivan from Austin, TX, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Spinach-Chickpea_Curry_(3117324894).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "dal-iz-chechevitsy", "version": 1, "name": "Дал из красной чечевицы",
@@ -4264,7 +4264,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil"], "diet_tags": ["legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/dal-iz-chechevitsy.webp", "source": "Фото: Pelican, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Dal_soup_(Indian_lentil_dish).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/dal-iz-chechevitsy.webp", "source": "Фото: Pelican, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Dal_soup_(Indian_lentil_dish).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "ratatuy", "version": 1, "name": "Рататуй",
@@ -4556,7 +4556,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer", "boil"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/kuritsa-karri.webp", "source": "Фото: Gaurav Dhwaj Khadka, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_Curry_with_Rice.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kuritsa-karri.webp", "source": "Фото: Gaurav Dhwaj Khadka, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_Curry_with_Rice.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kuritsa-s-ovoshchami-v-multivarke", "version": 1, "name": "Курица с овощами в мультиварке",
@@ -4690,7 +4690,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/shaurma-domashnyaya.webp", "source": "Фото: cyclone bill, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Shawarma_closeup.png"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/shaurma-domashnyaya.webp", "source": "Фото: cyclone bill, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Shawarma_closeup.png"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "pitstsa-domashnyaya", "version": 1, "name": "Пицца домашняя на дрожжевом тесте",
@@ -4752,7 +4752,7 @@
     {
       "id": "pirozhki-s-kapustoy", "version": 1, "name": "Пирожки с капустой в духовке",
       "description": "Мягкие дрожжевые пирожки с тушёной капустой и яйцом.",
-      "category": "main", "meal_types": ["lunch", "snack"], "servings": 8, "yield_g": 1200,
+      "category": "baking", "meal_types": ["lunch", "snack"], "servings": 8, "yield_g": 1200,
       "ingredients": [
         {"product": "wheat_flour", "qty": 500, "unit": "g"},
         {"product": "milk", "qty": 250, "unit": "ml"},
@@ -4827,7 +4827,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/burrito-s-farshem-i-fasolyu.webp", "source": "Фото: samuelfernandezrivera, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Burrito.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/burrito-s-farshem-i-fasolyu.webp", "source": "Фото: samuelfernandezrivera, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Burrito.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kurinye-naggetsy", "version": 1, "name": "Куриные наггетсы в духовке",
@@ -4882,7 +4882,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple"], "diet_tags": ["lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/kurinye-shashlychki-v-yogurte.webp", "source": "Фото: Charles Haynes, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Dak-kkochi_3.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kurinye-shashlychki-v-yogurte.webp", "source": "Фото: Charles Haynes, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Dak-kkochi_3.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "indeyka-s-kabachkami", "version": 1, "name": "Индейка, тушённая с кабачками",
@@ -5349,7 +5349,7 @@
         ]}
       ],
       "techniques": ["fry_simple"], "diet_tags": [], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/kuritsa-tabaka.webp", "source": "Фото: Georgian Recipes at Georgia About, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_tabaka.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kuritsa-tabaka.webp", "source": "Фото: Georgian Recipes at Georgia About, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_tabaka.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kuritsa-zapechyonnaya-s-yablokami", "version": 1, "name": "Курица, запечённая с яблоками",
@@ -5482,7 +5482,7 @@
         ]}
       ],
       "techniques": ["blend", "forming", "fry_simple"], "diet_tags": ["legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/falafel.webp", "source": "Фото: Miansari66, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Falafel_1.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/falafel.webp", "source": "Фото: Miansari66, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Falafel_1.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kotlety-iz-chechevitsy", "version": 1, "name": "Котлеты из чечевицы",
@@ -5561,7 +5561,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/baklazhany-tushyonye-s-pomidorami.webp", "source": "Фото: مانفی, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Khoresh_bademjan.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/baklazhany-tushyonye-s-pomidorami.webp", "source": "Фото: مانفی, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Khoresh_bademjan.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "lobio", "version": 1, "name": "Лобио из красной фасоли",
@@ -5587,7 +5587,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "simmer"], "diet_tags": ["legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/lobio.webp", "source": "Фото: Svetlov Artem, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Lobio_Moscow_2023.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/lobio.webp", "source": "Фото: Svetlov Artem, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Lobio_Moscow_2023.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "adzhapsandal", "version": 1, "name": "Аджапсандал",
@@ -5614,7 +5614,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/adzhapsandal.webp", "source": "Фото: Georgian Recipes at Georgia About, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Ajapsandali_-_Georgian_eggplant_stew.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/adzhapsandal.webp", "source": "Фото: Georgian Recipes at Georgia About, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Ajapsandali_-_Georgian_eggplant_stew.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "ovoshchnaya-lazanya", "version": 1, "name": "Овощная лазанья",
@@ -5665,7 +5665,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["vegetable_rich", "fried"], "container_ok": false,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "tsvetnaya-kapusta-v-klyare", "version": 1, "name": "Цветная капуста в кляре",
@@ -5692,7 +5692,7 @@
     {
       "id": "brokkoli-s-chesnokom", "version": 1, "name": "Брокколи с чесноком и кунжутом",
       "description": "Быстрый зелёный гарнир на сковороде.",
-      "category": "main", "meal_types": ["lunch", "dinner", "snack"], "servings": 3, "yield_g": 400,
+      "category": "salad", "meal_types": ["lunch", "dinner", "snack"], "servings": 3, "yield_g": 400,
       "ingredients": [
         {"product": "broccoli", "qty": 400, "unit": "g"},
         {"product": "garlic", "qty": 2, "unit": "pcs"},
@@ -5713,7 +5713,7 @@
         ]}
       ],
       "techniques": ["fry_simple"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kurinaya-grudka-v-duhovke", "version": 1, "name": "Куриная грудка, запечённая в фольге",
@@ -5966,7 +5966,7 @@
         ]}
       ],
       "techniques": ["boil", "knife_basic", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/salat-iz-svekly-s-chesnokom.webp", "source": "Фото: Frisko, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:R%C3%B6dbetssallad.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/salat-iz-svekly-s-chesnokom.webp", "source": "Фото: Frisko, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:R%C3%B6dbetssallad.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "salat-iz-kapusty-s-morkovyu", "version": 1, "name": "Капустный салат с морковью",
@@ -6059,7 +6059,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "mix", "fry_simple"], "diet_tags": ["legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "teplyy-salat-s-kuritsey", "version": 1, "name": "Тёплый салат с курицей и овощами",
@@ -6437,7 +6437,7 @@
         ]}
       ],
       "techniques": ["boil", "knife_basic", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "tsezar-s-krevetkami", "version": 1, "name": "Салат «Цезарь» с креветками",
@@ -6724,30 +6724,6 @@
       "tip": null, "storage": null, "image": {"url": "photos/shopskiy-salat.webp", "source": "Фото: Popo le Chien, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Chopska.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
-      "id": "morkovnye-palochki-s-hummusom", "version": 1, "name": "Морковные палочки с хумусом",
-      "description": "Хрустящая морковь и огурец с готовым хумусом из нута.",
-      "category": "snack", "meal_types": ["snack"], "servings": 2, "yield_g": 300,
-      "ingredients": [
-        {"product": "carrot", "qty": 2, "unit": "pcs"},
-        {"product": "cucumber", "qty": 1, "unit": "pcs"},
-        {"product": "chickpeas_canned", "qty": 200, "unit": "g"},
-        {"product": "tahini", "qty": 1, "unit": "tbsp"},
-        {"product": "lemon", "qty": 0.5, "unit": "pcs"},
-        {"product": "garlic", "qty": 1, "unit": "pcs"},
-        {"product": "olive_oil", "qty": 1, "unit": "tbsp"},
-        {"product": "salt", "qty": 1, "unit": "pinch"}
-      ],
-      "methods": [
-        {"id": "blender", "name": "В блендере", "equipment": ["blender"], "active_min": 10, "total_min": 10, "steps": [
-          "Пробейте нут без жидкости с тахини, лимонным соком, чесноком, маслом и солью до кремовой пасты.",
-          "Нарежьте морковь и огурец палочками.",
-          "Подавайте овощи с хумусом."
-        ]}
-      ],
-      "techniques": ["knife_basic", "no_cook"], "diet_tags": ["vegetable_rich", "legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
-    },
-    {
       "id": "guakamole-s-tostami", "version": 1, "name": "Гуакамоле с хлебцами",
       "description": "Паста из авокадо с помидором, луком и лаймом — на цельнозерновом хлебе.",
       "category": "snack", "meal_types": ["snack"], "servings": 2, "yield_g": 300,
@@ -6895,7 +6871,7 @@
         ]}
       ],
       "techniques": ["fry_simple"], "diet_tags": ["fried"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/grenki-s-chesnokom.webp", "source": "Фото: Bearas, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Fried_Lithuanian_bread_with_garlic.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/grenki-s-chesnokom.webp", "source": "Фото: Bearas, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Fried_Lithuanian_bread_with_garlic.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "lavash-roll-s-tvorozhnym-syrom", "version": 1, "name": "Рулет из лаваша с творожным сыром и огурцом",
@@ -7046,7 +7022,7 @@
         ]}
       ],
       "techniques": ["blend"], "diet_tags": ["legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/hummus-iz-fasoli.webp", "source": "Фото: Didriks from Cambridge, MA, USA, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:White_bean_dip_with_garnish.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/hummus-iz-fasoli.webp", "source": "Фото: Didriks from Cambridge, MA, USA, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:White_bean_dip_with_garnish.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "pashtet-iz-kurinoy-pecheni", "version": 1, "name": "Паштет из куриной печени",
@@ -7851,7 +7827,7 @@
         ]}
       ],
       "techniques": ["dough_rolling", "knife_basic", "bake_simple"], "diet_tags": ["white_flour"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/samsa-s-baraninoy.webp", "source": "Фото: N509FZ, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Samsa_at_G%C3%BClhan_Restaurant,_Beijing_(20210402171539).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/samsa-s-baraninoy.webp", "source": "Фото: N509FZ, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Samsa_at_G%C3%BClhan_Restaurant,_Beijing_(20210402171539).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "chebureki", "version": 1, "name": "Чебуреки с мясом",
@@ -7877,7 +7853,7 @@
         ]}
       ],
       "techniques": ["dough_rolling", "fry_simple"], "diet_tags": ["fried", "white_flour"], "container_ok": false,
-      "tip": "Для жарки понадобится около 400 мл масла; в составе указано масло для теста и примерно впитавшаяся часть.", "storage": null, "image": {"url": "photos/chebureki.webp", "source": "Фото: N509FZ, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chebureki_at_Pushkin_Literature_Restaurant,_Zhong_Guan_Cun_No.1_(20210714185521).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": "Для жарки понадобится около 400 мл масла; в составе указано масло для теста и примерно впитавшаяся часть.", "storage": null, "image": {"url": "photos/chebureki.webp", "source": "Фото: N509FZ, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chebureki_at_Pushkin_Literature_Restaurant,_Zhong_Guan_Cun_No.1_(20210714185521).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "lahmadzhun", "version": 1, "name": "Лахмаджун",
@@ -7980,7 +7956,7 @@
         ]}
       ],
       "techniques": ["yeast_dough", "dough_rolling", "boil", "fry_simple", "bake_simple"], "diet_tags": ["legumes", "white_flour"], "container_ok": true,
-      "tip": "В горных районах Грузии в начинку добавляют копчёную грудинку; этот вариант постный.", "storage": null, "image": {"url": "photos/lobiani.webp", "source": "Фото: Sandra C from Canada, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Lobiani,_Restaurant_Aragvi.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": "В горных районах Грузии в начинку добавляют копчёную грудинку; этот вариант постный.", "storage": null, "image": {"url": "photos/lobiani.webp", "source": "Фото: Sandra C from Canada, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Lobiani,_Restaurant_Aragvi.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "pitstsa-margarita", "version": 1, "name": "Пицца «Маргарита»",
@@ -10451,7 +10427,7 @@
         ]}
       ],
       "techniques": ["fry_simple", "simmer", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/menemen.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Turkish_egg_dish_Menemen.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/menemen.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Turkish_egg_dish_Menemen.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "uevos-rancheros", "version": 1, "name": "Уэвос ранчерос",
@@ -10591,7 +10567,7 @@
         ]}
       ],
       "techniques": ["fry_simple", "simmer", "knife_basic"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "glazunya-v-kolechkah-pertsa", "version": 1, "name": "Глазунья в кольцах перца",
@@ -10725,7 +10701,7 @@
         ]}
       ],
       "techniques": ["boil", "fry_simple", "knife_basic"], "diet_tags": ["fish"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/kedzheri.webp", "source": "Фото: User:Justinc, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Kedgeree.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kedzheri.webp", "source": "Фото: User:Justinc, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Kedgeree.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "polnyy-angliyskiy-zavtrak", "version": 1, "name": "Полный английский завтрак",
@@ -11557,7 +11533,7 @@
         ]}
       ],
       "techniques": ["fry_simple", "mix", "knife_basic"], "diet_tags": ["legumes", "white_flour"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "burrito-s-yaytsom-i-kartofelem", "version": 1, "name": "Буррито с яйцом и картофелем",
@@ -11585,7 +11561,7 @@
         ]}
       ],
       "techniques": ["fry_simple", "knife_basic"], "diet_tags": ["white_flour"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/burrito-s-yaytsom-i-kartofelem.webp", "source": "Фото: Cajsa Lilliehook from Portland, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Bacon_Kale_Breakfast_Burrito_(8429773809).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/burrito-s-yaytsom-i-kartofelem.webp", "source": "Фото: Cajsa Lilliehook from Portland, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Bacon_Kale_Breakfast_Burrito_(8429773809).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "chilakiles", "version": 1, "name": "Чилакилес",
@@ -13726,7 +13702,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/buzhenina-domashnyaya.webp", "source": "Фото: Rainer Zenz, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0/", "page_url": "https://commons.wikimedia.org/wiki/File:Schweinsbraten-1.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/buzhenina-domashnyaya.webp", "source": "Фото: Rainer Zenz, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0/", "page_url": "https://commons.wikimedia.org/wiki/File:Schweinsbraten-1.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "svinina-po-kupecheski", "version": 1, "name": "Свинина по-купечески с грибами и сыром",
@@ -13901,7 +13877,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/svinye-ryobryshki-s-kartofelem.webp", "source": "Фото: David Jackmanson from Melbourne, Australia, Australia, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:-food,_meat-_BBQ_Pork_Ribs_and_potato_salad_(50078700982).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/svinye-ryobryshki-s-kartofelem.webp", "source": "Фото: David Jackmanson from Melbourne, Australia, Australia, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:-food,_meat-_BBQ_Pork_Ribs_and_potato_salad_(50078700982).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "gulyash-iz-svininy", "version": 1, "name": "Гуляш из свинины с подливой",
@@ -14082,7 +14058,7 @@
         ]}
       ],
       "techniques": ["fry_simple", "simmer", "boil"], "diet_tags": ["creamy"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/striployn-s-perechnym-sousom.webp", "source": "Фото: jeffreyw, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Steak_au_poivre_(2010).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/striployn-s-perechnym-sousom.webp", "source": "Фото: jeffreyw, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Steak_au_poivre_(2010).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "rostbif-s-gorchitsey", "version": 1, "name": "Ростбиф с горчицей",
@@ -14108,7 +14084,7 @@
         ]}
       ],
       "techniques": ["fry_simple", "bake_simple"], "diet_tags": [], "container_ok": true,
-      "tip": "Холодный ростбиф подходит для салатов и бутербродов.", "storage": null, "image": {"url": "photos/rostbif-s-gorchitsey.webp", "source": "Фото: Acabashi, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Roast_topside_of_beef.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": false
+      "tip": "Холодный ростбиф подходит для салатов и бутербродов.", "storage": null, "image": {"url": "photos/rostbif-s-gorchitsey.webp", "source": "Фото: Acabashi, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Roast_topside_of_beef.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "shnitsel-po-venski", "version": 1, "name": "Шницель из телятины по-венски",
@@ -14195,7 +14171,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "bake_simple"], "diet_tags": ["lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "svinye-ryobryshki-barbekyu", "version": 1, "name": "Свиные рёбрышки барбекю",
@@ -14314,7 +14290,7 @@
         ]}
       ],
       "techniques": ["boil", "simmer", "bake_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/svinaya-rulka-s-kvashenoy-kapustoy.webp", "source": "Фото: Rainer Zenz, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0/", "page_url": "https://commons.wikimedia.org/wiki/File:Eisbein-2.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/svinaya-rulka-s-kvashenoy-kapustoy.webp", "source": "Фото: Rainer Zenz, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0/", "page_url": "https://commons.wikimedia.org/wiki/File:Eisbein-2.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "musaka", "version": 1, "name": "Мусака",
@@ -14415,7 +14391,7 @@
         ]}
       ],
       "techniques": ["forming", "fry_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/chevapchichi.webp", "source": "Фото: Miomir Magdevski, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Pazarski_%C4%87evapi_-_cevapcici_from_Novi_Pazar_(Serbia)_03.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/chevapchichi.webp", "source": "Фото: Miomir Magdevski, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Pazarski_%C4%87evapi_-_cevapcici_from_Novi_Pazar_(Serbia)_03.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "frikase-iz-telyatiny", "version": 1, "name": "Фрикасе из телятины с грибами",
@@ -14512,7 +14488,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["creamy"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/krolik-v-gorchichno-slivochnom-souse.webp", "source": "Фото: Arnaud 25, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Lapin_aux_deux_moutardes.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/krolik-v-gorchichno-slivochnom-souse.webp", "source": "Фото: Arnaud 25, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Lapin_aux_deux_moutardes.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "pechen-po-venetsianski-s-polentoy", "version": 1, "name": "Печень по-венециански с полентой",
@@ -14733,7 +14709,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple"], "diet_tags": [], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/shashlyk-iz-baraniny-v-duhovke.webp", "source": "Фото: N509FZ, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Jumbo_kebab_at_Xinjiang_Restaurant_(20141121184744).JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/shashlyk-iz-baraniny-v-duhovke.webp", "source": "Фото: N509FZ, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Jumbo_kebab_at_Xinjiang_Restaurant_(20141121184744).JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "lyulya-kebab-iz-baraniny", "version": 1, "name": "Люля-кебаб из баранины",
@@ -14766,7 +14742,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "forming", "bake_simple"], "diet_tags": [], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/lyulya-kebab-iz-baraniny.webp", "source": "Фото: Chaojoker, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D5%84%D5%BD%D5%AB_%D6%84%D5%A1%D5%A2%D5%A1%D5%A2.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/lyulya-kebab-iz-baraniny.webp", "source": "Фото: Chaojoker, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D5%84%D5%BD%D5%AB_%D6%84%D5%A1%D5%A2%D5%A1%D5%A2.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "chanahi", "version": 1, "name": "Чанахи в горшочках",
@@ -14797,7 +14773,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/chanahi.webp", "source": "Фото: Pannet, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A7%D0%B0%D0%BD%D0%B0%D1%85%D0%B8_02.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/chanahi.webp", "source": "Фото: Pannet, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A7%D0%B0%D0%BD%D0%B0%D1%85%D0%B8_02.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "dolma", "version": 1, "name": "Долма в виноградных листьях",
@@ -14857,7 +14833,7 @@
         ]}
       ],
       "techniques": ["dough_rolling", "forming", "boil"], "diet_tags": ["white_flour"], "container_ok": false,
-      "tip": "Хинкали едят руками за хвостик, сначала выпивая бульон из надкуса; сам хвостик обычно оставляют.", "storage": null, "image": {"url": "photos/hinkali.webp", "source": "Фото: Sandra C from Canada, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Khinkali,_Restaurant_Aragvi.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": "Хинкали едят руками за хвостик, сначала выпивая бульон из надкуса; сам хвостик обычно оставляют.", "storage": null, "image": {"url": "photos/hinkali.webp", "source": "Фото: Sandra C from Canada, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Khinkali,_Restaurant_Aragvi.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kuchmachi", "version": 1, "name": "Кучмачи из печени и сердца",
@@ -14887,7 +14863,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple", "simmer"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/kuchmachi.webp", "source": "Фото: Georgian Recipes at Georgia About, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Kuchmachi_with_walnuts.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/kuchmachi.webp", "source": "Фото: Georgian Recipes at Georgia About, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Kuchmachi_with_walnuts.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "hashlama", "version": 1, "name": "Хашлама из баранины",
@@ -14922,7 +14898,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/hashlama.webp", "source": "Фото: Արարատ Թրվանց, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Beef_Khashlama.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/hashlama.webp", "source": "Фото: Արարատ Թրվանց, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Beef_Khashlama.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "lobio-s-govyadinoy", "version": 1, "name": "Лобио с говядиной",
@@ -14953,7 +14929,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple", "simmer"], "diet_tags": ["legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/lobio-s-govyadinoy.webp", "source": "Фото: Georgian Recipes at Georgia About, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Lobio_with_tomatoes.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/lobio-s-govyadinoy.webp", "source": "Фото: Georgian Recipes at Georgia About, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Lobio_with_tomatoes.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "plov-s-baraninoy", "version": 1, "name": "Плов с бараниной",
@@ -14988,7 +14964,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/plov-s-baraninoy.webp", "source": "Фото: Postovalov, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Plov_with_lamb_and_carrots_in_ceramic_bowl.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/plov-s-baraninoy.webp", "source": "Фото: Postovalov, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Plov_with_lamb_and_carrots_in_ceramic_bowl.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "manty-s-baraninoy", "version": 1, "name": "Манты с бараниной",
@@ -15022,7 +14998,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "dough_rolling", "forming"], "diet_tags": ["white_flour"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/manty-s-baraninoy.webp", "source": "Фото: Scudsvlad, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Manti_1.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/manty-s-baraninoy.webp", "source": "Фото: Scudsvlad, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Manti_1.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "boso-lagman", "version": 1, "name": "Босо-лагман",
@@ -15054,7 +15030,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "kazan-kebab", "version": 1, "name": "Казан-кебаб из баранины с картофелем",
@@ -15082,7 +15058,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["fried"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/kazan-kebab.webp", "source": "Фото: Shuhrataxmedov, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Qozon_kabob_(Uzbek_national_cuisine).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kazan-kebab.webp", "source": "Фото: Shuhrataxmedov, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Qozon_kabob_(Uzbek_national_cuisine).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "dimlyama", "version": 1, "name": "Димляма",
@@ -15687,7 +15663,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/kima-s-goroshkom.webp", "source": "Фото: Affaf Ali, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Spicy_Matar_Keema1.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kima-s-goroshkom.webp", "source": "Фото: Affaf Ali, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Spicy_Matar_Keema1.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "tazhin-iz-baraniny-s-nutom-i-kuragoy", "version": 1, "name": "Тажин из баранины с нутом и курагой",
@@ -15727,7 +15703,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["legumes"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/tazhin-iz-baraniny-s-nutom-i-kuragoy.webp", "source": "Фото: Marica Massaro, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Avezzano_cucina_-_spezzatino_in_tajine.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/tazhin-iz-baraniny-s-nutom-i-kuragoy.webp", "source": "Фото: Marica Massaro, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Avezzano_cucina_-_spezzatino_in_tajine.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kefta-s-kartofelem-i-tomatami", "version": 1, "name": "Кефта с картофелем и томатами в духовке",
@@ -15760,7 +15736,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "forming", "bake_simple"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "shaurma-s-govyadinoy", "version": 1, "name": "Шаурма с говядиной и соусом тахини",
@@ -15794,7 +15770,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/shaurma-s-govyadinoy.webp", "source": "Фото: Hill93, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Beef_Shawarma.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/shaurma-s-govyadinoy.webp", "source": "Фото: Hill93, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Beef_Shawarma.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "chili-kon-karne-s-risom", "version": 1, "name": "Чили кон карне с рисом",
@@ -15869,7 +15845,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/tako-s-govyazhim-farshem.webp", "source": "Фото: Larry Miller, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/tako-s-govyazhim-farshem.webp", "source": "Фото: Larry Miller, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "fahitos-s-govyadinoy", "version": 1, "name": "Фахитос с говядиной",
@@ -15900,7 +15876,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/fahitos-s-govyadinoy.webp", "source": "Фото: Eric T Gunther, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Beef_Fajitas_Costa_Rica.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/fahitos-s-govyadinoy.webp", "source": "Фото: Eric T Gunther, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Beef_Fajitas_Costa_Rica.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "enchilada-s-govyadinoy-i-fasolyu", "version": 1, "name": "Энчилада с говядиной и фасолью",
@@ -15969,7 +15945,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "simmer", "fry_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/karnitas.webp", "source": "Фото: The DLC, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tacos_de_cabeza,_carnitas_y_asada.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/karnitas.webp", "source": "Фото: The DLC, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tacos_de_cabeza,_carnitas_y_asada.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kuritsa-zapechyonnaya-tselikom-s-kartofelem", "version": 1, "name": "Курица, запечённая целиком с картофелем",
@@ -15998,7 +15974,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kurinye-bedra-teriyaki-so-struchkovoy-fasolyu", "version": 1, "name": "Куриные бёдра терияки со стручковой фасолью",
@@ -16098,7 +16074,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple", "fry_simple", "simmer", "boil"], "diet_tags": ["creamy"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/kuritsa-tikka-masala.webp", "source": "Фото: Kelly Sue, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_Tikka_Masala_KellySue.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kuritsa-tikka-masala.webp", "source": "Фото: Kelly Sue, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_Tikka_Masala_KellySue.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "satsivi-iz-kuritsy", "version": 1, "name": "Сациви из курицы",
@@ -16194,7 +16170,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer", "boil"], "diet_tags": ["creamy"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/kurinyy-paprikash.webp", "source": "Фото: Hemant Bedekar, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Bratislava_-_Chicken_Paprikash.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kurinyy-paprikash.webp", "source": "Фото: Hemant Bedekar, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Bratislava_-_Chicken_Paprikash.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "parovye-kotlety-iz-indeyki-s-ovsyankoy", "version": 1, "name": "Паровые котлеты из индейки с овсяными хлопьями",
@@ -16377,7 +16353,7 @@
         ]}
       ],
       "techniques": ["mix", "bake_simple"], "diet_tags": ["refined_sugar"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kurinye-otbivnye-v-panirovke", "version": 1, "name": "Куриные отбивные в панировке",
@@ -16559,7 +16535,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/fahitos-s-kuritsey.webp", "source": "Фото: Missvain, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_fajitas_-_La_Hacienda_-_Sarah_Stierch.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/fahitos-s-kuritsey.webp", "source": "Фото: Missvain, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_fajitas_-_La_Hacienda_-_Sarah_Stierch.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "kuritsa-tanduri", "version": 1, "name": "Курица тандури в духовке",
@@ -16660,7 +16636,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/arros-kon-polo.webp", "source": "Фото: Kobako, Wikimedia Commons", "license": "CC BY-SA 2.5", "license_url": "https://creativecommons.org/licenses/by-sa/2.5", "page_url": "https://commons.wikimedia.org/wiki/File:Arroz-con-Pollo.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/arros-kon-polo.webp", "source": "Фото: Kobako, Wikimedia Commons", "license": "CC BY-SA 2.5", "license_url": "https://creativecommons.org/licenses/by-sa/2.5", "page_url": "https://commons.wikimedia.org/wiki/File:Arroz-con-Pollo.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kurinye-zrazy-s-gribami", "version": 1, "name": "Куриные зразы с грибами и яйцом",
@@ -16715,7 +16691,7 @@
         ]}
       ],
       "techniques": ["fry_simple", "bake_simple"], "diet_tags": ["creamy"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/chkmeruli.webp", "source": "Фото: Francesc Fort, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chkmeruli.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/chkmeruli.webp", "source": "Фото: Francesc Fort, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chkmeruli.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "chygyrtma-iz-kuritsy", "version": 1, "name": "Чыгыртма из курицы с помидорами и яйцом",
@@ -16743,7 +16719,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/chygyrtma-iz-kuritsy.webp", "source": "Фото: Urek Meniashvili, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%C3%87%C4%B1%C4%9F%C4%B1rtma.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/chygyrtma-iz-kuritsy.webp", "source": "Фото: Urek Meniashvili, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%C3%87%C4%B1%C4%9F%C4%B1rtma.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "indeyka-v-slivochno-gorchichnom-souse-s-penne", "version": 1, "name": "Индейка в сливочно-горчичном соусе с пенне",
@@ -16774,7 +16750,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer", "boil"], "diet_tags": ["creamy"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "bedro-indeyki-s-tykvoy-i-rozmarinom", "version": 1, "name": "Бедро индейки, запечённое с тыквой и розмарином",
@@ -16988,7 +16964,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer", "boil"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/biryani-s-kuritsey.webp", "source": "Фото: Subhrajyoti07, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:A_home_made_plate_of_mutton_biryani_served_with_chicken_kassa_cooked_in_the_bengali_style.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/biryani-s-kuritsey.webp", "source": "Фото: Subhrajyoti07, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:A_home_made_plate_of_mutton_biryani_served_with_chicken_kassa_cooked_in_the_bengali_style.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "lapsha-s-kuritsey-v-arahisovom-souse", "version": 1, "name": "Лапша с курицей в арахисовом соусе",
@@ -17021,7 +16997,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple", "mix"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/lapsha-s-kuritsey-v-arahisovom-souse.webp", "source": "Фото: USDA, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:Noodles_with_Peanut_Butter_Sauce.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/lapsha-s-kuritsey-v-arahisovom-souse.webp", "source": "Фото: USDA, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:Noodles_with_Peanut_Butter_Sauce.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "kurinoe-file-s-ovoshchami-na-paru", "version": 1, "name": "Куриное филе с овощами на пару",
@@ -17115,7 +17091,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/pad-tay-s-kuritsey.webp", "source": "Фото: Chris Olszewski, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_Pad_Thai_dish_served_at_Indooroopilly_Shopping_Centre,_Brisbane.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/pad-tay-s-kuritsey.webp", "source": "Фото: Chris Olszewski, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_Pad_Thai_dish_served_at_Indooroopilly_Shopping_Centre,_Brisbane.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "okorochka-gril-s-paprikoy", "version": 1, "name": "Окорочка гриль с паприкой и чесноком",
@@ -17146,7 +17122,7 @@
         ]}
       ],
       "techniques": ["mix", "bake_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/okorochka-gril-s-paprikoy.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Rotisserie_chicken_bought_from_Dieppe_Market_2026-05-09.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "american", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/okorochka-gril-s-paprikoy.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Rotisserie_chicken_bought_from_Dieppe_Market_2026-05-09.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "american", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kurinye-goleni-s-adzhikoy", "version": 1, "name": "Куриные голени с аджикой в духовке",
@@ -17596,7 +17572,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple"], "diet_tags": ["fish"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/seld-zapechyonnaya-s-kartofelem.webp", "source": "Фото: MOs810, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Baked_herring_with_potatoes.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/seld-zapechyonnaya-s-kartofelem.webp", "source": "Фото: MOs810, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Baked_herring_with_potatoes.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kotlety-iz-shchuki", "version": 1, "name": "Котлеты из щуки",
@@ -17769,7 +17745,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "simmer"], "diet_tags": ["creamy", "lean_protein", "white_flour"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/midii-v-slivochno-chesnochnom-souse.webp", "source": "Фото: brian kelly from washington, dc, US-A, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Moules_Normandes.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/midii-v-slivochno-chesnochnom-souse.webp", "source": "Фото: brian kelly from washington, dc, US-A, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Moules_Normandes.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "paelya-s-moreproduktami", "version": 1, "name": "Паэлья с морепродуктами",
@@ -17803,7 +17779,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/paelya-s-moreproduktami.webp", "source": "Фото: P1898, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Seafood_paella_Filipina.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/paelya-s-moreproduktami.webp", "source": "Фото: P1898, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Seafood_paella_Filipina.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "rizotto-s-moreproduktami", "version": 1, "name": "Ризотто с морепродуктами",
@@ -17834,7 +17810,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["creamy"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/rizotto-s-moreproduktami.webp", "source": "Фото: Ceeseven, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Seafood_Risotto.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/rizotto-s-moreproduktami.webp", "source": "Фото: Ceeseven, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Seafood_Risotto.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "spagetti-s-midiyami-v-tomate", "version": 1, "name": "Спагетти с мидиями в томатном соусе",
@@ -17861,7 +17837,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "simmer"], "diet_tags": ["lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/spagetti-s-midiyami-v-tomate.webp", "source": "Фото: CharmaineZoe's Marvelous Melange from England, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:19_05_2018_Spaghetti_Marinara_with_mussels,_squid_rings,_prawns,_scallops_%26_chorizo_in_a_tomato_and_onion_cream_sauce_(made_with_love_by_my_lovely_hubby)_(41506021664).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/spagetti-s-midiyami-v-tomate.webp", "source": "Фото: CharmaineZoe's Marvelous Melange from England, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:19_05_2018_Spaghetti_Marinara_with_mussels,_squid_rings,_prawns,_scallops_%26_chorizo_in_a_tomato_and_onion_cream_sauce_(made_with_love_by_my_lovely_hubby)_(41506021664).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "pasta-s-lososem-v-slivochnom-souse", "version": 1, "name": "Паста с лососем в сливочном соусе",
@@ -17919,7 +17895,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["lean_protein", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/funchoza-s-krevetkami-i-ovoshchami.webp", "source": "Фото: PattayaPatrol, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:DFC_2242_Chilled_glass_noodle_salad_tossed_with_shrimp_fresh_herbs_crunchy_cabbage_and_a_zesty_chili-lime_dressing.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/funchoza-s-krevetkami-i-ovoshchami.webp", "source": "Фото: PattayaPatrol, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:DFC_2242_Chilled_glass_noodle_salad_tossed_with_shrimp_fresh_herbs_crunchy_cabbage_and_a_zesty_chili-lime_dressing.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "zelyonoe-karri-s-krevetkami", "version": 1, "name": "Зелёное тайское карри с креветками и рисом",
@@ -18219,7 +18195,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "mix"], "diet_tags": ["fish", "vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/tako-s-ryboy.webp", "source": "Фото: Missvain, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Fish_tacos_from_Pezcow_-_April_2023_-_Sarah_Stierch.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/tako-s-ryboy.webp", "source": "Фото: Missvain, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Fish_tacos_from_Pezcow_-_April_2023_-_Sarah_Stierch.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "ryba-v-chermule-s-kuskusom", "version": 1, "name": "Рыба в чермуле с кускусом",
@@ -18250,7 +18226,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "blend", "bake_simple"], "diet_tags": ["fish", "lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "gorbusha-tushyonaya-v-slivkah", "version": 1, "name": "Горбуша, тушённая в сливках с луком",
@@ -18337,7 +18313,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": ["lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/udon-s-moreproduktami.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Spicy_King_Prawn_Stir-Fry_Udon_-_Aberdeen_Seafood,_Brighton_2026-07-19.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/udon-s-moreproduktami.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Spicy_King_Prawn_Stir-Fry_Udon_-_Aberdeen_Seafood,_Brighton_2026-07-19.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "sibas-na-paru-s-imbiryom", "version": 1, "name": "Сибас на пару с имбирём и зелёным луком",
@@ -19427,7 +19403,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "fasol-zapechyonnaya-po-grecheski", "version": 1, "name": "Белая фасоль, запечённая в томатах по-гречески",
@@ -19619,7 +19595,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/radzhma.webp", "source": "Фото: Monali.mishra, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Rajmamasala.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/radzhma.webp", "source": "Фото: Monali.mishra, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Rajmamasala.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "chechevitsa-tushyonaya-s-ovoshchami", "version": 1, "name": "Зелёная чечевица, тушённая с овощами",
@@ -19684,7 +19660,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/nut-so-shpinatom-po-andaluzski.webp", "source": "Фото: Tubamirum at French Wikipedia, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:GarbanzosConEspinacas.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/nut-so-shpinatom-po-andaluzski.webp", "source": "Фото: Tubamirum at French Wikipedia, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:GarbanzosConEspinacas.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "pertsy-farshirovannye-risom-i-ovoshchami", "version": 1, "name": "Перцы, фаршированные рисом и овощами",
@@ -20270,7 +20246,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["fried"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kartofelnoe-pyure-s-gribnoy-podlivkoy", "version": 1, "name": "Картофельное пюре с грибной подливкой",
@@ -20565,7 +20541,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["legumes", "lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/tofu-tikka-masala.webp", "source": "Фото: Vegan Feast Catering, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tofu_Tikka_Masala_with_Brown_Rice_and_Chilies_(4940638692).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/tofu-tikka-masala.webp", "source": "Фото: Vegan Feast Catering, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tofu_Tikka_Masala_with_Brown_Rice_and_Chilies_(4940638692).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "udon-s-ovoshchami-vok", "version": 1, "name": "Удон с овощами вок",
@@ -20630,7 +20606,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/pad-tay-s-tofu.webp", "source": "Фото: avlxyz, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Pad_Thai_tofu_and_veg_-_Mint_Thai_AUD9.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/pad-tay-s-tofu.webp", "source": "Фото: avlxyz, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Pad_Thai_tofu_and_veg_-_Mint_Thai_AUD9.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "zharenyy-ris-s-ananasom", "version": 1, "name": "Жареный рис с ананасом и кешью",
@@ -20727,7 +20703,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple", "simmer"], "diet_tags": ["vegetable_rich", "white_flour"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/yaponskoe-karri-s-ovoshchami.webp", "source": "Фото: RuinDig/Yuki Uchida, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:CURRY-SHOP-C-and-C---Steamed-Vegetable-Curry---2025.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/yaponskoe-karri-s-ovoshchami.webp", "source": "Фото: RuinDig/Yuki Uchida, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:CURRY-SHOP-C-and-C---Steamed-Vegetable-Curry---2025.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "risovaya-lapsha-v-arahisovom-souse", "version": 1, "name": "Рисовая лапша с овощами в арахисовом соусе",
@@ -20831,7 +20807,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": ["legumes", "white_flour"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/burrito-s-fasolyu-i-risom.webp", "source": "Фото: Levi bernardo, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Burrito_chihuahuense_de_chile_verde_c.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/burrito-s-fasolyu-i-risom.webp", "source": "Фото: Levi bernardo, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Burrito_chihuahuense_de_chile_verde_c.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kesadilya-s-fasolyu-i-syrom", "version": 1, "name": "Кесадилья с фасолью и сыром",
@@ -20858,7 +20834,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["legumes", "white_flour"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/kesadilya-s-fasolyu-i-syrom.webp", "source": "Фото: Daderot, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Quesadilla_with_cheese,_black_beans,_and_beef_brisket_-_Cambridge,_MA.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/kesadilya-s-fasolyu-i-syrom.webp", "source": "Фото: Daderot, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Quesadilla_with_cheese,_black_beans,_and_beef_brisket_-_Cambridge,_MA.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "enchilady-s-fasolyu", "version": 1, "name": "Энчилады с фасолью и овощами",
@@ -20929,7 +20905,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple", "mix"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/tako-s-fasolyu-i-ovoshchami.webp", "source": "Фото: Karen and Brad Emerson, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Roasted_sweet_potato_%2B_black_bean_tacos_(7784822910).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/tako-s-fasolyu-i-ovoshchami.webp", "source": "Фото: Karen and Brad Emerson, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Roasted_sweet_potato_%2B_black_bean_tacos_(7784822910).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "fahitas-s-veshenkami-i-pertsem", "version": 1, "name": "Фахитас с вёшенками и перцем",
@@ -20993,7 +20969,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple", "blend", "simmer"], "diet_tags": ["vegetable_rich", "creamy"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/palak-panir-s-adygeyskim-syrom.webp", "source": "Фото: DreamyFlutura11, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Palak_Paneer_(Cottage_cheese_in_spinach_gravy).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/palak-panir-s-adygeyskim-syrom.webp", "source": "Фото: DreamyFlutura11, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Palak_Paneer_(Cottage_cheese_in_spinach_gravy).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "alu-gobi", "version": 1, "name": "Алу гоби",
@@ -21030,7 +21006,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/alu-gobi.webp", "source": "Фото: автор не указан, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Aloo_gobi.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/alu-gobi.webp", "source": "Фото: автор не указан, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Aloo_gobi.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "alu-matar", "version": 1, "name": "Алу матар",
@@ -21062,7 +21038,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/alu-matar.webp", "source": "Фото: Zeel Patel, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Aloo_Matar.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/alu-matar.webp", "source": "Фото: Zeel Patel, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Aloo_Matar.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "ovoshchnoy-biryani", "version": 1, "name": "Овощной бирьяни",
@@ -21101,7 +21077,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/ovoshchnoy-biryani.webp", "source": "Фото: Phadke09, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Vegetable_Biryani_IMG_001.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/ovoshchnoy-biryani.webp", "source": "Фото: Phadke09, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Vegetable_Biryani_IMG_001.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "salat-obzhorka", "version": 1, "name": "Салат «Обжорка»",
@@ -22196,7 +22172,7 @@
         ]}
       ],
       "techniques": ["bake_simple", "knife_basic", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "salat-s-rostbifom-i-rukkoloy", "version": 1, "name": "Салат с ростбифом и рукколой",
@@ -22224,7 +22200,7 @@
         ]}
       ],
       "techniques": ["fry_simple", "bake_simple", "knife_basic", "mix"], "diet_tags": ["lean_protein"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/salat-s-rostbifom-i-rukkoloy.webp", "source": "Фото: Alpha from Melbourne, Australia, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Leftover_Roast_Beef_Rib-Eye_salad_with_Pomegranate_Vinaigrette.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/salat-s-rostbifom-i-rukkoloy.webp", "source": "Фото: Alpha from Melbourne, Australia, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Leftover_Roast_Beef_Rib-Eye_salad_with_Pomegranate_Vinaigrette.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "salat-s-semgoy-i-avokado", "version": 1, "name": "Салат с малосольной сёмгой и авокадо",
@@ -23249,57 +23225,54 @@
         ]}
       ],
       "techniques": ["knife_basic", "bake_simple"], "diet_tags": ["vegetable_rich", "white_flour"], "container_ok": false,
-      "tip": "Помидоры кладите на хлеб в последний момент, иначе брускетта размокнет.", "storage": null, "image": {"url": "photos/brusketta-s-pomidorami-i-bazilikom.webp", "source": "Фото: Abi Porter, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tomato_and_basil_bruschetta_(4925749658).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 1, "kid_friendly": true
+      "tip": "Помидоры кладите на хлеб в последний момент, иначе брускетта размокнет.", "storage": null, "image": {"url": "photos/brusketta-s-pomidorami-i-bazilikom.webp", "source": "Фото: Abi Porter, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tomato_and_basil_bruschetta_(4925749658).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 0, "kid_friendly": true
     },
     {
-      "id": "brusketta-s-shampinyonami", "version": 1, "name": "Брускетта с шампиньонами и тимьяном",
-      "description": "Хрустящий багет с обжаренными шампиньонами, чесноком, тимьяном и петрушкой.",
-      "category": "snack", "meal_types": ["snack"], "servings": 4, "yield_g": 400,
+      "id": "perepelinye-yaytsa-s-cherri", "version": 1, "name": "Перепелиные яйца с черри и рукколой",
+      "description": "Варёные перепелиные яйца с половинками черри, рукколой и каплей оливкового масла.",
+      "category": "snack", "meal_types": ["snack"], "servings": 2, "yield_g": 300,
       "ingredients": [
-        {"product": "baguette", "qty": 200, "unit": "g"},
-        {"product": "champignons", "qty": 300, "unit": "g"},
-        {"product": "garlic", "qty": 2, "unit": "pcs"},
-        {"product": "thyme", "qty": 3, "unit": "g"},
-        {"product": "olive_oil", "qty": 3, "unit": "tbsp"},
-        {"product": "parsley", "qty": 10, "unit": "g"},
-        {"product": "lemon", "qty": 20, "unit": "g"},
-        {"product": "salt", "qty": 2, "unit": "pinch"},
+        {"product": "quail_eggs", "qty": 10, "unit": "pcs"},
+        {"product": "cherry_tomatoes", "qty": 150, "unit": "g"},
+        {"product": "arugula", "qty": 30, "unit": "g"},
+        {"product": "olive_oil", "qty": 1, "unit": "tbsp"},
+        {"product": "salt", "qty": 1, "unit": "pinch"},
         {"product": "black_pepper", "qty": 1, "unit": "pinch"}
       ],
       "methods": [
-        {"id": "stove", "name": "На сковороде", "equipment": ["stove"], "active_min": 15, "total_min": 20, "steps": [
-          "Нарежьте багет ломтиками 1,5 см и подсушите на сухой сковороде по 2 минуты с каждой стороны, переложите на тарелку.",
-          "Шампиньоны нарежьте тонкими пластинами, чеснок мелко порубите.",
-          "Разогрейте 2 ложки масла на сильном огне, выложите грибы одним слоем и жарьте 6–7 минут, пока сок не выпарится и края не зарумянятся.",
-          "Добавьте чеснок и листья тимьяна, жарьте ещё 1 минуту, посолите, поперчите и сбрызните соком лимона.",
-          "Смажьте хлеб оставшимся маслом, разложите тёплые грибы и посыпьте рубленой петрушкой."
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 10, "total_min": 15, "steps": [
+          "Опустите перепелиные яйца в кипящую воду и варите 4 минуты, затем переложите в холодную воду на 3 минуты.",
+          "Очистите яйца и разрежьте пополам.",
+          "Черри разрежьте пополам, рукколу промойте и обсушите.",
+          "Выложите рукколу, черри и яйца, посолите, поперчите и полейте маслом."
         ]}
       ],
-      "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["white_flour"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/brusketta-s-shampinyonami.webp", "source": "Фото: avlxyz, Flickr (через Openverse)", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0/", "page_url": "https://www.flickr.com/photos/10559879@N00/4410097511"}, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 1, "kid_friendly": true
+      "techniques": ["boil", "knife_basic"], "diet_tags": ["lean_protein", "vegetable_rich"], "container_ok": true,
+      "tip": "Скорлупа снимается легче, если слегка прокатить яйцо по столу, чтобы она покрылась трещинками.", "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
-      "id": "brusketta-s-rikottoy-i-grushey", "version": 1, "name": "Брускетта с рикоттой, грушей и мёдом",
-      "description": "Тёплый багет с нежной рикоттой, тонкими ломтиками груши, грецкими орехами и каплей мёда.",
-      "category": "snack", "meal_types": ["snack", "breakfast"], "servings": 4, "yield_g": 560,
+      "id": "ruletiki-iz-vetchiny-s-tvorozhnym-syrom", "version": 1, "name": "Рулетики из ветчины с творожным сыром и огурцом",
+      "description": "Тонкие ломтики ветчины с творожным сыром, укропом и хрустящим огурцом внутри.",
+      "category": "snack", "meal_types": ["snack", "breakfast"], "servings": 4, "yield_g": 360,
       "ingredients": [
-        {"product": "baguette", "qty": 200, "unit": "g"},
-        {"product": "ricotta", "qty": 160, "unit": "g"},
-        {"product": "pear", "qty": 1, "unit": "pcs"},
-        {"product": "walnuts", "qty": 30, "unit": "g"},
-        {"product": "honey", "qty": 2, "unit": "tbsp"},
+        {"product": "ham", "qty": 200, "unit": "g"},
+        {"product": "cream_cheese", "qty": 120, "unit": "g"},
+        {"product": "cucumber", "qty": 1, "unit": "pcs"},
+        {"product": "dill", "qty": 10, "unit": "g"},
+        {"product": "garlic", "qty": 1, "unit": "pcs"},
         {"product": "black_pepper", "qty": 1, "unit": "pinch"}
       ],
       "methods": [
-        {"id": "oven", "name": "В духовке", "equipment": ["oven"], "active_min": 10, "total_min": 18, "steps": [
-          "Разогрейте духовку до 200 °C, нарежьте багет ломтиками 1,5 см и подсушите 6–8 минут.",
-          "Орехи слегка обжарьте на том же противне последние 3 минуты и крупно порубите.",
-          "Грушу разрежьте на четвертинки, удалите сердцевину и нарежьте тонкими ломтиками.",
-          "Намажьте тёплый хлеб рикоттой, выложите грушу, посыпьте орехами, полейте мёдом и по желанию добавьте щепотку перца."
+        {"id": "nocook", "name": "Без готовки", "equipment": [], "active_min": 15, "total_min": 25, "steps": [
+          "Смешайте творожный сыр с мелко рубленым укропом, выдавленным чесноком и перцем.",
+          "Огурец нарежьте тонкими брусочками длиной по ширине ломтика ветчины.",
+          "Намажьте каждый ломтик ветчины тонким слоем сырной массы.",
+          "Положите на край брусочек огурца и плотно сверните рулетиком.",
+          "Уложите рулетики швом вниз и уберите в холодильник на 10 минут перед подачей."
         ]}
       ],
-      "techniques": ["knife_basic", "bake_simple"], "diet_tags": ["white_flour"], "container_ok": false,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "italian", "spicy": 0, "kid_friendly": true
+      "techniques": ["knife_basic", "no_cook"], "diet_tags": ["creamy"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "buterbrody-so-shprotami", "version": 1, "name": "Бутерброды со шпротами и огурцом",
@@ -23327,7 +23300,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["fish", "creamy"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/buterbrody-so-shprotami.webp", "source": "Фото: Aliyarussophonekz, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Zakouskis_aux_sprats.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/buterbrody-so-shprotami.webp", "source": "Фото: Aliyarussophonekz, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Zakouskis_aux_sprats.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "buterbrody-s-krasnoy-ikroy", "version": 1, "name": "Бутерброды с красной икрой",
@@ -23422,29 +23395,34 @@
         ]}
       ],
       "techniques": ["knife_basic", "blend"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/namazka-iz-sala-s-chesnokom.webp", "source": "Фото: Abraham, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Smalec_Panewniki.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/namazka-iz-sala-s-chesnokom.webp", "source": "Фото: Abraham, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Smalec_Panewniki.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": false
     },
     {
-      "id": "tosty-s-fasolyu-v-tomate", "version": 1, "name": "Тосты с фасолью в томатном соусе",
-      "description": "Горячая фасоль в томатном соусе на подрумяненных тостах — сытный перекус по-британски.",
-      "category": "snack", "meal_types": ["breakfast", "snack"], "servings": 2, "yield_g": 490,
+      "id": "edamame-s-solyu-i-kunzhutom", "version": 1, "name": "Эдамаме с солью и кунжутом",
+      "description": "Молодые соевые бобы в стручках, сваренные за пять минут, с соевым соусом и кунжутом.",
+      "category": "snack", "meal_types": ["snack"], "servings": 2, "yield_g": 320,
       "ingredients": [
-        {"product": "beans_in_tomato", "qty": 400, "unit": "g"},
-        {"product": "toast_bread", "qty": 4, "unit": "pcs"},
-        {"product": "butter", "qty": 10, "unit": "g"},
-        {"product": "black_pepper", "qty": 1, "unit": "pinch"},
-        {"product": "parsley", "qty": 5, "unit": "g"}
+        {"product": "edamame_frozen", "qty": 300, "unit": "g"},
+        {"product": "water", "qty": 1500, "unit": "ml"},
+        {"product": "soy_sauce", "qty": 1, "unit": "tbsp"},
+        {"product": "sesame_seeds", "qty": 1, "unit": "tsp"},
+        {"product": "salt", "qty": 2, "unit": "pinch"}
       ],
       "methods": [
-        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 7, "total_min": 10, "steps": [
-          "Выложите фасоль с соусом в сотейник и прогрейте на среднем огне 4–5 минут, помешивая, до лёгкого кипения.",
-          "Одновременно подрумяньте тосты на сухой сковороде по 1–2 минуты с каждой стороны.",
-          "Смажьте горячие тосты маслом.",
-          "Выложите фасоль на тосты, поперчите и посыпьте рубленой петрушкой."
+        {"id": "stove", "name": "На плите", "equipment": ["stove"], "active_min": 5, "total_min": 12, "steps": [
+          "Доведите воду до кипения и посолите.",
+          "Опустите замороженные стручки и варите 4–5 минут после повторного закипания.",
+          "Откиньте на дуршлаг и дайте стечь воде.",
+          "Сбрызните соевым соусом, посыпьте кунжутом и перемешайте."
+        ]},
+        {"id": "microwave", "name": "В микроволновке", "equipment": ["microwave"], "active_min": 3, "total_min": 9, "steps": [
+          "Выложите стручки в миску для микроволновки и добавьте 2 столовые ложки воды.",
+          "Накройте крышкой с отверстием и готовьте 5–6 минут на мощности 800 Вт, перемешав на середине.",
+          "Слейте воду, сбрызните соевым соусом и посыпьте кунжутом."
         ]}
       ],
-      "techniques": ["knife_basic", "simmer", "fry_simple"], "diet_tags": ["legumes", "white_flour"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/tosty-s-fasolyu-v-tomate.webp", "source": "Фото: Kolforn, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:-2021-12-02_Beans_on_toast,_Trimingham,_Norfolk.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
+      "techniques": ["boil"], "diet_tags": ["legumes", "lean_protein"], "container_ok": true,
+      "tip": "Едят только бобы: стручок жёсткий, бобы выдавливают из него губами.", "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kesadilya-s-syrom-i-kukuruzoy", "version": 1, "name": "Кесадилья с сыром, перцем и кукурузой",
@@ -23528,7 +23506,7 @@
         ]}
       ],
       "techniques": ["bake_simple", "knife_basic", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": "На открытом огне бабагануш получается с выраженным дымным вкусом.", "storage": null, "image": {"url": "photos/babaganush.webp", "source": "Фото: Basel15 at English Wikipedia, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:Baba_Ghanoush.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": "На открытом огне бабагануш получается с выраженным дымным вкусом.", "storage": null, "image": {"url": "photos/babaganush.webp", "source": "Фото: Basel15 at English Wikipedia, Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:Baba_Ghanoush.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "tapenada-iz-maslin", "version": 1, "name": "Тапенада из маслин с каперсами",
@@ -23551,7 +23529,7 @@
         ]}
       ],
       "techniques": ["blend"], "diet_tags": [], "container_ok": true,
-      "tip": "Подавайте с подсушенным багетом, хлебцами или палочками сладкого перца.", "storage": null, "image": {"url": "photos/tapenada-iz-maslin.webp", "source": "Фото: Arnaud 25, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tapenade_01.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": false
+      "tip": "Подавайте с подсушенным багетом, хлебцами или палочками сладкого перца.", "storage": null, "image": {"url": "photos/tapenada-iz-maslin.webp", "source": "Фото: Arnaud 25, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tapenade_01.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "forshmak-iz-seldi", "version": 1, "name": "Форшмак из сельди с яблоком",
@@ -23646,7 +23624,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/ikra-baklazhannaya.webp", "source": "Фото: MOs810, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Eggplant_caviar_Chisinau.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/ikra-baklazhannaya.webp", "source": "Фото: MOs810, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Eggplant_caviar_Chisinau.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "pashtet-iz-govyazhey-pecheni", "version": 1, "name": "Паштет из говяжьей печени с морковью",
@@ -23790,7 +23768,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/tsatsiki-s-ovoshchnymi-palochkami.webp", "source": "Фото: Nikodem Nijaki, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tzatziki_meze_or_appetizer,_also_used_as_a_sauce.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/tsatsiki-s-ovoshchnymi-palochkami.webp", "source": "Фото: Nikodem Nijaki, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tzatziki_meze_or_appetizer,_also_used_as_a_sauce.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "svekolnyy-hummus", "version": 1, "name": "Свекольный хумус",
@@ -23817,7 +23795,7 @@
         ]}
       ],
       "techniques": ["blend"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/svekolnyy-hummus.webp", "source": "Фото: Wikiuni123, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Homemade_Beetroot_Hummus.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/svekolnyy-hummus.webp", "source": "Фото: Wikiuni123, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Homemade_Beetroot_Hummus.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "farshirovannye-yaytsa", "version": 1, "name": "Яйца, фаршированные желтком с горчицей",
@@ -23842,7 +23820,7 @@
         ]}
       ],
       "techniques": ["boil", "mix"], "diet_tags": ["creamy"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/farshirovannye-yaytsa.webp", "source": "Фото: Michele Ursino, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Deviled_eggs_closeup.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/farshirovannye-yaytsa.webp", "source": "Фото: Michele Ursino, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Deviled_eggs_closeup.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "rulety-iz-baklazhanov-s-syrom", "version": 1, "name": "Рулетики из баклажанов с сыром и чесноком",
@@ -23873,7 +23851,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["fried", "creamy", "vegetable_rich"], "container_ok": false,
-      "tip": "В духовке баклажаны впитывают меньше масла, а рулетики получаются легче.", "storage": null, "image": {"url": "photos/rulety-iz-baklazhanov-s-syrom.webp", "source": "Фото: Karen and Brad Emerson, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Egglplant_(5996343904).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": false
+      "tip": "В духовке баклажаны впитывают меньше масла, а рулетики получаются легче.", "storage": null, "image": {"url": "photos/rulety-iz-baklazhanov-s-syrom.webp", "source": "Фото: Karen and Brad Emerson, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Egglplant_(5996343904).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "syrnye-palochki-iz-motsarelly", "version": 1, "name": "Сырные палочки из моцареллы в духовке",
@@ -23957,7 +23935,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple"], "diet_tags": ["lean_protein", "vegetable_rich", "white_flour"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/roll-iz-lavasha-s-kuritsey.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_%C3%87%C3%B6p_Shish_-_Lavash_2023-12-13.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/roll-iz-lavasha-s-kuritsey.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Chicken_%C3%87%C3%B6p_Shish_-_Lavash_2023-12-13.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "spring-rolly-s-ovoshchami", "version": 1, "name": "Спринг-роллы с овощами и арахисовым соусом",
@@ -24016,7 +23994,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "forming"], "diet_tags": ["lean_protein"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/spring-rolly-s-krevetkami-i-mango.webp", "source": "Фото: cyclonebill from Copenhagen, Denmark, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Sommerruller_med_rejer_og_svinek%C3%B8d_(5674880455).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/spring-rolly-s-krevetkami-i-mango.webp", "source": "Фото: cyclonebill from Copenhagen, Denmark, Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Sommerruller_med_rejer_og_svinek%C3%B8d_(5674880455).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "kimchi-iz-pekinskoy-kapusty-bystraya", "version": 1, "name": "Быстрая кимчи из пекинской капусты",
@@ -24153,7 +24131,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "bake_simple"], "diet_tags": [], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/shampinyony-farshirovannye-syrom.webp", "source": "Фото: Stacy, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Stuffed_mushrooms_with_herbs_and_goat_cheese,_June_2009.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/shampinyony-farshirovannye-syrom.webp", "source": "Фото: Stacy, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Stuffed_mushrooms_with_herbs_and_goat_cheese,_June_2009.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "perets-farshirovannyy-brynzoy", "version": 1, "name": "Сладкий перец, фаршированный брынзой и зеленью",
@@ -24178,7 +24156,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "mix"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/perets-farshirovannyy-brynzoy.webp", "source": "Фото: Ivana Sokolović, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Paprika_punjena_sirom_(10844071935).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/perets-farshirovannyy-brynzoy.webp", "source": "Фото: Ivana Sokolović, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Paprika_punjena_sirom_(10844071935).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "pomidory-s-syrom-i-chesnokom", "version": 1, "name": "Помидоры с сыром и чесноком",
@@ -24201,7 +24179,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "mix"], "diet_tags": ["creamy"], "container_ok": false,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "malosolnye-ogurtsy-v-pakete", "version": 1, "name": "Малосольные огурцы в пакете",
@@ -24223,7 +24201,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "no_cook"], "diet_tags": ["vegetable_rich"], "container_ok": true,
-      "tip": "Через сутки огурцы станут солонее; храните их не дольше 3 дней.", "storage": null, "image": {"url": "photos/malosolnye-ogurtsy-v-pakete.webp", "source": "Фото: MOs810, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Polish_cucumbers_malosolne_(2).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": "Через сутки огурцы станут солонее; храните их не дольше 3 дней.", "storage": null, "image": {"url": "photos/malosolnye-ogurtsy-v-pakete.webp", "source": "Фото: MOs810, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Polish_cucumbers_malosolne_(2).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kanape-kapreze", "version": 1, "name": "Канапе капрезе на шпажках",
@@ -24322,7 +24300,7 @@
         ]}
       ],
       "techniques": ["bake_simple", "mix"], "diet_tags": [], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/pryanye-orekhi-s-rozmarinom.webp", "source": "Фото: Migle Seikyte, Flickr (через Openverse)", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0/", "page_url": "https://www.flickr.com/photos/69668444@N03/9326724478"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/pryanye-orekhi-s-rozmarinom.webp", "source": "Фото: Migle Seikyte, Flickr (через Openverse)", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0/", "page_url": "https://www.flickr.com/photos/69668444@N03/9326724478"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "arbuz-s-fetoy-i-myatoy", "version": 1, "name": "Арбуз с фетой и мятой",
@@ -24370,34 +24348,32 @@
       "tip": "Для маленьких детей используйте шпажки с тупыми концами или подавайте фрукты кубиками в миске.", "storage": null, "image": {"url": "photos/fruktovye-shpazhki-s-yogurtovym-dipom.webp", "source": "Фото: IndayLiburan, Wikimedia Commons", "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Fruit_Kebabs%22.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
-      "id": "tvorozhnye-syrki-v-shokolade", "version": 1, "name": "Домашние творожные сырки в шоколаде",
-      "description": "Сладкие брусочки из протёртого творога с маслом и ванилью в глазури из горького шоколада.",
-      "category": "snack", "meal_types": ["snack"], "servings": 8, "yield_g": 490,
+      "id": "tvorozhnyy-krem-s-yagodami", "version": 1, "name": "Творожный крем с ягодами",
+      "description": "Воздушный крем из творога и греческого йогурта с мёдом, слоями с ягодами.",
+      "category": "dessert", "meal_types": ["snack", "breakfast"], "servings": 4, "yield_g": 640,
       "ingredients": [
-        {"product": "cottage_cheese_9", "qty": 300, "unit": "g"},
-        {"product": "butter", "qty": 40, "unit": "g"},
-        {"product": "powdered_sugar", "qty": 40, "unit": "g"},
-        {"product": "vanilla_sugar", "qty": 1, "unit": "tsp"},
-        {"product": "dark_chocolate", "qty": 100, "unit": "g"},
-        {"product": "coconut_oil", "qty": 10, "unit": "g"}
+        {"product": "cottage_cheese", "qty": 400, "unit": "g"},
+        {"product": "yogurt_greek", "qty": 150, "unit": "g"},
+        {"product": "honey", "qty": 2, "unit": "tbsp"},
+        {"product": "berry_mix_frozen", "qty": 200, "unit": "g"},
+        {"product": "vanilla_sugar", "qty": 1, "unit": "tsp"}
       ],
       "methods": [
-        {"id": "stove", "name": "На водяной бане", "equipment": ["stove"], "active_min": 30, "total_min": 100, "steps": [
-          "Протрите творог через сито или пробейте блендером до гладкости.",
-          "Вмешайте мягкое масло, сахарную пудру и ванильный сахар.",
-          "Сформуйте 8 брусочков или разложите массу по силиконовым формочкам и заморозьте на 30 минут.",
-          "Растопите шоколад с кокосовым маслом на водяной бане, помешивая, и снимите с огня.",
-          "Окуните каждый сырок в шоколад вилкой, дайте стечь излишкам и выложите на бумагу.",
-          "Уберите в холодильник на 30 минут, чтобы глазурь застыла."
+        {"id": "blender", "name": "В блендере", "equipment": ["blender"], "active_min": 10, "total_min": 25, "steps": [
+          "Разморозьте ягоды при комнатной температуре и слейте лишний сок.",
+          "Взбейте творог с йогуртом, мёдом и ванильным сахаром до гладкого крема, 1–2 минуты.",
+          "Разложите крем по стаканам слоями с ягодами.",
+          "Уберите в холодильник на 10–15 минут перед подачей."
         ]},
-        {"id": "microwave", "name": "Шоколад в микроволновке", "equipment": ["microwave"], "active_min": 30, "total_min": 95, "steps": [
-          "Приготовьте творожную массу, сформуйте сырки и заморозьте на 30 минут.",
-          "Растапливайте шоколад с кокосовым маслом в микроволновке порциями по 20–30 секунд на средней мощности, перемешивая.",
-          "Покройте сырки глазурью и охладите 30 минут."
+        {"id": "nocook", "name": "Без блендера", "equipment": [], "active_min": 15, "total_min": 30, "steps": [
+          "Разморозьте ягоды и слейте лишний сок.",
+          "Протрите творог через сито или тщательно разомните вилкой.",
+          "Вмешайте йогурт, мёд и ванильный сахар до однородности.",
+          "Выложите слоями с ягодами и охладите 10 минут."
         ]}
       ],
-      "techniques": ["mix", "forming"], "diet_tags": ["refined_sugar"], "container_ok": true,
-      "tip": null, "storage": null, "image": {"url": "photos/tvorozhnye-syrki-v-shokolade.webp", "source": "Фото: Sokolikmawwer0, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:A_curd_bar_cut_in_half_on_a_wooden_board..jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
+      "techniques": ["blend", "mix"], "diet_tags": ["creamy"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "yablochnye-chipsy-s-koritsey", "version": 1, "name": "Яблочные чипсы с корицей",
@@ -24672,7 +24648,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "blend"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": "Мощный блендер справится с сырой морковью лучше; при слабом — натрите её на мелкой тёрке.", "storage": null, "image": {"url": "photos/smuzi-morkovno-apelsinovyy-s-imbiryom.webp", "source": "Фото: VegaTeam, Flickr (через Openverse)", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "page_url": "https://www.flickr.com/photos/59256189@N04/5937383101"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": false
+      "tip": "Мощный блендер справится с сырой морковью лучше; при слабом — натрите её на мелкой тёрке.", "storage": null, "image": {"url": "photos/smuzi-morkovno-apelsinovyy-s-imbiryom.webp", "source": "Фото: VegaTeam, Flickr (через Openverse)", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0/", "page_url": "https://www.flickr.com/photos/59256189@N04/5937383101"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "molochnyy-kokteyl-s-plombirom", "version": 1, "name": "Молочный коктейль с пломбиром",
@@ -25062,7 +25038,7 @@
         ]}
       ],
       "techniques": ["boil"], "diet_tags": ["refined_sugar"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/masala-chay.webp", "source": "Фото: Ganesh Mohan T, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Masala_Chai.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/masala-chay.webp", "source": "Фото: Ganesh Mohan T, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Masala_Chai.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "goryachiy-shokolad", "version": 1, "name": "Горячий шоколад",
@@ -25134,7 +25110,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil"], "diet_tags": ["refined_sugar"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/chay-s-imbiryom-limonom-i-myodom.webp", "source": "Фото: Gleb from St.Petersburg, Russia, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Ginger_tea-01.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/chay-s-imbiryom-limonom-i-myodom.webp", "source": "Фото: Gleb from St.Petersburg, Russia, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Ginger_tea-01.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "sbiten", "version": 1, "name": "Сбитень медовый с пряностями",
@@ -25160,7 +25136,7 @@
         ]}
       ],
       "techniques": ["boil"], "diet_tags": ["refined_sugar"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/sbiten.webp", "source": "Фото: Schekinov Alexey Victorovich, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%B1%D0%B8%D1%82%D0%B5%D0%BD%D1%8C_(%D0%B7%D0%B1%D0%B8%D1%82%D0%B5%D0%BD%D1%8C)_%D1%80%D0%B6%D0%B0%D0%BD%D0%BE%D0%B9.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/sbiten.webp", "source": "Фото: Schekinov Alexey Victorovich, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%B1%D0%B8%D1%82%D0%B5%D0%BD%D1%8C_(%D0%B7%D0%B1%D0%B8%D1%82%D0%B5%D0%BD%D1%8C)_%D1%80%D0%B6%D0%B0%D0%BD%D0%BE%D0%B9.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "zolotoe-moloko-s-kurkumoy", "version": 1, "name": "Золотое молоко с куркумой",
@@ -25187,7 +25163,7 @@
         ]}
       ],
       "techniques": ["boil"], "diet_tags": ["refined_sugar"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/zolotoe-moloko-s-kurkumoy.webp", "source": "Фото: Ella Olsson from Stockholm, Sweden, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Turmeric_Latte_(43134398655).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/zolotoe-moloko-s-kurkumoy.webp", "source": "Фото: Ella Olsson from Stockholm, Sweden, Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Turmeric_Latte_(43134398655).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "nastoy-shipovnika", "version": 1, "name": "Настой шиповника с мёдом",
@@ -25235,6 +25211,39 @@
       ],
       "techniques": ["boil", "mix"], "diet_tags": ["refined_sugar"], "container_ok": false,
       "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": false
+    },
+    {
+      "id": "gribnaya-ikra-iz-shampinonov", "version": 1, "name": "Грибная икра из шампиньонов",
+      "description": "Обжаренные шампиньоны с луком и морковью, измельчённые в густую намазку для ржаного хлеба.",
+      "category": "snack", "meal_types": ["snack"], "servings": 6, "yield_g": 450,
+      "ingredients": [
+        {"product": "champignons", "qty": 500, "unit": "g"},
+        {"product": "onion", "qty": 2, "unit": "pcs"},
+        {"product": "carrot", "qty": 1, "unit": "pcs"},
+        {"product": "sunflower_oil", "qty": 3, "unit": "tbsp"},
+        {"product": "garlic", "qty": 1, "unit": "pcs"},
+        {"product": "salt", "qty": 2, "unit": "pinch"},
+        {"product": "black_pepper", "qty": 1, "unit": "pinch"},
+        {"product": "dill", "qty": 10, "unit": "g"},
+        {"product": "rye_bread", "qty": 6, "unit": "pcs"}
+      ],
+      "methods": [
+        {"id": "blender", "name": "На плите и в блендере", "equipment": ["stove", "blender"], "active_min": 20, "total_min": 45, "steps": [
+          "Шампиньоны крупно нарежьте, лук и морковь мелко порубите.",
+          "Обжарьте лук на 2 ложках масла 5 минут, добавьте морковь и жарьте ещё 5 минут.",
+          "Добавьте грибы и жарьте на сильном огне 12–15 минут, пока сок полностью не выпарится.",
+          "Посолите, поперчите, добавьте чеснок и остудите 10 минут.",
+          "Измельчите массу в блендере короткими импульсами до мелкой крошки, вмешайте укроп и оставшееся масло.",
+          "Подавайте на ломтиках ржаного хлеба; икра хранится в холодильнике до 3 дней."
+        ]},
+        {"id": "stove", "name": "На плите, без блендера", "equipment": ["stove"], "active_min": 30, "total_min": 50, "steps": [
+          "Грибы, лук и морковь нарежьте как можно мельче.",
+          "Обжарьте лук и морковь на масле 8 минут, добавьте грибы и жарьте 15 минут, пока не выпарится жидкость.",
+          "Добавьте чеснок, соль, перец и укроп, остудите и подавайте на хлебе."
+        ]}
+      ],
+      "techniques": ["knife_basic", "fry_simple", "blend"], "diet_tags": ["vegetable_rich"], "container_ok": true,
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "rassolnik-s-potroshkami", "version": 1, "name": "Рассольник с куриными потрошками и рисом",
@@ -25338,7 +25347,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": ["fish"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/solyanka-rybnaya.webp", "source": "Фото: Шнапс, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Fish_solyanka.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/solyanka-rybnaya.webp", "source": "Фото: Шнапс, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Fish_solyanka.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "solyanka-gribnaya", "version": 1, "name": "Солянка грибная постная",
@@ -25373,7 +25382,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "solyanka-s-kuritsey", "version": 1, "name": "Солянка с курицей и копчёной колбасой",
@@ -25413,7 +25422,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": [], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/solyanka-s-kuritsey.webp", "source": "Фото: Roland Geider ( Ogre ), Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:Soljanka_with_olives.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/solyanka-s-kuritsey.webp", "source": "Фото: Roland Geider ( Ogre ), Wikimedia Commons", "license": "Public domain", "page_url": "https://commons.wikimedia.org/wiki/File:Soljanka_with_olives.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "ukha-po-rostovski", "version": 1, "name": "Уха по-ростовски с помидорами",
@@ -25443,7 +25452,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil"], "diet_tags": ["fish", "lean_protein", "vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/ukha-po-rostovski.webp", "source": "Фото: Pannet, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A3%D1%85%D0%B0.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/ukha-po-rostovski.webp", "source": "Фото: Pannet, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A3%D1%85%D0%B0.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "ukha-iz-mintaya-s-pshenom", "version": 1, "name": "Уха из минтая с пшеном",
@@ -25761,7 +25770,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "no_cook"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": "Квас содержит немного спирта, поэтому окрошку на квасе не считаем детским блюдом.", "storage": null, "image": {"url": "photos/okroshka-na-kvase.webp", "source": "Фото: Messir, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%BA%D1%80%D0%BE%D1%88%D0%BA%D0%B0.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": false
+      "tip": "Квас содержит немного спирта, поэтому окрошку на квасе не считаем детским блюдом.", "storage": null, "image": {"url": "photos/okroshka-na-kvase.webp", "source": "Фото: Messir, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%BA%D1%80%D0%BE%D1%88%D0%BA%D0%B0.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "okroshka-na-mineralnoy-vode", "version": 1, "name": "Окрошка на минеральной воде с колбасой",
@@ -25791,7 +25800,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "no_cook"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/okroshka-na-mineralnoy-vode.webp", "source": "Фото: Rakoon, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:20250215_Okroshka.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/okroshka-na-mineralnoy-vode.webp", "source": "Фото: Rakoon, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:20250215_Okroshka.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "russian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "okroshka-rybnaya", "version": 1, "name": "Окрошка рыбная на квасе",
@@ -25997,7 +26006,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "blend"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/morkovno-imbirnyy-sup-pyure.webp", "source": "Фото: James Cohen from San Francisco, U. S. of A., Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Carrot_ginger_soup_with_sesame_oil_garnish.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/morkovno-imbirnyy-sup-pyure.webp", "source": "Фото: James Cohen from San Francisco, U. S. of A., Wikimedia Commons", "license": "CC BY 2.0", "license_url": "https://creativecommons.org/licenses/by/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Carrot_ginger_soup_with_sesame_oil_garnish.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "tykvennyy-sup-s-kokosovym-molokom", "version": 1, "name": "Тыквенный суп с кокосовым молоком и карри",
@@ -26031,7 +26040,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "blend"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/tykvennyy-sup-s-kokosovym-molokom.webp", "source": "Фото: Cremas_de_calabaza.jpg : Boca Dorada derivative work: Itzuvit ( talk ), Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Cremas_de_calabaza-2.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/tykvennyy-sup-s-kokosovym-molokom.webp", "source": "Фото: Cremas_de_calabaza.jpg : Boca Dorada derivative work: Itzuvit ( talk ), Wikimedia Commons", "license": "CC BY-SA 2.0", "license_url": "https://creativecommons.org/licenses/by-sa/2.0", "page_url": "https://commons.wikimedia.org/wiki/File:Cremas_de_calabaza-2.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "krem-sup-iz-brokkoli-s-chedderom", "version": 1, "name": "Крем-суп из брокколи с чеддером",
@@ -26211,7 +26220,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "blend"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/sup-iz-batata-s-chechevitsey.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Mercimek_%C3%A7orbasi.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/sup-iz-batata-s-chechevitsey.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Mercimek_%C3%A7orbasi.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "sup-pyure-iz-seldereya-s-yablokom", "version": 1, "name": "Суп-пюре из корневого сельдерея с яблоком",
@@ -26324,7 +26333,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "blend", "no_cook"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/arbuznyy-gaspacho.webp", "source": "Фото: Juan Emilio Prades Bel, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Aperitivo_de_Gazpacho.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/arbuznyy-gaspacho.webp", "source": "Фото: Juan Emilio Prades Bel, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Aperitivo_de_Gazpacho.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "salmorekho", "version": 1, "name": "Сальморехо",
@@ -26349,7 +26358,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "blend", "boil"], "diet_tags": ["vegetable_rich", "white_flour"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/salmorekho.webp", "source": "Фото: P.Lechien, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Salmorejo_cordouan.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/salmorekho.webp", "source": "Фото: P.Lechien, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Salmorejo_cordouan.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "ahoblanko", "version": 1, "name": "Ахобланко",
@@ -26375,7 +26384,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "blend", "no_cook"], "diet_tags": ["white_flour"], "container_ok": false,
-      "tip": "Сырой чеснок и цельный миндаль делают вкус резким для детей.", "storage": null, "image": {"url": "photos/ahoblanko.webp", "source": "Фото: Popo le Chien, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Ajo_blanco.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 1, "kid_friendly": false
+      "tip": "Сырой чеснок и цельный миндаль делают вкус резким для детей.", "storage": null, "image": {"url": "photos/ahoblanko.webp", "source": "Фото: Popo le Chien, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Ajo_blanco.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mediterranean", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "ribollita", "version": 1, "name": "Риболлита",
@@ -26501,7 +26510,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "boil", "simmer"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/sup-gulyash.webp", "source": "Фото: Silar, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:02021_1020_(2)_Goulash_soup_of_Poland.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/sup-gulyash.webp", "source": "Фото: Silar, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:02021_1020_(2)_Goulash_soup_of_Poland.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "chesnechka", "version": 1, "name": "Чесночный суп по-чешски",
@@ -26529,7 +26538,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": ["white_flour"], "container_ok": false,
-      "tip": "Чеснок не варят долго: в этом супе его вкус должен оставаться ярким.", "storage": null, "image": {"url": "photos/chesnechka.webp", "source": "Фото: Dezidor, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%C4%8Cesne%C4%8Dka.jpeg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": false
+      "tip": "Чеснок не варят долго: в этом супе его вкус должен оставаться ярким.", "storage": null, "image": {"url": "photos/chesnechka.webp", "source": "Фото: Dezidor, Wikimedia Commons", "license": "CC BY 3.0", "license_url": "https://creativecommons.org/licenses/by/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%C4%8Cesne%C4%8Dka.jpeg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "chechevichnyy-sup-s-sosiskami", "version": 1, "name": "Чечевичный суп с сосисками по-немецки",
@@ -26644,7 +26653,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "mix", "no_cook"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/tarator.webp", "source": "Фото: Ikonact, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0/", "page_url": "https://commons.wikimedia.org/wiki/File:TaratorBg.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/tarator.webp", "source": "Фото: Ikonact, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0/", "page_url": "https://commons.wikimedia.org/wiki/File:TaratorBg.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "european", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "holodnik", "version": 1, "name": "Холодник на кефире со свёклой",
@@ -26785,7 +26794,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": [], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/ramen-s-kuritsey.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Shoyu_ramen_-_Goemon_Ramen_Bar_2024-01-26.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/ramen-s-kuritsey.webp", "source": "Фото: Andy Li, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Shoyu_ramen_-_Goemon_Ramen_Bar_2024-01-26.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "fo-bo", "version": 1, "name": "Фо бо",
@@ -26867,7 +26876,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "boil"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/lagman-supovoy.webp", "source": "Фото: Армен Авакян, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD_(cropped).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/lagman-supovoy.webp", "source": "Фото: Армен Авакян, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD_(cropped).jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "kislo-ostryy-sup", "version": 1, "name": "Кисло-острый суп по-китайски",
@@ -27053,7 +27062,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "boil", "blend"], "diet_tags": ["legumes"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/malligatoni.webp", "source": "Фото: Miansari66, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Mulligatawny_Soup_(Pepper_Water_Soup).JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/malligatoni.webp", "source": "Фото: Miansari66, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:Mulligatawny_Soup_(Pepper_Water_Soup).JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "indian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "chihirtma", "version": 1, "name": "Чихиртма из курицы",
@@ -27084,7 +27093,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "fry_simple"], "diet_tags": [], "container_ok": false,
-      "tip": "Белки от яиц пригодятся для омлета.", "storage": null, "image": {"url": "photos/chihirtma.webp", "source": "Фото: Lamro, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chikhirtma.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": "Белки от яиц пригодятся для омлета.", "storage": null, "image": {"url": "photos/chihirtma.webp", "source": "Фото: Lamro, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Chikhirtma.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "hash", "version": 1, "name": "Хаш",
@@ -27115,7 +27124,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "simmer"], "diet_tags": [], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/hash.webp", "source": "Фото: Interfase, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Azerbaijani_khash.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": false
+      "tip": null, "storage": null, "image": {"url": "photos/hash.webp", "source": "Фото: Interfase, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Azerbaijani_khash.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": false
     },
     {
       "id": "mastava", "version": 1, "name": "Мастава",
@@ -27152,7 +27161,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "boil"], "diet_tags": ["vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/mastava.webp", "source": "Фото: Olexdj, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A1%D1%83%D0%BF_%D0%9C%D0%B0%D1%81%D1%82%D0%B0%D0%B2%D0%B0.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/mastava.webp", "source": "Фото: Olexdj, Wikimedia Commons", "license": "CC0", "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en", "page_url": "https://commons.wikimedia.org/wiki/File:%D0%A1%D1%83%D0%BF_%D0%9C%D0%B0%D1%81%D1%82%D0%B0%D0%B2%D0%B0.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "bozbash", "version": 1, "name": "Бозбаш из баранины с нутом",
@@ -27182,7 +27191,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil"], "diet_tags": ["legumes"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/bozbash.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Bozbash_from_Iranian_(Azeri)_cuisine.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/bozbash.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Bozbash_from_Iranian_(Azeri)_cuisine.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "caucasian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "dovga", "version": 1, "name": "Довга",
@@ -27270,7 +27279,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "boil"], "diet_tags": ["legumes"], "container_ok": false,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "central_asian", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "merdzhimek-chorbasy", "version": 1, "name": "Мерджимек чорбасы",
@@ -27306,7 +27315,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "blend"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/merdzhimek-chorbasy.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Mercimek_%C3%A7orbas%C4%B1_in_Ankara,_Turkey.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/merdzhimek-chorbasy.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Mercimek_%C3%A7orbas%C4%B1_in_Ankara,_Turkey.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "ezogelin", "version": 1, "name": "Суп эзогелин",
@@ -27337,7 +27346,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil"], "diet_tags": ["legumes", "whole_grain"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/ezogelin.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Ezogelin_soup_in_Turkey.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/ezogelin.webp", "source": "Фото: E4024, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Ezogelin_soup_in_Turkey.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "hummus-sup", "version": 1, "name": "Суп из нута с тахини",
@@ -27366,7 +27375,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "blend"], "diet_tags": ["legumes"], "container_ok": false,
-      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": null, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "harira", "version": 1, "name": "Харира",
@@ -27403,7 +27412,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil", "simmer"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/harira.webp", "source": "Фото: وهراني, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Harira_oranaise.png"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/harira.webp", "source": "Фото: وهراني, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Harira_oranaise.png"}, "source": "foodo-recipes-2026-10", "cuisine": "middle_eastern", "spicy": 0, "kid_friendly": true
     },
     {
       "id": "yayla-chorbasy", "version": 1, "name": "Яйла чорбасы",
@@ -27469,7 +27478,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "fry_simple", "boil", "bake_simple"], "diet_tags": ["lean_protein", "vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/sup-tortilya.webp", "source": "Фото: Wikiwrimo, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tortilla_Soup.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/sup-tortilya.webp", "source": "Фото: Wikiwrimo, Wikimedia Commons", "license": "CC BY-SA 4.0", "license_url": "https://creativecommons.org/licenses/by-sa/4.0", "page_url": "https://commons.wikimedia.org/wiki/File:Tortilla_Soup.jpg"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "chili-sup", "version": 1, "name": "Чили-суп с говядиной и фасолью",
@@ -27539,7 +27548,7 @@
         ]}
       ],
       "techniques": ["knife_basic", "boil"], "diet_tags": ["legumes", "vegetable_rich"], "container_ok": false,
-      "tip": null, "storage": null, "image": {"url": "photos/meksikanskiy-sup-s-fasolyu.webp", "source": "Фото: D.W. Fisher-Freberg, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Mexican_bean_soup_in_Texas_Fried_Chicken.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": true
+      "tip": null, "storage": null, "image": {"url": "photos/meksikanskiy-sup-s-fasolyu.webp", "source": "Фото: D.W. Fisher-Freberg, Wikimedia Commons", "license": "CC BY-SA 3.0", "license_url": "https://creativecommons.org/licenses/by-sa/3.0", "page_url": "https://commons.wikimedia.org/wiki/File:Mexican_bean_soup_in_Texas_Fried_Chicken.JPG"}, "source": "foodo-recipes-2026-10", "cuisine": "mexican", "spicy": 1, "kid_friendly": false
     },
     {
       "id": "sup-s-zelyonoy-chechevitsey", "version": 1, "name": "Постный суп с зелёной чечевицей и овощами",

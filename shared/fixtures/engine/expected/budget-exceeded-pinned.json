@@ -119,6 +119,7 @@
     "needed": 50,
     "from_pantry": 0,
     "to_buy": 50,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -126,6 +127,11 @@
     },
     "package_note": null,
     "price_kop": 4990,
+    "price_per": {
+     "size": 1000,
+     "unit": "g",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",
@@ -156,6 +162,7 @@
     "needed": 40,
     "from_pantry": 0,
     "to_buy": 40,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -163,6 +170,11 @@
     },
     "package_note": null,
     "price_kop": 5490,
+    "price_per": {
+     "size": 1000,
+     "unit": "g",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",
@@ -193,6 +205,7 @@
     "needed": 250,
     "from_pantry": 0,
     "to_buy": 250,
+    "buy_qty": 500,
     "package": {
      "size": 500,
      "unit": "g",
@@ -200,6 +213,11 @@
     },
     "package_note": null,
     "price_kop": 37900,
+    "price_per": {
+     "size": 500,
+     "unit": "g",
+     "loose": false
+    },
     "price_date": "2026-10-05",
     "price_source": "чек",
     "price_kind": "manual",
@@ -230,6 +248,7 @@
     "needed": 100,
     "from_pantry": 0,
     "to_buy": 100,
+    "buy_qty": 900,
     "package": {
      "size": 900,
      "unit": "g",
@@ -237,6 +256,11 @@
     },
     "package_note": null,
     "price_kop": 8990,
+    "price_per": {
+     "size": 900,
+     "unit": "g",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",
@@ -267,6 +291,7 @@
     "needed": 14.782609,
     "from_pantry": 0,
     "to_buy": 14.782609,
+    "buy_qty": 1000,
     "package": {
      "size": 1,
      "unit": "l",
@@ -274,6 +299,11 @@
     },
     "package_note": null,
     "price_kop": 15990,
+    "price_per": {
+     "size": 1,
+     "unit": "l",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",
@@ -304,6 +334,7 @@
     "needed": 4.5,
     "from_pantry": 0,
     "to_buy": 4.5,
+    "buy_qty": 1000,
     "package": {
      "size": 1000,
      "unit": "g",
@@ -311,6 +342,11 @@
     },
     "package_note": null,
     "price_kop": 2490,
+    "price_per": {
+     "size": 1000,
+     "unit": "g",
+     "loose": false
+    },
     "price_date": "2026-10-01",
     "price_source": "вручную",
     "price_kind": "manual",

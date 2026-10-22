@@ -39,6 +39,16 @@ const cspMeta: Plugin = {
 //  - "static": GitHub Pages build — guest mode only, relative base path, hash routing;
 //  - "android": the same guest-mode build packaged into the Android APK (frontend/android):
 //    no service worker (updates come with the APK), native updater UI.
+/**
+ * The Django API behind the dev and preview servers. The Host header is kept (changeOrigin: false;
+ * Vite's string shorthand would rewrite it), so Django's CSRF origin check sees the same host as the
+ * browser, as it does behind nginx in production.
+ */
+function backendProxy(target: string) {
+  const route = { target, changeOrigin: false };
+  return { '/api': route, '/admin': route, '/static/admin': route };
+}
+
 export default defineConfig(({ mode }) => {
   const isAndroid = mode === 'android';
   const isStatic = mode === 'static' || isAndroid;
@@ -78,6 +88,9 @@ export default defineConfig(({ mode }) => {
           // Price data is large and changes weekly: fetched at runtime (below), not precached.
           globIgnores: ['data/prices/**'],
           navigateFallback: 'index.html',
+          // The first installed worker takes over the open page at once, so screens loaded later
+          // (lazy chunks) come from the cache even if the network drops before the next reload.
+          clientsClaim: true,
           navigateFallbackDenylist: [/^\/api\//, /^\/admin\//, /^\/static\//],
           maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
           // Only the public catalog is cached at runtime. Private API responses are never cached by
@@ -107,18 +120,10 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       fs: { allow: [repoRoot] },
-      proxy: {
-        '/api': 'http://127.0.0.1:8000',
-        '/admin': 'http://127.0.0.1:8000',
-        '/static/admin': 'http://127.0.0.1:8000',
-      },
+      proxy: backendProxy('http://127.0.0.1:8000'),
     },
     preview: {
-      proxy: {
-        '/api': process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000',
-        '/admin': process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000',
-        '/static/admin': process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000',
-      },
+      proxy: backendProxy(process.env.FOODO_BACKEND_URL ?? 'http://127.0.0.1:8000'),
     },
     build: { outDir: isAndroid ? 'dist-android' : isStatic ? 'dist-static' : 'dist', sourcemap: false, chunkSizeWarningLimit: 1500 },
     test: {

@@ -472,6 +472,18 @@ def build(write: bool) -> int:
     prods_doc["products"] = [products[i] for i in order]
     # Existing recipes keep their position; source recipes are appended in source order.
     recs_doc["recipes"] = old_recipes + new_recipes
+    hot = set(ref.get("hot_products", []))
+    for r in recs_doc["recipes"]:
+        # Spiciness follows the composition (docs/NUTRITION_RULES.md, «Острота»): a chili, a hot paste,
+        # horseradish or wasabi make a dish at least «немного острое», the source may raise it to 2;
+        # without them the dish is not spicy — garlic and black pepper do not count. A spicy dish is
+        # never marked as one for children.
+        if any(i["product"] in hot for i in r["ingredients"]):
+            r["spicy"] = max(r.get("spicy", 0), 1)
+        else:
+            r["spicy"] = 0
+        if r["spicy"] > 0:
+            r["kid_friendly"] = False
     # Photos chosen in the reviewed selection (workflow Photos → credits.json) attach to recipes by
     # id, whether the recipe came from recipes.json or from a source file.
     credits_path = DATA / "photos" / "credits.json"

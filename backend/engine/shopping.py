@@ -84,7 +84,8 @@ def batch_needs(menu: JSON, catalog: Catalog, only_batch_id: str | None = None) 
     return needs
 
 
-def _pantry_lots(catalog: Catalog, pantry: list[JSON]) -> dict[str, list[JSON]]:
+def _pantry_lots(catalog: Catalog, pantry: list[JSON], reserved: dict[str, float] | None = None) -> dict[str, list[JSON]]:
+    # reserved: base quantities per product taken off the end of its lots (twin of pantryLots in shopping.ts).
     lots: dict[str, list[JSON]] = {}
     for item in pantry:
         product = catalog.products.get(item["product_id"])
@@ -96,11 +97,21 @@ def _pantry_lots(catalog: Catalog, pantry: list[JSON]) -> dict[str, list[JSON]]:
         lots.setdefault(item["product_id"], []).append({"item": item, "remaining": qty})
     for lst in lots.values():
         lst.sort(key=lambda lot: (lot["item"]["expires"] is None, lot["item"]["expires"] or "", lot["item"]["id"]))
+    for product_id, qty in (reserved or {}).items():
+        left = qty
+        for lot in reversed(lots.get(product_id, [])):
+            if left <= 1e-9:
+                break
+            take = min(lot["remaining"], left)
+            lot["remaining"] -= take
+            left -= take
     return lots
 
 
-def allocate_pantry(catalog: Catalog, needs: list[JSON], pantry: list[JSON]) -> tuple[list[float], list[JSON], list[JSON]]:
-    lots = _pantry_lots(catalog, pantry)
+def allocate_pantry(
+    catalog: Catalog, needs: list[JSON], pantry: list[JSON], reserved: dict[str, float] | None = None
+) -> tuple[list[float], list[JSON], list[JSON]]:
+    lots = _pantry_lots(catalog, pantry, reserved)
     covered: list[float] = []
     allocations: list[JSON] = []
     expired: list[JSON] = []
@@ -136,10 +147,20 @@ def _department_index(catalog: Catalog, department: str) -> int:
     return departments.index(department) if department in departments else len(departments)
 
 
-def compute_shopping(menu: JSON, base_catalog: Catalog, pantry: list[JSON], prices: JSON | None, state: JSON) -> JSON:
+def compute_shopping(
+    menu: JSON,
+    base_catalog: Catalog,
+    pantry: list[JSON],
+    prices: JSON | None,
+    state: JSON,
+    budget: JSON | None = None,
+    transferred: dict[str, float] | None = None,
+) -> JSON:
+    """budget: the household's current {"limit_kop": ...}; the menu's saved budget is used when it is None.
+    transferred: base quantities per product bought for this menu and already moved to the pantry."""
     catalog = snapshot_catalog(menu, base_catalog)
     needs = batch_needs(menu, catalog)
-    covered, allocations, expired = allocate_pantry(catalog, needs, pantry)
+    covered, allocations, expired = allocate_pantry(catalog, needs, pantry, transferred)
 
     by_key: dict[str, JSON] = {}
     keys: list[str] = []
@@ -156,9 +177,11 @@ def compute_shopping(menu: JSON, base_catalog: Catalog, pantry: list[JSON], pric
                 "needed": 0,
                 "from_pantry": 0,
                 "to_buy": 0,
+                "buy_qty": 0,
                 "package": None,
                 "package_note": None,
                 "price_kop": None,
+                "price_per": None,
                 "price_date": None,
                 "price_source": None,
                 "price_kind": None,
@@ -203,23 +226,42 @@ def compute_shopping(menu: JSON, base_catalog: Catalog, pantry: list[JSON], pric
         line["previous_to_buy"] = seen
         line["changed"] = seen is not None and abs(seen - line["to_buy"]) > 1e-6
         effective = 0 if line["at_home"] else line["to_buy"]
+        line["buy_qty"] = effective
 
         entry = latest_price(prices, product["id"])
         pkg = {"size": entry["package_size"], "unit": entry["package_unit"]} if entry else product.get("package")
         if line["convertible"] and pkg:
             size_base = to_base(product, pkg["size"], pkg["unit"])
             if size_base is not None and size_base > 0:
+                # A price per kilogram (Rosstat averages) still buys the product in its usual package when
+                # it has one; only a product without a package is bought by weight.
                 loose = bool(entry and entry.get("loose"))
-                count = math.ceil(effective / size_base - 1e-9) if effective > 0 else 0
-                line["package"] = None if loose else {"size": pkg["size"], "unit": pkg["unit"], "count": count}
+                own = product.get("package") if loose else None
+                own_base = to_base(product, own["size"], own["unit"]) if own else None
+                if not loose:
+                    buy_pkg: JSON | None = {"size": pkg["size"], "unit": pkg["unit"], "base": size_base}
+                elif own and own_base is not None and own_base > 0:
+                    buy_pkg = {"size": own["size"], "unit": own["unit"], "base": own_base}
+                else:
+                    buy_pkg = None
+                count = math.ceil(effective / buy_pkg["base"] - 1e-9) if buy_pkg and effective > 0 else 0
+                line["package"] = {"size": buy_pkg["size"], "unit": buy_pkg["unit"], "count": count} if buy_pkg else None
+                if buy_pkg:
+                    line["buy_qty"] = clean_qty(count * buy_pkg["base"])
                 if entry:
                     kind = entry.get("kind") or "manual"
                     line["price_kop"] = entry["price_kop"]
+                    line["price_per"] = {"size": entry["package_size"], "unit": entry["package_unit"], "loose": loose}
                     line["price_date"] = entry["date"]
                     line["price_source"] = entry["source"]
                     line["price_kind"] = kind
                     line["estimated"] = kind in ESTIMATED_PRICE_KINDS
-                    line["purchase_cost_kop"] = round_kop(effective * entry["price_kop"] / size_base) if loose else count * entry["price_kop"]
+                    if not loose:
+                        line["purchase_cost_kop"] = count * entry["price_kop"]
+                    elif buy_pkg:
+                        line["purchase_cost_kop"] = round_kop(count * buy_pkg["base"] * entry["price_kop"] / size_base)
+                    else:
+                        line["purchase_cost_kop"] = round_kop(effective * entry["price_kop"] / size_base)
                     line["usage_cost_kop"] = round_kop(line["needed"] * entry["price_kop"] / size_base)
             else:
                 line["package_note"] = "Нет коэффициента для перевода упаковки в единицы рецепта"
@@ -249,10 +291,11 @@ def compute_shopping(menu: JSON, base_catalog: Catalog, pantry: list[JSON], pric
 
     lines.sort(key=lambda ln: (_department_index(catalog, ln["department"]), ln["name"], ln["id"]))
 
-    limit = menu["settings"]["budget"]["limit_kop"]
+    limit = budget["limit_kop"] if budget is not None else menu["settings"]["budget"]["limit_kop"]
     status = "none"
     if limit is not None:
-        status = "unconfirmed" if missing else ("exceeded" if purchase_kop > limit else "ok")
+        # Known prices alone already over the limit is an overrun, whatever the missing prices add.
+        status = "exceeded" if purchase_kop > limit else ("unconfirmed" if missing else "ok")
     return {
         "lines": lines,
         "manual_lines": manual,

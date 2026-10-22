@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import type { DietMode, RepeatMode, SkillLevel } from '../engine';
 import { estimateEnergy } from '../engine';
 import type { Member } from '../engine';
@@ -9,11 +9,13 @@ import { Icon } from '../ui/icons';
 import type { IconName } from '../ui/icons';
 import { Illustration } from '../ui/illustrations';
 import type { IllustrationName } from '../ui/illustrations';
-import { Chip, Stepper } from '../ui/kit';
+import { Chip, NumberInput, Stepper } from '../ui/kit';
+import { budgetError, rangeError } from '../lib/numbers';
+import { plural } from '../lib/format';
 import { ProductPicker } from '../ui/ProductPicker';
 import { deviceTimeZone, localDate } from '../lib/dates';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, SLOT_NAMES, toggleQuickExclusion } from '../lib/recipes';
-import { defaultAnswers, memberDrafts, planSettings, slotsInOrder, TASTE_PRODUCTS } from '../lib/questionnaire';
+import { defaultAnswers, planHousehold, planSettings, slotsInOrder, TASTE_PRODUCTS } from '../lib/questionnaire';
 import type { Answers, Goal } from '../lib/questionnaire';
 import { DEFAULT_HOUSEHOLD_SETTINGS } from '../data/guestGateway';
 
@@ -62,8 +64,8 @@ const DIET_MODES: { value: DietMode; title: string; text: string }[] = [
 ];
 
 const SPICE: { value: number; title: string; text: string }[] = [
-  { value: 0, title: 'Без остроты', text: 'Никакого перца и чили' },
-  { value: 1, title: 'Немного', text: 'Чеснок и чёрный перец — можно' },
+  { value: 0, title: 'Без остроты', text: 'Без чили и острых соусов; чеснок и чёрный перец — как обычно' },
+  { value: 1, title: 'Немного', text: 'Щепотка чили, умеренно острые блюда' },
   { value: 2, title: 'Люблю острое', text: 'Чили, аджика и острые соусы' },
 ];
 
@@ -111,11 +113,6 @@ function toggle<T>(list: T[], value: T): T[] {
   return list.includes(value) ? list.filter((x) => x !== value) : [...list, value];
 }
 
-function numOrNull(v: string): number | null {
-  const n = Number(v.replace(',', '.'));
-  return v.trim() === '' || !Number.isFinite(n) ? null : n;
-}
-
 /**
  * «Анкета»: the user describes the family, goal, diet, bans, tastes, kitchen and plan first; the
  * menu is generated only after the summary is confirmed. Answers pre-fill from an existing
@@ -124,9 +121,24 @@ function numOrNull(v: string): number | null {
 export default function StartPage() {
   const { gateway, household, catalog, refreshHousehold, setCurrentMenuId, reportError, toast } = useApp();
   const navigate = useNavigate();
-  const [answers, setAnswers] = useState<Answers>(() => defaultAnswers(household));
-  const [step, setStep] = useState(0);
-  const [direction, setDirection] = useState<'next' | 'back'>('next');
+  // The answers the questionnaire started with: taking it again applies only what was changed.
+  const [initial] = useState<Answers>(() => defaultAnswers(household));
+  // The step lives in the address (#/start?step=3): the browser's Back goes to the previous step.
+  const [params, setParams] = useSearchParams();
+  // A draft survives a reload in the middle of the questionnaire; a fresh start (no step in the
+  // address) ignores it, and it is dropped when the menu is made.
+  const [answers, setAnswers] = useState<Answers>(() => (params.has('step') ? readDraft() : null) ?? initial);
+  const step = Math.min(STEPS.length - 1, Math.max(0, Number(params.get('step') ?? '1') - 1 || 0));
+  const prevStep = useRef(step);
+  const direction: 'next' | 'back' = step >= prevStep.current ? 'next' : 'back';
+  useEffect(() => {
+    prevStep.current = step;
+  }, [step]);
+  // Set after «Изменить» in the summary, so the user can jump straight back to it.
+  const [fromSummary, setFromSummary] = useState(false);
+  useEffect(() => {
+    writeDraft(answers);
+  }, [answers]);
   const [busy, setBusy] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const existing = household?.members ?? [];
@@ -153,15 +165,21 @@ export default function StartPage() {
       return { ...a, disliked_products: a.disliked_products.filter((x) => x !== id) };
     });
   const meEstimate = estimateEnergy({ ...(answers.me as Partial<Member>), goal: answers.goal === 'simple' ? null : answers.goal } as Member);
+  const plan = planHousehold(answers, initial, existing, household?.city?.timezone ?? deviceTimeZone());
 
-  const go = (to: number) => {
-    setDirection(to > step ? 'next' : 'back');
-    setStep(to);
+  const go = (to: number) => setParams({ step: String(to + 1) });
+
+  // Personal data is checked on its own step, before anything is saved (the server rules are the same).
+  const meErrors = {
+    age: rangeError('age', answers.me.age) ?? (answers.me.age !== null && answers.me.age !== undefined && answers.me.age < 18 ? 'Расчёт нормы — только для взрослых (18+).' : null),
+    height_cm: rangeError('height_cm', answers.me.height_cm),
+    weight_kg: rangeError('weight_kg', answers.me.weight_kg),
   };
-
+  const budgetErr = budgetError(answers.budget_rub);
   const canContinue = (() => {
     if (STEPS[step]?.id === 'family') return answers.adults + answers.children.length > 0;
-    if (STEPS[step]?.id === 'plan') return answers.slots.length > 0;
+    if (STEPS[step]?.id === 'goal') return answers.adults === 0 || answers.goal === 'simple' || !Object.values(meErrors).some(Boolean);
+    if (STEPS[step]?.id === 'plan') return answers.slots.length > 0 && !budgetErr;
     return true;
   })();
 
@@ -169,26 +187,10 @@ export default function StartPage() {
     setBusy(true);
     try {
       const tz = household?.city?.timezone ?? deviceTimeZone();
-      const drafts = memberDrafts(answers, tz);
-      // Existing members keep their names and personal data; the shared answers are applied to all.
-      for (let i = 0; i < drafts.length; i += 1) {
-        const draft = drafts[i]!;
-        const current = existing[i];
-        if (current) {
-          await gateway.updateMember(current.id, {
-            diet_types: draft.diet_types,
-            restrictions: draft.restrictions,
-            preferences: { ...current.preferences, ...draft.preferences, liked_recipes: current.preferences.liked_recipes },
-            spice_tolerance: draft.spice_tolerance,
-            ...(i === 0 && answers.goal !== 'simple'
-              ? { sex: draft.sex, age: draft.age, height_cm: draft.height_cm, weight_kg: draft.weight_kg, activity: draft.activity, goal: draft.goal, portion_mode: draft.portion_mode, kcal_target: draft.kcal_target }
-              : {}),
-          });
-        } else {
-          await gateway.addMember(draft);
-        }
-      }
-      for (const extra of existing.slice(drafts.length)) await gateway.deleteMember(extra.id);
+      // Existing members keep their names, own bans and tastes; adults and children are matched separately.
+      for (const { member, patch } of plan.update) await gateway.updateMember(member.id, patch);
+      for (const draft of plan.add) await gateway.addMember(draft);
+      for (const gone of plan.remove) await gateway.deleteMember(gone.id);
       const settings = household?.settings ?? DEFAULT_HOUSEHOLD_SETTINGS;
       await gateway.updateHousehold({
         settings: { ...settings, onboarded: true, slots: slotsInOrder(answers.slots), days: answers.days, plan: planSettings(answers, settings.plan) },
@@ -197,6 +199,7 @@ export default function StartPage() {
       const record = await gateway.generateMenu({ start_date: localDate(tz), days: answers.days });
       setCurrentMenuId(record.id);
       toast('Меню готово. Любое блюдо можно заменить одним нажатием.', { tone: 'success' });
+      clearDraft();
       navigate('/menu');
     } catch (e) {
       reportError(e);
@@ -222,7 +225,7 @@ export default function StartPage() {
 
   return (
     <div className="wizard">
-      <div className="wizard-progress" aria-label={`Шаг ${step + 1} из ${total}`}>
+      <div className="wizard-progress" role="progressbar" aria-valuemin={1} aria-valuemax={total} aria-valuenow={step + 1} aria-valuetext={`Шаг ${step + 1} из ${total}: ${current.title}`}>
         <div className="wizard-progress-bar">
           <span style={{ width: `${((step + 1) / total) * 100}%` }} />
         </div>
@@ -248,7 +251,7 @@ export default function StartPage() {
           <div className="stack">
             {existing.length > 0 && (
               <p className="small muted">
-                Сейчас в семье: {existing.map((m) => m.name).join(', ')}. Имена и личные данные сохранятся, ответы анкеты применятся ко всем.
+                Сейчас в семье: {existing.map((m) => m.name).join(', ')}. Имена, личные запреты и вкусы сохранятся, общие ответы анкеты применятся ко всем.
               </p>
             )}
             <div className="card stack">
@@ -283,7 +286,7 @@ export default function StartPage() {
                     min={1}
                     max={17}
                     step={1}
-                    format={(v) => `${v} ${v % 10 === 1 && v !== 11 ? 'год' : v % 10 >= 2 && v % 10 <= 4 && (v < 12 || v > 14) ? 'года' : 'лет'}`}
+                    format={yearsLabel}
                     label={`Возраст ребёнка ${i + 1}`}
                   />
                 </div>
@@ -292,7 +295,14 @@ export default function StartPage() {
           </div>
         )}
 
-        {current.id === 'goal' && (
+        {current.id === 'goal' && answers.adults === 0 && (
+          <div className="banner" role="status">
+            <Icon name="info" />
+            <div className="grow">Расчёт нормы калорий делается только для взрослых, а сейчас в семье только дети. Порции будут обычными, по возрасту.</div>
+          </div>
+        )}
+
+        {current.id === 'goal' && answers.adults > 0 && (
           <div className="stack">
             <div className="option-grid">
               {GOALS.map((g) => (
@@ -313,15 +323,18 @@ export default function StartPage() {
                   </label>
                   <label className="field">
                     <span>Возраст, лет</span>
-                    <input className="input" inputMode="numeric" value={answers.me.age ?? ''} onChange={(e) => set('me', { ...answers.me, age: numOrNull(e.target.value) })} />
+                    <NumberInput value={answers.me.age ?? null} invalid={!!meErrors.age} onChange={(v) => set('me', { ...answers.me, age: v })} />
+                    {meErrors.age && <span className="field-error">{meErrors.age}</span>}
                   </label>
                   <label className="field">
                     <span>Рост, см</span>
-                    <input className="input" inputMode="numeric" value={answers.me.height_cm ?? ''} onChange={(e) => set('me', { ...answers.me, height_cm: numOrNull(e.target.value) })} />
+                    <NumberInput value={answers.me.height_cm ?? null} invalid={!!meErrors.height_cm} onChange={(v) => set('me', { ...answers.me, height_cm: v })} />
+                    {meErrors.height_cm && <span className="field-error">{meErrors.height_cm}</span>}
                   </label>
                   <label className="field">
                     <span>Вес, кг</span>
-                    <input className="input" inputMode="decimal" value={answers.me.weight_kg ?? ''} onChange={(e) => set('me', { ...answers.me, weight_kg: numOrNull(e.target.value) })} />
+                    <NumberInput decimal value={answers.me.weight_kg ?? null} invalid={!!meErrors.weight_kg} onChange={(v) => set('me', { ...answers.me, weight_kg: v })} />
+                    {meErrors.weight_kg && <span className="field-error">{meErrors.weight_kg}</span>}
                   </label>
                   <label className="field">
                     <span>Активность</span>
@@ -377,6 +390,7 @@ export default function StartPage() {
 
         {current.id === 'ban' && (
           <div className="stack">
+            {existing.length > 1 && <p className="small muted">Здесь общие запреты для всей семьи. Личные запреты участников сохранятся — их можно изменить в профиле.</p>}
             <Field label="Аллергия или непереносимость">
               <div className="chips">
                 {catalog.reference.allergens.map((a) => (
@@ -560,7 +574,8 @@ export default function StartPage() {
             <div className="form-grid">
               <label className="field">
                 <span>Бюджет на покупки за период, ₽ (необязательно)</span>
-                <input className="input" inputMode="numeric" placeholder="Без лимита" value={answers.budget_rub ?? ''} onChange={(e) => set('budget_rub', numOrNull(e.target.value))} />
+                <NumberInput placeholder="Без лимита" value={answers.budget_rub} invalid={!!budgetErr} onChange={(v) => set('budget_rub', v)} />
+                {budgetErr && <span className="field-error">{budgetErr}</span>}
               </label>
               <label className="switch-row">
                 <span className="grow">
@@ -575,13 +590,32 @@ export default function StartPage() {
           </div>
         )}
 
-        {current.id === 'summary' && <Summary answers={answers} onEdit={go} />}
+        {current.id === 'summary' && (
+          <Summary
+            answers={answers}
+            onEdit={(to) => {
+              setFromSummary(true);
+              go(to);
+            }}
+            removed={plan.remove.map((m) => m.name)}
+          />
+        )}
       </div>
 
+      {!canContinue && (
+        <p className="small muted" role="status" style={{ textAlign: 'center' }}>
+          {current.id === 'family' ? 'Добавьте хотя бы одного человека.' : current.id === 'plan' && answers.slots.length === 0 ? 'Выберите хотя бы один приём пищи.' : 'Исправьте отмеченные поля.'}
+        </p>
+      )}
       <div className="wizard-nav">
         {step > 0 && (
           <button type="button" className="btn ghost big" onClick={() => go(step - 1)}>
             <Icon name="back" size={18} /> Назад
+          </button>
+        )}
+        {fromSummary && step < total - 1 && (
+          <button type="button" className="btn big" onClick={() => go(total - 1)} disabled={!canContinue}>
+            К сводке
           </button>
         )}
         {step < total - 1 ? (
@@ -598,31 +632,40 @@ export default function StartPage() {
   );
 }
 
-function Summary({ answers, onEdit }: { answers: Answers; onEdit: (step: number) => void }) {
+function Summary({ answers, onEdit, removed }: { answers: Answers; onEdit: (step: number) => void; removed: string[] }) {
   const { catalog } = useApp();
   const names = (ids: string[], list: { id: string; name: string }[]) => ids.map((id) => list.find((x) => x.id === id)?.name ?? id).join(', ');
   const products = (ids: string[]) => ids.map((id) => catalog.products[id]?.name ?? id).join(', ');
-  const time = (v: number | null) => TIME_OPTIONS.find((t) => t.value === v)?.label ?? `до ${v} мин`;
+  const time = (v: number | null) => (TIME_OPTIONS.find((t) => t.value === v)?.label ?? `до ${v} мин`).toLowerCase();
   const bans = [
     ...[...quickExclusionsActive(answers.restrictions)].map((id) => QUICK_EXCLUSIONS.find((q) => q.id === id)?.label ?? id),
     ...answers.restrictions.allergens.map((a) => catalog.reference.allergens.find((x) => x.id === a)?.name ?? a),
     ...answers.restrictions.products.map((p) => catalog.products[p]?.name ?? p),
   ];
   const rows: { step: number; label: string; value: string }[] = [
-    { step: 0, label: 'Семья', value: `${answers.adults} взр.${answers.children.length > 0 ? `, дети: ${answers.children.map((c) => `${c.age} л.`).join(', ')}` : ''}` },
-    { step: 1, label: 'Цель', value: GOALS.find((g) => g.value === answers.goal)?.title ?? '' },
+    { step: 0, label: 'Семья', value: [answers.adults > 0 ? `${answers.adults} ${plural(answers.adults, 'взрослый', 'взрослых', 'взрослых')}` : '', answers.children.length > 0 ? `дети: ${answers.children.map((c) => yearsLabel(c.age)).join(', ')}` : ''].filter(Boolean).join(', ') },
+    { step: 1, label: 'Цель', value: answers.adults === 0 ? 'Обычные порции (в семье только дети)' : (GOALS.find((g) => g.value === answers.goal)?.title ?? '') },
     { step: 2, label: 'Питание', value: [answers.diet_types.length ? names(answers.diet_types, catalog.reference.diet_types ?? []) : 'Ем всё', DIET_MODES.find((d) => d.value === answers.diet_mode)?.title].join(' · ') },
     { step: 3, label: 'Нельзя', value: bans.length ? [...new Set(bans)].join(', ') : 'Ничего' },
-    { step: 4, label: 'Кухни', value: answers.cuisines.length ? names(answers.cuisines, catalog.reference.cuisines ?? []) : 'Любые' },
+    { step: 4, label: 'Любимые кухни', value: answers.cuisines.length ? names(answers.cuisines, catalog.reference.cuisines ?? []) : 'Любые' },
     { step: 4, label: 'Люблю / не люблю', value: answers.liked_products.length + answers.disliked_products.length === 0 ? 'Без пожеланий' : `${products(answers.liked_products) || '—'} / ${products(answers.disliked_products) || '—'}` },
     { step: 4, label: 'Острота', value: SPICE.find((s) => s.value === answers.spice)?.title ?? '' },
-    { step: 5, label: 'Кухня', value: `${SKILLS.find((s) => s.value === answers.skill)?.title}; ${answers.equipment.map((e) => EQUIPMENT.find((x) => x.id === e)?.label ?? e).join(', ') || 'без техники'}` },
+    { step: 5, label: 'Готовка', value: `${SKILLS.find((s) => s.value === answers.skill)?.title}; ${answers.equipment.map((e) => EQUIPMENT.find((x) => x.id === e)?.label ?? e).join(', ') || 'без техники'}` },
     { step: 5, label: 'Время', value: `будни — ${time(answers.weekday_min)}; выходные — ${answers.weekend_min === 'same' ? 'как в будни' : time(answers.weekend_min)}` },
     { step: 6, label: 'Меню', value: `${answers.days} дн.; ${slotsInOrder(answers.slots).map((s) => SLOT_NAMES[s]?.toLowerCase()).join(', ')}; ${REPEATS.find((r) => r.value === answers.repeat)?.title.toLowerCase()}` },
     { step: 6, label: 'Бюджет', value: answers.budget_rub ? `${answers.budget_rub.toLocaleString('ru-RU')} ₽` : 'Без лимита' },
     { step: 6, label: 'Витамины', value: answers.vitamins ? 'Учитывать' : 'Не учитывать' },
   ];
   return (
+    <div className="stack">
+    {removed.length > 0 && (
+      <div className="banner warn" role="status">
+        <Icon name="warn" />
+        <div className="grow">
+          Из семьи будут удалены: <strong>{removed.join(', ')}</strong>. Если это не так, измените число взрослых или детей на первом шаге.
+        </div>
+      </div>
+    )}
     <dl className="summary-list">
       {rows.map((r, i) => (
         <div key={i} className="summary-row" style={{ ['--i' as string]: i }}>
@@ -634,5 +677,38 @@ function Summary({ answers, onEdit }: { answers: Answers; onEdit: (step: number)
         </div>
       ))}
     </dl>
+    </div>
   );
+}
+
+function yearsLabel(age: number): string {
+  return `${age} ${plural(age, 'год', 'года', 'лет')}`;
+}
+
+const DRAFT_KEY = 'foodo:start-draft';
+
+function readDraft(): Answers | null {
+  try {
+    const raw = sessionStorage.getItem(DRAFT_KEY);
+    return raw ? (JSON.parse(raw) as Answers) : null;
+  } catch {
+    // Storage may be unavailable (private mode): the questionnaire simply starts over.
+    return null;
+  }
+}
+
+function writeDraft(a: Answers): void {
+  try {
+    sessionStorage.setItem(DRAFT_KEY, JSON.stringify(a));
+  } catch {
+    // Not critical: only the draft is lost on reload.
+  }
+}
+
+function clearDraft(): void {
+  try {
+    sessionStorage.removeItem(DRAFT_KEY);
+  } catch {
+    // Nothing to clear.
+  }
 }

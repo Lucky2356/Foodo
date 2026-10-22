@@ -161,7 +161,7 @@ describe('pantry and shopping', () => {
 });
 
 describe('price sources', () => {
-  it('loose regional averages are costed by exact weight and marked as an estimate', () => {
+  it('a price per kilogram buys the product in its usual package; it is marked as an estimate', () => {
     const cat = potatoCatalog();
     const menu = menuWith(cat, ['stew']);
     const prices: PriceProfile = {
@@ -172,7 +172,29 @@ describe('price sources', () => {
     };
     const list = computeShopping({ ...menu, settings: { ...menu.settings, budget: { limit_kop: 5000, currency: 'RUB' } } }, cat, [], prices, emptyShoppingState());
     const line = list.lines[0]!;
+    // 400 g needed, the potato is sold in 1 kg bags: one bag at 45 ₽/kg.
+    expect(line.package).toEqual({ size: 1000, unit: 'g', count: 1 });
+    expect(line.buy_qty).toBe(1000);
+    expect(line.purchase_cost_kop).toBe(4500);
+    expect(line.price_per).toEqual({ size: 1, unit: 'kg', loose: true });
+    expect(line.estimated).toBe(true);
+    expect(list.budget.status).toBe('ok');
+  });
+
+  it('a product without a package is bought by exact weight at a price per kilogram', () => {
+    const cat = potatoCatalog();
+    cat.products.potato = { ...cat.products.potato!, package: null };
+    const menu = menuWith(cat, ['stew']);
+    const prices: PriceProfile = {
+      store_id: 'none',
+      city_id: 'kazan',
+      region: 'Татарстан',
+      entries: [{ product_id: 'potato', price_kop: 4500, package_size: 1, package_unit: 'kg', currency: 'RUB', date: '2026-09-30', source: 'Росстат', kind: 'rosstat', loose: true }],
+    };
+    const list = computeShopping({ ...menu, settings: { ...menu.settings, budget: { limit_kop: 5000, currency: 'RUB' } } }, cat, [], prices, emptyShoppingState());
+    const line = list.lines[0]!;
     expect(line.package).toBeNull();
+    expect(line.buy_qty).toBe(400);
     expect(line.purchase_cost_kop).toBe(1800);
     expect(line.estimated).toBe(true);
     expect(list.budget.status).toBe('ok');
@@ -194,5 +216,50 @@ describe('price sources', () => {
     expect(line.price_kind).toBe('receipt');
     expect(line.estimated).toBe(false);
     expect(line.purchase_cost_kop).toBe(7990);
+  });
+});
+
+describe('budget and purchases moved to the pantry', () => {
+  const priceOf = (kop: number): PriceProfile => ({
+    store_id: 'magnit',
+    region: null,
+    entries: [{ product_id: 'potato', price_kop: kop, package_size: 1, package_unit: 'kg', currency: 'RUB', date: '2026-10-12', source: 'чек', kind: 'receipt' }],
+  });
+
+  it('the household’s current limit wins over the one saved with the menu', () => {
+    const cat = potatoCatalog();
+    const menu = menuWith(cat, ['stew']);
+    const saved = { ...menu, settings: { ...menu.settings, budget: { limit_kop: 100000, currency: 'RUB' as const } } };
+    const list = computeShopping(saved, cat, [], priceOf(9000), emptyShoppingState(), { limit_kop: 5000 });
+    expect(list.budget.limit_kop).toBe(5000);
+    expect(list.budget.status).toBe('exceeded');
+  });
+
+  it('known prices already over the limit are an overrun even with prices missing', () => {
+    const cat = potatoCatalog();
+    const menu = menuWith(cat, ['mash']);
+    const state = emptyShoppingState();
+    state.manual_lines.push({ id: 'manual:1', name: 'Салфетки', qty: 1, unit: 'шт.', department: 'Другое', price_kop: null });
+    const list = computeShopping(menu, cat, [], priceOf(9000), state, { limit_kop: 5000 });
+    expect(list.totals.complete).toBe(false);
+    expect(list.budget.status).toBe('exceeded');
+    const cheap = computeShopping(menu, cat, [], priceOf(1000), state, { limit_kop: 5000 });
+    expect(cheap.budget.status).toBe('unconfirmed');
+  });
+
+  it('the menu’s own purchase moved to the pantry does not change its list or budget', () => {
+    const cat = potatoCatalog();
+    const menu = menuWith(cat, ['stew']);
+    const state = emptyShoppingState();
+    const before = computeShopping(menu, cat, [], priceOf(4500), state, { limit_kop: 5000 });
+    const line = before.lines[0]!;
+    expect(line.buy_qty).toBe(1000);
+    // The whole 1 kg bag goes to the pantry.
+    const pantry = [{ id: 'p1', product_id: 'potato', qty: line.buy_qty, unit: 'g' as const, location: 'Куплено', expires: null }];
+    const after = computeShopping(menu, cat, pantry, priceOf(4500), state, { limit_kop: 5000 }, { potato: line.buy_qty });
+    expect(after.lines[0]!.to_buy).toBe(line.to_buy);
+    expect(after.budget).toEqual(before.budget);
+    // Another menu sees the bag at home.
+    expect(computeShopping(menu, cat, pantry, priceOf(4500), state).lines[0]!.to_buy).toBe(0);
   });
 });

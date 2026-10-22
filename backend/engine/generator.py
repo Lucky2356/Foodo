@@ -43,6 +43,7 @@ SCORE = {
     "sharedIngredientCap": 1,
     "timePer120Min": 1,
     "vitamins": 1,
+    "energyFit": 2,
     "jitter": 0.35,
     "unfilledPenalty": 100,
     "budgetExceededPenalty": 1000,
@@ -265,6 +266,24 @@ class _Planner:
             return clamp(1, s["portion_min"], s["portion_max"])
         return clamp(member["portion_factor"], 0.25, 3)
 
+    def energy_mismatch(self, recipe_id: str, slot: str, portions: dict[str, float], people: list[JSON]) -> float:
+        """Twin of energyMismatch in generator.ts: average miss of the meal's calorie targets, capped at 1."""
+        serving = self.per_serving(recipe_id)["kcal"]["value"]
+        if not serving > 0:
+            return 0
+        total: float = 0
+        n = 0
+        for m in people:
+            target = self.kcal_targets.get(m["id"])
+            if target is None:
+                continue
+            meal_kcal = target * self.slot_share.get(slot, 0)
+            if not meal_kcal > 0:
+                continue
+            total += min(1, abs(portions.get(m["id"], 0) * serving - meal_kcal) / meal_kcal)
+            n += 1
+        return 0 if n == 0 else total / n
+
     def repeat_allowed(self, state: _State, recipe_id: str, day: int) -> bool:
         r = self.req["settings"]["repeat"]
         uses = state.uses.get(recipe_id, 0)
@@ -336,6 +355,7 @@ class _Planner:
         cuisines = s.get("cuisines") or []
         if cuisines and recipe.get("cuisine") and recipe["cuisine"] in cuisines:
             score += SCORE["cuisine"]
+        score += (self.slot_ref(slot).get("category_bonus") or {}).get(recipe["category"], 0)
         if recipe["category"] in state.categories_by_day.get(day, set()):
             score += SCORE["sameCategorySameDay"]
         score += SCORE["repeatUse"] * state.uses.get(recipe_id, 0)
@@ -355,6 +375,7 @@ class _Planner:
             total += f
         if cost_weight > 0 and budget_per_meal > 0:
             score -= cost_weight * self.estimate_cost(recipe_id, total) / budget_per_meal
+        score -= SCORE["energyFit"] * self.energy_mismatch(recipe_id, slot, portions, people)
         if s["vitamins"]["enabled"]:
             score += SCORE["vitamins"] * self.vitamin_gain(state, recipe_id, portions, people) / len(people)
         return score
@@ -425,7 +446,11 @@ class _Planner:
             else:
                 parts.append(f"{n} — {REASON_MESSAGES.get(key, key)}")
         slot_name = self.slot_ref(slot)["name"]
-        message = f"Для «{slot_name}» не найдено подходящего блюда. Из {len(self.recipes)} рецептов отсеяны: {'; '.join(parts)}."
+        # A recipe can fail several checks, so the counts may add up to more than the catalogue size.
+        message = (
+            f"На {slot_name.lower()} не нашлось подходящего блюда. Причины отсева среди {len(self.recipes)} рецептов "
+            f"(у рецепта их может быть несколько): {'; '.join(parts)}."
+        )
         return ("repeat_exhausted" if repeat_only > 0 else "no_candidates", message)
 
     def new_batch(self, state: _State, recipe_id: str, method_id: str, date: str, slot: str) -> JSON:
@@ -661,6 +686,12 @@ def rank_candidates(req: JSON, catalog: Catalog, menu: JSON, date: str, slot: st
         )
     ranked.sort(key=lambda c: (-c["score"], c["recipe_id"]))
     return ranked
+
+
+def member_portions(req: JSON, catalog: Catalog, people: list[JSON], recipe_id: str, slot: str) -> dict[str, float]:
+    """Portions of a dish chosen by hand or as a replacement; twin of memberPortions in generator.ts."""
+    planner = _Planner(req, catalog)
+    return {m["id"]: planner.portion(m, recipe_id, slot) for m in people}
 
 
 def _attempts_for(days: int) -> int:

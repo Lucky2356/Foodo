@@ -33,6 +33,9 @@ import type {
   ShoppingView,
   WaterView,
 } from './types';
+import { MEMBER_LIMITS, rangeError } from '../lib/numbers';
+import { customRecipeErrors } from '../lib/recipeValidation';
+import type { MemberLimitKey } from '../lib/numbers';
 
 export const DEFAULT_HOUSEHOLD_SETTINGS: HouseholdSettings = {
   slots: ['breakfast', 'lunch', 'snack', 'dinner'],
@@ -152,9 +155,12 @@ export class GuestGateway implements Gateway {
 
   async addMember(data: Partial<Member> & { name: string }): Promise<Member> {
     const db = await this.db();
-    const count = (await db.getAllKeys('members')).length;
+    const all = await db.getAll('members');
+    const count = all.length;
     if (count >= 20) throw new ApiError('limit', 'В семье может быть не больше 20 участников.', 400);
-    const m = { ...blankMember(data.name, count), ...data, id: newId('m'), position: count };
+    // After a removal positions have gaps: the next one goes after the last, never onto an existing one.
+    const position = all.reduce((max, x) => Math.max(max, (x.position ?? 0) + 1), 0);
+    const m = { ...blankMember(data.name, position), ...data, id: newId('m'), position };
     validateMember(m);
     await db.put('members', m);
     return m;
@@ -254,10 +260,13 @@ export class GuestGateway implements Gateway {
       throw new ApiError('revision_conflict', 'Меню изменилось в другой вкладке. Обновите страницу.', 409);
     }
     const catalog = await this.catalog();
+    const h = await this.householdRow();
     let menu;
     try {
       menu = applyMenuOp(stored.menu, op as Parameters<typeof applyMenuOp>[1], {
         catalog,
+        settings: h.settings.plan,
+        slot_members: h.settings.slot_members,
         members: await this.members(),
         pantry: await this.listPantry(),
         prices: await this.priceProfile(),
@@ -298,7 +307,14 @@ export class GuestGateway implements Gateway {
 
   async getShopping(menuId: string): Promise<ShoppingView> {
     const stored = await this.stored(menuId);
-    const list = computeShopping(stored.menu, await this.catalog(), await this.listPantry(), await this.priceProfile(), stored.shopping_state);
+    const h = await this.householdRow();
+    // What this menu bought and moved to the pantry is not «already at home» for its own list.
+    const bought: Record<string, number> = {};
+    for (const [lineId, qty] of Object.entries(stored.transferred_qty ?? {})) {
+      const productId = lineId.startsWith('auto:') ? lineId.split(':')[1] : undefined;
+      if (productId) bought[productId] = (bought[productId] ?? 0) + qty;
+    }
+    const list = computeShopping(stored.menu, await this.catalog(), await this.listPantry(), await this.priceProfile(), stored.shopping_state, h.settings.plan.budget, bought);
     const transferred = new Set(stored.transferred_lines);
     return { ...list, lines: list.lines.map((l) => ({ ...l, transferred: transferred.has(l.id) })), state: stored.shopping_state, shopping_revision: stored.shopping_revision };
   }
@@ -329,19 +345,22 @@ export class GuestGateway implements Gateway {
     const tx = db.transaction(['menus', 'pantry'], 'readwrite');
     const stored = (await tx.objectStore('menus').get(menuId)) as StoredMenu;
     const done = new Set(stored.transferred_lines);
+    const qtys = { ...(stored.transferred_qty ?? {}) };
     const added: string[] = [];
     const skipped: string[] = [];
     for (const id of lineIds) {
       const line = shopping.lines.find((l) => l.id === id);
-      if (!line || done.has(id) || !line.convertible || line.to_buy <= 0) {
+      if (!line || done.has(id) || !line.convertible || line.buy_qty <= 0) {
         skipped.push(id);
         continue;
       }
-      await tx.objectStore('pantry').put({ id: newId('p'), product_id: line.product_id, qty: line.to_buy, unit: line.unit as PantryRecord['unit'], location: 'Куплено', expires: null, created_at: new Date().toISOString() });
+      // Whole packages go to the pantry: the leftover after cooking stays at home.
+      await tx.objectStore('pantry').put({ id: newId('p'), product_id: line.product_id, qty: line.buy_qty, unit: line.unit as PantryRecord['unit'], location: 'Куплено', expires: null, created_at: new Date().toISOString() });
       done.add(id);
+      qtys[id] = line.buy_qty;
       added.push(id);
     }
-    await tx.objectStore('menus').put({ ...stored, transferred_lines: [...done] });
+    await tx.objectStore('menus').put({ ...stored, transferred_lines: [...done], transferred_qty: qtys });
     await tx.done;
     return { added, skipped };
   }
@@ -427,7 +446,8 @@ export class GuestGateway implements Gateway {
         date: e.date ?? localDate(deviceTimeZone()),
         source: e.source ?? 'вручную',
         kind: e.kind ?? 'manual',
-        chain_id: e.chain_id ?? h.store_chain_id,
+        // An explicit null is «any shop»; only a price without the field follows the chosen chain.
+        chain_id: e.chain_id !== undefined ? e.chain_id : h.store_chain_id,
       });
     }
     return { shared: 0 };
@@ -459,6 +479,8 @@ export class GuestGateway implements Gateway {
   }
 
   async saveCustomRecipe(recipe: Recipe): Promise<Recipe> {
+    const errors = customRecipeErrors(recipe, this.baseCatalog());
+    if (errors.length > 0) throw new ApiError('validation_error', errors.join(' '), 400);
     const db = await this.db();
     const existing = recipe.id ? await db.get('recipes', recipe.id) : undefined;
     const saved: Recipe = { ...recipe, id: existing?.id ?? (recipe.id?.startsWith('u-') ? recipe.id : newId('u')), version: (existing?.version ?? 0) + 1, visibility: 'private', source: 'user' };
@@ -531,8 +553,11 @@ export class GuestGateway implements Gateway {
 function validateMember(m: Member): void {
   if (!m.name.trim() || m.name.length > 60) throw new ApiError('validation_error', 'Имя или псевдоним — от 1 до 60 символов.', 400);
   if (!(m.portion_factor >= 0.25 && m.portion_factor <= 3)) throw new ApiError('validation_error', 'Простая порция — от 0,25 до 3.', 400);
-  if (m.age !== null && (m.age < 0 || m.age > 120)) throw new ApiError('validation_error', 'Возраст — от 0 до 120 лет.', 400);
-  if (m.kcal_target !== null && (m.kcal_target < 500 || m.kcal_target > 6000)) throw new ApiError('validation_error', 'Цель по калориям — от 500 до 6000 ккал.', 400);
+  // Same ranges as the server model; NaN (text that is not a number) fails them too.
+  for (const key of Object.keys(MEMBER_LIMITS) as MemberLimitKey[]) {
+    const error = rangeError(key, m[key]);
+    if (error) throw new ApiError('validation_error', error, 400);
+  }
   if (m.portion_mode === 'target' && m.age !== null && m.age < 18 && m.goal === 'lose') {
     throw new ApiError('validation_error', 'Для несовершеннолетних цель «снижение веса» не рассчитывается автоматически. Используйте простые порции.', 400);
   }

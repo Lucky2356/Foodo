@@ -1,18 +1,37 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp, useLoad } from '../state/app';
 import { Icon } from '../ui/icons';
-import { Empty, ErrorBox, Loading, PageHead } from '../ui/kit';
+import { Empty, ErrorBox, Loading, PageHead, Sheet } from '../ui/kit';
 import { addDaysIso, dayMonth } from '../lib/dates';
+import { plural } from '../lib/format';
 
 export default function MenuHistoryPage() {
   const { gateway, currentMenuId, setCurrentMenuId, reportError, toast } = useApp();
   const navigate = useNavigate();
   const { data, loading, error, reload, setData } = useLoad(() => gateway.listMenus(), [gateway]);
+  const [deleting, setDeleting] = useState<{ id: string; title: string } | null>(null);
+  const [busy, setBusy] = useState(false);
   if (loading && !data) return <Loading />;
   if (error) return <ErrorBox message={error} onRetry={reload} />;
   const menus = data ?? [];
   const favorites = menus.filter((m) => m.is_favorite);
   const rest = menus.filter((m) => !m.is_favorite);
+  const titleOf = (m: (typeof menus)[number]) => m.title || `${dayMonth(m.start_date)} — ${dayMonth(addDaysIso(m.start_date, m.days - 1))}`;
+  const remove = async (id: string) => {
+    setBusy(true);
+    try {
+      await gateway.deleteMenu(id);
+      setData(menus.filter((x) => x.id !== id));
+      if (id === currentMenuId) setCurrentMenuId(null);
+      setDeleting(null);
+      toast('Меню удалено', { tone: 'success' });
+    } catch (e) {
+      reportError(e);
+    } finally {
+      setBusy(false);
+    }
+  };
   const row = (m: (typeof menus)[number]) => (
     <div key={m.id} className="card row">
       <button
@@ -23,9 +42,9 @@ export default function MenuHistoryPage() {
           navigate('/menu');
         }}
       >
-        <strong>{m.title || `${dayMonth(m.start_date)} — ${dayMonth(addDaysIso(m.start_date, m.days - 1))}`}</strong>
+        <strong>{titleOf(m)}</strong>
         <span className="muted small" style={{ display: 'block' }}>
-          {m.days} дн. · изменено {new Date(m.updated_at).toLocaleDateString('ru-RU')}
+          {m.days} {plural(m.days, 'день', 'дня', 'дней')} · изменено {new Date(m.updated_at).toLocaleDateString('ru-RU')}
           {m.id === currentMenuId ? ' · открыто сейчас' : ''}
         </span>
       </button>
@@ -46,17 +65,8 @@ export default function MenuHistoryPage() {
       </button>
       <button
         className="icon-btn"
-        aria-label="Удалить меню"
-        onClick={async () => {
-          try {
-            await gateway.deleteMenu(m.id);
-            setData(menus.filter((x) => x.id !== m.id));
-            if (m.id === currentMenuId) setCurrentMenuId(null);
-            toast('Меню удалено', { tone: 'success' });
-          } catch (e) {
-            reportError(e);
-          }
-        }}
+        aria-label={`Удалить меню: ${titleOf(m)}`}
+        onClick={() => setDeleting({ id: m.id, title: titleOf(m) })}
       >
         <Icon name="trash" />
       </button>
@@ -75,11 +85,34 @@ export default function MenuHistoryPage() {
               {favorites.map(row)}
             </section>
           )}
-          <section className="stack">
-            <h2>Все меню</h2>
-            {rest.map(row)}
-          </section>
+          {rest.length > 0 && (
+            <section className="stack">
+              <h2>{favorites.length > 0 ? 'Остальные' : 'Все меню'}</h2>
+              {rest.map(row)}
+            </section>
+          )}
         </>
+      )}
+      {deleting && (
+        <Sheet
+          open
+          onClose={() => setDeleting(null)}
+          title="Удалить меню?"
+          footer={
+            <>
+              <button className="btn danger" disabled={busy} onClick={() => void remove(deleting.id)}>
+                Удалить
+              </button>
+              <button className="btn ghost" onClick={() => setDeleting(null)}>
+                Отмена
+              </button>
+            </>
+          }
+        >
+          <p>
+            Меню «{deleting.title}» и его список покупок будут удалены без возможности восстановления. Продукты в остатках дома останутся.
+          </p>
+        </Sheet>
       )}
     </div>
   );

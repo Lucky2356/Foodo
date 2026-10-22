@@ -17,7 +17,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 from rest_framework import serializers
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -98,6 +98,16 @@ class LogoutView(APIView):
         # Tells the browser to drop cached data for this origin (the SPA also wipes its account store).
         response["Clear-Site-Data"] = '"cache"'
         return response
+
+
+class SessionView(APIView):
+    """Who is signed in, for the app start: always 200, «user» is null for a guest. Unlike /auth/me/
+    it does not answer an anonymous visitor with an error the browser logs on every page load."""
+
+    permission_classes = [AllowAny]
+
+    def get(self, request: Request) -> Response:
+        return Response({"user": user_json(request.user) if request.user.is_authenticated else None})
 
 
 class MeView(APIView):

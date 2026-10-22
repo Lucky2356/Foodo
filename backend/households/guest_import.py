@@ -71,7 +71,8 @@ def preview_guest_import(h: Household, data: Any) -> JSON:
                 "start_date": doc.get("start_date"),
                 "days": doc.get("days"),
                 "conflict": {"existing_id": str(clash.id)} if clash else None,
-                "default": "add",
+                # A menu with the same start is most likely this one transferred before: skip by default.
+                "default": "skip" if clash else "add",
             }
         )
     return {
@@ -130,8 +131,9 @@ def apply_guest_import(h: Household, data: Any, resolution: JSON) -> JSON:
 
     products = set(Product.objects.values_list("id", flat=True))
     recipe_map: dict[str, str] = {}
-    custom = data.get("custom_recipes", [])
-    errors = validate_recipes([{**r, "id": "u-check-" + str(i)} for i, r in enumerate(custom)], products, validation_reference())
+    ref = validation_reference()
+    custom = [_with_current_spice_rule(r, set(ref.get("hot_products", []))) for r in data.get("custom_recipes", [])]
+    errors = validate_recipes([{**r, "id": "u-check-" + str(i)} for i, r in enumerate(custom)], products, ref)
     if errors:
         raise ApiError("validation_error", "Собственные рецепты в файле содержат ошибки.", 400, {"errors": errors[:20]})
     for r in custom:
@@ -203,3 +205,17 @@ def apply_guest_import(h: Household, data: Any, resolution: JSON) -> JSON:
                 HabitMark.objects.get_or_create(habit=habit, local_date=day)
             added["habits"] += 1
     return {"added": added, "member_map": member_map}
+
+
+def _with_current_spice_rule(recipe: Any, hot: set[str]) -> Any:
+    """Recipes saved before the spice rule (docs/NUTRITION_RULES.md) are brought up to it instead of
+    blocking the transfer: a hot ingredient makes the dish at least slightly spicy, and a spicy dish
+    is not marked as one for children."""
+    if not isinstance(recipe, dict) or not isinstance(recipe.get("ingredients"), list):
+        return recipe
+    out = dict(recipe)
+    if out.get("spicy", 0) == 0 and any(isinstance(i, dict) and i.get("product") in hot for i in out["ingredients"]):
+        out["spicy"] = 1
+    if isinstance(out.get("spicy"), int) and out["spicy"] > 0:
+        out["kid_friendly"] = False
+    return out

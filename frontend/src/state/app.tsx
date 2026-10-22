@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { Catalog } from '../engine';
-import { ApiError, serverAvailable } from '../data/api';
+import { ApiError, OfflineError, serverAvailable } from '../data/api';
 import { loadCatalog } from '../data/catalogSource';
 import { GuestGateway } from '../data/guestGateway';
 import { dropCache } from '../data/localDb';
@@ -25,6 +25,9 @@ interface AppState {
   catalog: Catalog;
   catalogSource: string;
   user: AccountUser | null;
+  /** The family this account works with now (an account may belong to several after an invite). */
+  activeHouseholdId: string | null;
+  setActiveHousehold: (id: string) => void;
   gateway: Gateway;
   household: HouseholdView | null;
   refreshHousehold: () => Promise<HouseholdView | null>;
@@ -38,7 +41,8 @@ interface AppState {
   toast: (message: string, opts?: { tone?: Toast['tone']; undo?: Toast['undo'] }) => void;
   dismissToast: (id: number) => void;
   reportError: (e: unknown) => void;
-  login: (user: AccountUser) => Promise<void>;
+  /** householdId: open this family right away (after accepting an invitation). */
+  login: (user: AccountUser, householdId?: string) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -54,8 +58,12 @@ const EMPTY_CATALOG: Catalog = {
   },
 };
 
-function menuKey(user: AccountUser | null): string {
-  return `foodo:current-menu:${user ? `account-${user.id}` : 'guest'}`;
+function menuKey(user: AccountUser | null, householdId: string | null): string {
+  return `foodo:current-menu:${user ? `account-${user.id}-${householdId ?? ''}` : 'guest'}`;
+}
+
+function householdKey(user: AccountUser): string {
+  return `foodo:household:${user.id}`;
 }
 
 function readStorage(key: string): string | null {
@@ -86,16 +94,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [household, setHousehold] = useState<HouseholdView | null>(null);
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [currentMenuId, setCurrentMenuIdState] = useState<string | null>(null);
+  const [chosenHousehold, setChosenHousehold] = useState<string | null>(null);
   const [dataVersion, setDataVersion] = useState(0);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const catalogRef = useRef(catalog);
   catalogRef.current = catalog;
   const toastSeq = useRef(0);
 
+  // The chosen family if the account still belongs to it, otherwise the first one.
+  const activeHouseholdId = user ? (user.households.find((h) => h.id === chosenHousehold)?.id ?? user.households[0]?.id ?? null) : null;
   const gateway: Gateway = useMemo(() => {
-    if (user && user.households[0]) return new RemoteGateway(user.households[0].id, `account-${user.id}`);
+    if (user && activeHouseholdId) return new RemoteGateway(activeHouseholdId, `account-${user.id}`);
     return new GuestGateway(() => catalogRef.current, server);
-  }, [user, server]);
+  }, [user, activeHouseholdId, server]);
 
   const toast = useCallback((message: string, opts: { tone?: Toast['tone']; undo?: Toast['undo'] } = {}) => {
     toastSeq.current += 1;
@@ -138,7 +149,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
         setCatalogSource(loaded.source);
         if (hasServer) {
           try {
-            setUser(await account.me());
+            const u = await account.session();
+            if (u) setChosenHousehold(readStorage(householdKey(u)));
+            setUser(u);
           } catch {
             setUser(null);
           }
@@ -162,14 +175,24 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!ready) return;
-    setCurrentMenuIdState(readStorage(menuKey(user)));
+    setCurrentMenuIdState(readStorage(menuKey(user, activeHouseholdId)));
     void refreshHousehold();
-  }, [ready, user, refreshHousehold]);
+  }, [ready, user, activeHouseholdId, refreshHousehold]);
 
   const setCurrentMenuId = useCallback(
     (id: string | null) => {
       setCurrentMenuIdState(id);
-      writeStorage(menuKey(user), id);
+      writeStorage(menuKey(user, activeHouseholdId), id);
+    },
+    [user, activeHouseholdId],
+  );
+
+  const setActiveHousehold = useCallback(
+    (id: string) => {
+      if (!user || !user.households.some((h) => h.id === id)) return;
+      writeStorage(householdKey(user), id);
+      setHousehold(null);
+      setChosenHousehold(id);
     },
     [user],
   );
@@ -193,8 +216,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     [favorites, gateway, reportError],
   );
 
-  const login = useCallback(async (u: AccountUser) => {
+  const login = useCallback(async (u: AccountUser, householdId?: string) => {
+    if (householdId) writeStorage(householdKey(u), householdId);
     setHousehold(null);
+    setChosenHousehold(readStorage(householdKey(u)));
     setUser(u);
   }, []);
 
@@ -202,12 +227,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const scope = user ? `account-${user.id}` : null;
     try {
       await account.logout();
-    } finally {
-      // The account's offline copy is wiped; guest data on this device is untouched.
-      if (scope) await dropCache(scope);
-      setHousehold(null);
-      setUser(null);
+    } catch (e) {
+      // Without the server the session stays valid there: «signing out» only locally would leave
+      // the account open on this device after reconnecting. A session that is already gone is fine.
+      if (e instanceof OfflineError) throw new ApiError('offline', 'Нет сети: выйти можно только при подключении к интернету. Данные на устройстве не изменены.', 0);
+      if (!(e instanceof ApiError && (e.status === 401 || e.status === 403))) throw e;
     }
+    // The account's offline copy is wiped; guest data on this device is untouched.
+    if (scope) await dropCache(scope);
+    setHousehold(null);
+    setUser(null);
   }, [user]);
 
   const value: AppState = {
@@ -218,6 +247,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     catalog,
     catalogSource,
     user,
+    activeHouseholdId,
+    setActiveHousehold,
     gateway,
     household,
     refreshHousehold,

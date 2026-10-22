@@ -8,7 +8,8 @@ from rest_framework.test import APIClient
 
 from catalog.importers import import_catalog_file
 from catalog.models import Product, Recipe, RecipeVersion
-from catalog.services import engine_catalog, recipe_to_json, save_recipe
+from catalog.services import engine_catalog, recipe_to_json, save_recipe, validation_reference
+from catalog.validation import validate_recipes
 from engine import generate_menu, load_seed_catalog
 
 pytestmark = pytest.mark.django_db
@@ -125,8 +126,12 @@ def test_recipe_search_and_filters_use_ids_not_names() -> None:
     assert "ovsyanka-s-orehami-i-myodom" in egg_free
     by_time = client.get("/api/catalog/recipes/", {"max_time": 10, "page_size": 100}).json()["results"]
     assert by_time and all(x["total_min"] <= 10 for x in by_time)
+    # An unknown yield gives no per-100 g values instead of an invented one.
+    pie = recipe_to_json(Recipe.objects.prefetch_related("ingredients", "methods").get(pk="pirog-s-kapustoy"))
+    save_recipe({**pie, "yield_g": None})
     detail = client.get("/api/catalog/recipes/pirog-s-kapustoy/").json()
     assert detail["nutrition"]["per100g"] is None
+    assert detail["nutrition"]["perServing"]["kcal"]["value"] > 0
 
 
 def test_recipe_edit_creates_new_version_and_old_menu_keeps_snapshot() -> None:
@@ -269,3 +274,21 @@ def test_recipe_filters_by_diet_type_cuisine_spice_and_kids() -> None:
     assert first.id in ids({"kids": "1"})
     summary = client.get("/api/catalog/recipes/", {"cuisine": "italian"}).json()["results"][0]
     assert {"cuisine", "spicy", "kid_friendly"} <= set(summary)
+
+
+def test_spice_follows_the_composition() -> None:
+    data = recipe_to_json(Recipe.objects.prefetch_related("ingredients", "methods").get(pk="omlet-s-pomidorami"))
+    products = set(Product.objects.values_list("id", flat=True))
+    ref = validation_reference()
+    hot = {**data, "spicy": 0, "ingredients": [*data["ingredients"], {"product": "chili_flakes", "qty": 1, "unit": "pinch"}]}
+    codes = {e["code"] for e in validate_recipes([hot], products, ref)}
+    assert "spicy_mismatch" in codes
+    for_kids = {**data, "spicy": 1, "kid_friendly": True}
+    assert "spicy_for_kids" in {e["code"] for e in validate_recipes([for_kids], products, ref)}
+    # Garlic and black pepper alone do not make a dish spicy.
+    assert validate_recipes([{**data, "spicy": 0}], products, ref) == []
+    seed = load_seed_catalog()
+    for r in seed.recipes.values():
+        has_hot = any(i["product"] in seed.reference["hot_products"] for i in r["ingredients"])
+        assert (r["spicy"] > 0) == has_hot, r["id"]
+        assert not (r["spicy"] > 0 and r["kid_friendly"]), r["id"]

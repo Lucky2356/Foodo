@@ -16,10 +16,10 @@
   --surface-raised: #ffffff;
   --text: #1f2a1f;
   --muted: #5f6b5f;
-  --faint: #8a948a;
+  --faint: #687268;
   --border: #ece5d3;
-  --primary: #16a34a;
-  --primary-hover: #15803d;
+  --primary: #15803d;
+  --primary-hover: #166534;
   --primary-ink: #ffffff;
   --primary-soft: #e3f6e9;
   --primary-soft-ink: #14532d;
@@ -42,6 +42,11 @@
   --info-ink: #1e4b8f;
   --danger: #c62828;
   --danger-soft: #fde2df;
+  /* Meaning, not brand: «ok» is always green and «attention» always orange, whichever colour leads the theme. */
+  --ok-soft: var(--primary-soft);
+  --ok-ink: var(--primary-soft-ink);
+  --attention-soft: var(--accent-soft);
+  --attention-ink: var(--accent-ink);
   --focus: #2563eb;
   --shadow-sm: 0 1px 2px rgb(60 48 20 / 7%), 0 1px 1px rgb(60 48 20 / 5%);
   --shadow: 0 10px 28px -12px rgb(60 48 20 / 22%), 0 2px 6px rgb(60 48 20 / 6%);
@@ -80,7 +85,7 @@
     --surface-raised: #1a1a1a;
     --text: #f5f5f5;
     --muted: #a3a3a3;
-    --faint: #737373;
+    --faint: #8f8f8f;
     --border: #262626;
     --primary: #ffa42b;
     --primary-hover: #ffb54d;
@@ -106,6 +111,10 @@
     --info-ink: #a9d4ff;
     --danger: #ff6b5b;
     --danger-soft: #2d1512;
+    --ok-soft: var(--accent-soft);
+    --ok-ink: var(--accent-ink);
+    --attention-soft: var(--primary-soft);
+    --attention-ink: var(--primary-soft-ink);
     --focus: #ffc061;
     --shadow-sm: 0 1px 2px rgb(0 0 0 / 60%);
     --shadow: 0 10px 30px -12px rgb(0 0 0 / 85%), 0 0 0 1px rgb(255 255 255 / 4%);
@@ -135,7 +144,7 @@
   --surface-raised: #1a1a1a;
   --text: #f5f5f5;
   --muted: #a3a3a3;
-  --faint: #737373;
+  --faint: #8f8f8f;
   --border: #262626;
   --primary: #ffa42b;
   --primary-hover: #ffb54d;
@@ -161,6 +170,10 @@
   --info-ink: #a9d4ff;
   --danger: #ff6b5b;
   --danger-soft: #2d1512;
+  --ok-soft: var(--accent-soft);
+  --ok-ink: var(--accent-ink);
+  --attention-soft: var(--primary-soft);
+  --attention-ink: var(--primary-soft-ink);
   --focus: #ffc061;
   --shadow-sm: 0 1px 2px rgb(0 0 0 / 60%);
   --shadow: 0 10px 30px -12px rgb(0 0 0 / 85%), 0 0 0 1px rgb(255 255 255 / 4%);
@@ -730,7 +743,7 @@ textarea {
 }
 
 .btn.small {
-  min-height: 36px;
+  min-height: 40px;
   padding: 6px 12px;
   font-size: 14px;
   border-radius: 11px;
@@ -764,8 +777,8 @@ textarea {
 }
 
 .icon-btn.small {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 11px;
 }
 
@@ -805,8 +818,8 @@ textarea {
 }
 
 .chip.ban[aria-pressed='true'] {
-  background: var(--accent-soft);
-  color: var(--accent-ink);
+  background: var(--danger-soft);
+  color: var(--danger);
 }
 
 .badge {
@@ -823,13 +836,13 @@ textarea {
 }
 
 .badge.green {
-  background: var(--primary-soft);
-  color: var(--primary-soft-ink);
+  background: var(--ok-soft);
+  color: var(--ok-ink);
 }
 
 .badge.orange {
-  background: var(--accent-soft);
-  color: var(--accent-ink);
+  background: var(--attention-soft);
+  color: var(--attention-ink);
 }
 
 .badge.yellow {
@@ -1002,8 +1015,8 @@ textarea.input {
 }
 
 .stepper button {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border: 0;
   border-radius: 11px;
   background: transparent;
@@ -1015,6 +1028,16 @@ textarea.input {
 
 .stepper button:hover {
   background: var(--surface);
+}
+
+/* At the limit the button stays focusable (aria-disabled), it only looks inactive. */
+.stepper button[aria-disabled='true'] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.stepper button[aria-disabled='true']:hover {
+  background: transparent;
 }
 
 .stepper output {
@@ -1182,11 +1205,13 @@ textarea.input {
 }
 
 .sheet {
+  --sheet-pad: 18px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 640px;
   max-height: min(88dvh, 820px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  overflow: hidden;
   background: var(--surface);
   border-radius: 26px 26px 0 0;
   padding: 10px 18px calc(22px + env(safe-area-inset-bottom));
@@ -1209,12 +1234,31 @@ textarea.input {
   margin-bottom: 14px;
 }
 
+.sheet-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Bleed to the sheet edges so the scrollbar and focus rings are not clipped. */
+  margin: 0 calc(-1 * var(--sheet-pad));
+  padding: 2px var(--sheet-pad) 4px;
+}
+
+.sheet-footer {
+  flex: none;
+  justify-content: flex-end;
+  padding-top: 14px;
+  margin-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
 @media (min-width: 720px) {
   .sheet-backdrop {
     align-items: center;
   }
 
   .sheet {
+    --sheet-pad: 24px;
     border-radius: 26px;
     padding: 22px 24px 24px;
   }
@@ -1307,8 +1351,8 @@ textarea.input {
   }
 
   .recipe-list .recipe-card .icon-btn {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -1795,7 +1839,7 @@ hr.sep {
 }
 
 .fade-in {
-  animation: fade-up 0.4s var(--ease) both;
+  animation: fade-up 0.4s var(--ease) backwards;
 }
 
 @keyframes fade-up {
@@ -1862,15 +1906,15 @@ hr.sep {
 
 /* Steps slide in from the side they come from; content below follows with a short stagger. */
 .wizard-step.slide-next {
-  animation: wizard-in-next var(--dur) var(--ease) both;
+  animation: wizard-in-next var(--dur) var(--ease) backwards;
 }
 
 .wizard-step.slide-back {
-  animation: wizard-in-back var(--dur) var(--ease) both;
+  animation: wizard-in-back var(--dur) var(--ease) backwards;
 }
 
 .wizard-step > * {
-  animation: fade-up 0.42s var(--ease) both;
+  animation: fade-up 0.42s var(--ease) backwards;
 }
 
 .wizard-step > :nth-child(2) {
@@ -2107,7 +2151,7 @@ hr.sep {
 }
 
 .pop-in {
-  animation: pop-in 0.34s var(--ease-spring) both;
+  animation: pop-in 0.34s var(--ease-spring) backwards;
 }
 
 @keyframes pop-in {
@@ -2147,7 +2191,7 @@ hr.sep {
   column-gap: 12px;
   row-gap: 2px;
   padding: 12px 16px;
-  animation: fade-up 0.4s var(--ease) both;
+  animation: fade-up 0.4s var(--ease) backwards;
   animation-delay: calc(var(--i, 0) * 35ms);
 }
 
@@ -2215,14 +2259,14 @@ hr.sep {
 
 /* Taste chips cycle «neutral → like → dislike»; the state is in the icon and the colour. */
 .chip.like[aria-pressed='true'] {
-  background: var(--primary-soft);
-  color: var(--primary-soft-ink);
+  background: var(--ok-soft);
+  color: var(--ok-ink);
 }
 
 .chip.dislike {
-  background: var(--accent-soft);
+  background: var(--danger-soft);
   border-color: transparent;
-  color: var(--accent-ink);
+  color: var(--danger);
   text-decoration: line-through;
   text-decoration-thickness: 1.5px;
 }
@@ -2378,12 +2422,12 @@ hr.sep {
 /* Route changes fade up; lists reveal with a short stagger. Reduced motion turns all of it off
    through the global rule near the top of this file. */
 .page {
-  animation: fade-up 0.36s var(--ease) both;
+  animation: fade-up 0.36s var(--ease) backwards;
 }
 
 .grid > *,
 .bento > * {
-  animation: fade-up 0.45s var(--ease) both;
+  animation: fade-up 0.45s var(--ease) backwards;
 }
 
 .grid > :nth-child(2),
@@ -2503,7 +2547,7 @@ hr.sep {
   color: #fff;
   text-decoration: none;
   box-shadow: var(--shadow-sm);
-  animation: fade-up 0.45s var(--ease) both;
+  animation: fade-up 0.45s var(--ease) backwards;
 }
 
 .dish-tile:nth-child(2n) {
@@ -2536,4 +2580,35 @@ hr.sep {
 .dish-tile:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
+}
+
+/* «Ещё разделы» in the profile: full-width rows with a comfortable tap target. */
+.more-link {
+  --gap: 12px;
+  min-height: 48px;
+  padding: 0 12px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.more-link:hover {
+  background: var(--surface-2);
+}
+.more-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.week-day {
+  font-size: 15px;
+  font-weight: 750;
+  margin: 0;
+}
+
+/* Icons keep their size in buttons and links: a long label wraps instead of squeezing the icon. */
+.btn > svg,
+.more-link > svg,
+.nav-link svg {
+  flex: none;
 }

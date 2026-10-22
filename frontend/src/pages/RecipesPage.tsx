@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { effectiveRestrictions, productClosure, recipeSpice } from '../engine';
 import type { Recipe } from '../engine';
 import { useApp } from '../state/app';
+import { useFullCatalog } from '../state/catalog';
 import { Icon } from '../ui/icons';
 import { Chip, Empty, PageHead, RecipeCover, Sheet, Switch } from '../ui/kit';
 import { kcal, minutes } from '../lib/format';
-import { CATEGORY_NAMES, QUICK_EXCLUSIONS, SKILL_NAMES, summarize } from '../lib/recipes';
+import { CATEGORY_NAMES, matchesSearch, QUICK_EXCLUSIONS, searchTokens, SKILL_NAMES, summarize } from '../lib/recipes';
 
 const PAGE = 24;
 
@@ -22,7 +23,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
         </div>
         <div className="body">
           <span className="muted tiny" style={{ textTransform: 'uppercase', letterSpacing: '.06em', fontWeight: 700 }}>
-            {CATEGORY_NAMES[recipe.category] ?? recipe.category}
+            {recipe.visibility === 'private' ? 'Мой рецепт' : (CATEGORY_NAMES[recipe.category] ?? recipe.category)}
           </span>
           <h3>{recipe.name}</h3>
           <div className="meta">
@@ -52,7 +53,9 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
 }
 
 export default function RecipesPage() {
-  const { catalog, household } = useApp();
+  const { household } = useApp();
+  // Own recipes are listed together with the public ones (marked «Мой рецепт»).
+  const { catalog } = useFullCatalog();
   const [query, setQuery] = useState('');
   const deferred = useDeferredValue(query);
   const [category, setCategory] = useState<string | null>(null);
@@ -83,7 +86,7 @@ export default function RecipesPage() {
   }, [household, catalog]);
 
   const results = useMemo(() => {
-    const q = deferred.trim().toLowerCase().replace(/ё/g, 'е');
+    const tokens = searchTokens(deferred);
     const bans = { products: new Set<string>(), categories: new Set<string>(), allergens: new Set<string>() };
     if (familyBans) {
       familyRestrictions.products.forEach((x) => bans.products.add(x));
@@ -101,7 +104,6 @@ export default function RecipesPage() {
     }
     const equipment = new Set(household?.settings.plan.equipment ?? []);
     const list = Object.values(catalog.recipes).filter((r) => {
-      if (r.visibility === 'private') return false;
       if (category && r.category !== category) return false;
       if (cuisine && r.cuisine !== cuisine) return false;
       if (kidsOnly && !r.kid_friendly) return false;
@@ -109,10 +111,7 @@ export default function RecipesPage() {
       const s = summarize(catalog, r);
       if (maxTime !== null && s.totalMin > maxTime) return false;
       if (onlyMyKitchen && !r.methods.some((m) => m.equipment.every((e) => equipment.has(e)))) return false;
-      if (q) {
-        const text = `${r.name} ${r.ingredients.map((i) => catalog.products[i.product]?.name ?? '').join(' ')}`.toLowerCase().replace(/ё/g, 'е');
-        if (!text.includes(q)) return false;
-      }
+      if (tokens.length > 0 && !matchesSearch(`${r.name} ${r.ingredients.map((i) => catalog.products[i.product]?.name ?? '').join(' ')}`, tokens)) return false;
       if (bans.products.size + bans.categories.size + bans.allergens.size > 0) {
         for (const ing of r.ingredients) {
           const c = productClosure(catalog, ing.product);

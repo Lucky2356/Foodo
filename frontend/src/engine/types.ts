@@ -114,6 +114,8 @@ export interface MealSlotRef {
   energy_share: number;
   /** Lunch and dinner need a main course: a dish of these categories, or one hearty enough per serving. */
   main_course?: { categories: string[]; hearty_kcal: number; hearty_protein: number };
+  /** Score bonus of a recipe category in this meal: soup is a lunch dish, a main course suits dinner. */
+  category_bonus?: Record<string, number>;
 }
 
 export interface NutrientRef {
@@ -126,6 +128,8 @@ export interface NutrientRef {
 }
 
 export interface Reference {
+  /** Products that make a dish spicy (chili, hot pastes, horseradish, wasabi); garlic and pepper do not. */
+  hot_products?: string[];
   sources: { id: string; name: string; verified: boolean; date: string; basis: string; note?: string }[];
   nutrients: NutrientRef[];
   allergens: { id: string; name: string }[];

@@ -3,22 +3,50 @@ import { Link } from 'react-router-dom';
 import { estimateEnergy, spiceTolerance } from '../engine';
 import type { Member } from '../engine';
 import { useApp } from '../state/app';
-import { downloadJson, exportGuestData, importGuestData } from '../data/backup';
+import { downloadJson, exportGuestData, importGuestData, migrateExport } from '../data/backup';
+import type { GuestExport } from '../data/backup';
+import { ApiError } from '../data/api';
 import { Icon } from '../ui/icons';
-import { Banner, Chip, Field, Loading, PageHead, Segmented, Sheet, Stepper } from '../ui/kit';
+import { Banner, Chip, Field, Loading, NumberInput, PageHead, Segmented, Sheet, Stepper } from '../ui/kit';
+import { rangeError } from '../lib/numbers';
 import { ProductPicker } from '../ui/ProductPicker';
 import { applyTheme, storedTheme } from '../lib/theme';
 import type { ThemeChoice } from '../lib/theme';
-import { num } from '../lib/format';
+import { num, plural } from '../lib/format';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, toggleQuickExclusion } from '../lib/recipes';
 import { deviceTimeZone } from '../lib/dates';
 import { NATIVE_BUILD } from '../lib/config';
+import type { IconName } from '../ui/icons';
+
+const MORE_LINKS: { to: string; label: string; icon: IconName }[] = [
+  { to: '/favorites', label: 'Избранные рецепты', icon: 'heart' },
+  { to: '/menu/history', label: 'История и избранные меню', icon: 'list' },
+  { to: '/habits', label: 'Вода и привычки', icon: 'drop' },
+  { to: '/articles', label: 'Статьи о питании', icon: 'leaf' },
+  { to: '/about', label: 'О сервисе', icon: 'info' },
+];
 
 const TIMEZONES = ['Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Samara', 'Asia/Yekaterinburg', 'Asia/Omsk', 'Asia/Krasnoyarsk', 'Asia/Irkutsk', 'Asia/Yakutsk', 'Asia/Vladivostok', 'Asia/Magadan', 'Asia/Kamchatka'];
 
 export default function ProfilePage() {
-  const { household, gateway, user, reportError, toast, refreshHousehold, bump } = useApp();
+  const { household, gateway, user, reportError, toast, refreshHousehold, bump, setCurrentMenuId } = useApp();
+  const [restoring, setRestoring] = useState<GuestExport | null>(null);
+  const restore = async (mode: 'replace' | 'merge') => {
+    if (!restoring) return;
+    try {
+      const r = await importGuestData(restoring, mode);
+      setRestoring(null);
+      if (mode === 'replace') setCurrentMenuId(null);
+      await refreshHousehold();
+      bump();
+      toast(`Восстановлено: ${r.members} ${plural(r.members, 'участник', 'участника', 'участников')}, ${r.menus} меню`, { tone: 'success' });
+    } catch (err) {
+      reportError(err);
+    }
+  };
   const [editing, setEditing] = useState<Member | 'new' | null>(null);
+  // Removal is confirmed first: undoing it would give the person a new id and detach them from the menu.
+  const [removing, setRemoving] = useState<Member | null>(null);
   const [theme, setTheme] = useState<ThemeChoice>(storedTheme());
   const fileRef = useRef<HTMLInputElement>(null);
   if (!household) return <Loading />;
@@ -26,14 +54,11 @@ export default function ProfilePage() {
   const removeMember = async (m: Member) => {
     try {
       await gateway.deleteMember(m.id);
+      setRemoving(null);
       await refreshHousehold();
-      toast(`${m.name} удалён(а) из семьи`, {
-        undo: async () => {
-          const { id: _id, ...rest } = m;
-          await gateway.addMember(rest);
-          await refreshHousehold();
-        },
-      });
+      toast(`${m.name}: удалено из семьи.`, { tone: 'success' });
+      // Focus goes to the heading of the list instead of being lost with the removed card.
+      document.getElementById('members-title')?.focus();
     } catch (e) {
       reportError(e);
     }
@@ -44,7 +69,9 @@ export default function ProfilePage() {
       <PageHead eyebrow={user ? user.email : 'Гостевой режим'} title={household.name} subtitle="Семья, настройки подбора и ваши данные" />
       <section className="stack">
         <div className="section-title">
-          <h2>Кто ест</h2>
+          <h2 id="members-title" tabIndex={-1}>
+            Кто ест
+          </h2>
           <button className="btn small primary" onClick={() => setEditing('new')}>
             <Icon name="plus" size={16} /> Добавить
           </button>
@@ -61,7 +88,7 @@ export default function ProfilePage() {
                   <h3>{m.name}</h3>
                   <p className="muted small">
                     {m.portion_mode === 'target' && m.kcal_target ? `${num(m.kcal_target)} ккал/день` : `порция ×${num(m.portion_factor, 2)}`}
-                    {m.age !== null ? ` · ${m.age} лет` : ''}
+                    {m.age !== null ? ` · ${m.age} ${plural(m.age, 'год', 'года', 'лет')}` : ''}
                     {bans > 0 ? ` · запретов: ${bans}` : ''}
                   </p>
                 </div>
@@ -69,7 +96,7 @@ export default function ProfilePage() {
                   <Icon name="edit" size={18} />
                 </button>
                 {household.members.length > 1 && (
-                  <button className="icon-btn small" onClick={() => void removeMember(m)} aria-label={`Удалить: ${m.name}`}>
+                  <button className="icon-btn small" onClick={() => setRemoving(m)} aria-label={`Удалить: ${m.name}`}>
                     <Icon name="trash" size={18} />
                   </button>
                 )}
@@ -116,6 +143,16 @@ export default function ProfilePage() {
           <Icon name="chevron" size={18} />
         </Link>
       </section>
+      {/* On a phone the tab bar has five places; the rest of the app is reachable from here. */}
+      <nav className="card stack more-links" aria-label="Ещё разделы" style={{ ['--gap' as string]: '0px', padding: 6 }}>
+        {MORE_LINKS.map((l) => (
+          <Link key={l.to} to={l.to} className="row more-link">
+            <Icon name={l.icon} size={20} />
+            <span className="grow">{l.label}</span>
+            <Icon name="chevron" size={16} />
+          </Link>
+        ))}
+      </nav>
       <section className="card stack">
         <h2>Оформление</h2>
         <Segmented<ThemeChoice>
@@ -166,10 +203,13 @@ export default function ProfilePage() {
                 e.target.value = '';
                 if (!file) return;
                 try {
-                  const r = await importGuestData(JSON.parse(await file.text()), 'merge');
-                  await refreshHousehold();
-                  bump();
-                  toast(`Восстановлено: участников ${r.members}, меню ${r.menus}`, { tone: 'success' });
+                  let parsed: unknown;
+                  try {
+                    parsed = JSON.parse(await file.text());
+                  } catch {
+                    throw new ApiError('invalid_import', 'Файл не читается как резервная копия Foodo (JSON).', 400);
+                  }
+                  setRestoring(migrateExport(parsed));
                 } catch (err) {
                   reportError(err);
                 }
@@ -181,6 +221,57 @@ export default function ProfilePage() {
       <Link to="/account" className="btn ghost big">
         <Icon name={user ? 'shield' : 'user'} size={20} /> {user ? 'Аккаунт и безопасность' : 'Аккаунт: вход и синхронизация'}
       </Link>
+      {restoring && (
+        <Sheet
+          open
+          onClose={() => setRestoring(null)}
+          title="Восстановить из файла"
+          footer={
+            <>
+              <button className="btn primary" onClick={() => void restore('replace')}>
+                Заменить
+              </button>
+              <button className="btn" onClick={() => void restore('merge')}>
+                Добавить к текущим
+              </button>
+              <button className="btn ghost" onClick={() => setRestoring(null)}>
+                Отмена
+              </button>
+            </>
+          }
+        >
+          <div className="stack">
+            <p>
+              В файле от {new Date(restoring.exported_at).toLocaleDateString('ru-RU')}: {restoring.members.length} {plural(restoring.members.length, 'участник', 'участника', 'участников')}, {restoring.menus.length} меню, {restoring.pantry.length} {plural(restoring.pantry.length, 'продукт', 'продукта', 'продуктов')} в остатках.
+            </p>
+            <p className="small">
+              <strong>Заменить</strong> — данные в этом {NATIVE_BUILD ? 'приложении' : 'браузере'} будут заменены содержимым файла, включая город, магазин и бюджет.
+            </p>
+            <p className="small">
+              <strong>Добавить к текущим</strong> — ничего не перезаписывается: добавятся только записи, которых здесь ещё нет; настройки семьи останутся текущими.
+            </p>
+          </div>
+        </Sheet>
+      )}
+      {removing && (
+        <Sheet
+          open
+          onClose={() => setRemoving(null)}
+          title={`Удалить: ${removing.name}?`}
+          footer={
+            <>
+              <button className="btn ghost" onClick={() => setRemoving(null)}>
+                Отмена
+              </button>
+              <button className="btn danger" onClick={() => void removeMember(removing)}>
+                Удалить
+              </button>
+            </>
+          }
+        >
+          <p>Запреты, вкусы и порции этого человека перестанут учитываться в новых меню. В уже составленном меню его порции останутся (они помечены «удалённый участник») — чтобы убрать их, составьте меню заново.</p>
+        </Sheet>
+      )}
       {editing && (
         <MemberSheet
           member={editing === 'new' ? null : editing}
@@ -221,7 +312,15 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
   );
   const [busy, setBusy] = useState(false);
   const set = <K extends keyof Member>(k: K, v: Member[K]) => setM((x) => ({ ...x, [k]: v }));
-  const numOrNull = (v: string) => (v.trim() === '' ? null : Number(v.replace(',', '.')));
+  // Checked as the user types, with the same ranges as the server; saving is blocked while any is wrong.
+  const errors = {
+    age: rangeError('age', m.age),
+    height_cm: rangeError('height_cm', m.height_cm),
+    weight_kg: rangeError('weight_kg', m.weight_kg),
+    kcal_target: rangeError('kcal_target', m.kcal_target),
+    water_goal_ml: rangeError('water_goal_ml', m.water_goal_ml),
+  };
+  const invalid = Object.values(errors).some(Boolean);
   const estimate = estimateEnergy(m);
   const active = quickExclusionsActive(m.restrictions);
   const save = async () => {
@@ -244,7 +343,7 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
       onClose={onClose}
       title={member ? member.name : 'Новый участник'}
       footer={
-        <button className="btn primary" onClick={() => void save()} disabled={busy || !m.name.trim()}>
+        <button className="btn primary" onClick={() => void save()} disabled={busy || !m.name.trim() || invalid}>
           Сохранить
         </button>
       }
@@ -255,7 +354,8 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
         </Field>
         <div className="row wrap" style={{ alignItems: 'flex-start' }}>
           <Field label="Возраст">
-            <input className="input" inputMode="numeric" style={{ width: 110 }} value={m.age ?? ''} onChange={(e) => set('age', numOrNull(e.target.value))} />
+            <NumberInput style={{ width: 110 }} value={m.age ?? null} invalid={!!errors.age} onChange={(v) => set('age', v)} />
+            {errors.age && <span className="field-error">{errors.age}</span>}
           </Field>
           <div className="field">
             <span>Пол</span>
@@ -274,10 +374,12 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
             <div className="stack" style={{ ['--gap' as string]: '10px' }}>
               <div className="row wrap" style={{ alignItems: 'flex-end' }}>
                 <Field label="Рост, см">
-                  <input className="input" inputMode="decimal" style={{ width: 110 }} value={m.height_cm ?? ''} onChange={(e) => set('height_cm', numOrNull(e.target.value))} />
+                  <NumberInput decimal style={{ width: 110 }} value={m.height_cm ?? null} invalid={!!errors.height_cm} onChange={(v) => set('height_cm', v)} />
+            {errors.height_cm && <span className="field-error">{errors.height_cm}</span>}
                 </Field>
                 <Field label="Вес, кг">
-                  <input className="input" inputMode="decimal" style={{ width: 110 }} value={m.weight_kg ?? ''} onChange={(e) => set('weight_kg', numOrNull(e.target.value))} />
+                  <NumberInput decimal style={{ width: 110 }} value={m.weight_kg ?? null} invalid={!!errors.weight_kg} onChange={(v) => set('weight_kg', v)} />
+            {errors.weight_kg && <span className="field-error">{errors.weight_kg}</span>}
                 </Field>
               </div>
               <Field label="Активность">
@@ -302,7 +404,8 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
               </Field>
               <Field label="Цель, ккал в день" hint="Можно задать вручную. Расчёт — ориентир, а не медицинская рекомендация.">
                 <div className="row">
-                  <input className="input" inputMode="numeric" value={m.kcal_target ?? ''} onChange={(e) => set('kcal_target', numOrNull(e.target.value))} />
+                  <NumberInput value={m.kcal_target ?? null} invalid={!!errors.kcal_target} onChange={(v) => set('kcal_target', v)} />
+            {errors.kcal_target && <span className="field-error">{errors.kcal_target}</span>}
                   <button type="button" className="btn small" disabled={!estimate.available} onClick={() => set('kcal_target', estimate.kcal)}>
                     Рассчитать
                   </button>
@@ -318,7 +421,7 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
             {(catalog.reference.diet_types ?? []).map((t) => {
               const on = (m.diet_types ?? []).includes(t.id);
               return (
-                <Chip key={t.id} tone="ban" on={on} onClick={() => set('diet_types', on ? (m.diet_types ?? []).filter((x) => x !== t.id) : [...(m.diet_types ?? []), t.id])}>
+                <Chip key={t.id} on={on} onClick={() => set('diet_types', on ? (m.diet_types ?? []).filter((x) => x !== t.id) : [...(m.diet_types ?? []), t.id])}>
                   {t.name}
                 </Chip>
               );
@@ -397,7 +500,8 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
         </div>
         <div className="row wrap" style={{ alignItems: 'flex-end' }}>
           <Field label="Вода в день, мл">
-            <input className="input" inputMode="numeric" style={{ width: 140 }} value={m.water_goal_ml ?? ''} onChange={(e) => set('water_goal_ml', numOrNull(e.target.value))} />
+            <NumberInput style={{ width: 140 }} value={m.water_goal_ml ?? null} invalid={!!errors.water_goal_ml} onChange={(v) => set('water_goal_ml', v)} />
+            {errors.water_goal_ml && <span className="field-error">{errors.water_goal_ml}</span>}
           </Field>
           <Field label="Часовой пояс">
             <select className="input" value={m.timezone ?? 'Europe/Moscow'} onChange={(e) => set('timezone', e.target.value)}>
