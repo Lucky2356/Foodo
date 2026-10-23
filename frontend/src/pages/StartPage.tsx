@@ -436,14 +436,19 @@ export default function StartPage() {
 
         {current.id === 'taste' && (
           <div className="stack">
-            <Field label="Острота для взрослых">
-              <div className="option-grid three">
-                {SPICE.map((o) => (
-                  <OptionCard key={o.value} selected={answers.spice === o.value} onClick={() => set('spice', o.value)} title={o.title} text={o.text} />
-                ))}
-              </div>
-              {answers.children.length > 0 && <p className="small muted">Детям острые блюда не подбираются — это меняется в профиле ребёнка.</p>}
-            </Field>
+            {/* Only adults choose spiciness: a family of children gets mild dishes without being asked. */}
+            {answers.adults > 0 ? (
+              <Field label="Острота для взрослых">
+                <div className="option-grid three">
+                  {SPICE.map((o) => (
+                    <OptionCard key={o.value} selected={answers.spice === o.value} onClick={() => set('spice', o.value)} title={o.title} text={o.text} />
+                  ))}
+                </div>
+                {answers.children.length > 0 && <p className="small muted">Детям острые блюда не подбираются — это меняется в профиле ребёнка.</p>}
+              </Field>
+            ) : (
+              <p className="small muted">Детям острые блюда не подбираются — это меняется в профиле ребёнка.</p>
+            )}
             <Field label="Любимые кухни">
               <div className="chips">
                 {cuisines.map((c) => (
@@ -644,12 +649,21 @@ function Summary({ answers, onEdit, removed }: { answers: Answers; onEdit: (step
   ];
   const rows: { step: number; label: string; value: string }[] = [
     { step: 0, label: 'Семья', value: [answers.adults > 0 ? `${answers.adults} ${plural(answers.adults, 'взрослый', 'взрослых', 'взрослых')}` : '', answers.children.length > 0 ? `дети: ${answers.children.map((c) => yearsLabel(c.age)).join(', ')}` : ''].filter(Boolean).join(', ') },
-    { step: 1, label: 'Цель', value: answers.adults === 0 ? 'Обычные порции (в семье только дети)' : (GOALS.find((g) => g.value === answers.goal)?.title ?? '') },
+    {
+      step: 1,
+      label: 'Цель',
+      value:
+        answers.adults === 0
+          ? 'Обычные порции (в семье только дети)'
+          : (GOALS.find((g) => g.value === answers.goal)?.title ?? '') +
+            // Without age, height and weight there is nothing to count from: say so before the menu is built.
+            (answers.goal !== 'simple' && !estimateEnergy({ ...(answers.me as Partial<Member>), goal: answers.goal } as Member).available ? ' — без роста и веса порции пока обычные' : ''),
+    },
     { step: 2, label: 'Питание', value: [answers.diet_types.length ? names(answers.diet_types, catalog.reference.diet_types ?? []) : 'Ем всё', DIET_MODES.find((d) => d.value === answers.diet_mode)?.title].join(' · ') },
     { step: 3, label: 'Нельзя', value: bans.length ? [...new Set(bans)].join(', ') : 'Ничего' },
     { step: 4, label: 'Любимые кухни', value: answers.cuisines.length ? names(answers.cuisines, catalog.reference.cuisines ?? []) : 'Любые' },
     { step: 4, label: 'Люблю / не люблю', value: answers.liked_products.length + answers.disliked_products.length === 0 ? 'Без пожеланий' : `${products(answers.liked_products) || '—'} / ${products(answers.disliked_products) || '—'}` },
-    { step: 4, label: 'Острота', value: SPICE.find((s) => s.value === answers.spice)?.title ?? '' },
+    { step: 4, label: 'Острота', value: answers.adults === 0 ? 'Без остроты (дети)' : (SPICE.find((s) => s.value === answers.spice)?.title ?? '') },
     { step: 5, label: 'Готовка', value: `${SKILLS.find((s) => s.value === answers.skill)?.title}; ${answers.equipment.map((e) => EQUIPMENT.find((x) => x.id === e)?.label ?? e).join(', ') || 'без техники'}` },
     { step: 5, label: 'Время', value: `будни — ${time(answers.weekday_min)}; выходные — ${answers.weekend_min === 'same' ? 'как в будни' : time(answers.weekend_min)}` },
     { step: 6, label: 'Меню', value: `${answers.days} дн.; ${slotsInOrder(answers.slots).map((s) => SLOT_NAMES[s]?.toLowerCase()).join(', ')}; ${REPEATS.find((r) => r.value === answers.repeat)?.title.toLowerCase()}` },

@@ -37,6 +37,7 @@ export function ProductPicker({ value, onChange, label = 'Продукт', exclu
           aria-expanded={open}
           aria-controls={`${id}-list`}
           aria-autocomplete="list"
+          aria-activedescendant={open && results[active] ? `${id}-opt-${active}` : undefined}
           placeholder={selected ? selected.name : 'Начните вводить: картофель, молоко…'}
           value={query}
           onChange={(e) => {
@@ -44,12 +45,25 @@ export function ProductPicker({ value, onChange, label = 'Продукт', exclu
             setOpen(true);
             setActive(0);
           }}
-          onFocus={() => setOpen(true)}
+          // Focus alone does not open the list: tabbing through a form should not cover the next fields.
+          onClick={() => setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 150)}
           onKeyDown={(e) => {
-            if (e.key === 'ArrowDown') setActive((a) => Math.min(results.length - 1, a + 1));
-            if (e.key === 'ArrowUp') setActive((a) => Math.max(0, a - 1));
-            if (e.key === 'Enter' && results[active]) {
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              if (!open) setOpen(true);
+              else setActive((a) => Math.min(results.length - 1, a + 1));
+            }
+            if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              setActive((a) => Math.max(0, a - 1));
+            }
+            // Escape closes the list first; the sheet around it closes on the next press.
+            if (e.key === 'Escape' && open) {
+              e.preventDefault();
+              setOpen(false);
+            }
+            if (e.key === 'Enter' && open && results[active]) {
               e.preventDefault();
               pick(results[active] as Product);
             }
@@ -61,12 +75,15 @@ export function ProductPicker({ value, onChange, label = 'Продукт', exclu
         <ul
           id={`${id}-list`}
           role="listbox"
+          tabIndex={-1}
+          aria-label={label}
           className="card"
           style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 10, listStyle: 'none', margin: '6px 0 0', padding: 6, maxHeight: 280, overflowY: 'auto', boxShadow: 'var(--shadow)' }}
         >
           {results.map((p, i) => (
             <li
               key={p.id}
+              id={`${id}-opt-${i}`}
               role="option"
               aria-selected={i === active}
               onMouseDown={(e) => {

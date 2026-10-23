@@ -96,6 +96,7 @@ class ScreenBoundary extends Component<{ children: ReactNode }, { failed: boolea
     if (!this.state.failed) return this.props.children;
     return (
       <Empty
+        page
         icon="offline"
         title="Экран не загрузился"
         action={
@@ -112,7 +113,7 @@ class ScreenBoundary extends Component<{ children: ReactNode }, { failed: boolea
 
 function NotFound() {
   return (
-    <Empty icon="info" title="Такой страницы нет" action={<Link className="btn primary" to="/">На главную</Link>}>
+    <Empty page icon="info" title="Такой страницы нет" action={<Link className="btn primary" to="/">На главную</Link>}>
       Возможно, ссылка устарела или в ней опечатка.
     </Empty>
   );

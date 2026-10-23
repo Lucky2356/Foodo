@@ -14,7 +14,7 @@ import { applyTheme, storedTheme } from '../lib/theme';
 import type { ThemeChoice } from '../lib/theme';
 import { num, plural } from '../lib/format';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, toggleQuickExclusion } from '../lib/recipes';
-import { deviceTimeZone, localDate } from '../lib/dates';
+import { deviceTimeZone, localDate, TIMEZONES, timeZoneName } from '../lib/dates';
 import { NATIVE_BUILD } from '../lib/config';
 import type { IconName } from '../ui/icons';
 
@@ -26,7 +26,6 @@ const MORE_LINKS: { to: string; label: string; icon: IconName }[] = [
   { to: '/about', label: 'О сервисе', icon: 'info' },
 ];
 
-const TIMEZONES = ['Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Samara', 'Asia/Yekaterinburg', 'Asia/Omsk', 'Asia/Krasnoyarsk', 'Asia/Irkutsk', 'Asia/Yakutsk', 'Asia/Vladivostok', 'Asia/Magadan', 'Asia/Kamchatka'];
 
 export default function ProfilePage() {
   const { household, gateway, user, catalog, reportError, toast, refreshHousehold, bump, setCurrentMenuId } = useApp();
@@ -313,11 +312,16 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
   const [busy, setBusy] = useState(false);
   const set = <K extends keyof Member>(k: K, v: Member[K]) => setM((x) => ({ ...x, [k]: v }));
   // Checked as the user types, with the same ranges as the server; saving is blocked while any is wrong.
+  // Fields of the calorie-target mode are hidden in simple mode: they neither block saving there nor
+  // reach the server (stale values are cleared on save).
+  const targetMode = m.portion_mode === 'target';
+  const minor = m.age !== null && m.age !== undefined && m.age < 18;
   const errors = {
     age: rangeError('age', m.age),
-    height_cm: rangeError('height_cm', m.height_cm),
-    weight_kg: rangeError('weight_kg', m.weight_kg),
-    kcal_target: rangeError('kcal_target', m.kcal_target),
+    height_cm: targetMode ? rangeError('height_cm', m.height_cm) : null,
+    weight_kg: targetMode ? rangeError('weight_kg', m.weight_kg) : null,
+    kcal_target: targetMode ? rangeError('kcal_target', m.kcal_target) : null,
+    goal: targetMode && minor && m.goal === 'lose' ? 'Снижение веса не рассчитывается для детей и подростков.' : null,
     water_goal_ml: rangeError('water_goal_ml', m.water_goal_ml),
   };
   const invalid = Object.values(errors).some(Boolean);
@@ -326,7 +330,16 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
   const save = async () => {
     setBusy(true);
     try {
-      const { id, ...rest } = m;
+      const { id, ...all } = m;
+      const rest = targetMode
+        ? all
+        : {
+            ...all,
+            height_cm: rangeError('height_cm', all.height_cm) ? null : all.height_cm,
+            weight_kg: rangeError('weight_kg', all.weight_kg) ? null : all.weight_kg,
+            kcal_target: rangeError('kcal_target', all.kcal_target) ? null : all.kcal_target,
+            goal: minor && all.goal === 'lose' ? null : all.goal,
+          };
       if (member) await gateway.updateMember(id, rest);
       else await gateway.addMember(rest);
       toast('Сохранено', { tone: 'success' });
@@ -353,9 +366,8 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
           <input className="input" value={m.name} maxLength={60} onChange={(e) => set('name', e.target.value)} data-autofocus />
         </Field>
         <div className="row wrap" style={{ alignItems: 'flex-start' }}>
-          <Field label="Возраст">
+          <Field label="Возраст" error={errors.age ?? undefined}>
             <NumberInput style={{ width: 110 }} value={m.age ?? null} invalid={!!errors.age} onChange={(v) => set('age', v)} />
-            {errors.age && <span className="field-error">{errors.age}</span>}
           </Field>
           <div className="field">
             <span>Пол</span>
@@ -373,13 +385,11 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
           ) : (
             <div className="stack" style={{ ['--gap' as string]: '10px' }}>
               <div className="row wrap" style={{ alignItems: 'flex-end' }}>
-                <Field label="Рост, см">
+                <Field label="Рост, см" error={errors.height_cm ?? undefined}>
                   <NumberInput decimal style={{ width: 110 }} value={m.height_cm ?? null} invalid={!!errors.height_cm} onChange={(v) => set('height_cm', v)} />
-            {errors.height_cm && <span className="field-error">{errors.height_cm}</span>}
                 </Field>
-                <Field label="Вес, кг">
+                <Field label="Вес, кг" error={errors.weight_kg ?? undefined}>
                   <NumberInput decimal style={{ width: 110 }} value={m.weight_kg ?? null} invalid={!!errors.weight_kg} onChange={(v) => set('weight_kg', v)} />
-            {errors.weight_kg && <span className="field-error">{errors.weight_kg}</span>}
                 </Field>
               </div>
               <Field label="Активность">
@@ -392,25 +402,26 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
                   <option value="very_high">очень высокая</option>
                 </select>
               </Field>
-              <Field label="Цель">
-                <select className="input" value={m.goal ?? ''} onChange={(e) => set('goal', (e.target.value || null) as Member['goal'])}>
+              <Field label="Цель" error={errors.goal ?? undefined}>
+                <select className="input" value={m.goal ?? ''} aria-invalid={Boolean(errors.goal)} onChange={(e) => set('goal', (e.target.value || null) as Member['goal'])}>
                   <option value="">не указана</option>
                   <option value="maintain">поддержание</option>
-                  <option value="lose" disabled={m.age !== null && m.age < 18}>
-                    снижение веса{m.age !== null && m.age < 18 ? ' (недоступно до 18 лет)' : ''}
+                  <option value="lose" disabled={minor && m.goal !== 'lose'}>
+                    снижение веса{minor ? ' (недоступно до 18 лет)' : ''}
                   </option>
                   <option value="gain">набор</option>
                 </select>
               </Field>
-              <Field label="Цель, ккал в день" hint="Можно задать вручную. Расчёт — ориентир, а не медицинская рекомендация.">
-                <div className="row">
-                  <NumberInput value={m.kcal_target ?? null} invalid={!!errors.kcal_target} onChange={(v) => set('kcal_target', v)} />
-            {errors.kcal_target && <span className="field-error">{errors.kcal_target}</span>}
-                  <button type="button" className="btn small" disabled={!estimate.available} onClick={() => set('kcal_target', estimate.kcal)}>
-                    Рассчитать
-                  </button>
-                </div>
-              </Field>
+              {/* The button stays outside the <label>: inside it would become part of the field's name. */}
+              <div className="row" style={{ alignItems: 'flex-end' }}>
+                <Field label="Цель, ккал в день" error={errors.kcal_target ?? undefined}>
+                  <NumberInput style={{ width: 130 }} value={m.kcal_target ?? null} invalid={!!errors.kcal_target} onChange={(v) => set('kcal_target', v)} />
+                </Field>
+                <button type="button" className="btn small" style={{ marginBottom: errors.kcal_target ? 24 : 4 }} disabled={!estimate.available} onClick={() => set('kcal_target', estimate.kcal)}>
+                  Рассчитать
+                </button>
+              </div>
+              <p className="muted tiny">Можно задать вручную. Расчёт — ориентир, а не медицинская рекомендация.</p>
               <p className="muted tiny">{estimate.available ? `Метод: ${estimate.method}. Ориентир: ${num(estimate.kcal ?? 0)} ккал.` : estimate.reason}</p>
             </div>
           )}
@@ -499,15 +510,14 @@ export function MemberSheet({ member, onClose, onSaved }: { member: Member | nul
           </div>
         </div>
         <div className="row wrap" style={{ alignItems: 'flex-end' }}>
-          <Field label="Вода в день, мл">
+          <Field label="Вода в день, мл" error={errors.water_goal_ml ?? undefined}>
             <NumberInput style={{ width: 140 }} value={m.water_goal_ml ?? null} invalid={!!errors.water_goal_ml} onChange={(v) => set('water_goal_ml', v)} />
-            {errors.water_goal_ml && <span className="field-error">{errors.water_goal_ml}</span>}
           </Field>
           <Field label="Часовой пояс">
             <select className="input" value={m.timezone ?? 'Europe/Moscow'} onChange={(e) => set('timezone', e.target.value)}>
-              {[...new Set([m.timezone ?? 'Europe/Moscow', ...TIMEZONES])].map((tz) => (
+              {[...new Set([m.timezone ?? 'Europe/Moscow', ...TIMEZONES.map(([tz]) => tz)])].map((tz) => (
                 <option key={tz} value={tz}>
-                  {tz}
+                  {timeZoneName(tz)}
                 </option>
               ))}
             </select>

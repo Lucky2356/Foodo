@@ -49,7 +49,7 @@ export default function RecipePage() {
   if (!recipe) {
     if (custom.loading) return <Loading />;
     return (
-      <Empty icon="book" title="Рецепт не найден" action={<Link className="btn primary" to="/recipes">К рецептам</Link>}>
+      <Empty page icon="book" title="Рецепт не найден" action={<Link className="btn primary" to="/recipes">К рецептам</Link>}>
         Возможно, он был удалён или ссылка неверна.
       </Empty>
     );

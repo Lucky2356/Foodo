@@ -56,3 +56,8 @@ export function quantity(value: number, unit: string): string {
   if (unit === 'ml' && value >= 1000) return `${num(value / 1000, 2)} л`;
   return `${num(value, value < 10 ? 1 : 0)} ${name}`;
 }
+
+/** «Сегодня» → «сегодня» for use after a comma. */
+export function lowerFirst(text: string): string {
+  return text ? text[0]!.toLowerCase() + text.slice(1) : text;
+}
