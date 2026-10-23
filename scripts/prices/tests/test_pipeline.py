@@ -299,5 +299,9 @@ def test_metro_default_store_comes_from_its_cookies() -> None:
             )
         )
     assert metro.store_coordinates(jar) == ("10", 55.7558, 37.6173)
+    # Other shapes of the same point: JSON, reversed order, decimal commas.
+    assert metro.russian_point('{"lng":37.6173,"lat":55.7558}') == (55.7558, 37.6173)
+    assert metro.russian_point("37,6173;55,7558") == (55.7558, 37.6173)
+    assert metro.russian_point("0,0") is None
     city = magnit.nearest_city(CITIES, 55.7558, 37.6173)
     assert city["name"] == "Москва"

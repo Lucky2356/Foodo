@@ -10,6 +10,7 @@ picked from the public sitemap by name words, a limited number per Foodo product
 from __future__ import annotations
 
 import http.cookiejar
+import itertools
 import json
 import re
 import urllib.parse
@@ -104,22 +105,38 @@ def offer_from_html(html: str, url: str) -> dict[str, Any] | None:
     return None
 
 
+def russian_point(text: str) -> tuple[float, float] | None:
+    """(lat, lon) inside Russia from a cookie value of unknown shape: «55.75,37.61», «37.61|55.75»,
+    {"lat":55.75,"lng":37.61}, decimal commas… The order is told by the ranges (lat 41–82,
+    lon 19–191), so a pair is accepted only when exactly one reading fits."""
+    for pattern in (r"-?\d+\.\d+|-?\d+", r"-?\d+,\d+"):
+        numbers = [float(x.replace(",", ".")) for x in re.findall(pattern, text)]
+        for a, b in itertools.pairwise(numbers):
+            readings = [
+                (lat, lon)
+                for lat, lon in ((a, b), (b, a))
+                if 41 <= lat <= 82 and 19 <= lon <= 191
+            ]
+            if len(readings) == 1:
+                return readings[0]
+    return None
+
+
 def store_coordinates(jar: http.cookiejar.CookieJar) -> tuple[str, float, float] | None:
-    """The default store (cookie metroStoreId) and its coordinates (cookie coords, «lat,lon» or a
-    JSON object) set by the site on the first visit."""
+    """The default store (cookie metroStoreId) and its coordinates (cookie coords) set by the site
+    on the first visit."""
     store = next((c.value for c in jar if c.name == "metroStoreId"), None)
     coords = next(
         (urllib.parse.unquote(c.value or "") for c in jar if c.name == "coords"), None
     )
     if not store or not coords:
         return None
-    numbers = re.findall(r"-?\d+(?:\.\d+)?", coords)
-    if len(numbers) < 2:
-        return None
-    lat, lon = float(numbers[0]), float(numbers[1])
-    if not (-90 <= lat <= 90 and -180 <= lon <= 180):
-        return None
-    return store, lat, lon
+    point = russian_point(coords)
+    return (
+        None
+        if point is None
+        else (urllib.parse.unquote(store).strip('"'), point[0], point[1])
+    )
 
 
 def collect(
@@ -141,9 +158,13 @@ def collect(
         fetcher.text(urls[0])
     location = store_coordinates(jar)
     if location is None:
-        names = sorted({c.name for c in jar})
+        values = {
+            c.name: (c.value or "")[:80]
+            for c in jar
+            if c.name in ("metroStoreId", "coords")
+        }
         raise FetchError(
-            f"Сайт не сообщил магазин по умолчанию и его координаты (cookie: {names})"
+            f"Не удалось понять магазин по умолчанию и его координаты: {values}"
         )
     store, lat, lon = location
     city = nearest_city(cities, lat, lon)
