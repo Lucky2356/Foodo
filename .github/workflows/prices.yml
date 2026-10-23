@@ -1,6 +1,6 @@
 name: Prices
 
-# Collects public prices (Rosstat averages, Magnit's website) into shared/data/prices.
+# Collects public prices (Rosstat averages, the Magnit and Metro websites) into shared/data/prices.
 # - Pull requests touching the collector: a dry run (nothing is written or committed).
 # - Weekly schedule or a manual run on main: the data is committed to main and the Pages site
 #   is rebuilt with it. The server picks the data up on its next `load_seed` (every start).
@@ -40,9 +40,6 @@ jobs:
         run: |
           pip install pytest==8.4.2
           python -m pytest -q scripts/prices/tests
-      - name: Probe chain websites (pull requests, log only)
-        if: github.event_name == 'pull_request'
-        run: python -m scripts.prices.probe raw
       - name: Collect (dry run on pull requests)
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then

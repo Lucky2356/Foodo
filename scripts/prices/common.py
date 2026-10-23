@@ -4,6 +4,7 @@ Runs in GitHub Actions only (see .github/workflows/prices.yml), never on the own
 
 from __future__ import annotations
 
+import http.cookiejar
 import re
 import ssl
 import time
@@ -90,6 +91,8 @@ class Fetcher:
     context: ssl.SSLContext | None = None
     timeout: float = 60
     rules: list[tuple[bool, str]] | None = None
+    # Sites that set a cookie and redirect to the same page need an ordinary cookie jar.
+    cookies: http.cookiejar.CookieJar | None = None
     requests: int = 0
     _last: float = field(default=0.0)
 
@@ -102,9 +105,14 @@ class Fetcher:
         req = urllib.request.Request(
             url, headers={"User-Agent": USER_AGENT, "Accept-Language": "ru"}
         )
+        handlers: list[urllib.request.BaseHandler] = [
+            urllib.request.HTTPSHandler(context=self.context)
+        ]
+        if self.cookies is not None:
+            handlers.append(urllib.request.HTTPCookieProcessor(self.cookies))
         try:
-            with urllib.request.urlopen(
-                req, timeout=self.timeout, context=self.context
+            with urllib.request.build_opener(*handlers).open(
+                req, timeout=self.timeout
             ) as r:
                 return r.read(limit)
         except urllib.error.HTTPError as e:

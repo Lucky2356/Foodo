@@ -238,3 +238,66 @@ def test_store_location_from_the_page_state() -> None:
     assert magnit.store_location(page) == ("992301", 45.047057, 38.973527)
     assert magnit.nearest_city(CITIES, 45.047057, 38.973527)["name"] == "Краснодар"
     assert magnit.store_location("<html>no store</html>") is None
+
+
+def test_metro_product_page_offer_and_case_of_packages() -> None:
+    from scripts.prices import metro
+
+    page = (
+        '<script type="application/ld+json">{"@context":"https://schema.org/","@type":"Product",'
+        '"name":"Мука Makfa пшеничная высший сорт, 2кг x 6 шт","brand":{"@type":"Brand","name":"MAKFA"},"offers":{"@type":"Offer",'
+        '"priceCurrency":"RUB","price":852,"availability":"https://schema.org/InStock"}}</script>'
+    )
+    offer = metro.offer_from_html(page, "https://online.metro-cc.ru/products/muka")
+    assert offer is not None and offer["price"] == 852
+    # The case is one package of 12 kg: 71 ₽ per kilogram, not 852 ₽ for «6 шт».
+    assert magnit.parse_package(offer["name"]) == (12.0, "kg", False)
+    assert magnit.match_product(offer["name"]) == "wheat_flour"
+    out_of_stock = page.replace("InStock", "OutOfStock")
+    assert metro.offer_from_html(out_of_stock, "u") is None
+
+
+def test_metro_candidates_follow_the_slug_and_skip_the_size_prefix() -> None:
+    from scripts.prices import metro
+
+    urls = [
+        "https://online.metro-cc.ru/products/450g-makarony-tsar-vitok-gost",
+        "https://online.metro-cc.ru/products/moloko-ekonom-ultrapasterizovannoe-35-1l",
+        "https://online.metro-cc.ru/products/shampun-dlya-volos",
+    ]
+    found = metro.candidate_urls(urls, per_product=5)
+    assert found["pasta_dry"] == [urls[0]]
+    assert found["milk"] == [urls[1]]
+    assert not any(urls[2] in v for v in found.values())
+
+
+def test_metro_default_store_comes_from_its_cookies() -> None:
+    import http.cookiejar
+
+    from scripts.prices import metro
+
+    jar = http.cookiejar.CookieJar()
+    for name, value in (("metroStoreId", "10"), ("coords", "55.7558%2C37.6173")):
+        jar.set_cookie(
+            http.cookiejar.Cookie(
+                0,
+                name,
+                value,
+                None,
+                False,
+                "online.metro-cc.ru",
+                False,
+                False,
+                "/",
+                False,
+                False,
+                None,
+                False,
+                None,
+                None,
+                {},
+            )
+        )
+    assert metro.store_coordinates(jar) == ("10", 55.7558, 37.6173)
+    city = magnit.nearest_city(CITIES, 55.7558, 37.6173)
+    assert city["name"] == "Москва"
