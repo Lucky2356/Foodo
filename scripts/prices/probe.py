@@ -10,6 +10,7 @@ whether and how a chain can be collected honestly (public pages, robots.txt resp
 from __future__ import annotations
 
 import gzip
+import http.cookiejar
 import re
 import sys
 import urllib.error
@@ -172,18 +173,61 @@ def raw_response(url: str, cookie: str = "") -> None:
 
 
 RAW = [
-    ("https://lenta.com/product/tvorog-5-fas-bez-zmzh-rossiya-170g-374556/", ""),
-    ("https://www.auchan.ru/", ""),
-    ("https://online.metro-cc.ru/category/ovoshchi-i-frukty/ovoshchi", ""),
-    ("https://monetka.ru/catalog/syry-250000001/", ""),
-    ("https://magnit.ru/catalog/4834-moloko_syr_yaytsa/", ""),
+    ("https://magnit.ru/catalog/4834-moloko_syr_yaytsa", ""),
 ]
+
+# Pages read with an ordinary cookie jar (the site sets a cookie and redirects to the same page).
+SESSION = [
+    "https://online.metro-cc.ru/category/ovoshchi-i-frukty/ovoshchi",
+    "https://online.metro-cc.ru/products/lopatka",
+]
+
+
+def with_cookies(url: str) -> None:
+    jar = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept-Language": "ru",
+            "Accept": "text/html",
+        },
+    )
+    try:
+        with opener.open(req, timeout=30) as r:
+            status, body = r.status, r.read(5_000_000)
+    except urllib.error.HTTPError as e:
+        status, body = e.code, e.read(400_000)
+    except (urllib.error.URLError, TimeoutError) as e:
+        print(f"session {url}: {e}")
+        return
+    html = text_of(body)
+    print(f"session {url}: HTTP {status}, cookies {[c.name for c in jar]}")
+    for line in describe_page(html):
+        print(line)
+    for word in (
+        "shopCode",
+        "storeCode",
+        "storeId",
+        "store_id",
+        "regionId",
+        "cityId",
+        "x-shop",
+        "x_shop",
+    ):
+        for m in list(re.finditer(re.escape(word), html))[:2]:
+            print(
+                f"  …{word}: {re.sub(r'\\s+', ' ', html[max(0, m.start() - 100) : m.start() + 140])}"
+            )
 
 
 def main(argv: list[str]) -> int:
     if argv == ["raw"]:
         for url, cookie in RAW:
             raw_response(url, cookie)
+        for url in SESSION:
+            with_cookies(url)
         return 0
     for name in argv or list(SITES):
         if name in SITES:
