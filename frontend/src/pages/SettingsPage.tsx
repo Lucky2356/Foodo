@@ -36,7 +36,7 @@ const WEEK = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 const KIND_NAMES: Record<string, string> = { manual: 'вручную', receipt: 'чек', community: 'пользователи Foodo', scraped: 'сайт сети', rosstat: 'Росстат, средняя цена (оценка)' };
 
 export default function SettingsPage() {
-  const { household, gateway, catalog, refreshHousehold, reportError } = useApp();
+  const { household, gateway, catalog, refreshHousehold, reportError, toast } = useApp();
   const location = useLocation();
   const [settings, setSettings] = useState<HouseholdSettings | null>(household?.settings ?? null);
   const [status, setStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
@@ -97,7 +97,11 @@ export default function SettingsPage() {
         <h2>Приёмы пищи</h2>
         <div className="chips">
           {Object.entries(SLOT_NAMES).map(([id, name]) => (
-            <Chip key={id} on={settings.slots.includes(id)} onClick={() => settings.slots.length > 1 || !settings.slots.includes(id) ? update({ ...settings, slots: toggleIn(settings.slots, id) }) : undefined}>
+            <Chip key={id} on={settings.slots.includes(id)} onClick={() =>
+                settings.slots.length > 1 || !settings.slots.includes(id)
+                  ? update({ ...settings, slots: toggleIn(settings.slots, id) })
+                  : toast('Нужен хотя бы один приём пищи')
+              }>
               {name}
             </Chip>
           ))}
@@ -443,6 +447,7 @@ function BudgetSection({ plan, setPlan }: { plan: PlanSettings; setPlan: (p: Par
     if (error) return;
     // 0 ₽ means «no limit», the same as an empty field.
     const limit = value === null || value === 0 ? null : Math.round(value * 100);
+    if (value === 0) setValue(null); // the field shows «Без лимита», not a puzzling «0»
     if (limit !== plan.budget.limit_kop) setPlan({ budget: { ...plan.budget, limit_kop: limit } });
   };
   return (

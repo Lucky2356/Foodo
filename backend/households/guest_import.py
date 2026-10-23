@@ -12,11 +12,13 @@ from __future__ import annotations
 import copy
 import json
 import secrets
+from collections.abc import Callable
 from datetime import date
 from typing import Any
 
 from django.conf import settings
 from django.db import transaction
+from django.db.models import Q
 
 from catalog.models import Product, Recipe
 from catalog.services import engine_catalog, save_recipe, validation_reference
@@ -24,13 +26,19 @@ from catalog.validation import validate_recipes
 from common.errors import ApiError
 from engine import menu_violations
 from engine.catalog import snapshot_catalog
+from engine.shopping import empty_shopping_state
 
 from .models import Favorite, Habit, HabitMark, Household, Member, Menu, PantryItem, PriceEntry, WaterEntry
+from .records import pantry_fields, parse_date, price_fields
+from .services import merge_shopping_patch
 from .validation import member_json, validate_household_settings, validate_member
 
 JSON = dict[str, Any]
 FORMAT = "foodo-guest-export"
 SUPPORTED_VERSIONS = (1,)
+MAX_MEMBERS = 20
+MAX_PANTRY = 1000
+MAX_PRICES = 5000
 
 
 def _check(data: Any) -> JSON:
@@ -113,15 +121,18 @@ def apply_guest_import(h: Household, data: Any, resolution: JSON) -> JSON:
     member_map: dict[str, str] = {}
     added = {"members": 0, "menus": 0, "pantry": 0, "prices": 0, "favorites": 0, "custom_recipes": 0, "water": 0, "habits": 0}
 
-    for gm in data.get("members", []):
-        gid = str(gm.get("id"))
+    new_members: list[tuple[str, JSON]] = []
+    for i, gm in enumerate(data.get("members", [])):
+        gid = str(gm.get("id")) if isinstance(gm, dict) else ""
         choice = str(member_res.get(gid, "add"))
         if choice.startswith("merge:") and choice[6:] in own_members:
             member_map[gid] = choice[6:]
             continue
-        fields = validate_member(gm)
-        m = Member.objects.create(household=h, **fields)
-        member_map[gid] = m.id
+        new_members.append((gid, _record("Участники", i, validate_member, gm)))
+    if len(own_members) + len(new_members) > MAX_MEMBERS:
+        raise ApiError("limit", f"В семье может быть не больше {MAX_MEMBERS} участников: объедините совпадающих или удалите лишних.", 400)
+    for gid, fields in new_members:
+        member_map[gid] = Member.objects.create(household=h, **fields).id
         added["members"] += 1
 
     hh = data.get("household") or {}
@@ -144,7 +155,10 @@ def apply_guest_import(h: Household, data: Any, resolution: JSON) -> JSON:
 
     catalog = engine_catalog(h.id)
     members_after = [member_json(m) for m in h.members.all()]
-    for gmenu in data.get("menus", []):
+    for i, gmenu in enumerate(data.get("menus", [])):
+        problem = _menu_problem(gmenu)
+        if problem:
+            raise ApiError("invalid_import", f"Меню, запись {i + 1}: {problem}.", 400)
         if menu_res.get(str(gmenu.get("id")), "add") == "skip":
             continue
         doc = _remap_menu(gmenu["menu"], member_map, recipe_map)
@@ -158,53 +172,112 @@ def apply_guest_import(h: Household, data: Any, resolution: JSON) -> JSON:
             days=doc["days"],
             revision=doc.get("revision", 1),
             data=doc,
-            shopping_state=gmenu.get("shopping_state") or {},
+            shopping_state=_record("Меню", i, _shopping_state, gmenu.get("shopping_state")),
         )
         added["menus"] += 1
 
-    for p in data.get("pantry", []):
-        if p.get("product_id") in products and isinstance(p.get("qty"), (int, float)) and p["qty"] > 0:
-            PantryItem.objects.create(
-                household=h,
-                product_id=p["product_id"],
-                qty=p["qty"],
-                unit=p.get("unit", "g"),
-                location=str(p.get("location") or "")[:60],
-                expires=p.get("expires") or None,
-            )
-            added["pantry"] += 1
-    for e in data.get("prices", []):
-        if e.get("product_id") in products and isinstance(e.get("price_kop"), int) and e.get("kind", "manual") in ("manual", "receipt"):
-            PriceEntry.objects.create(
-                household=h,
-                product_id=e["product_id"],
-                price_kop=e["price_kop"],
-                package_size=e["package_size"],
-                package_unit=e["package_unit"],
-                loose=bool(e.get("loose")),
-                observed_on=e.get("date") or date.today(),
-                source=str(e.get("source") or "вручную")[:120],
-                kind=e.get("kind", "manual"),
-            )
-            added["prices"] += 1
+    # Every record passes the checks of a manual entry; the transaction rolls everything back on the
+    # first broken one, so the account never ends up half-filled.
+    pantry = data.get("pantry", [])
+    if h.pantry.count() + len(pantry) > MAX_PANTRY:
+        raise ApiError("limit", "Слишком много записей остатков.", 400)
+    for i, p in enumerate(pantry):
+        PantryItem.objects.create(household=h, **_record("Остатки", i, pantry_fields, p))
+        added["pantry"] += 1
+    prices = data.get("prices", [])
+    if h.prices.count() + len(prices) > MAX_PRICES:
+        raise ApiError("limit", "Слишком много своих цен.", 400)
+    for i, e in enumerate(prices):
+        fields = _record("Цены", i, price_fields, e)
+        PriceEntry.objects.create(household=h, **fields)
+        added["prices"] += 1
     for rid in data.get("favorites", []):
-        target = recipe_map.get(rid, rid)
-        if Recipe.objects.filter(pk=target).exists():
+        target = recipe_map.get(str(rid), str(rid))
+        # Someone else's private recipe is not revealed, not even as «exists».
+        if Recipe.objects.filter(pk=target).filter(Q(visibility="public") | Q(owner_household=h)).exists():
             Favorite.objects.get_or_create(household=h, recipe_id=target)
             added["favorites"] += 1
-    for w in data.get("water", []):
-        mid = member_map.get(str(w.get("member_id")))
-        if mid and isinstance(w.get("amount_ml"), int):
-            WaterEntry.objects.create(household=h, member_id=mid, amount_ml=w["amount_ml"], local_date=w["local_date"])
+    for i, w in enumerate(data.get("water", [])):
+        mid, amount, day = _record("Вода", i, _water, w)
+        if mid in member_map:
+            WaterEntry.objects.create(household=h, member_id=member_map[mid], amount_ml=amount, local_date=day)
             added["water"] += 1
-    for hb in data.get("habits", []):
-        mid = member_map.get(str(hb.get("member_id")))
-        if mid and isinstance(hb.get("name"), str):
-            habit = Habit.objects.create(household=h, member_id=mid, name=hb["name"][:80])
-            for day in hb.get("marks", []):
+    for i, hb in enumerate(data.get("habits", [])):
+        mid, name, marks = _record("Привычки", i, _habit, hb)
+        if mid in member_map:
+            habit = Habit.objects.create(household=h, member_id=member_map[mid], name=name)
+            for day in marks:
                 HabitMark.objects.get_or_create(habit=habit, local_date=day)
             added["habits"] += 1
     return {"added": added, "member_map": member_map}
+
+
+def _record[T](section: str, index: int, check: Callable[[Any], T], value: Any) -> T:
+    """Runs a record check and names the broken record: «Остатки, запись 3: …»."""
+    try:
+        return check(value)
+    except ApiError as e:
+        raise ApiError("invalid_import", f"{section}, запись {index + 1}: {e.message}", 400) from e
+
+
+def _menu_problem(gmenu: Any) -> str | None:
+    if not isinstance(gmenu, dict) or not isinstance(gmenu.get("menu"), dict):
+        return "нет данных меню"
+    doc = gmenu["menu"]
+    try:
+        date.fromisoformat(str(doc.get("start_date")))
+    except ValueError:
+        return "неверная дата начала"
+    days = doc.get("days")
+    if not isinstance(days, int) or isinstance(days, bool) or not 1 <= days <= 35:
+        return "период — от 1 до 35 дней"
+    revision = doc.get("revision", 1)
+    if not isinstance(revision, int) or isinstance(revision, bool) or revision < 0:
+        return "неверная версия меню"
+    for key in ("meals", "batches", "slots", "member_ids"):
+        if not isinstance(doc.get(key), list):
+            return f"раздел «{key}» повреждён"
+    if not isinstance(doc.get("snapshot"), dict) or not isinstance(doc.get("settings"), dict):
+        return "настройки или снимок рецептов повреждены"
+    batches = {b.get("id") for b in doc["batches"] if isinstance(b, dict)}
+    if not all(isinstance(b, dict) and isinstance(b.get("recipe_id"), str) for b in doc["batches"]):
+        return "партия повреждена"
+    for meal in doc["meals"]:
+        if not isinstance(meal, dict) or not isinstance(meal.get("items"), list):
+            return "приём пищи повреждён"
+        for item in meal["items"]:
+            if not isinstance(item, dict) or not isinstance(item.get("portions"), dict) or item.get("batch_id") not in batches:
+                return "блюдо ссылается на несуществующую партию"
+    return None
+
+
+def _shopping_state(value: Any) -> JSON:
+    if value is None:
+        return empty_shopping_state()
+    if not isinstance(value, dict):
+        raise ApiError("validation_error", "состояние списка покупок повреждено")
+    return merge_shopping_patch(empty_shopping_state(), value)
+
+
+def _water(w: Any) -> tuple[str, int, date]:
+    if not isinstance(w, dict):
+        raise ApiError("validation_error", "запись повреждена")
+    amount = w.get("amount_ml")
+    if not isinstance(amount, int) or isinstance(amount, bool) or not 1 <= amount <= 10_000:
+        raise ApiError("validation_error", "объём — от 1 до 10 000 мл")
+    return str(w.get("member_id")), amount, parse_date(w.get("local_date"), "local_date")
+
+
+def _habit(hb: Any) -> tuple[str, str, list[date]]:
+    if not isinstance(hb, dict):
+        raise ApiError("validation_error", "запись повреждена")
+    name = hb.get("name")
+    if not isinstance(name, str) or not name.strip() or len(name) > 80:
+        raise ApiError("validation_error", "название — от 1 до 80 символов")
+    marks = hb.get("marks", [])
+    if not isinstance(marks, list) or len(marks) > 5000:
+        raise ApiError("validation_error", "отметки повреждены")
+    return str(hb.get("member_id")), name.strip(), [parse_date(d, "marks") for d in marks]
 
 
 def _with_current_spice_rule(recipe: Any, hot: set[str]) -> Any:
