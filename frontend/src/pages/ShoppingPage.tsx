@@ -295,6 +295,8 @@ export default function ShoppingPage() {
           </button>
         )}
       </div>
+      {/* Departments flow into two columns on wide screens instead of one long narrow list. */}
+      <div className="shop-columns">
       {[...grouped.entries()].map(([dept, lines]) => (
         <section key={dept}>
           <h2 className="shop-dept">
@@ -353,6 +355,7 @@ export default function ShoppingPage() {
           </div>
         </section>
       )}
+      </div>
       {editing && <ManualLineSheet line={editing} onClose={() => setEditing(null)} onSave={saveManual} onRemove={() => { setEditing(null); removeManual(editing.id); }} />}
       <p className="muted tiny">
         «Корзина покупок» — это список внутри Foodo: заказ и доставку мы не оформляем. Выбор магазина не загружает его реальные цены — источник каждой цены указан в строке.

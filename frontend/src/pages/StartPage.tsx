@@ -615,7 +615,7 @@ export default function StartPage() {
       <div className="wizard-nav">
         {step > 0 && (
           <button type="button" className="btn ghost big" onClick={() => go(step - 1)}>
-            <Icon name="back" size={18} /> Назад
+            <Icon name="back" size={18} /> <span className="wide-only">Назад</span>
           </button>
         )}
         {fromSummary && step < total - 1 && (

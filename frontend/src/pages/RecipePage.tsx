@@ -93,7 +93,7 @@ export default function RecipePage() {
               <Icon name="flame" size={17} /> {method.equipment.length ? method.equipment.map((e) => equipmentName(catalog, e)).join(', ') : 'без нагрева'}
             </span>
           </div>
-          <div className="row wrap">
+          <div className="recipe-actions">
             <button className="btn primary" onClick={() => setCooking(true)}>
               <Icon name="play" size={18} /> Режим готовки
             </button>
@@ -147,7 +147,7 @@ export default function RecipePage() {
             options={[
               { value: 'serving', label: 'Порция' },
               { value: '100g', label: '100 г' },
-              { value: 'total', label: `Всё (${portions} порц.)` },
+              { value: 'total', label: `${portions} порц.` },
             ]}
           />
         </div>
@@ -156,7 +156,7 @@ export default function RecipePage() {
             {(['kcal', 'protein', 'fat', 'carbs'] as const).map((k) => (
               <div key={k}>
                 <b>{num(table[k].value, k === 'kcal' ? 0 : 1)}</b>
-                <small>{k === 'kcal' ? 'ккал' : k === 'protein' ? 'белки, г' : k === 'fat' ? 'жиры, г' : 'углеводы, г'}</small>
+                <small>{k === 'kcal' ? 'ккал' : k === 'protein' ? 'белки, г' : k === 'fat' ? 'жиры, г' : 'углев., г'}</small>
               </div>
             ))}
           </div>

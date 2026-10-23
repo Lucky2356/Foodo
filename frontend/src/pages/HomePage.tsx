@@ -46,7 +46,7 @@ function Landing() {
         <p className="lead">
           {APP_NAME} составит меню на неделю для всей семьи, посчитает порции и КБЖУ и соберёт список покупок с учётом того, что есть дома.
         </p>
-        <div className="row wrap" style={{ marginTop: 26 }}>
+        <div className="row wrap hero-actions" style={{ marginTop: 26 }}>
           <Link to="/start" className="btn primary big">
             Составить меню бесплатно
             <Icon name="chevron" size={18} />
