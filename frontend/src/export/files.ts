@@ -39,9 +39,9 @@ export async function buildXlsx(model: ExportModel): Promise<Blob> {
     { header: 'Источник цены', key: 'priceSource', width: 30 },
     { header: 'Отметка', key: 'mark', width: 12 },
   ];
-  for (const r of model.shopping) shop.addRow({ ...r, name: safeText(r.name), department: safeText(r.department), priceSource: safeText(r.priceSource) });
+  for (const r of toBuyRows(model)) shop.addRow({ ...r, name: safeText(r.name), department: safeText(r.department), priceSource: safeText(r.priceSource) });
   shop.addRow({});
-  shop.addRow({ name: 'Итого на кассе (известные цены)', costRub: model.totals.purchaseRub });
+  shop.addRow(model.totals.purchaseRub !== null ? { name: 'Итого на кассе (известные цены)', costRub: model.totals.purchaseRub } : { name: 'Итого на кассе: цены неизвестны' });
   shop.addRow({ name: model.totals.complete ? 'Все цены известны' : 'Итог неполный: не для всех продуктов известна цена', priceSource: model.totals.budget });
 
   const cook = wb.addWorksheet('Готовка');
@@ -90,9 +90,9 @@ export async function buildPdf(model: ExportModel, fontBase = 'fonts/'): Promise
   doc.text(model.title, 40, 50);
   doc.setFont('DejaVu', 'normal');
   doc.setFontSize(10);
-  doc.text(`Foodo · ${ru(model.generatedAt.slice(0, 10))}`, 40, 68);
+  doc.text(`Foodo · ${ru(model.generatedOn)}`, 40, 68);
   const common = { styles: { font: 'DejaVu', fontSize: 9, cellPadding: 4 }, headStyles: { font: 'DejaVu', fontStyle: 'bold' as const, fillColor: [46, 106, 78] as [number, number, number] } };
-  autoTable(doc, { ...common, startY: 84, head: [['Дата', 'Приём пищи', 'Блюдо', 'Для кого']], body: model.menu.map((r) => [`${ru(r.date)}, ${r.weekday}`, r.slot, r.dish, r.who]) });
+  autoTable(doc, { ...common, startY: 84, head: [['Дата', 'Приём пищи', 'Блюдо', 'Для кого (порции)']], body: model.menu.map((r) => [`${ru(r.date)}, ${r.weekday}`, r.slot, r.dish, r.who]) });
   doc.addPage();
   doc.setFont('DejaVu', 'bold');
   doc.setFontSize(16);

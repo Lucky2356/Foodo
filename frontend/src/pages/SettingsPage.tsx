@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { toBase } from '../engine';
 import type { PlanSettings, Product } from '../engine';
 import type { HouseholdSettings, NewPrice } from '../data/types';
 import { chainsForCity, detectCity, loadChains, loadCities, searchCities } from '../data/geo';
@@ -561,6 +562,7 @@ function PricesSection() {
   );
 }
 
+
 function PriceSheet({ productId, chainName, onClose, onSaved }: { productId: string | null; chainName: string | null; onClose: () => void; onSaved: (shared: boolean) => void }) {
   const { gateway, catalog, reportError, household } = useApp();
   const [product, setProduct] = useState<Product | null>(productId ? (catalog.products[productId] ?? null) : null);
@@ -568,6 +570,7 @@ function PriceSheet({ productId, chainName, onClose, onSaved }: { productId: str
   const [size, setSize] = useState<number | null>(null);
   const [unit, setUnit] = useState<NewPrice['package_unit']>('g');
   const [kind, setKind] = useState<'manual' | 'receipt'>('manual');
+  const [loose, setLoose] = useState(false);
   // A price is either for the chosen chain or for any shop; nothing is tied to a chain silently.
   const [scope, setScope] = useState<'chain' | 'any'>(household?.store_chain_id ? 'chain' : 'any');
   useEffect(() => {
@@ -578,12 +581,15 @@ function PriceSheet({ productId, chainName, onClose, onSaved }: { productId: str
   }, [product]);
   const priceBad = price !== null && !(Number.isFinite(price) && price > 0 && price <= 100000);
   const sizeBad = size !== null && !(Number.isFinite(size) && size > 0 && size <= 100000);
-  const valid = product && price !== null && size !== null && !priceBad && !sizeBad;
+  // Only units the product converts to: a price «за шт.» for flour would never reach the list.
+  const units = (Object.keys(PRICE_UNITS) as NewPrice['package_unit'][]).filter((u) => !product || toBase(product, 1, u) !== null);
+  const unitBad = product !== null && !units.includes(unit);
+  const valid = product && price !== null && size !== null && !priceBad && !sizeBad && !unitBad;
   const save = async () => {
     if (!product || price === null || size === null) return;
     try {
       const chain_id = scope === 'chain' ? (household?.store_chain_id ?? null) : null;
-      const r = await gateway.addPrices([{ product_id: product.id, price_kop: Math.round(price * 100), package_size: size, package_unit: unit, kind, chain_id }]);
+      const r = await gateway.addPrices([{ product_id: product.id, price_kop: Math.round(price * 100), package_size: size, package_unit: unit, kind, chain_id, loose }]);
       onSaved(r.shared > 0);
     } catch (e) {
       reportError(e);
@@ -597,19 +603,38 @@ function PriceSheet({ productId, chainName, onClose, onSaved }: { productId: str
           <Field label="Цена, ₽" error={priceBad ? 'Больше нуля.' : undefined}>
             <NumberInput decimal style={{ width: 130 }} value={price} onChange={setPrice} invalid={priceBad} />
           </Field>
-          <Field label="За упаковку" error={sizeBad ? 'Больше нуля.' : undefined}>
+          <Field label={loose ? 'Цена за' : 'Размер упаковки'} error={sizeBad ? 'Больше нуля.' : undefined}>
             <NumberInput decimal style={{ width: 110 }} value={size} onChange={setSize} invalid={sizeBad} />
           </Field>
-          <Field label="Ед.">
+          <Field label="Ед." error={unitBad ? 'Не подходит продукту.' : undefined}>
             <select className="input" value={unit} onChange={(e) => setUnit(e.target.value as NewPrice['package_unit'])}>
-              <option value="g">г</option>
-              <option value="kg">кг</option>
-              <option value="ml">мл</option>
-              <option value="l">л</option>
-              <option value="pcs">шт.</option>
+              {units.map((u) => (
+                <option key={u} value={u}>
+                  {PRICE_UNITS[u]}
+                </option>
+              ))}
+              {unitBad && <option value={unit}>{PRICE_UNITS[unit]}</option>}
             </select>
           </Field>
         </div>
+        <Segmented
+          label="Как продаётся"
+          value={loose ? 'loose' : 'package'}
+          onChange={(v) => {
+            setLoose(v === 'loose');
+            // A loose price is usually written «за 1 кг»: start there instead of the package size.
+            if (v === 'loose' && product) {
+              const u = product.base_unit === 'ml' ? 'l' : product.base_unit === 'pcs' ? 'pcs' : 'kg';
+              setUnit(u);
+              setSize(1);
+            }
+          }}
+          options={[
+            { value: 'package', label: 'Упаковкой' },
+            { value: 'loose', label: 'На развес' },
+          ]}
+        />
+        {loose && <p className="muted tiny">На развес покупается ровно нужное количество, без округления до упаковок.</p>}
         <Segmented label="Откуда цена" value={kind} onChange={setKind} options={[{ value: 'manual', label: 'Ввожу вручную' }, { value: 'receipt', label: 'Из чека' }]} />
         {household?.store_chain_id ? (
           <div className="stack" style={{ ['--gap' as string]: '6px' }}>

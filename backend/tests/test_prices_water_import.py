@@ -273,3 +273,25 @@ def test_guest_import_preview_and_conflict_resolution(alice: Any) -> None:
     assert set(menu["member_ids"]) <= ids
     bad = client.post(f"/api/households/{hid}/import-guest/", {"data": {"format": "nope"}, "mode": "preview"}, format="json")
     assert bad.json()["error"]["code"] == "invalid_import"
+
+
+def test_own_prices_chain_priority_unit_check_and_city_change(alice: Any) -> None:
+    client, user = alice
+    hid = household_id(user)
+    city = kazan()
+    client.patch(f"/api/households/{hid}/", {"city_id": city.id, "store_chain_id": "magnit"}, format="json")
+    url = f"/api/households/{hid}/prices/"
+    day = "2026-10-20"
+    chain = {"product_id": "potato", "price_kop": 9000, "package_size": 1, "package_unit": "kg", "date": day, "chain_id": "magnit"}
+    anywhere = {**chain, "price_kop": 5000, "chain_id": None}
+    assert client.post(url, chain, format="json").status_code == 201
+    assert client.post(url, anywhere, format="json").status_code == 201
+    entries = {e["product_id"]: e for e in client.get(url).json()["profile"]["entries"]}
+    assert entries["potato"]["price_kop"] == 9000  # same date: the chosen chain wins over «any shop»
+    # Flour has no piece mass: a price «за шт.» could never apply to the list.
+    bad = client.post(url, {"product_id": "wheat_flour", "price_kop": 9000, "package_size": 1, "package_unit": "pcs"}, format="json")
+    assert bad.status_code == 400 and bad.json()["error"]["code"] == "incompatible_unit"
+    # Magnit does not work in the Far East: moving there clears the chain.
+    far = City.objects.filter(federal_district="Дальневосточный").first()
+    assert far is not None
+    assert client.patch(f"/api/households/{hid}/", {"city_id": far.id}, format="json").json()["store_chain_id"] is None

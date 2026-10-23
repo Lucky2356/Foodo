@@ -16,11 +16,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from catalog.models import Product, Recipe
-from catalog.services import engine_catalog, recipe_to_json, save_recipe, validation_reference
+from catalog.services import engine_catalog, product_to_json, recipe_to_json, save_recipe, validation_reference
 from catalog.validation import validate_recipes
 from common.errors import ApiError
 from common.throttles import GenerateThrottle, ImportThrottle, PriceShareThrottle
 from engine import rank_candidates
+from engine.units import to_base
 from geo.models import City, StoreChain
 from prices.services import share_observation
 
@@ -84,6 +85,9 @@ class HouseholdDetailView(APIView):
             h.settings = validate_household_settings(data["settings"])
         if "city_id" in data:
             h.city = get_object_or_404(City, pk=data["city_id"]) if data["city_id"] else None
+            # A chain that does not work in the new city would keep pricing the list with the old shop.
+            if "store_chain_id" not in data and h.city is not None and h.store_chain is not None and not h.store_chain.present_in(h.city):
+                h.store_chain = None
         if "store_chain_id" in data:
             h.store_chain = get_object_or_404(StoreChain, pk=data["store_chain_id"]) if data["store_chain_id"] else None
         if "share_prices" in data:
@@ -341,7 +345,10 @@ class PantryDetailView(APIView):
 
 
 def _price_fields(data: JSON) -> JSON:
-    if not Product.objects.filter(pk=data.get("product_id")).exists():
+    if not isinstance(data, dict):
+        raise ApiError("validation_error", "Цена — объект с полями продукта и упаковки.")
+    product = Product.objects.filter(pk=data.get("product_id")).first()
+    if product is None:
         raise ApiError("unknown_product", "Неизвестный продукт.")
     price = data.get("price_kop")
     size = data.get("package_size")
@@ -351,6 +358,9 @@ def _price_fields(data: JSON) -> JSON:
         raise ApiError("validation_error", "Размер упаковки — положительное число.")
     if data.get("package_unit") not in ("g", "kg", "ml", "l", "pcs"):
         raise ApiError("validation_error", "Единица упаковки: g, kg, ml, l или pcs.")
+    # A price in a unit the product cannot be converted to would never apply to the list.
+    if to_base(product_to_json(product), float(size), data["package_unit"]) is None:
+        raise ApiError("incompatible_unit", f"Для «{product.name}» нельзя указать цену в этой единице: нет пересчёта.")
     chain_id = data.get("chain_id")
     if chain_id and not StoreChain.objects.filter(pk=chain_id).exists():
         raise ApiError("validation_error", "Неизвестная сеть.")

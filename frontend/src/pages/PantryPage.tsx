@@ -7,9 +7,8 @@ import { Icon } from '../ui/icons';
 import { Empty, ErrorBox, Field, Loading, NumberInput, PageHead, Sheet } from '../ui/kit';
 import { ProductPicker } from '../ui/ProductPicker';
 import { addDaysIso, dayMonth, deviceTimeZone, localDate } from '../lib/dates';
-import { num } from '../lib/format';
+import { quantity } from '../lib/format';
 
-const UNIT: Record<string, string> = { g: 'г', ml: 'мл', pcs: 'шт.' };
 const LOCATIONS = ['Холодильник', 'Морозилка', 'Кладовая'];
 
 export default function PantryPage() {
@@ -74,7 +73,7 @@ export default function PantryPage() {
                   <button onClick={() => setEditing(p)} style={{ textAlign: 'left', border: 0, background: 'none', padding: 0, cursor: 'pointer', minWidth: 0 }}>
                     <div style={{ fontWeight: 650 }}>{product?.name ?? p.product_id}</div>
                     <div className="small muted">
-                      {num(p.qty, 1)} {UNIT[p.unit]}
+                      {quantity(p.qty, p.unit)}
                       {p.expires && ` · до ${dayMonth(p.expires)}`}
                       {expired && <span className="badge orange" style={{ marginLeft: 6 }}>просрочено</span>}
                       {soon && <span className="badge yellow" style={{ marginLeft: 6 }}>скоро истекает</span>}

@@ -155,11 +155,14 @@ def compute_shopping(
     state: JSON,
     budget: JSON | None = None,
     transferred: dict[str, float] | None = None,
+    cooked: list[str] | None = None,
 ) -> JSON:
     """budget: the household's current {"limit_kop": ...}; the menu's saved budget is used when it is None.
     transferred: base quantities per product bought for this menu and already moved to the pantry."""
     catalog = snapshot_catalog(menu, base_catalog)
-    needs = batch_needs(menu, catalog)
+    done = set(cooked or [])
+    # Cooked batches had their products deducted from the pantry: there is nothing left to buy for them.
+    needs = [n for n in batch_needs(menu, catalog) if n["batch_id"] not in done]
     covered, allocations, expired = allocate_pantry(catalog, needs, pantry, transferred)
 
     by_key: dict[str, JSON] = {}

@@ -8,6 +8,7 @@ import {
   menuReport,
   pantryAfterCooking,
   rankCandidates,
+  toBase,
 } from '../engine';
 import type { Catalog, Member, PlanRequest, PriceProfile, Recipe } from '../engine';
 import { DEFAULT_TIMEZONE } from '../lib/config';
@@ -143,10 +144,15 @@ export class GuestGateway implements Gateway {
     if (patch.city_id !== undefined) {
       if (patch.city_id === null) next.city = null;
       else {
-        const { loadCities } = await import('./geo');
+        const { loadCities, loadChains, chainsForCity } = await import('./geo');
         const city = (await loadCities()).find((c) => c.id === patch.city_id);
         if (!city) throw new ApiError('not_found', 'Город не найден.', 404);
         next.city = { id: city.id, name: city.name, region: city.region, timezone: city.timezone };
+        // A chain that does not work in the new city would keep pricing the list with the old shop.
+        if (patch.store_chain_id === undefined && next.store_chain_id) {
+          const here = chainsForCity(await loadChains(), city);
+          if (!here.some((c) => c.id === next.store_chain_id)) next.store_chain_id = null;
+        }
       }
     }
     await db.put('kv', next, 'household');
@@ -319,7 +325,7 @@ export class GuestGateway implements Gateway {
       const productId = lineId.startsWith('auto:') ? lineId.split(':')[1] : undefined;
       if (productId) bought[productId] = (bought[productId] ?? 0) + qty;
     }
-    const list = computeShopping(stored.menu, await this.catalog(), await this.listPantry(), await this.priceProfile(), stored.shopping_state, h.settings.plan.budget, bought);
+    const list = computeShopping(stored.menu, await this.catalog(), await this.listPantry(), await this.priceProfile(), stored.shopping_state, h.settings.plan.budget, bought, stored.cooked_batches);
     const transferred = new Set(stored.transferred_lines);
     return { ...list, lines: list.lines.map((l) => ({ ...l, transferred: transferred.has(l.id) })), state: stored.shopping_state, shopping_revision: stored.shopping_revision };
   }
@@ -438,8 +444,17 @@ export class GuestGateway implements Gateway {
   async addPrices(entries: NewPrice[]): Promise<{ shared: number }> {
     const db = await this.db();
     const h = await this.householdRow();
+    const catalog = await this.catalog();
     for (const e of entries) {
       if (!(Number.isInteger(e.price_kop) && e.price_kop > 0 && e.package_size > 0)) throw new ApiError('validation_error', 'Цена и размер упаковки должны быть положительными.', 400);
+      const product = catalog.products[e.product_id];
+      if (!product) throw new ApiError('unknown_product', 'Неизвестный продукт.', 400);
+      // A price in a unit the product cannot be converted to would never apply to the list.
+      if (toBase(product, e.package_size, e.package_unit) === null) {
+        throw new ApiError('incompatible_unit', `Для «${product.name}» нельзя указать цену в этой единице: нет пересчёта.`, 400);
+      }
+    }
+    for (const e of entries) {
       await db.put('prices', {
         id: newId('price'),
         product_id: e.product_id,

@@ -175,7 +175,8 @@ def shopping_for(h: Household, menu: Menu) -> JSON:
         product_id = line_id.split(":")[1] if line_id.startswith("auto:") else None
         if product_id:
             bought[product_id] = bought.get(product_id, 0) + qty
-    result = compute_shopping(menu.data, catalog, pantry_json(h), price_profile(h), state, household_settings(h)["plan"]["budget"], bought)
+    cooked = list(menu.cook_confirmations.values_list("batch_id", flat=True))
+    result = compute_shopping(menu.data, catalog, pantry_json(h), price_profile(h), state, household_settings(h)["plan"]["budget"], bought, cooked)
     transferred = {line_id for line_id, _ in transfers}
     for line in result["lines"]:
         line["transferred"] = line["id"] in transferred

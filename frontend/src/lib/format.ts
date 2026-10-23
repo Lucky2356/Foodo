@@ -44,6 +44,11 @@ export function newId(prefix: string): string {
   return `${prefix}-${Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('')}`;
 }
 
+/** What to buy: pieces are bought whole (1,5 яйца → 2 шт.); mass and volume stay exact. */
+export function buyAmount(value: number, unit: string): number {
+  return unit === 'pcs' ? Math.ceil(value - 1e-9) : value;
+}
+
 /** An amount in a base unit for people: 1 500 г → «1,5 кг», 2 000 мл → «2 л». */
 export function quantity(value: number, unit: string): string {
   const name = (UNIT_NAMES as Record<string, string>)[unit] ?? unit;

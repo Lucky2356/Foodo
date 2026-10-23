@@ -14,7 +14,7 @@ import { applyTheme, storedTheme } from '../lib/theme';
 import type { ThemeChoice } from '../lib/theme';
 import { num, plural } from '../lib/format';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, toggleQuickExclusion } from '../lib/recipes';
-import { deviceTimeZone } from '../lib/dates';
+import { deviceTimeZone, localDate } from '../lib/dates';
 import { NATIVE_BUILD } from '../lib/config';
 import type { IconName } from '../ui/icons';
 
@@ -29,12 +29,12 @@ const MORE_LINKS: { to: string; label: string; icon: IconName }[] = [
 const TIMEZONES = ['Europe/Kaliningrad', 'Europe/Moscow', 'Europe/Samara', 'Asia/Yekaterinburg', 'Asia/Omsk', 'Asia/Krasnoyarsk', 'Asia/Irkutsk', 'Asia/Yakutsk', 'Asia/Vladivostok', 'Asia/Magadan', 'Asia/Kamchatka'];
 
 export default function ProfilePage() {
-  const { household, gateway, user, reportError, toast, refreshHousehold, bump, setCurrentMenuId } = useApp();
+  const { household, gateway, user, catalog, reportError, toast, refreshHousehold, bump, setCurrentMenuId } = useApp();
   const [restoring, setRestoring] = useState<GuestExport | null>(null);
   const restore = async (mode: 'replace' | 'merge') => {
     if (!restoring) return;
     try {
-      const r = await importGuestData(restoring, mode);
+      const r = await importGuestData(restoring, mode, catalog);
       setRestoring(null);
       if (mode === 'replace') setCurrentMenuId(null);
       await refreshHousehold();
@@ -182,7 +182,7 @@ export default function ProfilePage() {
               className="btn"
               onClick={async () => {
                 try {
-                  await downloadJson(`foodo-backup-${new Date().toISOString().slice(0, 10)}.json`, await exportGuestData());
+                  await downloadJson(`foodo-backup-${localDate(deviceTimeZone())}.json`, await exportGuestData());
                 } catch (e) {
                   reportError(e);
                 }

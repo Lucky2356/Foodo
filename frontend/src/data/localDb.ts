@@ -29,7 +29,7 @@ export interface StoredWater {
 
 export type GuestHousehold = Omit<HouseholdView, 'members' | 'role'>;
 
-interface GuestSchema extends DBSchema {
+export interface GuestSchema extends DBSchema {
   kv: { key: string; value: unknown };
   members: { key: string; value: Member & { position: number } };
   menus: { key: string; value: StoredMenu };

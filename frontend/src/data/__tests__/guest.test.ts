@@ -63,11 +63,33 @@ describe('guest storage', () => {
     await resetGuestDbForTests();
     const empty = gateway();
     expect((await empty.getHousehold()).members).toEqual([]);
-    await importGuestData(backup, 'replace');
+    await importGuestData(backup, 'replace', seedCatalog());
     const restored = JSON.parse(JSON.stringify(await exportGuestData()));
     const strip = (d: typeof backup) => ({ ...d, exported_at: null });
     expect(strip(restored)).toEqual(strip(backup));
     expect((await empty.getMenu(record.id)).menu).toEqual(record.menu);
+  });
+
+  it('a broken backup is refused before anything is changed', async () => {
+    const g = gateway();
+    await g.addMember({ name: 'Аня' });
+    await g.addPantry({ product_id: 'potato', qty: 500, unit: 'g', location: null, expires: null });
+    const backup = JSON.parse(JSON.stringify(await exportGuestData()));
+    backup.menus.push({ id: 'broken', menu: null });
+    backup.pantry.push({ id: 'p-bad', product_id: 'nonexistent', qty: -5, unit: 'kg', expires: 'zzz' });
+    await expect(importGuestData(backup, 'replace', seedCatalog())).rejects.toThrow(/данные не изменены/);
+    const after = await exportGuestData();
+    expect(after.members.map((m) => m.name)).toEqual(['Аня']);
+    expect(after.pantry).toHaveLength(1);
+  });
+
+  it('«Добавить к текущим» treats a person with the same name as the same person', async () => {
+    const g = gateway();
+    await g.addMember({ name: 'Аня' });
+    const backup = JSON.parse(JSON.stringify(await exportGuestData()));
+    backup.members = backup.members.map((m: { id: string }) => ({ ...m, id: 'other-id' }));
+    await importGuestData(backup, 'merge', seedCatalog());
+    expect((await exportGuestData()).members.map((m) => m.name)).toEqual(['Аня']);
   });
 
   it('rejects foreign files and newer formats', () => {
@@ -113,6 +135,36 @@ describe('guest storage', () => {
       expect(c.url).toMatch(/prices\/public\/\?city=1600000100000&chain=magnit$/);
     }
     vi.unstubAllGlobals();
+  });
+
+  it('a cooked batch is no longer in the shopping list', async () => {
+    const g = gateway();
+    await g.addMember({ name: 'Аня' });
+    await g.updateHousehold({ settings: { ...(await g.getHousehold()).settings, slots: ['lunch'] } });
+    const record = await g.generateMenu({ start_date: '2026-10-19', days: 1, seed: 1 });
+    expect((await g.getShopping(record.id)).lines.length).toBeGreaterThan(0);
+    for (const b of record.menu.batches) await g.cook(record.id, b.id);
+    expect((await g.getShopping(record.id)).lines).toEqual([]);
+  });
+
+  it('own prices: the chosen chain beats «any shop» on the same date; units must convert', async () => {
+    const g = gateway();
+    await g.updateHousehold({ city_id: '1600000100000', store_chain_id: 'magnit' });
+    const day = '2026-10-20';
+    await g.addPrices([{ product_id: 'potato', price_kop: 9000, package_size: 1, package_unit: 'kg', date: day, chain_id: 'magnit' }]);
+    await g.addPrices([{ product_id: 'potato', price_kop: 5000, package_size: 1, package_unit: 'kg', date: day, chain_id: null }]);
+    const potato = (await g.priceProfile()).entries.find((e) => e.product_id === 'potato')!;
+    expect(potato.price_kop).toBe(9000);
+    // Flour has no piece mass: a price «за шт.» could never apply to the list.
+    await expect(g.addPrices([{ product_id: 'wheat_flour', price_kop: 9000, package_size: 1, package_unit: 'pcs' }])).rejects.toThrow(/нет пересчёта/);
+  });
+
+  it('moving to a city where the chosen chain does not work clears the chain', async () => {
+    const g = gateway();
+    await g.updateHousehold({ city_id: '1600000100000', store_chain_id: 'magnit' });
+    expect((await g.getHousehold()).store_chain_id).toBe('magnit');
+    await g.updateHousehold({ city_id: '2500000100000' });
+    expect((await g.getHousehold()).store_chain_id).toBeNull();
   });
 
   it('refuses invalid data at the storage boundary', async () => {
