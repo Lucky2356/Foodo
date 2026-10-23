@@ -40,9 +40,6 @@ jobs:
         run: |
           pip install pytest==8.4.2
           python -m pytest -q scripts/prices/tests
-      - name: Probe chain websites (pull requests, log only)
-        if: github.event_name == 'pull_request'
-        run: python -m scripts.prices.probe raw || true
       - name: Collect (dry run on pull requests)
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then

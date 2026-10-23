@@ -1,24 +1,23 @@
-"""Metro Cash & Carry (online.metro-cc.ru): public product-page prices of the store the site shows by
-default.
+"""Metro Cash & Carry (online.metro-cc.ru): public product-page prices of stores in the largest
+cities.
 
 Every product page carries schema.org Product/Offer markup (name with the package size, price in
-roubles). The site sets ordinary cookies on the first visit (including the default store and its
-coordinates) and redirects to the same page; the collector keeps them like any HTTP client with a
-cookie jar, identifies itself honestly and reads only what robots.txt allows. Product pages are
-picked from the public sitemap by name words, a limited number per Foodo product."""
+roubles) and the list of Metro stores in its page state. The collector picks one store per city the
+way a visitor does on the site (the metroStoreId cookie), keeps the site's other cookies like any
+HTTP client with a cookie jar, identifies itself honestly and reads only what robots.txt allows.
+Product pages are picked from the public sitemap by name words, a limited number per product."""
 
 from __future__ import annotations
 
 import http.cookiejar
-import itertools
 import json
 import re
-import urllib.parse
 from datetime import date
 from typing import Any
 
+from . import magnit
 from .common import Fetcher, FetchError
-from .magnit import RULES, choose, nearest_city
+from .magnit import RULES, choose
 
 BASE = "https://online.metro-cc.ru"
 CHAIN_ID = "metro"
@@ -105,44 +104,52 @@ def offer_from_html(html: str, url: str) -> dict[str, Any] | None:
     return None
 
 
-def russian_point(text: str) -> tuple[float, float] | None:
-    """(lat, lon) inside Russia from a cookie value of unknown shape: «55.75,37.61», «37.61|55.75»,
-    {"lat":55.75,"lng":37.61}, decimal commas… The order is told by the ranges (lat 41–82,
-    lon 19–191), so a pair is accepted only when exactly one reading fits."""
-    for pattern in (r"-?\d+\.\d+|-?\d+", r"-?\d+,\d+"):
-        numbers = [float(x.replace(",", ".")) for x in re.findall(pattern, text)]
-        for a, b in itertools.pairwise(numbers):
-            readings = [
-                (lat, lon)
-                for lat, lon in ((a, b), (b, a))
-                if 41 <= lat <= 82 and 19 <= lon <= 191
-            ]
-            if len(readings) == 1:
-                return readings[0]
-    return None
+def select_store(jar: http.cookiejar.CookieJar, store_id: int) -> None:
+    """The store a visitor picks on the site: the cookie the site itself uses for the choice. Set
+    before every request, since a response may reset it to «not chosen»."""
+    jar.set_cookie(
+        http.cookiejar.Cookie(
+            0, "metroStoreId", str(store_id), None, False, "online.metro-cc.ru", False, False,
+            "/", True, True, None, False, None, None, {},
+        )
+    )  # fmt: skip
 
 
-def store_coordinates(jar: http.cookiejar.CookieJar) -> tuple[str, float, float] | None:
-    """The default store (cookie metroStoreId) and its coordinates (cookie coords) set by the site
-    on the first visit."""
-    store = next((c.value for c in jar if c.name == "metroStoreId"), None)
-    coords = next(
-        (urllib.parse.unquote(c.value or "") for c in jar if c.name == "coords"), None
-    )
-    if not store or not coords:
-        return None
-    point = russian_point(coords)
-    return (
-        None
-        if point is None
-        else (urllib.parse.unquote(store).strip('"'), point[0], point[1])
-    )
+def stores_by_city(
+    stores: list[dict[str, Any]], cities: list[dict[str, Any]], limit: int
+) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+    """One store per Foodo city (the first listed), for the `limit` most populous cities; dark
+    stores (delivery warehouses) are skipped. The city is the longest city name found in the
+    store's address as a whole word."""
+    by_name = sorted(cities, key=lambda c: -len(c["name"]))
+    chosen: dict[str, tuple[dict[str, Any], dict[str, Any]]] = {}
+    for store in stores:
+        if not isinstance(store.get("store_id"), int) or re.search(
+            r"дарк", str(store.get("name", "")), re.IGNORECASE
+        ):
+            continue
+        address = str(store.get("address") or "")
+        city = next(
+            (
+                c
+                for c in by_name
+                if re.search(
+                    rf"(?<![А-Яа-яЁё-]){re.escape(c['name'])}(?![А-Яа-яЁё-])", address
+                )
+            ),
+            None,
+        )
+        if city is not None and city["id"] not in chosen:
+            chosen[city["id"]] = (city, store)
+    ranked = sorted(chosen.values(), key=lambda cs: -(cs[0].get("population") or 0))
+    return ranked[:limit]
 
 
 def collect(
     products: dict[str, dict[str, Any]],
     cities: list[dict[str, Any]],
     per_product: int = 6,
+    max_cities: int = 12,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     jar = http.cookiejar.CookieJar()
     fetcher = Fetcher(BASE, delay=1.5, cookies=jar)
@@ -150,30 +157,22 @@ def collect(
     for path in PRODUCT_SITEMAPS:
         urls += re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", fetcher.text(BASE + path))
     urls = [u for u in urls if "/products/" in u]
-    candidates = candidate_urls(urls, per_product)
-    # The store cookies come with HTML pages, not with the XML sitemaps: the home page, else the
-    # first product page.
-    fetcher.text(BASE + "/")
-    if store_coordinates(jar) is None and urls:
-        fetcher.text(urls[0])
-    location = store_coordinates(jar)
-    if location is None:
-        values = {
-            c.name: (c.value or "")[:80]
-            for c in jar
-            if c.name in ("metroStoreId", "coords")
-        }
+    if not urls:
+        raise FetchError("В карте сайта нет страниц товаров")
+    stores = trade_centers(fetcher.text(urls[0]))
+    targets = stores_by_city(stores, cities, max_cities)
+    if not targets:
         raise FetchError(
-            f"Не удалось понять магазин по умолчанию и его координаты: {values}"
+            f"Не удалось сопоставить магазины с городами ({len(stores)} магазинов на странице)"
         )
-    store, lat, lon = location
-    city = nearest_city(cities, lat, lon)
-    offers: list[dict[str, Any]] = []
-    failed = 0
-    for product_id in sorted(candidates):
-        if product_id not in products:
-            continue
-        for url in candidates[product_id]:
+    candidates = {
+        k: v for k, v in candidate_urls(urls, per_product).items() if k in products
+    }
+
+    def read(store_id: int, page_urls: list[str]) -> tuple[list[dict[str, Any]], int]:
+        offers, failed = [], 0
+        for url in page_urls:
+            select_store(jar, store_id)
             try:
                 offer = offer_from_html(fetcher.text(url), url)
             except FetchError:
@@ -181,37 +180,64 @@ def collect(
                 continue
             if offer:
                 offers.append(offer)
+        return offers, failed
+
     today = date.today().isoformat()
-    observations = []
-    for product_id, offer in sorted(choose(products, offers).items()):
-        size, unit, loose = offer["_package"]
-        observations.append(
+    observations: list[dict[str, Any]] = []
+    per_city: list[dict[str, Any]] = []
+    known_urls: list[str] | None = None
+    for city, store in targets:
+        # The first city searches the sitemap candidates; the others re-read only the pages that
+        # matched a Foodo product, so each extra city costs about one request per product.
+        page_urls = (
+            [u for v in candidates.values() for u in v]
+            if known_urls is None
+            else known_urls
+        )
+        offers, failed = read(store["store_id"], page_urls)
+        chosen = choose(products, offers)
+        if known_urls is None:
+            known_urls = sorted(
+                {
+                    o["url"]
+                    for o in offers
+                    if magnit.match_product(o["name"]) in products
+                }
+            )
+        for product_id, offer in sorted(chosen.items()):
+            size, unit, loose = offer["_package"]
+            observations.append(
+                {
+                    "product_id": product_id,
+                    "chain_id": CHAIN_ID,
+                    "city_id": city["id"],
+                    "price_kop": round(offer["_price"] * 100),
+                    "package_size": size,
+                    "package_unit": unit,
+                    "loose": loose,
+                    "observed_on": today,
+                    "source": f"online.metro-cc.ru, {store['name']}: {offer['shown']}"[
+                        :200
+                    ],
+                    "source_url": offer["url"][:500],
+                    "external_id": f"{store['store_id']}:{offer['url']}"[:200],
+                }
+            )
+        per_city.append(
             {
-                "product_id": product_id,
-                "chain_id": CHAIN_ID,
-                "city_id": city["id"],
-                "price_kop": round(offer["_price"] * 100),
-                "package_size": size,
-                "package_unit": unit,
-                "loose": loose,
-                "observed_on": today,
-                "source": f"online.metro-cc.ru, магазин {store}: {offer['shown']}"[
-                    :200
-                ],
-                "source_url": offer["url"][:500],
-                "external_id": offer["url"][:200],
+                "city": city["name"],
+                "store": store["store_id"],
+                "pages": len(page_urls),
+                "failed": failed,
+                "products": len(chosen),
             }
         )
     summary = {
-        "store": store,
-        "store_coords": [lat, lon],
-        "city_id": city["id"],
-        "city": city["name"],
+        "stores_on_site": len(stores),
+        "cities": per_city,
         "product_urls": len(urls),
-        "pages": sum(len(v) for k, v in candidates.items() if k in products),
-        "pages_failed": failed,
-        "offers": len(offers),
-        "products": len(observations),
+        "products": len({o["product_id"] for o in observations}),
+        "observations": len(observations),
         "requests": fetcher.requests,
     }
     return observations, summary

@@ -271,37 +271,22 @@ def test_metro_candidates_follow_the_slug_and_skip_the_size_prefix() -> None:
     assert not any(urls[2] in v for v in found.values())
 
 
-def test_metro_default_store_comes_from_its_cookies() -> None:
-    import http.cookiejar
-
+def test_metro_stores_from_the_page_state_one_per_city() -> None:
     from scripts.prices import metro
 
-    jar = http.cookiejar.CookieJar()
-    for name, value in (("metroStoreId", "10"), ("coords", "55.7558%2C37.6173")):
-        jar.set_cookie(
-            http.cookiejar.Cookie(
-                0,
-                name,
-                value,
-                None,
-                False,
-                "online.metro-cc.ru",
-                False,
-                False,
-                "/",
-                False,
-                False,
-                None,
-                False,
-                None,
-                None,
-                {},
-            )
-        )
-    assert metro.store_coordinates(jar) == ("10", 55.7558, 37.6173)
-    # Other shapes of the same point: JSON, reversed order, decimal commas.
-    assert metro.russian_point('{"lng":37.6173,"lat":55.7558}') == (55.7558, 37.6173)
-    assert metro.russian_point("37,6173;55,7558") == (55.7558, 37.6173)
-    assert metro.russian_point("0,0") is None
-    city = magnit.nearest_city(CITIES, 55.7558, 37.6173)
-    assert city["name"] == "Москва"
+    html = (
+        "<script>window.__NUXT__=(function(a,b,c,d){return {tradecenter:{list:["
+        '{id:a,store_id:b,name:"Ленинградское ш., 71Г",address:c,city:d},'
+        '{id:2,store_id:11,name:"просп. Мира",address:"129226, г. Москва, пр-кт Мира"},'
+        '{id:3,store_id:44,name:"Ул. Большевистская",address:"630028, г. Новосибирск, ул. Большевистская, 290"},'
+        '{id:4,store_id:90002,name:"Даркцентр Дубровка",address:"Москва"}'
+        ']}}}(1,10,"125445, г. Москва, Ленинградское ш.","Москва"));</script>'
+    )
+    stores = metro.trade_centers(html)
+    assert [s["store_id"] for s in stores] == [10, 11, 44, 90002]
+    picked = metro.stores_by_city(stores, CITIES, limit=5)
+    # Moscow comes first (most populous) with its first store; dark stores are not shops.
+    assert [(c["name"], s["store_id"]) for c, s in picked] == [
+        ("Москва", 10),
+        ("Новосибирск", 44),
+    ]
