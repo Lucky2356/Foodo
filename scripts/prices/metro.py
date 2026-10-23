@@ -65,7 +65,7 @@ def candidate_urls(urls: list[str], per_product: int) -> dict[str, list[str]]:
 
 # Metro is a wholesaler: cases of 5–13 kg would make the list buy a box. Weight goods «~13кг» are
 # also ambiguous (the price is per kilogram for some, per box for others), so only small ones stay.
-MAX_RETAIL_BASE = 3000.0
+MAX_RETAIL_BASE = 2000.0
 MAX_APPROX_BASE = 1500.0
 
 
@@ -120,6 +120,13 @@ def offer_from_html(html: str, url: str) -> dict[str, Any] | None:
             name = MULTIPACK.sub(f"{size:g}{case.group(2)}", name)
         if not retail_size(name):
             return None
+        # Exclusion words are checked on the full name too: a brand such as «Вкусные консервы»
+        # is the only sign that the fish is canned.
+        product_id = magnit.match_product(name)
+        if product_id is not None:
+            must_not = RULES[product_id][1]
+            if must_not and re.search(must_not, shown.lower()):
+                return None
         return {"name": name, "shown": shown, "price": price, "url": url}
     return None
 

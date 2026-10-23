@@ -260,6 +260,12 @@ def test_metro_product_page_offer_and_case_of_packages() -> None:
     # «~13кг» weight goods are ambiguous (price per kg or per box): skipped.
     assert metro.offer_from_html(small.replace("1кг x 2 шт", "~13кг"), "u") is None
     page = small
+    canned = (
+        '<script type="application/ld+json">{"@type":"Product","name":"Скумбрия атлантическая Вкусные консервы натуральная, 250г",'
+        '"brand":{"@type":"Brand","name":"ВКУСНЫЕ КОНСЕРВЫ"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":159}}</script>'
+    )
+    # Without the brand the name would read as fresh mackerel; the full name says it is canned.
+    assert metro.offer_from_html(canned, "u") is None
     out_of_stock = page.replace("InStock", "OutOfStock")
     assert metro.offer_from_html(out_of_stock, "u") is None
 
