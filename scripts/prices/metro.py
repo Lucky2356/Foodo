@@ -15,6 +15,7 @@ import re
 from datetime import date
 from typing import Any
 
+from . import magnit
 from .common import Fetcher, FetchError
 from .magnit import RULES, choose
 
@@ -62,6 +63,24 @@ def candidate_urls(urls: list[str], per_product: int) -> dict[str, list[str]]:
     return out
 
 
+# Metro is a wholesaler: cases of 5–13 kg would make the list buy a box. Weight goods «~13кг» are
+# also ambiguous (the price is per kilogram for some, per box for others), so only small ones stay.
+MAX_RETAIL_BASE = 3000.0
+MAX_APPROX_BASE = 1500.0
+
+
+def retail_size(name: str) -> bool:
+    package = magnit.parse_package(name)
+    if package is None:
+        return True  # no size in the name: matching skips it anyway
+    size, unit, loose = package
+    base = size * (1000 if unit in ("kg", "l") else 1) if unit != "pcs" else 0
+    if loose:
+        return True
+    limit = MAX_APPROX_BASE if "~" in name else MAX_RETAIL_BASE
+    return base <= limit
+
+
 def offer_from_html(html: str, url: str) -> dict[str, Any] | None:
     """The Product/Offer of a product page as {name, price, url}; a case of N packages is reported
     as one package of N × size so that the price per kilogram stays right."""
@@ -99,6 +118,8 @@ def offer_from_html(html: str, url: str) -> dict[str, Any] | None:
         if case:
             size = float(case.group(1).replace(",", ".")) * int(case.group(3))
             name = MULTIPACK.sub(f"{size:g}{case.group(2)}", name)
+        if not retail_size(name):
+            return None
         return {"name": name, "shown": shown, "price": price, "url": url}
     return None
 
@@ -182,53 +203,112 @@ def collect(
         return offers, failed
 
     today = date.today().isoformat()
+
+    def observation(
+        city: dict[str, Any],
+        store: dict[str, Any],
+        offer: dict[str, Any],
+        product_id: str,
+        note: str,
+    ) -> dict[str, Any]:
+        size, unit, loose = offer["_package"]
+        return {
+            "product_id": product_id,
+            "chain_id": CHAIN_ID,
+            "city_id": city["id"],
+            "price_kop": round(offer["_price"] * 100),
+            "package_size": size,
+            "package_unit": unit,
+            "loose": loose,
+            "observed_on": today,
+            "source": f"online.metro-cc.ru, {note}: {offer['shown']}"[:200],
+            "source_url": offer["url"][:500],
+            "external_id": f"{store['store_id']}:{offer['url']}"[:200],
+        }
+
+    # 1) The most populous city searches the sitemap candidates.
+    first_city, first_store = targets[0]
+    offers, failed = read(
+        first_store["store_id"], [u for v in candidates.values() for u in v]
+    )
+    first = choose(products, offers)
+    chosen_urls = sorted({o["url"] for o in first.values()})
+    per_city = [
+        {
+            "city": first_city["name"],
+            "store": first_store["store_id"],
+            "pages": sum(len(v) for v in candidates.values()),
+            "failed": failed,
+            "products": len(first),
+        }
+    ]
+    prices = {pid: o["_price"] for pid, o in first.items()}
+    # 2) A second city re-reads only the chosen pages (one per product). Same prices everywhere mean
+    # the site shows one online price whatever store is picked: it is published for every city
+    # with a Metro store, labelled as such. Different prices mean store prices: each city is read.
     observations: list[dict[str, Any]] = []
-    per_city: list[dict[str, Any]] = []
-    known_urls: list[str] | None = None
-    for city, store in targets:
-        # The first city searches the sitemap candidates; the others re-read only the pages that
-        # matched a Foodo product, so each extra city costs about one request per product.
-        page_urls = (
-            [u for v in candidates.values() for u in v]
-            if known_urls is None
-            else known_urls
-        )
-        offers, failed = read(store["store_id"], page_urls)
-        chosen = choose(products, offers)
-        if known_urls is None:
-            # Only the page chosen for each product: about one request per product per city.
-            known_urls = sorted({o["url"] for o in chosen.values()})
-        for product_id, offer in sorted(chosen.items()):
-            size, unit, loose = offer["_package"]
-            observations.append(
-                {
-                    "product_id": product_id,
-                    "chain_id": CHAIN_ID,
-                    "city_id": city["id"],
-                    "price_kop": round(offer["_price"] * 100),
-                    "package_size": size,
-                    "package_unit": unit,
-                    "loose": loose,
-                    "observed_on": today,
-                    "source": f"online.metro-cc.ru, {store['name']}: {offer['shown']}"[
-                        :200
-                    ],
-                    "source_url": offer["url"][:500],
-                    "external_id": f"{store['store_id']}:{offer['url']}"[:200],
-                }
-            )
+    uniform = False
+    second: dict[str, dict[str, Any]] = {}
+    checked = [first_city["name"]]
+    if len(targets) > 1:
+        city, store = targets[1]
+        offers2, failed2 = read(store["store_id"], chosen_urls)
+        second = choose(products, offers2)
         per_city.append(
             {
                 "city": city["name"],
                 "store": store["store_id"],
-                "pages": len(page_urls),
-                "failed": failed,
-                "products": len(chosen),
+                "pages": len(chosen_urls),
+                "failed": failed2,
+                "products": len(second),
             }
         )
+        checked.append(city["name"])
+        uniform = bool(second) and all(
+            second.get(pid) is not None and abs(second[pid]["_price"] - price) < 0.005
+            for pid, price in prices.items()
+        )
+    if uniform:
+        everywhere = stores_by_city(stores, cities, limit=len(stores))
+        note = f"цена интернет-магазина, одинаковая для магазинов (проверено: {', '.join(checked)})"
+        for city, store in everywhere:
+            observations += [
+                observation(city, store, o, pid, note)
+                for pid, o in sorted(first.items())
+            ]
+        cities_out = [c["name"] for c, _ in everywhere]
+    else:
+        cities_out = []
+        for i, (city, store) in enumerate(targets):
+            if i == 0:
+                chosen = first
+            elif i == 1:
+                chosen = second
+            else:
+                offers_i, failed_i = read(store["store_id"], chosen_urls)
+                chosen = choose(products, offers_i)
+                per_city.append(
+                    {
+                        "city": city["name"],
+                        "store": store["store_id"],
+                        "pages": len(chosen_urls),
+                        "failed": failed_i,
+                        "products": len(chosen),
+                    }
+                )
+            observations += [
+                observation(city, store, o, pid, store["name"])
+                for pid, o in sorted(chosen.items())
+            ]
+            cities_out.append(city["name"])
     summary = {
         "stores_on_site": len(stores),
-        "cities": per_city,
+        "uniform_online_price": uniform,
+        "checked": per_city,
+        "cities": [
+            {"city": c, "products": len({o["product_id"] for o in observations})}
+            for c in cities_out
+        ],
         "product_urls": len(urls),
         "products": len({o["product_id"] for o in observations}),
         "observations": len(observations),

@@ -424,7 +424,7 @@ function PriceSources() {
       const parts = [
         s.period ? `период ${s.period}` : null,
         s.city ? `магазин в городе ${s.city}` : null,
-        inCities.length > 0 ? `магазины в городах: ${inCities.join(', ')}` : null,
+        inCities.length > 6 ? `магазины в ${inCities.length} городах` : inCities.length > 0 ? `магазины в городах: ${inCities.join(', ')}` : null,
         s.updated_at ? `обновлено ${dayMonth(s.updated_at.slice(0, 10))}` : null];
       return parts.filter(Boolean).join(', ');
     }

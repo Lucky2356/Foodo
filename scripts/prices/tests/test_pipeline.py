@@ -248,11 +248,18 @@ def test_metro_product_page_offer_and_case_of_packages() -> None:
         '"name":"Мука Makfa пшеничная высший сорт, 2кг x 6 шт","brand":{"@type":"Brand","name":"MAKFA"},"offers":{"@type":"Offer",'
         '"priceCurrency":"RUB","price":852,"availability":"https://schema.org/InStock"}}</script>'
     )
-    offer = metro.offer_from_html(page, "https://online.metro-cc.ru/products/muka")
-    assert offer is not None and offer["price"] == 852
-    # The case is one package of 12 kg: 71 ₽ per kilogram, not 852 ₽ for «6 шт».
-    assert magnit.parse_package(offer["name"]) == (12.0, "kg", False)
+    # A case of 6 × 2 kg is 12 kg: a wholesale box, not a shopping-list package.
+    assert (
+        metro.offer_from_html(page, "https://online.metro-cc.ru/products/muka") is None
+    )
+    small = page.replace("2кг x 6 шт", "1кг x 2 шт").replace("852", "142")
+    offer = metro.offer_from_html(small, "https://online.metro-cc.ru/products/muka")
+    assert offer is not None and offer["price"] == 142
+    assert magnit.parse_package(offer["name"]) == (2.0, "kg", False)
     assert magnit.match_product(offer["name"]) == "wheat_flour"
+    # «~13кг» weight goods are ambiguous (price per kg or per box): skipped.
+    assert metro.offer_from_html(small.replace("1кг x 2 шт", "~13кг"), "u") is None
+    page = small
     out_of_stock = page.replace("InStock", "OutOfStock")
     assert metro.offer_from_html(out_of_stock, "u") is None
 
