@@ -7,6 +7,7 @@ from pathlib import Path
 
 from scripts.prices import magnit, publish, rosstat
 from scripts.prices.common import robots_allows, robots_rules
+from scripts.prices.run import source_entry
 
 ROOT = Path(__file__).resolve().parents[3]
 CITIES = json.loads((ROOT / "shared/data/geo/cities.json").read_text(encoding="utf-8"))[
@@ -303,3 +304,24 @@ def test_metro_stores_from_the_page_state_one_per_city() -> None:
         ("Москва", 10),
         ("Новосибирск", 44),
     ]
+
+
+def test_a_collected_chain_drops_its_old_check_only_status() -> None:
+    checked = {
+        "name": "metro",
+        "collected": False,
+        "reachable": True,
+        "detail": "доступен",
+        "reason": "Сайт отвечает, сбор цен ещё не реализован.",
+        "checked_at": "2026-10-19T09:00:00+00:00",
+    }
+    entry = source_entry(checked, True, "2026-10-23T22:00:00+00:00", products=50)
+    assert entry["ok"] is True and entry["products"] == 50
+    assert entry["updated_at"] == "2026-10-23T22:00:00+00:00"
+    assert not {"collected", "reachable", "detail", "reason"} & entry.keys()
+
+    # A failed run keeps the last good data and its date, and reports the error.
+    failed = source_entry(entry, False, "2026-10-30T22:00:00+00:00", error="403")
+    assert failed["ok"] is False and failed["error"] == "403"
+    assert failed["products"] == 50
+    assert failed["updated_at"] == "2026-10-23T22:00:00+00:00"
