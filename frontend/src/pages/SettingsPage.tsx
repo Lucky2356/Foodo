@@ -420,7 +420,12 @@ function PriceSources() {
   const line = (s: PriceSourceStatus) => {
     if (s.collected === false) return s.reason ?? 'Цены не собираются.';
     if (s.ok) {
-      const parts = [s.period ? `период ${s.period}` : null, s.city ? `магазин в городе ${s.city}` : null, s.updated_at ? `обновлено ${dayMonth(s.updated_at.slice(0, 10))}` : null];
+      const inCities = (s.cities ?? []).filter((c) => (c.products ?? 0) > 0).map((c) => c.city);
+      const parts = [
+        s.period ? `период ${s.period}` : null,
+        s.city ? `магазин в городе ${s.city}` : null,
+        inCities.length > 0 ? `магазины в городах: ${inCities.join(', ')}` : null,
+        s.updated_at ? `обновлено ${dayMonth(s.updated_at.slice(0, 10))}` : null];
       return parts.filter(Boolean).join(', ');
     }
     return `Последний сбор не удался: ${s.error ?? 'причина неизвестна'}`;
