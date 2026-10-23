@@ -9,10 +9,25 @@ export function storedTheme(): ThemeChoice {
   }
 }
 
+const THEME_COLORS = { light: '#fffbf2', dark: '#000000' } as const;
+
+/**
+ * The browser bar follows the chosen theme: index.html has one theme-color per system scheme, and a
+ * forced theme pins both to its own colour (otherwise a dark app would get a light bar).
+ */
+function syncThemeColor(choice: ThemeChoice): void {
+  const metas = document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]');
+  metas.forEach((meta) => {
+    const scheme = meta.media.includes('dark') ? 'dark' : 'light';
+    meta.content = THEME_COLORS[choice === 'system' ? scheme : choice];
+  });
+}
+
 export function applyTheme(choice: ThemeChoice): void {
   const root = document.documentElement;
   if (choice === 'system') root.removeAttribute('data-theme');
   else root.setAttribute('data-theme', choice);
+  syncThemeColor(choice);
   try {
     localStorage.setItem('foodo:theme', choice);
   } catch {

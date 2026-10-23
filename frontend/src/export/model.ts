@@ -2,8 +2,8 @@ import { UNIT_NAMES } from '../engine';
 import type { Member } from '../engine';
 import type { MenuRecord, ShoppingView } from '../data/types';
 import { SLOT_NAMES } from '../lib/recipes';
-import { dayMonth, weekdayLong } from '../lib/dates';
-import { num, plural, quantity, rub } from '../lib/format';
+import { dayMonth, deviceTimeZone, localDate, weekdayLong } from '../lib/dates';
+import { buyAmount, num, plural, quantity, rub } from '../lib/format';
 
 // One tabular model feeds the XLSX, PDF and plain-text exports so they always show the same,
 // current values.
@@ -47,15 +47,18 @@ export interface CookRow {
 
 export interface ExportModel {
   title: string;
-  generatedAt: string;
+  /** Local date on the device, «2026-10-23» — not the UTC date, which is a day off around midnight. */
+  generatedOn: string;
   menu: MenuRow[];
   shopping: ShoppingRow[];
   cooking: CookRow[];
-  totals: { purchaseRub: number; purchaseText: string; complete: boolean; budget: string };
+  totals: { purchaseRub: number | null; purchaseText: string; complete: boolean; budget: string };
 }
 
 /** Quantities in files keep two decimals at most; the screen shows the same rounding. */
 const round2 = (v: number) => Math.round((v + Number.EPSILON) * 100) / 100;
+
+const single = (p: { size: number; unit: string }) => p.unit === 'pcs' && p.size === 1;
 
 const unitName = (u: string) => (UNIT_NAMES as Record<string, string>)[u] ?? u;
 
@@ -74,7 +77,7 @@ export function buildExportModel(record: MenuRecord, shopping: ShoppingView | nu
         slot: SLOT_NAMES[meal.slot] ?? meal.slot,
         dish: r?.name ?? '—',
         who: Object.entries(item.portions)
-          .map(([id, f]) => `${name(id)} ${num(f, 2)}`)
+          .map(([id, f]) => `${name(id)} — ${num(f, 2)}`)
           .join(', '),
         portions: round2(Object.values(item.portions).reduce((a, b2) => a + b2, 0)),
       });
@@ -88,11 +91,12 @@ export function buildExportModel(record: MenuRecord, shopping: ShoppingView | nu
       name: l.name,
       needed: round2(l.needed),
       fromPantry: round2(l.from_pantry),
-      toBuy: round2(l.at_home ? 0 : l.to_buy),
-      toBuyText: l.at_home ? 'есть дома' : l.to_buy === 0 ? 'всё есть дома' : quantity(l.to_buy, l.unit),
+      toBuy: round2(l.at_home ? 0 : buyAmount(l.to_buy, l.unit)),
+      toBuyText: l.at_home ? 'есть дома' : l.to_buy === 0 ? 'всё есть дома' : quantity(buyAmount(l.to_buy, l.unit), l.unit),
       unit: unitName(l.unit),
-      packages: l.package ? l.package.count : null,
-      packageSize: l.package ? quantity(l.package.size, l.package.unit) : '',
+      // Pieces sold one by one are not «packages of 1 pcs»: the amount to buy already says it.
+      packages: l.package && !single(l.package) ? l.package.count : null,
+      packageSize: l.package && !single(l.package) ? quantity(l.package.size, l.package.unit) : '',
       pricePerPackageRub: l.price_kop !== null ? l.price_kop / 100 : null,
       priceFor: l.price_per ? quantity(l.price_per.size, l.price_per.unit) : '',
       costRub: l.purchase_cost_kop !== null ? l.purchase_cost_kop / 100 : null,
@@ -130,16 +134,18 @@ export function buildExportModel(record: MenuRecord, shopping: ShoppingView | nu
     })
     .sort((a, b) => a.date.localeCompare(b.date));
   const budget = shopping?.budget;
+  const knownTotal = (shopping?.lines ?? []).some((l) => l.purchase_cost_kop !== null) || (shopping?.manual_lines ?? []).some((l) => l.price_kop !== null);
   const budgetText = !budget || budget.status === 'none' ? 'бюджет не задан' : budget.status === 'ok' ? 'укладывается в бюджет' + (budget.estimated ? ' (по оценочным ценам)' : '') : budget.status === 'exceeded' ? 'превышает бюджет' : 'бюджет не подтверждён: известны не все цены';
   return {
     title: record.title || `Меню с ${dayMonth(menu.start_date)} на ${menu.days} ${plural(menu.days, 'день', 'дня', 'дней')}`,
-    generatedAt: new Date().toISOString(),
+    generatedOn: localDate(deviceTimeZone()),
     menu: rows,
     shopping: shoppingRows,
     cooking,
     totals: {
-      purchaseRub: (shopping?.totals.purchase_kop ?? 0) / 100,
-      purchaseText: rub(shopping?.totals.purchase_kop ?? 0),
+      // Without a single known price the total is unknown, not «0 ₽».
+      purchaseRub: knownTotal ? (shopping?.totals.purchase_kop ?? 0) / 100 : null,
+      purchaseText: knownTotal ? rub(shopping?.totals.purchase_kop ?? 0) : '—',
       complete: shopping?.totals.complete ?? false,
       budget: budgetText,
     },

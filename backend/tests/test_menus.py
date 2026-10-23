@@ -189,3 +189,16 @@ def test_member_diet_types_spice_and_weekend_limit_round_trip() -> None:
     assert legacy["max_total_min_weekend"] == 30
     fresh = validate_plan_settings({"max_total_min": 30, "max_total_min_weekend": None, "cuisines": ["italian"], "diet_mode": "high_protein"})
     assert fresh["max_total_min_weekend"] is None and fresh["cuisines"] == ["italian"]
+
+
+def test_cooked_batches_leave_the_shopping_list(alice: Any) -> None:
+    client, user = alice
+    hid = household_id(user)
+    add_member(client, hid)
+    client.patch(f"/api/households/{hid}/", {"settings": {"slots": ["lunch"], "days": 1}}, format="json")
+    menu = client.post(f"/api/households/{hid}/menus/", {"start_date": "2026-10-19", "seed": 1}, format="json").json()
+    url = f"/api/households/{hid}/menus/{menu['id']}/shopping/"
+    assert client.get(url).json()["lines"]
+    for b in menu["menu"]["batches"]:
+        client.post(f"/api/households/{hid}/menus/{menu['id']}/batches/{b['id']}/cook/")
+    assert client.get(url).json()["lines"] == []

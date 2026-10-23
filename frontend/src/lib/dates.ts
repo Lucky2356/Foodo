@@ -64,3 +64,24 @@ export function dateRange(start: string, end: string): string {
   if (a.getUTCMonth() === b.getUTCMonth()) return `${a.getUTCDate()}–${b.getUTCDate()} ${MONTHS[b.getUTCMonth()]}`;
   return `${dayMonth(start)} — ${dayMonth(end)}`;
 }
+
+/** Russian time zones by a city people know, with the offset from Moscow. */
+export const TIMEZONES: [string, string][] = [
+  ['Europe/Kaliningrad', 'Калининград (МСК−1)'],
+  ['Europe/Moscow', 'Москва (МСК)'],
+  ['Europe/Samara', 'Самара (МСК+1)'],
+  ['Asia/Yekaterinburg', 'Екатеринбург (МСК+2)'],
+  ['Asia/Omsk', 'Омск (МСК+3)'],
+  ['Asia/Krasnoyarsk', 'Красноярск (МСК+4)'],
+  ['Asia/Irkutsk', 'Иркутск (МСК+5)'],
+  ['Asia/Yakutsk', 'Якутск (МСК+6)'],
+  ['Asia/Vladivostok', 'Владивосток (МСК+7)'],
+  ['Asia/Magadan', 'Магадан (МСК+8)'],
+  ['Asia/Kamchatka', 'Камчатка (МСК+9)'],
+];
+const TZ_NAMES = new Map(TIMEZONES);
+
+/** «Москва (МСК)» for a known zone; other IANA names as they are. */
+export function timeZoneName(tz: string): string {
+  return TZ_NAMES.get(tz) ?? tz;
+}

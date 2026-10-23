@@ -140,7 +140,16 @@ def op_context(h: Household, catalog: Catalog) -> JSON:
         "prices": price_profile(h),
         "settings": cfg["plan"],
         "slot_members": cfg["slot_members"],
+        "slots": cfg["slots"],
     }
+
+
+def previous_recipes(h: Household) -> list[str]:
+    """Recipes of the family's latest menu: a new menu ranks them lower so it brings something new."""
+    latest = h.menus.order_by("-created_at").first()
+    if latest is None:
+        return []
+    return sorted({b["recipe_id"] for b in latest.data.get("batches", [])})
 
 
 @transaction.atomic
@@ -166,7 +175,8 @@ def shopping_for(h: Household, menu: Menu) -> JSON:
         product_id = line_id.split(":")[1] if line_id.startswith("auto:") else None
         if product_id:
             bought[product_id] = bought.get(product_id, 0) + qty
-    result = compute_shopping(menu.data, catalog, pantry_json(h), price_profile(h), state, household_settings(h)["plan"]["budget"], bought)
+    cooked = list(menu.cook_confirmations.values_list("batch_id", flat=True))
+    result = compute_shopping(menu.data, catalog, pantry_json(h), price_profile(h), state, household_settings(h)["plan"]["budget"], bought, cooked)
     transferred = {line_id for line_id, _ in transfers}
     for line in result["lines"]:
         line["transferred"] = line["id"] in transferred
@@ -182,7 +192,15 @@ def update_shopping_state(h: Household, menu_id: Any, patch: JSON, expected_revi
     menu = Menu.objects.select_for_update().get(pk=menu_id, household=h)
     if expected_revision is not None and expected_revision != menu.shopping_revision:
         raise ApiError("revision_conflict", "Список покупок изменился на другом устройстве. Обновите страницу.", 409, {"revision": menu.shopping_revision})
-    state = {**empty_shopping_state(), **(menu.shopping_state or {})}
+    menu.shopping_state = merge_shopping_patch({**empty_shopping_state(), **(menu.shopping_state or {})}, patch)
+    menu.shopping_revision += 1
+    menu.save(update_fields=["shopping_state", "shopping_revision", "updated_at"])
+    return menu
+
+
+def merge_shopping_patch(state: JSON, patch: JSON) -> JSON:
+    """Validated marks, manual lines and «seen» quantities merged into a shopping state (also used
+    for shopping states that arrive with transferred guest menus)."""
     if "marks" in patch:
         marks = patch["marks"]
         if not isinstance(marks, dict) or len(marks) > 2000:
@@ -226,10 +244,7 @@ def update_shopping_state(h: Household, menu_id: Any, patch: JSON, expected_revi
         seen = patch["seen"]
         if isinstance(seen, dict):
             state["seen"] = {str(k)[:120]: float(v) for k, v in list(seen.items())[:2000] if isinstance(v, (int, float))}
-    menu.shopping_state = state
-    menu.shopping_revision += 1
-    menu.save(update_fields=["shopping_state", "shopping_revision", "updated_at"])
-    return menu
+    return state
 
 
 @transaction.atomic

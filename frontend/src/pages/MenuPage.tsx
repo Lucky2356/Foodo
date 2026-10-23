@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { isRecipeSafeFor, isoWeekday, recipeSkillRank, selectMethod, skillAllows, snapshotCatalog } from '../engine';
 import type { Member, MemberReport, Menu, MenuItem, RankedCandidate, Recipe } from '../engine';
 import type { MenuOp } from '../engine/menuOps';
@@ -8,8 +8,8 @@ import { useApp } from '../state/app';
 import { useCurrentMenu } from '../state/menu';
 import { Icon } from '../ui/icons';
 import { Banner, Empty, ErrorBox, Loading, PageHead, RecipeCover, Segmented, Sheet, Stepper } from '../ui/kit';
-import { addDaysIso, dateRange, dayMonth, deviceTimeZone, humanDate, localDate, weekdayShort } from '../lib/dates';
-import { kcal, minutes, num, plural, portionLabel } from '../lib/format';
+import { addDaysIso, dateRange, dayMonth, deviceTimeZone, humanDate, localDate, weekdayLong, weekdayShort } from '../lib/dates';
+import { kcal, lowerFirst, minutes, num, plural, portionLabel } from '../lib/format';
 import { matchesSearch, searchTokens, SLOT_NAMES, summarize } from '../lib/recipes';
 import { useFullCatalog } from '../state/catalog';
 
@@ -66,7 +66,12 @@ export default function MenuPage() {
   const [date, setDate] = useState<string | null>(null);
   const [report, setReport] = useState<MemberReport[] | null>(null);
   const [dish, setDish] = useState<{ itemId: string; date: string; slot: string } | null>(null);
-  const [newOpen, setNewOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  // «Новое меню» from the home banner opens the sheet right away.
+  const [newOpen, setNewOpen] = useState(() => searchParams.get('new') === '1');
+  useEffect(() => {
+    if (searchParams.get('new') === '1') setSearchParams({}, { replace: true });
+  }, [searchParams, setSearchParams]);
   const [adding, setAdding] = useState<{ date: string; slot: string; memberIds: string[] } | null>(null);
   const [busy, setBusy] = useState(false);
   const tz = household?.city?.timezone ?? deviceTimeZone();
@@ -144,7 +149,7 @@ export default function MenuPage() {
   if (!household) return <Loading />;
   if (members.length === 0) {
     return (
-      <Empty icon="users" title="Сначала семья" action={<Link className="btn primary" to="/start">Начать</Link>}>
+      <Empty page icon="users" title="Сначала семья" action={<Link className="btn primary" to="/start">Начать</Link>}>
         Укажите, для кого готовим, — меню соберётся сразу.
       </Empty>
     );
@@ -713,20 +718,34 @@ function DishSheet({
         {moveOpen && (
           <div className="card soft stack fade-in">
             <span className="label">Поменять местами с приёмом пищи</span>
-            <div className="chips">
-              {dates.flatMap((d) =>
-                menu.slots
-                  .filter((s) => !(d === dish.date && s === dish.slot))
-                  .map((s) => (
-                    <button
-                      key={`${d}-${s}`}
-                      className="chip"
-                      onClick={() => void runOp({ op: 'move', from: { date: dish.date, slot: dish.slot }, to: { date: d, slot: s } }, { message: 'Приёмы пищи поменялись местами', undo: { op: 'move', from: { date: d, slot: s }, to: { date: dish.date, slot: dish.slot } } })}
-                    >
-                      {weekdayShort(d)} {Number(d.slice(8))} · {SLOT_NAMES[s]}
-                    </button>
-                  )),
-              )}
+            {/* One row per day: a flat list of 4 × 7 chips was hard to scan. */}
+            <div className="move-days">
+              {dates.map((d) => (
+                <div key={d} className="move-day" role="group" aria-label={`${weekdayLong(d)}, ${dayMonth(d)}`}>
+                  <span className="move-day-name">
+                    {weekdayShort(d)} <b>{Number(d.slice(8))}</b>
+                  </span>
+                  <div className="chips">
+                    {menu.slots.map((s) =>
+                      d === dish.date && s === dish.slot ? (
+                        <span key={s} className="chip current" aria-current="true">
+                          {SLOT_NAMES[s]} · сейчас
+                        </span>
+                      ) : (
+                        <button
+                          key={s}
+                          className="chip"
+                          disabled={busy}
+                          aria-label={`${`${weekdayLong(d)}, ${dayMonth(d)}`}, ${SLOT_NAMES[s]?.toLowerCase()}`}
+                          onClick={() => void runOp({ op: 'move', from: { date: dish.date, slot: dish.slot }, to: { date: d, slot: s } }, { message: 'Приёмы пищи поменялись местами', undo: { op: 'move', from: { date: d, slot: s }, to: { date: dish.date, slot: dish.slot } } })}
+                        >
+                          {SLOT_NAMES[s]}
+                        </button>
+                      ),
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -842,7 +861,7 @@ function NewMenuSheet({ open, onClose, record, onCreated }: { open: boolean; onC
               ))}
           </div>
         </div>
-        <button className="btn primary big" onClick={() => void generate()} disabled={busy}>
+        <button className="btn primary big" onClick={() => void generate()} disabled={busy} data-autofocus>
           {busy ? <span className="spinner" /> : <Icon name="sparkle" size={18} />} Составить
         </button>
         {record && (
@@ -867,6 +886,10 @@ function AddDishSheet({ target, menu, busy, onClose, onAdd }: { target: { date: 
   const { catalog } = useFullCatalog();
   const [query, setQuery] = useState('');
   const settings = menu.settings;
+  const used = useMemo(() => new Set(menu.batches.map((b) => b.recipe_id)), [menu]);
+  const weekend = [0, 6].includes(new Date(`${target.date}T00:00:00Z`).getUTCDay());
+  const limit = weekend && settings.max_total_min_weekend !== undefined ? settings.max_total_min_weekend : settings.max_total_min;
+  const unique = settings.repeat.mode === 'unique';
   const fitting = useMemo(() => {
     const people = (household?.members ?? []).filter((m) => target.memberIds.includes(m.id));
     return Object.values(catalog.recipes)
@@ -877,12 +900,21 @@ function AddDishSheet({ target, menu, busy, onClose, onAdd }: { target: { date: 
           skillAllows(settings.skill, recipeSkillRank(catalog.reference, r)) &&
           people.every((m) => isRecipeSafeFor(catalog, r, m)),
       )
-      .sort((a, b) => a.name.localeCompare(b.name, 'ru'));
-  }, [catalog, target, household, settings]);
+      .map((r) => {
+        const s = summarize(catalog, r);
+        const inMenu = used.has(r.id);
+        const tooLong = limit !== null && s.totalMin > limit;
+        const liked = people.some((m) => m.preferences.liked_recipes.includes(r.id));
+        // Liked and quick-enough dishes first; ones already in the menu or over the time limit last.
+        const rank = (liked ? 0 : 1) + (tooLong ? 2 : 0) + (inMenu ? 4 : 0);
+        return { r, s, inMenu, tooLong, liked, rank };
+      })
+      .sort((a, b) => a.rank - b.rank || a.r.name.localeCompare(b.r.name, 'ru'));
+  }, [catalog, target, household, settings, used, limit]);
   const tokens = searchTokens(query);
-  const shown = fitting.filter((r) => matchesSearch(r.name, tokens)).slice(0, 30);
+  const shown = fitting.filter((x) => matchesSearch(x.r.name, tokens)).slice(0, 30);
   return (
-    <Sheet open onClose={onClose} title={`${SLOT_NAMES[target.slot]}, ${humanDate(target.date)}`}>
+    <Sheet open onClose={onClose} title={`${SLOT_NAMES[target.slot]}, ${lowerFirst(humanDate(target.date))}`}>
       <div className="stack">
         <input className="input" type="search" placeholder="Блюдо или продукт" aria-label="Поиск блюда" value={query} onChange={(e) => setQuery(e.target.value)} data-autofocus />
         <p className="muted small">
@@ -890,20 +922,31 @@ function AddDishSheet({ target, menu, busy, onClose, onAdd }: { target: { date: 
             ? `Подходят ${fitting.length} ${plural(fitting.length, 'рецепт', 'рецепта', 'рецептов')}: с учётом запретов, техники и уровня готовки.`
             : 'Ни один рецепт не подходит под запреты, технику и уровень готовки для этого приёма пищи.'}
         </p>
-        {shown.map((r) => (
-          <button key={r.id} className="card flat row" style={{ textAlign: 'left', cursor: 'pointer', padding: 10 }} disabled={busy} onClick={() => void onAdd(r.id)}>
-            <span style={{ width: 52, height: 52, flex: 'none' }}>
-              <RecipeCover recipe={r} rounded />
-            </span>
-            <span className="grow">
-              <strong>{r.name}</strong>
-              <span className="muted small" style={{ display: 'block' }}>
-                {minutes(summarize(catalog, r).totalMin)}
+        {shown.map(({ r, s, inMenu, tooLong, liked }) => {
+          // «Разные блюда каждый день» does not allow a dish that is already in this menu.
+          const blocked = unique && inMenu;
+          return (
+            <button key={r.id} className="card flat row pick-dish" disabled={busy || blocked} onClick={() => void onAdd(r.id)}>
+              <span style={{ width: 52, height: 52, flex: 'none' }}>
+                <RecipeCover recipe={r} rounded />
               </span>
-            </span>
-            <Icon name="plus" size={18} />
-          </button>
-        ))}
+              <span className="grow" style={{ minWidth: 0 }}>
+                <strong>{r.name}</strong>
+                <span className="muted small" style={{ display: 'block' }}>
+                  {minutes(s.totalMin)} · {kcal(s.perServing.kcal.value)} на порцию
+                </span>
+                {(liked || inMenu || tooLong) && (
+                  <span className="row wrap" style={{ ['--gap' as string]: '4px', marginTop: 4 }}>
+                    {liked && <span className="badge green">любимое</span>}
+                    {inMenu && <span className="badge">{blocked ? 'уже в меню — повторы выключены' : 'уже в меню'}</span>}
+                    {tooLong && <span className="badge yellow">дольше лимита времени</span>}
+                  </span>
+                )}
+              </span>
+              {!blocked && <Icon name="plus" size={18} />}
+            </button>
+          );
+        })}
         {query && fitting.length > 0 && shown.length === 0 && <p className="muted small">Ничего не нашлось — попробуйте другое слово.</p>}
       </div>
     </Sheet>

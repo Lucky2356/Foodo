@@ -238,7 +238,8 @@ h2 {
   font-size: clamp(20px, 2.6vw, 26px);
 }
 
-h3 {
+h3,
+.h3 {
   font-size: 18px;
 }
 
@@ -929,7 +930,7 @@ textarea.input {
 
 .segmented button {
   flex: none;
-  min-height: 38px;
+  min-height: 40px;
   padding: 7px 14px;
   border: 0;
   border-radius: 11px;
@@ -1078,6 +1079,14 @@ textarea.input {
   font-weight: 700;
 }
 
+/* Links take the banner's own ink: the brand green on the blue info background is below 4.5:1. */
+.banner a {
+  color: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .toasts {
   position: fixed;
   z-index: 60;
@@ -1095,6 +1104,13 @@ textarea.input {
   .toasts {
     bottom: 24px;
   }
+}
+
+/* With a sheet open its action buttons sit at the bottom: messages move to the top instead of
+   covering «Сохранить». */
+body:has(.sheet-backdrop) .toasts {
+  top: calc(12px + env(safe-area-inset-top));
+  bottom: auto;
 }
 
 .toast {
@@ -1157,7 +1173,7 @@ textarea.input {
   color: var(--muted);
 }
 
-.empty h3 {
+.empty :is(h1, h2, h3) {
   color: var(--text);
 }
 
@@ -2230,6 +2246,7 @@ hr.sep {
 
 .wizard-nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   position: sticky;
   bottom: calc(var(--nav-h) + 8px + env(safe-area-inset-bottom));
@@ -2509,7 +2526,7 @@ hr.sep {
     position: absolute;
     right: clamp(24px, 5vw, 72px);
     top: 50%;
-    width: clamp(240px, 28vw, 420px);
+    width: clamp(220px, 22vw, 380px);
     transform: translateY(-50%);
     animation: float 6s ease-in-out infinite;
   }
@@ -2611,4 +2628,161 @@ hr.sep {
 .more-link > svg,
 .nav-link svg {
   flex: none;
+}
+
+/* At 360 px «Назад», «К сводке» and the main action do not fit one line: the main one wraps to its
+   own row; with two buttons they stay side by side. */
+.wizard-nav .btn.grow {
+  flex: 1 1 auto;
+}
+
+/* «Поменять местами»: one row per day, the day name in a fixed column. */
+.move-days {
+  display: grid;
+  gap: 8px;
+}
+
+.move-day {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.move-day-name {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.move-day-name b {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.chip.current {
+  border-style: dashed;
+  color: var(--muted);
+  cursor: default;
+}
+
+.pick-dish {
+  text-align: left;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+}
+
+.pick-dish:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ===== Design pass (0.2.3) ============================================== */
+
+/* The hero text never runs under the illustration: the art gets its own column on wide screens. */
+@media (min-width: 1280px) {
+  .landing-hero {
+    padding-right: calc(clamp(220px, 22vw, 380px) + clamp(56px, 6vw, 110px));
+  }
+}
+
+/* Phones: hero actions take the full width instead of overflowing the card. */
+@media (max-width: 559px) {
+  .hero-actions .btn.big {
+    flex: 1 1 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Features read as a compact list: icon on the left, text on the right. */
+  .features-grid .feature {
+    grid-template-columns: 44px 1fr;
+    column-gap: 14px;
+    row-gap: 2px;
+    padding: 16px;
+    align-items: start;
+  }
+
+  .features-grid .feature .ficon {
+    grid-row: span 2;
+  }
+
+  .grid.features-grid {
+    gap: 10px;
+  }
+
+  /* Long option labels («Уверенно готовлю») fit two lines without crowding. */
+  .segmented button {
+    font-size: 13.5px;
+  }
+}
+
+/* Recipe actions: the main one first; on phones the other two share the next row. */
+.recipe-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 559px) {
+  .recipe-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .recipe-actions > .btn.primary {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Wide screens: departments in two columns, each department kept whole. */
+.shop-columns {
+  display: grid;
+  gap: 14px;
+}
+
+@media (min-width: 1100px) {
+  .shop-columns {
+    display: block;
+    columns: 2;
+    column-gap: 20px;
+  }
+
+  .shop-columns > section {
+    break-inside: avoid;
+    margin-bottom: 14px;
+  }
+}
+
+.kbju small {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 559px) {
+  .landing-hero {
+    padding: 22px;
+  }
+
+  .hero-actions .btn.big {
+    padding-inline: 14px;
+    font-size: 16px;
+  }
+
+  /* Text that is only an icon on phones («Назад», «Фильтры»): still read by screen readers. */
+  .wide-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .wizard-nav .btn.big:not(.grow) {
+    padding-inline: 16px;
+  }
 }

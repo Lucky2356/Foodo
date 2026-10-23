@@ -259,10 +259,13 @@ export function computeShopping(
   budget?: { limit_kop: number | null },
   /** Base quantities per product bought for this menu and already moved to the pantry. */
   transferred: Record<string, number> = {},
+  /** Batches confirmed as cooked: their products were deducted from the pantry, nothing to buy. */
+  cooked: string[] = [],
 ): ShoppingList {
   // Saved menus are calculated from their own recipe snapshot, never from later catalog edits.
   const catalog = snapshotCatalog(menu, baseCatalog);
-  const needs = batchNeeds(menu, catalog);
+  const done = new Set(cooked);
+  const needs = batchNeeds(menu, catalog).filter((n) => !done.has(n.batch_id));
   const { covered, allocations, expired } = allocatePantry(catalog, needs, pantry, transferred);
 
   const byKey = new Map<string, ShoppingLine>();

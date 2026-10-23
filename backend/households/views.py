@@ -28,16 +28,16 @@ from . import services
 from .guest_import import apply_guest_import, preview_guest_import
 from .models import Favorite, Habit, HabitMark, Household, Invitation, Member, Membership, Menu, PantryItem, PriceEntry, WaterEntry
 from .permissions import OWNER, READ, WRITE, household_for
+from .records import pantry_fields, parse_date, price_fields, recent_day
 from .validation import member_json, validate_household_settings, validate_member
 
 JSON = dict[str, Any]
 
 
-def _date(value: Any, field: str) -> date:
-    try:
-        return date.fromisoformat(str(value))
-    except ValueError as e:
-        raise ApiError("validation_error", f"Некорректная дата в поле «{field}».", 400, {"field": field}) from e
+MAX_OPEN_INVITATIONS = 20
+MAX_PRICES = 5000
+MAX_OWN_RECIPES = 500
+MAX_HABITS = 50
 
 
 def household_json(h: Household, role: str) -> JSON:
@@ -84,6 +84,9 @@ class HouseholdDetailView(APIView):
             h.settings = validate_household_settings(data["settings"])
         if "city_id" in data:
             h.city = get_object_or_404(City, pk=data["city_id"]) if data["city_id"] else None
+            # A chain that does not work in the new city would keep pricing the list with the old shop.
+            if "store_chain_id" not in data and h.city is not None and h.store_chain is not None and not h.store_chain.present_in(h.city):
+                h.store_chain = None
         if "store_chain_id" in data:
             h.store_chain = get_object_or_404(StoreChain, pk=data["store_chain_id"]) if data["store_chain_id"] else None
         if "share_prices" in data:
@@ -141,8 +144,10 @@ class InvitationView(APIView):
         h, _ = household_for(request, hid, OWNER)
         role = request.data.get("role", "editor")
         email = str(request.data.get("email", "")).strip().lower()
-        if role not in ("editor", "viewer") or "@" not in email:
+        if role not in ("editor", "viewer") or "@" not in email or len(email) > 254:
             raise ApiError("validation_error", "Укажите почту и роль (editor или viewer).")
+        if h.invitations.filter(accepted_by__isnull=True, expires_at__gt=timezone.now()).count() >= MAX_OPEN_INVITATIONS:
+            raise ApiError("limit", "Слишком много неиспользованных приглашений. Подождите, пока они истекут.")
         token = secrets.token_urlsafe(24)
         Invitation.objects.create(
             household=h, email=email, role=role, token_hash=hashlib.sha256(token.encode()).hexdigest(), expires_at=timezone.now() + timedelta(days=7)
@@ -186,7 +191,7 @@ class MenuListView(APIView):
 
     def post(self, request: Request, hid: str) -> Response:
         h, _ = household_for(request, hid, WRITE)
-        start = _date(request.data.get("start_date") or date.today().isoformat(), "start_date")
+        start = parse_date(request.data.get("start_date") or date.today().isoformat(), "start_date")
         days = request.data.get("days")
         seed = request.data.get("seed")
         if days is not None and (not isinstance(days, int) or not 1 <= days <= 35):
@@ -194,6 +199,7 @@ class MenuListView(APIView):
         if seed is not None and (not isinstance(seed, int) or not 0 <= seed <= 4294967295):
             raise ApiError("invalid_seed", "Seed должен быть целым числом от 0 до 4294967295.")
         req = services.build_plan_request(h, start.isoformat(), days, seed)
+        req["avoid_recipes"] = services.previous_recipes(h)
         menu = services.create_menu(h, req, str(request.data.get("title", "")))
         return Response(services.menu_json(menu), status=201)
 
@@ -220,6 +226,13 @@ class MenuDetailView(APIView):
 
 
 class MenuOpView(APIView):
+    def get_throttles(self):  # type: ignore[no-untyped-def]
+        # Rebuilding a menu costs as much as generating one: it shares the generation limit.
+        op = self.request.data.get("op") if self.request.method == "POST" else None
+        if isinstance(op, dict) and op.get("op") == "regenerate":
+            return [*super().get_throttles(), GenerateThrottle()]
+        return super().get_throttles()
+
     def post(self, request: Request, hid: str, menu_id: str) -> Response:
         h, _ = household_for(request, hid, WRITE)
         get_object_or_404(Menu, pk=menu_id, household=h)
@@ -287,20 +300,6 @@ class ReportView(APIView):
         return Response(services.report_for(h, get_object_or_404(Menu, pk=menu_id, household=h)))
 
 
-def _pantry_fields(data: JSON) -> JSON:
-    product = Product.objects.filter(pk=data.get("product_id")).first()
-    if product is None:
-        raise ApiError("unknown_product", "Неизвестный продукт.")
-    qty = data.get("qty")
-    if not isinstance(qty, (int, float)) or isinstance(qty, bool) or not 0 < qty <= 1_000_000:
-        raise ApiError("validation_error", "Количество — положительное число.")
-    unit = data.get("unit") or product.base_unit
-    if unit != product.base_unit:
-        raise ApiError("validation_error", f"Для «{product.name}» количество указывается в единице «{product.base_unit}».")
-    expires = _date(data["expires"], "expires") if data.get("expires") else None
-    return {"product": product, "qty": float(qty), "unit": unit, "location": str(data.get("location") or "")[:60], "expires": expires}
-
-
 class PantryListView(APIView):
     def get(self, request: Request, hid: str) -> Response:
         h, _ = household_for(request, hid)
@@ -310,7 +309,7 @@ class PantryListView(APIView):
         h, _ = household_for(request, hid, WRITE)
         if h.pantry.count() >= 1000:
             raise ApiError("limit", "Слишком много записей остатков.")
-        item = PantryItem.objects.create(household=h, **_pantry_fields(request.data))
+        item = PantryItem.objects.create(household=h, **pantry_fields(request.data))
         return Response(next(p for p in services.pantry_json(h) if p["id"] == item.id), status=201)
 
 
@@ -318,7 +317,7 @@ class PantryDetailView(APIView):
     def patch(self, request: Request, hid: str, item_id: str) -> Response:
         h, _ = household_for(request, hid, WRITE)
         item = get_object_or_404(PantryItem, pk=item_id, household=h)
-        fields = _pantry_fields(
+        fields = pantry_fields(
             {
                 "product_id": item.product_id,
                 "qty": item.qty,
@@ -339,37 +338,6 @@ class PantryDetailView(APIView):
         return Response(status=204)
 
 
-def _price_fields(data: JSON) -> JSON:
-    if not Product.objects.filter(pk=data.get("product_id")).exists():
-        raise ApiError("unknown_product", "Неизвестный продукт.")
-    price = data.get("price_kop")
-    size = data.get("package_size")
-    if not isinstance(price, int) or isinstance(price, bool) or not 0 < price <= 10_000_000:
-        raise ApiError("validation_error", "Цена в копейках — положительное целое число.")
-    if not isinstance(size, (int, float)) or isinstance(size, bool) or not 0 < size <= 100_000:
-        raise ApiError("validation_error", "Размер упаковки — положительное число.")
-    if data.get("package_unit") not in ("g", "kg", "ml", "l", "pcs"):
-        raise ApiError("validation_error", "Единица упаковки: g, kg, ml, l или pcs.")
-    chain_id = data.get("chain_id")
-    if chain_id and not StoreChain.objects.filter(pk=chain_id).exists():
-        raise ApiError("validation_error", "Неизвестная сеть.")
-    kind = data.get("kind", "manual")
-    if kind not in ("manual", "receipt"):
-        raise ApiError("validation_error", "Вид цены: manual или receipt.")
-    return {
-        "product_id": data["product_id"],
-        "price_kop": price,
-        "package_size": float(size),
-        "package_unit": data["package_unit"],
-        "loose": bool(data.get("loose", False)),
-        "observed_on": _date(data.get("date") or date.today().isoformat(), "date"),
-        "source": str(data.get("source") or "вручную")[:120],
-        "kind": kind,
-        "chain_id": chain_id or None,
-        "available": data.get("available") if isinstance(data.get("available"), bool) else None,
-    }
-
-
 class PriceListView(APIView):
     def get_throttles(self):  # type: ignore[no-untyped-def]
         return [PriceShareThrottle()] if self.request.method == "POST" else super().get_throttles()
@@ -383,7 +351,9 @@ class PriceListView(APIView):
         rows = request.data.get("entries") if isinstance(request.data.get("entries"), list) else [request.data]
         if len(rows) > 1000:
             raise ApiError("too_large", "Не больше 1000 цен за раз.")
-        fields = [_price_fields(r) for r in rows]
+        if h.prices.count() + len(rows) > MAX_PRICES:
+            raise ApiError("limit", "Слишком много своих цен: удалите старые.")
+        fields = [price_fields(r) for r in rows]
         shared = 0
         with transaction.atomic():
             created = [PriceEntry.objects.create(household=h, **f) for f in fields]
@@ -446,7 +416,11 @@ class CustomRecipeView(APIView):
             data["id"] = f"u-{str(h.id)[:8]}-{secrets.token_hex(4)}"
         existing = Recipe.objects.filter(pk=data["id"]).first()
         if existing is not None and existing.owner_household_id != h.id:
-            raise ApiError("conflict", "Рецепт с таким идентификатором уже существует.", 409)
+            # Someone else's id gets a fresh one: answering «exists» would reveal a private recipe.
+            data["id"] = f"u-{str(h.id)[:8]}-{secrets.token_hex(4)}"
+            existing = None
+        if existing is None and Recipe.objects.filter(owner_household=h).count() >= MAX_OWN_RECIPES:
+            raise ApiError("limit", f"Своих рецептов может быть не больше {MAX_OWN_RECIPES}.")
         products = set(Product.objects.values_list("id", flat=True))
         errors = validate_recipes([{**data, "source": data.get("source") or "user"}], products, validation_reference())
         if errors:
@@ -466,7 +440,10 @@ class WaterView(APIView):
     def get(self, request: Request, hid: str) -> Response:
         h, _ = household_for(request, hid)
         member = get_object_or_404(Member, pk=request.query_params.get("member_id"), household=h)
-        days = min(int(request.query_params.get("days", "14")), 120)
+        try:
+            days = min(max(int(request.query_params.get("days", "14")), 1), 120)
+        except ValueError:
+            raise ApiError("validation_error", "days — целое число дней.") from None
         today = services.local_today(member)
         entries = member.water.filter(local_date__gte=today - timedelta(days=days - 1))
         totals: dict[str, int] = {}
@@ -488,7 +465,10 @@ class WaterView(APIView):
         amount = request.data.get("amount_ml")
         if not isinstance(amount, int) or isinstance(amount, bool) or not 1 <= amount <= 5000:
             raise ApiError("validation_error", "Объём — от 1 до 5000 мл.")
-        local = _date(request.data["local_date"], "local_date") if request.data.get("local_date") else services.local_today(member)
+        today = services.local_today(member)
+        local = recent_day(request.data["local_date"], today) if request.data.get("local_date") else today
+        if member.water.filter(local_date=local).count() >= 100:
+            raise ApiError("limit", "Слишком много записей воды за день.")
         entry = WaterEntry.objects.create(household=h, member=member, amount_ml=amount, local_date=local)
         return Response({"id": entry.id, "amount_ml": entry.amount_ml, "local_date": entry.local_date.isoformat()}, status=201)
 
@@ -522,6 +502,8 @@ class HabitListView(APIView):
         name = str(request.data.get("name", "")).strip()
         if not name or len(name) > 80:
             raise ApiError("validation_error", "Название привычки — от 1 до 80 символов.")
+        if h.habits.count() >= MAX_HABITS:
+            raise ApiError("limit", f"Привычек может быть не больше {MAX_HABITS}.")
         return Response(habit_json(Habit.objects.create(household=h, member=member, name=name)), status=201)
 
 
@@ -538,7 +520,8 @@ class HabitMarkView(APIView):
     def put(self, request: Request, hid: str, habit_id: str) -> Response:
         h, _ = household_for(request, hid, WRITE)
         habit = get_object_or_404(Habit, pk=habit_id, household=h)
-        day = _date(request.data.get("local_date") or services.local_today(habit.member).isoformat(), "local_date")
+        today = services.local_today(habit.member)
+        day = recent_day(request.data["local_date"], today) if request.data.get("local_date") else today
         try:
             HabitMark.objects.get_or_create(habit=habit, local_date=day)
         except IntegrityError:
@@ -548,7 +531,8 @@ class HabitMarkView(APIView):
     def delete(self, request: Request, hid: str, habit_id: str) -> Response:
         h, _ = household_for(request, hid, WRITE)
         habit = get_object_or_404(Habit, pk=habit_id, household=h)
-        day = _date(request.data.get("local_date") or services.local_today(habit.member).isoformat(), "local_date")
+        today = services.local_today(habit.member)
+        day = recent_day(request.data["local_date"], today) if request.data.get("local_date") else today
         HabitMark.objects.filter(habit=habit, local_date=day).delete()
         return Response(habit_json(habit))
 

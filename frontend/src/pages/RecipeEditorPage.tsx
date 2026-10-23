@@ -27,7 +27,7 @@ export default function RecipeEditorPage() {
     if (!existing) {
       if (loading) return <Loading />;
       return (
-        <Empty icon="book" title="Рецепт не найден" action={<Link className="btn primary" to="/recipes">К рецептам</Link>}>
+        <Empty page icon="book" title="Рецепт не найден" action={<Link className="btn primary" to="/recipes">К рецептам</Link>}>
           Изменять можно только свои рецепты.
         </Empty>
       );

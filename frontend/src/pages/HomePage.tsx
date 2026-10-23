@@ -5,10 +5,10 @@ import { useApp, useLoad } from '../state/app';
 import { useCurrentMenu } from '../state/menu';
 import { Icon } from '../ui/icons';
 import type { IconName } from '../ui/icons';
-import { Loading, RecipeCover } from '../ui/kit';
+import { Banner, Loading, RecipeCover } from '../ui/kit';
 import { Illustration } from '../ui/illustrations';
 import { APP_NAME, STATIC_BUILD } from '../lib/config';
-import { deviceTimeZone, humanDate, localDate } from '../lib/dates';
+import { addDaysIso, dayMonth, deviceTimeZone, humanDate, localDate } from '../lib/dates';
 import { kcal, num, plural } from '../lib/format';
 import { SLOT_NAMES } from '../lib/recipes';
 
@@ -18,7 +18,7 @@ const FEATURES: { icon: IconName; title: string; text: string }[] = [
   { icon: 'shield', title: 'Запреты соблюдаются', text: 'Аллергены и исключённые продукты проверяются по составу, а не по названию блюда.' },
   { icon: 'cart', title: 'Список покупок сам', text: 'Собирается из меню по отделам магазина и вычитает то, что уже есть дома.' },
   { icon: 'store', title: 'Ваш город и магазин', text: 'Город определяется на устройстве, сети подбираются по региону, бюджет проверяется честно.' },
-  { icon: 'leaf', title: 'Витамины и ПП', text: 'Режим «Сбалансированное» и учёт витаминов влияют на подбор, а неполные данные помечены.' },
+  { icon: 'leaf', title: 'Витамины и ПП', text: 'Режим ПП и учёт витаминов влияют на подбор, а неполные данные помечены.' },
 ];
 
 /** A few dishes with real photos from each main category, in a stable order. */
@@ -46,7 +46,7 @@ function Landing() {
         <p className="lead">
           {APP_NAME} составит меню на неделю для всей семьи, посчитает порции и КБЖУ и соберёт список покупок с учётом того, что есть дома.
         </p>
-        <div className="row wrap" style={{ marginTop: 26 }}>
+        <div className="row wrap hero-actions" style={{ marginTop: 26 }}>
           <Link to="/start" className="btn primary big">
             Составить меню бесплатно
             <Icon name="chevron" size={18} />
@@ -169,22 +169,35 @@ function Dashboard() {
     return b ? (menu?.snapshot.recipes[b.recipe_id] ?? catalog.recipes[b.recipe_id]) : undefined;
   };
   const day = memberToday(report, first.id, date);
+  const ended = menu ? addDaysIso(menu.start_date, menu.days - 1) < today : false;
+  // A family of children only (or «Я» from the questionnaire) is not greeted by a child's name.
+  const greetName = members.length === 1 && first.name !== 'Я' && !(first.age !== null && first.age !== undefined && first.age < 18) ? first.name : null;
   return (
     <div className="stack" style={{ ['--gap' as string]: '18px' }}>
       <header className="page-head fade-in">
         <div>
           <div className="eyebrow">{humanDate(date, today)}</div>
-          <h1>Привет{members.length === 1 ? `, ${first.name}` : ''}!</h1>
+          <h1>Привет{greetName ? `, ${greetName}` : ''}!</h1>
         </div>
         <button className="btn primary" onClick={() => navigate('/menu')}>
           <Icon name="calendar" size={18} /> Открыть меню
         </button>
       </header>
+      {ended && menu && (
+        <Banner icon="calendar">
+          <div className="grow">
+            Меню с {dayMonth(menu.start_date)} уже закончилось. Составьте новое — повторы прошлых блюд учтутся.
+          </div>
+          <Link className="btn small" to="/menu?new=1">
+            Новое меню
+          </Link>
+        </Banner>
+      )}
       <div className="bento">
         <div className="card hero span-4">
           <div className="row between" style={{ alignItems: 'flex-start' }}>
             <div>
-              <div className="muted small">{menu ? (inRange ? 'Сегодня в меню' : 'Первый день меню') : 'Меню ещё нет'}</div>
+              <div className="muted small">{menu ? (inRange ? 'Сегодня в меню' : ended ? 'Первый день прошлого меню' : 'Первый день меню') : 'Меню ещё нет'}</div>
               <h2 style={{ marginTop: 6 }}>{menu ? dishCount(meals.reduce((s, m) => s + m.items.length, 0)) : 'Составим за пару секунд'}</h2>
             </div>
             {day && (

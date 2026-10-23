@@ -8,7 +8,7 @@ import { useCurrentMenu } from '../state/menu';
 import { Icon } from '../ui/icons';
 import { Banner, Empty, ErrorBox, Field, Loading, NumberInput, PageHead, Sheet } from '../ui/kit';
 import { dayMonth } from '../lib/dates';
-import { newId, num, plural, quantity, rub } from '../lib/format';
+import { buyAmount, newId, num, plural, quantity, rub } from '../lib/format';
 import { buildExportModel, shoppingText } from '../export/model';
 
 type Line = ShoppingView['lines'][number];
@@ -19,6 +19,13 @@ const KIND_NAMES: Record<string, string> = { manual: 'ваша цена', receip
 const MANUAL_UNITS = ['шт.', 'уп.', 'г', 'кг', 'мл', 'л'];
 
 const qty = quantity;
+
+/** « · 2 уп. по 900 г»; pieces sold one by one read «· 3 шт.», not «3 уп. по 1 шт.». */
+function packageText(pkg: { count: number; size: number; unit: string } | null): string {
+  if (!pkg || pkg.count <= 0) return '';
+  if (pkg.unit === 'pcs' && pkg.size === 1) return '';
+  return ` · ${pkg.count} уп. по ${qty(pkg.size, pkg.unit)}`;
+}
 
 export default function ShoppingPage() {
   const { gateway, household, reportError, toast, bump } = useApp();
@@ -240,7 +247,11 @@ export default function ShoppingPage() {
                 {budget.status === 'ok' && budget.estimated ? ' (по оценке)' : ''}
               </div>
               <div className="muted small">
-                Лимит {rub(budget.limit_kop)} · {budget.diff_kop !== null && budget.diff_kop >= 0 ? `запас ${rub(budget.diff_kop)}` : `больше на ${rub(Math.abs(budget.diff_kop ?? 0))}`}
+                Лимит {rub(budget.limit_kop)}
+                {/* A margin is only known when every price is: with missing prices it would mislead. */}
+                {budget.status === 'ok' && budget.diff_kop !== null ? ` · запас ${rub(budget.diff_kop)}` : ''}
+                {budget.status === 'exceeded' && budget.diff_kop !== null ? ` · больше на ${rub(Math.abs(budget.diff_kop))}` : ''}
+                {budget.status === 'unconfirmed' && budget.diff_kop !== null && budget.diff_kop >= 0 ? ` · по известным ценам ${rub(view.totals.purchase_kop)}` : ''}
               </div>
               {budget.status === 'unconfirmed' && <div className="small" style={{ marginTop: 4 }}>Известны не все цены — <Link to="/settings#prices">добавить цены</Link></div>}
               {budget.status === 'exceeded' && !view.totals.complete && <div className="small" style={{ marginTop: 4 }}>Лимит превышен уже по известным ценам; с остальными сумма будет больше.</div>}
@@ -250,7 +261,7 @@ export default function ShoppingPage() {
       </div>
       {changed > 0 && (
         <Banner icon="info">
-          После изменений меню обновились количества у {changed} {plural(changed, 'позиции', 'позиций', 'позиций')} — они отмечены.{' '}
+          После изменений меню или остатков обновились количества у {changed} {plural(changed, 'позиции', 'позиций', 'позиций')} — они отмечены.{' '}
           <button className="btn small ghost" onClick={acknowledgeChanges}>
             Понятно
           </button>
@@ -284,6 +295,8 @@ export default function ShoppingPage() {
           </button>
         )}
       </div>
+      {/* Departments flow into two columns on wide screens instead of one long narrow list. */}
+      <div className="shop-columns">
       {[...grouped.entries()].map(([dept, lines]) => (
         <section key={dept}>
           <h2 className="shop-dept">
@@ -300,14 +313,14 @@ export default function ShoppingPage() {
                     {l.name} {l.changed && <span className="badge yellow">изменилось</span>}
                   </div>
                   <div className="muted small">
-                    {l.to_buy === 0 ? 'всё есть дома' : qty(l.to_buy, l.unit)}
+                    {l.to_buy === 0 ? 'всё есть дома' : qty(buyAmount(l.to_buy, l.unit), l.unit)}
                     {l.from_pantry > 0 && l.to_buy > 0 ? ` · дома ${qty(l.from_pantry, l.unit)}` : ''}
-                    {l.package && l.package.count > 0 ? ` · ${l.package.count} уп. по ${qty(l.package.size, l.package.unit)}` : ''}
+                    {packageText(l.package)}
                     {l.at_home ? ' · есть дома' : ''}
                   </div>
                 </button>
                 <span className="num small" style={{ textAlign: 'right', fontWeight: 650 }}>
-                  {l.purchase_cost_kop !== null ? rub(l.purchase_cost_kop) : l.to_buy > 0 && anyPrice ? <span className="faint">нет цены</span> : ''}
+                  {l.purchase_cost_kop !== null ? rub(l.purchase_cost_kop) : l.to_buy > 0 && !l.at_home && anyPrice ? <span className="faint">нет цены</span> : ''}
                 </span>
               </div>
             );
@@ -335,13 +348,14 @@ export default function ShoppingPage() {
                   <div className="muted small">{l.qty !== null ? `${num(l.qty, 2)} ${l.unit ?? ''}`.trim() : 'количество не указано'}</div>
                 </button>
                 <span className="num small" style={{ textAlign: 'right', fontWeight: 650 }}>
-                  {l.price_kop !== null ? rub(l.price_kop) : anyPrice ? <span className="faint">нет цены</span> : ''}
+                  {l.price_kop !== null ? rub(l.price_kop) : !l.at_home && anyPrice ? <span className="faint">нет цены</span> : ''}
                 </span>
               </div>
             ))}
           </div>
         </section>
       )}
+      </div>
       {editing && <ManualLineSheet line={editing} onClose={() => setEditing(null)} onSave={saveManual} onRemove={() => { setEditing(null); removeManual(editing.id); }} />}
       <p className="muted tiny">
         «Корзина покупок» — это список внутри Foodo: заказ и доставку мы не оформляем. Выбор магазина не загружает его реальные цены — источник каждой цены указан в строке.

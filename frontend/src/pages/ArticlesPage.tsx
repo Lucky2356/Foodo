@@ -6,7 +6,7 @@ import { Empty, PageHead } from '../ui/kit';
 export default function ArticlesPage() {
   const { articleId } = useParams();
   const article = articleId ? seedArticles.find((a) => a.id === articleId) : null;
-  if (articleId && !article) return <Empty icon="leaf" title="Статья не найдена" action={<Link className="btn" to="/articles">Все статьи</Link>} />;
+  if (articleId && !article) return <Empty page icon="leaf" title="Статья не найдена" action={<Link className="btn" to="/articles">Все статьи</Link>} />;
   if (article) {
     return (
       <article className="stack fade-in" style={{ ['--gap' as string]: '16px' }}>
@@ -34,7 +34,7 @@ export default function ArticlesPage() {
             <span className="badge green" style={{ alignSelf: 'flex-start' }}>
               {a.category_name}
             </span>
-            <h3>{a.title}</h3>
+            <h2 className="h3">{a.title}</h2>
             <p className="muted small">{a.summary}</p>
           </Link>
         ))}

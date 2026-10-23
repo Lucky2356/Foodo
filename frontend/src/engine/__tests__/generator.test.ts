@@ -552,3 +552,81 @@ describe('editing a menu', () => {
     for (const d of days) expect(Math.abs(d.energy_deviation_pct ?? 100)).toBeLessThanOrEqual(10);
   });
 });
+
+describe('menu quality and edits (round 2)', () => {
+  const simple = () => [member({ age: null, sex: null, weight_kg: null, height_cm: null }), member({ id: 'm2', name: 'Борис', age: null, sex: null, weight_kg: null, height_cm: null })];
+
+  it('simple portions still give adults a realistic day, not a 130 kcal soup for lunch', () => {
+    const cat = catalog();
+    const members = simple();
+    for (const diet_mode of ['regular', 'balanced'] as const) {
+      const { menu } = generateMenu(request({ days: 7, members, settings: settings({ diet_mode }) }), cat);
+      const days = menuReport(menu, cat, members)[0]!.days;
+      const avg = days.reduce((s, d) => s + d.totals.kcal.value, 0) / days.length;
+      expect(avg).toBeGreaterThan(1500);
+    }
+  });
+
+  it('«Пересобрать» brings mostly new dishes and never reuses a batch id', () => {
+    const cat = catalog();
+    const members = simple();
+    const req = request({ days: 7, members, settings: settings({ diet_mode: 'balanced' }) });
+    const menu = generateMenu(req, cat).menu;
+    const next = applyMenuOp(menu, { op: 'regenerate', seed: 99 }, { catalog: cat, members });
+    const before = new Set(menu.batches.map((b) => b.recipe_id));
+    const same = next.batches.filter((b) => before.has(b.recipe_id)).length;
+    expect(same).toBeLessThan(next.batches.length / 2);
+    const oldIds = new Set(menu.batches.map((b) => b.id));
+    expect(next.batches.some((b) => oldIds.has(b.id))).toBe(false);
+  });
+
+  it('a removed batch id is not given to the next dish', () => {
+    const cat = catalog();
+    const members = simple();
+    let menu = generateMenu(request({ days: 2, members }), cat).menu;
+    const meal = menu.meals.find((m) => m.slot === 'dinner')!;
+    const item = meal.items[0]!;
+    const removedBatch = item.batch_id;
+    menu = applyMenuOp(menu, { op: 'remove', item_id: item.id }, { catalog: cat, members });
+    const recipe = Object.values(cat.recipes).find((r) => r.meal_types.includes('dinner') && r.category === 'main' && !menu.batches.some((b) => b.recipe_id === r.id) && r.methods.some((m) => m.equipment.every((e) => menu.settings.equipment.includes(e))))!;
+    menu = applyMenuOp(menu, { op: 'add', date: meal.date, slot: 'dinner', recipe_id: recipe.id, member_ids: ['m1', 'm2'] }, { catalog: cat, members });
+    const added = menu.meals.find((m) => m.date === meal.date && m.slot === 'dinner')!.items[0]!;
+    expect(added.batch_id).not.toBe(removedBatch);
+  });
+
+  it('a dish chosen by hand must suit the meal and respect «different dishes every day»', () => {
+    const cat = catalog();
+    const members = simple();
+    const menu = generateMenu(request({ days: 3, members, settings: settings({ repeat: { ...settings().repeat, mode: 'unique' } }) }), cat).menu;
+    const breakfast = menu.meals.find((m) => m.slot === 'breakfast')!;
+    const soup = Object.values(cat.recipes).find((r) => r.category === 'soup' && !r.meal_types.includes('breakfast'))!;
+    expect(() => applyMenuOp(menu, { op: 'add', date: breakfast.date, slot: 'breakfast', recipe_id: soup.id, member_ids: ['m1'] }, { catalog: cat, members })).toThrow(/не подходит/);
+    const used = menu.batches.find((b) => cat.recipes[b.recipe_id]!.meal_types.includes('dinner'))!;
+    const dinner = menu.meals.filter((m) => m.slot === 'dinner').at(-1)!;
+    expect(() => applyMenuOp(menu, { op: 'add', date: dinner.date, slot: 'dinner', recipe_id: used.recipe_id, member_ids: ['m1'], method_id: used.method_id }, { catalog: cat, members })).toThrow(/уже есть в меню/);
+  });
+
+  it('a separate dish for a member with a calorie target gets a portion for that dish', () => {
+    const cat = catalog();
+    const me = member({ portion_mode: 'target', kcal_target: 1750 });
+    const other = member({ id: 'm2', name: 'Борис' });
+    const menu = generateMenu(request({ days: 2, members: [me, other] }), cat).menu;
+    const lunch = menu.meals.find((m) => m.slot === 'lunch')!;
+    const next = applyMenuOp(menu, { op: 'split', item_id: lunch.items[0]!.id, member_id: 'm1', recipe_id: null }, { catalog: cat, members: [me, other] });
+    const own = next.meals.find((m) => m.date === lunch.date && m.slot === 'lunch')!.items.find((i) => i.alternative_for !== null)!;
+    const recipe = cat.recipes[next.batches.find((b) => b.id === own.batch_id)!.recipe_id]!;
+    const expected = Math.min(2, Math.max(0.5, Math.floor(((1750 * 0.35) / recipeNutrition(cat, recipe).perServing.kcal.value) * 20 + 0.5) / 20));
+    expect(own.portions.m1).toBe(expected);
+  });
+
+  it('moving a meal swaps its «no dish» explanation too', () => {
+    const cat = catalog();
+    const members = simple();
+    const menu = generateMenu(request({ days: 2, members }), cat).menu;
+    const a = menu.meals[0]!;
+    const b = menu.meals[3]!;
+    const withNote = { ...menu, unfilled: [{ date: b.date, slot: b.slot, member_ids: ['m1'], code: 'no_candidates', message: 'нет' }] };
+    const next = applyMenuOp(withNote, { op: 'move', from: { date: a.date, slot: a.slot }, to: { date: b.date, slot: b.slot } }, { catalog: cat, members });
+    expect(next.unfilled).toEqual([{ date: a.date, slot: a.slot, member_ids: ['m1'], code: 'no_candidates', message: 'нет' }]);
+  });
+});

@@ -273,3 +273,78 @@ def test_guest_import_preview_and_conflict_resolution(alice: Any) -> None:
     assert set(menu["member_ids"]) <= ids
     bad = client.post(f"/api/households/{hid}/import-guest/", {"data": {"format": "nope"}, "mode": "preview"}, format="json")
     assert bad.json()["error"]["code"] == "invalid_import"
+
+
+def test_own_prices_chain_priority_unit_check_and_city_change(alice: Any) -> None:
+    client, user = alice
+    hid = household_id(user)
+    city = kazan()
+    client.patch(f"/api/households/{hid}/", {"city_id": city.id, "store_chain_id": "magnit"}, format="json")
+    url = f"/api/households/{hid}/prices/"
+    day = "2026-10-20"
+    chain = {"product_id": "potato", "price_kop": 9000, "package_size": 1, "package_unit": "kg", "date": day, "chain_id": "magnit"}
+    anywhere = {**chain, "price_kop": 5000, "chain_id": None}
+    assert client.post(url, chain, format="json").status_code == 201
+    assert client.post(url, anywhere, format="json").status_code == 201
+    entries = {e["product_id"]: e for e in client.get(url).json()["profile"]["entries"]}
+    assert entries["potato"]["price_kop"] == 9000  # same date: the chosen chain wins over «any shop»
+    # Flour has no piece mass: a price «за шт.» could never apply to the list.
+    bad = client.post(url, {"product_id": "wheat_flour", "price_kop": 9000, "package_size": 1, "package_unit": "pcs"}, format="json")
+    assert bad.status_code == 400 and bad.json()["error"]["code"] == "incompatible_unit"
+    # Magnit does not work in the Far East: moving there clears the chain.
+    far = City.objects.filter(federal_district="Дальневосточный").first()
+    assert far is not None
+    assert client.patch(f"/api/households/{hid}/", {"city_id": far.id}, format="json").json()["store_chain_id"] is None
+
+
+def test_guest_import_checks_records_like_manual_entries(alice: Any) -> None:
+    client, user = alice
+    hid = household_id(user)
+    url = f"/api/households/{hid}/import-guest/"
+
+    def apply(data: dict[str, Any]) -> Any:
+        return client.post(url, {"data": data, "mode": "apply", "resolution": {}}, format="json")
+
+    good = guest_export({})
+    good["menus"] = []
+    for broken, section in (
+        ({"pantry": [{"product_id": "potato", "qty": 500, "unit": "pcs"}]}, "Остатки, запись 1"),
+        ({"pantry": [{"product_id": "potato", "qty": -1, "unit": "g"}]}, "Остатки, запись 1"),
+        ({"prices": [{"product_id": "wheat_flour", "price_kop": 100, "package_size": 1, "package_unit": "pcs"}]}, "Цены, запись 1"),
+        ({"water": [{"member_id": "g-anya", "amount_ml": 250, "local_date": "вчера"}]}, "Вода, запись 1"),
+        ({"menus": [{"id": "x", "menu": {"start_date": "2026-10-19", "days": 99}}]}, "Меню, запись 1"),
+        ({"members": [{**good["members"][0], "id": f"g{i}", "name": f"Гость {i}"} for i in range(21)]}, "не больше 20"),
+    ):
+        r = apply({**good, **broken})
+        assert r.status_code == 400, (broken, r.content)
+        assert section in r.json()["error"]["message"]
+    # Nothing was written by the refused transfers.
+    assert client.get(f"/api/households/{hid}/").json()["members"] == []
+    assert client.get(f"/api/households/{hid}/pantry/").json() == []
+
+
+def test_api_answers_400_not_500_to_malformed_requests(alice: Any, bob: Any) -> None:
+    client, user = alice
+    hid = household_id(user)
+    member = add_member(client, hid)
+    assert client.get(f"/api/households/{hid}/water/?member_id={member['id']}&days=abc").status_code == 400
+    assert client.get(f"/api/households/{hid}/water/?member_id={member['id']}&days=-5").status_code == 200
+    assert client.patch(f"/api/households/{hid}/members/{member['id']}/", [], format="json").status_code == 400
+    assert client.post(f"/api/households/{hid}/menus/", [], format="json").status_code == 400
+    far = client.post(f"/api/households/{hid}/water/", {"member_id": member["id"], "amount_ml": 200, "local_date": "2099-01-01"}, format="json")
+    assert far.status_code == 400
+    # Another household's private recipe id is neither revealed nor overwritten.
+    bob_client, bob_user = bob
+    from catalog.models import Recipe
+
+    public = Recipe.objects.filter(visibility="public").first()
+    assert public is not None
+    from catalog.services import recipe_to_json
+
+    body = {**recipe_to_json(public), "id": "u-secret-1", "name": "Секретный рецепт"}
+    body.pop("source", None)
+    created = bob_client.post(f"/api/households/{household_id(bob_user)}/recipes/", body, format="json")
+    assert created.status_code == 201, created.content
+    mine = client.post(f"/api/households/{hid}/recipes/", {**body, "id": created.json()["id"], "name": "Мой"}, format="json")
+    assert mine.status_code == 201 and mine.json()["id"] != created.json()["id"]
+    assert Recipe.objects.get(pk=created.json()["id"]).name == "Секретный рецепт"

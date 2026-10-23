@@ -92,14 +92,19 @@ def public_prices(city: City | None, chain: StoreChain | None, today: date | Non
 
 
 def merge_price_sources(own: list[JSON], public: list[JSON]) -> list[JSON]:
-    """One entry per product: own prices beat any public source regardless of date."""
+    """One entry per product: own prices beat any public source regardless of date. Among own prices
+    the newest wins; on the same date a price for the chosen chain beats one for any shop."""
     result: dict[str, JSON] = {}
     for e in public:
         result[e["product_id"]] = e
     latest_own: dict[str, JSON] = {}
+
+    def rank(e: JSON) -> tuple[str, int]:
+        return (e["date"], 1 if e.get("chain_id") else 0)
+
     for e in own:
         current = latest_own.get(e["product_id"])
-        if current is None or e["date"] >= current["date"]:
+        if current is None or rank(e) >= rank(current):
             latest_own[e["product_id"]] = e
     result.update(latest_own)
     return [result[k] for k in sorted(result)]

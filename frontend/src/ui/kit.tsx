@@ -23,11 +23,16 @@ export function PageHead({ eyebrow, title, subtitle, actions }: { eyebrow?: stri
 export function Sheet({ open, onClose, title, children, footer }: { open: boolean; onClose: () => void; title: ReactNode; children: ReactNode; footer?: ReactNode }) {
   const titleId = useId();
   const ref = useRef<HTMLDivElement>(null);
+  // The latest onClose without re-running the effect: parents pass a new arrow on every render, and a
+  // re-run would steal focus back to the first field while the user types.
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
   useEffect(() => {
     if (!open) return;
     const prev = document.activeElement as HTMLElement | null;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      // A control inside (an open list) may handle Escape itself; only the topmost sheet closes.
+      if (e.key === 'Escape' && !e.defaultPrevented && isTopSheet(ref.current)) closeRef.current();
       if (e.key === 'Tab' && ref.current) {
         const focusables = ref.current.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
         const first = focusables[0];
@@ -55,7 +60,7 @@ export function Sheet({ open, onClose, title, children, footer }: { open: boolea
       document.body.style.overflow = '';
       prev?.focus?.();
     };
-  }, [open, onClose]);
+  }, [open]);
   if (!open) return null;
   // Rendered into <body>: a transformed ancestor (a page or card animation) would otherwise become
   // the containing block of this fixed overlay and push it off screen.
@@ -78,6 +83,11 @@ export function Sheet({ open, onClose, title, children, footer }: { open: boolea
     </div>,
     document.body,
   );
+}
+
+function isTopSheet(el: HTMLElement | null): boolean {
+  const all = document.querySelectorAll('.sheet');
+  return el !== null && all[all.length - 1] === el;
 }
 
 export function Toasts() {
@@ -194,7 +204,9 @@ export function Chip({ on, onClick, children, tone = 'pick' }: { on: boolean; on
   );
 }
 
-export function Empty({ icon = 'sparkle', title, children, action }: { icon?: IconName; title: string; children?: ReactNode; action?: ReactNode }) {
+/** Empty state. `page` — it is the whole screen (no PageHead above), so its title is the page's h1. */
+export function Empty({ icon = 'sparkle', title, children, action, page = false }: { icon?: IconName; title: string; children?: ReactNode; action?: ReactNode; page?: boolean }) {
+  const Heading = page ? 'h1' : 'h2';
   return (
     <div className="empty fade-in">
       <div className="feature" style={{ padding: 0 }}>
@@ -202,7 +214,7 @@ export function Empty({ icon = 'sparkle', title, children, action }: { icon?: Ic
           <Icon name={icon} />
         </div>
       </div>
-      <h3>{title}</h3>
+      <Heading className="h3">{title}</Heading>
       {children && <p style={{ maxWidth: '48ch' }}>{children}</p>}
       {action}
     </div>

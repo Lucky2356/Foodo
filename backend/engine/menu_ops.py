@@ -63,7 +63,10 @@ def _normalise_batches(menu: JSON) -> None:
         b["portions"] = totals.get(b["id"], 0)
 
 
-def _check_manual_choice(menu: JSON, catalog: Catalog, recipe_id: str, method_id: str | None, people: list[JSON]) -> JSON:
+def _check_manual_choice(
+    menu: JSON, catalog: Catalog, recipe_id: str, method_id: str | None, people: list[JSON], slot: str, keep_batch: str | None = None
+) -> JSON:
+    """Twin of checkManualChoice in menuOps.ts: restrictions, spice, equipment, skill, meal and unique mode."""
     recipe = catalog.recipes.get(recipe_id)
     if recipe is None:
         raise EngineError("recipe_not_found", "Рецепт не найден.")
@@ -77,6 +80,12 @@ def _check_manual_choice(menu: JSON, catalog: Catalog, recipe_id: str, method_id
                 f"«{recipe['name']}» нельзя участнику «{m['name']}»: блюдо нарушает его запреты или его состав не проверен.",
                 {"member_id": m["id"], "violations": v},
             )
+    # Hard restrictions come first; then the meal and the repeat mode.
+    if slot not in recipe["meal_types"]:
+        name = next((s["name"].lower() for s in catalog.reference["meal_slots"] if s["id"] == slot), slot)
+        raise EngineError("wrong_meal_type", f"«{recipe['name']}» не подходит на {name}.")
+    if menu["settings"]["repeat"]["mode"] == "unique" and any(b["recipe_id"] == recipe_id and b["id"] != keep_batch for b in menu["batches"]):
+        raise EngineError("repeat_conflict", f"«{recipe['name']}» уже есть в меню, а выбран режим «Разные блюда каждый день».")
     equipment = menu["settings"]["equipment"]
     method = find_method(recipe, method_id) if method_id else select_method(recipe, equipment)
     if method is None or not all(e in equipment for e in method["equipment"]):
@@ -91,7 +100,8 @@ def _new_batch_for(menu: JSON, catalog: Catalog, recipe_id: str, method_id: str,
     if recipe is None:
         raise EngineError("recipe_not_found", "Рецепт не найден.")
     batch = {
-        "id": _next_id("b", [b["id"] for b in menu["batches"]]),
+        # Never reused within a menu: a «приготовлено» mark stored by batch id must not move to another dish.
+        "id": _next_id(f"b{menu['revision'] + 1}.", [b["id"] for b in menu["batches"]]),
         "recipe_id": recipe_id,
         "recipe_version": recipe["version"],
         "method_id": method_id,
@@ -110,8 +120,8 @@ def _plan_request(menu: JSON, ctx: JSON, seed: int, current: bool = False) -> JS
         "start_date": menu["start_date"],
         "days": menu["days"],
         "seed": seed,
-        "slots": list(menu["slots"]),
-        "members": [m for m in ctx["members"] if m["id"] in menu["member_ids"]],
+        "slots": list(ctx["slots"]) if current and ctx.get("slots") else list(menu["slots"]),
+        "members": list(ctx["members"]) if current else [m for m in ctx["members"] if m["id"] in menu["member_ids"]],
         "slot_members": ctx.get("slot_members"),
         "settings": ctx["settings"] if current and ctx.get("settings") else menu["settings"],
         "pins": [],
@@ -147,8 +157,39 @@ def _pinned_recipes(menu: JSON) -> dict[str, JSON]:
     return out
 
 
+_OP_FIELDS: dict[str, dict[str, Any]] = {
+    "replace": {"item_id": str},
+    "set_portion": {"item_id": str, "member_id": str},
+    "move": {"from": dict, "to": dict},
+    "pin": {"item_id": str, "pinned": bool},
+    "split": {"item_id": str, "member_id": str},
+    "add": {"date": str, "slot": str, "recipe_id": str, "member_ids": list},
+    "remove": {"item_id": str},
+    "regenerate": {"seed": int},
+}
+
+
+def _check_op(op: Any) -> None:
+    """Shape of an operation from the API: a malformed one is a 400 with a code, never a crash."""
+    if not isinstance(op, dict) or op.get("op") not in _OP_FIELDS:
+        raise EngineError("unknown_op", "Неизвестная операция с меню.")
+    for key, kind in _OP_FIELDS[op["op"]].items():
+        value = op.get(key)
+        if not isinstance(value, kind) or (kind is int and isinstance(value, bool)):
+            raise EngineError("invalid_op", f"Операция «{op['op']}»: поле «{key}» отсутствует или неверного типа.")
+    if op["op"] == "move":
+        for end in ("from", "to"):
+            if not isinstance(op[end].get("date"), str) or not isinstance(op[end].get("slot"), str):
+                raise EngineError("invalid_op", "Перенос: нужны дата и приём пищи.")
+    if op["op"] == "add" and not all(isinstance(x, str) for x in op["member_ids"]):
+        raise EngineError("invalid_op", "Добавление: участники — список идентификаторов.")
+    if op["op"] in ("replace", "split") and op.get("recipe_id") is not None and not isinstance(op["recipe_id"], str):
+        raise EngineError("invalid_op", "Идентификатор рецепта должен быть строкой.")
+
+
 def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
     """ctx = {"catalog": Catalog, "members": [...], "pantry": [...], "prices": {...} | None}."""
+    _check_op(op)
     catalog: Catalog = ctx["catalog"]
     members = {m["id"]: m for m in ctx["members"]}
     nxt = copy.deepcopy(menu)
@@ -173,7 +214,7 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
                 raise EngineError("no_replacement", "Нет другого подходящего блюда с учётом запретов, техники и режима повторов.")
             recipe_id = pick["recipe_id"]
             method_id = pick["method_id"]
-        method = _check_manual_choice(nxt, catalog, recipe_id, method_id, people)
+        method = _check_manual_choice(nxt, catalog, recipe_id, method_id, people, meal["slot"], current["id"])
         batch = _new_batch_for(nxt, catalog, recipe_id, method["id"], meal["date"], meal["slot"])
         item["batch_id"] = batch["id"]
         # A calorie target is met by the portion size, which depends on the dish: recompute it.
@@ -206,6 +247,25 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
             _retarget_single_use_batch(nxt, item, dst)
         for item in back:
             _retarget_single_use_batch(nxt, item, src)
+        # The explanations of an empty meal travel with it: the meals swap places.
+        swapped = []
+        for u in nxt["unfilled"]:
+            if u["date"] == src["date"] and u["slot"] == src["slot"]:
+                u = {**u, "date": dst["date"], "slot": dst["slot"]}
+            elif u["date"] == dst["date"] and u["slot"] == dst["slot"]:
+                u = {**u, "date": src["date"], "slot": src["slot"]}
+            swapped.append(u)
+        nxt["unfilled"] = swapped
+        # A calorie target depends on the meal: portions moved to another meal are recomputed.
+        if src["slot"] != dst["slot"]:
+            for target_meal, items in ((dst, moving), (src, back)):
+                for item in items:
+                    batch = _batch_of(nxt, item)
+                    people = [members[i] for i in item["portions"] if i in members]
+                    fresh = member_portions(_plan_request(nxt, ctx, nxt["seed"]), catalog, people, batch["recipe_id"], target_meal["slot"])
+                    for m in people:
+                        if m["portion_mode"] == "target" and m.get("kcal_target"):
+                            item["portions"][m["id"]] = fresh[m["id"]]
     elif kind == "pin":
         _, item = _find_item(nxt, op["item_id"])
         item["pinned"] = bool(op["pinned"])
@@ -226,9 +286,11 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
                 raise EngineError("no_replacement", "Не найдено отдельного блюда для участника.")
             recipe_id = pick["recipe_id"]
             method_id = pick["method_id"]
-        method = _check_manual_choice(nxt, catalog, recipe_id, method_id, [member])
+        method = _check_manual_choice(nxt, catalog, recipe_id, method_id, [member], meal["slot"])
         portion = item["portions"].pop(op["member_id"])
         batch = _new_batch_for(nxt, catalog, recipe_id, method["id"], meal["date"], meal["slot"])
+        if member["portion_mode"] == "target" and member.get("kcal_target"):
+            portion = member_portions(_plan_request(nxt, ctx, nxt["seed"]), catalog, [member], recipe_id, meal["slot"])[member["id"]]
         meal["items"].append(
             {
                 "id": _next_id("i", [i["id"] for _, i in _all_items(nxt)]),
@@ -243,7 +305,6 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
         people = [members[i] for i in op["member_ids"] if i in members]
         if not people:
             raise EngineError("no_members", "Выберите, для кого это блюдо.")
-        method = _check_manual_choice(nxt, catalog, op["recipe_id"], op.get("method_id"), people)
         # A batch still eaten elsewhere (a removed meal of a shared batch) is joined again, not cooked twice.
         existing = next(
             (
@@ -253,6 +314,7 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
             ),
             None,
         )
+        method = _check_manual_choice(nxt, catalog, op["recipe_id"], op.get("method_id"), people, meal["slot"], existing["id"] if existing else None)
         batch = existing or _new_batch_for(nxt, catalog, op["recipe_id"], method["id"], meal["date"], meal["slot"])
         portions = member_portions(_plan_request(nxt, ctx, nxt["seed"]), catalog, people, op["recipe_id"], meal["slot"])
         given_portions = op.get("portions") or {}
@@ -281,24 +343,39 @@ def apply_menu_op(menu: JSON, op: JSON, ctx: JSON) -> JSON:
     elif kind == "regenerate":
         req = _plan_request(nxt, ctx, op["seed"], True)
         pins = []
+        ids = {m["id"] for m in req["members"]}
+        previous: set[str] = set()
         for meal, item in _all_items(nxt):
-            if not item["pinned"]:
-                continue
             batch = _batch_of(nxt, item)
+            if not item["pinned"]:
+                previous.add(batch["recipe_id"])
+                continue
+            # A pin stays only for a meal that is still planned and for people still in the family.
+            portions = {k: v for k, v in item["portions"].items() if k in ids}
+            if meal["slot"] not in req["slots"] or not portions:
+                continue
             pins.append(
                 {
                     "date": meal["date"],
                     "slot": meal["slot"],
                     "recipe_id": batch["recipe_id"],
                     "method_id": batch["method_id"],
-                    "portions": dict(item["portions"]),
+                    "portions": portions,
                 }
             )
         req["pins"] = pins
+        req["avoid_recipes"] = sorted(previous)
         pinned_catalog = Catalog(
             products=catalog.products, recipes={**catalog.recipes, **_pinned_recipes(nxt)}, reference=catalog.reference, target_sets=catalog.target_sets
         )
         fresh = generate_menu(req, pinned_catalog)["menu"]
+        # New batch ids, so a «приготовлено» mark of the old menu never lands on a new dish.
+        rename = {b["id"]: f"b{nxt['revision'] + 1}.{i + 1}" for i, b in enumerate(fresh["batches"])}
+        for b in fresh["batches"]:
+            b["id"] = rename[b["id"]]
+        for fmeal in fresh["meals"]:
+            for fitem in fmeal["items"]:
+                fitem["batch_id"] = rename[fitem["batch_id"]]
         fresh["revision"] = nxt["revision"]
         nxt = fresh
     else:

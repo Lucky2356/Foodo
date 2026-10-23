@@ -4,7 +4,7 @@ import type { Member } from '../engine';
 import { useApp, useLoad } from '../state/app';
 import { Icon } from '../ui/icons';
 import { Empty, Loading, PageHead, Segmented } from '../ui/kit';
-import { addDaysIso, dayMonth, localDate, weekdayShort } from '../lib/dates';
+import { addDaysIso, dayMonth, localDate, timeZoneName, weekdayShort } from '../lib/dates';
 import { num } from '../lib/format';
 
 function WaterCard({ member }: { member: Member }) {
@@ -39,20 +39,25 @@ function WaterCard({ member }: { member: Member }) {
           <span>{num(total / 1000, 2)} л</span>
         </div>
         <div className="grow">
-          <h3>Вода сегодня</h3>
+          <h2 className="h3">Вода сегодня</h2>
           <p className="muted small">
-            Цель {num(goal / 1000, 1)} л · день по часовому поясу {member.timezone}
+            Цель {num(goal / 1000, 1)} л · день по времени: {timeZoneName(member.timezone ?? 'Europe/Moscow')}
           </p>
         </div>
       </div>
       <div className="row wrap">
         {[150, 250, 330, 500].map((ml) => (
           <button key={ml} className={`btn ${ml === 250 ? 'primary' : ''}`} onClick={() => void add(ml)}>
-            <Icon name="drop" size={18} /> +{ml}
+            <Icon name="drop" size={18} /> +{ml} мл
           </button>
         ))}
       </div>
-      <div className="row" style={{ alignItems: 'flex-end', height: 90, ['--gap' as string]: '8px' }} aria-label="Вода за неделю">
+      <div
+        className="row"
+        style={{ alignItems: 'flex-end', height: 90, ['--gap' as string]: '8px' }}
+        role="img"
+        aria-label={`Вода за неделю: ${days.map((d) => `${weekdayShort(d)} ${num(water.data?.totals[d] ?? 0)} мл`).join(', ')}`}
+      >
         {days.map((d) => {
           const v = water.data?.totals[d] ?? 0;
           return (
@@ -70,7 +75,7 @@ function WaterCard({ member }: { member: Member }) {
 const HABIT_IDEAS = ['Овощи к обеду', 'Прогулка 30 минут', 'Без сладкого после ужина'];
 
 export default function HabitsPage() {
-  const { household, gateway, reportError } = useApp();
+  const { household, gateway, reportError, toast } = useApp();
   const members = household?.members ?? [];
   const [who, setWho] = useState<string | null>(null);
   const habits = useLoad(() => gateway.habits(), [gateway]);
@@ -106,7 +111,7 @@ export default function HabitsPage() {
       {members.length > 1 && <Segmented label="Участник" value={member.id} onChange={setWho} options={members.map((m) => ({ value: m.id, label: m.name }))} />}
       <WaterCard key={member.id} member={member} />
       <section className="card stack">
-        <h3>Привычки</h3>
+        <h2 className="h3">Привычки</h2>
         {mine.length === 0 && (
           <div className="stack" style={{ ['--gap' as string]: '8px' }}>
             <p className="muted small">Пока привычек нет. Добавьте свою или начните с готовой:</p>
@@ -130,12 +135,15 @@ export default function HabitsPage() {
                   checked={done}
                   aria-label={`Сегодня: ${h.name}`}
                   onChange={async () => {
+                    // The tick shows at once; the saved state replaces it, a failure rolls it back.
+                    const marks = done ? h.marks.filter((d) => d !== today) : [...h.marks, today];
+                    habits.setData((habits.data ?? []).map((x) => (x.id === h.id ? { ...x, marks } : x)));
                     try {
                       await gateway.markHabit(h.id, today, !done);
-                      habits.reload();
                     } catch (e) {
                       reportError(e);
                     }
+                    habits.reload();
                   }}
                 />
                 <strong className="grow">{h.name}</strong>
@@ -143,8 +151,21 @@ export default function HabitsPage() {
                   className="icon-btn small"
                   aria-label={`Удалить привычку ${h.name}`}
                   onClick={async () => {
-                    await gateway.deleteHabit(h.id).catch(reportError);
+                    try {
+                      await gateway.deleteHabit(h.id);
+                    } catch (e) {
+                      reportError(e);
+                      return;
+                    }
                     habits.reload();
+                    toast(`Привычка «${h.name}» удалена`, {
+                      undo: async () => {
+                        // Brought back with its recent marks (the last 30 days that the list shows).
+                        const again = await gateway.addHabit(h.member_id, h.name);
+                        for (const d of h.marks) await gateway.markHabit(again.id, d, true);
+                        habits.reload();
+                      },
+                    });
                   }}
                 >
                   <Icon name="trash" size={16} />

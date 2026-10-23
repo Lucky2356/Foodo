@@ -161,7 +161,8 @@ export default function RecipesPage() {
         </label>
         <button className="btn ghost" style={{ minHeight: 50 }} onClick={() => setFiltersOpen(true)}>
           <Icon name="settings" size={18} />
-          <span>Фильтры{activeFilters > 0 ? ` · ${activeFilters}` : ''}</span>
+          <span className="wide-only">Фильтры</span>
+          {activeFilters > 0 && <span className="badge green">{activeFilters}</span>}
         </button>
       </div>
       <div className="chips" role="group" aria-label="Категории">

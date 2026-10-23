@@ -27,7 +27,9 @@ export function plural(n: number, one: string, few: string, many: string): strin
 
 export function portionLabel(factor: number): string {
   if (factor === 1) return '1 порция';
-  return `${num(factor, 2)} ${plural(Math.ceil(factor), 'порция', 'порции', 'порций')}`;
+  // A fraction takes the genitive singular: «0,5 порции», «1,5 порции»; whole numbers decline as usual.
+  if (!Number.isInteger(factor)) return `${num(factor, 2)} порции`;
+  return `${num(factor, 2)} ${plural(factor, 'порция', 'порции', 'порций')}`;
 }
 
 export function minutes(total: number): string {
@@ -42,10 +44,20 @@ export function newId(prefix: string): string {
   return `${prefix}-${Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('')}`;
 }
 
+/** What to buy: pieces are bought whole (1,5 яйца → 2 шт.); mass and volume stay exact. */
+export function buyAmount(value: number, unit: string): number {
+  return unit === 'pcs' ? Math.ceil(value - 1e-9) : value;
+}
+
 /** An amount in a base unit for people: 1 500 г → «1,5 кг», 2 000 мл → «2 л». */
 export function quantity(value: number, unit: string): string {
   const name = (UNIT_NAMES as Record<string, string>)[unit] ?? unit;
   if (unit === 'g' && value >= 1000) return `${num(value / 1000, 2)} кг`;
   if (unit === 'ml' && value >= 1000) return `${num(value / 1000, 2)} л`;
   return `${num(value, value < 10 ? 1 : 0)} ${name}`;
+}
+
+/** «Сегодня» → «сегодня» for use after a comma. */
+export function lowerFirst(text: string): string {
+  return text ? text[0]!.toLowerCase() + text.slice(1) : text;
 }

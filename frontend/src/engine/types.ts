@@ -313,6 +313,8 @@ export interface PlanRequest {
   pins?: PinnedItem[];
   pantry?: PantryItem[];
   prices?: PriceProfile | null;
+  /** Recipes of the previous menu: «Новое меню» and «Пересобрать» rank them lower, never forbid them. */
+  avoid_recipes?: string[];
 }
 
 export interface MenuBatch {

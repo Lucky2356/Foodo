@@ -56,7 +56,7 @@
   "batches": [
    {
     "id": "b1",
-    "recipe_id": "yaytso-v-hlebe",
+    "recipe_id": "turetskiy-zavtrak",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
@@ -74,16 +74,16 @@
    },
    {
     "id": "b3",
-    "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+    "recipe_id": "shopskiy-salat",
     "recipe_version": 1,
-    "method_id": "stove",
+    "method_id": "nocook",
     "cook_date": "2026-10-19",
     "slot": "snack",
     "portions": 2
    },
    {
     "id": "b4",
-    "recipe_id": "gulyash-iz-soevogo-myasa",
+    "recipe_id": "sloppi-dzho",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
@@ -92,7 +92,7 @@
    },
    {
     "id": "b5",
-    "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+    "recipe_id": "sabih",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
@@ -110,7 +110,7 @@
    },
    {
     "id": "b7",
-    "recipe_id": "shaurma-domashnyaya",
+    "recipe_id": "steyki-syomgi-s-bulgurom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
@@ -119,16 +119,16 @@
    },
    {
     "id": "b8",
-    "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
+    "recipe_id": "salat-s-nutom",
     "recipe_version": 1,
-    "method_id": "nocook",
+    "method_id": "no-heat",
     "cook_date": "2026-10-20",
     "slot": "snack",
     "portions": 2
    },
    {
     "id": "b9",
-    "recipe_id": "sloppi-dzho",
+    "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
@@ -137,7 +137,7 @@
    },
    {
     "id": "b10",
-    "recipe_id": "chirbuli",
+    "recipe_id": "burrito-s-yaytsom-i-kartofelem",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
@@ -155,9 +155,9 @@
    },
    {
     "id": "b12",
-    "recipe_id": "shampinyony-farshirovannye-syrom",
+    "recipe_id": "guakamole-s-tostami",
     "recipe_version": 1,
-    "method_id": "oven",
+    "method_id": "nocook",
     "cook_date": "2026-10-21",
     "slot": "snack",
     "portions": 2
@@ -385,83 +385,160 @@
   "warnings": [],
   "stats": {
    "attempts": 6,
-   "evaluated": 19282,
-   "score": 14.11695115234082,
+   "evaluated": 19284,
+   "score": 11.655764494694127,
    "budget_status": "none"
   },
   "snapshot_ids": {
    "recipes": [
     "borshch-s-govyadinoy",
-    "chirbuli",
-    "gulyash-iz-soevogo-myasa",
+    "burrito-s-yaytsom-i-kartofelem",
+    "guakamole-s-tostami",
+    "indeyka-v-slivochno-gorchichnom-souse-s-penne",
     "plov-s-govyadinoy",
-    "shampinyony-farshirovannye-syrom",
-    "shaurma-domashnyaya",
+    "sabih",
+    "salat-s-nutom",
+    "shopskiy-salat",
     "sloppi-dzho",
-    "syrnye-lepeshki-iz-tvoroga",
+    "steyki-syomgi-s-bulgurom",
     "tako-s-govyazhim-farshem",
-    "tsatsiki-s-ovoshchnymi-palochkami",
-    "yaichnitsa-s-pomidorami-i-lukom",
-    "yaytso-v-hlebe"
+    "turetskiy-zavtrak"
    ],
    "products": [
+    "avocado",
+    "baguette",
     "bay_leaf",
     "beef",
     "beef_mince",
     "beet",
     "bell_pepper",
     "black_pepper",
+    "bread_wholegrain",
+    "bulgur_dry",
     "burger_buns",
     "butter",
     "cabbage",
     "cane_sugar",
     "carrot",
-    "champignons",
     "cheddar",
-    "cheese_hard",
-    "chicken_breast",
+    "chickpeas_canned",
     "cilantro",
     "corn_flour",
-    "cottage_cheese",
+    "cream_10",
     "cucumber",
     "cumin",
-    "dill",
+    "eggplant",
     "eggs",
+    "feta",
     "garlic",
-    "hot_pepper_ground",
+    "grain_mustard",
+    "honey",
     "iceberg_lettuce",
     "ketchup",
-    "khmeli_suneli",
-    "lavash",
     "lemon",
     "lime",
+    "mint",
     "mustard",
     "olive_oil",
+    "olives",
     "onion",
     "oregano_dried",
     "paprika",
+    "parsley",
+    "penne_dry",
+    "pita",
     "potato",
     "rice_white_dry",
+    "salmon_steak",
+    "salsa",
     "salt",
     "smoked_paprika",
     "sour_cream",
-    "soy_mince",
-    "soy_sauce",
     "sunflower_oil",
-    "toast_bread",
+    "tahini",
     "tomato",
     "tomato_paste",
     "tortilla_corn",
-    "walnuts",
+    "tortilla_wheat",
+    "turkey_breast",
+    "vinegar",
     "water",
-    "wheat_flour",
-    "yogurt_greek",
-    "yogurt_plain"
+    "wheat_flour"
    ]
   }
  },
  "shopping": {
   "lines": [
+   {
+    "id": "auto:avocado:g",
+    "product_id": "avocado",
+    "name": "Авокадо",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 200,
+    "from_pantry": 0,
+    "to_buy": 200,
+    "buy_qty": 200,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 200
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:eggplant:g",
+    "product_id": "eggplant",
+    "name": "Баклажан",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 300,
+    "from_pantry": 0,
+    "to_buy": 300,
+    "buy_qty": 300,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b5",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
+      "cook_date": "2026-10-20",
+      "qty": 300
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
    {
     "id": "auto:cabbage:g",
     "product_id": "cabbage",
@@ -469,10 +546,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 231.25,
+    "needed": 175,
     "from_pantry": 0,
-    "to_buy": 231.25,
-    "buy_qty": 231.25,
+    "to_buy": 175,
+    "buy_qty": 175,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -497,13 +574,6 @@
       "recipe_name": "Борщ с говядиной",
       "cook_date": "2026-10-20",
       "qty": 50
-     },
-     {
-      "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
-      "cook_date": "2026-10-20",
-      "qty": 56.25
      }
     ],
     "purchased": false,
@@ -518,9 +588,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 233.333333,
+    "needed": 533.333333,
     "from_pantry": 0,
-    "to_buy": 233.333333,
+    "to_buy": 533.333333,
     "buy_qty": 2000,
     "package": {
      "size": 2000,
@@ -550,6 +620,13 @@
       "recipe_name": "Борщ с говядиной",
       "cook_date": "2026-10-20",
       "qty": 66.666667
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
+      "cook_date": "2026-10-21",
+      "qty": 300
      }
     ],
     "purchased": false,
@@ -564,9 +641,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 22.5,
+    "needed": 12.5,
     "from_pantry": 0,
-    "to_buy": 22.5,
+    "to_buy": 12.5,
     "buy_qty": 50,
     "package": {
      "size": 50,
@@ -584,18 +661,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
-      "cook_date": "2026-10-21",
-      "qty": 15
-     },
-     {
       "batch_id": "b11",
       "recipe_id": "tako-s-govyazhim-farshem",
       "recipe_name": "Тако с говяжьим фаршем",
       "cook_date": "2026-10-21",
       "qty": 7.5
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 5
      }
     ],
     "purchased": false,
@@ -645,10 +722,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 7.5,
+    "needed": 140,
     "from_pantry": 0,
-    "to_buy": 7.5,
-    "buy_qty": 7.5,
+    "to_buy": 140,
+    "buy_qty": 140,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -661,11 +738,32 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
+      "batch_id": "b5",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
       "cook_date": "2026-10-20",
-      "qty": 7.5
+      "qty": 30
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 30
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 20
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 60
      }
     ],
     "purchased": false,
@@ -680,9 +778,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 533.333333,
+    "needed": 416.666667,
     "from_pantry": 0,
-    "to_buy": 533.333333,
+    "to_buy": 416.666667,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -707,17 +805,17 @@
       "qty": 41.666667
      },
      {
-      "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "batch_id": "b3",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
       "cook_date": "2026-10-19",
-      "qty": 100
+      "qty": 33.333333
      },
      {
-      "batch_id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
-      "recipe_name": "Яичница с помидорами и луком",
-      "cook_date": "2026-10-20",
+      "batch_id": "b4",
+      "recipe_id": "sloppi-dzho",
+      "recipe_name": "Слоппи джо",
+      "cook_date": "2026-10-19",
       "qty": 50
      },
      {
@@ -729,17 +827,17 @@
      },
      {
       "batch_id": "b9",
-      "recipe_id": "sloppi-dzho",
-      "recipe_name": "Слоппи джо",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
       "cook_date": "2026-10-20",
       "qty": 50
      },
      {
       "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
       "cook_date": "2026-10-21",
-      "qty": 100
+      "qty": 50
      },
      {
       "batch_id": "b11",
@@ -750,8 +848,8 @@
      },
      {
       "batch_id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
-      "recipe_name": "Шампиньоны, фаршированные сыром и зеленью",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
       "cook_date": "2026-10-21",
       "qty": 25
      },
@@ -775,9 +873,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 316.666667,
+    "needed": 196.666667,
     "from_pantry": 0,
-    "to_buy": 316.666667,
+    "to_buy": 196.666667,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -802,25 +900,11 @@
       "qty": 33.333333
      },
      {
-      "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
-      "cook_date": "2026-10-19",
-      "qty": 40
-     },
-     {
       "batch_id": "b6",
       "recipe_id": "borshch-s-govyadinoy",
       "recipe_name": "Борщ с говядиной",
       "cook_date": "2026-10-20",
       "qty": 13.333333
-     },
-     {
-      "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
-      "cook_date": "2026-10-20",
-      "qty": 80
      },
      {
       "batch_id": "b13",
@@ -836,17 +920,21 @@
     "changed": false
    },
    {
-    "id": "auto:cucumber:g",
-    "product_id": "cucumber",
-    "name": "Огурцы",
+    "id": "auto:mint:g",
+    "product_id": "mint",
+    "name": "Мята свежая",
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 90,
+    "needed": 1.25,
     "from_pantry": 0,
-    "to_buy": 90,
-    "buy_qty": 90,
-    "package": null,
+    "to_buy": 1.25,
+    "buy_qty": 30,
+    "package": {
+     "size": 30,
+     "unit": "g",
+     "count": 1
+    },
     "package_note": null,
     "price_kop": null,
     "price_per": null,
@@ -859,17 +947,73 @@
     "sources": [
      {
       "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 1.25
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cucumber:g",
+    "product_id": "cucumber",
+    "name": "Огурцы",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 430,
+    "from_pantry": 0,
+    "to_buy": 430,
+    "buy_qty": 430,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
+      "cook_date": "2026-10-19",
+      "qty": 120
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
+      "cook_date": "2026-10-19",
+      "qty": 80
+     },
+     {
+      "batch_id": "b5",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
+      "cook_date": "2026-10-20",
+      "qty": 120
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
       "cook_date": "2026-10-20",
       "qty": 30
      },
      {
       "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
       "cook_date": "2026-10-20",
-      "qty": 60
+      "qty": 80
      }
     ],
     "purchased": false,
@@ -884,10 +1028,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 375,
+    "needed": 250,
     "from_pantry": 0,
-    "to_buy": 375,
-    "buy_qty": 375,
+    "to_buy": 250,
+    "buy_qty": 250,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -900,32 +1044,99 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b3",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
+      "cook_date": "2026-10-19",
+      "qty": 100
+     },
+     {
       "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "recipe_id": "sloppi-dzho",
+      "recipe_name": "Слоппи джо",
       "cook_date": "2026-10-19",
       "qty": 75
      },
      {
-      "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
-      "cook_date": "2026-10-20",
+      "batch_id": "b10",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
+      "cook_date": "2026-10-21",
       "qty": 75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:parsley:g",
+    "product_id": "parsley",
+    "name": "Петрушка",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 50,
+    "from_pantry": 0,
+    "to_buy": 50,
+    "buy_qty": 50,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
+      "cook_date": "2026-10-19",
+      "qty": 10
+     },
+     {
+      "batch_id": "b3",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
+      "cook_date": "2026-10-19",
+      "qty": 6.666667
+     },
+     {
+      "batch_id": "b5",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
+      "cook_date": "2026-10-20",
+      "qty": 10
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 5
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 13.333333
      },
      {
       "batch_id": "b9",
-      "recipe_id": "sloppi-dzho",
-      "recipe_name": "Слоппи джо",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
       "cook_date": "2026-10-20",
-      "qty": 75
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
-      "cook_date": "2026-10-21",
-      "qty": 150
+      "qty": 5
      }
     ],
     "purchased": false,
@@ -940,10 +1151,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 780,
+    "needed": 1060,
     "from_pantry": 0,
-    "to_buy": 780,
-    "buy_qty": 780,
+    "to_buy": 1060,
+    "buy_qty": 1060,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -956,30 +1167,51 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
-      "recipe_name": "Яичница с помидорами и луком",
-      "cook_date": "2026-10-20",
+      "batch_id": "b1",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
+      "cook_date": "2026-10-19",
       "qty": 240
      },
      {
+      "batch_id": "b3",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
+      "cook_date": "2026-10-19",
+      "qty": 240
+     },
+     {
+      "batch_id": "b5",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
+      "cook_date": "2026-10-20",
+      "qty": 120
+     },
+     {
       "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
       "cook_date": "2026-10-20",
       "qty": 60
      },
      {
-      "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
-      "cook_date": "2026-10-21",
-      "qty": 360
+      "batch_id": "b8",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 160
      },
      {
       "batch_id": "b11",
       "recipe_id": "tako-s-govyazhim-farshem",
       "recipe_name": "Тако с говяжьим фаршем",
+      "cook_date": "2026-10-21",
+      "qty": 120
+     },
+     {
+      "batch_id": "b12",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
       "cook_date": "2026-10-21",
       "qty": 120
      }
@@ -1071,75 +1303,15 @@
     "changed": false
    },
    {
-    "id": "auto:dill:g",
-    "product_id": "dill",
-    "name": "Укроп",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 21.666667,
-    "from_pantry": 0,
-    "to_buy": 21.666667,
-    "buy_qty": 50,
-    "package": {
-     "size": 50,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
-      "recipe_name": "Творожные лепёшки с зеленью",
-      "cook_date": "2026-10-19",
-      "qty": 6.666667
-     },
-     {
-      "batch_id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
-      "recipe_name": "Яичница с помидорами и луком",
-      "cook_date": "2026-10-20",
-      "qty": 5
-     },
-     {
-      "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
-      "cook_date": "2026-10-20",
-      "qty": 5
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
-      "recipe_name": "Шампиньоны, фаршированные сыром и зеленью",
-      "cook_date": "2026-10-21",
-      "qty": 5
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
     "id": "auto:garlic:g",
     "product_id": "garlic",
     "name": "Чеснок",
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 47.5,
+    "needed": 35,
     "from_pantry": 0,
-    "to_buy": 47.5,
+    "to_buy": 35,
     "buy_qty": 100,
     "package": {
      "size": 100,
@@ -1158,38 +1330,24 @@
     "sources": [
      {
       "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "recipe_id": "sloppi-dzho",
+      "recipe_name": "Слоппи джо",
       "cook_date": "2026-10-19",
       "qty": 5
      },
      {
-      "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
-      "cook_date": "2026-10-20",
-      "qty": 2.5
-     },
-     {
-      "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
-      "cook_date": "2026-10-20",
-      "qty": 2.5
-     },
-     {
-      "batch_id": "b9",
-      "recipe_id": "sloppi-dzho",
-      "recipe_name": "Слоппи джо",
+      "batch_id": "b5",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
       "cook_date": "2026-10-20",
       "qty": 5
      },
      {
-      "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
-      "cook_date": "2026-10-21",
-      "qty": 10
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
+      "cook_date": "2026-10-20",
+      "qty": 5
      },
      {
       "batch_id": "b11",
@@ -1197,13 +1355,6 @@
       "recipe_name": "Тако с говяжьим фаршем",
       "cook_date": "2026-10-21",
       "qty": 5
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
-      "recipe_name": "Шампиньоны, фаршированные сыром и зеленью",
-      "cook_date": "2026-10-21",
-      "qty": 2.5
      },
      {
       "batch_id": "b13",
@@ -1219,132 +1370,15 @@
     "changed": false
    },
    {
-    "id": "auto:champignons:g",
-    "product_id": "champignons",
-    "name": "Шампиньоны",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 300,
-    "from_pantry": 0,
-    "to_buy": 300,
-    "buy_qty": 400,
-    "package": {
-     "size": 400,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
-      "recipe_name": "Шампиньоны, фаршированные сыром и зеленью",
-      "cook_date": "2026-10-21",
-      "qty": 300
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:yogurt_greek:g",
-    "product_id": "yogurt_greek",
-    "name": "Йогурт греческий 2%",
-    "department": "Молочные продукты и яйца",
-    "unit": "g",
-    "convertible": true,
-    "needed": 150,
-    "from_pantry": 0,
-    "to_buy": 150,
-    "buy_qty": 400,
-    "package": {
-     "size": 400,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
-      "cook_date": "2026-10-20",
-      "qty": 150
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:yogurt_plain:g",
-    "product_id": "yogurt_plain",
-    "name": "Йогурт натуральный 2%",
-    "department": "Молочные продукты и яйца",
-    "unit": "g",
-    "convertible": true,
-    "needed": 37.5,
-    "from_pantry": 0,
-    "to_buy": 37.5,
-    "buy_qty": 300,
-    "package": {
-     "size": 300,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
-      "cook_date": "2026-10-20",
-      "qty": 37.5
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
     "id": "auto:butter:g",
     "product_id": "butter",
     "name": "Масло сливочное 82,5%",
     "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 42.5,
+    "needed": 27.5,
     "from_pantry": 0,
-    "to_buy": 42.5,
+    "to_buy": 27.5,
     "buy_qty": 180,
     "package": {
      "size": 180,
@@ -1363,24 +1397,56 @@
     "sources": [
      {
       "batch_id": "b1",
-      "recipe_id": "yaytso-v-hlebe",
-      "recipe_name": "Яйцо в хлебе",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
       "cook_date": "2026-10-19",
-      "qty": 15
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
-      "cook_date": "2026-10-21",
       "qty": 20
      },
      {
-      "batch_id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
-      "recipe_name": "Шампиньоны, фаршированные сыром и зеленью",
-      "cook_date": "2026-10-21",
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
+      "cook_date": "2026-10-20",
       "qty": 7.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cream_10:ml",
+    "product_id": "cream_10",
+    "name": "Сливки 10%",
+    "department": "Молочные продукты и яйца",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 150,
+    "from_pantry": 0,
+    "to_buy": 150,
+    "buy_qty": 200,
+    "package": {
+     "size": 200,
+     "unit": "ml",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
+      "cook_date": "2026-10-20",
+      "qty": 150
      }
     ],
     "purchased": false,
@@ -1395,9 +1461,9 @@
     "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 70,
+    "needed": 50,
     "from_pantry": 0,
-    "to_buy": 70,
+    "to_buy": 50,
     "buy_qty": 300,
     "package": {
      "size": 300,
@@ -1420,13 +1486,6 @@
       "recipe_name": "Тако с говяжьим фаршем",
       "cook_date": "2026-10-21",
       "qty": 50
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
-      "recipe_name": "Шампиньоны, фаршированные сыром и зеленью",
-      "cook_date": "2026-10-21",
-      "qty": 20
      }
     ],
     "purchased": false,
@@ -1435,15 +1494,15 @@
     "changed": false
    },
    {
-    "id": "auto:cheese_hard:g",
-    "product_id": "cheese_hard",
-    "name": "Сыр полутвёрдый",
+    "id": "auto:feta:g",
+    "product_id": "feta",
+    "name": "Сыр фета",
     "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 96.666667,
+    "needed": 146.666667,
     "from_pantry": 0,
-    "to_buy": 96.666667,
+    "to_buy": 146.666667,
     "buy_qty": 200,
     "package": {
      "size": 200,
@@ -1462,24 +1521,17 @@
     "sources": [
      {
       "batch_id": "b1",
-      "recipe_id": "yaytso-v-hlebe",
-      "recipe_name": "Яйцо в хлебе",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
       "cook_date": "2026-10-19",
-      "qty": 20
+      "qty": 80
      },
      {
       "batch_id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
-      "recipe_name": "Творожные лепёшки с зеленью",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
       "cook_date": "2026-10-19",
-      "qty": 26.666667
-     },
-     {
-      "batch_id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
-      "recipe_name": "Шампиньоны, фаршированные сыром и зеленью",
-      "cook_date": "2026-10-21",
-      "qty": 50
+      "qty": 66.666667
      }
     ],
     "purchased": false,
@@ -1494,9 +1546,9 @@
     "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 40,
+    "needed": 100,
     "from_pantry": 0,
-    "to_buy": 40,
+    "to_buy": 100,
     "buy_qty": 200,
     "package": {
      "size": 200,
@@ -1513,6 +1565,13 @@
     "purchase_cost_kop": null,
     "usage_cost_kop": null,
     "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
+      "cook_date": "2026-10-21",
+      "qty": 60
+     },
      {
       "batch_id": "b11",
       "recipe_id": "tako-s-govyazhim-farshem",
@@ -1527,19 +1586,19 @@
     "changed": false
    },
    {
-    "id": "auto:cottage_cheese:g",
-    "product_id": "cottage_cheese",
-    "name": "Творог 5%",
+    "id": "auto:eggs:pcs",
+    "product_id": "eggs",
+    "name": "Яйца куриные С1",
     "department": "Молочные продукты и яйца",
-    "unit": "g",
+    "unit": "pcs",
     "convertible": true,
-    "needed": 166.666667,
+    "needed": 9,
     "from_pantry": 0,
-    "to_buy": 166.666667,
-    "buy_qty": 200,
+    "to_buy": 9,
+    "buy_qty": 10,
     "package": {
-     "size": 200,
-     "unit": "g",
+     "size": 10,
+     "unit": "pcs",
      "count": 1
     },
     "package_note": null,
@@ -1553,71 +1612,25 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
-      "recipe_name": "Творожные лепёшки с зеленью",
-      "cook_date": "2026-10-19",
-      "qty": 166.666667
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:eggs:pcs",
-    "product_id": "eggs",
-    "name": "Яйца куриные С1",
-    "department": "Молочные продукты и яйца",
-    "unit": "pcs",
-    "convertible": true,
-    "needed": 10.666667,
-    "from_pantry": 0,
-    "to_buy": 10.666667,
-    "buy_qty": 20,
-    "package": {
-     "size": 10,
-     "unit": "pcs",
-     "count": 2
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
       "batch_id": "b1",
-      "recipe_id": "yaytso-v-hlebe",
-      "recipe_name": "Яйцо в хлебе",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
       "cook_date": "2026-10-19",
-      "qty": 2
-     },
-     {
-      "batch_id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
-      "recipe_name": "Творожные лепёшки с зеленью",
-      "cook_date": "2026-10-19",
-      "qty": 0.666667
+      "qty": 4
      },
      {
       "batch_id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
-      "recipe_name": "Яичница с помидорами и луком",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
       "cook_date": "2026-10-20",
-      "qty": 4
+      "qty": 2
      },
      {
       "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
       "cook_date": "2026-10-21",
-      "qty": 4
+      "qty": 3
      }
     ],
     "purchased": false,
@@ -1675,15 +1688,15 @@
     "changed": false
    },
    {
-    "id": "auto:chicken_breast:g",
-    "product_id": "chicken_breast",
-    "name": "Куриное филе",
+    "id": "auto:turkey_breast:g",
+    "product_id": "turkey_breast",
+    "name": "Индейка, филе грудки",
     "department": "Мясо и птица",
     "unit": "g",
     "convertible": true,
-    "needed": 125,
+    "needed": 250,
     "from_pantry": 0,
-    "to_buy": 125,
+    "to_buy": 250,
     "buy_qty": 500,
     "package": {
      "size": 500,
@@ -1701,11 +1714,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
       "cook_date": "2026-10-20",
-      "qty": 125
+      "qty": 250
      }
     ],
     "purchased": false,
@@ -1740,10 +1753,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b4",
       "recipe_id": "sloppi-dzho",
       "recipe_name": "Слоппи джо",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-19",
       "qty": 250
      },
      {
@@ -1760,21 +1773,17 @@
     "changed": false
    },
    {
-    "id": "auto:walnuts:g",
-    "product_id": "walnuts",
-    "name": "Грецкие орехи",
-    "department": "Бакалея",
+    "id": "auto:salmon_steak:g",
+    "product_id": "salmon_steak",
+    "name": "Сёмга, стейк",
+    "department": "Рыба",
     "unit": "g",
     "convertible": true,
-    "needed": 40,
+    "needed": 250,
     "from_pantry": 0,
-    "to_buy": 40,
-    "buy_qty": 100,
-    "package": {
-     "size": 100,
-     "unit": "g",
-     "count": 1
-    },
+    "to_buy": 250,
+    "buy_qty": 250,
+    "package": null,
     "package_note": null,
     "price_kop": null,
     "price_per": null,
@@ -1786,11 +1795,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
-      "cook_date": "2026-10-21",
-      "qty": 40
+      "batch_id": "b7",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 250
      }
     ],
     "purchased": false,
@@ -1799,18 +1808,18 @@
     "changed": false
    },
    {
-    "id": "auto:wheat_flour:g",
-    "product_id": "wheat_flour",
-    "name": "Мука пшеничная",
+    "id": "auto:bulgur_dry:g",
+    "product_id": "bulgur_dry",
+    "name": "Булгур",
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 25.333333,
+    "needed": 50,
     "from_pantry": 0,
-    "to_buy": 25.333333,
-    "buy_qty": 1000,
+    "to_buy": 50,
+    "buy_qty": 500,
     "package": {
-     "size": 1000,
+     "size": 500,
      "unit": "g",
      "count": 1
     },
@@ -1825,18 +1834,128 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
-      "recipe_name": "Творожные лепёшки с зеленью",
-      "cook_date": "2026-10-19",
-      "qty": 21.333333
-     },
+      "batch_id": "b7",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 50
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:tahini:g",
+    "product_id": "tahini",
+    "name": "Кунжутная паста (тахини)",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 30,
+    "from_pantry": 0,
+    "to_buy": 30,
+    "buy_qty": 300,
+    "package": {
+     "size": 300,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
      {
-      "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "batch_id": "b5",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
+      "cook_date": "2026-10-20",
+      "qty": 30
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:penne_dry:g",
+    "product_id": "penne_dry",
+    "name": "Макароны перья (пенне)",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 150,
+    "from_pantry": 0,
+    "to_buy": 150,
+    "buy_qty": 450,
+    "package": {
+     "size": 450,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
+      "cook_date": "2026-10-20",
+      "qty": 150
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:honey:g",
+    "product_id": "honey",
+    "name": "Мёд",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 42,
+    "from_pantry": 0,
+    "to_buy": 42,
+    "buy_qty": 250,
+    "package": {
+     "size": 250,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b1",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
       "cook_date": "2026-10-19",
-      "qty": 4
+      "qty": 42
      }
     ],
     "purchased": false,
@@ -1910,10 +2029,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b4",
       "recipe_id": "sloppi-dzho",
       "recipe_name": "Слоппи джо",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-19",
       "qty": 2
      }
     ],
@@ -1923,21 +2042,17 @@
     "changed": false
    },
    {
-    "id": "auto:soy_mince:g",
-    "product_id": "soy_mince",
-    "name": "Соевое мясо (текстурат) сухое",
-    "department": "Бакалея",
+    "id": "auto:baguette:g",
+    "product_id": "baguette",
+    "name": "Багет",
+    "department": "Хлеб",
     "unit": "g",
     "convertible": true,
-    "needed": 75,
+    "needed": 100,
     "from_pantry": 0,
-    "to_buy": 75,
-    "buy_qty": 150,
-    "package": {
-     "size": 150,
-     "unit": "g",
-     "count": 1
-    },
+    "to_buy": 100,
+    "buy_qty": 100,
+    "package": null,
     "package_note": null,
     "price_kop": null,
     "price_per": null,
@@ -1949,11 +2064,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "batch_id": "b1",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
       "cook_date": "2026-10-19",
-      "qty": 75
+      "qty": 100
      }
     ],
     "purchased": false,
@@ -1988,10 +2103,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b4",
       "recipe_id": "sloppi-dzho",
       "recipe_name": "Слоппи джо",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-19",
       "qty": 150
      }
     ],
@@ -2001,18 +2116,18 @@
     "changed": false
    },
    {
-    "id": "auto:lavash:g",
-    "product_id": "lavash",
-    "name": "Лаваш тонкий",
+    "id": "auto:pita:g",
+    "product_id": "pita",
+    "name": "Пита",
     "department": "Хлеб",
     "unit": "g",
     "convertible": true,
-    "needed": 90,
+    "needed": 120,
     "from_pantry": 0,
-    "to_buy": 90,
-    "buy_qty": 270,
+    "to_buy": 120,
+    "buy_qty": 360,
     "package": {
-     "size": 270,
+     "size": 360,
      "unit": "g",
      "count": 1
     },
@@ -2027,11 +2142,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
+      "batch_id": "b5",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
       "cook_date": "2026-10-20",
-      "qty": 90
+      "qty": 120
      }
     ],
     "purchased": false,
@@ -2079,18 +2194,18 @@
     "changed": false
    },
    {
-    "id": "auto:toast_bread:g",
-    "product_id": "toast_bread",
-    "name": "Хлеб для тостов",
+    "id": "auto:tortilla_wheat:g",
+    "product_id": "tortilla_wheat",
+    "name": "Тортилья пшеничная",
     "department": "Хлеб",
     "unit": "g",
     "convertible": true,
-    "needed": 50,
+    "needed": 80,
     "from_pantry": 0,
-    "to_buy": 50,
-    "buy_qty": 500,
+    "to_buy": 80,
+    "buy_qty": 240,
     "package": {
-     "size": 500,
+     "size": 240,
      "unit": "g",
      "count": 1
     },
@@ -2105,11 +2220,89 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
-      "recipe_id": "yaytso-v-hlebe",
-      "recipe_name": "Яйцо в хлебе",
-      "cook_date": "2026-10-19",
-      "qty": 50
+      "batch_id": "b10",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
+      "cook_date": "2026-10-21",
+      "qty": 80
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:bread_wholegrain:g",
+    "product_id": "bread_wholegrain",
+    "name": "Хлеб цельнозерновой",
+    "department": "Хлеб",
+    "unit": "g",
+    "convertible": true,
+    "needed": 60,
+    "from_pantry": 0,
+    "to_buy": 60,
+    "buy_qty": 400,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
+      "cook_date": "2026-10-21",
+      "qty": 60
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:grain_mustard:g",
+    "product_id": "grain_mustard",
+    "name": "Горчица зернистая",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 7.5,
+    "from_pantry": 0,
+    "to_buy": 7.5,
+    "buy_qty": 170,
+    "package": {
+     "size": 170,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
+      "cook_date": "2026-10-20",
+      "qty": 7.5
      }
     ],
     "purchased": false,
@@ -2124,9 +2317,9 @@
     "department": "Консервы и соусы",
     "unit": "g",
     "convertible": true,
-    "needed": 3,
+    "needed": 6,
     "from_pantry": 0,
-    "to_buy": 3,
+    "to_buy": 6,
     "buy_qty": 100,
     "package": {
      "size": 100,
@@ -2144,9 +2337,16 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b4",
       "recipe_id": "sloppi-dzho",
       "recipe_name": "Слоппи джо",
+      "cook_date": "2026-10-19",
+      "qty": 3
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
       "cook_date": "2026-10-20",
       "qty": 3
      }
@@ -2183,10 +2383,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
+      "batch_id": "b4",
       "recipe_id": "sloppi-dzho",
       "recipe_name": "Слоппи джо",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-19",
       "qty": 34
      }
     ],
@@ -2196,19 +2396,19 @@
     "changed": false
    },
    {
-    "id": "auto:soy_sauce:ml",
-    "product_id": "soy_sauce",
-    "name": "Соевый соус",
+    "id": "auto:olives:g",
+    "product_id": "olives",
+    "name": "Маслины без косточки",
     "department": "Консервы и соусы",
-    "unit": "ml",
+    "unit": "g",
     "convertible": true,
-    "needed": 13.675214,
+    "needed": 50,
     "from_pantry": 0,
-    "to_buy": 13.675214,
-    "buy_qty": 150,
+    "to_buy": 50,
+    "buy_qty": 300,
     "package": {
-     "size": 150,
-     "unit": "ml",
+     "size": 300,
+     "unit": "g",
      "count": 1
     },
     "package_note": null,
@@ -2222,11 +2422,89 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "batch_id": "b1",
+      "recipe_id": "turetskiy-zavtrak",
+      "recipe_name": "Турецкий завтрак с яйцами, сыром и овощами",
       "cook_date": "2026-10-19",
-      "qty": 13.675214
+      "qty": 50
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:chickpeas_canned:g",
+    "product_id": "chickpeas_canned",
+    "name": "Нут консервированный",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 266.666667,
+    "from_pantry": 0,
+    "to_buy": 266.666667,
+    "buy_qty": 400,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b8",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 266.666667
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:salsa:g",
+    "product_id": "salsa",
+    "name": "Соус сальса",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 51,
+    "from_pantry": 0,
+    "to_buy": 51,
+    "buy_qty": 300,
+    "package": {
+     "size": 300,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b10",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
+      "cook_date": "2026-10-21",
+      "qty": 51
      }
     ],
     "purchased": false,
@@ -2241,9 +2519,9 @@
     "department": "Консервы и соусы",
     "unit": "g",
     "convertible": true,
-    "needed": 50.666667,
+    "needed": 34.666667,
     "from_pantry": 0,
-    "to_buy": 50.666667,
+    "to_buy": 34.666667,
     "buy_qty": 140,
     "package": {
      "size": 140,
@@ -2269,10 +2547,10 @@
      },
      {
       "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "recipe_id": "sloppi-dzho",
+      "recipe_name": "Слоппи джо",
       "cook_date": "2026-10-19",
-      "qty": 16
+      "qty": 8
      },
      {
       "batch_id": "b6",
@@ -2280,13 +2558,6 @@
       "recipe_name": "Борщ с говядиной",
       "cook_date": "2026-10-20",
       "qty": 5.333333
-     },
-     {
-      "batch_id": "b9",
-      "recipe_id": "sloppi-dzho",
-      "recipe_name": "Слоппи джо",
-      "cook_date": "2026-10-20",
-      "qty": 8
      },
      {
       "batch_id": "b11",
@@ -2354,9 +2625,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 0.433333,
+    "needed": 0.233333,
     "from_pantry": 0,
-    "to_buy": 0.433333,
+    "to_buy": 0.233333,
     "buy_qty": 10,
     "package": {
      "size": 10,
@@ -2381,13 +2652,6 @@
       "qty": 0.166667
      },
      {
-      "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
-      "cook_date": "2026-10-19",
-      "qty": 0.2
-     },
-     {
       "batch_id": "b6",
       "recipe_id": "borshch-s-govyadinoy",
       "recipe_name": "Борщ с говядиной",
@@ -2407,9 +2671,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 7.417582,
+    "needed": 38.324176,
     "from_pantry": 0,
-    "to_buy": 7.417582,
+    "to_buy": 38.324176,
     "buy_qty": 500,
     "package": {
      "size": 500,
@@ -2427,9 +2691,23 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b7",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 11.126374
+     },
+     {
       "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 19.78022
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
       "cook_date": "2026-10-20",
       "qty": 7.417582
      }
@@ -2446,9 +2724,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 121.956522,
+    "needed": 170,
     "from_pantry": 0,
-    "to_buy": 121.956522,
+    "to_buy": 170,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -2474,24 +2752,24 @@
      },
      {
       "batch_id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
-      "recipe_name": "Творожные лепёшки с зеленью",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
       "cook_date": "2026-10-19",
       "qty": 19.710145
      },
      {
       "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "recipe_id": "sloppi-dzho",
+      "recipe_name": "Слоппи джо",
       "cook_date": "2026-10-19",
-      "qty": 22.173913
+      "qty": 7.391304
      },
      {
       "batch_id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
-      "recipe_name": "Яичница с помидорами и луком",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
       "cook_date": "2026-10-20",
-      "qty": 14.782609
+      "qty": 59.130435
      },
      {
       "batch_id": "b6",
@@ -2501,18 +2779,11 @@
       "qty": 4.927536
      },
      {
-      "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
-      "cook_date": "2026-10-20",
-      "qty": 3.695652
-     },
-     {
-      "batch_id": "b9",
-      "recipe_id": "sloppi-dzho",
-      "recipe_name": "Слоппи джо",
-      "cook_date": "2026-10-20",
-      "qty": 7.391304
+      "batch_id": "b10",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
+      "cook_date": "2026-10-21",
+      "qty": 29.565217
      },
      {
       "batch_id": "b11",
@@ -2619,58 +2890,12 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 2.875,
+    "needed": 1.15,
     "from_pantry": 0,
-    "to_buy": 2.875,
+    "to_buy": 1.15,
     "buy_qty": 50,
     "package": {
      "size": 50,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
-      "cook_date": "2026-10-19",
-      "qty": 2.3
-     },
-     {
-      "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
-      "cook_date": "2026-10-20",
-      "qty": 0.575
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:hot_pepper_ground:g",
-    "product_id": "hot_pepper_ground",
-    "name": "Перец красный жгучий молотый",
-    "department": "Масла и специи",
-    "unit": "g",
-    "convertible": true,
-    "needed": 0.1,
-    "from_pantry": 0,
-    "to_buy": 0.1,
-    "buy_qty": 20,
-    "package": {
-     "size": 20,
      "unit": "g",
      "count": 1
     },
@@ -2686,10 +2911,10 @@
     "sources": [
      {
       "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
       "cook_date": "2026-10-21",
-      "qty": 0.1
+      "qty": 1.15
      }
     ],
     "purchased": false,
@@ -2704,9 +2929,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 0.6,
+    "needed": 0.4,
     "from_pantry": 0,
-    "to_buy": 0.6,
+    "to_buy": 0.4,
     "buy_qty": 50,
     "package": {
      "size": 50,
@@ -2725,24 +2950,24 @@
     "sources": [
      {
       "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "recipe_id": "sloppi-dzho",
+      "recipe_name": "Слоппи джо",
       "cook_date": "2026-10-19",
       "qty": 0.2
      },
      {
-      "batch_id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
-      "recipe_name": "Яичница с помидорами и луком",
+      "batch_id": "b7",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
       "cook_date": "2026-10-20",
-      "qty": 0.2
+      "qty": 0.1
      },
      {
       "batch_id": "b9",
-      "recipe_id": "sloppi-dzho",
-      "recipe_name": "Слоппи джо",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
       "cook_date": "2026-10-20",
-      "qty": 0.2
+      "qty": 0.1
      }
     ],
     "purchased": false,
@@ -2757,9 +2982,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 25.333333,
+    "needed": 29,
     "from_pantry": 0,
-    "to_buy": 25.333333,
+    "to_buy": 29,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -2777,13 +3002,6 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b1",
-      "recipe_id": "yaytso-v-hlebe",
-      "recipe_name": "Яйцо в хлебе",
-      "cook_date": "2026-10-19",
-      "qty": 0.5
-     },
-     {
       "batch_id": "b2",
       "recipe_id": "borshch-s-govyadinoy",
       "recipe_name": "Борщ с говядиной",
@@ -2792,24 +3010,24 @@
      },
      {
       "batch_id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
-      "recipe_name": "Творожные лепёшки с зеленью",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
       "cook_date": "2026-10-19",
       "qty": 0.333333
      },
      {
       "batch_id": "b4",
-      "recipe_id": "gulyash-iz-soevogo-myasa",
-      "recipe_name": "Гуляш из соевого мяса с овощами",
+      "recipe_id": "sloppi-dzho",
+      "recipe_name": "Слоппи джо",
       "cook_date": "2026-10-19",
-      "qty": 1.5
+      "qty": 3
      },
      {
       "batch_id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
-      "recipe_name": "Яичница с помидорами и луком",
+      "recipe_id": "sabih",
+      "recipe_name": "Сабих",
       "cook_date": "2026-10-20",
-      "qty": 1
+      "qty": 0.5
      },
      {
       "batch_id": "b6",
@@ -2820,29 +3038,29 @@
      },
      {
       "batch_id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
-      "recipe_name": "Шаурма домашняя с курицей",
-      "cook_date": "2026-10-20",
-      "qty": 1.5
-     },
-     {
-      "batch_id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
-      "recipe_name": "Цацики с овощными палочками",
-      "cook_date": "2026-10-20",
-      "qty": 0.5
-     },
-     {
-      "batch_id": "b9",
-      "recipe_id": "sloppi-dzho",
-      "recipe_name": "Слоппи джо",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
       "cook_date": "2026-10-20",
       "qty": 3
      },
      {
+      "batch_id": "b8",
+      "recipe_id": "salat-s-nutom",
+      "recipe_name": "Салат с нутом и свежими овощами",
+      "cook_date": "2026-10-20",
+      "qty": 0.666667
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
+      "recipe_name": "Индейка в сливочно-горчичном соусе с пенне",
+      "cook_date": "2026-10-20",
+      "qty": 4.5
+     },
+     {
       "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
+      "recipe_name": "Буррито с яйцом и картофелем",
       "cook_date": "2026-10-21",
       "qty": 0.5
      },
@@ -2855,8 +3073,8 @@
      },
      {
       "batch_id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
-      "recipe_name": "Шампиньоны, фаршированные сыром и зеленью",
+      "recipe_id": "guakamole-s-tostami",
+      "recipe_name": "Гуакамоле с хлебцами",
       "cook_date": "2026-10-21",
       "qty": 0.5
      },
@@ -2874,19 +3092,19 @@
     "changed": false
    },
    {
-    "id": "auto:khmeli_suneli:g",
-    "product_id": "khmeli_suneli",
-    "name": "Хмели-сунели",
+    "id": "auto:vinegar:ml",
+    "product_id": "vinegar",
+    "name": "Уксус столовый 9 %",
     "department": "Масла и специи",
-    "unit": "g",
+    "unit": "ml",
     "convertible": true,
-    "needed": 1,
+    "needed": 3.30033,
     "from_pantry": 0,
-    "to_buy": 1,
-    "buy_qty": 20,
+    "to_buy": 3.30033,
+    "buy_qty": 500,
     "package": {
-     "size": 20,
-     "unit": "g",
+     "size": 500,
+     "unit": "ml",
      "count": 1
     },
     "package_note": null,
@@ -2900,11 +3118,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b10",
-      "recipe_id": "chirbuli",
-      "recipe_name": "Чирбули",
-      "cook_date": "2026-10-21",
-      "qty": 1
+      "batch_id": "b3",
+      "recipe_id": "shopskiy-salat",
+      "recipe_name": "Шопский салат",
+      "cook_date": "2026-10-19",
+      "qty": 3.30033
      }
     ],
     "purchased": false,
@@ -2920,11 +3138,15 @@
    "complete": false,
    "estimated": false,
    "missing_prices": [
-    "auto:toast_bread:g",
     "auto:eggs:pcs",
+    "auto:feta:g",
+    "auto:cucumber:g",
+    "auto:tomato:g",
+    "auto:olives:g",
+    "auto:honey:g",
     "auto:butter:g",
-    "auto:cheese_hard:g",
-    "auto:salt:g",
+    "auto:baguette:g",
+    "auto:parsley:g",
     "auto:beef:g",
     "auto:beet:g",
     "auto:cabbage:g",
@@ -2934,41 +3156,43 @@
     "auto:tomato_paste:g",
     "auto:sunflower_oil:ml",
     "auto:bay_leaf:g",
-    "auto:cottage_cheese:g",
-    "auto:wheat_flour:g",
-    "auto:dill:g",
-    "auto:soy_mince:g",
+    "auto:salt:g",
     "auto:bell_pepper:g",
-    "auto:garlic:g",
-    "auto:paprika:g",
-    "auto:soy_sauce:ml",
-    "auto:black_pepper:g",
-    "auto:tomato:g",
-    "auto:lavash:g",
-    "auto:chicken_breast:g",
-    "auto:cucumber:g",
-    "auto:yogurt_plain:g",
-    "auto:yogurt_greek:g",
-    "auto:olive_oil:ml",
-    "auto:lemon:g",
+    "auto:vinegar:ml",
     "auto:beef_mince:g",
+    "auto:garlic:g",
     "auto:ketchup:g",
     "auto:mustard:g",
     "auto:cane_sugar:g",
+    "auto:black_pepper:g",
     "auto:burger_buns:g",
-    "auto:walnuts:g",
-    "auto:cilantro:g",
-    "auto:khmeli_suneli:g",
-    "auto:hot_pepper_ground:g",
+    "auto:pita:g",
+    "auto:eggplant:g",
+    "auto:tahini:g",
+    "auto:lemon:g",
+    "auto:salmon_steak:g",
+    "auto:bulgur_dry:g",
+    "auto:mint:g",
+    "auto:olive_oil:ml",
+    "auto:chickpeas_canned:g",
+    "auto:turkey_breast:g",
+    "auto:penne_dry:g",
+    "auto:cream_10:ml",
+    "auto:grain_mustard:g",
+    "auto:tortilla_wheat:g",
+    "auto:cheddar:g",
+    "auto:paprika:g",
+    "auto:salsa:g",
     "auto:tortilla_corn:g",
     "auto:cumin:g",
     "auto:smoked_paprika:g",
     "auto:oregano_dried:g",
     "auto:iceberg_lettuce:g",
-    "auto:cheddar:g",
     "auto:sour_cream:g",
     "auto:lime:g",
-    "auto:champignons:g",
+    "auto:cilantro:g",
+    "auto:avocado:g",
+    "auto:bread_wholegrain:g",
     "auto:rice_white_dry:g"
    ]
   },
@@ -2991,103 +3215,100 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 1065.1446833333334,
+       "value": 1669.87215,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 70.68413666666666,
+       "value": 80.36201333333332,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 59.468758333333334,
+       "value": 92.86784166666666,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 63.73512333333333,
+       "value": 131.96721,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 13.596491666666667,
+       "value": 13.511541666666666,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 586.6731666666667,
+       "value": 674.2663333333333,
        "complete": false,
        "missing": [
+        "olives",
         "bay_leaf",
-        "soy_mince",
+        "mustard",
         "black_pepper"
        ]
       },
       "vit_c": {
-       "value": 77.74628333333334,
+       "value": 168.58753333333334,
        "complete": false,
        "missing": [
         "bay_leaf",
-        "soy_mince",
+        "mustard",
         "black_pepper"
        ]
       },
       "vit_d": {
-       "value": 1.5010666666666665,
+       "value": 2.3349333333333333,
        "complete": false,
        "missing": [
         "butter",
         "beef",
-        "cottage_cheese",
-        "soy_mince"
+        "beef_mince"
        ]
       },
       "vit_e": {
-       "value": 12.509023333333332,
+       "value": 12.330903333333332,
        "complete": false,
        "missing": [
-        "toast_bread",
-        "cheese_hard",
+        "baguette",
         "bay_leaf",
-        "cottage_cheese",
-        "dill",
-        "soy_mince",
-        "black_pepper"
+        "mustard",
+        "black_pepper",
+        "burger_buns"
        ]
       },
       "vit_b6": {
-       "value": 1.0871039999999998,
+       "value": 2.040849333333333,
        "complete": false,
        "missing": [
-        "toast_bread",
+        "baguette",
         "bay_leaf",
-        "soy_mince",
-        "soy_sauce",
-        "black_pepper"
+        "mustard",
+        "black_pepper",
+        "burger_buns"
        ]
       },
       "vit_b12": {
-       "value": 3.885091333333333,
+       "value": 6.873178666666666,
        "complete": false,
        "missing": [
-        "toast_bread",
-        "soy_mince"
+        "burger_buns"
        ]
       },
       "folate": {
-       "value": 180.63881666666666,
+       "value": 252.83385,
        "complete": false,
        "missing": [
-        "toast_bread",
+        "baguette",
         "bay_leaf",
-        "soy_mince",
-        "soy_sauce",
-        "black_pepper"
+        "mustard",
+        "black_pepper",
+        "burger_buns"
        ]
       }
      },
-     "portion_mass_g": 1020.8333333333334,
+     "portion_mass_g": 1350,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3096,103 +3317,100 @@
      "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 1234.9511083333332,
+       "value": 1706.8945333333331,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 71.01735500000001,
+       "value": 84.78714000000002,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 68.4356875,
+       "value": 85.24335,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 84.84774333333334,
+       "value": 156.28226333333333,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 10.910779166666666,
+       "value": 22.065816666666667,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 730.4359166666668,
+       "value": 327.9281666666667,
        "complete": false,
        "missing": [
-        "black_pepper",
         "bay_leaf",
-        "yogurt_greek",
-        "mustard"
+        "cream_10",
+        "grain_mustard",
+        "mustard",
+        "black_pepper"
        ]
       },
       "vit_c": {
-       "value": 136.30988333333335,
+       "value": 83.26263333333334,
        "complete": false,
        "missing": [
-        "black_pepper",
         "bay_leaf",
-        "yogurt_greek",
-        "mustard"
+        "cream_10",
+        "grain_mustard",
+        "mustard",
+        "black_pepper"
        ]
       },
       "vit_d": {
-       "value": 2.0416,
+       "value": 1.1458,
        "complete": false,
        "missing": [
         "beef",
-        "yogurt_greek",
-        "beef_mince"
+        "cream_10",
+        "butter"
        ]
       },
       "vit_e": {
-       "value": 10.663396666666666,
+       "value": 17.93036416666667,
        "complete": false,
        "missing": [
-        "black_pepper",
-        "dill",
         "bay_leaf",
-        "yogurt_greek",
+        "cream_10",
+        "grain_mustard",
         "mustard",
-        "burger_buns"
+        "black_pepper"
        ]
       },
       "vit_b6": {
-       "value": 1.6560143333333333,
+       "value": 2.6428763333333327,
        "complete": false,
        "missing": [
-        "black_pepper",
         "bay_leaf",
-        "yogurt_greek",
+        "grain_mustard",
         "mustard",
-        "burger_buns"
+        "black_pepper"
        ]
       },
       "vit_b12": {
-       "value": 5.616845333333333,
-       "complete": false,
-       "missing": [
-        "yogurt_greek",
-        "burger_buns"
-       ]
+       "value": 3.320464333333333,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 206.07655833333334,
+       "value": 275.2536333333333,
        "complete": false,
        "missing": [
-        "black_pepper",
+        "pita",
         "bay_leaf",
-        "yogurt_greek",
+        "grain_mustard",
         "mustard",
-        "burger_buns"
+        "black_pepper"
        ]
       }
      },
-     "portion_mass_g": 1087.5,
+     "portion_mass_g": 1462.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3201,91 +3419,88 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 1984.694775,
+       "value": 2190.3333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 94.42145499999998,
+       "value": 94.49975999999998,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 115.21923749999999,
+       "value": 117.158175,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 149.25188500000002,
+       "value": 194.59767,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 19.3972875,
+       "value": 25.403925000000005,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 1210.3319999999999,
+       "value": 987.32675,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "cumin"
        ]
       },
       "vit_c": {
-       "value": 138.91145000000003,
+       "value": 116.889125,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "cumin"
        ]
       },
       "vit_d": {
-       "value": 2.5966,
+       "value": 1.8312,
        "complete": false,
        "missing": [
-        "butter",
         "beef_mince",
         "sour_cream",
         "beef"
        ]
       },
       "vit_e": {
-       "value": 12.80185,
+       "value": 18.396245,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "cumin",
-        "sour_cream",
-        "dill",
-        "cheese_hard"
+        "sour_cream"
        ]
       },
       "vit_b6": {
-       "value": 2.4983835,
+       "value": 2.5897295,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "cumin"
        ]
       },
       "vit_b12": {
-       "value": 7.384887,
+       "value": 6.921384,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 243.52897500000003,
+       "value": 245.33270000000002,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "tortilla_corn",
         "cumin"
        ]
       }
      },
-     "portion_mass_g": 1165,
+     "portion_mass_g": 1170,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3293,127 +3508,117 @@
    ],
    "period": {
     "kcal": {
-     "value": 4284.790566666667,
+     "value": 5567.0999833333335,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 236.12294666666665,
+     "value": 259.6489133333333,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 243.12368333333333,
+     "value": 295.26936666666666,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 297.83475166666665,
+     "value": 482.8471433333333,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 43.904558333333334,
+     "value": 60.98128333333334,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 2527.441083333333,
+     "value": 1989.5212499999998,
      "complete": false,
      "missing": [
+      "olives",
       "bay_leaf",
-      "soy_mince",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
-      "khmeli_suneli",
+      "black_pepper",
+      "cream_10",
+      "grain_mustard",
+      "salsa",
       "cumin"
      ]
     },
     "vit_c": {
-     "value": 352.9676166666667,
+     "value": 368.73929166666665,
      "complete": false,
      "missing": [
       "bay_leaf",
-      "soy_mince",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
-      "khmeli_suneli",
+      "black_pepper",
+      "cream_10",
+      "grain_mustard",
+      "salsa",
       "cumin"
      ]
     },
     "vit_d": {
-     "value": 6.139266666666666,
+     "value": 5.311933333333333,
      "complete": false,
      "missing": [
       "butter",
       "beef",
-      "cottage_cheese",
-      "soy_mince",
-      "yogurt_greek",
       "beef_mince",
+      "cream_10",
       "sour_cream"
      ]
     },
     "vit_e": {
-     "value": 35.97427,
+     "value": 48.6575125,
      "complete": false,
      "missing": [
-      "toast_bread",
-      "cheese_hard",
+      "baguette",
       "bay_leaf",
-      "cottage_cheese",
-      "dill",
-      "soy_mince",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
+      "black_pepper",
       "burger_buns",
-      "khmeli_suneli",
+      "cream_10",
+      "grain_mustard",
+      "salsa",
       "cumin",
       "sour_cream"
      ]
     },
     "vit_b6": {
-     "value": 5.241501833333333,
+     "value": 7.273455166666666,
      "complete": false,
      "missing": [
-      "toast_bread",
+      "baguette",
       "bay_leaf",
-      "soy_mince",
-      "soy_sauce",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
+      "black_pepper",
       "burger_buns",
-      "khmeli_suneli",
+      "grain_mustard",
+      "salsa",
       "cumin"
      ]
     },
     "vit_b12": {
-     "value": 16.886823666666665,
+     "value": 17.115026999999998,
      "complete": false,
      "missing": [
-      "toast_bread",
-      "soy_mince",
-      "yogurt_greek",
       "burger_buns"
      ]
     },
     "folate": {
-     "value": 630.24435,
+     "value": 773.4201833333334,
      "complete": false,
      "missing": [
-      "toast_bread",
+      "baguette",
       "bay_leaf",
-      "soy_mince",
-      "soy_sauce",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
+      "black_pepper",
       "burger_buns",
-      "khmeli_suneli",
+      "pita",
+      "grain_mustard",
+      "salsa",
       "tortilla_corn",
       "cumin"
      ]
@@ -3425,18 +3630,19 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2527.441083333333,
+     "period_value": 1989.5212499999998,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
+      "cream_10",
       "cumin",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "soy_mince",
-      "yogurt_greek"
+      "olives",
+      "salsa"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3446,18 +3652,18 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 352.9676166666667,
+     "period_value": 368.73929166666665,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
+      "cream_10",
       "cumin",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "soy_mince",
-      "yogurt_greek"
+      "salsa"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3467,7 +3673,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 6.139266666666666,
+     "period_value": 5.311933333333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3475,10 +3681,8 @@
       "beef",
       "beef_mince",
       "butter",
-      "cottage_cheese",
-      "sour_cream",
-      "soy_mince",
-      "yogurt_greek"
+      "cream_10",
+      "sour_cream"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3488,24 +3692,21 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 35.97427,
+     "period_value": 48.6575125,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "baguette",
       "bay_leaf",
       "black_pepper",
       "burger_buns",
-      "cheese_hard",
-      "cottage_cheese",
+      "cream_10",
       "cumin",
-      "dill",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "sour_cream",
-      "soy_mince",
-      "toast_bread",
-      "yogurt_greek"
+      "salsa",
+      "sour_cream"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3515,21 +3716,19 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 5.241501833333333,
+     "period_value": 7.273455166666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "baguette",
       "bay_leaf",
       "black_pepper",
       "burger_buns",
       "cumin",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "soy_mince",
-      "soy_sauce",
-      "toast_bread",
-      "yogurt_greek"
+      "salsa"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3539,15 +3738,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 16.886823666666665,
+     "period_value": 17.115026999999998,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "burger_buns",
-      "soy_mince",
-      "toast_bread",
-      "yogurt_greek"
+      "burger_buns"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3557,22 +3753,21 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 630.24435,
+     "period_value": 773.4201833333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "baguette",
       "bay_leaf",
       "black_pepper",
       "burger_buns",
       "cumin",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "soy_mince",
-      "soy_sauce",
-      "toast_bread",
-      "tortilla_corn",
-      "yogurt_greek"
+      "pita",
+      "salsa",
+      "tortilla_corn"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3587,103 +3782,100 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 1204.92835,
+       "value": 1809.6558166666666,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 79.96663666666666,
+       "value": 89.64451333333335,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 66.85745833333334,
+       "value": 100.25654166666666,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 73.27149,
+       "value": 141.50357666666667,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 15.653025,
+       "value": 15.568075,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 639.0865,
+       "value": 726.6796666666667,
        "complete": false,
        "missing": [
+        "olives",
         "bay_leaf",
-        "soy_mince",
+        "mustard",
         "black_pepper"
        ]
       },
       "vit_c": {
-       "value": 92.78475000000002,
+       "value": 183.626,
        "complete": false,
        "missing": [
         "bay_leaf",
-        "soy_mince",
+        "mustard",
         "black_pepper"
        ]
       },
       "vit_d": {
-       "value": 1.5010666666666665,
+       "value": 2.3349333333333333,
        "complete": false,
        "missing": [
         "butter",
         "beef",
-        "cottage_cheese",
-        "soy_mince"
+        "beef_mince"
        ]
       },
       "vit_e": {
-       "value": 13.719056666666665,
+       "value": 13.540936666666665,
        "complete": false,
        "missing": [
-        "toast_bread",
-        "cheese_hard",
+        "baguette",
         "bay_leaf",
-        "cottage_cheese",
-        "dill",
-        "soy_mince",
-        "black_pepper"
+        "mustard",
+        "black_pepper",
+        "burger_buns"
        ]
       },
       "vit_b6": {
-       "value": 1.3948506666666665,
+       "value": 2.3485959999999997,
        "complete": false,
        "missing": [
-        "toast_bread",
+        "baguette",
         "bay_leaf",
-        "soy_mince",
-        "soy_sauce",
-        "black_pepper"
+        "mustard",
+        "black_pepper",
+        "burger_buns"
        ]
       },
       "vit_b12": {
-       "value": 4.9267579999999995,
+       "value": 7.914845333333333,
        "complete": false,
        "missing": [
-        "toast_bread",
-        "soy_mince"
+        "burger_buns"
        ]
       },
       "folate": {
-       "value": 220.39848333333333,
+       "value": 292.5935166666667,
        "complete": false,
        "missing": [
-        "toast_bread",
+        "baguette",
         "bay_leaf",
-        "soy_mince",
-        "soy_sauce",
-        "black_pepper"
+        "mustard",
+        "black_pepper",
+        "burger_buns"
        ]
       }
      },
-     "portion_mass_g": 1270.8333333333335,
+     "portion_mass_g": 1600,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3692,99 +3884,95 @@
      "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 1440.137025,
+       "value": 2179.0281999999997,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 91.80763,
+       "value": 119.39904000000001,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 62.4108375,
+       "value": 111.64475000000002,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 125.38726,
+       "value": 180.85802999999999,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 10.9755625,
+       "value": 25.87105,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 683.8865000000001,
+       "value": 400.2415,
        "complete": false,
        "missing": [
         "black_pepper",
-        "yogurt_greek",
+        "cream_10",
+        "grain_mustard",
         "mustard"
        ]
       },
       "vit_c": {
-       "value": 132.218725,
+       "value": 88.00070000000001,
        "complete": false,
        "missing": [
         "black_pepper",
-        "yogurt_greek",
+        "cream_10",
+        "grain_mustard",
         "mustard"
        ]
       },
       "vit_d": {
-       "value": 2.0416,
+       "value": 25.8958,
        "complete": false,
        "missing": [
-        "chicken_breast",
-        "yogurt_plain",
-        "yogurt_greek",
-        "beef_mince"
+        "cream_10",
+        "butter"
        ]
       },
       "vit_e": {
-       "value": 11.177965,
+       "value": 25.362335,
        "complete": false,
        "missing": [
+        "mint",
         "black_pepper",
-        "dill",
-        "yogurt_greek",
-        "mustard",
-        "burger_buns"
+        "cream_10",
+        "grain_mustard",
+        "mustard"
        ]
       },
       "vit_b6": {
-       "value": 2.3120460000000005,
+       "value": 3.716533,
        "complete": false,
        "missing": [
         "black_pepper",
-        "yogurt_greek",
-        "mustard",
-        "burger_buns"
+        "grain_mustard",
+        "mustard"
        ]
       },
       "vit_b12": {
-       "value": 3.946012,
-       "complete": false,
-       "missing": [
-        "yogurt_greek",
-        "burger_buns"
-       ]
+       "value": 8.392131000000001,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 182.424225,
+       "value": 288.56929999999994,
        "complete": false,
        "missing": [
+        "pita",
         "black_pepper",
-        "yogurt_greek",
-        "mustard",
-        "burger_buns"
+        "grain_mustard",
+        "mustard"
        ]
       }
      },
-     "portion_mass_g": 837.5,
+     "portion_mass_g": 1387.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3793,91 +3981,88 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 1984.694775,
+       "value": 2190.3333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 94.42145499999998,
+       "value": 94.49975999999998,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 115.21923749999999,
+       "value": 117.158175,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 149.25188500000002,
+       "value": 194.59767,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 19.3972875,
+       "value": 25.403925000000005,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 1210.3319999999999,
+       "value": 987.32675,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "cumin"
        ]
       },
       "vit_c": {
-       "value": 138.91145000000003,
+       "value": 116.889125,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "cumin"
        ]
       },
       "vit_d": {
-       "value": 2.5966,
+       "value": 1.8312,
        "complete": false,
        "missing": [
-        "butter",
         "beef_mince",
         "sour_cream",
         "beef"
        ]
       },
       "vit_e": {
-       "value": 12.80185,
+       "value": 18.396245,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "cumin",
-        "sour_cream",
-        "dill",
-        "cheese_hard"
+        "sour_cream"
        ]
       },
       "vit_b6": {
-       "value": 2.4983835,
+       "value": 2.5897295,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "cumin"
        ]
       },
       "vit_b12": {
-       "value": 7.384887,
+       "value": 6.921384,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 243.52897500000003,
+       "value": 245.33270000000002,
        "complete": false,
        "missing": [
-        "khmeli_suneli",
+        "salsa",
         "tortilla_corn",
         "cumin"
        ]
       }
      },
-     "portion_mass_g": 1165,
+     "portion_mass_g": 1170,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3885,129 +4070,118 @@
    ],
    "period": {
     "kcal": {
-     "value": 4629.76015,
+     "value": 6179.017316666666,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 266.19572166666666,
+     "value": 303.54331333333334,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 244.48753333333335,
+     "value": 329.0594666666667,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 347.910635,
+     "value": 516.9592766666667,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 46.025875,
+     "value": 66.84305,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 2533.305,
+     "value": 2114.2479166666662,
      "complete": false,
      "missing": [
+      "olives",
       "bay_leaf",
-      "soy_mince",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
-      "khmeli_suneli",
+      "black_pepper",
+      "cream_10",
+      "grain_mustard",
+      "salsa",
       "cumin"
      ]
     },
     "vit_c": {
-     "value": 363.91492500000004,
+     "value": 388.51582500000006,
      "complete": false,
      "missing": [
       "bay_leaf",
-      "soy_mince",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
-      "khmeli_suneli",
+      "black_pepper",
+      "cream_10",
+      "grain_mustard",
+      "salsa",
       "cumin"
      ]
     },
     "vit_d": {
-     "value": 6.139266666666666,
+     "value": 30.061933333333332,
      "complete": false,
      "missing": [
       "butter",
       "beef",
-      "cottage_cheese",
-      "soy_mince",
-      "chicken_breast",
-      "yogurt_plain",
-      "yogurt_greek",
       "beef_mince",
+      "cream_10",
       "sour_cream"
      ]
     },
     "vit_e": {
-     "value": 37.69887166666667,
+     "value": 57.29951666666667,
      "complete": false,
      "missing": [
-      "toast_bread",
-      "cheese_hard",
+      "baguette",
       "bay_leaf",
-      "cottage_cheese",
-      "dill",
-      "soy_mince",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
+      "black_pepper",
       "burger_buns",
-      "khmeli_suneli",
+      "mint",
+      "cream_10",
+      "grain_mustard",
+      "salsa",
       "cumin",
       "sour_cream"
      ]
     },
     "vit_b6": {
-     "value": 6.205280166666667,
+     "value": 8.6548585,
      "complete": false,
      "missing": [
-      "toast_bread",
+      "baguette",
       "bay_leaf",
-      "soy_mince",
-      "soy_sauce",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
+      "black_pepper",
       "burger_buns",
-      "khmeli_suneli",
+      "grain_mustard",
+      "salsa",
       "cumin"
      ]
     },
     "vit_b12": {
-     "value": 16.257657,
+     "value": 23.228360333333335,
      "complete": false,
      "missing": [
-      "toast_bread",
-      "soy_mince",
-      "yogurt_greek",
       "burger_buns"
      ]
     },
     "folate": {
-     "value": 646.3516833333334,
+     "value": 826.4955166666667,
      "complete": false,
      "missing": [
-      "toast_bread",
+      "baguette",
       "bay_leaf",
-      "soy_mince",
-      "soy_sauce",
-      "black_pepper",
-      "yogurt_greek",
       "mustard",
+      "black_pepper",
       "burger_buns",
-      "khmeli_suneli",
+      "pita",
+      "grain_mustard",
+      "salsa",
       "tortilla_corn",
       "cumin"
      ]
@@ -4019,18 +4193,19 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2533.305,
+     "period_value": 2114.2479166666662,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
+      "cream_10",
       "cumin",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "soy_mince",
-      "yogurt_greek"
+      "olives",
+      "salsa"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -4040,18 +4215,18 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 363.91492500000004,
+     "period_value": 388.51582500000006,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "black_pepper",
+      "cream_10",
       "cumin",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "soy_mince",
-      "yogurt_greek"
+      "salsa"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -4061,7 +4236,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 6.139266666666666,
+     "period_value": 30.061933333333332,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -4069,12 +4244,8 @@
       "beef",
       "beef_mince",
       "butter",
-      "chicken_breast",
-      "cottage_cheese",
-      "sour_cream",
-      "soy_mince",
-      "yogurt_greek",
-      "yogurt_plain"
+      "cream_10",
+      "sour_cream"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -4084,24 +4255,22 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 37.69887166666667,
+     "period_value": 57.29951666666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "baguette",
       "bay_leaf",
       "black_pepper",
       "burger_buns",
-      "cheese_hard",
-      "cottage_cheese",
+      "cream_10",
       "cumin",
-      "dill",
-      "khmeli_suneli",
+      "grain_mustard",
+      "mint",
       "mustard",
-      "sour_cream",
-      "soy_mince",
-      "toast_bread",
-      "yogurt_greek"
+      "salsa",
+      "sour_cream"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -4111,21 +4280,19 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 6.205280166666667,
+     "period_value": 8.6548585,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "baguette",
       "bay_leaf",
       "black_pepper",
       "burger_buns",
       "cumin",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "soy_mince",
-      "soy_sauce",
-      "toast_bread",
-      "yogurt_greek"
+      "salsa"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -4135,15 +4302,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 16.257657,
+     "period_value": 23.228360333333335,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "burger_buns",
-      "soy_mince",
-      "toast_bread",
-      "yogurt_greek"
+      "burger_buns"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -4153,22 +4317,21 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 646.3516833333334,
+     "period_value": 826.4955166666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "baguette",
       "bay_leaf",
       "black_pepper",
       "burger_buns",
       "cumin",
-      "khmeli_suneli",
+      "grain_mustard",
       "mustard",
-      "soy_mince",
-      "soy_sauce",
-      "toast_bread",
-      "tortilla_corn",
-      "yogurt_greek"
+      "pita",
+      "salsa",
+      "tortilla_corn"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -4236,7 +4399,7 @@
     "batches": [
      {
       "id": "b1",
-      "recipe_id": "yaytso-v-hlebe",
+      "recipe_id": "turetskiy-zavtrak",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-19",
@@ -4254,16 +4417,16 @@
      },
      {
       "id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_id": "shopskiy-salat",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "nocook",
       "cook_date": "2026-10-19",
       "slot": "snack",
       "portions": 2
      },
      {
       "id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_id": "sabih",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4281,7 +4444,7 @@
      },
      {
       "id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4290,16 +4453,16 @@
      },
      {
       "id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
+      "recipe_id": "salat-s-nutom",
       "recipe_version": 1,
-      "method_id": "nocook",
+      "method_id": "no-heat",
       "cook_date": "2026-10-20",
       "slot": "snack",
       "portions": 2
      },
      {
       "id": "b9",
-      "recipe_id": "sloppi-dzho",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4308,7 +4471,7 @@
      },
      {
       "id": "b10",
-      "recipe_id": "chirbuli",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4326,9 +4489,9 @@
      },
      {
       "id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
+      "recipe_id": "guakamole-s-tostami",
       "recipe_version": 1,
-      "method_id": "oven",
+      "method_id": "nocook",
       "cook_date": "2026-10-21",
       "slot": "snack",
       "portions": 2
@@ -4343,7 +4506,7 @@
       "portions": 2
      },
      {
-      "id": "b14",
+      "id": "b2.1",
       "recipe_id": "losos-s-brokkoli",
       "recipe_version": 1,
       "method_id": "oven",
@@ -4407,7 +4570,7 @@
       "items": [
        {
         "id": "i4",
-        "batch_id": "b14",
+        "batch_id": "b2.1",
         "portions": {
          "m1": 1,
          "m2": 1
@@ -4565,81 +4728,88 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 19282,
-     "score": 14.11695115234082,
+     "evaluated": 19284,
+     "score": 11.655764494694127,
      "budget_status": "none"
     },
     "snapshot_ids": {
      "recipes": [
       "borshch-s-govyadinoy",
-      "chirbuli",
-      "gulyash-iz-soevogo-myasa",
+      "burrito-s-yaytsom-i-kartofelem",
+      "guakamole-s-tostami",
+      "indeyka-v-slivochno-gorchichnom-souse-s-penne",
       "losos-s-brokkoli",
       "plov-s-govyadinoy",
-      "shampinyony-farshirovannye-syrom",
-      "shaurma-domashnyaya",
+      "sabih",
+      "salat-s-nutom",
+      "shopskiy-salat",
       "sloppi-dzho",
-      "syrnye-lepeshki-iz-tvoroga",
+      "steyki-syomgi-s-bulgurom",
       "tako-s-govyazhim-farshem",
-      "tsatsiki-s-ovoshchnymi-palochkami",
-      "yaichnitsa-s-pomidorami-i-lukom",
-      "yaytso-v-hlebe"
+      "turetskiy-zavtrak"
      ],
      "products": [
+      "avocado",
+      "baguette",
       "bay_leaf",
       "beef",
       "beef_mince",
       "beet",
       "bell_pepper",
       "black_pepper",
+      "bread_wholegrain",
       "broccoli",
+      "bulgur_dry",
       "burger_buns",
       "butter",
       "cabbage",
       "cane_sugar",
       "carrot",
-      "champignons",
       "cheddar",
-      "cheese_hard",
-      "chicken_breast",
+      "chickpeas_canned",
       "cilantro",
       "corn_flour",
-      "cottage_cheese",
+      "cream_10",
       "cucumber",
       "cumin",
-      "dill",
+      "eggplant",
       "eggs",
+      "feta",
       "garlic",
-      "hot_pepper_ground",
+      "grain_mustard",
+      "honey",
       "iceberg_lettuce",
       "ketchup",
-      "khmeli_suneli",
-      "lavash",
       "lemon",
       "lime",
+      "mint",
       "mustard",
       "olive_oil",
+      "olives",
       "onion",
       "oregano_dried",
       "paprika",
+      "parsley",
+      "penne_dry",
+      "pita",
       "potato",
       "rice_white_dry",
       "salmon_fillet",
+      "salmon_steak",
+      "salsa",
       "salt",
       "smoked_paprika",
       "sour_cream",
-      "soy_mince",
-      "soy_sauce",
       "sunflower_oil",
-      "toast_bread",
+      "tahini",
       "tomato",
       "tomato_paste",
       "tortilla_corn",
-      "walnuts",
+      "tortilla_wheat",
+      "turkey_breast",
+      "vinegar",
       "water",
-      "wheat_flour",
-      "yogurt_greek",
-      "yogurt_plain"
+      "wheat_flour"
      ]
     }
    },
@@ -4649,11 +4819,15 @@
     "complete": false,
     "estimated": false,
     "missing_prices": [
-     "auto:toast_bread:g",
      "auto:eggs:pcs",
+     "auto:feta:g",
+     "auto:cucumber:g",
+     "auto:tomato:g",
+     "auto:olives:g",
+     "auto:honey:g",
      "auto:butter:g",
-     "auto:cheese_hard:g",
-     "auto:salt:g",
+     "auto:baguette:g",
+     "auto:parsley:g",
      "auto:beef:g",
      "auto:beet:g",
      "auto:cabbage:g",
@@ -4663,41 +4837,42 @@
      "auto:tomato_paste:g",
      "auto:sunflower_oil:ml",
      "auto:bay_leaf:g",
-     "auto:cottage_cheese:g",
-     "auto:wheat_flour:g",
-     "auto:dill:g",
+     "auto:salt:g",
+     "auto:bell_pepper:g",
+     "auto:vinegar:ml",
      "auto:salmon_fillet:g",
      "auto:broccoli:g",
      "auto:lemon:g",
      "auto:olive_oil:ml",
-     "auto:tomato:g",
-     "auto:black_pepper:g",
-     "auto:lavash:g",
-     "auto:chicken_breast:g",
-     "auto:cucumber:g",
-     "auto:yogurt_plain:g",
+     "auto:pita:g",
+     "auto:eggplant:g",
+     "auto:tahini:g",
      "auto:garlic:g",
-     "auto:paprika:g",
-     "auto:yogurt_greek:g",
-     "auto:bell_pepper:g",
-     "auto:beef_mince:g",
-     "auto:ketchup:g",
+     "auto:salmon_steak:g",
+     "auto:bulgur_dry:g",
+     "auto:mint:g",
+     "auto:black_pepper:g",
+     "auto:chickpeas_canned:g",
+     "auto:turkey_breast:g",
+     "auto:penne_dry:g",
+     "auto:cream_10:ml",
+     "auto:grain_mustard:g",
      "auto:mustard:g",
-     "auto:cane_sugar:g",
-     "auto:burger_buns:g",
-     "auto:walnuts:g",
-     "auto:cilantro:g",
-     "auto:khmeli_suneli:g",
-     "auto:hot_pepper_ground:g",
+     "auto:tortilla_wheat:g",
+     "auto:cheddar:g",
+     "auto:paprika:g",
+     "auto:salsa:g",
      "auto:tortilla_corn:g",
+     "auto:beef_mince:g",
      "auto:cumin:g",
      "auto:smoked_paprika:g",
      "auto:oregano_dried:g",
      "auto:iceberg_lettuce:g",
-     "auto:cheddar:g",
      "auto:sour_cream:g",
      "auto:lime:g",
-     "auto:champignons:g",
+     "auto:cilantro:g",
+     "auto:avocado:g",
+     "auto:bread_wholegrain:g",
      "auto:rice_white_dry:g"
     ]
    }
@@ -4761,7 +4936,7 @@
     "batches": [
      {
       "id": "b1",
-      "recipe_id": "yaytso-v-hlebe",
+      "recipe_id": "turetskiy-zavtrak",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-19",
@@ -4779,16 +4954,16 @@
      },
      {
       "id": "b3",
-      "recipe_id": "syrnye-lepeshki-iz-tvoroga",
+      "recipe_id": "shopskiy-salat",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "nocook",
       "cook_date": "2026-10-19",
       "slot": "snack",
       "portions": 2
      },
      {
       "id": "b5",
-      "recipe_id": "yaichnitsa-s-pomidorami-i-lukom",
+      "recipe_id": "sabih",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4806,7 +4981,7 @@
      },
      {
       "id": "b7",
-      "recipe_id": "shaurma-domashnyaya",
+      "recipe_id": "steyki-syomgi-s-bulgurom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4815,16 +4990,16 @@
      },
      {
       "id": "b8",
-      "recipe_id": "tsatsiki-s-ovoshchnymi-palochkami",
+      "recipe_id": "salat-s-nutom",
       "recipe_version": 1,
-      "method_id": "nocook",
+      "method_id": "no-heat",
       "cook_date": "2026-10-20",
       "slot": "snack",
       "portions": 2
      },
      {
       "id": "b9",
-      "recipe_id": "sloppi-dzho",
+      "recipe_id": "indeyka-v-slivochno-gorchichnom-souse-s-penne",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -4833,7 +5008,7 @@
      },
      {
       "id": "b10",
-      "recipe_id": "chirbuli",
+      "recipe_id": "burrito-s-yaytsom-i-kartofelem",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -4851,9 +5026,9 @@
      },
      {
       "id": "b12",
-      "recipe_id": "shampinyony-farshirovannye-syrom",
+      "recipe_id": "guakamole-s-tostami",
       "recipe_version": 1,
-      "method_id": "oven",
+      "method_id": "nocook",
       "cook_date": "2026-10-21",
       "slot": "snack",
       "portions": 2
@@ -4868,7 +5043,7 @@
       "portions": 2
      },
      {
-      "id": "b15",
+      "id": "b3.1",
       "recipe_id": "pirog-s-kapustoy",
       "recipe_version": 1,
       "method_id": "oven",
@@ -4932,7 +5107,7 @@
       "items": [
        {
         "id": "i4",
-        "batch_id": "b15",
+        "batch_id": "b3.1",
         "portions": {
          "m1": 1,
          "m2": 1
@@ -5090,85 +5265,92 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 19282,
-     "score": 14.11695115234082,
+     "evaluated": 19284,
+     "score": 11.655764494694127,
      "budget_status": "none"
     },
     "snapshot_ids": {
      "recipes": [
       "borshch-s-govyadinoy",
-      "chirbuli",
-      "gulyash-iz-soevogo-myasa",
+      "burrito-s-yaytsom-i-kartofelem",
+      "guakamole-s-tostami",
+      "indeyka-v-slivochno-gorchichnom-souse-s-penne",
       "losos-s-brokkoli",
       "pirog-s-kapustoy",
       "plov-s-govyadinoy",
-      "shampinyony-farshirovannye-syrom",
-      "shaurma-domashnyaya",
+      "sabih",
+      "salat-s-nutom",
+      "shopskiy-salat",
       "sloppi-dzho",
-      "syrnye-lepeshki-iz-tvoroga",
+      "steyki-syomgi-s-bulgurom",
       "tako-s-govyazhim-farshem",
-      "tsatsiki-s-ovoshchnymi-palochkami",
-      "yaichnitsa-s-pomidorami-i-lukom",
-      "yaytso-v-hlebe"
+      "turetskiy-zavtrak"
      ],
      "products": [
+      "avocado",
+      "baguette",
       "bay_leaf",
       "beef",
       "beef_mince",
       "beet",
       "bell_pepper",
       "black_pepper",
+      "bread_wholegrain",
       "broccoli",
+      "bulgur_dry",
       "burger_buns",
       "butter",
       "cabbage",
       "cane_sugar",
       "carrot",
-      "champignons",
       "cheddar",
-      "cheese_hard",
-      "chicken_breast",
+      "chickpeas_canned",
       "cilantro",
       "corn_flour",
-      "cottage_cheese",
+      "cream_10",
       "cucumber",
       "cumin",
-      "dill",
       "dry_yeast",
+      "eggplant",
       "eggs",
+      "feta",
       "garlic",
-      "hot_pepper_ground",
+      "grain_mustard",
+      "honey",
       "iceberg_lettuce",
       "ketchup",
-      "khmeli_suneli",
-      "lavash",
       "lemon",
       "lime",
       "milk",
+      "mint",
       "mustard",
       "olive_oil",
+      "olives",
       "onion",
       "oregano_dried",
       "paprika",
+      "parsley",
+      "penne_dry",
+      "pita",
       "potato",
       "rice_white_dry",
       "salmon_fillet",
+      "salmon_steak",
+      "salsa",
       "salt",
       "smoked_paprika",
       "sour_cream",
-      "soy_mince",
-      "soy_sauce",
       "sugar",
       "sunflower_oil",
-      "toast_bread",
+      "tahini",
       "tomato",
       "tomato_paste",
       "tortilla_corn",
-      "walnuts",
+      "tortilla_wheat",
+      "turkey_breast",
+      "vinegar",
       "water",
-      "wheat_flour",
-      "yogurt_greek",
-      "yogurt_plain"
+      "wheat_flour"
      ]
     }
    },
@@ -5178,11 +5360,15 @@
     "complete": false,
     "estimated": false,
     "missing_prices": [
-     "auto:toast_bread:g",
      "auto:eggs:pcs",
+     "auto:feta:g",
+     "auto:cucumber:g",
+     "auto:tomato:g",
+     "auto:olives:g",
+     "auto:honey:g",
      "auto:butter:g",
-     "auto:cheese_hard:g",
-     "auto:salt:g",
+     "auto:baguette:g",
+     "auto:parsley:g",
      "auto:beef:g",
      "auto:beet:g",
      "auto:cabbage:g",
@@ -5192,42 +5378,44 @@
      "auto:tomato_paste:g",
      "auto:sunflower_oil:ml",
      "auto:bay_leaf:g",
-     "auto:cottage_cheese:g",
+     "auto:salt:g",
+     "auto:bell_pepper:g",
+     "auto:vinegar:ml",
      "auto:wheat_flour:g",
-     "auto:dill:g",
      "auto:milk:ml",
      "auto:dry_yeast:g",
      "auto:sugar:g",
-     "auto:tomato:g",
-     "auto:black_pepper:g",
-     "auto:lavash:g",
-     "auto:chicken_breast:g",
-     "auto:cucumber:g",
-     "auto:yogurt_plain:g",
-     "auto:garlic:g",
-     "auto:paprika:g",
-     "auto:yogurt_greek:g",
-     "auto:olive_oil:ml",
+     "auto:pita:g",
+     "auto:eggplant:g",
+     "auto:tahini:g",
      "auto:lemon:g",
-     "auto:bell_pepper:g",
-     "auto:beef_mince:g",
-     "auto:ketchup:g",
+     "auto:garlic:g",
+     "auto:salmon_steak:g",
+     "auto:bulgur_dry:g",
+     "auto:mint:g",
+     "auto:olive_oil:ml",
+     "auto:black_pepper:g",
+     "auto:chickpeas_canned:g",
+     "auto:turkey_breast:g",
+     "auto:penne_dry:g",
+     "auto:cream_10:ml",
+     "auto:grain_mustard:g",
      "auto:mustard:g",
-     "auto:cane_sugar:g",
-     "auto:burger_buns:g",
-     "auto:walnuts:g",
-     "auto:cilantro:g",
-     "auto:khmeli_suneli:g",
-     "auto:hot_pepper_ground:g",
+     "auto:tortilla_wheat:g",
+     "auto:cheddar:g",
+     "auto:paprika:g",
+     "auto:salsa:g",
      "auto:tortilla_corn:g",
+     "auto:beef_mince:g",
      "auto:cumin:g",
      "auto:smoked_paprika:g",
      "auto:oregano_dried:g",
      "auto:iceberg_lettuce:g",
-     "auto:cheddar:g",
      "auto:sour_cream:g",
      "auto:lime:g",
-     "auto:champignons:g",
+     "auto:cilantro:g",
+     "auto:avocado:g",
+     "auto:bread_wholegrain:g",
      "auto:rice_white_dry:g"
     ]
    }

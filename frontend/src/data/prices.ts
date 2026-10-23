@@ -1,14 +1,18 @@
 import type { PriceEntry } from '../engine';
 import { API_BASE } from '../lib/config';
 
-/** One entry per product: the household's own prices always beat public sources (any date). */
-export function mergePriceSources(own: PriceEntry[], publicEntries: PriceEntry[]): PriceEntry[] {
+/**
+ * One entry per product: the household's own prices always beat public sources (any date). Among
+ * own prices the newest wins; on the same date a price for the chosen chain beats one for any shop.
+ */
+export function mergePriceSources(own: (PriceEntry & { chain_id?: string | null })[], publicEntries: PriceEntry[]): PriceEntry[] {
   const result = new Map<string, PriceEntry>();
   for (const e of publicEntries) result.set(e.product_id, e);
-  const latestOwn = new Map<string, PriceEntry>();
+  const latestOwn = new Map<string, PriceEntry & { chain_id?: string | null }>();
+  const rank = (e: { date: string; chain_id?: string | null }) => `${e.date}|${e.chain_id ? 1 : 0}`;
   for (const e of own) {
     const current = latestOwn.get(e.product_id);
-    if (!current || e.date >= current.date) latestOwn.set(e.product_id, e);
+    if (!current || rank(e) >= rank(current)) latestOwn.set(e.product_id, e);
   }
   for (const [k, v] of latestOwn) result.set(k, v);
   return [...result.keys()].sort().map((k) => result.get(k) as PriceEntry);

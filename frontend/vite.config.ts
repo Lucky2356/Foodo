@@ -76,7 +76,7 @@ export default defineConfig(({ mode }) => {
           scope: '.',
           display: 'standalone',
           background_color: '#fffbf2',
-          theme_color: '#16a34a',
+          theme_color: '#fffbf2',
           icons: [
             { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
             { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
