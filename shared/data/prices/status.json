@@ -16,9 +16,9 @@
    ],
    "period": "2026-09",
    "file": "https://rosstat.gov.ru/storage/mediabank/sred_potreb_cen_09-2026.xlsx",
-   "checked_at": "2026-10-19T08:57:10+00:00",
+   "checked_at": "2026-10-23T21:37:11+00:00",
    "ok": true,
-   "updated_at": "2026-10-19T08:57:10+00:00"
+   "updated_at": "2026-10-23T21:37:11+00:00"
   },
   "magnit": {
    "name": "Магнит, magnit.ru",
@@ -27,12 +27,12 @@
    "city": "Краснодар",
    "categories": 80,
    "categories_failed": 0,
-   "offers": 1935,
-   "products": 70,
+   "offers": 1990,
+   "products": 69,
    "requests": 83,
-   "checked_at": "2026-10-19T09:01:33+00:00",
+   "checked_at": "2026-10-23T21:41:21+00:00",
    "ok": true,
-   "updated_at": "2026-10-19T09:01:33+00:00"
+   "updated_at": "2026-10-23T21:41:21+00:00"
   },
   "pyaterochka": {
    "name": "pyaterochka",
@@ -40,7 +40,7 @@
    "reachable": false,
    "detail": "HTTP 403 https://5ka.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-19T09:01:34+00:00"
+   "checked_at": "2026-10-23T22:04:49+00:00"
   },
   "perekrestok": {
    "name": "perekrestok",
@@ -48,23 +48,23 @@
    "reachable": false,
    "detail": "HTTP 403 https://www.perekrestok.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-19T09:01:35+00:00"
+   "checked_at": "2026-10-23T22:04:50+00:00"
   },
   "lenta": {
    "name": "lenta",
    "collected": false,
    "reachable": true,
    "detail": "доступен",
-   "reason": "Сайт отвечает, сбор цен ещё не реализован.",
-   "checked_at": "2026-10-19T09:01:35+00:00"
+   "reason": "Страницы товаров закрыты проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
+   "checked_at": "2026-10-23T22:04:50+00:00"
   },
   "auchan": {
    "name": "auchan",
    "collected": false,
    "reachable": true,
    "detail": "доступен",
-   "reason": "Сайт отвечает, сбор цен ещё не реализован.",
-   "checked_at": "2026-10-19T09:01:37+00:00"
+   "reason": "Сайт закрыт проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
+   "checked_at": "2026-10-23T22:04:51+00:00"
   },
   "okey": {
    "name": "okey",
@@ -72,15 +72,269 @@
    "reachable": false,
    "detail": "HTTP 403 https://www.okeydostavka.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-19T09:01:38+00:00"
+   "checked_at": "2026-10-23T22:04:52+00:00"
   },
   "metro": {
-   "name": "metro",
+   "name": "Metro, online.metro-cc.ru",
    "collected": false,
    "reachable": true,
    "detail": "доступен",
    "reason": "Сайт отвечает, сбор цен ещё не реализован.",
-   "checked_at": "2026-10-19T09:01:39+00:00"
+   "checked_at": "2026-10-23T22:04:48+00:00",
+   "stores_on_site": 94,
+   "uniform_online_price": true,
+   "checked": [
+    {
+     "city": "Москва",
+     "store": 10,
+     "pages": 386,
+     "failed": 0,
+     "products": 50
+    },
+    {
+     "city": "Санкт-Петербург",
+     "store": 15,
+     "pages": 50,
+     "failed": 0,
+     "products": 50
+    }
+   ],
+   "cities": [
+    {
+     "city": "Москва",
+     "products": 50
+    },
+    {
+     "city": "Санкт-Петербург",
+     "products": 50
+    },
+    {
+     "city": "Новосибирск",
+     "products": 50
+    },
+    {
+     "city": "Екатеринбург",
+     "products": 50
+    },
+    {
+     "city": "Нижний Новгород",
+     "products": 50
+    },
+    {
+     "city": "Казань",
+     "products": 50
+    },
+    {
+     "city": "Самара",
+     "products": 50
+    },
+    {
+     "city": "Омск",
+     "products": 50
+    },
+    {
+     "city": "Ростов-на-Дону",
+     "products": 50
+    },
+    {
+     "city": "Уфа",
+     "products": 50
+    },
+    {
+     "city": "Волгоград",
+     "products": 50
+    },
+    {
+     "city": "Пермь",
+     "products": 50
+    },
+    {
+     "city": "Красноярск",
+     "products": 50
+    },
+    {
+     "city": "Воронеж",
+     "products": 50
+    },
+    {
+     "city": "Саратов",
+     "products": 50
+    },
+    {
+     "city": "Краснодар",
+     "products": 50
+    },
+    {
+     "city": "Тольятти",
+     "products": 50
+    },
+    {
+     "city": "Барнаул",
+     "products": 50
+    },
+    {
+     "city": "Ижевск",
+     "products": 50
+    },
+    {
+     "city": "Ульяновск",
+     "products": 50
+    },
+    {
+     "city": "Ярославль",
+     "products": 50
+    },
+    {
+     "city": "Иркутск",
+     "products": 50
+    },
+    {
+     "city": "Тюмень",
+     "products": 50
+    },
+    {
+     "city": "Оренбург",
+     "products": 50
+    },
+    {
+     "city": "Новокузнецк",
+     "products": 50
+    },
+    {
+     "city": "Кемерово",
+     "products": 50
+    },
+    {
+     "city": "Рязань",
+     "products": 50
+    },
+    {
+     "city": "Томск",
+     "products": 50
+    },
+    {
+     "city": "Астрахань",
+     "products": 50
+    },
+    {
+     "city": "Набережные Челны",
+     "products": 50
+    },
+    {
+     "city": "Липецк",
+     "products": 50
+    },
+    {
+     "city": "Киров",
+     "products": 50
+    },
+    {
+     "city": "Чебоксары",
+     "products": 50
+    },
+    {
+     "city": "Калининград",
+     "products": 50
+    },
+    {
+     "city": "Брянск",
+     "products": 50
+    },
+    {
+     "city": "Курск",
+     "products": 50
+    },
+    {
+     "city": "Магнитогорск",
+     "products": 50
+    },
+    {
+     "city": "Тверь",
+     "products": 50
+    },
+    {
+     "city": "Ставрополь",
+     "products": 50
+    },
+    {
+     "city": "Владимир",
+     "products": 50
+    },
+    {
+     "city": "Смоленск",
+     "products": 50
+    },
+    {
+     "city": "Калуга",
+     "products": 50
+    },
+    {
+     "city": "Орёл",
+     "products": 50
+    },
+    {
+     "city": "Волжский",
+     "products": 50
+    },
+    {
+     "city": "Владикавказ",
+     "products": 50
+    },
+    {
+     "city": "Сургут",
+     "products": 50
+    },
+    {
+     "city": "Стерлитамак",
+     "products": 50
+    },
+    {
+     "city": "Новороссийск",
+     "products": 50
+    },
+    {
+     "city": "Балашиха",
+     "products": 50
+    },
+    {
+     "city": "Подольск",
+     "products": 50
+    },
+    {
+     "city": "Пятигорск",
+     "products": 50
+    },
+    {
+     "city": "Одинцово",
+     "products": 50
+    },
+    {
+     "city": "Копейск",
+     "products": 50
+    },
+    {
+     "city": "Серпухов",
+     "products": 50
+    },
+    {
+     "city": "Лобня",
+     "products": 50
+    },
+    {
+     "city": "Котельники",
+     "products": 50
+    },
+    {
+     "city": "Семилуки",
+     "products": 50
+    }
+   ],
+   "product_urls": 97826,
+   "products": 50,
+   "observations": 2850,
+   "requests": 440,
+   "ok": true,
+   "updated_at": "2026-10-23T22:04:48+00:00"
   },
   "dixy": {
    "name": "dixy",
@@ -88,7 +342,7 @@
    "reachable": false,
    "detail": "HTTP 403 https://dixy.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-19T09:01:40+00:00"
+   "checked_at": "2026-10-23T22:04:54+00:00"
   },
   "vkusvill": {
    "name": "vkusvill",
@@ -96,15 +350,15 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Сайт доступен, но вес и единица товара не публикуются в машиночитаемом виде — без них цена за кг была бы догадкой.",
-   "checked_at": "2026-10-19T09:01:41+00:00"
+   "checked_at": "2026-10-23T22:04:55+00:00"
   },
   "monetka": {
    "name": "monetka",
    "collected": false,
    "reachable": true,
    "detail": "доступен",
-   "reason": "Сайт отвечает, сбор цен ещё не реализован.",
-   "checked_at": "2026-10-19T09:01:42+00:00"
+   "reason": "Страницы каталога закрыты проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
+   "checked_at": "2026-10-23T22:04:55+00:00"
   },
   "globus": {
    "name": "globus",
@@ -112,7 +366,7 @@
    "reachable": false,
    "detail": "URLError: <urlopen error timed out> (https://online.globus.ru/robots.txt)",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-19T09:02:02+00:00"
+   "checked_at": "2026-10-23T22:05:16+00:00"
   },
   "spar": {
    "name": "spar",
@@ -120,7 +374,7 @@
    "reachable": false,
    "detail": "HTTP 307 https://myspar.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-19T09:02:07+00:00"
+   "checked_at": "2026-10-23T22:05:21+00:00"
   },
   "maria_ra": {
    "name": "maria_ra",
@@ -128,8 +382,8 @@
    "reachable": false,
    "detail": "HTTP 404 https://www.maria-ra.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-10-19T09:02:08+00:00"
+   "checked_at": "2026-10-23T22:05:22+00:00"
   }
  },
- "generated_at": "2026-10-19T09:02:08+00:00"
+ "generated_at": "2026-10-23T22:05:22+00:00"
 }
