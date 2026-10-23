@@ -127,19 +127,26 @@ def collect(
     cities: list[dict[str, Any]],
     per_product: int = 6,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    fetcher = Fetcher(BASE, delay=1.5, cookies=http.cookiejar.CookieJar())
+    jar = http.cookiejar.CookieJar()
+    fetcher = Fetcher(BASE, delay=1.5, cookies=jar)
     urls: list[str] = []
     for path in PRODUCT_SITEMAPS:
         urls += re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", fetcher.text(BASE + path))
     urls = [u for u in urls if "/products/" in u]
-    location = (
-        store_coordinates(fetcher.cookies) if fetcher.cookies is not None else None
-    )
+    candidates = candidate_urls(urls, per_product)
+    # The store cookies come with HTML pages, not with the XML sitemaps: the home page, else the
+    # first product page.
+    fetcher.text(BASE + "/")
+    if store_coordinates(jar) is None and urls:
+        fetcher.text(urls[0])
+    location = store_coordinates(jar)
     if location is None:
-        raise FetchError("Сайт не сообщил магазин по умолчанию и его координаты")
+        names = sorted({c.name for c in jar})
+        raise FetchError(
+            f"Сайт не сообщил магазин по умолчанию и его координаты (cookie: {names})"
+        )
     store, lat, lon = location
     city = nearest_city(cities, lat, lon)
-    candidates = candidate_urls(urls, per_product)
     offers: list[dict[str, Any]] = []
     failed = 0
     for product_id in sorted(candidates):
