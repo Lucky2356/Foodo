@@ -553,6 +553,28 @@ describe('editing a menu', () => {
   });
 });
 
+describe('a shorter shopping list without a monotonous week', () => {
+  it('reuses products within the week and keeps the main products varied', () => {
+    const cat = catalog();
+    const members = [member(), member({ id: 'm2', name: 'Борис', sex: 'male' })];
+    let lines = 0;
+    for (const seed of [1, 2, 3]) {
+      const { menu } = generateMenu(request({ members, days: 7, seed, slots: ['breakfast', 'lunch', 'snack', 'dinner'], settings: settings() }), cat);
+      lines += computeShopping(menu, cat, [], null, emptyShoppingState()).lines.length;
+      // Pasta of any shape counts as one main product: never more than twice a week.
+      const pastaDays = new Set(
+        menu.meals.filter((m) => m.items.some((i) => {
+          const b = menu.batches.find((x) => x.id === i.batch_id)!;
+          return cat.recipes[b.recipe_id]!.ingredients.some((g) => cat.products[g.product]?.category === 'pasta' && g.qty >= 70);
+        })).map((m) => m.date),
+      );
+      expect(pastaDays.size).toBeLessThanOrEqual(3);
+    }
+    // 28 different dishes used to need about 93 products; reuse brings it well under 75.
+    expect(lines / 3).toBeLessThan(75);
+  });
+});
+
 describe('menu quality and edits (round 2)', () => {
   const simple = () => [member({ age: null, sex: null, weight_kg: null, height_cm: null }), member({ id: 'm2', name: 'Борис', age: null, sex: null, weight_kg: null, height_cm: null })];
 

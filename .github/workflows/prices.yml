@@ -42,7 +42,7 @@ jobs:
           python -m pytest -q scripts/prices/tests
       - name: Probe chain websites (pull requests, log only)
         if: github.event_name == 'pull_request'
-        run: python -m scripts.prices.probe
+        run: python -m scripts.prices.probe raw
       - name: Collect (dry run on pull requests)
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then

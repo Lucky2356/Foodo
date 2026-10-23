@@ -56,14 +56,19 @@ export const SCORE = {
   kidFriendly: 0.6,
   sameCategorySameDay: -0.5,
   repeatUse: -1,
-  sharedIngredient: 0.15,
-  sharedIngredientCap: 1,
+  /** Products already bought for this menu make a dish cheaper to add; each new one adds a shopping line. */
+  sharedIngredient: 0.3,
+  sharedIngredientCap: 2,
+  newProduct: 0.3,
+  newProductCap: 2,
+  /** Per earlier day of the period with the same main product: keeps «buy less» from becoming «pasta all week». */
+  primaryWeekUse: 0.6,
   timePer120Min: 1,
   vitamins: 1,
   /** Penalty per 100 % mismatch between the portion's energy and the member's share of the target. */
-  energyFit: 2,
+  energyFit: 4,
   /** The same for an adult on simple portions, against a guide energy (see energyGuide). */
-  energyGuide: 2,
+  energyGuide: 4,
   /** The dish's main product (meat, fish, legumes, a grain, potatoes) was already eaten today or yesterday. */
   samePrimaryRecent: -0.7,
   /** Upper bound of the summed positive diet-mode weights of one dish. */
@@ -207,7 +212,7 @@ class Planner {
   readonly vitTargets = new Map<string, Map<VitaminId, number>>();
   readonly kcalTargets = new Map<string, number | null>();
   readonly kcalGuides = new Map<string, number | null>();
-  readonly primaryProduct = new Map<string, string | null>();
+  readonly mainProducts = new Map<string, string[]>();
   readonly previous: Set<string>;
   readonly memberOrder: Map<string, number>;
   evaluated = 0;
@@ -233,7 +238,7 @@ class Planner {
         if (p && p.purchasable !== false && !products.includes(p.id)) products.push(p.id);
       }
       this.recipeProducts.set(id, products);
-      this.primaryProduct.set(id, primaryProduct(catalog, recipe));
+      this.mainProducts.set(id, mainProducts(catalog, recipe));
     }
     for (const m of req.members) {
       this.kcalTargets.set(m.id, m.portion_mode === 'target' && m.kcal_target ? m.kcal_target : null);
@@ -446,15 +451,22 @@ class Planner {
     if (cuisines.length > 0 && recipe.cuisine && cuisines.includes(recipe.cuisine)) score += SCORE.cuisine;
     score += this.slotRef(slot).category_bonus?.[recipe.category] ?? 0;
     if (state.categoriesByDay.get(day)?.has(recipe.category)) score += SCORE.sameCategorySameDay;
-    const primary = this.primaryProduct.get(recipeId) ?? null;
-    if (primary !== null && (state.primaryByDay.get(day)?.has(primary) || state.primaryByDay.get(day - 1)?.has(primary))) {
-      score += SCORE.samePrimaryRecent;
+    for (const main of this.mainProducts.get(recipeId) ?? []) {
+      if (state.primaryByDay.get(day)?.has(main) || state.primaryByDay.get(day - 1)?.has(main)) score += SCORE.samePrimaryRecent;
+      let used = 0;
+      for (const set of state.primaryByDay.values()) if (set.has(main)) used += 1;
+      score -= SCORE.primaryWeekUse * used;
     }
     score += SCORE.repeatUse * (state.uses.get(recipeId) ?? 0);
     if (this.previous.has(recipeId)) score += SCORE.previousMenu;
     let shared = 0;
-    for (const pid of this.recipeProducts.get(recipeId) ?? []) if (state.products.has(pid)) shared += 1;
+    let fresh = 0;
+    for (const pid of this.recipeProducts.get(recipeId) ?? []) {
+      if (state.products.has(pid)) shared += 1;
+      else fresh += 1;
+    }
     score += Math.min(shared * SCORE.sharedIngredient, SCORE.sharedIngredientCap);
+    score -= Math.min(fresh * SCORE.newProduct, SCORE.newProductCap);
     const method = this.kitchen(recipeId, slot, container, this.isWeekend(day)).method;
     if (method) score -= (method.total_min / 120) * SCORE.timePer120Min;
     const portions = new Map<string, number>();
@@ -595,7 +607,7 @@ class Planner {
       state.categoriesByDay.set(day, cats);
     }
     cats.add(recipe.category);
-    notePrimary(state, day, this.primaryProduct.get(recipe.id) ?? null);
+    notePrimary(state, day, this.mainProducts.get(recipe.id) ?? []);
     return item;
   }
 
@@ -767,37 +779,44 @@ export function energyGuide(m: Member): number | null {
 
 const PRIMARY_GROUPS = new Set(['meat', 'fish_seafood', 'legumes', 'rice', 'pasta', 'buckwheat', 'cereals', 'potatoes']);
 
+/** Starchy bases compared as a group: spaghetti after macaroni is still «pasta again». */
+const STARCH_GROUPS = new Set(['rice', 'pasta', 'buckwheat', 'cereals', 'potatoes']);
+
 /**
- * The dish's main product: the heaviest ingredient (by edible mass) among meat, fish and seafood,
- * legumes, grains (not flour or bread) and potatoes. Used to avoid chickpeas three times in two days.
+ * The dish's main components for variety rules: the protein (the heaviest meat, fish, seafood or
+ * legume ingredient, by product: beef and chicken differ) and the starchy base (the heaviest grain,
+ * pasta or potato ingredient, by group: «group:pasta»). «Макароны по-флотски» has both — mince and
+ * pasta — so neither repeats unnoticed. Masses are edible grams.
  */
-export function primaryProduct(catalog: Catalog, recipe: Recipe): string | null {
+export function mainProducts(catalog: Catalog, recipe: Recipe): string[] {
   const groups = new Map(catalog.reference.categories.map((c) => [c.id, c.parent ?? c.id]));
-  let best: string | null = null;
-  let bestMass = 0;
+  const best = { protein: { id: '', key: '', mass: 0 }, base: { id: '', key: '', mass: 0 } };
   for (const ing of recipe.ingredients) {
     const product = catalog.products[ing.product];
     if (!product) continue;
-    if (!PRIMARY_GROUPS.has(product.category) && !PRIMARY_GROUPS.has(groups.get(product.category) ?? '')) continue;
+    const group = PRIMARY_GROUPS.has(product.category) ? product.category : (groups.get(product.category) ?? '');
+    if (!PRIMARY_GROUPS.has(group)) continue;
     const base = toBase(product, ing.qty, ing.unit);
     if (base === null) continue;
     const mass = product.base_unit === 'g' ? base : product.base_unit === 'pcs' ? base * (product.piece_g ?? 0) : base * (product.density_g_ml ?? 0);
-    if (mass > bestMass || (mass === bestMass && mass > 0 && best !== null && compareStr(product.id, best) < 0)) {
-      best = product.id;
-      bestMass = mass;
+    const slot = STARCH_GROUPS.has(group) ? best.base : best.protein;
+    if (mass > slot.mass || (mass === slot.mass && mass > 0 && compareStr(product.id, slot.id) < 0)) {
+      slot.id = product.id;
+      slot.key = STARCH_GROUPS.has(group) ? `group:${group}` : product.id;
+      slot.mass = mass;
     }
   }
-  return best;
+  return [best.protein.key, best.base.key].filter((k) => k !== '');
 }
 
-function notePrimary(state: BuildState, day: number, productId: string | null): void {
-  if (productId === null) return;
+function notePrimary(state: BuildState, day: number, keys: string[]): void {
+  if (keys.length === 0) return;
   let set = state.primaryByDay.get(day);
   if (!set) {
     set = new Set();
     state.primaryByDay.set(day, set);
   }
-  set.add(productId);
+  for (const k of keys) set.add(k);
 }
 
 export interface RankedCandidate {
@@ -845,7 +864,7 @@ export function rankCandidates(
         state.categoriesByDay.set(d, cats);
       }
       cats.add((catalog.recipes[batch.recipe_id] as Recipe).category);
-      notePrimary(state, d, planner.primaryProduct.get(batch.recipe_id) ?? null);
+      notePrimary(state, d, planner.mainProducts.get(batch.recipe_id) ?? []);
       const serving = planner.perServing(batch.recipe_id);
       for (const memberId of Object.keys(item.portions).sort(compareStr)) {
         const have = state.vitHave.get(memberId);

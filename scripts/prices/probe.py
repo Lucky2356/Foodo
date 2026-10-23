@@ -12,8 +12,10 @@ from __future__ import annotations
 import gzip
 import re
 import sys
+import urllib.error
+import urllib.request
 
-from .common import Fetcher, FetchError
+from .common import USER_AGENT, Fetcher, FetchError
 
 SITES = {
     "lenta": "https://lenta.com",
@@ -117,7 +119,72 @@ def probe(name: str, base: str) -> None:
             print(line)
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *args: object, **kwargs: object) -> None:  # type: ignore[override]
+        return None
+
+
+def raw_response(url: str, cookie: str = "") -> None:
+    """Status, the headers that tell protection from content (server, cookies, location) and the start
+    of the body, without following redirects: is this a login wall, a bot check or a region choice?"""
+    headers = {"User-Agent": USER_AGENT, "Accept-Language": "ru", "Accept": "text/html"}
+    if cookie:
+        headers["Cookie"] = cookie
+    opener = urllib.request.build_opener(_NoRedirect)
+    try:
+        r = opener.open(urllib.request.Request(url, headers=headers), timeout=30)
+        status, hdrs, body = r.status, r.headers, r.read(400_000)
+    except urllib.error.HTTPError as e:
+        status, hdrs, body = e.code, e.headers, e.read(400_000)
+    except (urllib.error.URLError, TimeoutError) as e:
+        print(f"raw {url}: {e}")
+        return
+    print(f"raw {url} cookie={cookie!r}: HTTP {status}")
+    for name in (
+        "Server",
+        "Location",
+        "WWW-Authenticate",
+        "Content-Type",
+        "X-Powered-By",
+        "Via",
+    ):
+        if hdrs.get(name):
+            print(f"  {name}: {hdrs.get(name)[:200]}")
+    for c in hdrs.get_all("Set-Cookie") or []:
+        print(f"  Set-Cookie: {c.split(';', 1)[0][:80]}")
+    text = text_of(body)
+    print(f"  body[{len(text)}]: {re.sub(r'\\s+', ' ', text[:500])}")
+    for word in (
+        "storeCode",
+        "shopCode",
+        "shop_code",
+        "storeId",
+        "x_shop",
+        "captcha",
+        "challenge",
+        "servicepipe",
+        "qrator",
+        "ddos-guard",
+    ):
+        i = text.find(word)
+        if i >= 0:
+            print(f"  …{word}: {re.sub(r'\\s+', ' ', text[max(0, i - 80) : i + 120])}")
+
+
+RAW = [
+    ("https://lenta.com/product/tvorog-5-fas-bez-zmzh-rossiya-170g-374556/", ""),
+    ("https://www.auchan.ru/", ""),
+    ("https://online.metro-cc.ru/category/ovoshchi-i-frukty/ovoshchi", ""),
+    ("https://monetka.ru/catalog/syry-250000001/", ""),
+    ("https://magnit.ru/catalog/4834-moloko_syr_yaytsa/", ""),
+]
+
+
 def main(argv: list[str]) -> int:
+    if argv == ["raw"]:
+        for url, cookie in RAW:
+            raw_response(url, cookie)
+        return 0
     for name in argv or list(SITES):
         if name in SITES:
             try:
