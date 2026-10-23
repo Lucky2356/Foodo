@@ -13,6 +13,7 @@ import gzip
 import http.cookiejar
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -172,15 +173,97 @@ def raw_response(url: str, cookie: str = "") -> None:
             print(f"  …{word}: {re.sub(r'\\s+', ' ', text[max(0, i - 80) : i + 120])}")
 
 
-RAW = [
-    ("https://magnit.ru/catalog/4834-moloko_syr_yaytsa", ""),
-]
+RAW: list[tuple[str, str]] = []
 
 # Pages read with an ordinary cookie jar (the site sets a cookie and redirects to the same page).
 SESSION = [
-    "https://online.metro-cc.ru/category/ovoshchi-i-frukty/ovoshchi",
     "https://online.metro-cc.ru/products/lopatka",
+    "https://online.metro-cc.ru/category/molochnye-prodkuty-syry-i-yayca/moloko",
 ]
+
+
+def metro_offers() -> None:
+    """Full JSON-LD of a few Metro products found in the sitemap (how weight and price are given)."""
+    jar = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+
+    def get(url: str) -> str:
+        req = urllib.request.Request(
+            url, headers={"User-Agent": USER_AGENT, "Accept-Language": "ru"}
+        )
+        with opener.open(req, timeout=30) as r:
+            return text_of(r.read(20_000_000))
+
+    xml = get("https://online.metro-cc.ru/sitemap-2.xml")
+    urls = locs(xml)
+    wanted = (
+        "moloko",
+        "kartofel",
+        "grechk",
+        "kurin",
+        "yayc",
+        "smetan",
+        "sahar",
+        "muka",
+        "makaron",
+        "maslo-slivoch",
+    )
+    picked = []
+    for w in wanted:
+        hit = next((u for u in urls if w in u.rsplit("/", 1)[-1]), None)
+        if hit:
+            picked.append(hit)
+    print(f"metro sitemap-2: {len(urls)} product urls; picked {picked}")
+    for url in picked[:8]:
+        time.sleep(3)
+        try:
+            html = get(url)
+        except (urllib.error.URLError, TimeoutError) as e:
+            print(f"  {url}: {e}")
+            continue
+        for block in re.findall(
+            r"<script[^>]+application/ld\+json[^>]*>(.*?)</script>", html, re.DOTALL
+        ):
+            if '"Offer"' in block or '"Product"' in block:
+                print(f"  {url}\n    {re.sub(r'\\s+', ' ', block)[:900]}")
+        for word in (
+            "weight",
+            "unitPrice",
+            "pricePerKg",
+            "price_per",
+            "isWeight",
+            "weightUnit",
+            "packing",
+        ):
+            m = re.search(word, html)
+            if m:
+                print(
+                    f"    …{word}: {re.sub(r'\\s+', ' ', html[max(0, m.start() - 80) : m.start() + 160])}"
+                )
+
+
+def magnit_shops() -> None:
+    """Where magnit.ru lists its stores (sitemaps and robots.txt), to price other cities' stores."""
+    f = Fetcher("https://magnit.ru", delay=3, timeout=30)
+    robots = f._open("https://magnit.ru/robots.txt", 500_000).decode("utf-8", "replace")
+    sitemaps = re.findall(r"(?im)^sitemap:\s*(\S+)", robots)
+    print(f"magnit sitemaps: {sitemaps}")
+    for sm in sitemaps[:3]:
+        try:
+            found = locs(text_of(f._open(sm, 20_000_000)))
+        except FetchError as e:
+            print(f"  {sm}: {e}")
+            continue
+        print(f"  {sm}: {len(found)} sample {found[:12]}")
+        for child in [u for u in found if "shop" in u or "store" in u or "magaz" in u][
+            :3
+        ]:
+            try:
+                sub = locs(text_of(f._open(child, 20_000_000)))
+            except FetchError as e:
+                print(f"    {child}: {e}")
+                continue
+            print(f"    {child}: {len(sub)} sample {sub[:6]}")
 
 
 def with_cookies(url: str) -> None:
@@ -228,6 +311,8 @@ def main(argv: list[str]) -> int:
             raw_response(url, cookie)
         for url in SESSION:
             with_cookies(url)
+        metro_offers()
+        magnit_shops()
         return 0
     for name in argv or list(SITES):
         if name in SITES:
