@@ -39,12 +39,15 @@ SCORE = {
     "kidFriendly": 0.6,
     "sameCategorySameDay": -0.5,
     "repeatUse": -1,
-    "sharedIngredient": 0.15,
-    "sharedIngredientCap": 1,
+    "sharedIngredient": 0.3,
+    "sharedIngredientCap": 2,
+    "newProduct": 0.3,
+    "newProductCap": 2,
+    "primaryWeekUse": 0.6,
     "timePer120Min": 1,
     "vitamins": 1,
-    "energyFit": 2,
-    "energyGuide": 2,
+    "energyFit": 4,
+    "energyGuide": 4,
     "samePrimaryRecent": -0.7,
     "dietBonusCap": 1.5,
     "previousMenu": -1,
@@ -155,16 +158,22 @@ def energy_guide(m: JSON) -> float | None:
     return GUIDE_ADULT_KCAL * m["portion_factor"]
 
 
-def primary_product(catalog: Catalog, recipe: JSON) -> str | None:
-    """Twin of primaryProduct in generator.ts: the heaviest meat, fish, legume, grain or potato ingredient."""
+# Starchy bases compared as a group: spaghetti after macaroni is still «pasta again».
+STARCH_GROUPS = {"rice", "pasta", "buckwheat", "cereals", "potatoes"}
+
+
+def main_products(catalog: Catalog, recipe: JSON) -> list[str]:
+    """Twin of mainProducts in generator.ts: the protein (heaviest meat, fish or legume ingredient,
+    by product) and the starchy base (heaviest grain, pasta or potato ingredient, by group)."""
     groups = {c["id"]: c.get("parent") or c["id"] for c in catalog.reference["categories"]}
-    best: str | None = None
-    best_mass: float = 0
+    # [product id, key, edible mass] of the heaviest protein and starchy base so far.
+    best: dict[str, list[Any]] = {"protein": ["", "", 0.0], "base": ["", "", 0.0]}
     for ing in recipe["ingredients"]:
         product = catalog.products.get(ing["product"])
         if product is None:
             continue
-        if product["category"] not in PRIMARY_GROUPS and groups.get(product["category"], "") not in PRIMARY_GROUPS:
+        group = product["category"] if product["category"] in PRIMARY_GROUPS else groups.get(product["category"], "")
+        if group not in PRIMARY_GROUPS:
             continue
         base = to_base(product, ing["qty"], ing["unit"])
         if base is None:
@@ -175,15 +184,15 @@ def primary_product(catalog: Catalog, recipe: JSON) -> str | None:
             mass = base * (product.get("piece_g") or 0)
         else:
             mass = base * (product.get("density_g_ml") or 0)
-        if mass > best_mass or (mass == best_mass and mass > 0 and best is not None and product["id"] < best):
-            best = product["id"]
-            best_mass = mass
-    return best
+        slot = best["base"] if group in STARCH_GROUPS else best["protein"]
+        if mass > slot[2] or (mass == slot[2] and mass > 0 and product["id"] < slot[0]):
+            slot[:] = [product["id"], f"group:{group}" if group in STARCH_GROUPS else product["id"], mass]
+    return [str(k) for k in (best["protein"][1], best["base"][1]) if k != ""]
 
 
-def _note_primary(state: _State, day: int, product_id: str | None) -> None:
-    if product_id is not None:
-        state.primary_by_day.setdefault(day, set()).add(product_id)
+def _note_primary(state: _State, day: int, keys: list[str]) -> None:
+    if keys:
+        state.primary_by_day.setdefault(day, set()).update(keys)
 
 
 class _State:
@@ -228,7 +237,7 @@ class _Planner:
                 if p is not None and p.get("purchasable") is not False and p["id"] not in products:
                     products.append(p["id"])
             self.recipe_products[rid] = products
-        self.primary_product: dict[str, str | None] = {rid: primary_product(catalog, catalog.recipes[rid]) for rid in self.recipes}
+        self.main_products: dict[str, list[str]] = {rid: main_products(catalog, catalog.recipes[rid]) for rid in self.recipes}
         self.kcal_targets: dict[str, float | None] = {}
         self.kcal_guides: dict[str, float | None] = {}
         self.vit_targets: dict[str, dict[str, float]] = {}
@@ -422,17 +431,24 @@ class _Planner:
         score += (self.slot_ref(slot).get("category_bonus") or {}).get(recipe["category"], 0)
         if recipe["category"] in state.categories_by_day.get(day, set()):
             score += SCORE["sameCategorySameDay"]
-        primary = self.primary_product.get(recipe_id)
-        if primary is not None and (primary in state.primary_by_day.get(day, set()) or primary in state.primary_by_day.get(day - 1, set())):
-            score += SCORE["samePrimaryRecent"]
+        for main in self.main_products.get(recipe_id, []):
+            if main in state.primary_by_day.get(day, set()) or main in state.primary_by_day.get(day - 1, set()):
+                score += SCORE["samePrimaryRecent"]
+            # Per earlier day of the period with the same main product (twin of generator.ts).
+            used = sum(1 for products in state.primary_by_day.values() if main in products)
+            score -= SCORE["primaryWeekUse"] * used
         score += SCORE["repeatUse"] * state.uses.get(recipe_id, 0)
         if recipe_id in self.previous:
             score += SCORE["previousMenu"]
         shared = 0
+        fresh = 0
         for pid in self.recipe_products.get(recipe_id, []):
             if pid in state.products:
                 shared += 1
+            else:
+                fresh += 1
         score += min(shared * SCORE["sharedIngredient"], SCORE["sharedIngredientCap"])
+        score -= min(fresh * SCORE["newProduct"], SCORE["newProductCap"])
         method = self.kitchen(recipe_id, slot, container, self.is_weekend(day))["method"]
         if method is not None:
             score -= method["total_min"] / 120 * SCORE["timePer120Min"]
@@ -562,7 +578,7 @@ class _Planner:
                 state.products.add(pid)
         state.last_day[recipe["id"]] = day
         state.categories_by_day.setdefault(day, set()).add(recipe["category"])
-        _note_primary(state, day, self.primary_product.get(recipe["id"]))
+        _note_primary(state, day, self.main_products.get(recipe["id"], []))
         return item
 
     def batch_until(self, day: int) -> int:
@@ -727,7 +743,7 @@ def rank_candidates(req: JSON, catalog: Catalog, menu: JSON, date: str, slot: st
             if last is None or d > last:
                 state.last_day[rid] = d
             state.categories_by_day.setdefault(d, set()).add(catalog.recipes[rid]["category"])
-            _note_primary(state, d, planner.primary_product.get(rid))
+            _note_primary(state, d, planner.main_products.get(rid, []))
             serving = planner.per_serving(rid)
             for member_id in sorted(item["portions"].keys()):
                 have = state.vit_have.get(member_id)

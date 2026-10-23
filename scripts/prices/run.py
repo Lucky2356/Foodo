@@ -15,7 +15,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from . import magnit, rosstat
+from . import magnit, metro, rosstat
 from .common import Fetcher, FetchError, russian_ca_context
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -30,7 +30,6 @@ CHECK_ONLY = {
     "lenta": "https://lenta.com",
     "auchan": "https://www.auchan.ru",
     "okey": "https://www.okeydostavka.ru",
-    "metro": "https://online.metro-cc.ru",
     "dixy": "https://dixy.ru",
     "vkusvill": "https://vkusvill.ru",
     "monetka": "https://monetka.ru",
@@ -39,6 +38,11 @@ CHECK_ONLY = {
     "maria_ra": "https://www.maria-ra.ru",
 }
 NOT_COLLECTED_REASON = {
+    # Checked 23.10.2026: the pages answer HTTP 401 with Qrator's script check (qauth.js); prices
+    # come only after running it, i.e. only to something posing as a browser — not done here.
+    "lenta": "Страницы товаров закрыты проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
+    "auchan": "Сайт закрыт проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
+    "monetka": "Страницы каталога закрыты проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
     "vkusvill": "Сайт доступен, но вес и единица товара не публикуются в машиночитаемом виде — без них цена за кг была бы догадкой.",
 }
 
@@ -71,10 +75,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument(
-        "--only", choices=["rosstat", "magnit", "check"], action="append"
+        "--only", choices=["rosstat", "magnit", "metro", "check"], action="append"
     )
     args = parser.parse_args(argv)
-    only = set(args.only or ["rosstat", "magnit", "check"])
+    only = set(args.only or ["rosstat", "magnit", "metro", "check"])
     cities = load("geo/cities.json")["cities"]
     products = {p["id"]: p for p in load("products.json")["products"]}
     status = previous_status()
@@ -151,6 +155,36 @@ def main(argv: list[str] | None = None) -> int:
             record("magnit", False, name="Магнит, magnit.ru", error=str(e)[:300])
             print(f"magnit FAILED: {e}", file=sys.stderr)
 
+    if "metro" in only:
+        try:
+            observations, summary = metro.collect(products, cities)
+            if not observations:
+                raise ValueError(
+                    "Ни одна позиция каталога не сопоставлена с продуктами Foodo"
+                )
+            if not args.dry_run:
+                write(
+                    "scraped-metro.json",
+                    {
+                        "format": "foodo-price-observations",
+                        "version": 1,
+                        "kind": "scraped",
+                        "collected_at": now(),
+                        "summary": summary,
+                        "observations": observations,
+                    },
+                )
+            record("metro", True, name="Metro, online.metro-cc.ru", **summary)
+            print(f"metro: {summary}")
+            if args.dry_run:
+                for o in observations:
+                    print(
+                        f"  {o['product_id']}: {o['price_kop'] / 100} ₽ за {o['package_size']} {o['package_unit']} — {o['source']}"
+                    )
+        except (FetchError, ValueError) as e:
+            record("metro", False, name="Metro, online.metro-cc.ru", error=str(e)[:300])
+            print(f"metro FAILED: {e}", file=sys.stderr)
+
     if "check" in only:
         for chain, site in CHECK_ONLY.items():
             fetcher = Fetcher(site, delay=0, timeout=20)
@@ -179,12 +213,12 @@ def main(argv: list[str] | None = None) -> int:
         write("status.json", status)
     failed = [
         k
-        for k in ("rosstat", "magnit")
+        for k in ("rosstat", "magnit", "metro")
         if k in only and not sources.get(k, {}).get("ok")
     ]
     return (
         1
-        if len(failed) == len([k for k in ("rosstat", "magnit") if k in only])
+        if len(failed) == len([k for k in ("rosstat", "magnit", "metro") if k in only])
         and failed
         else 0
     )

@@ -64,6 +64,8 @@ export interface PriceSourceStatus {
   reason?: string;
   period?: string;
   city?: string;
+  /** Chains collected for several stores: one entry per city. */
+  cities?: { city: string; products?: number }[];
   products?: number;
   observations?: number;
 }

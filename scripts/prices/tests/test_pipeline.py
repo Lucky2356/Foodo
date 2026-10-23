@@ -238,3 +238,68 @@ def test_store_location_from_the_page_state() -> None:
     assert magnit.store_location(page) == ("992301", 45.047057, 38.973527)
     assert magnit.nearest_city(CITIES, 45.047057, 38.973527)["name"] == "Краснодар"
     assert magnit.store_location("<html>no store</html>") is None
+
+
+def test_metro_product_page_offer_and_case_of_packages() -> None:
+    from scripts.prices import metro
+
+    page = (
+        '<script type="application/ld+json">{"@context":"https://schema.org/","@type":"Product",'
+        '"name":"Мука Makfa пшеничная высший сорт, 2кг x 6 шт","brand":{"@type":"Brand","name":"MAKFA"},"offers":{"@type":"Offer",'
+        '"priceCurrency":"RUB","price":852,"availability":"https://schema.org/InStock"}}</script>'
+    )
+    # A case of 6 × 2 kg is 12 kg: a wholesale box, not a shopping-list package.
+    assert (
+        metro.offer_from_html(page, "https://online.metro-cc.ru/products/muka") is None
+    )
+    small = page.replace("2кг x 6 шт", "1кг x 2 шт").replace("852", "142")
+    offer = metro.offer_from_html(small, "https://online.metro-cc.ru/products/muka")
+    assert offer is not None and offer["price"] == 142
+    assert magnit.parse_package(offer["name"]) == (2.0, "kg", False)
+    assert magnit.match_product(offer["name"]) == "wheat_flour"
+    # «~13кг» weight goods are ambiguous (price per kg or per box): skipped.
+    assert metro.offer_from_html(small.replace("1кг x 2 шт", "~13кг"), "u") is None
+    page = small
+    canned = (
+        '<script type="application/ld+json">{"@type":"Product","name":"Скумбрия атлантическая Вкусные консервы натуральная, 250г",'
+        '"brand":{"@type":"Brand","name":"ВКУСНЫЕ КОНСЕРВЫ"},"offers":{"@type":"Offer","priceCurrency":"RUB","price":159}}</script>'
+    )
+    # Without the brand the name would read as fresh mackerel; the full name says it is canned.
+    assert metro.offer_from_html(canned, "u") is None
+    out_of_stock = page.replace("InStock", "OutOfStock")
+    assert metro.offer_from_html(out_of_stock, "u") is None
+
+
+def test_metro_candidates_follow_the_slug_and_skip_the_size_prefix() -> None:
+    from scripts.prices import metro
+
+    urls = [
+        "https://online.metro-cc.ru/products/450g-makarony-tsar-vitok-gost",
+        "https://online.metro-cc.ru/products/moloko-ekonom-ultrapasterizovannoe-35-1l",
+        "https://online.metro-cc.ru/products/shampun-dlya-volos",
+    ]
+    found = metro.candidate_urls(urls, per_product=5)
+    assert found["pasta_dry"] == [urls[0]]
+    assert found["milk"] == [urls[1]]
+    assert not any(urls[2] in v for v in found.values())
+
+
+def test_metro_stores_from_the_page_state_one_per_city() -> None:
+    from scripts.prices import metro
+
+    html = (
+        "<script>window.__NUXT__=(function(a,b,c,d){return {tradecenter:{list:["
+        '{id:a,store_id:b,name:"Ленинградское ш., 71Г",address:c,city:d},'
+        '{id:2,store_id:11,name:"просп. Мира",address:"129226, г. Москва, пр-кт Мира"},'
+        '{id:3,store_id:44,name:"Ул. Большевистская",address:"630028, г. Новосибирск, ул. Большевистская, 290"},'
+        '{id:4,store_id:90002,name:"Даркцентр Дубровка",address:"Москва"}'
+        ']}}}(1,10,"125445, г. Москва, Ленинградское ш.","Москва"));</script>'
+    )
+    stores = metro.trade_centers(html)
+    assert [s["store_id"] for s in stores] == [10, 11, 44, 90002]
+    picked = metro.stores_by_city(stores, CITIES, limit=5)
+    # Moscow comes first (most populous) with its first store; dark stores are not shops.
+    assert [(c["name"], s["store_id"]) for c, s in picked] == [
+        ("Москва", 10),
+        ("Новосибирск", 44),
+    ]
