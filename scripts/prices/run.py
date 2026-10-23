@@ -71,6 +71,23 @@ def previous_status() -> dict[str, Any]:
     )
 
 
+# Fields that only describe a chain that is checked, not collected. A chain that moves from the
+# check list to a collector must lose them, or the settings page keeps saying it is not collected.
+CHECK_ONLY_FIELDS = ("collected", "reachable", "detail", "reason")
+
+
+def source_entry(
+    previous: dict[str, Any], ok: bool, at: str, **fields: Any
+) -> dict[str, Any]:
+    """Status of a collected source: keeps the last good summary when a run fails."""
+    entry = {k: v for k, v in previous.items() if k not in CHECK_ONLY_FIELDS}
+    entry.update(fields, checked_at=at, ok=ok)
+    if ok:
+        entry["updated_at"] = at
+        entry.pop("error", None)
+    return entry
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
@@ -85,11 +102,7 @@ def main(argv: list[str] | None = None) -> int:
     sources: dict[str, Any] = status.setdefault("sources", {})
 
     def record(key: str, ok: bool, **fields: Any) -> None:
-        entry = {**sources.get(key, {}), **fields, "checked_at": now(), "ok": ok}
-        if ok:
-            entry["updated_at"] = entry["checked_at"]
-            entry.pop("error", None)
-        sources[key] = entry
+        sources[key] = source_entry(sources.get(key, {}), ok, now(), **fields)
 
     if "rosstat" in only:
         try:
