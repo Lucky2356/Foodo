@@ -242,6 +242,27 @@ def metro_offers() -> None:
                 )
 
 
+def metro_stores() -> None:
+    """Metro's store list resolved from the page state (to choose a store by its id)."""
+    from .metro import trade_centers
+
+    jar = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    req = urllib.request.Request(
+        "https://online.metro-cc.ru/products/lopatka",
+        headers={"User-Agent": USER_AGENT, "Accept-Language": "ru"},
+    )
+    with opener.open(req, timeout=30) as r:
+        html = text_of(r.read(20_000_000))
+    stores = trade_centers(html)
+    print(f"metro stores: {len(stores)}")
+    for st in stores[:120]:
+        print(f"  {st}")
+    i = html.find("tradecenter:{")
+    print(f"  raw: {html[i : i + 600]}")
+    print(f"  cookies: {[(c.name, (c.value or '')[:40]) for c in jar]}")
+
+
 def magnit_shops() -> None:
     """Where magnit.ru lists its stores (sitemaps and robots.txt), to price other cities' stores."""
     f = Fetcher("https://magnit.ru", delay=3, timeout=30)
@@ -311,8 +332,7 @@ def main(argv: list[str]) -> int:
             raw_response(url, cookie)
         for url in SESSION:
             with_cookies(url)
-        metro_offers()
-        magnit_shops()
+        metro_stores()
         return 0
     for name in argv or list(SITES):
         if name in SITES:

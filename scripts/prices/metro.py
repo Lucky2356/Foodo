@@ -215,3 +215,82 @@ def collect(
         "requests": fetcher.requests,
     }
     return observations, summary
+
+
+def _js_literals(text: str) -> list[Any]:
+    """Top-level comma-separated JavaScript literals (strings, numbers, true/false/null, void 0,
+    and anything else as raw text) — the argument list of a Nuxt payload function."""
+    out: list[Any] = []
+    i, n = 0, len(text)
+    while i < n:
+        while i < n and text[i] in " \n\t,":
+            i += 1
+        if i >= n:
+            break
+        if text[i] == '"':
+            j = i + 1
+            while j < n and text[j] != '"':
+                j += 2 if text[j] == "\\" else 1
+            out.append(json.loads(text[i : j + 1]))
+            i = j + 1
+            continue
+        depth, j = 0, i
+        while j < n and not (depth == 0 and text[j] == ","):
+            if text[j] in "{[(":
+                depth += 1
+            elif text[j] in "}])":
+                depth -= 1
+            elif text[j] == '"':
+                j += 1
+                while j < n and text[j] != '"':
+                    j += 2 if text[j] == "\\" else 1
+            j += 1
+        raw = text[i:j].strip()
+        if re.fullmatch(r"-?\d+(?:\.\d+)?(?:e-?\d+)?", raw):
+            out.append(float(raw) if "." in raw or "e" in raw else int(raw))
+        else:
+            out.append(
+                {"true": True, "false": False, "null": None, "void 0": None}.get(
+                    raw, raw
+                )
+            )
+        i = j
+    return out
+
+
+def trade_centers(html: str) -> list[dict[str, Any]]:
+    """Metro stores from the page state: window.__NUXT__ is a function whose parameters stand for
+    repeated values; the store list (tradecenter.list) refers to them by parameter name."""
+    m = re.search(
+        r"window\.__NUXT__=\(function\(([^)]*)\)\{(.*)\}\((.*)\)\);?\s*</script>",
+        html,
+        re.DOTALL,
+    )
+    if not m:
+        return []
+    names = [p.strip() for p in m.group(1).split(",")]
+    values = dict(zip(names, _js_literals(m.group(3)), strict=False))
+    body = m.group(2)
+
+    def value(token: str) -> Any:
+        token = token.strip()
+        if token.startswith('"'):
+            return json.loads(token)
+        if re.fullmatch(r"-?\d+(?:\.\d+)?", token):
+            return float(token) if "." in token else int(token)
+        return values.get(token, token)
+
+    out = []
+    for entry in re.finditer(
+        r"\{id:([\w$]+),store_id:([\w$]+),name:(\"(?:[^\"\\]|\\.)*\"|[\w$]+),address:(\"(?:[^\"\\]|\\.)*\"|[\w$]+)",
+        body,
+    ):
+        out.append(
+            {
+                "id": value(entry.group(1)),
+                "store_id": value(entry.group(2)),
+                "name": value(entry.group(3)),
+                "address": value(entry.group(4)),
+            }
+        )
+    return out
