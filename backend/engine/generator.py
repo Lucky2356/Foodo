@@ -26,7 +26,7 @@ from .restrictions import (
     spice_tolerance,
 )
 from .shopping import compute_shopping, empty_shopping_state, unit_price_kop
-from .targets import resolve_vitamin_targets
+from .targets import estimate_energy, resolve_vitamin_targets
 from .units import to_base
 
 JSON = dict[str, Any]
@@ -44,7 +44,11 @@ SCORE = {
     "timePer120Min": 1,
     "vitamins": 1,
     "energyFit": 2,
-    "jitter": 0.35,
+    "energyGuide": 2,
+    "samePrimaryRecent": -0.7,
+    "dietBonusCap": 1.5,
+    "previousMenu": -1,
+    "jitter": 0.5,
     "unfilledPenalty": 100,
     "budgetExceededPenalty": 1000,
     "maxEvaluations": 250000,
@@ -96,6 +100,9 @@ def validate_plan_request(req: JSON, catalog: Catalog) -> None:
         raise EngineError("no_members", "Добавьте хотя бы одного участника.")
     if len(req["members"]) > 20:
         raise EngineError("too_many_members", "В одной семье может быть не больше 20 участников.")
+    avoid = req.get("avoid_recipes")
+    if avoid is not None and (not isinstance(avoid, list) or len(avoid) > 2000 or not all(isinstance(x, str) for x in avoid)):
+        raise EngineError("invalid_avoid", "Список блюд прошлого меню должен быть списком идентификаторов.")
     s = req["settings"]
     if not (s["portion_min"] > 0 and s["portion_max"] >= s["portion_min"] and s["portion_max"] <= 5):
         raise EngineError("invalid_portion_range", "Некорректный диапазон порций.")
@@ -133,6 +140,52 @@ def validate_plan_request(req: JSON, catalog: Catalog) -> None:
             raise EngineError("demo_targets_not_allowed", "Демонстрационные нормы можно использовать только в демонстрационном сценарии.")
 
 
+GUIDE_ADULT_KCAL = 2000
+PRIMARY_GROUPS = {"meat", "fish_seafood", "legumes", "rice", "pasta", "buckwheat", "cereals", "potatoes"}
+
+
+def energy_guide(m: JSON) -> float | None:
+    """Twin of energyGuide in generator.ts: ranking guide for an adult on simple portions."""
+    age = m.get("age")
+    if age is not None and age < 18:
+        return None
+    estimate = estimate_energy({**m, "goal": None})
+    if estimate["available"] and estimate["kcal"] is not None:
+        return float(estimate["kcal"])
+    return GUIDE_ADULT_KCAL * m["portion_factor"]
+
+
+def primary_product(catalog: Catalog, recipe: JSON) -> str | None:
+    """Twin of primaryProduct in generator.ts: the heaviest meat, fish, legume, grain or potato ingredient."""
+    groups = {c["id"]: c.get("parent") or c["id"] for c in catalog.reference["categories"]}
+    best: str | None = None
+    best_mass: float = 0
+    for ing in recipe["ingredients"]:
+        product = catalog.products.get(ing["product"])
+        if product is None:
+            continue
+        if product["category"] not in PRIMARY_GROUPS and groups.get(product["category"], "") not in PRIMARY_GROUPS:
+            continue
+        base = to_base(product, ing["qty"], ing["unit"])
+        if base is None:
+            continue
+        if product["base_unit"] == "g":
+            mass = base
+        elif product["base_unit"] == "pcs":
+            mass = base * (product.get("piece_g") or 0)
+        else:
+            mass = base * (product.get("density_g_ml") or 0)
+        if mass > best_mass or (mass == best_mass and mass > 0 and best is not None and product["id"] < best):
+            best = product["id"]
+            best_mass = mass
+    return best
+
+
+def _note_primary(state: _State, day: int, product_id: str | None) -> None:
+    if product_id is not None:
+        state.primary_by_day.setdefault(day, set()).add(product_id)
+
+
 class _State:
     def __init__(self, members: list[JSON]) -> None:
         self.uses: dict[str, int] = {}
@@ -140,6 +193,7 @@ class _State:
         self.products: set[str] = set()
         self.vit_have: dict[str, dict[str, float]] = {m["id"]: {} for m in members}
         self.categories_by_day: dict[int, set[str]] = {}
+        self.primary_by_day: dict[int, set[str]] = {}
         self.batches: list[JSON] = []
         self.meals: list[JSON] = []
         self.unfilled: list[JSON] = []
@@ -156,6 +210,7 @@ class _Planner:
         self.req = req
         self.catalog = catalog
         self.recipes = recipe_ids(catalog)
+        self.previous: set[str] = set(req.get("avoid_recipes") or [])
         self.nutrition = NutritionCache(catalog)
         self.dates = [add_days(req["start_date"], d) for d in range(req["days"])]
         share_sum: float = 0
@@ -173,11 +228,14 @@ class _Planner:
                 if p is not None and p.get("purchasable") is not False and p["id"] not in products:
                     products.append(p["id"])
             self.recipe_products[rid] = products
+        self.primary_product: dict[str, str | None] = {rid: primary_product(catalog, catalog.recipes[rid]) for rid in self.recipes}
         self.kcal_targets: dict[str, float | None] = {}
+        self.kcal_guides: dict[str, float | None] = {}
         self.vit_targets: dict[str, dict[str, float]] = {}
         vit = req["settings"]["vitamins"]
         for m in req["members"]:
             self.kcal_targets[m["id"]] = m["kcal_target"] if m["portion_mode"] == "target" and m.get("kcal_target") else None
+            self.kcal_guides[m["id"]] = None if m["portion_mode"] == "target" else energy_guide(m)
             targets: dict[str, float] = {}
             if vit["enabled"]:
                 for t in resolve_vitamin_targets(catalog, m, vit["target_set"], vit["demo"]):
@@ -266,8 +324,8 @@ class _Planner:
             return clamp(1, s["portion_min"], s["portion_max"])
         return clamp(member["portion_factor"], 0.25, 3)
 
-    def energy_mismatch(self, recipe_id: str, slot: str, portions: dict[str, float], people: list[JSON]) -> float:
-        """Twin of energyMismatch in generator.ts: average miss of the meal's calorie targets, capped at 1."""
+    def energy_penalty(self, recipe_id: str, slot: str, portions: dict[str, float], people: list[JSON]) -> float:
+        """Twin of energyPenalty in generator.ts: weighted miss of the meal energy (target or guide)."""
         serving = self.per_serving(recipe_id)["kcal"]["value"]
         if not serving > 0:
             return 0
@@ -275,12 +333,15 @@ class _Planner:
         n = 0
         for m in people:
             target = self.kcal_targets.get(m["id"])
-            if target is None:
+            guide = self.kcal_guides.get(m["id"])
+            daily = target if target is not None else guide
+            if daily is None:
                 continue
-            meal_kcal = target * self.slot_share.get(slot, 0)
+            meal_kcal = daily * self.slot_share.get(slot, 0)
             if not meal_kcal > 0:
                 continue
-            total += min(1, abs(portions.get(m["id"], 0) * serving - meal_kcal) / meal_kcal)
+            miss = min(1, abs(portions.get(m["id"], 0) * serving - meal_kcal) / meal_kcal)
+            total += (SCORE["energyFit"] if target is not None else SCORE["energyGuide"]) * miss
             n += 1
         return 0 if n == 0 else total / n
 
@@ -339,10 +400,13 @@ class _Planner:
         s = self.req["settings"]
         score: float = 0
         rules = self.catalog.reference["diet_rules"].get(s["diet_mode"]) or {}
+        diet_bonus: float = 0
         for tag in recipe["diet_tags"]:
             w = rules.get(tag)
             if w is not None:
-                score += w
+                diet_bonus += w
+        # Penalties count in full; the bonus is capped (twin of generator.ts).
+        score += min(diet_bonus, SCORE["dietBonusCap"])
         for m in people:
             if recipe_id in m["preferences"]["liked_recipes"]:
                 score += SCORE["liked"]
@@ -358,7 +422,12 @@ class _Planner:
         score += (self.slot_ref(slot).get("category_bonus") or {}).get(recipe["category"], 0)
         if recipe["category"] in state.categories_by_day.get(day, set()):
             score += SCORE["sameCategorySameDay"]
+        primary = self.primary_product.get(recipe_id)
+        if primary is not None and (primary in state.primary_by_day.get(day, set()) or primary in state.primary_by_day.get(day - 1, set())):
+            score += SCORE["samePrimaryRecent"]
         score += SCORE["repeatUse"] * state.uses.get(recipe_id, 0)
+        if recipe_id in self.previous:
+            score += SCORE["previousMenu"]
         shared = 0
         for pid in self.recipe_products.get(recipe_id, []):
             if pid in state.products:
@@ -375,7 +444,7 @@ class _Planner:
             total += f
         if cost_weight > 0 and budget_per_meal > 0:
             score -= cost_weight * self.estimate_cost(recipe_id, total) / budget_per_meal
-        score -= SCORE["energyFit"] * self.energy_mismatch(recipe_id, slot, portions, people)
+        score -= self.energy_penalty(recipe_id, slot, portions, people)
         if s["vitamins"]["enabled"]:
             score += SCORE["vitamins"] * self.vitamin_gain(state, recipe_id, portions, people) / len(people)
         return score
@@ -493,6 +562,7 @@ class _Planner:
                 state.products.add(pid)
         state.last_day[recipe["id"]] = day
         state.categories_by_day.setdefault(day, set()).add(recipe["category"])
+        _note_primary(state, day, self.primary_product.get(recipe["id"]))
         return item
 
     def batch_until(self, day: int) -> int:
@@ -657,6 +727,7 @@ def rank_candidates(req: JSON, catalog: Catalog, menu: JSON, date: str, slot: st
             if last is None or d > last:
                 state.last_day[rid] = d
             state.categories_by_day.setdefault(d, set()).add(catalog.recipes[rid]["category"])
+            _note_primary(state, d, planner.primary_product.get(rid))
             serving = planner.per_serving(rid)
             for member_id in sorted(item["portions"].keys()):
                 have = state.vit_have.get(member_id)

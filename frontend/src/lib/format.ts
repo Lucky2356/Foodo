@@ -27,7 +27,9 @@ export function plural(n: number, one: string, few: string, many: string): strin
 
 export function portionLabel(factor: number): string {
   if (factor === 1) return '1 порция';
-  return `${num(factor, 2)} ${plural(Math.ceil(factor), 'порция', 'порции', 'порций')}`;
+  // A fraction takes the genitive singular: «0,5 порции», «1,5 порции»; whole numbers decline as usual.
+  if (!Number.isInteger(factor)) return `${num(factor, 2)} порции`;
+  return `${num(factor, 2)} ${plural(factor, 'порция', 'порции', 'порций')}`;
 }
 
 export function minutes(total: number): string {

@@ -194,6 +194,7 @@ class MenuListView(APIView):
         if seed is not None and (not isinstance(seed, int) or not 0 <= seed <= 4294967295):
             raise ApiError("invalid_seed", "Seed должен быть целым числом от 0 до 4294967295.")
         req = services.build_plan_request(h, start.isoformat(), days, seed)
+        req["avoid_recipes"] = services.previous_recipes(h)
         menu = services.create_menu(h, req, str(request.data.get("title", "")))
         return Response(services.menu_json(menu), status=201)
 

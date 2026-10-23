@@ -226,6 +226,10 @@ export class GuestGateway implements Gateway {
 
   async generateMenu(params: GenerateParams): Promise<MenuRecord> {
     const req = await this.planRequest(params);
+    // A new menu ranks the dishes of the latest one lower, so it brings something new.
+    const db0 = await this.db();
+    const latest = (await db0.getAll('menus')).sort((a, b) => b.created_at.localeCompare(a.created_at))[0];
+    if (latest) req.avoid_recipes = [...new Set(latest.menu.batches.map((b) => b.recipe_id))].sort();
     const catalog = await this.catalog();
     let menu;
     try {
@@ -267,6 +271,7 @@ export class GuestGateway implements Gateway {
         catalog,
         settings: h.settings.plan,
         slot_members: h.settings.slot_members,
+        slots: h.settings.slots,
         members: await this.members(),
         pantry: await this.listPantry(),
         prices: await this.priceProfile(),

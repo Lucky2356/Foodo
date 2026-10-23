@@ -140,7 +140,16 @@ def op_context(h: Household, catalog: Catalog) -> JSON:
         "prices": price_profile(h),
         "settings": cfg["plan"],
         "slot_members": cfg["slot_members"],
+        "slots": cfg["slots"],
     }
+
+
+def previous_recipes(h: Household) -> list[str]:
+    """Recipes of the family's latest menu: a new menu ranks them lower so it brings something new."""
+    latest = h.menus.order_by("-created_at").first()
+    if latest is None:
+        return []
+    return sorted({b["recipe_id"] for b in latest.data.get("batches", [])})
 
 
 @transaction.atomic

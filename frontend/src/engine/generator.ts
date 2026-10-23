@@ -15,7 +15,7 @@ import {
 } from './restrictions';
 import type { KitchenCheck } from './restrictions';
 import { computeShopping, emptyShoppingState, unitPriceKop } from './shopping';
-import { resolveVitaminTargets } from './targets';
+import { estimateEnergy, resolveVitaminTargets } from './targets';
 import { EngineError, VITAMIN_IDS } from './types';
 import type {
   BudgetStatus,
@@ -62,7 +62,15 @@ export const SCORE = {
   vitamins: 1,
   /** Penalty per 100 % mismatch between the portion's energy and the member's share of the target. */
   energyFit: 2,
-  jitter: 0.35,
+  /** The same for an adult on simple portions, against a guide energy (see energyGuide). */
+  energyGuide: 2,
+  /** The dish's main product (meat, fish, legumes, a grain, potatoes) was already eaten today or yesterday. */
+  samePrimaryRecent: -0.7,
+  /** Upper bound of the summed positive diet-mode weights of one dish. */
+  dietBonusCap: 1.5,
+  /** The dish was in the previous menu (a new menu or «Пересобрать» should bring something new). */
+  previousMenu: -1,
+  jitter: 0.5,
   unfilledPenalty: 100,
   budgetExceededPenalty: 1000,
   maxEvaluations: 250000,
@@ -111,6 +119,9 @@ export function validatePlanRequest(req: PlanRequest, catalog: Catalog): void {
   if (new Set(req.slots).size !== req.slots.length) throw new EngineError('duplicate_slot', 'Приёмы пищи повторяются.');
   if (req.members.length === 0) throw new EngineError('no_members', 'Добавьте хотя бы одного участника.');
   if (req.members.length > 20) throw new EngineError('too_many_members', 'В одной семье может быть не больше 20 участников.');
+  if (req.avoid_recipes !== undefined && (!Array.isArray(req.avoid_recipes) || req.avoid_recipes.length > 2000 || req.avoid_recipes.some((x) => typeof x !== 'string'))) {
+    throw new EngineError('invalid_avoid', 'Список блюд прошлого меню должен быть списком идентификаторов.');
+  }
   const s = req.settings;
   if (!(s.portion_min > 0 && s.portion_max >= s.portion_min && s.portion_max <= 5)) {
     throw new EngineError('invalid_portion_range', 'Некорректный диапазон порций.');
@@ -172,6 +183,7 @@ interface BuildState {
   products: Set<string>;
   vitHave: Map<string, Map<VitaminId, number>>;
   categoriesByDay: Map<number, Set<string>>;
+  primaryByDay: Map<number, Set<string>>;
   batches: MenuBatch[];
   meals: MenuMeal[];
   unfilled: Unfilled[];
@@ -194,6 +206,9 @@ class Planner {
   readonly unitPrices = new Map<string, number | null>();
   readonly vitTargets = new Map<string, Map<VitaminId, number>>();
   readonly kcalTargets = new Map<string, number | null>();
+  readonly kcalGuides = new Map<string, number | null>();
+  readonly primaryProduct = new Map<string, string | null>();
+  readonly previous: Set<string>;
   readonly memberOrder: Map<string, number>;
   evaluated = 0;
 
@@ -202,6 +217,7 @@ class Planner {
     readonly catalog: Catalog,
   ) {
     this.recipes = recipeIds(catalog);
+    this.previous = new Set(req.avoid_recipes ?? []);
     this.nutrition = new NutritionCache(catalog);
     this.dates = [];
     for (let d = 0; d < req.days; d += 1) this.dates.push(addDays(req.start_date, d));
@@ -217,9 +233,11 @@ class Planner {
         if (p && p.purchasable !== false && !products.includes(p.id)) products.push(p.id);
       }
       this.recipeProducts.set(id, products);
+      this.primaryProduct.set(id, primaryProduct(catalog, recipe));
     }
     for (const m of req.members) {
       this.kcalTargets.set(m.id, m.portion_mode === 'target' && m.kcal_target ? m.kcal_target : null);
+      this.kcalGuides.set(m.id, m.portion_mode === 'target' ? null : energyGuide(m));
       const vit = new Map<VitaminId, number>();
       if (req.settings.vitamins.enabled) {
         for (const t of resolveVitaminTargets(catalog, m, req.settings.vitamins.target_set, req.settings.vitamins.demo)) {
@@ -323,21 +341,26 @@ class Planner {
   }
 
   /**
-   * How far the portions miss the calorie targets of this meal, averaged over members with a target
-   * (0 = exact, capped at 1 per member). Portions are clamped to a realistic range, so a light salad
-   * cannot become a full dinner by size alone; this term prefers dishes that fit without the clamp.
+   * How far the portions miss the energy of this meal, as a score penalty. A member with a calorie
+   * target is measured against it (portions are clamped to a realistic range, so a light salad cannot
+   * become a full dinner by size alone); an adult on simple portions against a guide energy, with a
+   * smaller weight, so that a 130 kcal soup is not a whole lunch. The miss is capped at 100 % per
+   * member and averaged over the members who have either.
    */
-  energyMismatch(recipeId: string, slot: string, portions: Map<string, number>, people: Participant[]): number {
+  energyPenalty(recipeId: string, slot: string, portions: Map<string, number>, people: Participant[]): number {
     const serving = this.perServing(recipeId).kcal.value;
     if (!(serving > 0)) return 0;
     let sum = 0;
     let n = 0;
     for (const p of people) {
       const target = this.kcalTargets.get(p.member.id) ?? null;
-      if (target === null) continue;
-      const mealKcal = target * (this.slotShare.get(slot) ?? 0);
+      const guide = this.kcalGuides.get(p.member.id) ?? null;
+      const daily = target ?? guide;
+      if (daily === null) continue;
+      const mealKcal = daily * (this.slotShare.get(slot) ?? 0);
       if (!(mealKcal > 0)) continue;
-      sum += Math.min(1, Math.abs((portions.get(p.member.id) ?? 0) * serving - mealKcal) / mealKcal);
+      const miss = Math.min(1, Math.abs((portions.get(p.member.id) ?? 0) * serving - mealKcal) / mealKcal);
+      sum += (target !== null ? SCORE.energyFit : SCORE.energyGuide) * miss;
       n += 1;
     }
     return n === 0 ? 0 : sum / n;
@@ -405,10 +428,14 @@ class Planner {
     const s = this.req.settings;
     let score = 0;
     const rules = this.catalog.reference.diet_rules[s.diet_mode] ?? {};
+    let dietBonus = 0;
     for (const tag of recipe.diet_tags) {
       const w = rules[tag];
-      if (w !== undefined) score += w;
+      if (w !== undefined) dietBonus += w;
     }
+    // Penalties count in full; the bonus is capped, so a dish with four «good» tags does not outrank
+    // everything else and the diet mode still leaves room for energy fit and variety.
+    score += Math.min(dietBonus, SCORE.dietBonusCap);
     for (const p of people) {
       if (p.member.preferences.liked_recipes.includes(recipeId)) score += SCORE.liked;
       if (recipeHasDislikedProduct(this.catalog, recipe, p.member)) score += SCORE.disliked;
@@ -419,7 +446,12 @@ class Planner {
     if (cuisines.length > 0 && recipe.cuisine && cuisines.includes(recipe.cuisine)) score += SCORE.cuisine;
     score += this.slotRef(slot).category_bonus?.[recipe.category] ?? 0;
     if (state.categoriesByDay.get(day)?.has(recipe.category)) score += SCORE.sameCategorySameDay;
+    const primary = this.primaryProduct.get(recipeId) ?? null;
+    if (primary !== null && (state.primaryByDay.get(day)?.has(primary) || state.primaryByDay.get(day - 1)?.has(primary))) {
+      score += SCORE.samePrimaryRecent;
+    }
     score += SCORE.repeatUse * (state.uses.get(recipeId) ?? 0);
+    if (this.previous.has(recipeId)) score += SCORE.previousMenu;
     let shared = 0;
     for (const pid of this.recipeProducts.get(recipeId) ?? []) if (state.products.has(pid)) shared += 1;
     score += Math.min(shared * SCORE.sharedIngredient, SCORE.sharedIngredientCap);
@@ -435,7 +467,7 @@ class Planner {
     if (costWeight > 0 && budgetPerMeal > 0) {
       score -= (costWeight * this.estimateCost(recipeId, total)) / budgetPerMeal;
     }
-    score -= SCORE.energyFit * this.energyMismatch(recipeId, slot, portions, people);
+    score -= this.energyPenalty(recipeId, slot, portions, people);
     if (s.vitamins.enabled) {
       // Averaged per participant. Coverage above the target adds nothing (the gain saturates).
       score += (SCORE.vitamins * this.vitaminGain(state, recipeId, portions, people)) / people.length;
@@ -563,6 +595,7 @@ class Planner {
       state.categoriesByDay.set(day, cats);
     }
     cats.add(recipe.category);
+    notePrimary(state, day, this.primaryProduct.get(recipe.id) ?? null);
     return item;
   }
 
@@ -587,6 +620,7 @@ class Planner {
       products: new Set(),
       vitHave: new Map(this.req.members.map((m) => [m.id, new Map()])),
       categoriesByDay: new Map(),
+      primaryByDay: new Map(),
       batches: [],
       meals: [],
       unfilled: [],
@@ -717,6 +751,55 @@ class Planner {
   }
 }
 
+/** Adult energy used as a ranking guide when no estimate is possible (not a norm, never shown). */
+export const GUIDE_ADULT_KCAL = 2000;
+
+/**
+ * Ranking guide for an adult on simple portions: their own estimate when the profile has the data
+ * (without a goal factor: simple portions mean no deficit), otherwise GUIDE_ADULT_KCAL scaled by the
+ * portion factor. Children get none: no adult energy rule is applied to them.
+ */
+export function energyGuide(m: Member): number | null {
+  if (m.age !== null && m.age < 18) return null;
+  const estimate = estimateEnergy({ ...m, goal: null });
+  return estimate.available && estimate.kcal !== null ? estimate.kcal : GUIDE_ADULT_KCAL * m.portion_factor;
+}
+
+const PRIMARY_GROUPS = new Set(['meat', 'fish_seafood', 'legumes', 'rice', 'pasta', 'buckwheat', 'cereals', 'potatoes']);
+
+/**
+ * The dish's main product: the heaviest ingredient (by edible mass) among meat, fish and seafood,
+ * legumes, grains (not flour or bread) and potatoes. Used to avoid chickpeas three times in two days.
+ */
+export function primaryProduct(catalog: Catalog, recipe: Recipe): string | null {
+  const groups = new Map(catalog.reference.categories.map((c) => [c.id, c.parent ?? c.id]));
+  let best: string | null = null;
+  let bestMass = 0;
+  for (const ing of recipe.ingredients) {
+    const product = catalog.products[ing.product];
+    if (!product) continue;
+    if (!PRIMARY_GROUPS.has(product.category) && !PRIMARY_GROUPS.has(groups.get(product.category) ?? '')) continue;
+    const base = toBase(product, ing.qty, ing.unit);
+    if (base === null) continue;
+    const mass = product.base_unit === 'g' ? base : product.base_unit === 'pcs' ? base * (product.piece_g ?? 0) : base * (product.density_g_ml ?? 0);
+    if (mass > bestMass || (mass === bestMass && mass > 0 && best !== null && compareStr(product.id, best) < 0)) {
+      best = product.id;
+      bestMass = mass;
+    }
+  }
+  return best;
+}
+
+function notePrimary(state: BuildState, day: number, productId: string | null): void {
+  if (productId === null) return;
+  let set = state.primaryByDay.get(day);
+  if (!set) {
+    set = new Set();
+    state.primaryByDay.set(day, set);
+  }
+  set.add(productId);
+}
+
 export interface RankedCandidate {
   recipe_id: string;
   method_id: string;
@@ -762,6 +845,7 @@ export function rankCandidates(
         state.categoriesByDay.set(d, cats);
       }
       cats.add((catalog.recipes[batch.recipe_id] as Recipe).category);
+      notePrimary(state, d, planner.primaryProduct.get(batch.recipe_id) ?? null);
       const serving = planner.perServing(batch.recipe_id);
       for (const memberId of Object.keys(item.portions).sort(compareStr)) {
         const have = state.vitHave.get(memberId);
