@@ -15,7 +15,6 @@ import re
 from datetime import date
 from typing import Any
 
-from . import magnit
 from .common import Fetcher, FetchError
 from .magnit import RULES, choose
 
@@ -148,8 +147,8 @@ def stores_by_city(
 def collect(
     products: dict[str, dict[str, Any]],
     cities: list[dict[str, Any]],
-    per_product: int = 6,
-    max_cities: int = 12,
+    per_product: int = 4,
+    max_cities: int = 10,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     jar = http.cookiejar.CookieJar()
     fetcher = Fetcher(BASE, delay=1.5, cookies=jar)
@@ -197,13 +196,8 @@ def collect(
         offers, failed = read(store["store_id"], page_urls)
         chosen = choose(products, offers)
         if known_urls is None:
-            known_urls = sorted(
-                {
-                    o["url"]
-                    for o in offers
-                    if magnit.match_product(o["name"]) in products
-                }
-            )
+            # Only the page chosen for each product: about one request per product per city.
+            known_urls = sorted({o["url"] for o in chosen.values()})
         for product_id, offer in sorted(chosen.items()):
             size, unit, loose = offer["_package"]
             observations.append(
