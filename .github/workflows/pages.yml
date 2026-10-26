@@ -34,6 +34,9 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - name: Build
         working-directory: frontend
+        env:
+          VITE_FOODO_OPERATOR: ${{ vars.FOODO_OPERATOR }}
+          VITE_FOODO_CONTACT_EMAIL: ${{ vars.FOODO_CONTACT_EMAIL }}
         run: |
           npm ci --no-audit --no-fund
           FOODO_VERSION="$(tr -d '[:space:]' < ../VERSION)" npx vite build --mode static --outDir dist-static

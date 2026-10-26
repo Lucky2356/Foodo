@@ -74,7 +74,7 @@ export default function SettingsPage() {
   const toggleIn = <T,>(list: T[], v: T) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
 
   return (
-    <div className="stack" style={{ ['--gap' as string]: '18px' }}>
+    <div className="stack medium" style={{ ['--gap' as string]: '18px' }}>
       <PageHead
         eyebrow="Настройки"
         title="Как подбирать меню"

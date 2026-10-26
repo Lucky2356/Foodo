@@ -570,7 +570,7 @@ function WeekView({
         </div>
       )}
       {/* Each day is its own labelled section: the grid is a visual layout, not a data table. */}
-      <div className="week-table">
+      <div className="week-table" style={{ ['--rows' as string]: String(menu.slots.length + 1) }}>
         {pageDates.map((d) => (
           <section key={d} className="week-col" aria-labelledby={`week-${d}`}>
             <div className="row between">

@@ -118,16 +118,16 @@ function WaterQuick({ member }: { member: Member }) {
     }
   };
   return (
-    <div className="card span-2">
+    <div className="card span-2 water-quick">
       <div className="row between">
         <h3>Вода</h3>
         <Link to="/habits" className="small">
           Подробнее
         </Link>
       </div>
-      <div className="row wrap" style={{ marginTop: 12, ['--gap' as string]: '16px' }}>
-        <div className="ring" style={{ ['--p' as string]: String(Math.min(100, Math.round((total / goal) * 100))) }}>
-          <span className="small">{num(total / 1000, 2)} л</span>
+      <div className="water-quick-body">
+        <div className="ring big" style={{ ['--p' as string]: String(Math.min(100, Math.round((total / goal) * 100))) }}>
+          <span>{num(total / 1000, 2)} л</span>
         </div>
         <div className="stack" style={{ ['--gap' as string]: '8px', minWidth: 0 }}>
           <span className="muted small">
@@ -169,6 +169,8 @@ function Dashboard() {
     return b ? (menu?.snapshot.recipes[b.recipe_id] ?? catalog.recipes[b.recipe_id]) : undefined;
   };
   const day = memberToday(report, first.id, date);
+  // «Скоро в меню» shows the whole next day of the menu, one card per meal.
+  const nextDate = menu?.meals.find((m) => m.date > date)?.date ?? null;
   const ended = menu ? addDaysIso(menu.start_date, menu.days - 1) < today : false;
   // A family of children only (or «Я» from the questionnaire) is not greeted by a child's name.
   const greetName = members.length === 1 && first.name !== 'Я' && !(first.age !== null && first.age !== undefined && first.age < 18) ? first.name : null;
@@ -259,16 +261,15 @@ function Dashboard() {
           </div>
         </Link>
       </div>
-      {menu && (
+      {menu && nextDate && (
         <section className="section">
           <div className="section-title">
             <h2>Скоро в меню</h2>
             <Link to="/menu">Вся неделя</Link>
           </div>
-          <div className="grid">
+          <div className="grid fill-row" style={{ ['--n' as string]: String(menu.meals.filter((m) => m.date === nextDate).length) }}>
             {menu.meals
-              .filter((m) => m.date > date)
-              .slice(0, 3)
+              .filter((m) => m.date === nextDate)
               .map((meal) => {
                 const r = meal.items[0] ? recipeOf(meal.items[0].batch_id) : undefined;
                 if (!r) return null;

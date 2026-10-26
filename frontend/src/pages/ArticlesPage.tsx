@@ -9,7 +9,7 @@ export default function ArticlesPage() {
   if (articleId && !article) return <Empty page icon="leaf" title="Статья не найдена" action={<Link className="btn" to="/articles">Все статьи</Link>} />;
   if (article) {
     return (
-      <article className="stack fade-in" style={{ ['--gap' as string]: '16px' }}>
+      <article className="stack narrow article fade-in" style={{ ['--gap' as string]: '16px' }}>
         <Link to="/articles" className="btn ghost small" style={{ alignSelf: 'flex-start' }}>
           <Icon name="back" size={16} /> Все статьи
         </Link>

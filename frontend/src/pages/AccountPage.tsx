@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ApiError } from '../data/api';
 import { downloadJson, exportGuestData } from '../data/backup';
 import type { GuestExport } from '../data/backup';
@@ -8,6 +8,7 @@ import { useApp } from '../state/app';
 import { NATIVE_BUILD, STATIC_BUILD } from '../lib/config';
 import { Icon } from '../ui/icons';
 import { Banner, Field, PageHead, Segmented } from '../ui/kit';
+import { GuestDataCard } from '../ui/GuestData';
 import { dayMonth } from '../lib/dates';
 import { plural } from '../lib/format';
 
@@ -269,7 +270,7 @@ function AccountSettings() {
   const [deleteWord, setDeleteWord] = useState('');
   if (!user) return null;
   return (
-    <div className="stack" style={{ ['--gap' as string]: '16px', maxWidth: 760 }}>
+    <div className="stack" style={{ ['--gap' as string]: '16px' }}>
       <section className="card row wrap between">
         <div>
           <strong>{user.email}</strong>
@@ -425,13 +426,15 @@ export default function AccountPage() {
   const uid = params.get('uid');
   const token = params.get('token');
   return (
-    <div className="stack" style={{ ['--gap' as string]: '16px' }}>
+    <div className="stack narrow" style={{ ['--gap' as string]: '16px' }}>
       <PageHead eyebrow="Аккаунт" title={user ? 'Аккаунт и безопасность' : 'Вход и синхронизация'} subtitle={user ? undefined : 'Аккаунт не обязателен: всё работает и без него. Он нужен, чтобы видеть меню на нескольких устройствах и вести его вместе с семьёй.'} />
       {!server ? (
-        <Banner icon="info">
-          {NATIVE_BUILD ? 'Приложение работает в гостевом режиме: аккаунты — на полной версии сайта с сервером.' : STATIC_BUILD ? 'Это гостевая версия сайта: аккаунты работают на полной версии с сервером.' : 'Сервер недоступен — сейчас можно пользоваться гостевым режимом.'} Данные хранятся {NATIVE_BUILD ? 'на этом телефоне' : 'в этом браузере'} — сохраните{' '}
-          <Link to="/profile">резервную копию</Link>, чтобы не потерять их.
-        </Banner>
+        <>
+          <Banner icon="info">
+            {NATIVE_BUILD ? 'Приложение работает в гостевом режиме: аккаунты — на полной версии сайта с сервером.' : STATIC_BUILD ? 'Это гостевая версия сайта: аккаунты работают на полной версии с сервером.' : 'Сервер недоступен — сейчас можно пользоваться гостевым режимом.'} Всё остальное работает без аккаунта.
+          </Banner>
+          <GuestDataCard />
+        </>
       ) : uid && token ? (
         <ResetConfirm uid={uid} token={token} />
       ) : user ? (

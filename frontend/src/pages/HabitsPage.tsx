@@ -106,7 +106,7 @@ export default function HabitsPage() {
   const days = Array.from({ length: 14 }, (_, i) => addDaysIso(today, i - 13));
   const mine = (habits.data ?? []).filter((h) => h.member_id === member.id);
   return (
-    <div className="stack" style={{ ['--gap' as string]: '16px' }}>
+    <div className="stack medium" style={{ ['--gap' as string]: '16px' }}>
       <PageHead eyebrow="Каждый день" title="Вода и привычки" />
       {members.length > 1 && <Segmented label="Участник" value={member.id} onChange={setWho} options={members.map((m) => ({ value: m.id, label: m.name }))} />}
       <WaterCard key={member.id} member={member} />
