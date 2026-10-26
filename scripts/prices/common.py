@@ -4,6 +4,7 @@ Runs in GitHub Actions only (see .github/workflows/prices.yml), never on the own
 
 from __future__ import annotations
 
+import http.client
 import http.cookiejar
 import re
 import ssl
@@ -117,7 +118,15 @@ class Fetcher:
                 return r.read(limit)
         except urllib.error.HTTPError as e:
             raise FetchError(f"HTTP {e.code} {url}") from e
-        except (urllib.error.URLError, TimeoutError, ssl.SSLError) as e:
+        # A dropped connection or a cut-off body is a failed request like a timeout: the source is
+        # reported as failed and the other sources still run.
+        except (
+            urllib.error.URLError,
+            TimeoutError,
+            ssl.SSLError,
+            ConnectionError,
+            http.client.HTTPException,
+        ) as e:
             raise FetchError(f"{type(e).__name__}: {e} ({url})") from e
 
     def get(self, url: str, limit: int = 60_000_000) -> bytes:

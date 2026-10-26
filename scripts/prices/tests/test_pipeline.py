@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from scripts.prices import magnit, publish, rosstat
-from scripts.prices.common import robots_allows, robots_rules
+from scripts.prices.common import Fetcher, FetchError, robots_allows, robots_rules
 from scripts.prices.run import source_entry
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -325,3 +325,26 @@ def test_a_collected_chain_drops_its_old_check_only_status() -> None:
     assert failed["ok"] is False and failed["error"] == "403"
     assert failed["products"] == 50
     assert failed["updated_at"] == "2026-10-23T22:00:00+00:00"
+
+
+def test_a_dropped_connection_is_a_fetch_error_not_a_crash() -> None:
+    import socket
+    import threading
+
+    import pytest
+
+    server = socket.socket()
+    server.bind(("127.0.0.1", 0))
+    server.listen(1)
+    port = server.getsockname()[1]
+
+    def close_without_response() -> None:
+        conn, _ = server.accept()
+        conn.recv(4096)
+        conn.close()
+
+    threading.Thread(target=close_without_response, daemon=True).start()
+    fetcher = Fetcher(f"http://127.0.0.1:{port}", delay=0, timeout=5, rules=[])
+    with pytest.raises(FetchError, match="RemoteDisconnected"):
+        fetcher.get(f"http://127.0.0.1:{port}/file.pem")
+    server.close()
