@@ -134,47 +134,47 @@ export default function RecipePage() {
               )}
             </p>
           )}
+          <section className="card stack recipe-kbju">
+            <div className="row wrap between">
+              <h2>КБЖУ</h2>
+              <Segmented<Basis>
+                label="База расчёта"
+                value={basis}
+                onChange={setBasis}
+                options={[
+                  { value: 'serving', label: 'Порция' },
+                  { value: '100g', label: '100 г' },
+                  { value: 'total', label: `${portions} порц.` },
+                ]}
+              />
+            </div>
+            {table ? (
+              <div className="kbju">
+                {(['kcal', 'protein', 'fat', 'carbs'] as const).map((k) => (
+                  <div key={k}>
+                    <b>{num(table[k].value, k === 'kcal' ? 0 : 1)}</b>
+                    <small>{k === 'kcal' ? 'ккал' : k === 'protein' ? 'белки, г' : k === 'fat' ? 'жиры, г' : 'углев., г'}</small>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <Banner icon="info">Выход готового блюда неизвестен, поэтому значение на 100 г не рассчитывается. Смотрите значение на порцию.</Banner>
+            )}
+            {nutrition.yieldG !== null && nutrition.yieldG > 0 && (
+              <p className="muted small">
+                Выход: {num(nutrition.yieldG)} г, порция ≈ {num(nutrition.yieldG / portions)} г
+              </p>
+            )}
+            {(!nutrition.total.kcal.complete || estimated) && (
+              <p className="muted tiny">
+                {!nutrition.total.kcal.complete ? 'Для части ингредиентов нет данных — значения неполные. ' : ''}
+                {estimated ? 'Пищевая ценность стартовой базы оценочная и не верифицирована.' : ''}
+              </p>
+            )}
+          </section>
         </div>
       </div>
 
-      <section className="card stack">
-        <div className="row wrap between">
-          <h2>КБЖУ</h2>
-          <Segmented<Basis>
-            label="База расчёта"
-            value={basis}
-            onChange={setBasis}
-            options={[
-              { value: 'serving', label: 'Порция' },
-              { value: '100g', label: '100 г' },
-              { value: 'total', label: `${portions} порц.` },
-            ]}
-          />
-        </div>
-        {table ? (
-          <div className="kbju">
-            {(['kcal', 'protein', 'fat', 'carbs'] as const).map((k) => (
-              <div key={k}>
-                <b>{num(table[k].value, k === 'kcal' ? 0 : 1)}</b>
-                <small>{k === 'kcal' ? 'ккал' : k === 'protein' ? 'белки, г' : k === 'fat' ? 'жиры, г' : 'углев., г'}</small>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <Banner icon="info">Выход готового блюда неизвестен, поэтому значение на 100 г не рассчитывается. Смотрите значение на порцию.</Banner>
-        )}
-        {nutrition.yieldG !== null && nutrition.yieldG > 0 && (
-          <p className="muted small">
-            Выход: {num(nutrition.yieldG)} г, порция ≈ {num(nutrition.yieldG / portions)} г
-          </p>
-        )}
-        {(!nutrition.total.kcal.complete || estimated) && (
-          <p className="muted tiny">
-            {!nutrition.total.kcal.complete ? 'Для части ингредиентов нет данных — значения неполные. ' : ''}
-            {estimated ? 'Пищевая ценность стартовой базы оценочная и не верифицирована.' : ''}
-          </p>
-        )}
-      </section>
 
       <div className="bento">
         <section className="card span-3 stack">

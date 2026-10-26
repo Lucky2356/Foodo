@@ -9,3 +9,7 @@ export const NATIVE_BUILD = __FOODO_NATIVE__;
 export const API_BASE = (import.meta.env.VITE_FOODO_API_BASE as string | undefined) ?? '/api';
 export const DEFAULT_TIMEZONE = 'Europe/Moscow';
 export const CURRENCY = 'RUB';
+/** Operator details and contact address for «О сервисе». Set by the owner at build time
+ * (VITE_FOODO_OPERATOR, VITE_FOODO_CONTACT_EMAIL); while unset the page shows no placeholders. */
+export const OPERATOR = (import.meta.env.VITE_FOODO_OPERATOR as string | undefined)?.trim() || null;
+export const CONTACT_EMAIL = (import.meta.env.VITE_FOODO_CONTACT_EMAIL as string | undefined)?.trim() || null;

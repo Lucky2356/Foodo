@@ -42,7 +42,7 @@ export default function PantryPage() {
     groups.set(key, [...(groups.get(key) ?? []), p]);
   }
   return (
-    <div className="stack" style={{ ['--gap' as string]: '14px' }}>
+    <div className="stack medium" style={{ ['--gap' as string]: '14px' }}>
       <PageHead
         eyebrow="Остатки"
         title="Что есть дома"

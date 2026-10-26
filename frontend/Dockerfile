@@ -8,6 +8,10 @@ COPY shared /app/shared
 COPY frontend /app/frontend
 ARG FOODO_VERSION=dev
 ENV FOODO_VERSION=${FOODO_VERSION}
+# Operator details for «О сервисе» (optional; nothing is shown while empty).
+ARG VITE_FOODO_OPERATOR=
+ARG VITE_FOODO_CONTACT_EMAIL=
+ENV VITE_FOODO_OPERATOR=${VITE_FOODO_OPERATOR} VITE_FOODO_CONTACT_EMAIL=${VITE_FOODO_CONTACT_EMAIL}
 RUN npm run build
 
 FROM nginx:1.27-alpine

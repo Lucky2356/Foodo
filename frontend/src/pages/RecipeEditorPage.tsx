@@ -101,7 +101,7 @@ function Editor({ initial, catalog }: { initial: Recipe | null; catalog: Catalog
     }
   };
   return (
-    <div className="stack" style={{ maxWidth: 760, ['--gap' as string]: '16px' }}>
+    <div className="stack narrow" style={{ ['--gap' as string]: '16px' }}>
       <PageHead eyebrow="Мой рецепт" title={initial ? 'Изменить рецепт' : 'Новый рецепт'} subtitle="Собственные рецепты приватны и участвуют в подборе меню." />
       <section className="card stack">
         <Field label="Название">

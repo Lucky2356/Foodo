@@ -9,7 +9,7 @@
   --font: 'Onest Variable', 'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --bg: #fffbf2;
-  --bg-glow: radial-gradient(1100px 560px at 100% -10%, rgb(255 209 102 / 26%) 0%, transparent 60%), radial-gradient(900px 520px at -10% 110%, rgb(22 163 74 / 10%) 0%, transparent 55%);
+  --bg-glow: radial-gradient(1200px 640px at 60% -24%, rgb(255 209 102 / 24%) 0%, transparent 62%);
   --surface: #ffffff;
   --surface-2: #fbf5e8;
   --surface-3: #f2ebda;
@@ -78,7 +78,7 @@
   :root:not([data-theme='light']) {
     color-scheme: dark;
     --bg: #000000;
-    --bg-glow: radial-gradient(900px 520px at 100% -8%, rgb(255 164 43 / 10%) 0%, transparent 60%), radial-gradient(700px 420px at -10% 108%, rgb(63 191 106 / 7%) 0%, transparent 55%);
+    --bg-glow: radial-gradient(1200px 640px at 60% -24%, rgb(255 164 43 / 5%) 0%, transparent 62%);
     --surface: #141414;
     --surface-2: #1c1c1c;
     --surface-3: #262626;
@@ -121,6 +121,7 @@
     --shadow-lg: 0 30px 70px -20px rgb(0 0 0 / 90%), 0 0 0 1px rgb(255 255 255 / 5%);
     --glow-primary: 0 8px 28px -8px rgb(255 164 43 / 45%);
     --hero-bg: linear-gradient(135deg, #3b2407 0%, #1d1307 55%, #141414 100%);
+  --hero-glow: rgb(255 164 43 / 16%);
     --hero-ink: #fff3e0;
     --hero-muted: rgb(255 243 224 / 72%);
     --hero-btn-ink: #3b2407;
@@ -137,7 +138,7 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
   --bg: #000000;
-  --bg-glow: radial-gradient(900px 520px at 100% -8%, rgb(255 164 43 / 10%) 0%, transparent 60%), radial-gradient(700px 420px at -10% 108%, rgb(63 191 106 / 7%) 0%, transparent 55%);
+  --bg-glow: radial-gradient(1200px 640px at 60% -24%, rgb(255 164 43 / 5%) 0%, transparent 62%);
   --surface: #141414;
   --surface-2: #1c1c1c;
   --surface-3: #262626;
@@ -180,6 +181,7 @@
   --shadow-lg: 0 30px 70px -20px rgb(0 0 0 / 90%), 0 0 0 1px rgb(255 255 255 / 5%);
   --glow-primary: 0 8px 28px -8px rgb(255 164 43 / 45%);
   --hero-bg: linear-gradient(135deg, #3b2407 0%, #1d1307 55%, #141414 100%);
+  --hero-glow: rgb(255 164 43 / 16%);
   --hero-ink: #fff3e0;
   --hero-muted: rgb(255 243 224 / 72%);
     --hero-btn-ink: #3b2407;
@@ -648,7 +650,7 @@ textarea {
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(255 255 255 / 16%), transparent 70%);
+  background: radial-gradient(circle, var(--hero-glow, rgb(255 255 255 / 16%)), transparent 70%);
   pointer-events: none;
 }
 
@@ -2785,4 +2787,246 @@ hr.sep {
   .wizard-nav .btn.big:not(.grow) {
     padding-inline: 16px;
   }
+}
+
+/* ===== Layout pass (0.2.4) ============================================== */
+
+/* From Full HD up the content keeps one width and is centred; wider screens no longer stretch
+   cards into long half-empty rows (4K scales the whole interface, see above). */
+@media (min-width: 2000px) {
+  .main {
+    max-width: 1440px;
+  }
+}
+
+/* Reading pages and forms get a centred column of comfortable length; settings-like pages a
+   slightly wider one. */
+.narrow {
+  width: 100%;
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.medium {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+@media (min-width: 960px) {
+  /* The account and «О сервисе» links line up with the main navigation above them. */
+  .sidebar-footer {
+    padding: 12px 0 0;
+    border-top: 1px solid var(--border);
+  }
+}
+
+/* Choice controls keep their natural width on wide screens instead of stretching to the
+   container with all options crowded on the left. */
+@media (min-width: 560px) {
+  .stack > .segmented {
+    align-self: flex-start;
+  }
+}
+
+/* Week grid: each meal is a shared row, so «Обед» starts at the same height on every day even
+   when a dish name above it takes two lines. */
+@supports (grid-template-rows: subgrid) {
+  .week-table {
+    grid-template-rows: repeat(var(--rows, 5), auto);
+    row-gap: 8px;
+  }
+
+  .week-col {
+    grid-row: span var(--rows, 5);
+    grid-template-rows: subgrid;
+  }
+}
+
+/* Two shopping columns start level: no top margin above the first department of a column. */
+@media (min-width: 1100px) {
+  .shop-columns .shop-dept {
+    margin-top: 0;
+  }
+
+  .shop-columns > section {
+    margin-bottom: 22px;
+  }
+}
+
+.grid.member-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
+/* One row with a card per meal of the day: never an empty slot at the end. */
+.grid.fill-row {
+  grid-template-columns: repeat(auto-fill, minmax(max(150px, calc((100% - (var(--n, 4) - 1) * 14px) / var(--n, 4))), 1fr));
+}
+
+/* Home water card: the ring and buttons fill the tall card instead of hugging its top. */
+.water-quick {
+  display: flex;
+  flex-direction: column;
+}
+
+.water-quick-body {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px 22px;
+  padding-top: 14px;
+}
+
+.ring.big {
+  width: 120px;
+  height: 120px;
+}
+
+.ring.big::before {
+  width: 96px;
+  height: 96px;
+}
+
+.ring.big > * {
+  font-size: 20px;
+}
+
+/* ===== About ============================================================= */
+.about-hero {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  padding: 30px;
+  border-radius: var(--radius-xl);
+  background: var(--landing-bg);
+  border: 1px solid var(--border);
+}
+
+.about-mark {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  flex: none;
+}
+
+.about-hero .eyebrow {
+  font-size: 13px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+.about-hero .lead {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+.about-facts {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+
+.about-fact {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.about-section {
+  padding: 24px;
+}
+
+.about-point {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+}
+
+.about-point h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.about-point-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-soft);
+  color: var(--primary-soft-ink);
+}
+
+.about-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--muted);
+}
+
+.about-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+@media (max-width: 559px) {
+  .about-hero {
+    flex-direction: column;
+    padding: 22px;
+  }
+
+  .about-section {
+    padding: 18px;
+  }
+
+  .about-fact {
+    grid-template-columns: 36px 1fr;
+    column-gap: 14px;
+    row-gap: 2px;
+  }
+
+  .about-fact .about-point-icon {
+    grid-row: span 2;
+  }
+
+  /* Two cards per row: a phone shows the next day at a glance instead of four full-width photos. */
+  .grid.fill-row {
+    gap: 10px;
+  }
+
+  .grid.fill-row .recipe-card .body {
+    padding: 10px 12px 12px;
+  }
+
+  .grid.fill-row .recipe-card h3 {
+    font-size: 15px;
+  }
+}
+
+/* An article reads as a page of its own: larger title, centred column. */
+.article h1 {
+  font-size: clamp(30px, 4vw, 42px);
+}
+
+/* Recipe: КБЖУ sits under the actions, beside the photo on wide screens. */
+.recipe-kbju {
+  margin-top: auto;
 }

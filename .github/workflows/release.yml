@@ -102,7 +102,10 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: FOODO_VERSION=${{ needs.prepare.outputs.version }}
+          build-args: |
+            FOODO_VERSION=${{ needs.prepare.outputs.version }}
+            VITE_FOODO_OPERATOR=${{ vars.FOODO_OPERATOR }}
+            VITE_FOODO_CONTACT_EMAIL=${{ vars.FOODO_CONTACT_EMAIL }}
           provenance: false
       - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
@@ -138,6 +141,8 @@ jobs:
         working-directory: frontend
         env:
           FOODO_VERSION: ${{ needs.prepare.outputs.version }}
+          VITE_FOODO_OPERATOR: ${{ vars.FOODO_OPERATOR }}
+          VITE_FOODO_CONTACT_EMAIL: ${{ vars.FOODO_CONTACT_EMAIL }}
         run: |
           npm ci --no-audit --no-fund
           npx vite build --mode static --outDir dist-static
