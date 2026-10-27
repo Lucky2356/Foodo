@@ -13,3 +13,8 @@ export const CURRENCY = 'RUB';
  * (VITE_FOODO_OPERATOR, VITE_FOODO_CONTACT_EMAIL); while unset the page shows no placeholders. */
 export const OPERATOR = (import.meta.env.VITE_FOODO_OPERATOR as string | undefined)?.trim() || null;
 export const CONTACT_EMAIL = (import.meta.env.VITE_FOODO_CONTACT_EMAIL as string | undefined)?.trim() || null;
+/** Author and original source, shown on «О сервисе»: required by the attribution term of the
+ * licence (NOTICE.md), so forks keep them visible. */
+export const AUTHOR_NAME = 'Lucky';
+export const AUTHOR_URL = 'https://github.com/Lucky2356';
+export const SOURCE_URL = 'https://github.com/Lucky2356/Foodo';

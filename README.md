@@ -118,4 +118,4 @@ python -m scripts.catalog.build           # проверить и пересоб
 
 ## Лицензия
 
-Лицензия не выбрана: это отдельное решение владельца. Шрифты DejaVu (экспорт PDF) распространяются по своей лицензии — `frontend/public/fonts/DejaVu-LICENSE.txt`; Onest — SIL OFL через `@fontsource-variable/onest`.
+Автор — Lucky (https://github.com/Lucky2356). Код — **GNU AGPL-3.0** (`LICENSE`) с дополнительным условием: в любой версии на основе Foodo с интерфейсом должна оставаться видимая надпись «Основано на Foodo — автор Lucky (https://github.com/Lucky2356)» со ссылкой на этот репозиторий. Рецепты, статьи и справочные данные каталога — **CC BY-SA 4.0** (`LICENSE-CONTENT`). Подробности и исключения (фото, справочник городов, цены, шрифты, зависимости) — `NOTICE.md`. Шрифты DejaVu (экспорт PDF) распространяются по своей лицензии — `frontend/public/fonts/DejaVu-LICENSE.txt`; Onest — SIL OFL через `@fontsource-variable/onest`.
