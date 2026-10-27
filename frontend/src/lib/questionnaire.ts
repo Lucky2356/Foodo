@@ -4,7 +4,7 @@
 
 import { DEFAULT_SETTINGS, estimateEnergy } from '../engine';
 import type { DietMode, Member, PlanSettings, RepeatMode, Restrictions, SkillLevel } from '../engine';
-import type { HouseholdSettings, HouseholdView } from '../data/types';
+import type { CityRef, HouseholdSettings, HouseholdView } from '../data/types';
 
 export type Goal = 'simple' | 'maintain' | 'lose' | 'gain';
 
@@ -35,6 +35,9 @@ export interface Answers {
   container_days: number[];
   budget_rub: number | null;
   vitamins: boolean;
+  /** Where the family shops: the city gives public prices at once, the chain is optional. */
+  city: CityRef | null;
+  store_chain_id: string | null;
 }
 
 export const SLOT_ORDER = ['breakfast', 'lunch', 'snack', 'dinner'] as const;
@@ -133,6 +136,8 @@ export function defaultAnswers(household: HouseholdView | null): Answers {
     container_days: [...plan.container_days],
     budget_rub: plan.budget.limit_kop === null ? null : Math.round(plan.budget.limit_kop / 100),
     vitamins: plan.vitamins.enabled,
+    city: household?.city ?? null,
+    store_chain_id: household?.store_chain_id ?? null,
   };
 }
 

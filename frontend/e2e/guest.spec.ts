@@ -62,7 +62,7 @@ test.describe('guest mode (static site, no server)', () => {
     await cta.focus();
     await page.keyboard.press('Enter');
     await expect(page.getByRole('heading', { name: 'Для кого готовим?' })).toBeVisible();
-    for (let step = 0; step < 7; step += 1) {
+    for (let step = 0; step < 8; step += 1) {
       const heading = await page.getByRole('heading', { level: 1 }).innerText();
       await page.getByRole('button', { name: 'Дальше' }).focus();
       await page.keyboard.press('Enter');
@@ -214,5 +214,43 @@ test.describe('published prices', () => {
     await expect(page.getByText('часть цен — средние Росстата (оценка)')).toBeVisible();
     // Only file names were requested — no profile data in the URL.
     expect(requested.every((u) => /\/data\/prices\/(index|tat)\.json$/.test(u))).toBe(true);
+  });
+
+  test('a city chosen in the questionnaire gives prices on the first shopping list (prices)', async ({ page }) => {
+    await page.route('**/data/prices/**', async (route) => {
+      const url = route.request().url();
+      if (url.endsWith('/index.json')) return route.fulfill({ json: { files: { 'region:Республика Татарстан': 'tat.json' }, status: null } });
+      if (url.endsWith('/tat.json')) {
+        const entry = (product_id: string, price_kop: number) => ({ product_id, price_kop, package_size: 1, package_unit: 'kg', currency: 'RUB', date: '2026-09-30', source: 'Росстат, 09.2026', kind: 'rosstat', loose: true });
+        return route.fulfill({ json: { entries: [entry('potato', 4550), entry('onion', 3990), entry('carrot', 4200)] } });
+      }
+      return route.fulfill({ status: 404, body: '' });
+    });
+    await page.goto('./');
+    await page.getByRole('link', { name: 'Составить меню бесплатно' }).first().click();
+    await walkQuestionnaire(page, {
+      'Где покупаете продукты?': async () => {
+        await page.getByPlaceholder('Или найдите город вручную').fill('Казань');
+        await page.getByRole('button', { name: /^Казань/ }).first().click();
+        await expect(page.getByText('Казань, Республика Татарстан')).toBeVisible();
+      },
+    });
+    await expect(page.getByText('Казань, любой магазин')).toBeVisible();
+    await page.getByRole('button', { name: 'Составить меню' }).click();
+    await page.waitForURL(/#\/menu/);
+    await page.goto('./#/shopping');
+    await expect(page.getByText('часть цен — средние Росстата (оценка)')).toBeVisible();
+    await expect(page.getByText('Сколько это стоит?')).toHaveCount(0);
+  });
+
+  test('without any price the shopping list offers to choose a city right there (prices)', async ({ page }) => {
+    await page.route('**/data/prices/**', (route) => route.fulfill({ status: 404, body: '' }));
+    await onboard(page);
+    await page.goto('./#/shopping');
+    await expect(page.getByText('Сколько это стоит?')).toBeVisible();
+    await page.getByRole('button', { name: 'Выбрать город' }).click();
+    await page.getByRole('dialog').getByPlaceholder('Или найдите город вручную').fill('Казань');
+    await page.getByRole('dialog').getByRole('button', { name: /^Казань/ }).first().click();
+    await expect(page.getByRole('dialog').getByText('Казань, Республика Татарстан')).toBeVisible();
   });
 });

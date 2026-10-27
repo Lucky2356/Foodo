@@ -6,6 +6,7 @@ import { downloadBlob } from '../data/backup';
 import { useApp } from '../state/app';
 import { useCurrentMenu } from '../state/menu';
 import { Icon } from '../ui/icons';
+import { CityChooser } from '../ui/CityChooser';
 import { Banner, Empty, ErrorBox, Field, Loading, NumberInput, PageHead, Sheet } from '../ui/kit';
 import { dayMonth } from '../lib/dates';
 import { buyAmount, newId, num, plural, quantity, rub } from '../lib/format';
@@ -28,7 +29,7 @@ function packageText(pkg: { count: number; size: number; unit: string } | null):
 }
 
 export default function ShoppingPage() {
-  const { gateway, household, reportError, toast, bump } = useApp();
+  const { gateway, household, reportError, toast, bump, refreshHousehold } = useApp();
   const { record, loading: menuLoading } = useCurrentMenu();
   const [view, setView] = useState<ShoppingView | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -37,6 +38,7 @@ export default function ShoppingPage() {
   const [editing, setEditing] = useState<ManualLine | null>(null);
   const [hideDone, setHideDone] = useState(false);
   const [exporting, setExporting] = useState<string | null>(null);
+  const [placeOpen, setPlaceOpen] = useState(false);
   const seenSent = useRef<string | null>(null);
 
   const load = async () => {
@@ -211,22 +213,40 @@ export default function ShoppingPage() {
       <div className="progress" role="progressbar" aria-label="Куплено" aria-valuemin={0} aria-valuemax={total} aria-valuenow={total - remaining} aria-valuetext={`Куплено ${total - remaining} из ${total}`}>
         <span style={{ width: `${total ? ((total - remaining) / total) * 100 : 100}%` }} />
       </div>
+      {/* Without any price there is nothing to total: one card explains how to get prices instead of
+          a «—» total next to an empty budget card. */}
+      {!anyPrice ? (
+        <section className="card prices-empty">
+          <span className="prices-empty-icon" aria-hidden="true">
+            <Icon name="store" size={22} />
+          </span>
+          <div className="stack grow" style={{ ['--gap' as string]: '6px' }}>
+            <h2 className="h3">Сколько это стоит?</h2>
+            <p className="muted small">
+              {household?.city
+                ? `Для города ${household.city.name} пока нет опубликованных цен. Введите свои цены — итог и бюджет посчитаются по ним.`
+                : 'Укажите город — подставим средние цены Росстата, а для METRO и «Магнита» — цены магазинов. Итог на кассе и проверка бюджета появятся сразу.'}
+            </p>
+            {budget.status !== 'none' && <p className="small">Бюджет {rub(budget.limit_kop)} проверим, когда будут цены.</p>}
+            <div className="row wrap" style={{ marginTop: 6 }}>
+              <button className="btn primary small" onClick={() => setPlaceOpen(true)}>
+                <Icon name="location" size={16} /> {household?.city ? 'Сменить город' : 'Выбрать город'}
+              </button>
+              <Link to="/settings#prices" className="btn ghost small">
+                Ввести свои цены
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : (
       <div className="bento">
         <div className="card span-3">
           <div className="muted small">На кассе (упаковки)</div>
-          {/* Without any price a «0 ₽» total would read as «free»: show a dash instead. */}
-          <div style={{ fontSize: 28, fontWeight: 750, letterSpacing: '-.03em' }}>{anyPrice ? rub(view.totals.purchase_kop) : '—'}</div>
-          {anyPrice && <div className="muted small">Стоимость использованного: {rub(view.totals.usage_kop)}</div>}
+          <div style={{ fontSize: 28, fontWeight: 750, letterSpacing: '-.03em' }}>{rub(view.totals.purchase_kop)}</div>
+          <div className="muted small">Стоимость использованного: {rub(view.totals.usage_kop)}</div>
           {!view.totals.complete && (
             <div className="badge yellow" style={{ marginTop: 8 }}>
-              {anyPrice
-                ? `Итог неполный: нет цены у ${view.totals.missing_prices.length} ${plural(view.totals.missing_prices.length, 'позиции', 'позиций', 'позиций')}`
-                : 'Цены ещё не заданы'}
-            </div>
-          )}
-          {!anyPrice && (
-            <div className="small" style={{ marginTop: 6 }}>
-              <Link to="/settings#store">Выберите город и магазин</Link> или <Link to="/settings#prices">добавьте свои цены</Link>.
+              {`Итог неполный: нет цены у ${view.totals.missing_prices.length} ${plural(view.totals.missing_prices.length, 'позиции', 'позиций', 'позиций')}`}
             </div>
           )}
           {view.totals.estimated && <div className="badge blue" style={{ marginTop: 8, marginLeft: 4 }}>часть цен — средние Росстата (оценка)</div>}
@@ -259,6 +279,7 @@ export default function ShoppingPage() {
           )}
         </div>
       </div>
+      )}
       {changed > 0 && (
         <Banner icon="info">
           После изменений меню или остатков обновились количества у {changed} {plural(changed, 'позиции', 'позиций', 'позиций')} — они отмечены.{' '}
@@ -356,6 +377,34 @@ export default function ShoppingPage() {
         </section>
       )}
       </div>
+      {placeOpen && (
+        <Sheet open onClose={() => setPlaceOpen(false)} title="Город и магазин">
+          <CityChooser
+            cityId={household?.city?.id ?? null}
+            chainId={household?.store_chain_id ?? null}
+            onCity={async (c) => {
+              try {
+                await gateway.updateHousehold({ city_id: c.id });
+                await refreshHousehold();
+                await load();
+                toast(`Город: ${c.name}`, { tone: 'success' });
+              } catch (e) {
+                reportError(e);
+              }
+            }}
+            onChain={async (ch) => {
+              try {
+                await gateway.updateHousehold({ store_chain_id: ch?.id ?? null });
+                await refreshHousehold();
+                await load();
+                setPlaceOpen(false);
+              } catch (e) {
+                reportError(e);
+              }
+            }}
+          />
+        </Sheet>
+      )}
       {editing && <ManualLineSheet line={editing} onClose={() => setEditing(null)} onSave={saveManual} onRemove={() => { setEditing(null); removeManual(editing.id); }} />}
       <p className="muted tiny">
         «Корзина покупок» — это список внутри Foodo: заказ и доставку мы не оформляем. Выбор магазина не загружает его реальные цены — источник каждой цены указан в строке.

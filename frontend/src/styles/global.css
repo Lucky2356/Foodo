@@ -3034,3 +3034,21 @@ hr.sep {
 .about-credit {
   font-weight: 650;
 }
+
+/* Shopping without any price: one card that leads to the city or own prices. */
+.prices-empty {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.prices-empty-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-soft);
+  color: var(--primary-soft-ink);
+}

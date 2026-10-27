@@ -3,8 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { toBase } from '../engine';
 import type { PlanSettings, Product } from '../engine';
 import type { HouseholdSettings, NewPrice } from '../data/types';
-import { chainsForCity, detectCity, loadChains, loadCities, searchCities } from '../data/geo';
-import type { Chain, City } from '../data/geo';
+import { loadChains } from '../data/geo';
+import { CityChooser } from '../ui/CityChooser';
 import { useApp, useLoad } from '../state/app';
 import { Icon } from '../ui/icons';
 import { Banner, Chip, Field, Loading, NumberInput, PageHead, Segmented, Sheet, Switch } from '../ui/kit';
@@ -299,16 +299,6 @@ export default function SettingsPage() {
 
 function StoreSection() {
   const { household, gateway, refreshHousehold, reportError, toast, user } = useApp();
-  const [cities, setCities] = useState<City[]>([]);
-  const [chains, setChains] = useState<Chain[]>([]);
-  const [query, setQuery] = useState('');
-  const [detecting, setDetecting] = useState(false);
-  useEffect(() => {
-    void loadCities().then(setCities);
-    void loadChains().then(setChains);
-  }, []);
-  const city = useMemo(() => cities.find((c) => c.id === household?.city?.id) ?? null, [cities, household]);
-  const available = city ? chainsForCity(chains, city) : [];
   const save = async (patch: Parameters<typeof gateway.updateHousehold>[0], message: string) => {
     try {
       await gateway.updateHousehold(patch);
@@ -318,68 +308,15 @@ function StoreSection() {
       reportError(e);
     }
   };
-  const detect = async () => {
-    setDetecting(true);
-    try {
-      const found = await detectCity();
-      await save({ city_id: found.city.id }, `Город: ${found.city.name}`);
-    } catch (e) {
-      reportError(e);
-    } finally {
-      setDetecting(false);
-    }
-  };
   return (
     <section className="card stack" id="store">
       <h2>Город и магазин</h2>
-      <div className="row wrap">
-        <button className="btn primary" onClick={() => void detect()} disabled={detecting}>
-          {detecting ? <span className="spinner" /> : <Icon name="location" size={18} />} Определить мой город
-        </button>
-        {household?.city && (
-          <span className="badge green">
-            <Icon name="location" size={14} /> {household.city.name}, {household.city.region}
-          </span>
-        )}
-      </div>
-      <p className="muted tiny">Местоположение используется только на этом устройстве для поиска ближайшего города из встроенного списка; координаты никуда не отправляются.</p>
-      <label className="search">
-        <span className="visually-hidden">Найти город</span>
-        <Icon name="search" size={18} />
-        <input className="input" placeholder="Или найдите город вручную" value={query} onChange={(e) => setQuery(e.target.value)} />
-      </label>
-      {query && (
-        <div className="chips">
-          {searchCities(cities, query, 12).map((c) => (
-            <button
-              key={c.id}
-              className="chip"
-              onClick={() => {
-                setQuery('');
-                void save({ city_id: c.id }, `Город: ${c.name}`);
-              }}
-            >
-              {c.name} <span className="faint small">{c.region}</span>
-            </button>
-          ))}
-        </div>
-      )}
-      {city && (
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Магазины в регионе «{city.region}»</span>
-          <div className="chips">
-            <Chip on={!household?.store_chain_id} onClick={() => void save({ store_chain_id: null }, 'Без привязки к магазину')}>
-              Без привязки к магазину
-            </Chip>
-            {available.map((c) => (
-              <Chip key={c.id} on={household?.store_chain_id === c.id} onClick={() => void save({ store_chain_id: c.id }, `Магазин: ${c.name}`)}>
-                {c.name}
-              </Chip>
-            ))}
-          </div>
-          <p className="muted tiny">Список сетей по региону составлен по открытым данным и может быть неточным. Выбор сети не загружает её ассортимент: цены берутся из источников, указанных у каждой цены.</p>
-        </div>
-      )}
+      <CityChooser
+        cityId={household?.city?.id ?? null}
+        chainId={household?.store_chain_id ?? null}
+        onCity={(c) => save({ city_id: c.id }, `Город: ${c.name}`)}
+        onChain={(ch) => save({ store_chain_id: ch?.id ?? null }, ch ? `Магазин: ${ch.name}` : 'Любой магазин')}
+      />
       <PriceSources />
       {user && (
         <Switch
