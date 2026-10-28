@@ -125,7 +125,13 @@ def main(argv: list[str] | None = None) -> int:
         text = json.dumps(result, ensure_ascii=False, indent=1) + "\n"
         if args.apply:
             VALUES.write_text(text, encoding="utf-8")
-            print(text)
+            # One line per product keeps the job log readable where the file cannot be fetched.
+            header = {k: v for k, v in result.items() if k != "products"}
+            print("@@header", json.dumps(header, ensure_ascii=False))
+            products = result["products"]
+            assert isinstance(products, dict)
+            for pid, entry in products.items():
+                print("@@product", pid, json.dumps(entry, ensure_ascii=False))
         elif not VALUES.exists() or VALUES.read_text(encoding="utf-8") != text:
             print(
                 "usda_values.json не совпадает с набором данных; выполните --apply",

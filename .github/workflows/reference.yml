@@ -38,4 +38,4 @@ jobs:
         with:
           python-version: "3.13"
       - name: USDA FoodData Central SR Legacy — food list
-        run: python -m scripts.nutrition.usda --list --id-below 170322
+        run: python -m scripts.nutrition.usda --apply
