@@ -99,15 +99,19 @@ describe('energy targets', () => {
 describe('vitamin targets', () => {
   const cat = catalog();
 
-  it('refuses incompatible vitamin forms and unverified folate form (check 27)', () => {
+  it('uses only targets whose form matches the product data; RE is never compared with RAE (check 27)', () => {
     const t = resolveVitaminTargets(cat, member(), 'mr-2.3.1.0253-21-adults', false);
     const by = Object.fromEntries(t.map((x) => [x.nutrient, x]));
+    // МР gives vitamin A in retinol equivalents; product data is RAE — not converted.
     expect(by.vit_a!.status).toBe('incompatible_form');
-    expect(by.vit_e!.status).toBe('incompatible_form');
-    expect(by.folate!.status).toBe('incompatible_form');
+    // Appendix 2 of МР: 1 mg TE = 1 mg alpha-tocopherol, 1 µg DFE = 1 µg food folate — the data forms.
+    expect(by.vit_e!.status).toBe('ok');
+    expect(by.vit_e!.daily).toBe(15);
+    expect(by.folate!.status).toBe('ok');
+    expect(by.folate!.daily).toBe(400);
     expect(by.vit_c!.status).toBe('ok');
     expect(by.vit_c!.daily).toBe(100);
-    expect(by.vit_c!.message).toMatch(/не сверено/);
+    expect(by.vit_c!.message).toBe('Значение из справочника.');
   });
 
   it('never applies demo targets to real profiles (check 27)', () => {
