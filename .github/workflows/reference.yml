@@ -6,6 +6,7 @@ on:
   pull_request:
     paths:
       - "scripts/reference/**"
+      - "scripts/nutrition/**"
       - "shared/data/nutrient_targets.json"
       - ".github/workflows/reference.yml"
   workflow_dispatch:
@@ -26,3 +27,15 @@ jobs:
       - run: pip install --require-hashes -r scripts/reference/requirements.txt
       - name: МР 2.3.1.0253-21 — vitamin rows
         run: python -m scripts.reference.mr_norms --dump
+
+  usda-sr-legacy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: USDA FoodData Central SR Legacy — food list
+        run: python -m scripts.nutrition.usda --list
