@@ -197,7 +197,7 @@ export default function MenuPage() {
           )}
           {c.code === 'budget_exceeded' && (
             <div style={{ marginTop: 10 }}>
-              <Link className="btn small" to="/settings#budget">
+              <Link className="btn small" to="/settings/shopping#budget">
                 Изменить бюджет
               </Link>
             </div>

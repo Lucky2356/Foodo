@@ -161,7 +161,7 @@ function Shell() {
             <span className="nav-icon">
               <Icon name={user ? 'shield' : 'user'} />
             </span>
-            {user ? 'Аккаунт' : server ? 'Войти' : 'Данные'}
+            {user ? 'Аккаунт' : server ? 'Войти' : 'Мои данные'}
           </NavLink>
           <NavLink to="/about" className="nav-link">
             <span className="nav-icon">
@@ -178,8 +178,9 @@ function Shell() {
           <NavLink to="/habits" className="icon-btn" aria-label="Вода и привычки">
             <Icon name="drop" />
           </NavLink>
-          <NavLink to="/account" className="icon-btn" aria-label={user ? 'Аккаунт' : 'Вход и данные'}>
-            <Icon name={user ? 'shield' : 'settings'} />
+          {/* The gear opens the settings hub (family, settings, data), as everywhere else on phones. */}
+          <NavLink to="/profile" className="icon-btn" aria-label="Настройки">
+            <Icon name="settings" />
           </NavLink>
         </header>
         <main className="main" id="main" tabIndex={-1}>
@@ -230,6 +231,7 @@ function Shell() {
                   <Route path="/pantry" element={<PantryPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/settings" element={<SettingsPage />} />
+                  <Route path="/settings/:section" element={<SettingsPage />} />
                   <Route path="/habits" element={<HabitsPage />} />
                   <Route path="/favorites" element={<FavoritesPage />} />
                   <Route path="/account/*" element={<AccountPage />} />

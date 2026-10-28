@@ -16,7 +16,7 @@ test.describe('guest mode (static site, no server)', () => {
     await noHorizontalScroll(page);
     const items = await page.locator('.shop-name').allInnerTexts();
     expect(items.join(' ')).not.toMatch(/Рис белый|Макароны|Спагетти|Яичная лапша/);
-    for (const path of ['#/recipes', '#/profile', '#/pantry', '#/habits', '#/settings', '#/account', '#/about']) {
+    for (const path of ['#/recipes', '#/profile', '#/pantry', '#/habits', '#/settings/menu', '#/settings/kitchen', '#/settings/food', '#/settings/shopping', '#/settings/look', '#/account', '#/about']) {
       await page.goto(`./${path}`);
       await page.waitForTimeout(300);
       await noHorizontalScroll(page);
@@ -28,6 +28,26 @@ test.describe('guest mode (static site, no server)', () => {
     await expect(page.getByText('Основано на Foodo — автор')).toBeVisible();
     await expect(page.getByRole('link', { name: 'Lucky (github.com/Lucky2356)' })).toHaveAttribute('href', 'https://github.com/Lucky2356');
     await expect(page.getByRole('link', { name: 'Исходный код' })).toHaveAttribute('href', 'https://github.com/Lucky2356/Foodo');
+  });
+
+  test('settings: the profile lists short screens with current values; the gear opens it (settings)', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await onboard(page);
+    await page.getByRole('link', { name: 'Настройки' }).click();
+    await expect(page).toHaveURL(/#\/profile$/);
+    const list = page.getByRole('navigation', { name: 'Настройки' });
+    await expect(list.getByRole('link', { name: /Меню.*приёма пищи · неделя/ })).toBeVisible();
+    await expect(list.getByRole('link', { name: /Покупки и цены.*город не выбран/ })).toBeVisible();
+    await list.getByRole('link', { name: /^Готовка/ }).click();
+    await expect(page.getByRole('heading', { level: 1, name: 'Готовка' })).toBeVisible();
+    await page.getByRole('button', { name: 'Начинаю' }).click();
+    await expect(page.getByText('Сохранено')).toBeVisible();
+    await page.getByRole('link', { name: 'Профиль' }).first().click();
+    await expect(list.getByRole('link', { name: /Готовка.*простые блюда/ })).toBeVisible();
+    // Old links still land on the screen that holds the setting.
+    await page.goto('./#/settings#budget');
+    await expect(page.getByRole('heading', { level: 1, name: 'Покупки и цены' })).toBeVisible();
+    await noHorizontalScroll(page);
   });
 
   test('the Content Security Policy blocks nothing the app needs (security)', async ({ page }) => {
@@ -62,7 +82,7 @@ test.describe('guest mode (static site, no server)', () => {
     await cta.focus();
     await page.keyboard.press('Enter');
     await expect(page.getByRole('heading', { name: 'Для кого готовим?' })).toBeVisible();
-    for (let step = 0; step < 7; step += 1) {
+    for (let step = 0; step < 8; step += 1) {
       const heading = await page.getByRole('heading', { level: 1 }).innerText();
       await page.getByRole('button', { name: 'Дальше' }).focus();
       await page.keyboard.press('Enter');
@@ -204,15 +224,53 @@ test.describe('published prices', () => {
       return route.fulfill({ status: 404, body: '' });
     });
     await onboard(page);
-    await page.goto('./#/settings');
+    await page.goto('./#/settings/shopping');
     await page.getByPlaceholder('Или найдите город вручную').fill('Казань');
     await page.getByRole('button', { name: /^Казань/ }).first().click();
-    await page.getByText('Источники цен').click();
+    await page.getByText('Откуда цены').click();
     await expect(page.getByText('период 2026-09')).toBeVisible();
     await expect(page.getByText('Сайт недоступен из сети GitHub Actions.')).toBeVisible();
     await page.goto('./#/shopping');
     await expect(page.getByText('часть цен — средние Росстата (оценка)')).toBeVisible();
     // Only file names were requested — no profile data in the URL.
     expect(requested.every((u) => /\/data\/prices\/(index|tat)\.json$/.test(u))).toBe(true);
+  });
+
+  test('a city chosen in the questionnaire gives prices on the first shopping list (prices)', async ({ page }) => {
+    await page.route('**/data/prices/**', async (route) => {
+      const url = route.request().url();
+      if (url.endsWith('/index.json')) return route.fulfill({ json: { files: { 'region:Республика Татарстан': 'tat.json' }, status: null } });
+      if (url.endsWith('/tat.json')) {
+        const entry = (product_id: string, price_kop: number) => ({ product_id, price_kop, package_size: 1, package_unit: 'kg', currency: 'RUB', date: '2026-09-30', source: 'Росстат, 09.2026', kind: 'rosstat', loose: true });
+        return route.fulfill({ json: { entries: [entry('potato', 4550), entry('onion', 3990), entry('carrot', 4200)] } });
+      }
+      return route.fulfill({ status: 404, body: '' });
+    });
+    await page.goto('./');
+    await page.getByRole('link', { name: 'Составить меню бесплатно' }).first().click();
+    await walkQuestionnaire(page, {
+      'Где покупаете продукты?': async () => {
+        await page.getByPlaceholder('Или найдите город вручную').fill('Казань');
+        await page.getByRole('button', { name: /^Казань/ }).first().click();
+        await expect(page.getByText('Казань, Республика Татарстан')).toBeVisible();
+      },
+    });
+    await expect(page.getByText('Казань, любой магазин')).toBeVisible();
+    await page.getByRole('button', { name: 'Составить меню' }).click();
+    await page.waitForURL(/#\/menu/);
+    await page.goto('./#/shopping');
+    await expect(page.getByText('часть цен — средние Росстата (оценка)')).toBeVisible();
+    await expect(page.getByText('Сколько это стоит?')).toHaveCount(0);
+  });
+
+  test('without any price the shopping list offers to choose a city right there (prices)', async ({ page }) => {
+    await page.route('**/data/prices/**', (route) => route.fulfill({ status: 404, body: '' }));
+    await onboard(page);
+    await page.goto('./#/shopping');
+    await expect(page.getByText('Сколько это стоит?')).toBeVisible();
+    await page.getByRole('button', { name: 'Выбрать город' }).click();
+    await page.getByRole('dialog').getByPlaceholder('Или найдите город вручную').fill('Казань');
+    await page.getByRole('dialog').getByRole('button', { name: /^Казань/ }).first().click();
+    await expect(page.getByRole('dialog').getByText('Казань, Республика Татарстан')).toBeVisible();
   });
 });

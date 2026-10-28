@@ -4,9 +4,11 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import type { DietMode, RepeatMode, SkillLevel } from '../engine';
 import { estimateEnergy } from '../engine';
 import type { Member } from '../engine';
-import { useApp } from '../state/app';
+import { useApp, useLoad } from '../state/app';
+import { loadChains } from '../data/geo';
 import { Icon } from '../ui/icons';
 import type { IconName } from '../ui/icons';
+import { CityChooser } from '../ui/CityChooser';
 import { Illustration } from '../ui/illustrations';
 import type { IllustrationName } from '../ui/illustrations';
 import { Chip, NumberInput, Stepper } from '../ui/kit';
@@ -47,6 +49,7 @@ const STEPS: { id: string; title: string; hint: string; art: IllustrationName }[
   { id: 'taste', title: 'Что вы любите?', hint: 'Это пожелания, а не запреты: любимое будет чаще, нелюбимое — реже.', art: 'taste' },
   { id: 'kitchen', title: 'Кухня и время', hint: 'Подберём блюда под вашу технику и время, которое не жалко на готовку.', art: 'kitchen' },
   { id: 'plan', title: 'Меню и покупки', hint: 'На сколько дней составить меню и сколько раз в день вы едите.', art: 'calendar' },
+  { id: 'place', title: 'Где покупаете продукты?', hint: 'По городу сразу подставим средние цены, чтобы считать стоимость покупок и бюджет. Шаг можно пропустить.', art: 'basket' },
   { id: 'summary', title: 'Проверьте ответы', hint: 'Всё можно поменять позже в профиле и настройках.', art: 'summary' },
 ];
 
@@ -165,7 +168,8 @@ export default function StartPage() {
       return { ...a, disliked_products: a.disliked_products.filter((x) => x !== id) };
     });
   const meEstimate = estimateEnergy({ ...(answers.me as Partial<Member>), goal: answers.goal === 'simple' ? null : answers.goal } as Member);
-  const plan = planHousehold(answers, initial, existing, household?.city?.timezone ?? deviceTimeZone());
+  const timezone = answers.city?.timezone ?? household?.city?.timezone ?? deviceTimeZone();
+  const plan = planHousehold(answers, initial, existing, timezone);
 
   const go = (to: number) => setParams({ step: String(to + 1) });
 
@@ -186,7 +190,11 @@ export default function StartPage() {
   const finish = async () => {
     setBusy(true);
     try {
-      const tz = household?.city?.timezone ?? deviceTimeZone();
+      const tz = timezone;
+      // The city first: members' local dates and the first menu day follow its time zone.
+      if (answers.city?.id !== (household?.city?.id ?? undefined) || answers.store_chain_id !== (household?.store_chain_id ?? null)) {
+        await gateway.updateHousehold({ city_id: answers.city?.id ?? null, store_chain_id: answers.store_chain_id });
+      }
       // Existing members keep their names, own bans and tastes; adults and children are matched separately.
       for (const { member, patch } of plan.update) await gateway.updateMember(member.id, patch);
       for (const draft of plan.add) await gateway.addMember(draft);
@@ -595,6 +603,15 @@ export default function StartPage() {
           </div>
         )}
 
+        {current.id === 'place' && (
+          <CityChooser
+            cityId={answers.city?.id ?? null}
+            chainId={answers.store_chain_id}
+            onCity={(c) => setAnswers((a) => ({ ...a, city: { id: c.id, name: c.name, region: c.region, timezone: c.timezone }, store_chain_id: a.city?.id === c.id ? a.store_chain_id : null }))}
+            onChain={(ch) => set('store_chain_id', ch?.id ?? null)}
+          />
+        )}
+
         {current.id === 'summary' && (
           <Summary
             answers={answers}
@@ -639,6 +656,7 @@ export default function StartPage() {
 
 function Summary({ answers, onEdit, removed }: { answers: Answers; onEdit: (step: number) => void; removed: string[] }) {
   const { catalog } = useApp();
+  const chains = useLoad(() => loadChains(), []);
   const names = (ids: string[], list: { id: string; name: string }[]) => ids.map((id) => list.find((x) => x.id === id)?.name ?? id).join(', ');
   const products = (ids: string[]) => ids.map((id) => catalog.products[id]?.name ?? id).join(', ');
   const time = (v: number | null) => (TIME_OPTIONS.find((t) => t.value === v)?.label ?? `до ${v} мин`).toLowerCase();
@@ -669,6 +687,13 @@ function Summary({ answers, onEdit, removed }: { answers: Answers; onEdit: (step
     { step: 6, label: 'Меню', value: `${answers.days} дн.; ${slotsInOrder(answers.slots).map((s) => SLOT_NAMES[s]?.toLowerCase()).join(', ')}; ${REPEATS.find((r) => r.value === answers.repeat)?.title.toLowerCase()}` },
     { step: 6, label: 'Бюджет', value: answers.budget_rub ? `${answers.budget_rub.toLocaleString('ru-RU')} ₽` : 'Без лимита' },
     { step: 6, label: 'Витамины', value: answers.vitamins ? 'Учитывать' : 'Не учитывать' },
+    {
+      step: 7,
+      label: 'Город и магазин',
+      value: answers.city
+        ? `${answers.city.name}, ${answers.store_chain_id ? (chains.data?.find((c) => c.id === answers.store_chain_id)?.name ?? '…') : 'любой магазин'}`
+        : 'Не выбран — цены не подставятся',
+    },
   ];
   return (
     <div className="stack">

@@ -1,10 +1,10 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
 import { toBase } from '../engine';
 import type { PlanSettings, Product } from '../engine';
 import type { HouseholdSettings, NewPrice } from '../data/types';
-import { chainsForCity, detectCity, loadChains, loadCities, searchCities } from '../data/geo';
-import type { Chain, City } from '../data/geo';
+import { loadChains } from '../data/geo';
+import { CityChooser } from '../ui/CityChooser';
 import { useApp, useLoad } from '../state/app';
 import { Icon } from '../ui/icons';
 import { Banner, Chip, Field, Loading, NumberInput, PageHead, Segmented, Sheet, Switch } from '../ui/kit';
@@ -20,6 +20,8 @@ import { SLOT_NAMES } from '../lib/recipes';
 import { fetchPriceSourcesStatus } from '../data/prices';
 import type { PriceSourceStatus } from '../data/prices';
 import { NATIVE_BUILD } from '../lib/config';
+import { applyTheme, storedTheme } from '../lib/theme';
+import type { ThemeChoice } from '../lib/theme';
 
 // Android app only (not part of the web builds).
 const AppUpdatesSection = NATIVE_BUILD ? lazy(() => import('../native/AppUpdatesSection')) : null;
@@ -35,11 +37,38 @@ const EQUIPMENT = [
 const WEEK = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 const KIND_NAMES: Record<string, string> = { manual: 'вручную', receipt: 'чек', community: 'пользователи Foodo', scraped: 'сайт сети', rosstat: 'Росстат, средняя цена (оценка)' };
 
+/** The short settings screens reached from the profile; each one shows a single topic. */
+export const SETTINGS_SECTIONS = ['menu', 'kitchen', 'food', 'shopping', 'look', 'app'] as const;
+export type SettingsSection = (typeof SETTINGS_SECTIONS)[number];
+
+const SECTION_TITLES: Record<SettingsSection, { title: string; subtitle: string }> = {
+  menu: { title: 'Меню', subtitle: 'Сколько раз в день едите, на сколько дней составлять меню и можно ли повторять блюда.' },
+  kitchen: { title: 'Готовка', subtitle: 'Насколько сложные блюда предлагать, что есть на кухне и сколько времени готовить.' },
+  food: { title: 'Питание', subtitle: 'Какие блюда чаще попадают в меню. Запреты и аллергены задаются у каждого человека в семье.' },
+  shopping: { title: 'Покупки и цены', subtitle: 'Город и магазин для цен, бюджет на покупки и свои цены.' },
+  look: { title: 'Оформление', subtitle: 'Светлая или тёмная тема.' },
+  app: { title: 'Обновления приложения', subtitle: 'Новые версии приложения для Android.' },
+};
+
+// Older links (#store, #budget, #prices, #app-updates) lead to the screen that now holds them.
+const HASH_SECTIONS: Record<string, SettingsSection> = { store: 'shopping', budget: 'shopping', prices: 'shopping', 'app-updates': 'app' };
+
 export default function SettingsPage() {
+  const { section } = useParams();
+  const location = useLocation();
+  if (!section || !(SETTINGS_SECTIONS as readonly string[]).includes(section) || (section === 'app' && !AppUpdatesSection)) {
+    const target = HASH_SECTIONS[location.hash.slice(1)];
+    return <Navigate to={target ? `/settings/${target}${location.search}${location.hash}` : '/profile'} replace />;
+  }
+  return <SettingsScreen section={section as SettingsSection} />;
+}
+
+function SettingsScreen({ section }: { section: SettingsSection }) {
   const { household, gateway, catalog, refreshHousehold, reportError, toast } = useApp();
   const location = useLocation();
   const [settings, setSettings] = useState<HouseholdSettings | null>(household?.settings ?? null);
   const [status, setStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [theme, setTheme] = useState<ThemeChoice>(storedTheme());
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -72,224 +101,270 @@ export default function SettingsPage() {
   };
   const setPlan = (p: Partial<PlanSettings>) => update({ ...settings, plan: { ...plan, ...p } });
   const toggleIn = <T,>(list: T[], v: T) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
+  const head = SECTION_TITLES[section];
+  const autosaves = section === 'menu' || section === 'kitchen' || section === 'food' || section === 'shopping';
 
   return (
-    <div className="stack medium" style={{ ['--gap' as string]: '18px' }}>
+    <div className="stack narrow" style={{ ['--gap' as string]: '16px' }}>
+      <Link to="/profile" className="btn ghost small" style={{ alignSelf: 'flex-start' }}>
+        <Icon name="back" size={16} /> Профиль
+      </Link>
       <PageHead
         eyebrow="Настройки"
-        title="Как подбирать меню"
+        title={head.title}
+        subtitle={head.subtitle}
         actions={
-          <span className={`badge ${status === 'saved' ? 'green' : status === 'error' ? 'orange' : ''}`} role="status">
-            {status === 'saving' ? 'Сохраняем…' : status === 'saved' ? 'Сохранено' : status === 'error' ? 'Не сохранено' : 'Изменения сохраняются сами'}
-          </span>
+          autosaves ? (
+            <span className={`badge ${status === 'saved' ? 'green' : status === 'error' ? 'orange' : ''}`} role="status">
+              {status === 'saving' ? 'Сохраняем…' : status === 'saved' ? 'Сохранено' : status === 'error' ? 'Не сохранено' : 'Сохраняется само'}
+            </span>
+          ) : undefined
         }
       />
-      <section className="card row between wrap">
-        <div className="grow">
-          <h2>Анкета</h2>
-          <p className="muted small">Ответьте на вопросы заново — настройки и участники обновятся, затем составится новое меню.</p>
-        </div>
-        <Link className="btn" to="/start">
-          <Icon name="list" size={18} /> Пройти анкету заново
-        </Link>
-      </section>
-      <section className="card stack">
-        <h2>Приёмы пищи</h2>
-        <div className="chips">
-          {Object.entries(SLOT_NAMES).map(([id, name]) => (
-            <Chip key={id} on={settings.slots.includes(id)} onClick={() =>
-                settings.slots.length > 1 || !settings.slots.includes(id)
-                  ? update({ ...settings, slots: toggleIn(settings.slots, id) })
-                  : toast('Нужен хотя бы один приём пищи')
-              }>
-              {name}
-            </Chip>
-          ))}
-        </div>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Обед в контейнер — без супов и блюд, которые не перевозят</span>
-          <div className="chips">
-            {WEEK.map((d, i) => (
-              <Chip key={d} on={plan.container_days.includes(i + 1)} onClick={() => setPlan({ container_days: toggleIn(plan.container_days, i + 1) })}>
-                {d}
-              </Chip>
-            ))}
-          </div>
-        </div>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Меню по умолчанию на</span>
-          <div className="chips">
-            {[3, 7, 14, 28].map((d) => (
-              <Chip key={d} on={settings.days === d} onClick={() => update({ ...settings, days: d })}>
-                {d} дн.
-              </Chip>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="card stack">
-        <h2>Кухня</h2>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Уровень готовки</span>
-          <Segmented label="Уровень готовки" value={plan.skill} onChange={(v) => setPlan({ skill: v })} options={[{ value: 'beginner', label: 'Начинающий' }, { value: 'confident', label: 'Уверенно готовлю' }, { value: 'any', label: 'Любой уровень' }]} />
-          <p className="muted small">
-            {plan.skill === 'beginner' ? 'Только простые приёмы: варка, тушение, запекание, нарезка. Блюда с неизвестной сложностью не предлагаются.' : plan.skill === 'confident' ? 'Добавляются оладьи, котлеты, соусы-эмульсии.' : 'Все рецепты, включая дрожжевое тесто и блюда с непроверенной сложностью.'}
-          </p>
-        </div>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Техника</span>
-          <div className="chips">
-            {EQUIPMENT.map(([id, name]) => (
-              <Chip key={id} on={plan.equipment.includes(id)} onClick={() => setPlan({ equipment: toggleIn(plan.equipment, id) })}>
-                {name}
-              </Chip>
-            ))}
-          </div>
-          <p className="muted small">Блюда без нагрева доступны всегда. Если у рецепта есть способ для вашей техники (например, аэрогриль вместо духовки), подставятся его шаги и время.</p>
-        </div>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Максимальное время готовки в будни</span>
-          <div className="chips">
-            {[null, 20, 30, 45, 60, 90].map((t) => (
-              <Chip key={String(t)} on={plan.max_total_min === t} onClick={() => setPlan({ max_total_min: t })}>
-                {t === null ? 'Без ограничения' : `до ${t} мин`}
-              </Chip>
-            ))}
-          </div>
-        </div>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">В субботу и воскресенье</span>
-          <div className="chips">
-            <Chip on={plan.max_total_min_weekend === undefined || plan.max_total_min_weekend === plan.max_total_min} onClick={() => setPlan({ max_total_min_weekend: plan.max_total_min })}>
-              Как в будни
-            </Chip>
-            {[null, 30, 45, 60, 90, 120].map((t) => (
-              <Chip key={String(t)} on={plan.max_total_min_weekend !== undefined && plan.max_total_min_weekend !== plan.max_total_min && plan.max_total_min_weekend === t} onClick={() => setPlan({ max_total_min_weekend: t })}>
-                {t === null ? 'Без ограничения' : `до ${t} мин`}
-              </Chip>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="card stack">
-        <h2>Питание</h2>
-        <Segmented
-          label="Режим питания"
-          value={plan.diet_mode}
-          onChange={(v) => setPlan({ diet_mode: v })}
-          options={[
-            { value: 'regular', label: 'Обычное' },
-            { value: 'balanced', label: 'ПП' },
-            { value: 'high_protein', label: 'Больше белка' },
-          ]}
-        />
-        <p className="muted small">
-          {plan.diet_mode === 'balanced'
-            ? 'Выше в выборе — цельнозерновые крупы, овощи, нежирный белок, бобовые и рыба; ниже — жареное, добавленный сахар, белая мука и жирные соусы. Это предпочтение, а не диета: запреты и аллергены работают в любом режиме.'
-            : plan.diet_mode === 'high_protein'
-              ? 'Выше в выборе — нежирное мясо, птица, рыба, творог и бобовые; ниже — сладкое и белая мука. Порции не увеличиваются: меняется только выбор блюд.'
-              : 'Без поправок на ПП: учитываются запреты, вкусы, разнообразие и время.'}
-        </p>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Любимые кухни (такие блюда будут чаще)</span>
-          <div className="chips">
-            {(catalog.reference.cuisines ?? []).map((c) => (
-              <Chip key={c.id} on={(plan.cuisines ?? []).includes(c.id)} onClick={() => setPlan({ cuisines: toggleIn(plan.cuisines ?? [], c.id) })}>
-                {c.name}
-              </Chip>
-            ))}
-          </div>
-        </div>
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Повторы блюд</span>
-          <Segmented
-            label="Повторы"
-            value={plan.repeat.mode}
-            onChange={(v) => setPlan({ repeat: { ...plan.repeat, mode: v } })}
-            options={[
-              { value: 'unique', label: 'Разные каждый день' },
-              { value: 'allow', label: 'Повторы разрешены' },
-              { value: 'batch', label: 'Готовлю на несколько дней' },
-            ]}
-          />
-          {plan.repeat.mode === 'unique' && <p className="muted small">Одно и то же блюдо не повторится за весь период. Если рецептов не хватит, мы скажем об этом, а не включим повторы сами.</p>}
-          {plan.repeat.mode !== 'unique' && (
-            <div className="row wrap">
-              <Field label="Не чаще, раз за период">
-                <select className="input" value={plan.repeat.max_uses} onChange={(e) => setPlan({ repeat: { ...plan.repeat, max_uses: Number(e.target.value) } })}>
-                  {[1, 2, 3, 4, 5, 7].map((n) => (
-                    <option key={n} value={n}>
-                      {n}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-              <Field label="Интервал, дней">
-                <select className="input" value={plan.repeat.min_gap_days} onChange={(e) => setPlan({ repeat: { ...plan.repeat, min_gap_days: Number(e.target.value) } })}>
-                  {[0, 1, 2, 3, 5, 7].map((n) => (
-                    <option key={n} value={n}>
-                      {n}
-                    </option>
-                  ))}
-                </select>
-              </Field>
+      {section === 'menu' && (
+        <>
+          <section className="card stack">
+            <h2 className="h3">Когда вы едите</h2>
+            <div className="chips">
+              {Object.entries(SLOT_NAMES).map(([id, name]) => (
+                <Chip key={id} on={settings.slots.includes(id)} onClick={() =>
+                    settings.slots.length > 1 || !settings.slots.includes(id)
+                      ? update({ ...settings, slots: toggleIn(settings.slots, id) })
+                      : toast('Нужен хотя бы один приём пищи')
+                  }>
+                  {name}
+                </Chip>
+              ))}
             </div>
-          )}
-          {plan.repeat.mode === 'batch' && (
-            <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-              <span className="label">Дни готовки</span>
+          </section>
+          <section className="card stack">
+            <h2 className="h3">На сколько дней составлять меню</h2>
+            <div className="chips">
+              {[3, 7, 14, 28].map((d) => (
+                <Chip key={d} on={settings.days === d} onClick={() => update({ ...settings, days: d })}>
+                  {d === 7 ? 'неделя' : d === 14 ? '2 недели' : d === 28 ? '4 недели' : `${d} дня`}
+                </Chip>
+              ))}
+            </div>
+            <p className="muted small">Это значение для кнопки «Новое меню»; при составлении его можно поменять.</p>
+          </section>
+          <section className="card stack">
+            <h2 className="h3">Повторять ли блюда</h2>
+            <Segmented
+              label="Повторы блюд"
+              value={plan.repeat.mode}
+              onChange={(v) => setPlan({ repeat: { ...plan.repeat, mode: v } })}
+              options={[
+                { value: 'unique', label: 'Каждый день новое' },
+                { value: 'allow', label: 'Можно повторять' },
+                { value: 'batch', label: 'Готовлю на 2–3 дня' },
+              ]}
+            />
+            <p className="muted small">
+              {plan.repeat.mode === 'unique'
+                ? 'Одно и то же блюдо не встретится дважды за всё меню. Если рецептов не хватит, мы скажем об этом, а не добавим повторы сами.'
+                : plan.repeat.mode === 'allow'
+                  ? 'Понравившиеся блюда могут вернуться, но не чаще заданного.'
+                  : 'Вы готовите сразу большую кастрюлю, и она идёт на несколько обедов или ужинов. Продукты покупаются один раз на всю партию.'}
+            </p>
+            {plan.repeat.mode !== 'unique' && (
+              <div className="form-grid">
+                <Field label="Одно блюдо — не больше, раз за меню">
+                  <select className="input" value={plan.repeat.max_uses} onChange={(e) => setPlan({ repeat: { ...plan.repeat, max_uses: Number(e.target.value) } })}>
+                    {[1, 2, 3, 4, 5, 7].map((n) => (
+                      <option key={n} value={n}>
+                        {n}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+                <Field label="Между повторами, дней">
+                  <select className="input" value={plan.repeat.min_gap_days} onChange={(e) => setPlan({ repeat: { ...plan.repeat, min_gap_days: Number(e.target.value) } })}>
+                    {[0, 1, 2, 3, 5, 7].map((n) => (
+                      <option key={n} value={n}>
+                        {n}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+              </div>
+            )}
+            {plan.repeat.mode === 'batch' && (
+              <div className="stack" style={{ ['--gap' as string]: '8px' }}>
+                <span className="label">В какие дни готовите</span>
+                <div className="chips">
+                  {WEEK.map((d, i) => (
+                    <Chip key={d} on={plan.repeat.cook_days.includes(i + 1)} onClick={() => setPlan({ repeat: { ...plan.repeat, cook_days: toggleIn(plan.repeat.cook_days, i + 1) } })}>
+                      {d}
+                    </Chip>
+                  ))}
+                </div>
+                <Field label="Одну кастрюлю едим не дольше, дней">
+                  <select className="input" value={plan.repeat.batch_days} onChange={(e) => setPlan({ repeat: { ...plan.repeat, batch_days: Number(e.target.value) } })}>
+                    {[1, 2, 3, 4].map((n) => (
+                      <option key={n} value={n}>
+                        {n}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+                <p className="muted small">Сроки хранения у рецептов не проверены — ориентируйтесь на свои правила хранения.</p>
+              </div>
+            )}
+          </section>
+          {settings.slots.includes('lunch') && (
+            <section className="card stack">
+              <h2 className="h3">Обед с собой</h2>
+              <p className="muted small">В отмеченные дни на обед подберём блюда, которые удобно взять в контейнере: без супов и того, что плохо переносит дорогу.</p>
               <div className="chips">
                 {WEEK.map((d, i) => (
-                  <Chip key={d} on={plan.repeat.cook_days.includes(i + 1)} onClick={() => setPlan({ repeat: { ...plan.repeat, cook_days: toggleIn(plan.repeat.cook_days, i + 1) } })}>
+                  <Chip key={d} on={plan.container_days.includes(i + 1)} onClick={() => setPlan({ container_days: toggleIn(plan.container_days, i + 1) })}>
                     {d}
                   </Chip>
                 ))}
               </div>
-              <Field label="Одну партию едим не дольше, дней">
-                <select className="input" value={plan.repeat.batch_days} onChange={(e) => setPlan({ repeat: { ...plan.repeat, batch_days: Number(e.target.value) } })}>
-                  {[1, 2, 3, 4].map((n) => (
-                    <option key={n} value={n}>
-                      {n}
-                    </option>
-                  ))}
+            </section>
+          )}
+        </>
+      )}
+
+      {section === 'kitchen' && (
+        <>
+          <section className="card stack">
+            <h2 className="h3">Как хорошо вы готовите</h2>
+            <Segmented label="Уровень готовки" value={plan.skill} onChange={(v) => setPlan({ skill: v })} options={[{ value: 'beginner', label: 'Начинаю' }, { value: 'confident', label: 'Уверенно' }, { value: 'any', label: 'Умею всё' }]} />
+            <p className="muted small">
+              {plan.skill === 'beginner' ? 'Только простое: сварить, потушить, запечь, нарезать. Блюда, сложность которых мы не проверили, не предлагаются.' : plan.skill === 'confident' ? 'Обычные домашние блюда: ещё оладьи, котлеты, соусы.' : 'Все рецепты, включая дрожжевое тесто и блюда, сложность которых не проверена.'}
+            </p>
+          </section>
+          <section className="card stack">
+            <h2 className="h3">Что есть на кухне</h2>
+            <div className="chips">
+              {EQUIPMENT.map(([id, name]) => (
+                <Chip key={id} on={plan.equipment.includes(id)} onClick={() => setPlan({ equipment: toggleIn(plan.equipment, id) })}>
+                  {name}
+                </Chip>
+              ))}
+            </div>
+            <p className="muted small">Блюда без нагрева доступны всегда. Если рецепт можно приготовить на вашей технике другим способом (например, в аэрогриле вместо духовки), покажем шаги и время для неё.</p>
+          </section>
+          <section className="card stack">
+            <h2 className="h3">Сколько времени готовить</h2>
+            <span className="label">В будни</span>
+            <div className="chips">
+              {[null, 20, 30, 45, 60, 90].map((t) => (
+                <Chip key={String(t)} on={plan.max_total_min === t} onClick={() => setPlan({ max_total_min: t })}>
+                  {t === null ? 'Сколько нужно' : `до ${t} мин`}
+                </Chip>
+              ))}
+            </div>
+            <span className="label">В субботу и воскресенье</span>
+            <div className="chips">
+              <Chip on={plan.max_total_min_weekend === undefined || plan.max_total_min_weekend === plan.max_total_min} onClick={() => setPlan({ max_total_min_weekend: plan.max_total_min })}>
+                Как в будни
+              </Chip>
+              {[null, 30, 45, 60, 90, 120].map((t) => (
+                <Chip key={String(t)} on={plan.max_total_min_weekend !== undefined && plan.max_total_min_weekend !== plan.max_total_min && plan.max_total_min_weekend === t} onClick={() => setPlan({ max_total_min_weekend: t })}>
+                  {t === null ? 'Сколько нужно' : `до ${t} мин`}
+                </Chip>
+              ))}
+            </div>
+            <p className="muted small">Считается всё время блюда, вместе с тушением и запеканием.</p>
+          </section>
+        </>
+      )}
+
+      {section === 'food' && (
+        <>
+          <section className="card stack">
+            <h2 className="h3">Как вы питаетесь</h2>
+            <Segmented
+              label="Режим питания"
+              value={plan.diet_mode}
+              onChange={(v) => setPlan({ diet_mode: v })}
+              options={[
+                { value: 'regular', label: 'Обычно' },
+                { value: 'balanced', label: 'ПП' },
+                { value: 'high_protein', label: 'Больше белка' },
+              ]}
+            />
+            <p className="muted small">
+              {plan.diet_mode === 'balanced'
+                ? 'Правильное питание: чаще крупы, овощи, рыба, бобовые и нежирное мясо; реже жареное, сладкое и белая мука. Это предпочтение, а не диета.'
+                : plan.diet_mode === 'high_protein'
+                  ? 'Чаще нежирное мясо, птица, рыба, творог и бобовые; реже сладкое и белая мука. Порции те же — меняется только выбор блюд.'
+                  : 'Без особых правил: учитываются запреты, вкусы, разнообразие и время.'}
+            </p>
+          </section>
+          <section className="card stack">
+            <h2 className="h3">Любимые кухни</h2>
+            <p className="muted small">Блюда этих кухонь будут попадаться чаще. Не выбрано — любые.</p>
+            <div className="chips">
+              {(catalog.reference.cuisines ?? []).map((c) => (
+                <Chip key={c.id} on={(plan.cuisines ?? []).includes(c.id)} onClick={() => setPlan({ cuisines: toggleIn(plan.cuisines ?? [], c.id) })}>
+                  {c.name}
+                </Chip>
+              ))}
+            </div>
+          </section>
+          <section className="card stack">
+            <h2 className="h3">Витамины</h2>
+            <Switch
+              checked={plan.vitamins.enabled}
+              onChange={(v) => setPlan({ vitamins: { ...plan.vitamins, enabled: v, target_set: plan.vitamins.target_set ?? 'mr-2.3.1.0253-21-adults' } })}
+              label="Учитывать витамины"
+              hint="Чаще блюда, которые добирают недостающие витамины A, C, D, E, B6, B12 и фолаты за всё меню"
+            />
+            {plan.vitamins.enabled && (
+              <Field label="Нормы">
+                <select
+                  className="input"
+                  value={plan.vitamins.demo ? 'demo-2026-10' : (plan.vitamins.target_set ?? '')}
+                  onChange={(e) => setPlan({ vitamins: { enabled: true, target_set: e.target.value, demo: e.target.value === 'demo-2026-10' } })}
+                >
+                  <option value="mr-2.3.1.0253-21-adults">Взрослые, по МР 2.3.1.0253-21 (не сверено с первоисточником)</option>
+                  <option value="demo-2026-10">Демонстрация (условные значения, не нормы)</option>
                 </select>
               </Field>
-              <p className="muted small">Продукты покупаются один раз на партию. Сроки хранения рецептов не проверены — ориентируйтесь на собственные правила.</p>
-            </div>
-          )}
-        </div>
-        <Switch
-          checked={plan.vitamins.enabled}
-          onChange={(v) => setPlan({ vitamins: { ...plan.vitamins, enabled: v, target_set: plan.vitamins.target_set ?? 'mr-2.3.1.0253-21-adults' } })}
-          label="Учитывать витамины"
-          hint="Подбор повышает шансы блюд, которые закрывают недостающие витамины A, C, D, E, B6, B12 и фолаты за период"
-        />
-        {plan.vitamins.enabled && (
-          <Field label="Целевые значения">
-            <select
-              className="input"
-              value={plan.vitamins.demo ? 'demo-2026-10' : (plan.vitamins.target_set ?? '')}
-              onChange={(e) => setPlan({ vitamins: { enabled: true, target_set: e.target.value, demo: e.target.value === 'demo-2026-10' } })}
-            >
-              <option value="mr-2.3.1.0253-21-adults">МР 2.3.1.0253-21, взрослые (не сверено с первоисточником)</option>
-              <option value="demo-2026-10">Демонстрация (условные значения, не нормы)</option>
-            </select>
-          </Field>
-        )}
-        {plan.vitamins.enabled && (
-          <p className="muted small">
-            Собственные цели можно задать каждому участнику в профиле. Формы витаминов не пересчитываются автоматически: если форма цели не совпадает с формой данных, цель не проверяется и это видно в отчёте.
-          </p>
-        )}
-      </section>
+            )}
+            {plan.vitamins.enabled && (
+              <p className="muted small">Свои цели можно задать каждому человеку в семье. Если форма витамина в норме и в данных о продукте разная, мы не пересчитываем её и показываем это в отчёте.</p>
+            )}
+          </section>
+        </>
+      )}
 
-      <StoreSection />
-      <BudgetSection plan={plan} setPlan={setPlan} />
-      <PricesSection />
-      {AppUpdatesSection && (
-        <Suspense fallback={null}>
+      {section === 'shopping' && (
+        <>
+          <StoreSection />
+          <BudgetSection plan={plan} setPlan={setPlan} />
+          <PricesSection />
+        </>
+      )}
+
+      {section === 'look' && (
+        <section className="card stack">
+          <h2 className="h3">Тема</h2>
+          <Segmented<ThemeChoice>
+            label="Тема"
+            value={theme}
+            onChange={(t) => {
+              setTheme(t);
+              applyTheme(t);
+            }}
+            options={[
+              { value: 'system', label: 'Как в системе' },
+              { value: 'light', label: 'Светлая' },
+              { value: 'dark', label: 'Тёмная' },
+            ]}
+          />
+          <p className="muted small">«Как в системе» — тема переключается вместе с настройкой телефона или компьютера.</p>
+        </section>
+      )}
+
+      {section === 'app' && AppUpdatesSection && (
+        <Suspense fallback={<Loading />}>
           <AppUpdatesSection />
         </Suspense>
       )}
@@ -299,16 +374,6 @@ export default function SettingsPage() {
 
 function StoreSection() {
   const { household, gateway, refreshHousehold, reportError, toast, user } = useApp();
-  const [cities, setCities] = useState<City[]>([]);
-  const [chains, setChains] = useState<Chain[]>([]);
-  const [query, setQuery] = useState('');
-  const [detecting, setDetecting] = useState(false);
-  useEffect(() => {
-    void loadCities().then(setCities);
-    void loadChains().then(setChains);
-  }, []);
-  const city = useMemo(() => cities.find((c) => c.id === household?.city?.id) ?? null, [cities, household]);
-  const available = city ? chainsForCity(chains, city) : [];
   const save = async (patch: Parameters<typeof gateway.updateHousehold>[0], message: string) => {
     try {
       await gateway.updateHousehold(patch);
@@ -318,68 +383,15 @@ function StoreSection() {
       reportError(e);
     }
   };
-  const detect = async () => {
-    setDetecting(true);
-    try {
-      const found = await detectCity();
-      await save({ city_id: found.city.id }, `Город: ${found.city.name}`);
-    } catch (e) {
-      reportError(e);
-    } finally {
-      setDetecting(false);
-    }
-  };
   return (
     <section className="card stack" id="store">
-      <h2>Город и магазин</h2>
-      <div className="row wrap">
-        <button className="btn primary" onClick={() => void detect()} disabled={detecting}>
-          {detecting ? <span className="spinner" /> : <Icon name="location" size={18} />} Определить мой город
-        </button>
-        {household?.city && (
-          <span className="badge green">
-            <Icon name="location" size={14} /> {household.city.name}, {household.city.region}
-          </span>
-        )}
-      </div>
-      <p className="muted tiny">Местоположение используется только на этом устройстве для поиска ближайшего города из встроенного списка; координаты никуда не отправляются.</p>
-      <label className="search">
-        <span className="visually-hidden">Найти город</span>
-        <Icon name="search" size={18} />
-        <input className="input" placeholder="Или найдите город вручную" value={query} onChange={(e) => setQuery(e.target.value)} />
-      </label>
-      {query && (
-        <div className="chips">
-          {searchCities(cities, query, 12).map((c) => (
-            <button
-              key={c.id}
-              className="chip"
-              onClick={() => {
-                setQuery('');
-                void save({ city_id: c.id }, `Город: ${c.name}`);
-              }}
-            >
-              {c.name} <span className="faint small">{c.region}</span>
-            </button>
-          ))}
-        </div>
-      )}
-      {city && (
-        <div className="stack" style={{ ['--gap' as string]: '8px' }}>
-          <span className="label">Магазины в регионе «{city.region}»</span>
-          <div className="chips">
-            <Chip on={!household?.store_chain_id} onClick={() => void save({ store_chain_id: null }, 'Без привязки к магазину')}>
-              Без привязки к магазину
-            </Chip>
-            {available.map((c) => (
-              <Chip key={c.id} on={household?.store_chain_id === c.id} onClick={() => void save({ store_chain_id: c.id }, `Магазин: ${c.name}`)}>
-                {c.name}
-              </Chip>
-            ))}
-          </div>
-          <p className="muted tiny">Список сетей по региону составлен по открытым данным и может быть неточным. Выбор сети не загружает её ассортимент: цены берутся из источников, указанных у каждой цены.</p>
-        </div>
-      )}
+      <h2 className="h3">Город и магазин</h2>
+      <CityChooser
+        cityId={household?.city?.id ?? null}
+        chainId={household?.store_chain_id ?? null}
+        onCity={(c) => save({ city_id: c.id }, `Город: ${c.name}`)}
+        onChain={(ch) => save({ store_chain_id: ch?.id ?? null }, ch ? `Магазин: ${ch.name}` : 'Любой магазин')}
+      />
       <PriceSources />
       {user && (
         <Switch
@@ -432,7 +444,7 @@ function PriceSources() {
   };
   return (
     <details className="disclosure">
-      <summary>Источники цен</summary>
+      <summary>Откуда цены</summary>
       <ul className="stack small" style={{ ['--gap' as string]: '6px', paddingLeft: 18 }}>
         {Object.entries(sources).map(([id, s]) => (
           <li key={id}>
@@ -457,11 +469,11 @@ function BudgetSection({ plan, setPlan }: { plan: PlanSettings; setPlan: (p: Par
   };
   return (
     <section className="card stack" id="budget">
-      <h2>Бюджет</h2>
-      <Field label="Лимит на покупки за весь период меню, ₽" hint="Для всей семьи. Проверяется по стоимости упаковок на кассе с учётом остатков дома. Пусто — без лимита." error={error}>
+      <h2 className="h3">Бюджет</h2>
+      <Field label="Сколько готовы потратить на всё меню, ₽" hint="На всю семью и все дни меню. Сравниваем с суммой на кассе (целые упаковки, с учётом того, что есть дома). Пусто — без лимита." error={error}>
         <NumberInput decimal placeholder="Без лимита" value={value} onChange={setValue} invalid={Boolean(error)} onBlur={commit} />
       </Field>
-      <p className="muted small">Если известны не все цены, статус будет «Бюджет не подтверждён» — мы не утверждаем, что меню укладывается в лимит.</p>
+      <p className="muted small">Если известны не все цены, напишем «Бюджет не подтверждён», а не «укладывается».</p>
     </section>
   );
 }
@@ -479,13 +491,13 @@ function PricesSection() {
   return (
     <section className="card stack" id="prices">
       <div className="row between">
-        <h2>Цены</h2>
+        <h2 className="h3">Свои цены</h2>
         <button className="btn small primary" onClick={() => setOpen(true)}>
           <Icon name="plus" size={16} /> Цена
         </button>
       </div>
       <p className="muted small">
-        Ваши цены всегда главнее. Если своей цены нет, используется цена сети в вашем городе (с сайта сети или медиана цен пользователей Foodo), затем средняя цена Росстата по региону — она помечается как оценка.
+        Если знаете цену — введите её, она всегда важнее. Без своей цены берём цену выбранного магазина в вашем городе, а если её нет — среднюю цену Росстата (она помечается как оценка).
       </p>
       {own.length === 0 && publicEntries.length === 0 && <Banner icon="info">Пока цен нет — итог покупок будет неполным. Добавьте цены самых частых продуктов.</Banner>}
       {own.length > 0 && (
