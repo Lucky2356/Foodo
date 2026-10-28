@@ -33,6 +33,9 @@ def table(z: zipfile.ZipFile, name: str) -> list[dict[str, str]]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--list", action="store_true")
+    # A job log holds about 5000 lines; the list of ~7800 foods is printed in two parts.
+    parser.add_argument("--id-below", type=int, default=None)
+    parser.add_argument("--id-from", type=int, default=None)
     args = parser.parse_args(argv)
     try:
         z = download()
@@ -43,6 +46,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.list:
         categories = {c["id"]: c["description"] for c in table(z, "food_category.csv")}
         for food in table(z, "food.csv"):
+            fid = int(food["fdc_id"])
+            if (args.id_below and fid >= args.id_below) or (
+                args.id_from and fid < args.id_from
+            ):
+                continue
             print(
                 f"{food['fdc_id']} | {categories.get(food['food_category_id'], '?')} | {food['description']}"
             )
