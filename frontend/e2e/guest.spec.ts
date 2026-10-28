@@ -16,7 +16,7 @@ test.describe('guest mode (static site, no server)', () => {
     await noHorizontalScroll(page);
     const items = await page.locator('.shop-name').allInnerTexts();
     expect(items.join(' ')).not.toMatch(/Рис белый|Макароны|Спагетти|Яичная лапша/);
-    for (const path of ['#/recipes', '#/profile', '#/pantry', '#/habits', '#/settings/menu', '#/settings/kitchen', '#/settings/food', '#/settings/shopping', '#/settings/look', '#/account', '#/about']) {
+    for (const path of ['#/recipes', '#/profile', '#/pantry', '#/habits', '#/settings/menu', '#/settings/kitchen', '#/settings/food', '#/settings/shopping', '#/settings/look', '#/cooking', '#/account', '#/about']) {
       await page.goto(`./${path}`);
       await page.waitForTimeout(300);
       await noHorizontalScroll(page);
@@ -47,6 +47,23 @@ test.describe('guest mode (static site, no server)', () => {
     // Old links still land on the screen that holds the setting.
     await page.goto('./#/settings#budget');
     await expect(page.getByRole('heading', { level: 1, name: 'Покупки и цены' })).toBeVisible();
+    await noHorizontalScroll(page);
+  });
+
+  test('cooking: today first with portions and meals; «Приготовлено» marks the dish (cooking)', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await onboard(page);
+    await page.goto('./#/cooking');
+    await expect(page.getByRole('heading', { level: 1, name: 'Готовка' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Сегодня' })).toBeVisible();
+    const first = page.locator('.cook-task').first();
+    await expect(first).toContainText('Едим: на');
+    await expect(first).toContainText(/порци/);
+    await first.getByRole('button', { name: 'Приготовлено' }).click();
+    await expect(first.getByText('Приготовлено')).toBeVisible();
+    await expect(first.getByRole('button', { name: 'Приготовлено' })).toHaveCount(0);
+    // Later days are folded into one line each.
+    await expect(page.locator('details.cook-day').first()).toBeVisible();
     await noHorizontalScroll(page);
   });
 

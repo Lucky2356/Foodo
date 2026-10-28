@@ -17,6 +17,7 @@ const RecipePage = lazy(() => import('./pages/RecipePage'));
 const RecipeEditorPage = lazy(() => import('./pages/RecipeEditorPage'));
 const ShoppingPage = lazy(() => import('./pages/ShoppingPage'));
 const PantryPage = lazy(() => import('./pages/PantryPage'));
+const CookingPage = lazy(() => import('./pages/CookingPage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const SettingsPage = lazy(() => import('./pages/SettingsPage'));
 const AccountPage = lazy(() => import('./pages/AccountPage'));
@@ -32,6 +33,7 @@ const NAV: { to: string; label: string; icon: IconName; end?: boolean; mobile: b
   { to: '/menu', label: 'Меню', icon: 'calendar', mobile: true },
   { to: '/recipes', label: 'Рецепты', icon: 'book', mobile: true },
   { to: '/shopping', label: 'Покупки', icon: 'cart', mobile: true },
+  { to: '/cooking', label: 'Готовка', icon: 'chef', mobile: false },
   { to: '/profile', label: 'Профиль', icon: 'user', mobile: true },
   { to: '/pantry', label: 'Дома', icon: 'box', mobile: false },
   { to: '/habits', label: 'Вода и привычки', icon: 'drop', mobile: false },
@@ -65,6 +67,7 @@ const TITLES: [RegExp, string][] = [
   [/^\/pantry/, 'Дома'],
   [/^\/profile/, 'Профиль'],
   [/^\/settings/, 'Настройки'],
+  [/^\/cooking/, 'Готовка'],
   [/^\/habits/, 'Вода и привычки'],
   [/^\/favorites/, 'Избранное'],
   [/^\/(account|reset-password)/, 'Аккаунт'],
@@ -229,6 +232,7 @@ function Shell() {
                   <Route path="/recipes/:recipeId" element={<RecipePage />} />
                   <Route path="/shopping" element={<ShoppingPage />} />
                   <Route path="/pantry" element={<PantryPage />} />
+                  <Route path="/cooking" element={<CookingPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/settings" element={<SettingsPage />} />
                   <Route path="/settings/:section" element={<SettingsPage />} />
