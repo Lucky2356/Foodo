@@ -58,7 +58,7 @@
   "batches": [
    {
     "id": "b1",
-    "recipe_id": "kay-dzhiao",
+    "recipe_id": "mchadi-s-suluguni",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
@@ -67,7 +67,7 @@
    },
    {
     "id": "b2",
-    "recipe_id": "pasta-karbonara",
+    "recipe_id": "makarony-po-flotski",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
@@ -76,7 +76,7 @@
    },
    {
     "id": "b3",
-    "recipe_id": "svinye-otbivnye",
+    "recipe_id": "striployn-s-perechnym-sousom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-19",
@@ -85,7 +85,7 @@
    },
    {
     "id": "b4",
-    "recipe_id": "mchadi-s-suluguni",
+    "recipe_id": "kattama-s-lukom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-20",
@@ -94,7 +94,7 @@
    },
    {
     "id": "b5",
-    "recipe_id": "kay-dzhiao",
+    "recipe_id": "mchadi-s-suluguni",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-21",
@@ -103,7 +103,7 @@
    },
    {
     "id": "b6",
-    "recipe_id": "mchadi-s-suluguni",
+    "recipe_id": "blinchiki-s-tvorogom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-22",
@@ -121,7 +121,7 @@
    },
    {
     "id": "b8",
-    "recipe_id": "kotlety-po-kievski",
+    "recipe_id": "hachapuri-po-adzharski",
     "recipe_version": 1,
     "method_id": "oven",
     "cook_date": "2026-10-22",
@@ -130,7 +130,7 @@
    },
    {
     "id": "b9",
-    "recipe_id": "yaytsa-benedikt",
+    "recipe_id": "kayzershmarrn",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-23",
@@ -139,7 +139,7 @@
    },
    {
     "id": "b10",
-    "recipe_id": "lenivye-hachapuri-na-kefire",
+    "recipe_id": "bliny-na-drozhzhah",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-24",
@@ -444,48 +444,49 @@
   ],
   "stats": {
    "attempts": 6,
-   "evaluated": 17412,
-   "score": -1.8853506004813658,
+   "evaluated": 17388,
+   "score": -0.6971617616870329,
    "budget_status": "unconfirmed"
   },
   "snapshot_ids": {
    "recipes": [
-    "kay-dzhiao",
-    "kotlety-po-kievski",
-    "lenivye-hachapuri-na-kefire",
+    "blinchiki-s-tvorogom",
+    "bliny-na-drozhzhah",
+    "hachapuri-po-adzharski",
+    "kattama-s-lukom",
+    "kayzershmarrn",
+    "makarony-po-flotski",
     "mchadi-s-suluguni",
-    "pasta-karbonara",
     "shnitsel-po-venski",
-    "svinye-otbivnye",
-    "yaytsa-benedikt"
+    "striployn-s-perechnym-sousom"
    ],
    "products": [
-    "bacon",
-    "baking_soda",
+    "beef_mince",
+    "beef_striploin",
     "black_pepper",
     "breadcrumbs",
     "butter",
-    "chicken_breast",
     "corn_flour",
-    "dill",
+    "cottage_cheese",
+    "cream_20",
+    "dry_yeast",
     "eggs",
-    "fish_sauce",
-    "ham",
-    "kefir_25",
+    "feta",
+    "green_beans_frozen",
     "lemon",
-    "lime",
-    "parmesan",
-    "pork",
-    "pork_loin",
-    "rice_jasmine_dry",
+    "milk",
+    "mozzarella",
+    "onion",
+    "pasta_dry",
+    "powdered_sugar",
+    "raisins",
     "salt",
-    "spaghetti_dry",
-    "sriracha",
+    "shallot",
+    "sugar",
     "suluguni",
     "sunflower_oil",
-    "toast_bread",
+    "vanilla_sugar",
     "veal",
-    "vinegar",
     "water",
     "wheat_flour"
    ]
@@ -494,58 +495,16 @@
  "shopping": {
   "lines": [
    {
-    "id": "auto:lime:g",
-    "product_id": "lime",
-    "name": "Лайм",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 70,
-    "from_pantry": 0,
-    "to_buy": 70,
-    "buy_qty": 70,
-    "package": null,
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b1",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-19",
-      "qty": 35
-     },
-     {
-      "batch_id": "b5",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-21",
-      "qty": 35
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
     "id": "auto:lemon:g",
     "product_id": "lemon",
     "name": "Лимон",
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 210,
+    "needed": 180,
     "from_pantry": 0,
-    "to_buy": 210,
-    "buy_qty": 210,
+    "to_buy": 180,
+    "buy_qty": 180,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -563,13 +522,6 @@
       "recipe_name": "Шницель из телятины по-венски",
       "cook_date": "2026-10-22",
       "qty": 180
-     },
-     {
-      "batch_id": "b9",
-      "recipe_id": "yaytsa-benedikt",
-      "recipe_name": "Яйца Бенедикт",
-      "cook_date": "2026-10-23",
-      "qty": 30
      }
     ],
     "purchased": false,
@@ -578,18 +530,68 @@
     "changed": false
    },
    {
-    "id": "auto:dill:g",
-    "product_id": "dill",
-    "name": "Укроп",
+    "id": "auto:onion:g",
+    "product_id": "onion",
+    "name": "Лук репчатый",
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 15,
-    "from_pantry": 0,
-    "to_buy": 15,
-    "buy_qty": 50,
+    "needed": 400,
+    "from_pantry": 200,
+    "to_buy": 200,
+    "buy_qty": 1000,
     "package": {
-     "size": 50,
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": 4990,
+    "price_per": {
+     "size": 1000,
+     "unit": "g",
+     "loose": false
+    },
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "price_kind": "manual",
+    "estimated": false,
+    "purchase_cost_kop": 4990,
+    "usage_cost_kop": 1996,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "makarony-po-flotski",
+      "recipe_name": "Макароны по-флотски",
+      "cook_date": "2026-10-19",
+      "qty": 300
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "kattama-s-lukom",
+      "recipe_name": "Каттама с луком",
+      "cook_date": "2026-10-20",
+      "qty": 100
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:shallot:g",
+    "product_id": "shallot",
+    "name": "Лук шалот",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 180,
+    "from_pantry": 0,
+    "to_buy": 180,
+    "buy_qty": 250,
+    "package": {
+     "size": 250,
      "unit": "g",
      "count": 1
     },
@@ -604,50 +606,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
-      "cook_date": "2026-10-22",
-      "qty": 15
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:kefir_25:ml",
-    "product_id": "kefir_25",
-    "name": "Кефир 2,5%",
-    "department": "Молочные продукты и яйца",
-    "unit": "ml",
-    "convertible": true,
-    "needed": 166.666667,
-    "from_pantry": 0,
-    "to_buy": 166.666667,
-    "buy_qty": 900,
-    "package": {
-     "size": 900,
-     "unit": "ml",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b10",
-      "recipe_id": "lenivye-hachapuri-na-kefire",
-      "recipe_name": "Ленивые хачапури на кефире",
-      "cook_date": "2026-10-24",
-      "qty": 166.666667
+      "batch_id": "b3",
+      "recipe_id": "striployn-s-perechnym-sousom",
+      "recipe_name": "Стриплойн с перечным соусом и стручковой фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 180
      }
     ],
     "purchased": false,
@@ -662,9 +625,9 @@
     "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 258.333333,
+    "needed": 240,
     "from_pantry": 0,
-    "to_buy": 258.333333,
+    "to_buy": 240,
     "buy_qty": 360,
     "package": {
      "size": 180,
@@ -682,6 +645,27 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b3",
+      "recipe_id": "striployn-s-perechnym-sousom",
+      "recipe_name": "Стриплойн с перечным соусом и стручковой фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 60
+     },
+     {
+      "batch_id": "b4",
+      "recipe_id": "kattama-s-lukom",
+      "recipe_name": "Каттама с луком",
+      "cook_date": "2026-10-20",
+      "qty": 20
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
+      "cook_date": "2026-10-22",
+      "qty": 10
+     },
+     {
       "batch_id": "b7",
       "recipe_id": "shnitsel-po-venski",
       "recipe_name": "Шницель из телятины по-венски",
@@ -690,24 +674,24 @@
      },
      {
       "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
       "cook_date": "2026-10-22",
-      "qty": 120
+      "qty": 60
      },
      {
       "batch_id": "b9",
-      "recipe_id": "yaytsa-benedikt",
-      "recipe_name": "Яйца Бенедикт",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
       "cook_date": "2026-10-23",
-      "qty": 80
+      "qty": 30
      },
      {
       "batch_id": "b10",
-      "recipe_id": "lenivye-hachapuri-na-kefire",
-      "recipe_name": "Ленивые хачапури на кефире",
+      "recipe_id": "bliny-na-drozhzhah",
+      "recipe_name": "Блины на дрожжах",
       "cook_date": "2026-10-24",
-      "qty": 13.333333
+      "qty": 15
      }
     ],
     "purchased": false,
@@ -716,20 +700,84 @@
     "changed": false
    },
    {
-    "id": "auto:parmesan:g",
-    "product_id": "parmesan",
-    "name": "Сыр пармезан",
+    "id": "auto:milk:ml",
+    "product_id": "milk",
+    "name": "Молоко 2,5%",
+    "department": "Молочные продукты и яйца",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 1000,
+    "from_pantry": 0,
+    "to_buy": 1000,
+    "buy_qty": 1860,
+    "package": {
+     "size": 0.93,
+     "unit": "l",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": 8990,
+    "price_per": {
+     "size": 0.93,
+     "unit": "l",
+     "loose": false
+    },
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "price_kind": "manual",
+    "estimated": false,
+    "purchase_cost_kop": 17980,
+    "usage_cost_kop": 9667,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
+      "cook_date": "2026-10-22",
+      "qty": 200
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
+      "cook_date": "2026-10-22",
+      "qty": 300
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
+      "cook_date": "2026-10-23",
+      "qty": 200
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "bliny-na-drozhzhah",
+      "recipe_name": "Блины на дрожжах",
+      "cook_date": "2026-10-24",
+      "qty": 300
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:mozzarella:g",
+    "product_id": "mozzarella",
+    "name": "Моцарелла",
     "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 120,
+    "needed": 375,
     "from_pantry": 0,
-    "to_buy": 120,
-    "buy_qty": 150,
+    "to_buy": 375,
+    "buy_qty": 375,
     "package": {
-     "size": 150,
+     "size": 125,
      "unit": "g",
-     "count": 1
+     "count": 3
     },
     "package_note": null,
     "price_kop": null,
@@ -742,11 +790,50 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b2",
-      "recipe_id": "pasta-karbonara",
-      "recipe_name": "Паста карбонара",
+      "batch_id": "b8",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
+      "cook_date": "2026-10-22",
+      "qty": 375
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cream_20:ml",
+    "product_id": "cream_20",
+    "name": "Сливки 20 %",
+    "department": "Молочные продукты и яйца",
+    "unit": "ml",
+    "convertible": true,
+    "needed": 300,
+    "from_pantry": 0,
+    "to_buy": 300,
+    "buy_qty": 400,
+    "package": {
+     "size": 200,
+     "unit": "ml",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b3",
+      "recipe_id": "striployn-s-perechnym-sousom",
+      "recipe_name": "Стриплойн с перечным соусом и стручковой фасолью",
       "cook_date": "2026-10-19",
-      "qty": 120
+      "qty": 300
      }
     ],
     "purchased": false,
@@ -761,193 +848,9 @@
     "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 333.333333,
+    "needed": 200,
     "from_pantry": 0,
-    "to_buy": 333.333333,
-    "buy_qty": 600,
-    "package": {
-     "size": 300,
-     "unit": "g",
-     "count": 2
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b4",
-      "recipe_id": "mchadi-s-suluguni",
-      "recipe_name": "Мчади с сулугуни",
-      "cook_date": "2026-10-20",
-      "qty": 100
-     },
-     {
-      "batch_id": "b6",
-      "recipe_id": "mchadi-s-suluguni",
-      "recipe_name": "Мчади с сулугуни",
-      "cook_date": "2026-10-22",
-      "qty": 100
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "lenivye-hachapuri-na-kefire",
-      "recipe_name": "Ленивые хачапури на кефире",
-      "cook_date": "2026-10-24",
-      "qty": 133.333333
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:eggs:pcs",
-    "product_id": "eggs",
-    "name": "Яйца куриные С1",
-    "department": "Молочные продукты и яйца",
-    "unit": "pcs",
-    "convertible": true,
-    "needed": 28.333333,
-    "from_pantry": 4,
-    "to_buy": 24.333333,
-    "buy_qty": 30,
-    "package": {
-     "size": 10,
-     "unit": "pcs",
-     "count": 3
-    },
-    "package_note": null,
-    "price_kop": 11990,
-    "price_per": {
-     "size": 10,
-     "unit": "pcs",
-     "loose": false
-    },
-    "price_date": "2026-10-01",
-    "price_source": "вручную",
-    "price_kind": "manual",
-    "estimated": false,
-    "purchase_cost_kop": 35970,
-    "usage_cost_kop": 33972,
-    "sources": [
-     {
-      "batch_id": "b1",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-19",
-      "qty": 4
-     },
-     {
-      "batch_id": "b2",
-      "recipe_id": "pasta-karbonara",
-      "recipe_name": "Паста карбонара",
-      "cook_date": "2026-10-19",
-      "qty": 6
-     },
-     {
-      "batch_id": "b3",
-      "recipe_id": "svinye-otbivnye",
-      "recipe_name": "Свиные отбивные",
-      "cook_date": "2026-10-19",
-      "qty": 3
-     },
-     {
-      "batch_id": "b5",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-21",
-      "qty": 4
-     },
-     {
-      "batch_id": "b7",
-      "recipe_id": "shnitsel-po-venski",
-      "recipe_name": "Шницель из телятины по-венски",
-      "cook_date": "2026-10-22",
-      "qty": 3
-     },
-     {
-      "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
-      "cook_date": "2026-10-22",
-      "qty": 3
-     },
-     {
-      "batch_id": "b9",
-      "recipe_id": "yaytsa-benedikt",
-      "recipe_name": "Яйца Бенедикт",
-      "cook_date": "2026-10-23",
-      "qty": 4
-     },
-     {
-      "batch_id": "b10",
-      "recipe_id": "lenivye-hachapuri-na-kefire",
-      "recipe_name": "Ленивые хачапури на кефире",
-      "cook_date": "2026-10-24",
-      "qty": 1.333333
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:bacon:g",
-    "product_id": "bacon",
-    "name": "Бекон сырокопчёный",
-    "department": "Мясо и птица",
-    "unit": "g",
-    "convertible": true,
-    "needed": 300,
-    "from_pantry": 0,
-    "to_buy": 300,
-    "buy_qty": 300,
-    "package": {
-     "size": 150,
-     "unit": "g",
-     "count": 2
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b2",
-      "recipe_id": "pasta-karbonara",
-      "recipe_name": "Паста карбонара",
-      "cook_date": "2026-10-19",
-      "qty": 300
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:ham:g",
-    "product_id": "ham",
-    "name": "Ветчина варёная",
-    "department": "Мясо и птица",
-    "unit": "g",
-    "convertible": true,
-    "needed": 60,
-    "from_pantry": 0,
-    "to_buy": 60,
+    "to_buy": 200,
     "buy_qty": 300,
     "package": {
      "size": 300,
@@ -965,54 +868,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
-      "recipe_id": "yaytsa-benedikt",
-      "recipe_name": "Яйца Бенедикт",
-      "cook_date": "2026-10-23",
-      "qty": 60
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:chicken_breast:g",
-    "product_id": "chicken_breast",
-    "name": "Куриное филе",
-    "department": "Мясо и птица",
-    "unit": "g",
-    "convertible": true,
-    "needed": 1200,
-    "from_pantry": 0,
-    "to_buy": 1200,
-    "buy_qty": 1500,
-    "package": {
-     "size": 500,
-     "unit": "g",
-     "count": 3
-    },
-    "package_note": null,
-    "price_kop": 37900,
-    "price_per": {
-     "size": 500,
-     "unit": "g",
-     "loose": false
-    },
-    "price_date": "2026-10-05",
-    "price_source": "чек",
-    "price_kind": "receipt",
-    "estimated": false,
-    "purchase_cost_kop": 113700,
-    "usage_cost_kop": 90960,
-    "sources": [
+      "batch_id": "b1",
+      "recipe_id": "mchadi-s-suluguni",
+      "recipe_name": "Мчади с сулугуни",
+      "cook_date": "2026-10-19",
+      "qty": 100
+     },
      {
-      "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
-      "cook_date": "2026-10-22",
-      "qty": 1200
+      "batch_id": "b5",
+      "recipe_id": "mchadi-s-suluguni",
+      "recipe_name": "Мчади с сулугуни",
+      "cook_date": "2026-10-21",
+      "qty": 100
      }
     ],
     "purchased": false,
@@ -1021,18 +888,18 @@
     "changed": false
    },
    {
-    "id": "auto:pork_loin:g",
-    "product_id": "pork_loin",
-    "name": "Свинина (корейка без кости)",
-    "department": "Мясо и птица",
+    "id": "auto:feta:g",
+    "product_id": "feta",
+    "name": "Сыр фета",
+    "department": "Молочные продукты и яйца",
     "unit": "g",
     "convertible": true,
-    "needed": 900,
+    "needed": 225,
     "from_pantry": 0,
-    "to_buy": 900,
-    "buy_qty": 1200,
+    "to_buy": 225,
+    "buy_qty": 400,
     "package": {
-     "size": 600,
+     "size": 200,
      "unit": "g",
      "count": 2
     },
@@ -1047,11 +914,160 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b8",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
+      "cook_date": "2026-10-22",
+      "qty": 225
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cottage_cheese:g",
+    "product_id": "cottage_cheese",
+    "name": "Творог 5%",
+    "department": "Молочные продукты и яйца",
+    "unit": "g",
+    "convertible": true,
+    "needed": 200,
+    "from_pantry": 0,
+    "to_buy": 200,
+    "buy_qty": 200,
+    "package": {
+     "size": 200,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
+      "cook_date": "2026-10-22",
+      "qty": 200
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:eggs:pcs",
+    "product_id": "eggs",
+    "name": "Яйца куриные С1",
+    "department": "Молочные продукты и яйца",
+    "unit": "pcs",
+    "convertible": true,
+    "needed": 16,
+    "from_pantry": 0,
+    "to_buy": 16,
+    "buy_qty": 20,
+    "package": {
+     "size": 10,
+     "unit": "pcs",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": 11990,
+    "price_per": {
+     "size": 10,
+     "unit": "pcs",
+     "loose": false
+    },
+    "price_date": "2026-10-01",
+    "price_source": "вручную",
+    "price_kind": "manual",
+    "estimated": false,
+    "purchase_cost_kop": 23980,
+    "usage_cost_kop": 19184,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
+      "cook_date": "2026-10-22",
+      "qty": 1.5
+     },
+     {
+      "batch_id": "b7",
+      "recipe_id": "shnitsel-po-venski",
+      "recipe_name": "Шницель из телятины по-венски",
+      "cook_date": "2026-10-22",
+      "qty": 3
+     },
+     {
+      "batch_id": "b8",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
+      "cook_date": "2026-10-22",
+      "qty": 7.5
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
+      "cook_date": "2026-10-23",
+      "qty": 3
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "bliny-na-drozhzhah",
+      "recipe_name": "Блины на дрожжах",
+      "cook_date": "2026-10-24",
+      "qty": 1
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:beef_striploin:g",
+    "product_id": "beef_striploin",
+    "name": "Говядина, стейк стриплойн",
+    "department": "Мясо и птица",
+    "unit": "g",
+    "convertible": true,
+    "needed": 1500,
+    "from_pantry": 0,
+    "to_buy": 1500,
+    "buy_qty": 1500,
+    "package": {
+     "size": 250,
+     "unit": "g",
+     "count": 6
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
       "batch_id": "b3",
-      "recipe_id": "svinye-otbivnye",
-      "recipe_name": "Свиные отбивные",
+      "recipe_id": "striployn-s-perechnym-sousom",
+      "recipe_name": "Стриплойн с перечным соусом и стручковой фасолью",
       "cook_date": "2026-10-19",
-      "qty": 900
+      "qty": 1500
      }
     ],
     "purchased": false,
@@ -1099,6 +1115,215 @@
     "changed": false
    },
    {
+    "id": "auto:beef_mince:g",
+    "product_id": "beef_mince",
+    "name": "Фарш говяжий",
+    "department": "Мясо и птица",
+    "unit": "g",
+    "convertible": true,
+    "needed": 600,
+    "from_pantry": 0,
+    "to_buy": 600,
+    "buy_qty": 800,
+    "package": {
+     "size": 400,
+     "unit": "g",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "makarony-po-flotski",
+      "recipe_name": "Макароны по-флотски",
+      "cook_date": "2026-10-19",
+      "qty": 600
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:vanilla_sugar:g",
+    "product_id": "vanilla_sugar",
+    "name": "Ванильный сахар",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 4,
+    "from_pantry": 0,
+    "to_buy": 4,
+    "buy_qty": 10,
+    "package": {
+     "size": 10,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b9",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
+      "cook_date": "2026-10-23",
+      "qty": 4
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:dry_yeast:g",
+    "product_id": "dry_yeast",
+    "name": "Дрожжи сухие быстродействующие",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 6.75,
+    "from_pantry": 0,
+    "to_buy": 6.75,
+    "buy_qty": 11,
+    "package": {
+     "size": 11,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b8",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
+      "cook_date": "2026-10-22",
+      "qty": 4.5
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "bliny-na-drozhzhah",
+      "recipe_name": "Блины на дрожжах",
+      "cook_date": "2026-10-24",
+      "qty": 2.25
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:raisins:g",
+    "product_id": "raisins",
+    "name": "Изюм",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 50,
+    "from_pantry": 0,
+    "to_buy": 50,
+    "buy_qty": 200,
+    "package": {
+     "size": 200,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
+      "cook_date": "2026-10-22",
+      "qty": 20
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
+      "cook_date": "2026-10-23",
+      "qty": 30
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:pasta_dry:g",
+    "product_id": "pasta_dry",
+    "name": "Макароны из твёрдых сортов пшеницы",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 525,
+    "from_pantry": 0,
+    "to_buy": 525,
+    "buy_qty": 900,
+    "package": {
+     "size": 450,
+     "unit": "g",
+     "count": 2
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b2",
+      "recipe_id": "makarony-po-flotski",
+      "recipe_name": "Макароны по-флотски",
+      "cook_date": "2026-10-19",
+      "qty": 525
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
     "id": "auto:corn_flour:g",
     "product_id": "corn_flour",
     "name": "Мука кукурузная",
@@ -1125,17 +1350,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b4",
+      "batch_id": "b1",
       "recipe_id": "mchadi-s-suluguni",
       "recipe_name": "Мчади с сулугуни",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-19",
       "qty": 166.666667
      },
      {
-      "batch_id": "b6",
+      "batch_id": "b5",
       "recipe_id": "mchadi-s-suluguni",
       "recipe_name": "Мчади с сулугуни",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-21",
       "qty": 166.666667
      }
     ],
@@ -1151,14 +1376,14 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 274,
+    "needed": 1190,
     "from_pantry": 0,
-    "to_buy": 274,
-    "buy_qty": 1000,
+    "to_buy": 1190,
+    "buy_qty": 2000,
     "package": {
      "size": 1000,
      "unit": "g",
-     "count": 1
+     "count": 2
     },
     "package_note": null,
     "price_kop": null,
@@ -1171,11 +1396,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b3",
-      "recipe_id": "svinye-otbivnye",
-      "recipe_name": "Свиные отбивные",
-      "cook_date": "2026-10-19",
-      "qty": 48
+      "batch_id": "b4",
+      "recipe_id": "kattama-s-lukom",
+      "recipe_name": "Каттама с луком",
+      "cook_date": "2026-10-20",
+      "qty": 150
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
+      "cook_date": "2026-10-22",
+      "qty": 80
      },
      {
       "batch_id": "b7",
@@ -1186,17 +1418,24 @@
      },
      {
       "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
       "cook_date": "2026-10-22",
-      "qty": 36
+      "qty": 600
+     },
+     {
+      "batch_id": "b9",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
+      "cook_date": "2026-10-23",
+      "qty": 120
      },
      {
       "batch_id": "b10",
-      "recipe_id": "lenivye-hachapuri-na-kefire",
-      "recipe_name": "Ленивые хачапури на кефире",
+      "recipe_id": "bliny-na-drozhzhah",
+      "recipe_name": "Блины на дрожжах",
       "cook_date": "2026-10-24",
-      "qty": 100
+      "qty": 150
      }
     ],
     "purchased": false,
@@ -1211,14 +1450,14 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 255,
+    "needed": 150,
     "from_pantry": 0,
-    "to_buy": 255,
-    "buy_qty": 400,
+    "to_buy": 150,
+    "buy_qty": 200,
     "package": {
      "size": 200,
      "unit": "g",
-     "count": 2
+     "count": 1
     },
     "package_note": null,
     "price_kop": null,
@@ -1236,98 +1475,66 @@
       "recipe_name": "Шницель из телятины по-венски",
       "cook_date": "2026-10-22",
       "qty": 150
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:sugar:g",
+    "product_id": "sugar",
+    "name": "Сахар",
+    "department": "Бакалея",
+    "unit": "g",
+    "convertible": true,
+    "needed": 50.05,
+    "from_pantry": 0,
+    "to_buy": 50.05,
+    "buy_qty": 1000,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b6",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
+      "cook_date": "2026-10-22",
+      "qty": 18.75
      },
      {
       "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
       "cook_date": "2026-10-22",
-      "qty": 105
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:rice_jasmine_dry:g",
-    "product_id": "rice_jasmine_dry",
-    "name": "Рис жасмин",
-    "department": "Бакалея",
-    "unit": "g",
-    "convertible": true,
-    "needed": 280,
-    "from_pantry": 0,
-    "to_buy": 280,
-    "buy_qty": 500,
-    "package": {
-     "size": 500,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b1",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-19",
-      "qty": 140
+      "qty": 6.3
      },
      {
-      "batch_id": "b5",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-21",
-      "qty": 140
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:baking_soda:g",
-    "product_id": "baking_soda",
-    "name": "Сода пищевая",
-    "department": "Бакалея",
-    "unit": "g",
-    "convertible": true,
-    "needed": 1.533333,
-    "from_pantry": 0,
-    "to_buy": 1.533333,
-    "buy_qty": 500,
-    "package": {
-     "size": 500,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
+      "batch_id": "b9",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
+      "cook_date": "2026-10-23",
+      "qty": 12.5
+     },
      {
       "batch_id": "b10",
-      "recipe_id": "lenivye-hachapuri-na-kefire",
-      "recipe_name": "Ленивые хачапури на кефире",
+      "recipe_id": "bliny-na-drozhzhah",
+      "recipe_name": "Блины на дрожжах",
       "cook_date": "2026-10-24",
-      "qty": 1.533333
+      "qty": 12.5
      }
     ],
     "purchased": false,
@@ -1336,57 +1543,18 @@
     "changed": false
    },
    {
-    "id": "auto:spaghetti_dry:g",
-    "product_id": "spaghetti_dry",
-    "name": "Спагетти",
+    "id": "auto:powdered_sugar:g",
+    "product_id": "powdered_sugar",
+    "name": "Сахарная пудра",
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 600,
+    "needed": 8,
     "from_pantry": 0,
-    "to_buy": 600,
-    "buy_qty": 900,
+    "to_buy": 8,
+    "buy_qty": 200,
     "package": {
-     "size": 450,
-     "unit": "g",
-     "count": 2
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b2",
-      "recipe_id": "pasta-karbonara",
-      "recipe_name": "Паста карбонара",
-      "cook_date": "2026-10-19",
-      "qty": 600
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:toast_bread:g",
-    "product_id": "toast_bread",
-    "name": "Хлеб для тостов",
-    "department": "Хлеб",
-    "unit": "g",
-    "convertible": true,
-    "needed": 50,
-    "from_pantry": 0,
-    "to_buy": 50,
-    "buy_qty": 500,
-    "package": {
-     "size": 500,
+     "size": 200,
      "unit": "g",
      "count": 1
     },
@@ -1402,102 +1570,10 @@
     "sources": [
      {
       "batch_id": "b9",
-      "recipe_id": "yaytsa-benedikt",
-      "recipe_name": "Яйца Бенедикт",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
       "cook_date": "2026-10-23",
-      "qty": 50
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:fish_sauce:ml",
-    "product_id": "fish_sauce",
-    "name": "Рыбный соус",
-    "department": "Консервы и соусы",
-    "unit": "ml",
-    "convertible": true,
-    "needed": 10,
-    "from_pantry": 0,
-    "to_buy": 10,
-    "buy_qty": 200,
-    "package": {
-     "size": 200,
-     "unit": "ml",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b1",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-19",
-      "qty": 5
-     },
-     {
-      "batch_id": "b5",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-21",
-      "qty": 5
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:sriracha:g",
-    "product_id": "sriracha",
-    "name": "Соус шрирача",
-    "department": "Консервы и соусы",
-    "unit": "g",
-    "convertible": true,
-    "needed": 24,
-    "from_pantry": 0,
-    "to_buy": 24,
-    "buy_qty": 200,
-    "package": {
-     "size": 200,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b1",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-19",
-      "qty": 12
-     },
-     {
-      "batch_id": "b5",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-21",
-      "qty": 12
+      "qty": 8
      }
     ],
     "purchased": false,
@@ -1512,9 +1588,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 529.855072,
+    "needed": 426.376812,
     "from_pantry": 0,
-    "to_buy": 529.855072,
+    "to_buy": 426.376812,
     "buy_qty": 1000,
     "package": {
      "size": 1,
@@ -1533,42 +1609,49 @@
     "price_kind": "manual",
     "estimated": false,
     "purchase_cost_kop": 15990,
-    "usage_cost_kop": 8472,
+    "usage_cost_kop": 6818,
     "sources": [
      {
       "batch_id": "b1",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
+      "recipe_id": "mchadi-s-suluguni",
+      "recipe_name": "Мчади с сулугуни",
+      "cook_date": "2026-10-19",
+      "qty": 19.710145
+     },
+     {
+      "batch_id": "b2",
+      "recipe_id": "makarony-po-flotski",
+      "recipe_name": "Макароны по-флотски",
       "cook_date": "2026-10-19",
       "qty": 44.347826
      },
      {
       "batch_id": "b3",
-      "recipe_id": "svinye-otbivnye",
-      "recipe_name": "Свиные отбивные",
+      "recipe_id": "striployn-s-perechnym-sousom",
+      "recipe_name": "Стриплойн с перечным соусом и стручковой фасолью",
       "cook_date": "2026-10-19",
-      "qty": 88.695652
-     },
-     {
-      "batch_id": "b4",
-      "recipe_id": "mchadi-s-suluguni",
-      "recipe_name": "Мчади с сулугуни",
-      "cook_date": "2026-10-20",
-      "qty": 19.710145
-     },
-     {
-      "batch_id": "b5",
-      "recipe_id": "kay-dzhiao",
-      "recipe_name": "Кай джиао — тайский омлет",
-      "cook_date": "2026-10-21",
       "qty": 44.347826
      },
      {
-      "batch_id": "b6",
+      "batch_id": "b4",
+      "recipe_id": "kattama-s-lukom",
+      "recipe_name": "Каттама с луком",
+      "cook_date": "2026-10-20",
+      "qty": 29.565217
+     },
+     {
+      "batch_id": "b5",
       "recipe_id": "mchadi-s-suluguni",
       "recipe_name": "Мчади с сулугуни",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-21",
       "qty": 19.710145
+     },
+     {
+      "batch_id": "b6",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
+      "cook_date": "2026-10-22",
+      "qty": 22.173913
      },
      {
       "batch_id": "b7",
@@ -1579,10 +1662,17 @@
      },
      {
       "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
       "cook_date": "2026-10-22",
-      "qty": 133.043478
+      "qty": 44.347826
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "bliny-na-drozhzhah",
+      "recipe_name": "Блины на дрожжах",
+      "cook_date": "2026-10-24",
+      "qty": 22.173913
      }
     ],
     "purchased": false,
@@ -1597,9 +1687,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 2.7,
+    "needed": 8.1,
     "from_pantry": 0,
-    "to_buy": 2.7,
+    "to_buy": 8.1,
     "buy_qty": 50,
     "package": {
      "size": 50,
@@ -1618,17 +1708,17 @@
     "sources": [
      {
       "batch_id": "b2",
-      "recipe_id": "pasta-karbonara",
-      "recipe_name": "Паста карбонара",
+      "recipe_id": "makarony-po-flotski",
+      "recipe_name": "Макароны по-флотски",
       "cook_date": "2026-10-19",
-      "qty": 1.2
+      "qty": 0.6
      },
      {
       "batch_id": "b3",
-      "recipe_id": "svinye-otbivnye",
-      "recipe_name": "Свиные отбивные",
+      "recipe_id": "striployn-s-perechnym-sousom",
+      "recipe_name": "Стриплойн с перечным соусом и стручковой фасолью",
       "cook_date": "2026-10-19",
-      "qty": 0.6
+      "qty": 6.9
      },
      {
       "batch_id": "b7",
@@ -1636,13 +1726,6 @@
       "recipe_name": "Шницель из телятины по-венски",
       "cook_date": "2026-10-22",
       "qty": 0.6
-     },
-     {
-      "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
-      "cook_date": "2026-10-22",
-      "qty": 0.3
      }
     ],
     "purchased": false,
@@ -1657,9 +1740,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 43.5,
+    "needed": 62,
     "from_pantry": 0,
-    "to_buy": 43.5,
+    "to_buy": 62,
     "buy_qty": 0,
     "package": {
      "size": 1000,
@@ -1678,35 +1761,49 @@
     "price_kind": "manual",
     "estimated": false,
     "purchase_cost_kop": 0,
-    "usage_cost_kop": 108,
+    "usage_cost_kop": 154,
     "sources": [
      {
-      "batch_id": "b2",
-      "recipe_id": "pasta-karbonara",
-      "recipe_name": "Паста карбонара",
+      "batch_id": "b1",
+      "recipe_id": "mchadi-s-suluguni",
+      "recipe_name": "Мчади с сулугуни",
       "cook_date": "2026-10-19",
-      "qty": 12
+      "qty": 2
+     },
+     {
+      "batch_id": "b2",
+      "recipe_id": "makarony-po-flotski",
+      "recipe_name": "Макароны по-флотски",
+      "cook_date": "2026-10-19",
+      "qty": 18
      },
      {
       "batch_id": "b3",
-      "recipe_id": "svinye-otbivnye",
-      "recipe_name": "Свиные отбивные",
+      "recipe_id": "striployn-s-perechnym-sousom",
+      "recipe_name": "Стриплойн с перечным соусом и стручковой фасолью",
       "cook_date": "2026-10-19",
-      "qty": 9
+      "qty": 18
      },
      {
       "batch_id": "b4",
+      "recipe_id": "kattama-s-lukom",
+      "recipe_name": "Каттама с луком",
+      "cook_date": "2026-10-20",
+      "qty": 1.5
+     },
+     {
+      "batch_id": "b5",
       "recipe_id": "mchadi-s-suluguni",
       "recipe_name": "Мчади с сулугуни",
-      "cook_date": "2026-10-20",
+      "cook_date": "2026-10-21",
       "qty": 2
      },
      {
       "batch_id": "b6",
-      "recipe_id": "mchadi-s-suluguni",
-      "recipe_name": "Мчади с сулугуни",
+      "recipe_id": "blinchiki-s-tvorogom",
+      "recipe_name": "Блинчики с творогом",
       "cook_date": "2026-10-22",
-      "qty": 2
+      "qty": 0.5
      },
      {
       "batch_id": "b7",
@@ -1717,17 +1814,24 @@
      },
      {
       "batch_id": "b8",
-      "recipe_id": "kotlety-po-kievski",
-      "recipe_name": "Котлеты по-киевски",
+      "recipe_id": "hachapuri-po-adzharski",
+      "recipe_name": "Хачапури по-аджарски",
       "cook_date": "2026-10-22",
       "qty": 9
      },
      {
       "batch_id": "b9",
-      "recipe_id": "yaytsa-benedikt",
-      "recipe_name": "Яйца Бенедикт",
+      "recipe_id": "kayzershmarrn",
+      "recipe_name": "Кайзершмаррн",
       "cook_date": "2026-10-23",
       "qty": 0.5
+     },
+     {
+      "batch_id": "b10",
+      "recipe_id": "bliny-na-drozhzhah",
+      "recipe_name": "Блины на дрожжах",
+      "cook_date": "2026-10-24",
+      "qty": 1.5
      }
     ],
     "purchased": false,
@@ -1736,20 +1840,20 @@
     "changed": false
    },
    {
-    "id": "auto:vinegar:ml",
-    "product_id": "vinegar",
-    "name": "Уксус столовый 9 %",
-    "department": "Масла и специи",
-    "unit": "ml",
+    "id": "auto:green_beans_frozen:g",
+    "product_id": "green_beans_frozen",
+    "name": "Фасоль стручковая замороженная",
+    "department": "Заморозка",
+    "unit": "g",
     "convertible": true,
-    "needed": 14.851485,
+    "needed": 900,
     "from_pantry": 0,
-    "to_buy": 14.851485,
-    "buy_qty": 500,
+    "to_buy": 900,
+    "buy_qty": 1200,
     "package": {
-     "size": 500,
-     "unit": "ml",
-     "count": 1
+     "size": 400,
+     "unit": "g",
+     "count": 3
     },
     "package_note": null,
     "price_kop": null,
@@ -1762,11 +1866,11 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b9",
-      "recipe_id": "yaytsa-benedikt",
-      "recipe_name": "Яйца Бенедикт",
-      "cook_date": "2026-10-23",
-      "qty": 14.851485
+      "batch_id": "b3",
+      "recipe_id": "striployn-s-perechnym-sousom",
+      "recipe_name": "Стриплойн с перечным соусом и стручковой фасолью",
+      "cook_date": "2026-10-19",
+      "qty": 900
      }
     ],
     "purchased": false,
@@ -1788,51 +1892,64 @@
    }
   ],
   "totals": {
-   "purchase_kop": 180660,
-   "usage_kop": 133512,
+   "purchase_kop": 77940,
+   "usage_kop": 37819,
    "complete": false,
    "estimated": false,
    "missing_prices": [
-    "auto:fish_sauce:ml",
-    "auto:lime:g",
-    "auto:rice_jasmine_dry:g",
-    "auto:sriracha:g",
-    "auto:spaghetti_dry:g",
-    "auto:bacon:g",
-    "auto:parmesan:g",
-    "auto:black_pepper:g",
-    "auto:pork_loin:g",
-    "auto:wheat_flour:g",
     "auto:corn_flour:g",
     "auto:suluguni:g",
+    "auto:pasta_dry:g",
+    "auto:beef_mince:g",
+    "auto:black_pepper:g",
+    "auto:beef_striploin:g",
+    "auto:green_beans_frozen:g",
+    "auto:shallot:g",
+    "auto:cream_20:ml",
+    "auto:butter:g",
+    "auto:wheat_flour:g",
+    "auto:sugar:g",
+    "auto:cottage_cheese:g",
+    "auto:raisins:g",
     "auto:veal:g",
     "auto:breadcrumbs:g",
-    "auto:butter:g",
     "auto:lemon:g",
-    "auto:dill:g",
-    "auto:toast_bread:g",
-    "auto:ham:g",
-    "auto:vinegar:ml",
-    "auto:kefir_25:ml",
-    "auto:baking_soda:g"
+    "auto:dry_yeast:g",
+    "auto:mozzarella:g",
+    "auto:feta:g",
+    "auto:powdered_sugar:g",
+    "auto:vanilla_sugar:g"
    ]
   },
   "budget": {
    "limit_kop": 500000,
-   "purchase_kop": 180660,
-   "diff_kop": 319340,
+   "purchase_kop": 77940,
+   "diff_kop": 422060,
    "status": "unconfirmed",
    "estimated": false
   },
   "allocations": [
    {
-    "pantry_id": "p2",
-    "batch_id": "b1",
-    "product_id": "eggs",
-    "qty": 4
+    "pantry_id": "p4",
+    "batch_id": "b2",
+    "product_id": "onion",
+    "qty": 200
    }
   ],
-  "expired_skipped": []
+  "expired_skipped": [
+   {
+    "pantry_id": "p3",
+    "product_id": "milk",
+    "expires": "2026-10-20",
+    "needed_on": "2026-10-22"
+   },
+   {
+    "pantry_id": "p2",
+    "product_id": "eggs",
+    "expires": "2026-10-21",
+    "needed_on": "2026-10-22"
+   }
+  ]
  },
  "report": [
   {
@@ -1843,91 +1960,80 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 1778.1932000000002,
+       "value": 2055.0841666666665,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 84.03658999999999,
+       "value": 101.44467499999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 95.1592,
+       "value": 116.11383333333333,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 141.68273,
+       "value": 152.08059166666666,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.666899999999999,
+       "value": 14.728583333333333,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 335.969,
+       "value": 183.00416666666666,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_c": {
-       "value": 4.46475,
-       "complete": false,
-       "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
-       ]
+       "value": 25.244,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 5.222799999999999,
+       "value": 0.6555,
        "complete": false,
        "missing": [
-        "fish_sauce"
+        "suluguni",
+        "beef_striploin"
        ]
       },
       "vit_e": {
-       "value": 16.548669999999998,
+       "value": 11.858116666666668,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_b6": {
-       "value": 1.459788,
+       "value": 2.399890833333333,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_b12": {
-       "value": 3.0798959999999997,
+       "value": 4.8777,
        "complete": false,
        "missing": [
-        "fish_sauce"
+        "suluguni"
        ]
       },
       "folate": {
-       "value": 114.52080000000001,
+       "value": 112.83583333333334,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       }
      },
-     "portion_mass_g": 676.6666666666666,
+     "portion_mass_g": 883.3333333333334,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -1936,85 +2042,69 @@
      "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 1719.0604666666666,
+       "value": 2012.0254999999997,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 81.67175999999999,
+       "value": 93.997175,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 88.87976666666667,
+       "value": 114.32149999999999,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 147.20525333333333,
+       "value": 149.48042500000003,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 9.575233333333333,
+       "value": 11.43525,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 181.56266666666664,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "black_pepper"
-       ]
+       "value": 242.2375,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 0.9,
-       "complete": false,
-       "missing": [
-        "black_pepper"
-       ]
+       "value": 28.574,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 3.1811999999999996,
+       "value": 0.6555,
        "complete": false,
        "missing": [
-        "suluguni"
+        "beef_striploin"
        ]
       },
       "vit_e": {
-       "value": 11.074146666666667,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "black_pepper"
-       ]
+       "value": 13.656410000000001,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 1.4846853333333334,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "black_pepper"
-       ]
+       "value": 2.1788575,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 2.1713839999999998,
-       "complete": false,
-       "missing": [
-        "suluguni"
-       ]
+       "value": 4.8947,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 80.79653333333333,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "black_pepper"
-       ]
+       "value": 120.35249999999999,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 550,
+     "portion_mass_g": 862.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2023,91 +2113,80 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 1778.1932000000002,
+       "value": 2055.0841666666665,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 84.03658999999999,
+       "value": 101.44467499999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 95.1592,
+       "value": 116.11383333333333,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 141.68273,
+       "value": 152.08059166666666,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.666899999999999,
+       "value": 14.728583333333333,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 335.969,
+       "value": 183.00416666666666,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_c": {
-       "value": 4.46475,
-       "complete": false,
-       "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
-       ]
+       "value": 25.244,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 5.222799999999999,
+       "value": 0.6555,
        "complete": false,
        "missing": [
-        "fish_sauce"
+        "suluguni",
+        "beef_striploin"
        ]
       },
       "vit_e": {
-       "value": 16.548669999999998,
+       "value": 11.858116666666668,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_b6": {
-       "value": 1.459788,
+       "value": 2.399890833333333,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_b12": {
-       "value": 3.0798959999999997,
+       "value": 4.8777,
        "complete": false,
        "missing": [
-        "fish_sauce"
+        "suluguni"
        ]
       },
       "folate": {
-       "value": 114.52080000000001,
+       "value": 112.83583333333334,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       }
      },
-     "portion_mass_g": 676.6666666666666,
+     "portion_mass_g": 883.3333333333334,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2116,95 +2195,72 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 1888.7388666666666,
+       "value": 2180.5302500000003,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 105.82939,
+       "value": 106.94999999999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 112.25816666666667,
+       "value": 118.087195,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 113.44761333333332,
+       "value": 170.06393500000001,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 9.236033333333332,
+       "value": 6.575050000000001,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 296.47566666666665,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 591.307,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 13.0425,
-       "complete": false,
-       "missing": [
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 11.67125,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 1.1707999999999998,
+       "value": 2.952,
        "complete": false,
        "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "butter",
-        "chicken_breast"
+        "cottage_cheese",
+        "veal"
        ]
       },
       "vit_e": {
-       "value": 26.575506666666666,
+       "value": 20.96362,
        "complete": false,
        "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper",
-        "dill"
+        "cottage_cheese"
        ]
       },
       "vit_b6": {
-       "value": 2.7195763333333334,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 1.327621,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 2.8710060000000004,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "breadcrumbs"
-       ]
+       "value": 7.149514999999999,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 87.29213333333333,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 206.174,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 545.8333333333334,
+     "portion_mass_g": 600,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2213,98 +2269,69 @@
      "date": "2026-10-23",
      "totals": {
       "kcal": {
-       "value": 1921.5506,
+       "value": 2194.9789,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 110.52197000000001,
+       "value": 96.873968,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 133.7956,
+       "value": 114.847123,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 64.08284,
+       "value": 190.629976,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.121700000000001,
+       "value": 7.34005,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 710.742,
-       "complete": false,
-       "missing": [
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 689.9549999999999,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 18.6075,
-       "complete": false,
-       "missing": [
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 11.78625,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 3.2123999999999997,
+       "value": 3.7176,
        "complete": false,
        "missing": [
-        "butter",
-        "ham",
-        "breadcrumbs",
-        "chicken_breast"
+        "veal"
        ]
       },
       "vit_e": {
-       "value": 24.50851,
-       "complete": false,
-       "missing": [
-        "toast_bread",
-        "ham",
-        "breadcrumbs",
-        "black_pepper",
-        "dill"
-       ]
+       "value": 17.4254,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 2.593179,
-       "complete": false,
-       "missing": [
-        "toast_bread",
-        "ham",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 1.300497,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 3.847518,
-       "complete": false,
-       "missing": [
-        "toast_bread",
-        "ham",
-        "breadcrumbs"
-       ]
+       "value": 6.507207,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 116.7914,
-       "complete": false,
-       "missing": [
-        "toast_bread",
-        "ham",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 194.9156,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 562.5,
+     "portion_mass_g": 625,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2313,102 +2340,69 @@
      "date": "2026-10-24",
      "totals": {
       "kcal": {
-       "value": 1880.3893333333335,
+       "value": 2174.02095,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 115.37925,
+       "value": 93.608544,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 115.31986666666666,
+       "value": 115.3247815,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 91.23913333333334,
+       "value": 186.761413,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.5027,
+       "value": 7.372674999999999,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 385.085,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 571.411,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 13.0425,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 11.547625,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 1.851333333333333,
+       "value": 2.6968,
        "complete": false,
        "missing": [
-        "kefir_25",
-        "suluguni",
-        "butter",
-        "breadcrumbs",
-        "chicken_breast"
+        "veal"
        ]
       },
       "vit_e": {
-       "value": 23.041533333333334,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper",
-        "dill"
-       ]
+       "value": 20.91209,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 2.4890883333333336,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 1.230449,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 3.185176666666667,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs"
-       ]
+       "value": 6.313938500000001,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 95.65133333333333,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 202.7518,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 579.1666666666666,
+     "portion_mass_g": 622.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2416,119 +2410,79 @@
    ],
    "period": {
     "kcal": {
-     "value": 10966.125666666667,
+     "value": 12671.723933333333,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 581.47555,
+     "value": 594.319037,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 640.5717999999999,
+     "value": 694.8082661666666,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 699.3403,
+     "value": 1001.0969323333334,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 36.76946666666666,
+     "value": 62.180191666666666,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 2245.8033333333333,
+     "value": 2460.918833333333,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
-      "suluguni",
-      "breadcrumbs",
-      "kefir_25"
+      "suluguni"
      ]
     },
     "vit_c": {
-     "value": 54.522000000000006,
-     "complete": false,
-     "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
-      "breadcrumbs",
-      "kefir_25"
-     ]
+     "value": 114.06712499999999,
+     "complete": true,
+     "missing": []
     },
     "vit_d": {
-     "value": 19.86133333333333,
+     "value": 11.332899999999999,
      "complete": false,
      "missing": [
-      "fish_sauce",
       "suluguni",
-      "breadcrumbs",
-      "butter",
-      "chicken_breast",
-      "ham",
-      "kefir_25"
+      "beef_striploin",
+      "cottage_cheese",
+      "veal"
      ]
     },
     "vit_e": {
-     "value": 118.29703666666667,
+     "value": 96.67375333333334,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
       "suluguni",
-      "breadcrumbs",
-      "dill",
-      "toast_bread",
-      "ham",
-      "kefir_25"
+      "cottage_cheese"
      ]
     },
     "vit_b6": {
-     "value": 12.206105,
+     "value": 10.837206166666666,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
-      "suluguni",
-      "breadcrumbs",
-      "toast_bread",
-      "ham",
-      "kefir_25"
+      "suluguni"
      ]
     },
     "vit_b12": {
-     "value": 18.23487666666667,
+     "value": 34.6207605,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "suluguni",
-      "breadcrumbs",
-      "toast_bread",
-      "ham",
-      "kefir_25"
+      "suluguni"
      ]
     },
     "folate": {
-     "value": 609.573,
+     "value": 949.8655666666667,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
-      "suluguni",
-      "breadcrumbs",
-      "toast_bread",
-      "ham",
-      "kefir_25"
+      "suluguni"
      ]
     }
    },
@@ -2538,16 +2492,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2245.8033333333333,
+     "period_value": 2460.918833333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "fish_sauce",
-      "kefir_25",
-      "sriracha",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -2558,17 +2507,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 54.522000000000006,
+     "period_value": 114.06712499999999,
      "coverage_pct": null,
      "lower_bound_pct": null,
-     "data_complete": false,
-     "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "fish_sauce",
-      "kefir_25",
-      "sriracha"
-     ],
+     "data_complete": true,
+     "missing_products": [],
      "message": "Целевая норма не выбрана.",
      "set_status": null
     },
@@ -2577,18 +2520,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 19.86133333333333,
+     "period_value": 11.332899999999999,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "breadcrumbs",
-      "butter",
-      "chicken_breast",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "suluguni"
+      "beef_striploin",
+      "cottage_cheese",
+      "suluguni",
+      "veal"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -2598,20 +2538,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 118.29703666666667,
+     "period_value": 96.67375333333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "dill",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "sriracha",
-      "suluguni",
-      "toast_bread"
+      "cottage_cheese",
+      "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -2621,19 +2554,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 12.206105,
+     "period_value": 10.837206166666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "sriracha",
-      "suluguni",
-      "toast_bread"
+      "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -2643,17 +2569,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 18.23487666666667,
+     "period_value": 34.6207605,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "breadcrumbs",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "suluguni",
-      "toast_bread"
+      "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -2663,19 +2584,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 609.573,
+     "period_value": 949.8655666666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "sriracha",
-      "suluguni",
-      "toast_bread"
+      "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -2690,91 +2604,80 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 1778.1932000000002,
+       "value": 2055.0841666666665,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 84.03658999999999,
+       "value": 101.44467499999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 95.1592,
+       "value": 116.11383333333333,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 141.68273,
+       "value": 152.08059166666666,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.666899999999999,
+       "value": 14.728583333333333,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 335.969,
+       "value": 183.00416666666666,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_c": {
-       "value": 4.46475,
-       "complete": false,
-       "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
-       ]
+       "value": 25.244,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 5.222799999999999,
+       "value": 0.6555,
        "complete": false,
        "missing": [
-        "fish_sauce"
+        "suluguni",
+        "beef_striploin"
        ]
       },
       "vit_e": {
-       "value": 16.548669999999998,
+       "value": 11.858116666666668,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_b6": {
-       "value": 1.459788,
+       "value": 2.399890833333333,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_b12": {
-       "value": 3.0798959999999997,
+       "value": 4.8777,
        "complete": false,
        "missing": [
-        "fish_sauce"
+        "suluguni"
        ]
       },
       "folate": {
-       "value": 114.52080000000001,
+       "value": 112.83583333333334,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       }
      },
-     "portion_mass_g": 676.6666666666666,
+     "portion_mass_g": 883.3333333333334,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2783,85 +2686,69 @@
      "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 1719.0604666666666,
+       "value": 2012.0254999999997,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 81.67175999999999,
+       "value": 93.997175,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 88.87976666666667,
+       "value": 114.32149999999999,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 147.20525333333333,
+       "value": 149.48042500000003,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 9.575233333333333,
+       "value": 11.43525,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 181.56266666666664,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "black_pepper"
-       ]
+       "value": 242.2375,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 0.9,
-       "complete": false,
-       "missing": [
-        "black_pepper"
-       ]
+       "value": 28.574,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 3.1811999999999996,
+       "value": 0.6555,
        "complete": false,
        "missing": [
-        "suluguni"
+        "beef_striploin"
        ]
       },
       "vit_e": {
-       "value": 11.074146666666667,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "black_pepper"
-       ]
+       "value": 13.656410000000001,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 1.4846853333333334,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "black_pepper"
-       ]
+       "value": 2.1788575,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 2.1713839999999998,
-       "complete": false,
-       "missing": [
-        "suluguni"
-       ]
+       "value": 4.8947,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 80.79653333333333,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "black_pepper"
-       ]
+       "value": 120.35249999999999,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 550,
+     "portion_mass_g": 862.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2870,91 +2757,80 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 1778.1932000000002,
+       "value": 2055.0841666666665,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 84.03658999999999,
+       "value": 101.44467499999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 95.1592,
+       "value": 116.11383333333333,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 141.68273,
+       "value": 152.08059166666666,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.666899999999999,
+       "value": 14.728583333333333,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 335.969,
+       "value": 183.00416666666666,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_c": {
-       "value": 4.46475,
-       "complete": false,
-       "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
-       ]
+       "value": 25.244,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 5.222799999999999,
+       "value": 0.6555,
        "complete": false,
        "missing": [
-        "fish_sauce"
+        "suluguni",
+        "beef_striploin"
        ]
       },
       "vit_e": {
-       "value": 16.548669999999998,
+       "value": 11.858116666666668,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_b6": {
-       "value": 1.459788,
+       "value": 2.399890833333333,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       },
       "vit_b12": {
-       "value": 3.0798959999999997,
+       "value": 4.8777,
        "complete": false,
        "missing": [
-        "fish_sauce"
+        "suluguni"
        ]
       },
       "folate": {
-       "value": 114.52080000000001,
+       "value": 112.83583333333334,
        "complete": false,
        "missing": [
-        "fish_sauce",
-        "sriracha",
-        "black_pepper"
+        "suluguni"
        ]
       }
      },
-     "portion_mass_g": 676.6666666666666,
+     "portion_mass_g": 883.3333333333334,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -2963,95 +2839,72 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 1888.7388666666666,
+       "value": 2180.5302500000003,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 105.82939,
+       "value": 106.94999999999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 112.25816666666667,
+       "value": 118.087195,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 113.44761333333332,
+       "value": 170.06393500000001,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 9.236033333333332,
+       "value": 6.575050000000001,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 296.47566666666665,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 591.307,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 13.0425,
-       "complete": false,
-       "missing": [
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 11.67125,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 1.1707999999999998,
+       "value": 2.952,
        "complete": false,
        "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "butter",
-        "chicken_breast"
+        "cottage_cheese",
+        "veal"
        ]
       },
       "vit_e": {
-       "value": 26.575506666666666,
+       "value": 20.96362,
        "complete": false,
        "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper",
-        "dill"
+        "cottage_cheese"
        ]
       },
       "vit_b6": {
-       "value": 2.7195763333333334,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 1.327621,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 2.8710060000000004,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "breadcrumbs"
-       ]
+       "value": 7.149514999999999,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 87.29213333333333,
-       "complete": false,
-       "missing": [
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 206.174,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 545.8333333333334,
+     "portion_mass_g": 600,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3060,98 +2913,69 @@
      "date": "2026-10-23",
      "totals": {
       "kcal": {
-       "value": 1921.5506,
+       "value": 2194.9789,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 110.52197000000001,
+       "value": 96.873968,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 133.7956,
+       "value": 114.847123,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 64.08284,
+       "value": 190.629976,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.121700000000001,
+       "value": 7.34005,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 710.742,
-       "complete": false,
-       "missing": [
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 689.9549999999999,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 18.6075,
-       "complete": false,
-       "missing": [
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 11.78625,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 3.2123999999999997,
+       "value": 3.7176,
        "complete": false,
        "missing": [
-        "butter",
-        "ham",
-        "breadcrumbs",
-        "chicken_breast"
+        "veal"
        ]
       },
       "vit_e": {
-       "value": 24.50851,
-       "complete": false,
-       "missing": [
-        "toast_bread",
-        "ham",
-        "breadcrumbs",
-        "black_pepper",
-        "dill"
-       ]
+       "value": 17.4254,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 2.593179,
-       "complete": false,
-       "missing": [
-        "toast_bread",
-        "ham",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 1.300497,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 3.847518,
-       "complete": false,
-       "missing": [
-        "toast_bread",
-        "ham",
-        "breadcrumbs"
-       ]
+       "value": 6.507207,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 116.7914,
-       "complete": false,
-       "missing": [
-        "toast_bread",
-        "ham",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 194.9156,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 562.5,
+     "portion_mass_g": 625,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3160,102 +2984,69 @@
      "date": "2026-10-24",
      "totals": {
       "kcal": {
-       "value": 1880.3893333333335,
+       "value": 2174.02095,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 115.37925,
+       "value": 93.608544,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 115.31986666666666,
+       "value": 115.3247815,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 91.23913333333334,
+       "value": 186.761413,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.5027,
+       "value": 7.372674999999999,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 385.085,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 571.411,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 13.0425,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 11.547625,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 1.851333333333333,
+       "value": 2.6968,
        "complete": false,
        "missing": [
-        "kefir_25",
-        "suluguni",
-        "butter",
-        "breadcrumbs",
-        "chicken_breast"
+        "veal"
        ]
       },
       "vit_e": {
-       "value": 23.041533333333334,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper",
-        "dill"
-       ]
+       "value": 20.91209,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 2.4890883333333336,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 1.230449,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 3.185176666666667,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs"
-       ]
+       "value": 6.313938500000001,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 95.65133333333333,
-       "complete": false,
-       "missing": [
-        "kefir_25",
-        "suluguni",
-        "breadcrumbs",
-        "black_pepper"
-       ]
+       "value": 202.7518,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 579.1666666666666,
+     "portion_mass_g": 622.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3263,119 +3054,79 @@
    ],
    "period": {
     "kcal": {
-     "value": 10966.125666666667,
+     "value": 12671.723933333333,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 581.47555,
+     "value": 594.319037,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 640.5717999999999,
+     "value": 694.8082661666666,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 699.3403,
+     "value": 1001.0969323333334,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 36.76946666666666,
+     "value": 62.180191666666666,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 2245.8033333333333,
+     "value": 2460.918833333333,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
-      "suluguni",
-      "breadcrumbs",
-      "kefir_25"
+      "suluguni"
      ]
     },
     "vit_c": {
-     "value": 54.522000000000006,
-     "complete": false,
-     "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
-      "breadcrumbs",
-      "kefir_25"
-     ]
+     "value": 114.06712499999999,
+     "complete": true,
+     "missing": []
     },
     "vit_d": {
-     "value": 19.86133333333333,
+     "value": 11.332899999999999,
      "complete": false,
      "missing": [
-      "fish_sauce",
       "suluguni",
-      "breadcrumbs",
-      "butter",
-      "chicken_breast",
-      "ham",
-      "kefir_25"
+      "beef_striploin",
+      "cottage_cheese",
+      "veal"
      ]
     },
     "vit_e": {
-     "value": 118.29703666666667,
+     "value": 96.67375333333334,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
       "suluguni",
-      "breadcrumbs",
-      "dill",
-      "toast_bread",
-      "ham",
-      "kefir_25"
+      "cottage_cheese"
      ]
     },
     "vit_b6": {
-     "value": 12.206105,
+     "value": 10.837206166666666,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
-      "suluguni",
-      "breadcrumbs",
-      "toast_bread",
-      "ham",
-      "kefir_25"
+      "suluguni"
      ]
     },
     "vit_b12": {
-     "value": 18.23487666666667,
+     "value": 34.6207605,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "suluguni",
-      "breadcrumbs",
-      "toast_bread",
-      "ham",
-      "kefir_25"
+      "suluguni"
      ]
     },
     "folate": {
-     "value": 609.573,
+     "value": 949.8655666666667,
      "complete": false,
      "missing": [
-      "fish_sauce",
-      "sriracha",
-      "black_pepper",
-      "suluguni",
-      "breadcrumbs",
-      "toast_bread",
-      "ham",
-      "kefir_25"
+      "suluguni"
      ]
     }
    },
@@ -3385,16 +3136,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2245.8033333333333,
+     "period_value": 2460.918833333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "fish_sauce",
-      "kefir_25",
-      "sriracha",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3405,17 +3151,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 54.522000000000006,
+     "period_value": 114.06712499999999,
      "coverage_pct": null,
      "lower_bound_pct": null,
-     "data_complete": false,
-     "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "fish_sauce",
-      "kefir_25",
-      "sriracha"
-     ],
+     "data_complete": true,
+     "missing_products": [],
      "message": "Целевая норма не выбрана.",
      "set_status": null
     },
@@ -3424,18 +3164,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 19.86133333333333,
+     "period_value": 11.332899999999999,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "breadcrumbs",
-      "butter",
-      "chicken_breast",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "suluguni"
+      "beef_striploin",
+      "cottage_cheese",
+      "suluguni",
+      "veal"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3445,20 +3182,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 118.29703666666667,
+     "period_value": 96.67375333333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "dill",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "sriracha",
-      "suluguni",
-      "toast_bread"
+      "cottage_cheese",
+      "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3468,19 +3198,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 12.206105,
+     "period_value": 10.837206166666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "sriracha",
-      "suluguni",
-      "toast_bread"
+      "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3490,17 +3213,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 18.23487666666667,
+     "period_value": 34.6207605,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "breadcrumbs",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "suluguni",
-      "toast_bread"
+      "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3510,19 +3228,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 609.573,
+     "period_value": 949.8655666666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "breadcrumbs",
-      "fish_sauce",
-      "ham",
-      "kefir_25",
-      "sriracha",
-      "suluguni",
-      "toast_bread"
+      "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null

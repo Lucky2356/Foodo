@@ -63,8 +63,12 @@ export default function RecipePage() {
   const table = basis === 'serving' ? nutrition.perServing : basis === '100g' ? nutrition.per100g : nutrition.total;
   const fav = favorites.has(recipe.id);
   const sources = catalog.reference.sources;
-  const productSources = new Set(recipe.ingredients.map((i) => catalog.products[i.product]?.source));
-  const estimated = [...productSources].some((id) => !sources.find((x) => x.id === id)?.verified);
+  // Which ingredients carry reference values and which are still developer estimates, by name.
+  const ingredientProducts = [...new Set(recipe.ingredients.map((i) => i.product))].map((id) => catalog.products[id]).filter((p) => p !== undefined);
+  const sourceOf = (p: (typeof ingredientProducts)[number]) => sources.find((x) => x.id === p.source);
+  const estimatedNames = ingredientProducts.filter((p) => !sourceOf(p)?.verified).map((p) => p.name.toLowerCase());
+  const verifiedSources = [...new Set(ingredientProducts.map(sourceOf).filter((x) => x?.verified).map((x) => x?.name))];
+  const estimated = estimatedNames.length > 0;
 
   return (
     <article className="stack fade-in" style={{ ['--gap' as string]: '18px' }}>
@@ -165,12 +169,13 @@ export default function RecipePage() {
                 Выход: {num(nutrition.yieldG)} г, порция ≈ {num(nutrition.yieldG / portions)} г
               </p>
             )}
-            {(!nutrition.total.kcal.complete || estimated) && (
-              <p className="muted tiny">
-                {!nutrition.total.kcal.complete ? 'Для части ингредиентов нет данных — значения неполные. ' : ''}
-                {estimated ? 'Пищевая ценность стартовой базы оценочная и не верифицирована.' : ''}
-              </p>
-            )}
+            <p className="muted tiny">
+              {!nutrition.total.kcal.complete ? 'Для части ингредиентов нет данных — значения неполные. ' : ''}
+              {estimated
+                ? `Оценочные значения, не сверенные с первоисточником: ${estimatedNames.slice(0, 4).join(', ')}${estimatedNames.length > 4 ? ` и ещё ${estimatedNames.length - 4}` : ''}. `
+                : ''}
+              {verifiedSources.length > 0 ? `${estimated ? 'Остальное' : 'Пищевая ценность продуктов'} — ${verifiedSources.join(', ')}.` : ''}
+            </p>
           </section>
         </div>
       </div>

@@ -6,7 +6,8 @@
 Sources in scripts/catalog/sources:
   products_*.txt  — new products, one per line;
   recipes_*.txt   — new recipes in blocks;
-  tags_*.txt      — cuisine / spiciness / kid-friendliness for recipes already in recipes.json.
+  tags_*.txt      — cuisine / spiciness / kid-friendliness for recipes already in recipes.json;
+  usda_values.json — nutrients of mapped products from USDA FoodData Central (scripts/nutrition/usda.py).
 
 The build is idempotent: a product or recipe defined in the sources replaces the entry with the same
 id, so running it twice gives the same files. Nothing in the sources is executed; it is parsed text.
@@ -49,6 +50,11 @@ BASE_UNITS = {"g", "ml", "pcs"}
 ID = re.compile(r"[a-z0-9]+(?:[-_][a-z0-9]+)*")
 RECIPE_SOURCE = "foodo-recipes-2026-10"
 PRODUCT_SOURCE = "foodo-estimate-2026-10"
+USDA_SOURCE = "usda-sr-legacy-2018"
+USDA_VALUES = SOURCES / "usda_values.json"
+# Estimates of products kept only in products.json, saved when USDA values replace them, so removing
+# a mapping brings the estimate back instead of leaving USDA numbers under an estimate label.
+ESTIMATES = SOURCES / "estimates.json"
 
 JSON = dict[str, Any]
 
@@ -311,7 +317,12 @@ def validate(
             errors.append(f"{w}: ml product needs dens=")
         n = p["nutrients"]
         macro = [n["protein"], n["fat"], n["carbs"]]
-        if n["kcal"] is not None and all(v is not None for v in macro):
+        # Only hand-entered estimates can hold typos; reference data is kept exactly as published.
+        if (
+            p["source"] == PRODUCT_SOURCE
+            and n["kcal"] is not None
+            and all(v is not None for v in macro)
+        ):
             atwater = 4 * macro[0] + 9 * macro[1] + 4 * macro[2]
             # Source energy is stored as given, but a gross mismatch means a typo.
             if abs(atwater - n["kcal"]) > max(40, 0.25 * n["kcal"]):
@@ -395,6 +406,46 @@ def validate(
     return errors
 
 
+def apply_usda(
+    products: dict[str, JSON], from_sources: set[str], estimates: dict[str, JSON]
+) -> list[str]:
+    """Replaces the estimated nutrients of mapped products with USDA SR Legacy values.
+
+    A nutrient USDA does not report for the food becomes unknown (None), not the old estimate and not
+    zero: one product never mixes two sources. Estimates of products defined only in products.json go
+    to `estimates` first, so a product whose mapping is removed gets its estimate back.
+    """
+    doc = (
+        json.loads(USDA_VALUES.read_text(encoding="utf-8"))
+        if USDA_VALUES.exists()
+        else {"products": {}}
+    )
+    usda: dict[str, JSON] = doc["products"]
+    errors = [
+        f"usda_values.json: unknown product {pid}"
+        for pid in usda
+        if pid not in products
+    ]
+    for pid, p in products.items():
+        if pid in usda:
+            if pid not in from_sources and p["source"] == PRODUCT_SOURCE:
+                estimates[pid] = p["nutrients"]
+            values = usda[pid]["per_100g"]
+            p["nutrients"] = {
+                k: None if values.get(k) is None else _int_or_float(values[k])
+                for k in NUTRIENTS
+            }
+            p["source"] = USDA_SOURCE
+        elif p["source"] == USDA_SOURCE:
+            # Only products kept in products.json get here: parse_products labels source lines estimates.
+            if pid not in estimates:
+                errors.append(f"{pid}: USDA values removed and no estimate saved")
+                continue
+            p["nutrients"] = estimates.pop(pid)
+            p["source"] = PRODUCT_SOURCE
+    return errors
+
+
 def build(write: bool) -> int:
     ref = json.loads((DATA / "reference.json").read_text(encoding="utf-8"))
     prods_doc = json.loads((DATA / "products.json").read_text(encoding="utf-8"))
@@ -446,6 +497,10 @@ def build(write: bool) -> int:
                 )
     for p in new_products:
         products[p["id"]] = p
+    estimates = (
+        json.loads(ESTIMATES.read_text(encoding="utf-8")) if ESTIMATES.exists() else {}
+    )
+    errors += apply_usda(products, {p["id"] for p in new_products}, estimates)
     product_names: dict[str, str] = {}
     for p in products.values():
         other = product_names.setdefault(p["name"].lower(), p["id"])
@@ -501,6 +556,11 @@ def build(write: bool) -> int:
     if write:
         (DATA / "products.json").write_text(dump_products(prods_doc), encoding="utf-8")
         (DATA / "recipes.json").write_text(dump_recipes(recs_doc), encoding="utf-8")
+        ESTIMATES.write_text(
+            json.dumps(dict(sorted(estimates.items())), ensure_ascii=False, indent=1)
+            + "\n",
+            encoding="utf-8",
+        )
         BUILT.write_text(
             json.dumps(
                 {

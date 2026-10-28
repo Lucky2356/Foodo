@@ -1,13 +1,15 @@
 name: Reference data
 
-# Checks reference data against its primary sources. МР 2.3.1.0253-21 (vitamin targets) is read
-# from the publisher's site; the hosts are not reachable from every development environment.
+# Checks reference data against its primary sources: МР 2.3.1.0253-21 (vitamin targets) from the
+# publisher's site and USDA FoodData Central SR Legacy (product nutrients). The hosts are not
+# reachable from every development environment.
 on:
   pull_request:
     paths:
       - "scripts/reference/**"
       - "scripts/nutrition/**"
       - "shared/data/nutrient_targets.json"
+      - "scripts/catalog/sources/usda_values.json"
       - ".github/workflows/reference.yml"
   workflow_dispatch:
 
@@ -37,5 +39,5 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.13"
-      - name: USDA FoodData Central SR Legacy — food list
-        run: python -m scripts.nutrition.usda --apply
+      - name: USDA FoodData Central SR Legacy — usda_values.json matches the dataset
+        run: python -m scripts.nutrition.usda --check

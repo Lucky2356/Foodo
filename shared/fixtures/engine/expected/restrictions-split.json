@@ -462,8 +462,8 @@
   "warnings": [],
   "stats": {
    "attempts": 6,
-   "evaluated": 9104,
-   "score": 8.30782537532593,
+   "evaluated": 9100,
+   "score": 7.821280338033904,
    "budget_status": "none"
   },
   "snapshot_ids": {
@@ -2895,88 +2895,81 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 1979.0647999999997,
+       "value": 1980.6648,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 88.36012,
+       "value": 87.7771395,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 93.30719,
+       "value": 93.51848050000001,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 198.93005,
+       "value": 199.38371250000003,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 23.174965,
+       "value": 23.014965000000004,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 90.62450000000001,
+       "value": 93.97510000000001,
        "complete": false,
        "missing": [
-        "soy_milk",
-        "cumin",
-        "black_pepper"
+        "soy_milk"
        ]
       },
       "vit_c": {
-       "value": 51.015750000000004,
+       "value": 51.06965000000001,
        "complete": false,
        "missing": [
-        "soy_milk",
-        "cumin",
-        "black_pepper"
+        "soy_milk"
        ]
       },
       "vit_d": {
-       "value": 0.625,
+       "value": 0.245,
        "complete": false,
        "missing": [
         "soy_milk",
-        "beef_mince"
+        "pork_mince"
        ]
       },
       "vit_e": {
-       "value": 4.97945,
+       "value": 5.592461999999999,
        "complete": false,
        "missing": [
         "soy_milk",
-        "cumin",
-        "black_pepper"
+        "coriander_ground",
+        "pork_mince"
        ]
       },
       "vit_b6": {
-       "value": 1.541975,
+       "value": 1.5844273000000002,
        "complete": false,
        "missing": [
         "soy_milk",
-        "cumin",
-        "black_pepper"
+        "coriander_ground"
        ]
       },
       "vit_b12": {
-       "value": 5.744999999999999,
+       "value": 5.8905,
        "complete": false,
        "missing": [
         "soy_milk"
        ]
       },
       "folate": {
-       "value": 234.35449999999997,
+       "value": 233.43910000000002,
        "complete": false,
        "missing": [
-        "soy_milk",
-        "cumin",
-        "black_pepper"
+        "soy_milk"
        ]
       }
      },
@@ -2989,88 +2982,68 @@
      "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 1594.3118666666667,
+       "value": 1651.0318666666667,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 73.96114666666666,
+       "value": 66.20094466666666,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 108.02342666666665,
+       "value": 114.51015533333334,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 93.25606666666667,
+       "value": 93.64893333333332,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 13.665859999999999,
+       "value": 13.345859999999998,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 116.119,
-       "complete": false,
-       "missing": [
-        "cumin",
-        "black_pepper"
-       ]
+       "value": 116.5894,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 76.19650000000001,
-       "complete": false,
-       "missing": [
-        "cumin",
-        "black_pepper",
-        "flounder"
-       ]
+       "value": 76.24270000000001,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 0.15600000000000003,
+       "value": 5.6,
        "complete": false,
        "missing": [
-        "flounder"
+        "lamb_ribs"
        ]
       },
       "vit_e": {
-       "value": 21.676699999999997,
+       "value": 24.330807999999998,
        "complete": false,
        "missing": [
-        "cumin",
-        "black_pepper",
-        "dill",
-        "flounder"
+        "dill"
        ]
       },
       "vit_b6": {
-       "value": 1.2817066666666665,
-       "complete": false,
-       "missing": [
-        "cumin",
-        "black_pepper",
-        "flounder"
-       ]
+       "value": 1.5011465333333334,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 3.432000000000001,
-       "complete": false,
-       "missing": [
-        "flounder"
-       ]
+       "value": 5.5203999999999995,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 154.3733333333333,
-       "complete": false,
-       "missing": [
-        "cumin",
-        "black_pepper",
-        "flounder"
-       ]
+       "value": 158.24773333333331,
+       "complete": true,
+       "missing": []
       }
      },
      "portion_mass_g": 863.3333333333334,
@@ -3082,22 +3055,22 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 1761.446566666667,
+       "value": 1777.196566666667,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 61.86336166666667,
+       "value": 60.66043116666667,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 93.26613166666667,
+       "value": 95.30905133333331,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 166.94985833333334,
+       "value": 167.3436916666667,
        "complete": true,
        "missing": []
       },
@@ -3107,10 +3080,9 @@
        "missing": []
       },
       "vit_a": {
-       "value": 365.08225,
+       "value": 357.34635000000003,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       },
@@ -3118,44 +3090,37 @@
        "value": 6.565475000000001,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_d": {
-       "value": 0,
-       "complete": false,
-       "missing": [
-        "beef_mince",
-        "chicken_thighs"
-       ]
+       "value": 0.23750000000000002,
+       "complete": true,
+       "missing": []
       },
       "vit_e": {
-       "value": 22.0969295,
+       "value": 22.0996115,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_b6": {
-       "value": 1.0201391666666666,
+       "value": 1.1039578833333334,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_b12": {
-       "value": 2.31,
+       "value": 2.6885000000000003,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 82.21933333333332,
+       "value": 76.77543333333332,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       }
@@ -3169,45 +3134,43 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 2047.0269,
+       "value": 2046.7669,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 108.77361999999998,
+       "value": 108.77839200000003,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 123.42293000000001,
+       "value": 123.44206199999999,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 138.3669,
+       "value": 138.39427999999998,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 29.662390000000002,
+       "value": 29.55439,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 357.6048,
+       "value": 357.5634,
        "complete": false,
        "missing": [
         "salmon_salted",
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_c": {
-       "value": 169.40346,
+       "value": 169.21846,
        "complete": false,
        "missing": [
         "salmon_salted",
-        "black_pepper",
         "italian_herbs"
        ]
       },
@@ -3219,39 +3182,36 @@
        ]
       },
       "vit_e": {
-       "value": 16.766110499999996,
+       "value": 16.7672325,
        "complete": false,
        "missing": [
         "buckwheat_dry",
         "salmon_salted",
         "dill",
         "mint",
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_b6": {
-       "value": 3.6737580000000003,
+       "value": 3.3570909,
        "complete": false,
        "missing": [
         "salmon_salted",
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_b12": {
-       "value": 8.275,
+       "value": 8.3875,
        "complete": false,
        "missing": [
         "salmon_salted"
        ]
       },
       "folate": {
-       "value": 313.6187,
+       "value": 301.5593,
        "complete": false,
        "missing": [
         "salmon_salted",
-        "black_pepper",
         "italian_herbs"
        ]
       }
@@ -3264,73 +3224,66 @@
    ],
    "period": {
     "kcal": {
-     "value": 7381.850133333332,
+     "value": 7455.660133333335,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 332.9582483333333,
+     "value": 323.41690733333337,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 418.01967833333333,
+     "value": 426.77974916666665,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 597.5028749999999,
+     "value": 598.7706175000001,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 75.57623,
+     "value": 74.98823,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 929.43055,
+     "value": 925.47425,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
       "italian_herbs",
       "salmon_salted"
      ]
     },
     "vit_c": {
-     "value": 303.181185,
+     "value": 303.096285,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
-      "flounder",
       "italian_herbs",
       "salmon_salted"
      ]
     },
     "vit_d": {
-     "value": 26.491,
+     "value": 31.7925,
      "complete": false,
      "missing": [
       "soy_milk",
-      "beef_mince",
-      "flounder",
-      "chicken_thighs",
+      "pork_mince",
+      "lamb_ribs",
       "salmon_salted"
      ]
     },
     "vit_e": {
-     "value": 65.51919,
+     "value": 68.79011399999999,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
+      "coriander_ground",
+      "pork_mince",
       "dill",
-      "flounder",
       "italian_herbs",
       "buckwheat_dry",
       "salmon_salted",
@@ -3338,34 +3291,28 @@
      ]
     },
     "vit_b6": {
-     "value": 7.517578833333333,
+     "value": 7.546622616666667,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
-      "flounder",
+      "coriander_ground",
       "italian_herbs",
       "salmon_salted"
      ]
     },
     "vit_b12": {
-     "value": 19.762,
+     "value": 22.4869,
      "complete": false,
      "missing": [
       "soy_milk",
-      "flounder",
       "salmon_salted"
      ]
     },
     "folate": {
-     "value": 784.5658666666666,
+     "value": 770.0215666666667,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
-      "flounder",
       "italian_herbs",
       "salmon_salted"
      ]
@@ -3377,13 +3324,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 929.43055,
+     "period_value": 925.47425,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "cumin",
       "italian_herbs",
       "salmon_salted",
       "soy_milk"
@@ -3396,14 +3341,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 303.181185,
+     "period_value": 303.096285,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "cumin",
-      "flounder",
       "italian_herbs",
       "salmon_salted",
       "soy_milk"
@@ -3416,14 +3358,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 26.491,
+     "period_value": 31.7925,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "beef_mince",
-      "chicken_thighs",
-      "flounder",
+      "lamb_ribs",
+      "pork_mince",
       "salmon_salted",
       "soy_milk"
      ],
@@ -3435,18 +3376,17 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 65.51919,
+     "period_value": 68.79011399999999,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
       "buckwheat_dry",
-      "cumin",
+      "coriander_ground",
       "dill",
-      "flounder",
       "italian_herbs",
       "mint",
+      "pork_mince",
       "salmon_salted",
       "soy_milk"
      ],
@@ -3458,14 +3398,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 7.517578833333333,
+     "period_value": 7.546622616666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "cumin",
-      "flounder",
+      "coriander_ground",
       "italian_herbs",
       "salmon_salted",
       "soy_milk"
@@ -3478,12 +3416,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 19.762,
+     "period_value": 22.4869,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "flounder",
       "salmon_salted",
       "soy_milk"
      ],
@@ -3495,14 +3432,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 784.5658666666666,
+     "period_value": 770.0215666666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "cumin",
-      "flounder",
       "italian_herbs",
       "salmon_salted",
       "soy_milk"
@@ -3520,88 +3454,81 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 989.5323999999998,
+       "value": 990.3324,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 44.18006,
+       "value": 43.88856975,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 46.653595,
+       "value": 46.759240250000005,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 99.465025,
+       "value": 99.69185625000001,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 11.5874825,
+       "value": 11.507482500000002,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 45.312250000000006,
+       "value": 46.987550000000006,
        "complete": false,
        "missing": [
-        "soy_milk",
-        "cumin",
-        "black_pepper"
+        "soy_milk"
        ]
       },
       "vit_c": {
-       "value": 25.507875000000002,
+       "value": 25.534825000000005,
        "complete": false,
        "missing": [
-        "soy_milk",
-        "cumin",
-        "black_pepper"
+        "soy_milk"
        ]
       },
       "vit_d": {
-       "value": 0.3125,
+       "value": 0.1225,
        "complete": false,
        "missing": [
         "soy_milk",
-        "beef_mince"
+        "pork_mince"
        ]
       },
       "vit_e": {
-       "value": 2.489725,
+       "value": 2.7962309999999997,
        "complete": false,
        "missing": [
         "soy_milk",
-        "cumin",
-        "black_pepper"
+        "coriander_ground",
+        "pork_mince"
        ]
       },
       "vit_b6": {
-       "value": 0.7709875,
+       "value": 0.7922136500000001,
        "complete": false,
        "missing": [
         "soy_milk",
-        "cumin",
-        "black_pepper"
+        "coriander_ground"
        ]
       },
       "vit_b12": {
-       "value": 2.8724999999999996,
+       "value": 2.94525,
        "complete": false,
        "missing": [
         "soy_milk"
        ]
       },
       "folate": {
-       "value": 117.17724999999999,
+       "value": 116.71955000000001,
        "complete": false,
        "missing": [
-        "soy_milk",
-        "cumin",
-        "black_pepper"
+        "soy_milk"
        ]
       }
      },
@@ -3614,88 +3541,68 @@
      "date": "2026-10-20",
      "totals": {
       "kcal": {
-       "value": 797.1559333333333,
+       "value": 825.5159333333334,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 36.98057333333333,
+       "value": 33.10047233333333,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 54.011713333333326,
+       "value": 57.25507766666667,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 46.628033333333335,
+       "value": 46.82446666666666,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 6.832929999999999,
+       "value": 6.672929999999999,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 58.0595,
-       "complete": false,
-       "missing": [
-        "cumin",
-        "black_pepper"
-       ]
+       "value": 58.2947,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 38.09825000000001,
-       "complete": false,
-       "missing": [
-        "cumin",
-        "black_pepper",
-        "flounder"
-       ]
+       "value": 38.12135000000001,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
-       "value": 0.07800000000000001,
+       "value": 2.8,
        "complete": false,
        "missing": [
-        "flounder"
+        "lamb_ribs"
        ]
       },
       "vit_e": {
-       "value": 10.838349999999998,
+       "value": 12.165403999999999,
        "complete": false,
        "missing": [
-        "cumin",
-        "black_pepper",
-        "dill",
-        "flounder"
+        "dill"
        ]
       },
       "vit_b6": {
-       "value": 0.6408533333333333,
-       "complete": false,
-       "missing": [
-        "cumin",
-        "black_pepper",
-        "flounder"
-       ]
+       "value": 0.7505732666666667,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 1.7160000000000004,
-       "complete": false,
-       "missing": [
-        "flounder"
-       ]
+       "value": 2.7601999999999998,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 77.18666666666665,
-       "complete": false,
-       "missing": [
-        "cumin",
-        "black_pepper",
-        "flounder"
-       ]
+       "value": 79.12386666666666,
+       "complete": true,
+       "missing": []
       }
      },
      "portion_mass_g": 431.6666666666667,
@@ -3707,22 +3614,22 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 880.7232833333335,
+       "value": 888.5982833333335,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 30.931680833333335,
+       "value": 30.330215583333334,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 46.63306583333333,
+       "value": 47.65452566666666,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 83.47492916666667,
+       "value": 83.67184583333335,
        "complete": true,
        "missing": []
       },
@@ -3732,10 +3639,9 @@
        "missing": []
       },
       "vit_a": {
-       "value": 182.541125,
+       "value": 178.67317500000001,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       },
@@ -3743,44 +3649,37 @@
        "value": 3.2827375000000005,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_d": {
-       "value": 0,
-       "complete": false,
-       "missing": [
-        "beef_mince",
-        "chicken_thighs"
-       ]
+       "value": 0.11875000000000001,
+       "complete": true,
+       "missing": []
       },
       "vit_e": {
-       "value": 11.04846475,
+       "value": 11.04980575,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_b6": {
-       "value": 0.5100695833333333,
+       "value": 0.5519789416666667,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_b12": {
-       "value": 1.155,
+       "value": 1.3442500000000002,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 41.10966666666666,
+       "value": 38.38771666666666,
        "complete": false,
        "missing": [
-        "black_pepper",
         "italian_herbs"
        ]
       }
@@ -3794,45 +3693,43 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 1023.51345,
+       "value": 1023.38345,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 54.38680999999999,
+       "value": 54.38919600000001,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 61.711465000000004,
+       "value": 61.721030999999996,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 69.18345,
+       "value": 69.19713999999999,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 14.831195000000001,
+       "value": 14.777195,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 178.8024,
+       "value": 178.7817,
        "complete": false,
        "missing": [
         "salmon_salted",
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_c": {
-       "value": 84.70173,
+       "value": 84.60923,
        "complete": false,
        "missing": [
         "salmon_salted",
-        "black_pepper",
         "italian_herbs"
        ]
       },
@@ -3844,39 +3741,36 @@
        ]
       },
       "vit_e": {
-       "value": 8.383055249999998,
+       "value": 8.38361625,
        "complete": false,
        "missing": [
         "buckwheat_dry",
         "salmon_salted",
         "dill",
         "mint",
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_b6": {
-       "value": 1.8368790000000002,
+       "value": 1.67854545,
        "complete": false,
        "missing": [
         "salmon_salted",
-        "black_pepper",
         "italian_herbs"
        ]
       },
       "vit_b12": {
-       "value": 4.1375,
+       "value": 4.19375,
        "complete": false,
        "missing": [
         "salmon_salted"
        ]
       },
       "folate": {
-       "value": 156.80935,
+       "value": 150.77965,
        "complete": false,
        "missing": [
         "salmon_salted",
-        "black_pepper",
         "italian_herbs"
        ]
       }
@@ -3889,73 +3783,66 @@
    ],
    "period": {
     "kcal": {
-     "value": 3690.925066666666,
+     "value": 3727.8300666666673,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 166.47912416666665,
+     "value": 161.70845366666668,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 209.00983916666667,
+     "value": 213.38987458333332,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 298.75143749999995,
+     "value": 299.38530875000004,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 37.788115,
+     "value": 37.494115,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 464.715275,
+     "value": 462.737125,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
       "italian_herbs",
       "salmon_salted"
      ]
     },
     "vit_c": {
-     "value": 151.5905925,
+     "value": 151.5481425,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
-      "flounder",
       "italian_herbs",
       "salmon_salted"
      ]
     },
     "vit_d": {
-     "value": 13.2455,
+     "value": 15.89625,
      "complete": false,
      "missing": [
       "soy_milk",
-      "beef_mince",
-      "flounder",
-      "chicken_thighs",
+      "pork_mince",
+      "lamb_ribs",
       "salmon_salted"
      ]
     },
     "vit_e": {
-     "value": 32.759595,
+     "value": 34.395056999999994,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
+      "coriander_ground",
+      "pork_mince",
       "dill",
-      "flounder",
       "italian_herbs",
       "buckwheat_dry",
       "salmon_salted",
@@ -3963,34 +3850,28 @@
      ]
     },
     "vit_b6": {
-     "value": 3.7587894166666667,
+     "value": 3.7733113083333336,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
-      "flounder",
+      "coriander_ground",
       "italian_herbs",
       "salmon_salted"
      ]
     },
     "vit_b12": {
-     "value": 9.881,
+     "value": 11.24345,
      "complete": false,
      "missing": [
       "soy_milk",
-      "flounder",
       "salmon_salted"
      ]
     },
     "folate": {
-     "value": 392.2829333333333,
+     "value": 385.01078333333334,
      "complete": false,
      "missing": [
       "soy_milk",
-      "cumin",
-      "black_pepper",
-      "flounder",
       "italian_herbs",
       "salmon_salted"
      ]
@@ -4002,13 +3883,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 464.715275,
+     "period_value": 462.737125,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "cumin",
       "italian_herbs",
       "salmon_salted",
       "soy_milk"
@@ -4021,14 +3900,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 151.5905925,
+     "period_value": 151.5481425,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "cumin",
-      "flounder",
       "italian_herbs",
       "salmon_salted",
       "soy_milk"
@@ -4041,14 +3917,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 13.2455,
+     "period_value": 15.89625,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "beef_mince",
-      "chicken_thighs",
-      "flounder",
+      "lamb_ribs",
+      "pork_mince",
       "salmon_salted",
       "soy_milk"
      ],
@@ -4060,18 +3935,17 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 32.759595,
+     "period_value": 34.395056999999994,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
       "buckwheat_dry",
-      "cumin",
+      "coriander_ground",
       "dill",
-      "flounder",
       "italian_herbs",
       "mint",
+      "pork_mince",
       "salmon_salted",
       "soy_milk"
      ],
@@ -4083,14 +3957,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 3.7587894166666667,
+     "period_value": 3.7733113083333336,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "cumin",
-      "flounder",
+      "coriander_ground",
       "italian_herbs",
       "salmon_salted",
       "soy_milk"
@@ -4103,12 +3975,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 9.881,
+     "period_value": 11.24345,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "flounder",
       "salmon_salted",
       "soy_milk"
      ],
@@ -4120,14 +3991,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 392.2829333333333,
+     "period_value": 385.01078333333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "black_pepper",
-      "cumin",
-      "flounder",
       "italian_herbs",
       "salmon_salted",
       "soy_milk"
@@ -4621,8 +4489,8 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 9104,
-     "score": 8.30782537532593,
+     "evaluated": 9100,
+     "score": 7.821280338033904,
      "budget_status": "none"
     },
     "snapshot_ids": {
@@ -5223,8 +5091,8 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 9104,
-     "score": 8.30782537532593,
+     "evaluated": 9100,
+     "score": 7.821280338033904,
      "budget_status": "none"
     },
     "snapshot_ids": {
