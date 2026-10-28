@@ -3052,3 +3052,65 @@ hr.sep {
   background: var(--primary-soft);
   color: var(--primary-soft-ink);
 }
+
+/* ===== Settings hub ======================================================= */
+/* One list of settings screens, each row showing what is set now. */
+.settings-list {
+  display: grid;
+  padding: 6px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.settings-row + .settings-row {
+  border-top: 1px solid var(--border);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.settings-row:hover {
+  background: var(--surface-2);
+}
+
+.settings-row:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.settings-icon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-soft);
+  color: var(--primary-soft-ink);
+}
+
+.settings-title {
+  display: block;
+  font-weight: 650;
+}
+
+.settings-value {
+  display: block;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+.card-link.retake {
+  align-items: center;
+  gap: 14px;
+}

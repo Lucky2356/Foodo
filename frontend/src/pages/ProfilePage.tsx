@@ -2,15 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { estimateEnergy, spiceTolerance } from '../engine';
 import type { Member } from '../engine';
-import { useApp } from '../state/app';
+import { useApp, useLoad } from '../state/app';
+import { loadChains } from '../data/geo';
+import { foodSummary, kitchenSummary, menuSummary, shoppingSummary } from '../lib/settingsSummary';
+import { NATIVE_BUILD } from '../lib/config';
 import { Icon } from '../ui/icons';
 import { Chip, Field, Loading, NumberInput, PageHead, Segmented, Sheet, Stepper } from '../ui/kit';
 import { rangeError } from '../lib/numbers';
 import { ProductPicker } from '../ui/ProductPicker';
-import { GuestDataCard } from '../ui/GuestData';
-import { applyTheme, storedTheme } from '../lib/theme';
+import { storedTheme } from '../lib/theme';
 import type { ThemeChoice } from '../lib/theme';
-import { num, plural } from '../lib/format';
+import { num, plural, rub } from '../lib/format';
 import { QUICK_EXCLUSIONS, quickExclusionsActive, toggleQuickExclusion } from '../lib/recipes';
 import { deviceTimeZone, TIMEZONES, timeZoneName } from '../lib/dates';
 import type { IconName } from '../ui/icons';
@@ -24,13 +26,32 @@ const MORE_LINKS: { to: string; label: string; icon: IconName }[] = [
 ];
 
 
+const THEME_NAMES: Record<ThemeChoice, string> = { system: 'Как в системе', light: 'Светлая тема', dark: 'Тёмная тема' };
+
+function SettingsRow({ to, icon, title, value }: { to: string; icon: IconName; title: string; value: string }) {
+  return (
+    <Link to={to} className="settings-row">
+      <span className="settings-icon" aria-hidden="true">
+        <Icon name={icon} size={20} />
+      </span>
+      <span className="grow">
+        <span className="settings-title">{title}</span>
+        <span className="settings-value">{value}</span>
+      </span>
+      <Icon name="chevron" size={16} />
+    </Link>
+  );
+}
+
 export default function ProfilePage() {
   const { household, gateway, user, reportError, toast, refreshHousehold } = useApp();
   const [editing, setEditing] = useState<Member | 'new' | null>(null);
   // Removal is confirmed first: undoing it would give the person a new id and detach them from the menu.
   const [removing, setRemoving] = useState<Member | null>(null);
-  const [theme, setTheme] = useState<ThemeChoice>(storedTheme());
+  const theme = storedTheme();
+  const chains = useLoad(() => loadChains(), []);
   if (!household) return <Loading />;
+  const chainName = household.store_chain_id ? (chains.data?.find((c) => c.id === household.store_chain_id)?.name ?? null) : null;
 
   const removeMember = async (m: Member) => {
     try {
@@ -47,7 +68,7 @@ export default function ProfilePage() {
 
   return (
     <div className="stack medium" style={{ ['--gap' as string]: '18px' }}>
-      <PageHead eyebrow={user ? user.email : 'Гостевой режим'} title={household.name} subtitle="Семья, настройки подбора и ваши данные" />
+      <PageHead eyebrow={user ? user.email : 'Гостевой режим'} title={household.name} subtitle="Кто ест, настройки и ваши данные" />
       <section className="stack">
         <div className="section-title">
           <h2 id="members-title" tabIndex={-1}>
@@ -86,74 +107,44 @@ export default function ProfilePage() {
           })}
         </div>
       </section>
-      <section className="grid">
-        <Link to="/settings" className="card card-link row">
-          <span className="ficon" style={{ width: 44, height: 44, borderRadius: 14, display: 'grid', placeItems: 'center', background: 'var(--primary-soft)', color: 'var(--primary-soft-ink)' }}>
-            <Icon name="settings" />
+      <section className="stack" style={{ ['--gap' as string]: '10px' }} aria-labelledby="settings-title">
+        <h2 id="settings-title">Настройки</h2>
+        <nav className="card settings-list" aria-label="Настройки">
+          <SettingsRow to="/settings/menu" icon="calendar" title="Меню" value={menuSummary(household)} />
+          <SettingsRow to="/settings/kitchen" icon="chef" title="Готовка" value={kitchenSummary(household)} />
+          <SettingsRow to="/settings/food" icon="leaf" title="Питание" value={foodSummary(household)} />
+          <SettingsRow to="/settings/shopping" icon="cart" title="Покупки и цены" value={shoppingSummary(household, chainName, rub)} />
+          <SettingsRow to="/pantry" icon="box" title="Что есть дома" value="Продукты и сроки годности — вычитаются из покупок" />
+          <SettingsRow to="/account" icon={user ? 'shield' : 'user'} title={user ? 'Аккаунт' : 'Мои данные'} value={user ? user.email : 'Резервная копия и перенос на другое устройство'} />
+          <SettingsRow to="/settings/look" icon={theme === 'dark' ? 'moon' : 'sun'} title="Оформление" value={THEME_NAMES[theme]} />
+          {NATIVE_BUILD && <SettingsRow to="/settings/app" icon="download" title="Обновления приложения" value="Проверка и установка новых версий" />}
+        </nav>
+        <Link to="/start" className="card card-link row retake">
+          <span className="settings-icon" aria-hidden="true">
+            <Icon name="list" size={20} />
           </span>
           <span className="grow">
-            <strong>Настройки подбора</strong>
+            <strong>Пройти анкету заново</strong>
             <span className="muted small" style={{ display: 'block' }}>
-              Уровень, ПП, техника, повторы, витамины
-            </span>
-          </span>
-          <Icon name="chevron" size={18} />
-        </Link>
-        <Link to="/settings#store" className="card card-link row">
-          <span className="ficon" style={{ width: 44, height: 44, borderRadius: 14, display: 'grid', placeItems: 'center', background: 'var(--accent-soft)', color: 'var(--accent-ink)' }}>
-            <Icon name="store" />
-          </span>
-          <span className="grow">
-            <strong>{household.city ? household.city.name : 'Город и магазин'}</strong>
-            <span className="muted small" style={{ display: 'block' }}>
-              Цены, бюджет
-            </span>
-          </span>
-          <Icon name="chevron" size={18} />
-        </Link>
-        <Link to="/pantry" className="card card-link row">
-          <span className="ficon" style={{ width: 44, height: 44, borderRadius: 14, display: 'grid', placeItems: 'center', background: 'var(--saffron-soft)', color: 'var(--saffron-ink)' }}>
-            <Icon name="box" />
-          </span>
-          <span className="grow">
-            <strong>Остатки дома</strong>
-            <span className="muted small" style={{ display: 'block' }}>
-              Продукты и сроки годности
+              Ответьте на вопросы ещё раз — настройки и семья обновятся, и составится новое меню
             </span>
           </span>
           <Icon name="chevron" size={18} />
         </Link>
       </section>
       {/* On a phone the tab bar has five places; the rest of the app is reachable from here. */}
-      <nav className="card stack more-links" aria-label="Ещё разделы" style={{ ['--gap' as string]: '0px', padding: 6 }}>
-        {MORE_LINKS.map((l) => (
-          <Link key={l.to} to={l.to} className="row more-link">
-            <Icon name={l.icon} size={20} />
-            <span className="grow">{l.label}</span>
-            <Icon name="chevron" size={16} />
-          </Link>
-        ))}
-      </nav>
-      <section className="card stack">
-        <h2>Оформление</h2>
-        <Segmented<ThemeChoice>
-          label="Тема"
-          value={theme}
-          onChange={(t) => {
-            setTheme(t);
-            applyTheme(t);
-          }}
-          options={[
-            { value: 'system', label: 'Как в системе' },
-            { value: 'light', label: 'Светлая' },
-            { value: 'dark', label: 'Тёмная' },
-          ]}
-        />
+      <section className="stack" style={{ ['--gap' as string]: '10px' }} aria-labelledby="more-title">
+        <h2 id="more-title">Ещё</h2>
+        <nav className="card stack more-links" aria-label="Ещё разделы" style={{ ['--gap' as string]: '0px', padding: 6 }}>
+          {MORE_LINKS.map((l) => (
+            <Link key={l.to} to={l.to} className="row more-link">
+              <Icon name={l.icon} size={20} />
+              <span className="grow">{l.label}</span>
+              <Icon name="chevron" size={16} />
+            </Link>
+          ))}
+        </nav>
       </section>
-      {gateway.mode === 'guest' && <GuestDataCard />}
-      <Link to="/account" className="btn ghost big">
-        <Icon name={user ? 'shield' : 'user'} size={20} /> {user ? 'Аккаунт и безопасность' : 'Аккаунт: вход и синхронизация'}
-      </Link>
       {removing && (
         <Sheet
           open

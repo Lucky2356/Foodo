@@ -232,7 +232,7 @@ export default function ShoppingPage() {
               <button className="btn primary small" onClick={() => setPlaceOpen(true)}>
                 <Icon name="location" size={16} /> {household?.city ? 'Сменить город' : 'Выбрать город'}
               </button>
-              <Link to="/settings#prices" className="btn ghost small">
+              <Link to="/settings/shopping#prices" className="btn ghost small">
                 Ввести свои цены
               </Link>
             </div>
@@ -256,7 +256,7 @@ export default function ShoppingPage() {
           {budget.status === 'none' ? (
             <>
               <div style={{ fontWeight: 700, marginTop: 4 }}>Не задан</div>
-              <Link to="/settings#budget" className="small">
+              <Link to="/settings/shopping#budget" className="small">
                 Задать лимит
               </Link>
             </>
@@ -273,7 +273,7 @@ export default function ShoppingPage() {
                 {budget.status === 'exceeded' && budget.diff_kop !== null ? ` · больше на ${rub(Math.abs(budget.diff_kop))}` : ''}
                 {budget.status === 'unconfirmed' && budget.diff_kop !== null && budget.diff_kop >= 0 ? ` · по известным ценам ${rub(view.totals.purchase_kop)}` : ''}
               </div>
-              {budget.status === 'unconfirmed' && <div className="small" style={{ marginTop: 4 }}>Известны не все цены — <Link to="/settings#prices">добавить цены</Link></div>}
+              {budget.status === 'unconfirmed' && <div className="small" style={{ marginTop: 4 }}>Известны не все цены — <Link to="/settings/shopping#prices">добавить цены</Link></div>}
               {budget.status === 'exceeded' && !view.totals.complete && <div className="small" style={{ marginTop: 4 }}>Лимит превышен уже по известным ценам; с остальными сумма будет больше.</div>}
             </>
           )}
@@ -461,7 +461,7 @@ export default function ShoppingPage() {
               <button className="btn" onClick={() => { toggle(detail.id, 'at_home'); setDetail(null); }}>
                 <Icon name="home" size={18} /> {detail.at_home ? 'Нет дома' : 'Есть дома'}
               </button>
-              <Link className="btn ghost" to={`/settings?price=${detail.product_id}#prices`}>
+              <Link className="btn ghost" to={`/settings/shopping?price=${detail.product_id}#prices`}>
                 <Icon name="store" size={18} /> Указать цену
               </Link>
             </div>
