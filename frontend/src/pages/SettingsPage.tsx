@@ -323,7 +323,7 @@ function SettingsScreen({ section }: { section: SettingsSection }) {
                   value={plan.vitamins.demo ? 'demo-2026-10' : (plan.vitamins.target_set ?? '')}
                   onChange={(e) => setPlan({ vitamins: { enabled: true, target_set: e.target.value, demo: e.target.value === 'demo-2026-10' } })}
                 >
-                  <option value="mr-2.3.1.0253-21-adults">Взрослые, по МР 2.3.1.0253-21 (не сверено с первоисточником)</option>
+                  <option value="mr-2.3.1.0253-21-adults">Взрослые, по МР 2.3.1.0253-21</option>
                   <option value="demo-2026-10">Демонстрация (условные значения, не нормы)</option>
                 </select>
               </Field>

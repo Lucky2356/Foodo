@@ -3114,3 +3114,51 @@ hr.sep {
   align-items: center;
   gap: 14px;
 }
+
+/* ===== Cooking ============================================================ */
+.cook-task {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.cook-task.done {
+  opacity: 0.72;
+}
+
+.cook-thumb {
+  position: relative;
+  flex: none;
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.cook-thumb > * {
+  position: absolute;
+  inset: 0;
+}
+
+.cook-name {
+  font-size: 17px;
+}
+
+@media (min-width: 720px) {
+  .cook-thumb {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+.cook-day > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.cook-day-title {
+  font-weight: 700;
+}

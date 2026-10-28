@@ -11,6 +11,7 @@ import { APP_NAME, STATIC_BUILD } from '../lib/config';
 import { addDaysIso, dayMonth, deviceTimeZone, humanDate, localDate } from '../lib/dates';
 import { kcal, num, plural } from '../lib/format';
 import { SLOT_NAMES } from '../lib/recipes';
+import { cookingPlan } from '../lib/cooking';
 
 const FEATURES: { icon: IconName; title: string; text: string }[] = [
   { icon: 'calendar', title: 'Меню на 1–35 дней', text: 'Завтрак, обед, перекус и ужин под вашу семью. Любое блюдо меняется одним нажатием.' },
@@ -169,6 +170,7 @@ function Dashboard() {
     return b ? (menu?.snapshot.recipes[b.recipe_id] ?? catalog.recipes[b.recipe_id]) : undefined;
   };
   const day = memberToday(report, first.id, date);
+  const cookToday = record ? (cookingPlan(record.menu, record.cooked_batches).find((d) => d.date === today)?.tasks.filter((t) => !t.cooked).length ?? 0) : 0;
   // «Скоро в меню» shows the whole next day of the menu, one card per meal.
   const nextDate = menu?.meals.find((m) => m.date > date)?.date ?? null;
   const ended = menu ? addDaysIso(menu.start_date, menu.days - 1) < today : false;
@@ -251,13 +253,13 @@ function Dashboard() {
             <p className="muted small">Что уже есть и когда истекает срок</p>
           </div>
         </Link>
-        <Link to="/recipes" className="card card-link span-2">
+        <Link to="/cooking" className="card card-link span-2">
           <div className="feature" style={{ padding: 0 }}>
             <div className="ficon">
-              <Icon name="book" />
+              <Icon name="chef" />
             </div>
-            <h3>Рецепты</h3>
-            <p className="muted small">{Object.keys(catalog.recipes).length} блюд с шагами и КБЖУ</p>
+            <h3>Готовка</h3>
+            <p className="muted small">{cookToday > 0 ? `Сегодня приготовить: ${cookToday} ${plural(cookToday, 'блюдо', 'блюда', 'блюд')}` : 'Что и когда готовить по меню'}</p>
           </div>
         </Link>
       </div>

@@ -400,17 +400,17 @@
        "missing": []
       },
       "protein": {
-       "value": 70.3618,
+       "value": 70.32236,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 23.6154,
+       "value": 23.679479999999998,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 79.0642,
+       "value": 79.07516,
        "complete": true,
        "missing": []
       },
@@ -431,10 +431,8 @@
       },
       "vit_d": {
        "value": 0,
-       "complete": false,
-       "missing": [
-        "chicken_breast"
-       ]
+       "complete": true,
+       "missing": []
       },
       "vit_e": {
        "value": 7.228199999999999,
@@ -444,7 +442,7 @@
        ]
       },
       "vit_b6": {
-       "value": 2.3382799999999997,
+       "value": 2.340076,
        "complete": true,
        "missing": []
       },
@@ -454,7 +452,7 @@
        "missing": []
       },
       "folate": {
-       "value": 55.238,
+       "value": 67.738,
        "complete": true,
        "missing": []
       }
@@ -472,17 +470,17 @@
      "missing": []
     },
     "protein": {
-     "value": 70.3618,
+     "value": 70.32236,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 23.6154,
+     "value": 23.679479999999998,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 79.0642,
+     "value": 79.07516,
      "complete": true,
      "missing": []
     },
@@ -503,10 +501,8 @@
     },
     "vit_d": {
      "value": 0,
-     "complete": false,
-     "missing": [
-      "chicken_breast"
-     ]
+     "complete": true,
+     "missing": []
     },
     "vit_e": {
      "value": 7.228199999999999,
@@ -516,7 +512,7 @@
      ]
     },
     "vit_b6": {
-     "value": 2.3382799999999997,
+     "value": 2.340076,
      "complete": true,
      "missing": []
     },
@@ -526,7 +522,7 @@
      "missing": []
     },
     "folate": {
-     "value": 55.238,
+     "value": 67.738,
      "complete": true,
      "missing": []
     }
@@ -566,10 +562,8 @@
      "period_value": 0,
      "coverage_pct": null,
      "lower_bound_pct": null,
-     "data_complete": false,
-     "missing_products": [
-      "chicken_breast"
-     ],
+     "data_complete": true,
+     "missing_products": [],
      "message": "Целевая норма не выбрана.",
      "set_status": null
     },
@@ -593,7 +587,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2.3382799999999997,
+     "period_value": 2.340076,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": true,
@@ -619,7 +613,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 55.238,
+     "period_value": 67.738,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": true,

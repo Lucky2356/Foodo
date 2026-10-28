@@ -18,6 +18,7 @@ import { deviceTimeZone, TIMEZONES, timeZoneName } from '../lib/dates';
 import type { IconName } from '../ui/icons';
 
 const MORE_LINKS: { to: string; label: string; icon: IconName }[] = [
+  { to: '/cooking', label: 'Готовка: что и когда готовить', icon: 'chef' },
   { to: '/favorites', label: 'Избранные рецепты', icon: 'heart' },
   { to: '/menu/history', label: 'История и избранные меню', icon: 'list' },
   { to: '/habits', label: 'Вода и привычки', icon: 'drop' },

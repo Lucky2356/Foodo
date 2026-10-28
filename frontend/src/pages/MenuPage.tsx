@@ -223,6 +223,9 @@ export default function MenuPage() {
             <Link className="btn ghost" to="/menu/history">
               <Icon name="list" size={18} /> История
             </Link>
+            <Link className="btn ghost" to="/cooking">
+              <Icon name="chef" size={18} /> Готовка
+            </Link>
             <button className="btn primary" onClick={() => setNewOpen(true)}>
               <Icon name="sparkle" size={18} /> Новое меню
             </button>
