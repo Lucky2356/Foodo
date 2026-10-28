@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { APP_NAME, APP_VERSION, CONTACT_EMAIL, NATIVE_BUILD, OPERATOR, STATIC_BUILD } from '../lib/config';
+import { APP_NAME, APP_VERSION, AUTHOR_NAME, AUTHOR_URL, CONTACT_EMAIL, NATIVE_BUILD, OPERATOR, SOURCE_URL, STATIC_BUILD } from '../lib/config';
 import { useApp } from '../state/app';
 import { Icon } from '../ui/icons';
 import type { IconName } from '../ui/icons';
@@ -93,10 +93,36 @@ export default function AboutPage() {
         </section>
       )}
 
+      <section className="card stack about-section" id="license">
+        <h2>Автор и лицензия</h2>
+        <p className="about-credit">
+          Основано на Foodo — автор{' '}
+          <a href={AUTHOR_URL} target="_blank" rel="noopener noreferrer">
+            {AUTHOR_NAME} (github.com/Lucky2356)
+          </a>
+        </p>
+        <p className="muted">
+          {APP_NAME} — открытый проект. Код распространяется по лицензии{' '}
+          <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener noreferrer">
+            GNU AGPL-3.0
+          </a>{' '}
+          с обязательным указанием автора, рецепты, статьи и тексты — по лицензии{' '}
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ru" target="_blank" rel="noopener noreferrer">
+            CC BY-SA 4.0
+          </a>
+          .
+        </p>
+        <p>
+          <a className="btn ghost small" href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
+            <Icon name="book" size={16} /> Исходный код
+          </a>
+        </p>
+      </section>
+
       <section className="card stack about-section">
         <h2>Источники и лицензии</h2>
         <ul className="about-list">
-          <li>Рецепты и тексты — собственные материалы {APP_NAME}.</li>
+          <li>Рецепты, статьи и тексты — собственные материалы {APP_NAME}, CC BY-SA 4.0.</li>
           <li>Пищевая ценность стартовой базы — оценочные значения, не верифицированы; помечены в карточках.</li>
           <li>Нормы витаминов МР 2.3.1.0253-21 внесены со статусом «не сверено с первоисточником».</li>
           <li>Справочник городов — hflabs/city, лицензия CC BY-SA 4.0 (HFLabs).</li>

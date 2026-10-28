@@ -23,6 +23,13 @@ test.describe('guest mode (static site, no server)', () => {
     }
   });
 
+  test('«О сервисе» shows the author and the source link the licence requires (NOTICE.md)', async ({ page }) => {
+    await page.goto('./#/about');
+    await expect(page.getByText('Основано на Foodo — автор')).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Lucky (github.com/Lucky2356)' })).toHaveAttribute('href', 'https://github.com/Lucky2356');
+    await expect(page.getByRole('link', { name: 'Исходный код' })).toHaveAttribute('href', 'https://github.com/Lucky2356/Foodo');
+  });
+
   test('the Content Security Policy blocks nothing the app needs (security)', async ({ page }) => {
     const violations: string[] = [];
     page.on('console', (m) => {
