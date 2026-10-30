@@ -17,10 +17,12 @@ import io
 import json
 import re
 import sys
+import urllib.error
+import urllib.request
 import zipfile
 from pathlib import Path
 
-from scripts.prices.common import Fetcher, FetchError
+from scripts.prices.common import USER_AGENT, Fetcher, FetchError
 
 OPEN_DATA_PAGE = "https://fineli.fi/fineli/en/avoin-data"
 COMPONENTS_API = "https://fineli.fi/fineli/api/v1/components"
@@ -110,8 +112,45 @@ def values_for(
     }
 
 
+CATALOG_SEARCH = (
+    "https://avoindata.suomi.fi/data/api/3/action/package_search?q=fineli&rows=20"
+)
+
+
+def probe(url: str) -> None:
+    """Status and response headers, to tell an access policy from an outage."""
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            print("probe:", url, r.status)
+    except urllib.error.HTTPError as e:
+        print("probe:", url, e.code, dict(e.headers))
+        print("probe body:", e.read(600).decode("utf-8", "replace"))
+    except urllib.error.URLError as e:
+        print("probe:", url, "error", e.reason)
+
+
 def discover() -> None:
-    page = fetcher(OPEN_DATA_PAGE).text(OPEN_DATA_PAGE)
+    probe(OPEN_DATA_PAGE)
+    probe("https://fineli.fi/robots.txt")
+    # The national open data portal (CKAN) lists the official resource links of THL datasets.
+    found = json.loads(fetcher(CATALOG_SEARCH).text(CATALOG_SEARCH))
+    for pkg in found["result"]["results"]:
+        print("dataset:", pkg["name"], "|", pkg.get("license_title"))
+        for res in pkg.get("resources", []):
+            print(
+                "  resource:",
+                res.get("name"),
+                "|",
+                res.get("format"),
+                "|",
+                res.get("url"),
+            )
+    try:
+        page = fetcher(OPEN_DATA_PAGE).text(OPEN_DATA_PAGE)
+    except FetchError as e:
+        print("open data page:", e)
+        return
     for href, label in re.findall(
         r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', page, re.DOTALL
     ):
