@@ -21,6 +21,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from scripts.nutrition.vitamin_a import retinol_equivalents
+
 from .dump import dump_products, dump_recipes
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -435,6 +437,9 @@ def apply_usda(
                 k: None if values.get(k) is None else _int_or_float(values[k])
                 for k in NUTRIENTS
             }
+            # The dataset publishes RAE; the catalog keeps vitamin A in RE, the form of the norms.
+            re = retinol_equivalents(values)
+            p["nutrients"]["vit_a"] = None if re is None else _int_or_float(re)
             p["source"] = USDA_SOURCE
         elif p["source"] == USDA_SOURCE:
             # Only products kept in products.json get here: parse_products labels source lines estimates.
@@ -444,6 +449,18 @@ def apply_usda(
             p["nutrients"] = estimates.pop(pid)
             p["source"] = PRODUCT_SOURCE
     return errors
+
+
+def estimates_in_retinol_equivalents(products: dict[str, JSON]) -> None:
+    """Estimated vitamin A is written in RAE (docs/CATALOG.md) and the catalog keeps RE.
+
+    RE = 2 · RAE − retinol (МР 2.3.1.0253-21, appendix 2), and an estimate does not say how much of it
+    is retinol, so only a zero converts (no retinol and no carotenoids); any other estimate becomes
+    unknown rather than a guess.
+    """
+    for p in products.values():
+        if p["source"] == PRODUCT_SOURCE and p["nutrients"]["vit_a"] not in (None, 0):
+            p["nutrients"]["vit_a"] = None
 
 
 def build(write: bool) -> int:
@@ -501,6 +518,7 @@ def build(write: bool) -> int:
         json.loads(ESTIMATES.read_text(encoding="utf-8")) if ESTIMATES.exists() else {}
     )
     errors += apply_usda(products, {p["id"] for p in new_products}, estimates)
+    estimates_in_retinol_equivalents(products)
     product_names: dict[str, str] = {}
     for p in products.values():
         other = product_names.setdefault(p["name"].lower(), p["id"])

@@ -1985,7 +1985,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 183.00416666666666,
+       "value": 236.73933333333338,
        "complete": false,
        "missing": [
         "suluguni"
@@ -2067,7 +2067,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 242.2375,
+       "value": 288.72600000000006,
        "complete": true,
        "missing": []
       },
@@ -2138,7 +2138,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 183.00416666666666,
+       "value": 236.73933333333338,
        "complete": false,
        "missing": [
         "suluguni"
@@ -2220,9 +2220,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 591.307,
-       "complete": true,
-       "missing": []
+       "value": 567.9091000000001,
+       "complete": false,
+       "missing": [
+        "cottage_cheese"
+       ]
       },
       "vit_c": {
        "value": 11.67125,
@@ -2294,7 +2296,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 689.9549999999999,
+       "value": 699.19334,
        "complete": true,
        "missing": []
       },
@@ -2365,7 +2367,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 571.411,
+       "value": 579.34652,
        "complete": true,
        "missing": []
       },
@@ -2435,10 +2437,11 @@
      "missing": []
     },
     "vit_a": {
-     "value": 2460.918833333333,
+     "value": 2608.653626666667,
      "complete": false,
      "missing": [
-      "suluguni"
+      "suluguni",
+      "cottage_cheese"
      ]
     },
     "vit_c": {
@@ -2492,11 +2495,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2460.918833333333,
+     "period_value": 2608.653626666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cottage_cheese",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -2629,7 +2633,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 183.00416666666666,
+       "value": 236.73933333333338,
        "complete": false,
        "missing": [
         "suluguni"
@@ -2711,7 +2715,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 242.2375,
+       "value": 288.72600000000006,
        "complete": true,
        "missing": []
       },
@@ -2782,7 +2786,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 183.00416666666666,
+       "value": 236.73933333333338,
        "complete": false,
        "missing": [
         "suluguni"
@@ -2864,9 +2868,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 591.307,
-       "complete": true,
-       "missing": []
+       "value": 567.9091000000001,
+       "complete": false,
+       "missing": [
+        "cottage_cheese"
+       ]
       },
       "vit_c": {
        "value": 11.67125,
@@ -2938,7 +2944,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 689.9549999999999,
+       "value": 699.19334,
        "complete": true,
        "missing": []
       },
@@ -3009,7 +3015,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 571.411,
+       "value": 579.34652,
        "complete": true,
        "missing": []
       },
@@ -3079,10 +3085,11 @@
      "missing": []
     },
     "vit_a": {
-     "value": 2460.918833333333,
+     "value": 2608.653626666667,
      "complete": false,
      "missing": [
-      "suluguni"
+      "suluguni",
+      "cottage_cheese"
      ]
     },
     "vit_c": {
@@ -3136,11 +3143,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2460.918833333333,
+     "period_value": 2608.653626666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cottage_cheese",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",

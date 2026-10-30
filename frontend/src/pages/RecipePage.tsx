@@ -13,7 +13,7 @@ import { allergenName, CATEGORY_NAMES, equipmentName, SKILL_NAMES, SLOT_NAMES, s
 import { useFullCatalog } from '../state/catalog';
 
 type Basis = 'serving' | '100g' | 'total';
-const VIT_LABEL: Record<string, string> = { vit_a: 'Витамин A, мкг RAE', vit_c: 'Витамин C, мг', vit_d: 'Витамин D, мкг', vit_e: 'Витамин E, мг α-ТФ', vit_b6: 'Витамин B6, мг', vit_b12: 'Витамин B12, мкг', folate: 'Фолаты, мкг' };
+const VIT_LABEL: Record<string, string> = { vit_a: 'Витамин A, мкг РЭ', vit_c: 'Витамин C, мг', vit_d: 'Витамин D, мкг', vit_e: 'Витамин E, мг α-ТФ', vit_b6: 'Витамин B6, мг', vit_b12: 'Витамин B12, мкг', folate: 'Фолаты, мкг' };
 
 function fmtQty(qty: number): string {
   if (qty > 0 && qty < 0.01) return '< 0,01';

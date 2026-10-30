@@ -134,9 +134,9 @@
    },
    {
     "id": "b10",
-    "recipe_id": "babaganush",
+    "recipe_id": "vitaminnyy-salat",
     "recipe_version": 1,
-    "method_id": "fire",
+    "method_id": "nocook",
     "cook_date": "2026-10-21",
     "slot": "snack",
     "portions": 1
@@ -161,9 +161,9 @@
    },
    {
     "id": "b13",
-    "recipe_id": "kozinaki-iz-semechek",
+    "recipe_id": "babaganush",
     "recipe_version": 1,
-    "method_id": "stove",
+    "method_id": "fire",
     "cook_date": "2026-10-22",
     "slot": "snack",
     "portions": 1
@@ -188,16 +188,16 @@
    },
    {
     "id": "b16",
-    "recipe_id": "vitaminnyy-salat",
+    "recipe_id": "marokkanskiy-morkovnyy-salat",
     "recipe_version": 1,
-    "method_id": "nocook",
+    "method_id": "stove",
     "cook_date": "2026-10-23",
     "slot": "snack",
     "portions": 1
    },
    {
     "id": "b17",
-    "recipe_id": "zharenaya-kartoshka-s-lukom",
+    "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-23",
@@ -215,7 +215,7 @@
    },
    {
     "id": "b19",
-    "recipe_id": "marokkanskiy-morkovnyy-salat",
+    "recipe_id": "salat-iz-rostkov-masha",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-24",
@@ -224,7 +224,7 @@
    },
    {
     "id": "b20",
-    "recipe_id": "chili-s-fasolyu",
+    "recipe_id": "dal-iz-chechevitsy",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-24",
@@ -233,7 +233,7 @@
    },
    {
     "id": "b21",
-    "recipe_id": "dal-iz-chechevitsy",
+    "recipe_id": "shchi-iz-svezhey-kapusty",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-25",
@@ -251,7 +251,7 @@
    },
    {
     "id": "b23",
-    "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
+    "recipe_id": "tykva-tushyonaya-s-nutom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-25",
@@ -260,7 +260,7 @@
    },
    {
     "id": "b24",
-    "recipe_id": "tofu-tikka-masala",
+    "recipe_id": "chili-s-fasolyu",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-26",
@@ -269,16 +269,16 @@
    },
    {
     "id": "b25",
-    "recipe_id": "salat-iz-rostkov-masha",
+    "recipe_id": "salat-iz-pomidorov-s-lukom",
     "recipe_version": 1,
-    "method_id": "stove",
+    "method_id": "nocook",
     "cook_date": "2026-10-26",
     "slot": "snack",
     "portions": 1
    },
    {
     "id": "b26",
-    "recipe_id": "tomatnyy-sup-s-fasolyu",
+    "recipe_id": "tofu-tikka-masala",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-26",
@@ -287,7 +287,7 @@
    },
    {
     "id": "b27",
-    "recipe_id": "shchi-iz-svezhey-kapusty",
+    "recipe_id": "zharenaya-kartoshka-s-lukom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-27",
@@ -296,7 +296,7 @@
    },
    {
     "id": "b28",
-    "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
+    "recipe_id": "salat-metyolka",
     "recipe_version": 1,
     "method_id": "no-heat",
     "cook_date": "2026-10-27",
@@ -314,7 +314,7 @@
    },
    {
     "id": "b30",
-    "recipe_id": "meksikanskiy-sup-s-fasolyu",
+    "recipe_id": "tomatnyy-sup-s-fasolyu",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-28",
@@ -323,16 +323,16 @@
    },
    {
     "id": "b31",
-    "recipe_id": "apelsin-i-orehi",
+    "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
     "recipe_version": 1,
-    "method_id": "nocook",
+    "method_id": "no-heat",
     "cook_date": "2026-10-28",
     "slot": "snack",
     "portions": 1
    },
    {
     "id": "b32",
-    "recipe_id": "tykva-tushyonaya-s-nutom",
+    "recipe_id": "nut-so-shpinatom-po-andaluzski",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-28",
@@ -350,16 +350,16 @@
    },
    {
     "id": "b34",
-    "recipe_id": "piyaz",
+    "recipe_id": "kozinaki-iz-semechek",
     "recipe_version": 1,
-    "method_id": "no-heat",
+    "method_id": "stove",
     "cook_date": "2026-10-29",
     "slot": "snack",
     "portions": 1
    },
    {
     "id": "b35",
-    "recipe_id": "nut-so-shpinatom-po-andaluzski",
+    "recipe_id": "kartofel-otvarnoy-s-ukropom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-29",
@@ -368,7 +368,7 @@
    },
    {
     "id": "b36",
-    "recipe_id": "radzhma",
+    "recipe_id": "meksikanskiy-sup-s-fasolyu",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-30",
@@ -377,7 +377,7 @@
    },
    {
     "id": "b37",
-    "recipe_id": "salat-iz-pomidorov-s-lukom",
+    "recipe_id": "apelsin-i-orehi",
     "recipe_version": 1,
     "method_id": "nocook",
     "cook_date": "2026-10-30",
@@ -386,7 +386,7 @@
    },
    {
     "id": "b38",
-    "recipe_id": "kartofel-otvarnoy-s-ukropom",
+    "recipe_id": "radzhma",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-30",
@@ -395,7 +395,7 @@
    },
    {
     "id": "b39",
-    "recipe_id": "miso-sup-s-tofu",
+    "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-31",
@@ -404,7 +404,7 @@
    },
    {
     "id": "b40",
-    "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
+    "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
     "recipe_version": 1,
     "method_id": "no-heat",
     "cook_date": "2026-10-31",
@@ -413,7 +413,7 @@
    },
    {
     "id": "b41",
-    "recipe_id": "alu-gobi",
+    "recipe_id": "gorohovyy-sup",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-31",
@@ -422,7 +422,7 @@
    },
    {
     "id": "b42",
-    "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
+    "recipe_id": "miso-sup-s-tofu",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-11-01",
@@ -431,7 +431,7 @@
    },
    {
     "id": "b43",
-    "recipe_id": "salat-metyolka",
+    "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
     "recipe_version": 1,
     "method_id": "no-heat",
     "cook_date": "2026-11-01",
@@ -449,7 +449,7 @@
    },
    {
     "id": "b45",
-    "recipe_id": "gorohovyy-sup",
+    "recipe_id": "alu-gobi",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-11-02",
@@ -458,7 +458,7 @@
    },
    {
     "id": "b46",
-    "recipe_id": "orehi-i-suhofrukty",
+    "recipe_id": "salat-iz-kapusty-s-morkovyu",
     "recipe_version": 1,
     "method_id": "nocook",
     "cook_date": "2026-11-02",
@@ -485,9 +485,9 @@
    },
    {
     "id": "b49",
-    "recipe_id": "salat-iz-kapusty-s-morkovyu",
+    "recipe_id": "piyaz",
     "recipe_version": 1,
-    "method_id": "nocook",
+    "method_id": "no-heat",
     "cook_date": "2026-11-03",
     "slot": "snack",
     "portions": 1
@@ -503,7 +503,7 @@
    },
    {
     "id": "b51",
-    "recipe_id": "yabloko-s-arahisovoy-pastoy",
+    "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
     "recipe_version": 1,
     "method_id": "no-heat",
     "cook_date": "2026-11-04",
@@ -512,25 +512,25 @@
    },
    {
     "id": "b52",
-    "recipe_id": "salat-iz-kapusty-s-goroshkom",
+    "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
     "recipe_version": 1,
-    "method_id": "nocook",
+    "method_id": "no-heat",
     "cook_date": "2026-11-05",
     "slot": "snack",
     "portions": 1
    },
    {
     "id": "b53",
-    "recipe_id": "kvashenaya-kapusta-s-lukom",
+    "recipe_id": "orehi-i-suhofrukty",
     "recipe_version": 1,
-    "method_id": "no-heat",
+    "method_id": "nocook",
     "cook_date": "2026-11-06",
     "slot": "snack",
     "portions": 1
    },
    {
     "id": "b54",
-    "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
+    "recipe_id": "kvashenaya-kapusta-s-lukom",
     "recipe_version": 1,
     "method_id": "no-heat",
     "cook_date": "2026-11-07",
@@ -539,16 +539,16 @@
    },
    {
     "id": "b55",
-    "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
+    "recipe_id": "salat-iz-kapusty-s-goroshkom",
     "recipe_version": 1,
-    "method_id": "no-heat",
+    "method_id": "nocook",
     "cook_date": "2026-11-08",
     "slot": "snack",
     "portions": 1
    },
    {
     "id": "b56",
-    "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+    "recipe_id": "yabloko-s-arahisovoy-pastoy",
     "recipe_version": 1,
     "method_id": "no-heat",
     "cook_date": "2026-11-09",
@@ -602,7 +602,7 @@
    },
    {
     "id": "b62",
-    "recipe_id": "limonad-limonno-myatnyy",
+    "recipe_id": "morkov-po-koreyski",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-11-15",
@@ -611,7 +611,7 @@
    },
    {
     "id": "b63",
-    "recipe_id": "gozinaki",
+    "recipe_id": "limonad-limonno-myatnyy",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-11-16",
@@ -620,7 +620,7 @@
    },
    {
     "id": "b64",
-    "recipe_id": "kompot-iz-svezhikh-yablok",
+    "recipe_id": "gozinaki",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-11-17",
@@ -638,7 +638,7 @@
    },
    {
     "id": "b66",
-    "recipe_id": "halva-tahinnaya",
+    "recipe_id": "kompot-iz-svezhikh-yablok",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-11-19",
@@ -647,7 +647,7 @@
    },
    {
     "id": "b67",
-    "recipe_id": "limonnyy-sorbet",
+    "recipe_id": "halva-tahinnaya",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-11-20",
@@ -665,7 +665,7 @@
    },
    {
     "id": "b69",
-    "recipe_id": "goryachiy-oblepikhovyy-napitok",
+    "recipe_id": "limonnyy-sorbet",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-11-22",
@@ -2717,7 +2717,7 @@
   "stats": {
    "attempts": 3,
    "evaluated": 4494,
-   "score": 5.195398397841624,
+   "score": 37.06425579628765,
    "budget_status": "none"
   },
   "snapshot_ids": {
@@ -2742,7 +2742,6 @@
     "fasolakya-struchkovaya-fasol-v-tomatah",
     "gorohovoe-pyure",
     "gorohovyy-sup",
-    "goryachiy-oblepikhovyy-napitok",
     "gozinaki",
     "grushi-v-granatovom-soke",
     "halva-tahinnaya",
@@ -2757,6 +2756,7 @@
     "marokkanskiy-morkovnyy-salat",
     "meksikanskiy-sup-s-fasolyu",
     "miso-sup-s-tofu",
+    "morkov-po-koreyski",
     "mors-klyukvennyy",
     "nut-so-shpinatom-po-andaluzski",
     "orehi-i-suhofrukty",
@@ -2878,7 +2878,6 @@
     "red_onion",
     "salt",
     "sauerkraut",
-    "sea_buckthorn_frozen",
     "sesame_seeds",
     "smoked_paprika",
     "soy_sauce",
@@ -2951,10 +2950,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 650,
+    "needed": 600,
     "from_pantry": 0,
-    "to_buy": 650,
-    "buy_qty": 650,
+    "to_buy": 600,
+    "buy_qty": 600,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -2967,17 +2966,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b28",
-      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
-      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
-      "cook_date": "2026-10-27",
+      "batch_id": "b37",
+      "recipe_id": "apelsin-i-orehi",
+      "recipe_name": "Апельсин с миндалём",
+      "cook_date": "2026-10-30",
       "qty": 200
      },
      {
-      "batch_id": "b31",
-      "recipe_id": "apelsin-i-orehi",
-      "recipe_name": "Апельсин с миндалём",
-      "cook_date": "2026-10-28",
+      "batch_id": "b40",
+      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
+      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
+      "cook_date": "2026-10-31",
       "qty": 200
      },
      {
@@ -2986,13 +2985,6 @@
       "recipe_name": "Апельсины с корицей и мятой",
       "cook_date": "2026-11-14",
       "qty": 200
-     },
-     {
-      "batch_id": "b69",
-      "recipe_id": "goryachiy-oblepikhovyy-napitok",
-      "recipe_name": "Горячий облепиховый напиток с апельсином и мёдом",
-      "cook_date": "2026-11-22",
-      "qty": 50
      }
     ],
     "purchased": false,
@@ -3034,10 +3026,10 @@
       "qty": 2
      },
      {
-      "batch_id": "b26",
+      "batch_id": "b30",
       "recipe_id": "tomatnyy-sup-s-fasolyu",
       "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-28",
       "qty": 2.5
      }
     ],
@@ -3097,10 +3089,10 @@
       "qty": 120
      },
      {
-      "batch_id": "b10",
+      "batch_id": "b13",
       "recipe_id": "babaganush",
       "recipe_name": "Бабагануш",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-22",
       "qty": 225
      }
     ],
@@ -3248,10 +3240,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b54",
+      "batch_id": "b52",
       "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
       "recipe_name": "Дайкон с морковью и яблоком",
-      "cook_date": "2026-11-07",
+      "cook_date": "2026-11-05",
       "qty": 100
      }
     ],
@@ -3283,31 +3275,24 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b21",
+      "batch_id": "b20",
       "recipe_id": "dal-iz-chechevitsy",
       "recipe_name": "Дал из красной чечевицы",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-24",
       "qty": 2.5
      },
      {
-      "batch_id": "b24",
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 5
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
       "qty": 3.75
      },
      {
@@ -3315,6 +3300,13 @@
       "recipe_id": "alu-matar",
       "recipe_name": "Алу матар",
       "cook_date": "2026-11-01",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b45",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
       "qty": 3.75
      }
     ],
@@ -3381,6 +3373,13 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b10",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-21",
+      "qty": 93.75
+     },
+     {
       "batch_id": "b14",
       "recipe_id": "tushyonaya-kapusta-s-gribami",
       "recipe_name": "Тушёная капуста с грибами",
@@ -3388,25 +3387,25 @@
       "qty": 250
      },
      {
-      "batch_id": "b16",
-      "recipe_id": "vitaminnyy-salat",
-      "recipe_name": "Витаминный салат с яблоком",
-      "cook_date": "2026-10-23",
-      "qty": 93.75
-     },
-     {
-      "batch_id": "b27",
+      "batch_id": "b21",
       "recipe_id": "shchi-iz-svezhey-kapusty",
       "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-27",
+      "cook_date": "2026-10-25",
       "qty": 100
      },
      {
-      "batch_id": "b43",
+      "batch_id": "b28",
       "recipe_id": "salat-metyolka",
       "recipe_name": "Салат «Метёлка»",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-27",
       "qty": 87.5
+     },
+     {
+      "batch_id": "b46",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-11-02",
+      "qty": 112.5
      },
      {
       "batch_id": "b47",
@@ -3416,17 +3415,10 @@
       "qty": 75
      },
      {
-      "batch_id": "b49",
-      "recipe_id": "salat-iz-kapusty-s-morkovyu",
-      "recipe_name": "Капустный салат с морковью",
-      "cook_date": "2026-11-03",
-      "qty": 112.5
-     },
-     {
-      "batch_id": "b52",
+      "batch_id": "b55",
       "recipe_id": "salat-iz-kapusty-s-goroshkom",
       "recipe_name": "Свежая капуста с огурцом и горошком",
-      "cook_date": "2026-11-05",
+      "cook_date": "2026-11-08",
       "qty": 93.75
      }
     ],
@@ -3458,10 +3450,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b40",
+      "batch_id": "b31",
       "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
       "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-10-28",
       "qty": 100
      }
     ],
@@ -3512,24 +3504,24 @@
      },
      {
       "batch_id": "b17",
-      "recipe_id": "zharenaya-kartoshka-s-lukom",
-      "recipe_name": "Жареная картошка с луком",
-      "cook_date": "2026-10-23",
-      "qty": 333.333333
-     },
-     {
-      "batch_id": "b23",
       "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
       "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "cook_date": "2026-10-23",
+      "qty": 112.5
+     },
+     {
+      "batch_id": "b21",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
       "cook_date": "2026-10-25",
       "qty": 112.5
      },
      {
       "batch_id": "b27",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
+      "recipe_id": "zharenaya-kartoshka-s-lukom",
+      "recipe_name": "Жареная картошка с луком",
       "cook_date": "2026-10-27",
-      "qty": 112.5
+      "qty": 333.333333
      },
      {
       "batch_id": "b33",
@@ -3539,24 +3531,24 @@
       "qty": 50
      },
      {
-      "batch_id": "b38",
+      "batch_id": "b35",
       "recipe_id": "kartofel-otvarnoy-s-ukropom",
       "recipe_name": "Отварной картофель с маслом и укропом",
-      "cook_date": "2026-10-30",
+      "cook_date": "2026-10-29",
       "qty": 250
      },
      {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
-      "qty": 150
-     },
-     {
-      "batch_id": "b42",
+      "batch_id": "b39",
       "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
       "recipe_name": "Овощной суп с зелёным горошком",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-31",
+      "qty": 75
+     },
+     {
+      "batch_id": "b41",
+      "recipe_id": "gorohovyy-sup",
+      "recipe_name": "Гороховый суп",
+      "cook_date": "2026-10-31",
       "qty": 75
      },
      {
@@ -3568,10 +3560,10 @@
      },
      {
       "batch_id": "b45",
-      "recipe_id": "gorohovyy-sup",
-      "recipe_name": "Гороховый суп",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
       "cook_date": "2026-11-02",
-      "qty": 75
+      "qty": 150
      },
      {
       "batch_id": "b47",
@@ -3641,6 +3633,13 @@
       "qty": 4
      },
      {
+      "batch_id": "b16",
+      "recipe_id": "marokkanskiy-morkovnyy-salat",
+      "recipe_name": "Марокканский салат из моркови с кумином",
+      "cook_date": "2026-10-23",
+      "qty": 2.5
+     },
+     {
       "batch_id": "b18",
       "recipe_id": "tushenaya-fasol-s-ovoshchami",
       "recipe_name": "Тушёная фасоль с овощами",
@@ -3649,16 +3648,16 @@
      },
      {
       "batch_id": "b19",
-      "recipe_id": "marokkanskiy-morkovnyy-salat",
-      "recipe_name": "Марокканский салат из моркови с кумином",
+      "recipe_id": "salat-iz-rostkov-masha",
+      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
       "cook_date": "2026-10-24",
-      "qty": 2.5
+      "qty": 5
      },
      {
-      "batch_id": "b21",
+      "batch_id": "b20",
       "recipe_id": "dal-iz-chechevitsy",
       "recipe_name": "Дал из красной чечевицы",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-24",
       "qty": 2.5
      },
      {
@@ -3669,45 +3668,31 @@
       "qty": 3.75
      },
      {
-      "batch_id": "b24",
+      "batch_id": "b23",
+      "recipe_id": "tykva-tushyonaya-s-nutom",
+      "recipe_name": "Тыква, тушённая с нутом и томатами",
+      "cook_date": "2026-10-25",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 3.75
      },
      {
-      "batch_id": "b25",
-      "recipe_id": "salat-iz-rostkov-masha",
-      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
-      "qty": 5
-     },
-     {
-      "batch_id": "b30",
+      "batch_id": "b36",
       "recipe_id": "meksikanskiy-sup-s-fasolyu",
       "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-30",
       "qty": 3.333333
      },
      {
-      "batch_id": "b32",
-      "recipe_id": "tykva-tushyonaya-s-nutom",
-      "recipe_name": "Тыква, тушённая с нутом и томатами",
-      "cook_date": "2026-10-28",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
-      "qty": 3.75
-     },
-     {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
       "qty": 3.75
      },
      {
@@ -3715,6 +3700,13 @@
       "recipe_id": "alu-matar",
       "recipe_name": "Алу матар",
       "cook_date": "2026-11-01",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b45",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
       "qty": 3.75
      }
     ],
@@ -3746,6 +3738,13 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b19",
+      "recipe_id": "salat-iz-rostkov-masha",
+      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
+      "cook_date": "2026-10-24",
+      "qty": 23.333333
+     },
+     {
       "batch_id": "b22",
       "recipe_id": "salat-s-mango-i-avokado",
       "recipe_name": "Салат с манго, авокадо и лаймом",
@@ -3753,17 +3752,10 @@
       "qty": 17.5
      },
      {
-      "batch_id": "b25",
-      "recipe_id": "salat-iz-rostkov-masha",
-      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
-      "qty": 23.333333
-     },
-     {
-      "batch_id": "b30",
+      "batch_id": "b36",
       "recipe_id": "meksikanskiy-sup-s-fasolyu",
       "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-30",
       "qty": 11.666667
      }
     ],
@@ -3803,10 +3795,10 @@
      },
      {
       "batch_id": "b10",
-      "recipe_id": "babaganush",
-      "recipe_name": "Бабагануш",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
       "cook_date": "2026-10-21",
-      "qty": 10
+      "qty": 15
      },
      {
       "batch_id": "b11",
@@ -3823,39 +3815,46 @@
       "qty": 15
      },
      {
-      "batch_id": "b16",
-      "recipe_id": "vitaminnyy-salat",
-      "recipe_name": "Витаминный салат с яблоком",
-      "cook_date": "2026-10-23",
-      "qty": 15
-     },
-     {
-      "batch_id": "b19",
-      "recipe_id": "marokkanskiy-morkovnyy-salat",
-      "recipe_name": "Марокканский салат из моркови с кумином",
-      "cook_date": "2026-10-24",
+      "batch_id": "b13",
+      "recipe_id": "babaganush",
+      "recipe_name": "Бабагануш",
+      "cook_date": "2026-10-22",
       "qty": 10
      },
      {
-      "batch_id": "b24",
+      "batch_id": "b16",
+      "recipe_id": "marokkanskiy-morkovnyy-salat",
+      "recipe_name": "Марокканский салат из моркови с кумином",
+      "cook_date": "2026-10-23",
+      "qty": 10
+     },
+     {
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 15
      },
      {
-      "batch_id": "b34",
-      "recipe_id": "piyaz",
-      "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
-      "qty": 7.5
+      "batch_id": "b28",
+      "recipe_id": "salat-metyolka",
+      "recipe_name": "Салат «Метёлка»",
+      "cook_date": "2026-10-27",
+      "qty": 10
      },
      {
       "batch_id": "b43",
-      "recipe_id": "salat-metyolka",
-      "recipe_name": "Салат «Метёлка»",
+      "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
+      "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
       "cook_date": "2026-11-01",
       "qty": 10
+     },
+     {
+      "batch_id": "b49",
+      "recipe_id": "piyaz",
+      "recipe_name": "Пияз (салат из белой фасоли)",
+      "cook_date": "2026-11-03",
+      "qty": 7.5
      },
      {
       "batch_id": "b50",
@@ -3865,38 +3864,31 @@
       "qty": 10
      },
      {
-      "batch_id": "b54",
+      "batch_id": "b52",
       "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
       "recipe_name": "Дайкон с морковью и яблоком",
-      "cook_date": "2026-11-07",
+      "cook_date": "2026-11-05",
       "qty": 10
      },
      {
-      "batch_id": "b55",
-      "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
-      "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
-      "cook_date": "2026-11-08",
-      "qty": 10
-     },
-     {
-      "batch_id": "b62",
+      "batch_id": "b63",
       "recipe_id": "limonad-limonno-myatnyy",
       "recipe_name": "Домашний лимонад с лимоном и мятой",
-      "cook_date": "2026-11-15",
+      "cook_date": "2026-11-16",
       "qty": 60
      },
      {
-      "batch_id": "b64",
+      "batch_id": "b66",
       "recipe_id": "kompot-iz-svezhikh-yablok",
       "recipe_name": "Компот из свежих яблок",
-      "cook_date": "2026-11-17",
+      "cook_date": "2026-11-19",
       "qty": 3.75
      },
      {
-      "batch_id": "b67",
+      "batch_id": "b69",
       "recipe_id": "limonnyy-sorbet",
       "recipe_name": "Лимонный сорбет",
-      "cook_date": "2026-11-20",
+      "cook_date": "2026-11-22",
       "qty": 80
      }
     ],
@@ -3939,17 +3931,17 @@
       "qty": 5
      },
      {
-      "batch_id": "b39",
+      "batch_id": "b42",
       "recipe_id": "miso-sup-s-tofu",
       "recipe_name": "Мисо-суп с тофу",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-11-01",
       "qty": 5
      },
      {
-      "batch_id": "b53",
+      "batch_id": "b54",
       "recipe_id": "kvashenaya-kapusta-s-lukom",
       "recipe_name": "Квашеная капуста с луком и маслом",
-      "cook_date": "2026-11-06",
+      "cook_date": "2026-11-07",
       "qty": 5
      }
     ],
@@ -3992,17 +3984,17 @@
       "qty": 15
      },
      {
-      "batch_id": "b28",
+      "batch_id": "b40",
       "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
       "recipe_name": "Апельсиновый салат с красным луком и маслинами",
-      "cook_date": "2026-10-27",
+      "cook_date": "2026-10-31",
       "qty": 15
      },
      {
-      "batch_id": "b34",
+      "batch_id": "b49",
       "recipe_id": "piyaz",
       "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-11-03",
       "qty": 30
      }
     ],
@@ -4116,10 +4108,10 @@
      },
      {
       "batch_id": "b17",
-      "recipe_id": "zharenaya-kartoshka-s-lukom",
-      "recipe_name": "Жареная картошка с луком",
+      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
+      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
       "cook_date": "2026-10-23",
-      "qty": 33.333333
+      "qty": 25
      },
      {
       "batch_id": "b18",
@@ -4130,45 +4122,52 @@
      },
      {
       "batch_id": "b20",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "dal-iz-chechevitsy",
+      "recipe_name": "Дал из красной чечевицы",
       "cook_date": "2026-10-24",
       "qty": 25
      },
      {
       "batch_id": "b21",
-      "recipe_id": "dal-iz-chechevitsy",
-      "recipe_name": "Дал из красной чечевицы",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
       "cook_date": "2026-10-25",
       "qty": 25
      },
      {
       "batch_id": "b23",
-      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
-      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "recipe_id": "tykva-tushyonaya-s-nutom",
+      "recipe_name": "Тыква, тушённая с нутом и томатами",
       "cook_date": "2026-10-25",
       "qty": 25
      },
      {
       "batch_id": "b24",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-26",
+      "qty": 25
+     },
+     {
+      "batch_id": "b25",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-26",
+      "qty": 16.666667
+     },
+     {
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 25
      },
      {
-      "batch_id": "b26",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
-      "qty": 25
-     },
-     {
       "batch_id": "b27",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
+      "recipe_id": "zharenaya-kartoshka-s-lukom",
+      "recipe_name": "Жареная картошка с луком",
       "cook_date": "2026-10-27",
-      "qty": 25
+      "qty": 33.333333
      },
      {
       "batch_id": "b29",
@@ -4179,15 +4178,8 @@
      },
      {
       "batch_id": "b30",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
-      "qty": 16.666667
-     },
-     {
-      "batch_id": "b32",
-      "recipe_id": "tykva-tushyonaya-s-nutom",
-      "recipe_name": "Тыква, тушённая с нутом и томатами",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
       "cook_date": "2026-10-28",
       "qty": 25
      },
@@ -4200,30 +4192,30 @@
      },
      {
       "batch_id": "b36",
+      "recipe_id": "meksikanskiy-sup-s-fasolyu",
+      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "cook_date": "2026-10-30",
+      "qty": 16.666667
+     },
+     {
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
       "qty": 50
      },
      {
-      "batch_id": "b37",
-      "recipe_id": "salat-iz-pomidorov-s-lukom",
-      "recipe_name": "Помидоры с луком и маслом",
-      "cook_date": "2026-10-30",
-      "qty": 16.666667
-     },
-     {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
+      "batch_id": "b39",
+      "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
+      "recipe_name": "Овощной суп с зелёным горошком",
       "cook_date": "2026-10-31",
       "qty": 25
      },
      {
-      "batch_id": "b42",
-      "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
-      "recipe_name": "Овощной суп с зелёным горошком",
-      "cook_date": "2026-11-01",
+      "batch_id": "b41",
+      "recipe_id": "gorohovyy-sup",
+      "recipe_name": "Гороховый суп",
+      "cook_date": "2026-10-31",
       "qty": 25
      },
      {
@@ -4235,8 +4227,8 @@
      },
      {
       "batch_id": "b45",
-      "recipe_id": "gorohovyy-sup",
-      "recipe_name": "Гороховый суп",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
       "cook_date": "2026-11-02",
       "qty": 25
      },
@@ -4262,10 +4254,10 @@
       "qty": 33.333333
      },
      {
-      "batch_id": "b53",
+      "batch_id": "b54",
       "recipe_id": "kvashenaya-kapusta-s-lukom",
       "recipe_name": "Квашеная капуста с луком и маслом",
-      "cook_date": "2026-11-06",
+      "cook_date": "2026-11-07",
       "qty": 25
      }
     ],
@@ -4316,9 +4308,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 553.333333,
+    "needed": 633.333333,
     "from_pantry": 0,
-    "to_buy": 553.333333,
+    "to_buy": 633.333333,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -4357,6 +4349,13 @@
       "qty": 40
      },
      {
+      "batch_id": "b10",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-21",
+      "qty": 20
+     },
+     {
       "batch_id": "b11",
       "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_name": "Чечевичный суп с томатами и кумином",
@@ -4386,37 +4385,37 @@
      },
      {
       "batch_id": "b16",
-      "recipe_id": "vitaminnyy-salat",
-      "recipe_name": "Витаминный салат с яблоком",
-      "cook_date": "2026-10-23",
-      "qty": 20
-     },
-     {
-      "batch_id": "b19",
       "recipe_id": "marokkanskiy-morkovnyy-salat",
       "recipe_name": "Марокканский салат из моркови с кумином",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-23",
       "qty": 120
      },
      {
-      "batch_id": "b25",
+      "batch_id": "b19",
       "recipe_id": "salat-iz-rostkov-masha",
       "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-24",
       "qty": 26.666667
      },
      {
-      "batch_id": "b26",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
+      "batch_id": "b21",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-25",
       "qty": 20
      },
      {
-      "batch_id": "b27",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
+      "batch_id": "b28",
+      "recipe_id": "salat-metyolka",
+      "recipe_name": "Салат «Метёлка»",
       "cook_date": "2026-10-27",
+      "qty": 40
+     },
+     {
+      "batch_id": "b30",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-28",
       "qty": 20
      },
      {
@@ -4427,23 +4426,30 @@
       "qty": 13.333333
      },
      {
-      "batch_id": "b42",
+      "batch_id": "b39",
       "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
       "recipe_name": "Овощной суп с зелёным горошком",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-31",
+      "qty": 20
+     },
+     {
+      "batch_id": "b41",
+      "recipe_id": "gorohovyy-sup",
+      "recipe_name": "Гороховый суп",
+      "cook_date": "2026-10-31",
       "qty": 20
      },
      {
       "batch_id": "b43",
-      "recipe_id": "salat-metyolka",
-      "recipe_name": "Салат «Метёлка»",
+      "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
+      "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
       "cook_date": "2026-11-01",
-      "qty": 40
+      "qty": 26.666667
      },
      {
-      "batch_id": "b45",
-      "recipe_id": "gorohovyy-sup",
-      "recipe_name": "Гороховый суп",
+      "batch_id": "b46",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
       "cook_date": "2026-11-02",
       "qty": 20
      },
@@ -4462,25 +4468,18 @@
       "qty": 13.333333
      },
      {
-      "batch_id": "b49",
-      "recipe_id": "salat-iz-kapusty-s-morkovyu",
-      "recipe_name": "Капустный салат с морковью",
-      "cook_date": "2026-11-03",
-      "qty": 20
-     },
-     {
-      "batch_id": "b54",
+      "batch_id": "b52",
       "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
       "recipe_name": "Дайкон с морковью и яблоком",
-      "cook_date": "2026-11-07",
+      "cook_date": "2026-11-05",
       "qty": 26.666667
      },
      {
-      "batch_id": "b55",
-      "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
-      "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
-      "cook_date": "2026-11-08",
-      "qty": 26.666667
+      "batch_id": "b62",
+      "recipe_id": "morkov-po-koreyski",
+      "recipe_name": "Морковь по-корейски",
+      "cook_date": "2026-11-15",
+      "qty": 80
      }
     ],
     "purchased": false,
@@ -4522,10 +4521,10 @@
       "qty": 2.5
      },
      {
-      "batch_id": "b62",
+      "batch_id": "b63",
       "recipe_id": "limonad-limonno-myatnyy",
       "recipe_name": "Домашний лимонад с лимоном и мятой",
-      "cook_date": "2026-11-15",
+      "cook_date": "2026-11-16",
       "qty": 3.75
      }
     ],
@@ -4564,25 +4563,25 @@
       "qty": 40
      },
      {
-      "batch_id": "b25",
+      "batch_id": "b19",
       "recipe_id": "salat-iz-rostkov-masha",
       "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-24",
       "qty": 40
      },
      {
-      "batch_id": "b52",
-      "recipe_id": "salat-iz-kapusty-s-goroshkom",
-      "recipe_name": "Свежая капуста с огурцом и горошком",
-      "cook_date": "2026-11-05",
-      "qty": 30
-     },
-     {
-      "batch_id": "b56",
+      "batch_id": "b51",
       "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
       "recipe_name": "Салат из огурцов и помидоров",
-      "cook_date": "2026-11-09",
+      "cook_date": "2026-11-04",
       "qty": 120
+     },
+     {
+      "batch_id": "b55",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-11-08",
+      "qty": 30
      },
      {
       "batch_id": "b58",
@@ -4676,17 +4675,17 @@
       "qty": 37.5
      },
      {
-      "batch_id": "b20",
+      "batch_id": "b24",
       "recipe_id": "chili-s-fasolyu",
       "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-26",
       "qty": 37.5
      },
      {
-      "batch_id": "b30",
+      "batch_id": "b36",
       "recipe_id": "meksikanskiy-sup-s-fasolyu",
       "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-30",
       "qty": 25
      }
     ],
@@ -4718,18 +4717,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b19",
+      "recipe_id": "salat-iz-rostkov-masha",
+      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
+      "cook_date": "2026-10-24",
+      "qty": 2.5
+     },
+     {
       "batch_id": "b22",
       "recipe_id": "salat-s-mango-i-avokado",
       "recipe_name": "Салат с манго, авокадо и лаймом",
       "cook_date": "2026-10-25",
       "qty": 1.875
-     },
-     {
-      "batch_id": "b25",
-      "recipe_id": "salat-iz-rostkov-masha",
-      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
-      "qty": 2.5
      }
     ],
     "purchased": false,
@@ -4792,39 +4791,39 @@
       "qty": 3.75
      },
      {
-      "batch_id": "b10",
+      "batch_id": "b13",
       "recipe_id": "babaganush",
       "recipe_name": "Бабагануш",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-22",
       "qty": 2.5
      },
      {
-      "batch_id": "b19",
+      "batch_id": "b16",
       "recipe_id": "marokkanskiy-morkovnyy-salat",
       "recipe_name": "Марокканский салат из моркови с кумином",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-23",
       "qty": 5
      },
      {
-      "batch_id": "b23",
+      "batch_id": "b17",
       "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
       "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-23",
       "qty": 3.75
      },
      {
-      "batch_id": "b27",
+      "batch_id": "b21",
       "recipe_id": "shchi-iz-svezhey-kapusty",
       "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-27",
+      "cook_date": "2026-10-25",
       "qty": 2.5
      },
      {
-      "batch_id": "b28",
-      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
-      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
-      "cook_date": "2026-10-27",
-      "qty": 2.5
+      "batch_id": "b31",
+      "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
+      "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
+      "cook_date": "2026-10-28",
+      "qty": 3.75
      },
      {
       "batch_id": "b33",
@@ -4834,18 +4833,18 @@
       "qty": 1.666667
      },
      {
-      "batch_id": "b34",
-      "recipe_id": "piyaz",
-      "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
-      "qty": 7.5
+      "batch_id": "b40",
+      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
+      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
+      "cook_date": "2026-10-31",
+      "qty": 2.5
      },
      {
-      "batch_id": "b40",
-      "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
-      "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
-      "cook_date": "2026-10-31",
-      "qty": 3.75
+      "batch_id": "b49",
+      "recipe_id": "piyaz",
+      "recipe_name": "Пияз (салат из белой фасоли)",
+      "cook_date": "2026-11-03",
+      "qty": 7.5
      },
      {
       "batch_id": "b50",
@@ -4925,31 +4924,31 @@
       "qty": 96
      },
      {
-      "batch_id": "b34",
-      "recipe_id": "piyaz",
-      "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
-      "qty": 60
-     },
-     {
-      "batch_id": "b37",
+      "batch_id": "b25",
       "recipe_id": "salat-iz-pomidorov-s-lukom",
       "recipe_name": "Помидоры с луком и маслом",
-      "cook_date": "2026-10-30",
+      "cook_date": "2026-10-26",
       "qty": 160
      },
      {
-      "batch_id": "b41",
+      "batch_id": "b45",
       "recipe_id": "alu-gobi",
       "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-11-02",
       "qty": 60
      },
      {
-      "batch_id": "b56",
+      "batch_id": "b49",
+      "recipe_id": "piyaz",
+      "recipe_name": "Пияз (салат из белой фасоли)",
+      "cook_date": "2026-11-03",
+      "qty": 60
+     },
+     {
+      "batch_id": "b51",
       "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
       "recipe_name": "Салат из огурцов и помидоров",
-      "cook_date": "2026-11-09",
+      "cook_date": "2026-11-04",
       "qty": 120
      }
     ],
@@ -5024,10 +5023,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b25",
+      "batch_id": "b19",
       "recipe_id": "salat-iz-rostkov-masha",
       "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-24",
       "qty": 83.333333
      }
     ],
@@ -5063,10 +5062,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b43",
+      "batch_id": "b28",
       "recipe_id": "salat-metyolka",
       "recipe_name": "Салат «Метёлка»",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-27",
       "qty": 62.5
      },
      {
@@ -5144,17 +5143,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b32",
+      "batch_id": "b23",
       "recipe_id": "tykva-tushyonaya-s-nutom",
       "recipe_name": "Тыква, тушённая с нутом и томатами",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-25",
       "qty": 225
      },
      {
-      "batch_id": "b55",
+      "batch_id": "b43",
       "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
       "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
-      "cook_date": "2026-11-08",
+      "cook_date": "2026-11-01",
       "qty": 100
      }
     ],
@@ -5191,45 +5190,52 @@
     "sources": [
      {
       "batch_id": "b17",
-      "recipe_id": "zharenaya-kartoshka-s-lukom",
-      "recipe_name": "Жареная картошка с луком",
-      "cook_date": "2026-10-23",
-      "qty": 3.333333
-     },
-     {
-      "batch_id": "b23",
       "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
       "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-23",
       "qty": 3.75
      },
      {
-      "batch_id": "b37",
+      "batch_id": "b25",
       "recipe_id": "salat-iz-pomidorov-s-lukom",
       "recipe_name": "Помидоры с луком и маслом",
-      "cook_date": "2026-10-30",
+      "cook_date": "2026-10-26",
       "qty": 1.666667
      },
      {
-      "batch_id": "b38",
-      "recipe_id": "kartofel-otvarnoy-s-ukropom",
-      "recipe_name": "Отварной картофель с маслом и укропом",
-      "cook_date": "2026-10-30",
+      "batch_id": "b27",
+      "recipe_id": "zharenaya-kartoshka-s-lukom",
+      "recipe_name": "Жареная картошка с луком",
+      "cook_date": "2026-10-27",
+      "qty": 3.333333
+     },
+     {
+      "batch_id": "b28",
+      "recipe_id": "salat-metyolka",
+      "recipe_name": "Салат «Метёлка»",
+      "cook_date": "2026-10-27",
       "qty": 3.75
      },
      {
-      "batch_id": "b42",
+      "batch_id": "b35",
+      "recipe_id": "kartofel-otvarnoy-s-ukropom",
+      "recipe_name": "Отварной картофель с маслом и укропом",
+      "cook_date": "2026-10-29",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b39",
       "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
       "recipe_name": "Овощной суп с зелёным горошком",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-31",
       "qty": 2.5
      },
      {
-      "batch_id": "b43",
-      "recipe_id": "salat-metyolka",
-      "recipe_name": "Салат «Метёлка»",
-      "cook_date": "2026-11-01",
-      "qty": 3.75
+      "batch_id": "b46",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-11-02",
+      "qty": 1.25
      },
      {
       "batch_id": "b47",
@@ -5246,32 +5252,25 @@
       "qty": 1.666667
      },
      {
-      "batch_id": "b49",
-      "recipe_id": "salat-iz-kapusty-s-morkovyu",
-      "recipe_name": "Капустный салат с морковью",
-      "cook_date": "2026-11-03",
-      "qty": 1.25
+      "batch_id": "b51",
+      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+      "recipe_name": "Салат из огурцов и помидоров",
+      "cook_date": "2026-11-04",
+      "qty": 5
      },
      {
       "batch_id": "b52",
-      "recipe_id": "salat-iz-kapusty-s-goroshkom",
-      "recipe_name": "Свежая капуста с огурцом и горошком",
-      "cook_date": "2026-11-05",
-      "qty": 2.5
-     },
-     {
-      "batch_id": "b54",
       "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
       "recipe_name": "Дайкон с морковью и яблоком",
-      "cook_date": "2026-11-07",
+      "cook_date": "2026-11-05",
       "qty": 3.333333
      },
      {
-      "batch_id": "b56",
-      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
-      "recipe_name": "Салат из огурцов и помидоров",
-      "cook_date": "2026-11-09",
-      "qty": 5
+      "batch_id": "b55",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-11-08",
+      "qty": 2.5
      }
     ],
     "purchased": false,
@@ -5302,18 +5301,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
-      "qty": 175
-     },
-     {
-      "batch_id": "b42",
+      "batch_id": "b39",
       "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
       "recipe_name": "Овощной суп с зелёным горошком",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-31",
       "qty": 52.5
+     },
+     {
+      "batch_id": "b45",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
+      "qty": 175
      }
     ],
     "purchased": false,
@@ -5328,9 +5327,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 81.75,
+    "needed": 84.25,
     "from_pantry": 0,
-    "to_buy": 81.75,
+    "to_buy": 84.25,
     "buy_qty": 100,
     "package": {
      "size": 100,
@@ -5390,13 +5389,6 @@
       "qty": 3
      },
      {
-      "batch_id": "b10",
-      "recipe_id": "babaganush",
-      "recipe_name": "Бабагануш",
-      "cook_date": "2026-10-21",
-      "qty": 1.25
-     },
-     {
       "batch_id": "b11",
       "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_name": "Чечевичный суп с томатами и кумином",
@@ -5411,6 +5403,27 @@
       "qty": 2.5
      },
      {
+      "batch_id": "b13",
+      "recipe_id": "babaganush",
+      "recipe_name": "Бабагануш",
+      "cook_date": "2026-10-22",
+      "qty": 1.25
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "marokkanskiy-morkovnyy-salat",
+      "recipe_name": "Марокканский салат из моркови с кумином",
+      "cook_date": "2026-10-23",
+      "qty": 2.5
+     },
+     {
+      "batch_id": "b17",
+      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
+      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "cook_date": "2026-10-23",
+      "qty": 3.75
+     },
+     {
       "batch_id": "b18",
       "recipe_id": "tushenaya-fasol-s-ovoshchami",
       "recipe_name": "Тушёная фасоль с овощами",
@@ -5418,60 +5431,46 @@
       "qty": 2.5
      },
      {
-      "batch_id": "b19",
-      "recipe_id": "marokkanskiy-morkovnyy-salat",
-      "recipe_name": "Марокканский салат из моркови с кумином",
-      "cook_date": "2026-10-24",
-      "qty": 2.5
-     },
-     {
       "batch_id": "b20",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-24",
-      "qty": 2.5
-     },
-     {
-      "batch_id": "b21",
       "recipe_id": "dal-iz-chechevitsy",
       "recipe_name": "Дал из красной чечевицы",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-24",
       "qty": 3.75
      },
      {
       "batch_id": "b23",
-      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
-      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "recipe_id": "tykva-tushyonaya-s-nutom",
+      "recipe_name": "Тыква, тушённая с нутом и томатами",
       "cook_date": "2026-10-25",
       "qty": 3.75
      },
      {
       "batch_id": "b24",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-26",
+      "qty": 2.5
+     },
+     {
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 5
      },
      {
-      "batch_id": "b26",
+      "batch_id": "b30",
       "recipe_id": "tomatnyy-sup-s-fasolyu",
       "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-28",
       "qty": 2.5
      },
      {
-      "batch_id": "b30",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
-      "qty": 1.666667
-     },
-     {
       "batch_id": "b32",
-      "recipe_id": "tykva-tushyonaya-s-nutom",
-      "recipe_name": "Тыква, тушённая с нутом и томатами",
+      "recipe_id": "nut-so-shpinatom-po-andaluzski",
+      "recipe_name": "Нут со шпинатом по-андалусски",
       "cook_date": "2026-10-28",
-      "qty": 3.75
+      "qty": 6.25
      },
      {
       "batch_id": "b33",
@@ -5481,31 +5480,31 @@
       "qty": 1.666667
      },
      {
-      "batch_id": "b35",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
-      "qty": 6.25
+      "batch_id": "b36",
+      "recipe_id": "meksikanskiy-sup-s-fasolyu",
+      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "cook_date": "2026-10-30",
+      "qty": 1.666667
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
       "qty": 5
      },
      {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
-      "qty": 3.75
-     },
-     {
       "batch_id": "b44",
       "recipe_id": "alu-matar",
       "recipe_name": "Алу матар",
       "cook_date": "2026-11-01",
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b45",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
       "qty": 3.75
      },
      {
@@ -5535,6 +5534,13 @@
       "recipe_name": "Огурцы по-азиатски",
       "cook_date": "2026-11-11",
       "qty": 3.333333
+     },
+     {
+      "batch_id": "b62",
+      "recipe_id": "morkov-po-koreyski",
+      "recipe_name": "Морковь по-корейски",
+      "cook_date": "2026-11-15",
+      "qty": 2.5
      }
     ],
     "purchased": false,
@@ -5576,10 +5582,10 @@
       "qty": 75
      },
      {
-      "batch_id": "b39",
+      "batch_id": "b42",
       "recipe_id": "miso-sup-s-tofu",
       "recipe_name": "Мисо-суп с тофу",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-11-01",
       "qty": 25
      },
      {
@@ -5664,45 +5670,45 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b16",
+      "batch_id": "b10",
       "recipe_id": "vitaminnyy-salat",
       "recipe_name": "Витаминный салат с яблоком",
-      "cook_date": "2026-10-23",
+      "cook_date": "2026-10-21",
       "qty": 45
      },
      {
-      "batch_id": "b40",
+      "batch_id": "b31",
       "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
       "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-10-28",
       "qty": 45
      },
      {
-      "batch_id": "b51",
+      "batch_id": "b43",
+      "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
+      "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
+      "cook_date": "2026-11-01",
+      "qty": 60
+     },
+     {
+      "batch_id": "b52",
+      "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
+      "recipe_name": "Дайкон с морковью и яблоком",
+      "cook_date": "2026-11-05",
+      "qty": 60
+     },
+     {
+      "batch_id": "b56",
       "recipe_id": "yabloko-s-arahisovoy-pastoy",
       "recipe_name": "Яблоко с арахисовой пастой",
-      "cook_date": "2026-11-04",
+      "cook_date": "2026-11-09",
       "qty": 180
      },
      {
-      "batch_id": "b54",
-      "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
-      "recipe_name": "Дайкон с морковью и яблоком",
-      "cook_date": "2026-11-07",
-      "qty": 60
-     },
-     {
-      "batch_id": "b55",
-      "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
-      "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
-      "cook_date": "2026-11-08",
-      "qty": 60
-     },
-     {
-      "batch_id": "b64",
+      "batch_id": "b66",
       "recipe_id": "kompot-iz-svezhikh-yablok",
       "recipe_name": "Компот из свежих яблок",
-      "cook_date": "2026-11-17",
+      "cook_date": "2026-11-19",
       "qty": 90
      }
     ],
@@ -5738,24 +5744,24 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b21",
+      "batch_id": "b20",
       "recipe_id": "dal-iz-chechevitsy",
       "recipe_name": "Дал из красной чечевицы",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-24",
       "qty": 7.5
      },
      {
-      "batch_id": "b38",
+      "batch_id": "b35",
       "recipe_id": "kartofel-otvarnoy-s-ukropom",
       "recipe_name": "Отварной картофель с маслом и укропом",
-      "cook_date": "2026-10-30",
+      "cook_date": "2026-10-29",
       "qty": 7.5
      },
      {
-      "batch_id": "b42",
+      "batch_id": "b39",
       "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
       "recipe_name": "Овощной суп с зелёным горошком",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-31",
       "qty": 3.75
      }
     ],
@@ -5798,17 +5804,17 @@
       "qty": 150
      },
      {
-      "batch_id": "b24",
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 150
      },
      {
-      "batch_id": "b39",
+      "batch_id": "b42",
       "recipe_id": "miso-sup-s-tofu",
       "recipe_name": "Мисо-суп с тофу",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-11-01",
       "qty": 50
      }
     ],
@@ -5844,10 +5850,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b51",
+      "batch_id": "b56",
       "recipe_id": "yabloko-s-arahisovoy-pastoy",
       "recipe_name": "Яблоко с арахисовой пастой",
-      "cook_date": "2026-11-04",
+      "cook_date": "2026-11-09",
       "qty": 16
      }
     ],
@@ -5929,10 +5935,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b66",
+      "batch_id": "b67",
       "recipe_id": "halva-tahinnaya",
       "recipe_name": "Тахинная халва",
-      "cook_date": "2026-11-19",
+      "cook_date": "2026-11-20",
       "qty": 0.5
      }
     ],
@@ -5975,10 +5981,10 @@
       "qty": 75
      },
      {
-      "batch_id": "b45",
+      "batch_id": "b41",
       "recipe_id": "gorohovyy-sup",
       "recipe_name": "Гороховый суп",
-      "cook_date": "2026-11-02",
+      "cook_date": "2026-10-31",
       "qty": 50
      }
     ],
@@ -6014,24 +6020,24 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b40",
+      "batch_id": "b31",
       "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
       "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-10-28",
       "qty": 7.5
      },
      {
-      "batch_id": "b46",
+      "batch_id": "b53",
       "recipe_id": "orehi-i-suhofrukty",
       "recipe_name": "Орехи с сухофруктами",
-      "cook_date": "2026-11-02",
+      "cook_date": "2026-11-06",
       "qty": 10
      },
      {
-      "batch_id": "b63",
+      "batch_id": "b64",
       "recipe_id": "gozinaki",
       "recipe_name": "Гозинаки из грецких орехов на мёду",
-      "cook_date": "2026-11-16",
+      "cook_date": "2026-11-17",
       "qty": 37.5
      }
     ],
@@ -6106,10 +6112,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b40",
+      "batch_id": "b31",
       "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
       "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-10-28",
       "qty": 10
      }
     ],
@@ -6145,10 +6151,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b25",
+      "batch_id": "b19",
       "recipe_id": "salat-iz-rostkov-masha",
       "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-24",
       "qty": 6.666667
      }
     ],
@@ -6205,10 +6211,10 @@
       "qty": 1.5
      },
      {
-      "batch_id": "b66",
+      "batch_id": "b67",
       "recipe_id": "halva-tahinnaya",
       "recipe_name": "Тахинная халва",
-      "cook_date": "2026-11-19",
+      "cook_date": "2026-11-20",
       "qty": 2.25
      }
     ],
@@ -6244,17 +6250,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b10",
+      "batch_id": "b13",
       "recipe_id": "babaganush",
       "recipe_name": "Бабагануш",
-      "cook_date": "2026-10-21",
+      "cook_date": "2026-10-22",
       "qty": 7.5
      },
      {
-      "batch_id": "b66",
+      "batch_id": "b67",
       "recipe_id": "halva-tahinnaya",
       "recipe_name": "Тахинная халва",
-      "cook_date": "2026-11-19",
+      "cook_date": "2026-11-20",
       "qty": 31.25
      }
     ],
@@ -6290,10 +6296,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b46",
+      "batch_id": "b53",
       "recipe_id": "orehi-i-suhofrukty",
       "recipe_name": "Орехи с сухофруктами",
-      "cook_date": "2026-11-02",
+      "cook_date": "2026-11-06",
       "qty": 15
      }
     ],
@@ -6329,24 +6335,24 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b31",
-      "recipe_id": "apelsin-i-orehi",
-      "recipe_name": "Апельсин с миндалём",
-      "cook_date": "2026-10-28",
-      "qty": 15
-     },
-     {
-      "batch_id": "b35",
+      "batch_id": "b32",
       "recipe_id": "nut-so-shpinatom-po-andaluzski",
       "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-10-28",
       "qty": 7.5
      },
      {
-      "batch_id": "b46",
+      "batch_id": "b37",
+      "recipe_id": "apelsin-i-orehi",
+      "recipe_name": "Апельсин с миндалём",
+      "cook_date": "2026-10-30",
+      "qty": 15
+     },
+     {
+      "batch_id": "b53",
       "recipe_id": "orehi-i-suhofrukty",
       "recipe_name": "Орехи с сухофруктами",
-      "cook_date": "2026-11-02",
+      "cook_date": "2026-11-06",
       "qty": 10
      }
     ],
@@ -6362,9 +6368,9 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 46.75,
+    "needed": 31,
     "from_pantry": 0,
-    "to_buy": 46.75,
+    "to_buy": 31,
     "buy_qty": 250,
     "package": {
      "size": 250,
@@ -6382,32 +6388,25 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b13",
+      "batch_id": "b34",
       "recipe_id": "kozinaki-iz-semechek",
       "recipe_name": "Козинаки из подсолнечных семечек",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-29",
       "qty": 5.25
      },
      {
-      "batch_id": "b55",
+      "batch_id": "b43",
       "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
       "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
-      "cook_date": "2026-11-08",
+      "cook_date": "2026-11-01",
       "qty": 7
      },
      {
-      "batch_id": "b63",
+      "batch_id": "b64",
       "recipe_id": "gozinaki",
       "recipe_name": "Гозинаки из грецких орехов на мёду",
-      "cook_date": "2026-11-16",
+      "cook_date": "2026-11-17",
       "qty": 18.75
-     },
-     {
-      "batch_id": "b69",
-      "recipe_id": "goryachiy-oblepikhovyy-napitok",
-      "recipe_name": "Горячий облепиховый напиток с апельсином и мёдом",
-      "cook_date": "2026-11-22",
-      "qty": 15.75
      }
     ],
     "purchased": false,
@@ -6442,10 +6441,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b39",
+      "batch_id": "b42",
       "recipe_id": "miso-sup-s-tofu",
       "recipe_name": "Мисо-суп с тофу",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-11-01",
       "qty": 1.25
      }
     ],
@@ -6461,9 +6460,9 @@
     "department": "Бакалея",
     "unit": "g",
     "convertible": true,
-    "needed": 138.695833,
+    "needed": 139.395833,
     "from_pantry": 0,
-    "to_buy": 138.695833,
+    "to_buy": 139.395833,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -6488,24 +6487,31 @@
       "qty": 1.05
      },
      {
-      "batch_id": "b13",
-      "recipe_id": "kozinaki-iz-semechek",
-      "recipe_name": "Козинаки из подсолнечных семечек",
-      "cook_date": "2026-10-22",
-      "qty": 7.5
-     },
-     {
-      "batch_id": "b16",
+      "batch_id": "b10",
       "recipe_id": "vitaminnyy-salat",
       "recipe_name": "Витаминный салат с яблоком",
-      "cook_date": "2026-10-23",
+      "cook_date": "2026-10-21",
       "qty": 1.05
      },
      {
-      "batch_id": "b26",
+      "batch_id": "b30",
       "recipe_id": "tomatnyy-sup-s-fasolyu",
       "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-28",
+      "qty": 1.05
+     },
+     {
+      "batch_id": "b34",
+      "recipe_id": "kozinaki-iz-semechek",
+      "recipe_name": "Козинаки из подсолнечных семечек",
+      "cook_date": "2026-10-29",
+      "qty": 7.5
+     },
+     {
+      "batch_id": "b46",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-11-02",
       "qty": 1.05
      },
      {
@@ -6516,13 +6522,6 @@
       "qty": 0.7
      },
      {
-      "batch_id": "b49",
-      "recipe_id": "salat-iz-kapusty-s-morkovyu",
-      "recipe_name": "Капустный салат с морковью",
-      "cook_date": "2026-11-03",
-      "qty": 1.05
-     },
-     {
       "batch_id": "b58",
       "recipe_id": "salat-iz-ogurtsov-po-aziatski",
       "recipe_name": "Огурцы по-азиатски",
@@ -6531,24 +6530,24 @@
      },
      {
       "batch_id": "b62",
-      "recipe_id": "limonad-limonno-myatnyy",
-      "recipe_name": "Домашний лимонад с лимоном и мятой",
+      "recipe_id": "morkov-po-koreyski",
+      "recipe_name": "Морковь по-корейски",
       "cook_date": "2026-11-15",
-      "qty": 20
+      "qty": 0.7
      },
      {
       "batch_id": "b63",
-      "recipe_id": "gozinaki",
-      "recipe_name": "Гозинаки из грецких орехов на мёду",
+      "recipe_id": "limonad-limonno-myatnyy",
+      "recipe_name": "Домашний лимонад с лимоном и мятой",
       "cook_date": "2026-11-16",
-      "qty": 1.5625
+      "qty": 20
      },
      {
       "batch_id": "b64",
-      "recipe_id": "kompot-iz-svezhikh-yablok",
-      "recipe_name": "Компот из свежих яблок",
+      "recipe_id": "gozinaki",
+      "recipe_name": "Гозинаки из грецких орехов на мёду",
       "cook_date": "2026-11-17",
-      "qty": 15
+      "qty": 1.5625
      },
      {
       "batch_id": "b65",
@@ -6559,17 +6558,17 @@
      },
      {
       "batch_id": "b66",
-      "recipe_id": "halva-tahinnaya",
-      "recipe_name": "Тахинная халва",
+      "recipe_id": "kompot-iz-svezhikh-yablok",
+      "recipe_name": "Компот из свежих яблок",
       "cook_date": "2026-11-19",
-      "qty": 25
+      "qty": 15
      },
      {
       "batch_id": "b67",
-      "recipe_id": "limonnyy-sorbet",
-      "recipe_name": "Лимонный сорбет",
+      "recipe_id": "halva-tahinnaya",
+      "recipe_name": "Тахинная халва",
       "cook_date": "2026-11-20",
-      "qty": 33.333333
+      "qty": 25
      },
      {
       "batch_id": "b68",
@@ -6577,6 +6576,13 @@
       "recipe_name": "Груши, томлённые в гранатовом соке",
       "cook_date": "2026-11-21",
       "qty": 10
+     },
+     {
+      "batch_id": "b69",
+      "recipe_id": "limonnyy-sorbet",
+      "recipe_name": "Лимонный сорбет",
+      "cook_date": "2026-11-22",
+      "qty": 33.333333
      }
     ],
     "purchased": false,
@@ -6689,10 +6695,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b13",
+      "batch_id": "b34",
       "recipe_id": "kozinaki-iz-semechek",
       "recipe_name": "Козинаки из подсолнечных семечек",
-      "cook_date": "2026-10-22",
+      "cook_date": "2026-10-29",
       "qty": 31.25
      }
     ],
@@ -6728,10 +6734,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b55",
+      "batch_id": "b43",
       "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
       "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
-      "cook_date": "2026-11-08",
+      "cook_date": "2026-11-01",
       "qty": 6.666667
      }
     ],
@@ -6845,10 +6851,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b46",
+      "batch_id": "b53",
       "recipe_id": "orehi-i-suhofrukty",
       "recipe_name": "Орехи с сухофруктами",
-      "cook_date": "2026-11-02",
+      "cook_date": "2026-11-06",
       "qty": 15
      }
     ],
@@ -6944,10 +6950,10 @@
       "qty": 50
      },
      {
-      "batch_id": "b21",
+      "batch_id": "b20",
       "recipe_id": "dal-iz-chechevitsy",
       "recipe_name": "Дал из красной чечевицы",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-24",
       "qty": 75
      }
     ],
@@ -6983,10 +6989,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b52",
+      "batch_id": "b55",
       "recipe_id": "salat-iz-kapusty-s-goroshkom",
       "recipe_name": "Свежая капуста с огурцом и горошком",
-      "cook_date": "2026-11-05",
+      "cook_date": "2026-11-08",
       "qty": 50
      }
     ],
@@ -7068,10 +7074,10 @@
       "qty": 66.666667
      },
      {
-      "batch_id": "b53",
+      "batch_id": "b54",
       "recipe_id": "kvashenaya-kapusta-s-lukom",
       "recipe_name": "Квашеная капуста с луком и маслом",
-      "cook_date": "2026-11-06",
+      "cook_date": "2026-11-07",
       "qty": 125
      }
     ],
@@ -7114,7 +7120,7 @@
       "qty": 100
      },
      {
-      "batch_id": "b24",
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
@@ -7160,17 +7166,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b20",
+      "batch_id": "b24",
       "recipe_id": "chili-s-fasolyu",
       "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-26",
       "qty": 85
      },
      {
-      "batch_id": "b30",
+      "batch_id": "b36",
       "recipe_id": "meksikanskiy-sup-s-fasolyu",
       "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-30",
       "qty": 33.333333
      }
     ],
@@ -7206,10 +7212,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b28",
+      "batch_id": "b40",
       "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
       "recipe_name": "Апельсиновый салат с красным луком и маслинами",
-      "cook_date": "2026-10-27",
+      "cook_date": "2026-10-31",
       "qty": 15
      }
     ],
@@ -7259,17 +7265,17 @@
       "qty": 100
      },
      {
-      "batch_id": "b32",
+      "batch_id": "b23",
       "recipe_id": "tykva-tushyonaya-s-nutom",
       "recipe_name": "Тыква, тушённая с нутом и томатами",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-25",
       "qty": 100
      },
      {
-      "batch_id": "b35",
+      "batch_id": "b32",
       "recipe_id": "nut-so-shpinatom-po-andaluzski",
       "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-10-28",
       "qty": 200
      }
     ],
@@ -7383,10 +7389,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b39",
+      "batch_id": "b42",
       "recipe_id": "miso-sup-s-tofu",
       "recipe_name": "Мисо-суп с тофу",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-11-01",
       "qty": 13.5
      }
     ],
@@ -7528,10 +7534,10 @@
       "qty": 8
      },
      {
-      "batch_id": "b27",
+      "batch_id": "b21",
       "recipe_id": "shchi-iz-svezhey-kapusty",
       "recipe_name": "Щи из свежей капусты",
-      "cook_date": "2026-10-27",
+      "cook_date": "2026-10-25",
       "qty": 4
      },
      {
@@ -7616,6 +7622,13 @@
       "qty": 100
      },
      {
+      "batch_id": "b17",
+      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
+      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "cook_date": "2026-10-23",
+      "qty": 100
+     },
+     {
       "batch_id": "b18",
       "recipe_id": "tushenaya-fasol-s-ovoshchami",
       "recipe_name": "Тушёная фасоль с овощами",
@@ -7624,52 +7637,45 @@
      },
      {
       "batch_id": "b20",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-24",
-      "qty": 100
-     },
-     {
-      "batch_id": "b21",
       "recipe_id": "dal-iz-chechevitsy",
       "recipe_name": "Дал из красной чечевицы",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-24",
       "qty": 50
      },
      {
       "batch_id": "b23",
-      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
-      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "recipe_id": "tykva-tushyonaya-s-nutom",
+      "recipe_name": "Тыква, тушённая с нутом и томатами",
       "cook_date": "2026-10-25",
       "qty": 100
      },
      {
       "batch_id": "b24",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-26",
+      "qty": 100
+     },
+     {
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 100
      },
      {
-      "batch_id": "b26",
+      "batch_id": "b30",
       "recipe_id": "tomatnyy-sup-s-fasolyu",
       "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-28",
       "qty": 200
      },
      {
-      "batch_id": "b30",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
-      "qty": 66.666667
-     },
-     {
       "batch_id": "b32",
-      "recipe_id": "tykva-tushyonaya-s-nutom",
-      "recipe_name": "Тыква, тушённая с нутом и томатами",
+      "recipe_id": "nut-so-shpinatom-po-andaluzski",
+      "recipe_name": "Нут со шпинатом по-андалусски",
       "cook_date": "2026-10-28",
-      "qty": 100
+      "qty": 50
      },
      {
       "batch_id": "b33",
@@ -7679,14 +7685,14 @@
       "qty": 66.666667
      },
      {
-      "batch_id": "b35",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
-      "qty": 50
+      "batch_id": "b36",
+      "recipe_id": "meksikanskiy-sup-s-fasolyu",
+      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "cook_date": "2026-10-30",
+      "qty": 66.666667
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
@@ -7732,10 +7738,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b34",
+      "batch_id": "b49",
       "recipe_id": "piyaz",
       "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-11-03",
       "qty": 200
      }
     ],
@@ -7778,28 +7784,28 @@
       "qty": 200
      },
      {
-      "batch_id": "b20",
+      "batch_id": "b24",
       "recipe_id": "chili-s-fasolyu",
       "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-26",
       "qty": 200
      },
      {
-      "batch_id": "b26",
+      "batch_id": "b30",
       "recipe_id": "tomatnyy-sup-s-fasolyu",
       "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-28",
       "qty": 100
      },
      {
-      "batch_id": "b30",
+      "batch_id": "b36",
       "recipe_id": "meksikanskiy-sup-s-fasolyu",
       "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-30",
       "qty": 133.333333
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
@@ -7864,9 +7870,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 0.25,
+    "needed": 0.125,
     "from_pantry": 0,
-    "to_buy": 0.25,
+    "to_buy": 0.125,
     "buy_qty": 10,
     "package": {
      "size": 10,
@@ -7888,13 +7894,6 @@
       "recipe_id": "grushi-v-granatovom-soke",
       "recipe_name": "Груши, томлённые в гранатовом соке",
       "cook_date": "2026-11-21",
-      "qty": 0.125
-     },
-     {
-      "batch_id": "b69",
-      "recipe_id": "goryachiy-oblepikhovyy-napitok",
-      "recipe_name": "Горячий облепиховый напиток с апельсином и мёдом",
-      "cook_date": "2026-11-22",
       "qty": 0.125
      }
     ],
@@ -7930,31 +7929,31 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b24",
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 1
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
       "qty": 0.75
      },
      {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
-      "qty": 0.5
-     },
-     {
       "batch_id": "b44",
       "recipe_id": "alu-matar",
       "recipe_name": "Алу матар",
       "cook_date": "2026-11-01",
+      "qty": 0.5
+     },
+     {
+      "batch_id": "b45",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
       "qty": 0.5
      }
     ],
@@ -8029,13 +8028,6 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b10",
-      "recipe_id": "babaganush",
-      "recipe_name": "Бабагануш",
-      "cook_date": "2026-10-21",
-      "qty": 0.05
-     },
-     {
       "batch_id": "b11",
       "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_name": "Чечевичный суп с томатами и кумином",
@@ -8050,6 +8042,13 @@
       "qty": 0.25
      },
      {
+      "batch_id": "b13",
+      "recipe_id": "babaganush",
+      "recipe_name": "Бабагануш",
+      "cook_date": "2026-10-22",
+      "qty": 0.05
+     },
+     {
       "batch_id": "b15",
       "recipe_id": "chechevichnyy-sup",
       "recipe_name": "Суп из красной чечевицы",
@@ -8057,73 +8056,66 @@
       "qty": 0.5
      },
      {
-      "batch_id": "b19",
+      "batch_id": "b16",
       "recipe_id": "marokkanskiy-morkovnyy-salat",
       "recipe_name": "Марокканский салат из моркови с кумином",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-23",
       "qty": 0.5
+     },
+     {
+      "batch_id": "b19",
+      "recipe_id": "salat-iz-rostkov-masha",
+      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
+      "cook_date": "2026-10-24",
+      "qty": 0.666667
      },
      {
       "batch_id": "b20",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "dal-iz-chechevitsy",
+      "recipe_name": "Дал из красной чечевицы",
       "cook_date": "2026-10-24",
       "qty": 0.5
      },
      {
-      "batch_id": "b21",
-      "recipe_id": "dal-iz-chechevitsy",
-      "recipe_name": "Дал из красной чечевицы",
+      "batch_id": "b23",
+      "recipe_id": "tykva-tushyonaya-s-nutom",
+      "recipe_name": "Тыква, тушённая с нутом и томатами",
       "cook_date": "2026-10-25",
       "qty": 0.5
      },
      {
       "batch_id": "b24",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-26",
+      "qty": 0.5
+     },
+     {
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 0.5
      },
      {
-      "batch_id": "b25",
-      "recipe_id": "salat-iz-rostkov-masha",
-      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
-      "qty": 0.666667
-     },
-     {
-      "batch_id": "b30",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
-      "qty": 0.333333
-     },
-     {
       "batch_id": "b32",
-      "recipe_id": "tykva-tushyonaya-s-nutom",
-      "recipe_name": "Тыква, тушённая с нутом и томатами",
-      "cook_date": "2026-10-28",
-      "qty": 0.5
-     },
-     {
-      "batch_id": "b35",
       "recipe_id": "nut-so-shpinatom-po-andaluzski",
       "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-10-28",
       "qty": 0.5
      },
      {
       "batch_id": "b36",
+      "recipe_id": "meksikanskiy-sup-s-fasolyu",
+      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "cook_date": "2026-10-30",
+      "qty": 0.333333
+     },
+     {
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
-      "qty": 0.5
-     },
-     {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
       "qty": 0.5
      },
      {
@@ -8131,6 +8123,13 @@
       "recipe_id": "alu-matar",
       "recipe_name": "Алу матар",
       "cook_date": "2026-11-01",
+      "qty": 0.5
+     },
+     {
+      "batch_id": "b45",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
       "qty": 0.5
      }
     ],
@@ -8146,9 +8145,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 1.8,
+    "needed": 2.1,
     "from_pantry": 0,
-    "to_buy": 1.8,
+    "to_buy": 2.1,
     "buy_qty": 30,
     "package": {
      "size": 30,
@@ -8166,24 +8165,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b32",
+      "batch_id": "b23",
       "recipe_id": "tykva-tushyonaya-s-nutom",
       "recipe_name": "Тыква, тушённая с нутом и томатами",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-25",
       "qty": 0.45
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
-      "qty": 0.45
-     },
-     {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
       "qty": 0.45
      },
      {
@@ -8192,6 +8184,20 @@
       "recipe_name": "Алу матар",
       "cook_date": "2026-11-01",
       "qty": 0.45
+     },
+     {
+      "batch_id": "b45",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
+      "qty": 0.45
+     },
+     {
+      "batch_id": "b62",
+      "recipe_id": "morkov-po-koreyski",
+      "recipe_name": "Морковь по-корейски",
+      "cook_date": "2026-11-15",
+      "qty": 0.3
      }
     ],
     "purchased": false,
@@ -8226,17 +8232,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b19",
+      "batch_id": "b16",
       "recipe_id": "marokkanskiy-morkovnyy-salat",
       "recipe_name": "Марокканский салат из моркови с кумином",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-23",
       "qty": 0.05
      },
      {
-      "batch_id": "b32",
+      "batch_id": "b23",
       "recipe_id": "tykva-tushyonaya-s-nutom",
       "recipe_name": "Тыква, тушённая с нутом и томатами",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-25",
       "qty": 0.05
      },
      {
@@ -8293,32 +8299,25 @@
       "qty": 0.375
      },
      {
-      "batch_id": "b21",
+      "batch_id": "b20",
       "recipe_id": "dal-iz-chechevitsy",
       "recipe_name": "Дал из красной чечевицы",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-24",
       "qty": 0.75
      },
      {
-      "batch_id": "b24",
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 0.375
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
       "qty": 0.375
-     },
-     {
-      "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
-      "cook_date": "2026-10-31",
-      "qty": 0.75
      },
      {
       "batch_id": "b44",
@@ -8326,6 +8325,13 @@
       "recipe_name": "Алу матар",
       "cook_date": "2026-11-01",
       "qty": 0.375
+     },
+     {
+      "batch_id": "b45",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
+      "qty": 0.75
      }
     ],
     "purchased": false,
@@ -8381,10 +8387,10 @@
       "qty": 0.033333
      },
      {
-      "batch_id": "b45",
+      "batch_id": "b41",
       "recipe_id": "gorohovyy-sup",
       "recipe_name": "Гороховый суп",
-      "cook_date": "2026-11-02",
+      "cook_date": "2026-10-31",
       "qty": 0.05
      },
      {
@@ -8448,13 +8454,6 @@
       "qty": 9.89011
      },
      {
-      "batch_id": "b10",
-      "recipe_id": "babaganush",
-      "recipe_name": "Бабагануш",
-      "cook_date": "2026-10-21",
-      "qty": 7.417582
-     },
-     {
       "batch_id": "b11",
       "recipe_id": "chechevichnyy-sup-s-tomatami",
       "recipe_name": "Чечевичный суп с томатами и кумином",
@@ -8469,6 +8468,13 @@
       "qty": 7.417582
      },
      {
+      "batch_id": "b13",
+      "recipe_id": "babaganush",
+      "recipe_name": "Бабагануш",
+      "cook_date": "2026-10-22",
+      "qty": 7.417582
+     },
+     {
       "batch_id": "b15",
       "recipe_id": "chechevichnyy-sup",
       "recipe_name": "Суп из красной чечевицы",
@@ -8476,18 +8482,18 @@
       "qty": 7.417582
      },
      {
-      "batch_id": "b19",
+      "batch_id": "b16",
       "recipe_id": "marokkanskiy-morkovnyy-salat",
       "recipe_name": "Марокканский салат из моркови с кумином",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-23",
       "qty": 11.126374
      },
      {
-      "batch_id": "b20",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-24",
-      "qty": 7.417582
+      "batch_id": "b17",
+      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
+      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "cook_date": "2026-10-23",
+      "qty": 18.543956
      },
      {
       "batch_id": "b22",
@@ -8498,52 +8504,52 @@
      },
      {
       "batch_id": "b23",
-      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
-      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "recipe_id": "tykva-tushyonaya-s-nutom",
+      "recipe_name": "Тыква, тушённая с нутом и томатами",
       "cook_date": "2026-10-25",
-      "qty": 18.543956
+      "qty": 11.126374
      },
      {
-      "batch_id": "b26",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
+      "batch_id": "b24",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
       "cook_date": "2026-10-26",
       "qty": 7.417582
      },
      {
-      "batch_id": "b28",
-      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
-      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
-      "cook_date": "2026-10-27",
+      "batch_id": "b30",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
+      "cook_date": "2026-10-28",
       "qty": 7.417582
      },
      {
-      "batch_id": "b30",
+      "batch_id": "b32",
+      "recipe_id": "nut-so-shpinatom-po-andaluzski",
+      "recipe_name": "Нут со шпинатом по-андалусски",
+      "cook_date": "2026-10-28",
+      "qty": 14.835165
+     },
+     {
+      "batch_id": "b36",
       "recipe_id": "meksikanskiy-sup-s-fasolyu",
       "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-30",
       "qty": 4.945055
      },
      {
-      "batch_id": "b32",
-      "recipe_id": "tykva-tushyonaya-s-nutom",
-      "recipe_name": "Тыква, тушённая с нутом и томатами",
-      "cook_date": "2026-10-28",
-      "qty": 11.126374
+      "batch_id": "b40",
+      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
+      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
+      "cook_date": "2026-10-31",
+      "qty": 7.417582
      },
      {
-      "batch_id": "b34",
+      "batch_id": "b49",
       "recipe_id": "piyaz",
       "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-11-03",
       "qty": 11.126374
-     },
-     {
-      "batch_id": "b35",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
-      "qty": 14.835165
      }
     ],
     "purchased": false,
@@ -8578,32 +8584,32 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b40",
-      "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
-      "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
-      "cook_date": "2026-10-31",
-      "qty": 7.391304
-     },
-     {
-      "batch_id": "b43",
+      "batch_id": "b28",
       "recipe_id": "salat-metyolka",
       "recipe_name": "Салат «Метёлка»",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-27",
       "qty": 7.391304
      },
      {
-      "batch_id": "b53",
-      "recipe_id": "kvashenaya-kapusta-s-lukom",
-      "recipe_name": "Квашеная капуста с луком и маслом",
-      "cook_date": "2026-11-06",
+      "batch_id": "b31",
+      "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
+      "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
+      "cook_date": "2026-10-28",
       "qty": 7.391304
+     },
+     {
+      "batch_id": "b52",
+      "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
+      "recipe_name": "Дайкон с морковью и яблоком",
+      "cook_date": "2026-11-05",
+      "qty": 4.927536
      },
      {
       "batch_id": "b54",
-      "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
-      "recipe_name": "Дайкон с морковью и яблоком",
+      "recipe_id": "kvashenaya-kapusta-s-lukom",
+      "recipe_name": "Квашеная капуста с луком и маслом",
       "cook_date": "2026-11-07",
-      "qty": 4.927536
+      "qty": 7.391304
      }
     ],
     "purchased": false,
@@ -8618,9 +8624,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 257.582428,
+    "needed": 267.4375,
     "from_pantry": 0,
-    "to_buy": 257.582428,
+    "to_buy": 267.4375,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -8687,11 +8693,11 @@
       "qty": 11.826087
      },
      {
-      "batch_id": "b13",
-      "recipe_id": "kozinaki-iz-semechek",
-      "recipe_name": "Козинаки из подсолнечных семечек",
-      "cook_date": "2026-10-22",
-      "qty": 0.611413
+      "batch_id": "b10",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
+      "cook_date": "2026-10-21",
+      "qty": 7.391304
      },
      {
       "batch_id": "b14",
@@ -8701,20 +8707,6 @@
       "qty": 11.086957
      },
      {
-      "batch_id": "b16",
-      "recipe_id": "vitaminnyy-salat",
-      "recipe_name": "Витаминный салат с яблоком",
-      "cook_date": "2026-10-23",
-      "qty": 7.391304
-     },
-     {
-      "batch_id": "b17",
-      "recipe_id": "zharenaya-kartoshka-s-lukom",
-      "recipe_name": "Жареная картошка с луком",
-      "cook_date": "2026-10-23",
-      "qty": 24.637681
-     },
-     {
       "batch_id": "b18",
       "recipe_id": "tushenaya-fasol-s-ovoshchami",
       "recipe_name": "Тушёная фасоль с овощами",
@@ -8722,25 +8714,39 @@
       "qty": 7.391304
      },
      {
-      "batch_id": "b24",
+      "batch_id": "b19",
+      "recipe_id": "salat-iz-rostkov-masha",
+      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
+      "cook_date": "2026-10-24",
+      "qty": 4.927536
+     },
+     {
+      "batch_id": "b21",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
+      "cook_date": "2026-10-25",
+      "qty": 3.695652
+     },
+     {
+      "batch_id": "b25",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-26",
+      "qty": 9.855072
+     },
+     {
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 11.086957
      },
      {
-      "batch_id": "b25",
-      "recipe_id": "salat-iz-rostkov-masha",
-      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
-      "qty": 4.927536
-     },
-     {
       "batch_id": "b27",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
+      "recipe_id": "zharenaya-kartoshka-s-lukom",
+      "recipe_name": "Жареная картошка с луком",
       "cook_date": "2026-10-27",
-      "qty": 3.695652
+      "qty": 24.637681
      },
      {
       "batch_id": "b29",
@@ -8757,25 +8763,25 @@
       "qty": 4.927536
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b34",
+      "recipe_id": "kozinaki-iz-semechek",
+      "recipe_name": "Козинаки из подсолнечных семечек",
+      "cook_date": "2026-10-29",
+      "qty": 0.611413
+     },
+     {
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
       "qty": 11.086957
      },
      {
-      "batch_id": "b37",
-      "recipe_id": "salat-iz-pomidorov-s-lukom",
-      "recipe_name": "Помидоры с луком и маслом",
-      "cook_date": "2026-10-30",
-      "qty": 9.855072
-     },
-     {
       "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
+      "recipe_id": "gorohovyy-sup",
+      "recipe_name": "Гороховый суп",
       "cook_date": "2026-10-31",
-      "qty": 14.782609
+      "qty": 3.695652
      },
      {
       "batch_id": "b44",
@@ -8786,10 +8792,17 @@
      },
      {
       "batch_id": "b45",
-      "recipe_id": "gorohovyy-sup",
-      "recipe_name": "Гороховый суп",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
       "cook_date": "2026-11-02",
-      "qty": 3.695652
+      "qty": 14.782609
+     },
+     {
+      "batch_id": "b46",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-11-02",
+      "qty": 7.391304
      },
      {
       "batch_id": "b47",
@@ -8806,13 +8819,6 @@
       "qty": 7.391304
      },
      {
-      "batch_id": "b49",
-      "recipe_id": "salat-iz-kapusty-s-morkovyu",
-      "recipe_name": "Капустный салат с морковью",
-      "cook_date": "2026-11-03",
-      "qty": 7.391304
-     },
-     {
       "batch_id": "b50",
       "recipe_id": "solyanka-gribnaya",
       "recipe_name": "Солянка грибная постная",
@@ -8820,17 +8826,17 @@
       "qty": 7.391304
      },
      {
-      "batch_id": "b52",
-      "recipe_id": "salat-iz-kapusty-s-goroshkom",
-      "recipe_name": "Свежая капуста с огурцом и горошком",
-      "cook_date": "2026-11-05",
+      "batch_id": "b51",
+      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+      "recipe_name": "Салат из огурцов и помидоров",
+      "cook_date": "2026-11-04",
       "qty": 7.391304
      },
      {
-      "batch_id": "b56",
-      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
-      "recipe_name": "Салат из огурцов и помидоров",
-      "cook_date": "2026-11-09",
+      "batch_id": "b55",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
+      "cook_date": "2026-11-08",
       "qty": 7.391304
      },
      {
@@ -8846,6 +8852,13 @@
       "recipe_name": "Огурцы по-азиатски",
       "cook_date": "2026-11-11",
       "qty": 4.927536
+     },
+     {
+      "batch_id": "b62",
+      "recipe_id": "morkov-po-koreyski",
+      "recipe_name": "Морковь по-корейски",
+      "cook_date": "2026-11-15",
+      "qty": 9.855072
      }
     ],
     "purchased": false,
@@ -8887,18 +8900,18 @@
       "qty": 0.575
      },
      {
-      "batch_id": "b30",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
-      "qty": 0.383333
-     },
-     {
-      "batch_id": "b35",
+      "batch_id": "b32",
       "recipe_id": "nut-so-shpinatom-po-andaluzski",
       "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-10-28",
       "qty": 0.8625
+     },
+     {
+      "batch_id": "b36",
+      "recipe_id": "meksikanskiy-sup-s-fasolyu",
+      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "cook_date": "2026-10-30",
+      "qty": 0.383333
      }
     ],
     "purchased": false,
@@ -8933,6 +8946,13 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b16",
+      "recipe_id": "marokkanskiy-morkovnyy-salat",
+      "recipe_name": "Марокканский салат из моркови с кумином",
+      "cook_date": "2026-10-23",
+      "qty": 0.575
+     },
+     {
       "batch_id": "b18",
       "recipe_id": "tushenaya-fasol-s-ovoshchami",
       "recipe_name": "Тушёная фасоль с овощами",
@@ -8940,38 +8960,31 @@
       "qty": 0.575
      },
      {
-      "batch_id": "b19",
-      "recipe_id": "marokkanskiy-morkovnyy-salat",
-      "recipe_name": "Марокканский салат из моркови с кумином",
-      "cook_date": "2026-10-24",
-      "qty": 0.575
-     },
-     {
-      "batch_id": "b20",
+      "batch_id": "b24",
       "recipe_id": "chili-s-fasolyu",
       "recipe_name": "Чили с фасолью и кукурузой",
-      "cook_date": "2026-10-24",
+      "cook_date": "2026-10-26",
       "qty": 1.15
      },
      {
-      "batch_id": "b24",
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 1.15
      },
      {
-      "batch_id": "b26",
+      "batch_id": "b30",
       "recipe_id": "tomatnyy-sup-s-fasolyu",
       "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
+      "cook_date": "2026-10-28",
       "qty": 0.575
      },
      {
-      "batch_id": "b34",
+      "batch_id": "b49",
       "recipe_id": "piyaz",
       "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-11-03",
       "qty": 0.575
      }
     ],
@@ -8987,9 +9000,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 0.183333,
+    "needed": 0.2,
     "from_pantry": 0,
-    "to_buy": 0.183333,
+    "to_buy": 0.2,
     "buy_qty": 20,
     "package": {
      "size": 20,
@@ -9007,10 +9020,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b30",
+      "batch_id": "b36",
       "recipe_id": "meksikanskiy-sup-s-fasolyu",
       "recipe_name": "Мексиканский суп с фасолью и кукурузой",
-      "cook_date": "2026-10-28",
+      "cook_date": "2026-10-30",
       "qty": 0.15
      },
      {
@@ -9019,6 +9032,13 @@
       "recipe_name": "Огурцы по-азиатски",
       "cook_date": "2026-11-11",
       "qty": 0.033333
+     },
+     {
+      "batch_id": "b62",
+      "recipe_id": "morkov-po-koreyski",
+      "recipe_name": "Морковь по-корейски",
+      "cook_date": "2026-11-15",
+      "qty": 0.016667
      }
     ],
     "purchased": false,
@@ -9088,18 +9108,18 @@
       "qty": 0.1
      },
      {
-      "batch_id": "b23",
+      "batch_id": "b17",
       "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
       "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-23",
       "qty": 0.1
      },
      {
-      "batch_id": "b28",
-      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
-      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
-      "cook_date": "2026-10-27",
-      "qty": 0.05
+      "batch_id": "b25",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-26",
+      "qty": 0.066667
      },
      {
       "batch_id": "b33",
@@ -9109,18 +9129,18 @@
       "qty": 0.066667
      },
      {
-      "batch_id": "b36",
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
       "qty": 0.1
      },
      {
-      "batch_id": "b37",
-      "recipe_id": "salat-iz-pomidorov-s-lukom",
-      "recipe_name": "Помидоры с луком и маслом",
-      "cook_date": "2026-10-30",
-      "qty": 0.066667
+      "batch_id": "b40",
+      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
+      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
+      "cook_date": "2026-10-31",
+      "qty": 0.05
      },
      {
       "batch_id": "b48",
@@ -9149,9 +9169,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 57.845833,
+    "needed": 58.845833,
     "from_pantry": 0,
-    "to_buy": 57.845833,
+    "to_buy": 58.845833,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -9219,10 +9239,10 @@
      },
      {
       "batch_id": "b10",
-      "recipe_id": "babaganush",
-      "recipe_name": "Бабагануш",
+      "recipe_id": "vitaminnyy-salat",
+      "recipe_name": "Витаминный салат с яблоком",
       "cook_date": "2026-10-21",
-      "qty": 0.25
+      "qty": 0.125
      },
      {
       "batch_id": "b11",
@@ -9237,6 +9257,13 @@
       "recipe_name": "Суп с нутом и шпинатом",
       "cook_date": "2026-10-22",
       "qty": 1.5
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "babaganush",
+      "recipe_name": "Бабагануш",
+      "cook_date": "2026-10-22",
+      "qty": 0.25
      },
      {
       "batch_id": "b14",
@@ -9254,17 +9281,17 @@
      },
      {
       "batch_id": "b16",
-      "recipe_id": "vitaminnyy-salat",
-      "recipe_name": "Витаминный салат с яблоком",
+      "recipe_id": "marokkanskiy-morkovnyy-salat",
+      "recipe_name": "Марокканский салат из моркови с кумином",
       "cook_date": "2026-10-23",
-      "qty": 0.125
+      "qty": 0.375
      },
      {
       "batch_id": "b17",
-      "recipe_id": "zharenaya-kartoshka-s-lukom",
-      "recipe_name": "Жареная картошка с луком",
+      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
+      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
       "cook_date": "2026-10-23",
-      "qty": 2
+      "qty": 2.25
      },
      {
       "batch_id": "b18",
@@ -9275,22 +9302,22 @@
      },
      {
       "batch_id": "b19",
-      "recipe_id": "marokkanskiy-morkovnyy-salat",
-      "recipe_name": "Марокканский салат из моркови с кумином",
+      "recipe_id": "salat-iz-rostkov-masha",
+      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
       "cook_date": "2026-10-24",
-      "qty": 0.375
+      "qty": 0.333333
      },
      {
       "batch_id": "b20",
-      "recipe_id": "chili-s-fasolyu",
-      "recipe_name": "Чили с фасолью и кукурузой",
+      "recipe_id": "dal-iz-chechevitsy",
+      "recipe_name": "Дал из красной чечевицы",
       "cook_date": "2026-10-24",
       "qty": 1.5
      },
      {
       "batch_id": "b21",
-      "recipe_id": "dal-iz-chechevitsy",
-      "recipe_name": "Дал из красной чечевицы",
+      "recipe_id": "shchi-iz-svezhey-kapusty",
+      "recipe_name": "Щи из свежей капусты",
       "cook_date": "2026-10-25",
       "qty": 1.5
      },
@@ -9303,45 +9330,45 @@
      },
      {
       "batch_id": "b23",
-      "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
-      "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
+      "recipe_id": "tykva-tushyonaya-s-nutom",
+      "recipe_name": "Тыква, тушённая с нутом и томатами",
       "cook_date": "2026-10-25",
-      "qty": 2.25
+      "qty": 1.5
      },
      {
       "batch_id": "b24",
+      "recipe_id": "chili-s-fasolyu",
+      "recipe_name": "Чили с фасолью и кукурузой",
+      "cook_date": "2026-10-26",
+      "qty": 1.5
+     },
+     {
+      "batch_id": "b25",
+      "recipe_id": "salat-iz-pomidorov-s-lukom",
+      "recipe_name": "Помидоры с луком и маслом",
+      "cook_date": "2026-10-26",
+      "qty": 0.166667
+     },
+     {
+      "batch_id": "b26",
       "recipe_id": "tofu-tikka-masala",
       "recipe_name": "Тофу тикка масала на кокосовом молоке",
       "cook_date": "2026-10-26",
       "qty": 1.5
      },
      {
-      "batch_id": "b25",
-      "recipe_id": "salat-iz-rostkov-masha",
-      "recipe_name": "Салат из ростков маша с огурцом и кокосом",
-      "cook_date": "2026-10-26",
-      "qty": 0.333333
-     },
-     {
-      "batch_id": "b26",
-      "recipe_id": "tomatnyy-sup-s-fasolyu",
-      "recipe_name": "Томатный суп с фасолью",
-      "cook_date": "2026-10-26",
-      "qty": 1.5
-     },
-     {
       "batch_id": "b27",
-      "recipe_id": "shchi-iz-svezhey-kapusty",
-      "recipe_name": "Щи из свежей капусты",
+      "recipe_id": "zharenaya-kartoshka-s-lukom",
+      "recipe_name": "Жареная картошка с луком",
       "cook_date": "2026-10-27",
-      "qty": 1.5
+      "qty": 2
      },
      {
       "batch_id": "b28",
-      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
-      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
+      "recipe_id": "salat-metyolka",
+      "recipe_name": "Салат «Метёлка»",
       "cook_date": "2026-10-27",
-      "qty": 0.125
+      "qty": 0.25
      },
      {
       "batch_id": "b29",
@@ -9352,15 +9379,22 @@
      },
      {
       "batch_id": "b30",
-      "recipe_id": "meksikanskiy-sup-s-fasolyu",
-      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "recipe_id": "tomatnyy-sup-s-fasolyu",
+      "recipe_name": "Томатный суп с фасолью",
       "cook_date": "2026-10-28",
-      "qty": 1
+      "qty": 1.5
+     },
+     {
+      "batch_id": "b31",
+      "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
+      "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
+      "cook_date": "2026-10-28",
+      "qty": 0.25
      },
      {
       "batch_id": "b32",
-      "recipe_id": "tykva-tushyonaya-s-nutom",
-      "recipe_name": "Тыква, тушённая с нутом и томатами",
+      "recipe_id": "nut-so-shpinatom-po-andaluzski",
+      "recipe_name": "Нут со шпинатом по-андалусски",
       "cook_date": "2026-10-28",
       "qty": 1.5
      },
@@ -9372,67 +9406,53 @@
       "qty": 1
      },
      {
-      "batch_id": "b34",
-      "recipe_id": "piyaz",
-      "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
-      "qty": 1.5
-     },
-     {
       "batch_id": "b35",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
+      "recipe_id": "kartofel-otvarnoy-s-ukropom",
+      "recipe_name": "Отварной картофель с маслом и укропом",
       "cook_date": "2026-10-29",
       "qty": 1.5
      },
      {
       "batch_id": "b36",
+      "recipe_id": "meksikanskiy-sup-s-fasolyu",
+      "recipe_name": "Мексиканский суп с фасолью и кукурузой",
+      "cook_date": "2026-10-30",
+      "qty": 1
+     },
+     {
+      "batch_id": "b38",
       "recipe_id": "radzhma",
       "recipe_name": "Раджма: красная фасоль в пряном томатном соусе",
       "cook_date": "2026-10-30",
       "qty": 1.5
      },
      {
-      "batch_id": "b37",
-      "recipe_id": "salat-iz-pomidorov-s-lukom",
-      "recipe_name": "Помидоры с луком и маслом",
-      "cook_date": "2026-10-30",
-      "qty": 0.166667
-     },
-     {
-      "batch_id": "b38",
-      "recipe_id": "kartofel-otvarnoy-s-ukropom",
-      "recipe_name": "Отварной картофель с маслом и укропом",
-      "cook_date": "2026-10-30",
+      "batch_id": "b39",
+      "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
+      "recipe_name": "Овощной суп с зелёным горошком",
+      "cook_date": "2026-10-31",
       "qty": 1.5
      },
      {
       "batch_id": "b40",
-      "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
-      "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
+      "recipe_id": "salat-iz-apelsinov-s-lukom-i-maslinami",
+      "recipe_name": "Апельсиновый салат с красным луком и маслинами",
       "cook_date": "2026-10-31",
-      "qty": 0.25
+      "qty": 0.125
      },
      {
       "batch_id": "b41",
-      "recipe_id": "alu-gobi",
-      "recipe_name": "Алу гоби",
+      "recipe_id": "gorohovyy-sup",
+      "recipe_name": "Гороховый суп",
       "cook_date": "2026-10-31",
-      "qty": 2.25
-     },
-     {
-      "batch_id": "b42",
-      "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
-      "recipe_name": "Овощной суп с зелёным горошком",
-      "cook_date": "2026-11-01",
       "qty": 1.5
      },
      {
       "batch_id": "b43",
-      "recipe_id": "salat-metyolka",
-      "recipe_name": "Салат «Метёлка»",
+      "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
+      "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
       "cook_date": "2026-11-01",
-      "qty": 0.25
+      "qty": 0.166667
      },
      {
       "batch_id": "b44",
@@ -9443,8 +9463,15 @@
      },
      {
       "batch_id": "b45",
-      "recipe_id": "gorohovyy-sup",
-      "recipe_name": "Гороховый суп",
+      "recipe_id": "alu-gobi",
+      "recipe_name": "Алу гоби",
+      "cook_date": "2026-11-02",
+      "qty": 2.25
+     },
+     {
+      "batch_id": "b46",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
       "cook_date": "2026-11-02",
       "qty": 1.5
      },
@@ -9464,8 +9491,8 @@
      },
      {
       "batch_id": "b49",
-      "recipe_id": "salat-iz-kapusty-s-morkovyu",
-      "recipe_name": "Капустный салат с морковью",
+      "recipe_id": "piyaz",
+      "recipe_name": "Пияз (салат из белой фасоли)",
       "cook_date": "2026-11-03",
       "qty": 1.5
      },
@@ -9477,32 +9504,25 @@
       "qty": 0.5
      },
      {
-      "batch_id": "b52",
-      "recipe_id": "salat-iz-kapusty-s-goroshkom",
-      "recipe_name": "Свежая капуста с огурцом и горошком",
-      "cook_date": "2026-11-05",
-      "qty": 1.5
+      "batch_id": "b51",
+      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
+      "recipe_name": "Салат из огурцов и помидоров",
+      "cook_date": "2026-11-04",
+      "qty": 0.5
      },
      {
-      "batch_id": "b54",
+      "batch_id": "b52",
       "recipe_id": "salat-iz-daykona-s-morkovyu-i-yablokom",
       "recipe_name": "Дайкон с морковью и яблоком",
-      "cook_date": "2026-11-07",
+      "cook_date": "2026-11-05",
       "qty": 0.333333
      },
      {
       "batch_id": "b55",
-      "recipe_id": "salat-iz-syroy-tykvy-s-morkovyu",
-      "recipe_name": "Салат из сырой тыквы с морковью и мёдом",
+      "recipe_id": "salat-iz-kapusty-s-goroshkom",
+      "recipe_name": "Свежая капуста с огурцом и горошком",
       "cook_date": "2026-11-08",
-      "qty": 0.166667
-     },
-     {
-      "batch_id": "b56",
-      "recipe_id": "salat-iz-ogurtsov-i-pomidorov",
-      "recipe_name": "Салат из огурцов и помидоров",
-      "cook_date": "2026-11-09",
-      "qty": 0.5
+      "qty": 1.5
      },
      {
       "batch_id": "b59",
@@ -9519,10 +9539,17 @@
       "qty": 0.125
      },
      {
-      "batch_id": "b66",
+      "batch_id": "b62",
+      "recipe_id": "morkov-po-koreyski",
+      "recipe_name": "Морковь по-корейски",
+      "cook_date": "2026-11-15",
+      "qty": 1
+     },
+     {
+      "batch_id": "b67",
       "recipe_id": "halva-tahinnaya",
       "recipe_name": "Тахинная халва",
-      "cook_date": "2026-11-19",
+      "cook_date": "2026-11-20",
       "qty": 0.0625
      }
     ],
@@ -9604,17 +9631,17 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b34",
-      "recipe_id": "piyaz",
-      "recipe_name": "Пияз (салат из белой фасоли)",
-      "cook_date": "2026-10-29",
+      "batch_id": "b32",
+      "recipe_id": "nut-so-shpinatom-po-andaluzski",
+      "recipe_name": "Нут со шпинатом по-андалусски",
+      "cook_date": "2026-10-28",
       "qty": 3.712871
      },
      {
-      "batch_id": "b35",
-      "recipe_id": "nut-so-shpinatom-po-andaluzski",
-      "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
+      "batch_id": "b49",
+      "recipe_id": "piyaz",
+      "recipe_name": "Пияз (салат из белой фасоли)",
+      "cook_date": "2026-11-03",
       "qty": 3.712871
      }
     ],
@@ -9630,9 +9657,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 3.712871,
+    "needed": 8.663366,
     "from_pantry": 0,
-    "to_buy": 3.712871,
+    "to_buy": 8.663366,
     "buy_qty": 500,
     "package": {
      "size": 500,
@@ -9650,6 +9677,13 @@
     "usage_cost_kop": null,
     "sources": [
      {
+      "batch_id": "b46",
+      "recipe_id": "salat-iz-kapusty-s-morkovyu",
+      "recipe_name": "Капустный салат с морковью",
+      "cook_date": "2026-11-02",
+      "qty": 1.237624
+     },
+     {
       "batch_id": "b47",
       "recipe_id": "borshch-postnyy",
       "recipe_name": "Борщ постный с фасолью",
@@ -9657,18 +9691,18 @@
       "qty": 0.825083
      },
      {
-      "batch_id": "b49",
-      "recipe_id": "salat-iz-kapusty-s-morkovyu",
-      "recipe_name": "Капустный салат с морковью",
-      "cook_date": "2026-11-03",
-      "qty": 1.237624
-     },
-     {
       "batch_id": "b58",
       "recipe_id": "salat-iz-ogurtsov-po-aziatski",
       "recipe_name": "Огурцы по-азиатски",
       "cook_date": "2026-11-11",
       "qty": 1.650165
+     },
+     {
+      "batch_id": "b62",
+      "recipe_id": "morkov-po-koreyski",
+      "recipe_name": "Морковь по-корейски",
+      "cook_date": "2026-11-15",
+      "qty": 4.950495
      }
     ],
     "purchased": false,
@@ -9703,10 +9737,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b40",
+      "batch_id": "b31",
       "recipe_id": "salat-iz-krasnoy-kapusty-s-yablokom",
       "recipe_name": "Салат из краснокочанной капусты с яблоком и клюквой",
-      "cook_date": "2026-10-31",
+      "cook_date": "2026-10-28",
       "qty": 3.712871
      }
     ],
@@ -9742,10 +9776,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b42",
+      "batch_id": "b39",
       "recipe_id": "ovoshchnoy-sup-s-zelenym-goroshkom",
       "recipe_name": "Овощной суп с зелёным горошком",
-      "cook_date": "2026-11-01",
+      "cook_date": "2026-10-31",
       "qty": 37.5
      },
      {
@@ -9788,10 +9822,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b53",
+      "batch_id": "b54",
       "recipe_id": "kvashenaya-kapusta-s-lukom",
       "recipe_name": "Квашеная капуста с луком и маслом",
-      "cook_date": "2026-11-06",
+      "cook_date": "2026-11-07",
       "qty": 10
      },
      {
@@ -9800,45 +9834,6 @@
       "recipe_name": "Клюквенный морс",
       "cook_date": "2026-11-18",
       "qty": 62.5
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:sea_buckthorn_frozen:g",
-    "product_id": "sea_buckthorn_frozen",
-    "name": "Облепиха замороженная",
-    "department": "Заморозка",
-    "unit": "g",
-    "convertible": true,
-    "needed": 50,
-    "from_pantry": 0,
-    "to_buy": 50,
-    "buy_qty": 300,
-    "package": {
-     "size": 300,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b69",
-      "recipe_id": "goryachiy-oblepikhovyy-napitok",
-      "recipe_name": "Горячий облепиховый напиток с апельсином и мёдом",
-      "cook_date": "2026-11-22",
-      "qty": 50
      }
     ],
     "purchased": false,
@@ -9873,10 +9868,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b23",
+      "batch_id": "b17",
       "recipe_id": "fasolakya-struchkovaya-fasol-v-tomatah",
       "recipe_name": "Фасолакья: стручковая фасоль с картофелем в томатах",
-      "cook_date": "2026-10-25",
+      "cook_date": "2026-10-23",
       "qty": 150
      }
     ],
@@ -9919,10 +9914,10 @@
       "qty": 50
      },
      {
-      "batch_id": "b35",
+      "batch_id": "b32",
       "recipe_id": "nut-so-shpinatom-po-andaluzski",
       "recipe_name": "Нут со шпинатом по-андалусски",
-      "cook_date": "2026-10-29",
+      "cook_date": "2026-10-28",
       "qty": 100
      }
     ],
@@ -9997,10 +9992,10 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b62",
+      "batch_id": "b63",
       "recipe_id": "limonad-limonno-myatnyy",
       "recipe_name": "Домашний лимонад с лимоном и мятой",
-      "cook_date": "2026-11-15",
+      "cook_date": "2026-11-16",
       "qty": 200
      }
     ],
@@ -10090,67 +10085,67 @@
     "auto:bay_leaf:g",
     "auto:thyme_dried:g",
     "auto:basil:g",
-    "auto:tahini:g",
-    "auto:cumin:g",
+    "auto:cabbage:g",
+    "auto:apple:g",
     "auto:red_lentils_dry:g",
+    "auto:cumin:g",
     "auto:spinach_frozen:g",
     "auto:smoked_paprika:g",
-    "auto:sunflower_seeds:g",
-    "auto:honey:g",
-    "auto:cabbage:g",
+    "auto:tahini:g",
     "auto:champignons:g",
-    "auto:apple:g",
-    "auto:dill:g",
-    "auto:beans_canned:g",
     "auto:paprika:g",
     "auto:cinnamon:g",
-    "auto:corn_canned:g",
+    "auto:green_beans_frozen:g",
+    "auto:dill:g",
+    "auto:beans_canned:g",
+    "auto:bean_sprouts:g",
+    "auto:coconut_flakes:g",
+    "auto:lime:g",
+    "auto:chili_pepper:g",
     "auto:ginger:g",
     "auto:butter:g",
     "auto:mango:g",
     "auto:avocado:g",
     "auto:cherry_tomatoes:g",
     "auto:red_onion:g",
-    "auto:lime:g",
-    "auto:chili_pepper:g",
-    "auto:green_beans_frozen:g",
-    "auto:garam_masala:g",
-    "auto:bean_sprouts:g",
-    "auto:coconut_flakes:g",
-    "auto:orange:g",
-    "auto:olives:g",
-    "auto:split_peas_dry:g",
-    "auto:chili_flakes:g",
-    "auto:almonds:g",
     "auto:pumpkin:g",
     "auto:coriander_ground:g",
-    "auto:celery_stalk:g",
-    "auto:beans_white_canned:g",
-    "auto:wine_vinegar:ml",
-    "auto:miso:g",
-    "auto:nori:g",
+    "auto:corn_canned:g",
+    "auto:garam_masala:g",
+    "auto:beet:g",
+    "auto:sunflower_oil_unrefined:ml",
+    "auto:split_peas_dry:g",
     "auto:red_cabbage:g",
     "auto:dried_cranberries:g",
     "auto:walnuts:g",
     "auto:apple_vinegar:ml",
-    "auto:sunflower_oil_unrefined:ml",
+    "auto:almonds:g",
+    "auto:wine_vinegar:ml",
+    "auto:celery_stalk:g",
+    "auto:sunflower_seeds:g",
+    "auto:honey:g",
+    "auto:chili_flakes:g",
+    "auto:orange:g",
     "auto:cauliflower:g",
     "auto:green_peas_frozen:g",
-    "auto:beet:g",
-    "auto:dried_apricots:g",
-    "auto:prunes:g",
+    "auto:olives:g",
+    "auto:miso:g",
+    "auto:nori:g",
+    "auto:pumpkin_seeds:g",
     "auto:vinegar:ml",
     "auto:sauerkraut:g",
     "auto:porcini_dried:g",
+    "auto:beans_white_canned:g",
     "auto:marinated_champignons:g",
     "auto:pickled_cucumbers:g",
     "auto:green_olives:g",
     "auto:capers:g",
-    "auto:peanut_butter:g",
-    "auto:green_peas_canned:g",
-    "auto:cranberries_frozen:g",
     "auto:daikon:g",
-    "auto:pumpkin_seeds:g",
+    "auto:dried_apricots:g",
+    "auto:prunes:g",
+    "auto:cranberries_frozen:g",
+    "auto:green_peas_canned:g",
+    "auto:peanut_butter:g",
     "auto:broccoli:g",
     "auto:soy_sauce:ml",
     "auto:sesame_seeds:g",
@@ -10163,8 +10158,7 @@
     "auto:pear:g",
     "auto:pomegranate_juice:ml",
     "auto:star_anise:g",
-    "auto:cloves:g",
-    "auto:sea_buckthorn_frozen:g"
+    "auto:cloves:g"
    ]
   },
   "budget": {
@@ -10211,7 +10205,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1059.8415833333333,
+       "value": 2115.8275750000003,
        "complete": false,
        "missing": [
         "tofu"
@@ -10286,7 +10280,7 @@
        ]
       },
       "vit_a": {
-       "value": 545.5552500000001,
+       "value": 1091.33095,
        "complete": false,
        "missing": [
         "chia_seeds"
@@ -10339,37 +10333,37 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 666.784725,
+       "value": 620.9953499999999,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 21.517991000000002,
+       "value": 19.378736000000004,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 31.06111,
+       "value": 26.8753225,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 85.4359985,
+       "value": 84.296506,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 23.371047500000003,
+       "value": 19.91241,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 311.80949999999996,
+       "value": 904.06708,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 129.027495,
+       "value": 153.401845,
        "complete": true,
        "missing": []
       },
@@ -10379,14 +10373,14 @@
        "missing": []
       },
       "vit_e": {
-       "value": 9.5184945,
+       "value": 11.0028395,
        "complete": false,
        "missing": [
         "red_lentils_dry"
        ]
       },
       "vit_b6": {
-       "value": 1.205371125,
+       "value": 1.1447470000000002,
        "complete": true,
        "missing": []
       },
@@ -10396,12 +10390,12 @@
        "missing": []
       },
       "folate": {
-       "value": 255.65017500000005,
+       "value": 237.45955000000004,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 825,
+     "portion_mass_g": 862.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -10410,37 +10404,37 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 610.11475,
+       "value": 537.2251249999999,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 19.66794,
+       "value": 16.639834999999998,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 36.5796875,
+       "value": 31.137784999999994,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 62.3983425,
+       "value": 58.996565000000004,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 18.28415,
+       "value": 22.6569875,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 639.1462500000001,
+       "value": 1301.9678999999999,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 104.020075,
+       "value": 115.05697500000001,
        "complete": true,
        "missing": []
       },
@@ -10450,14 +10444,14 @@
        "missing": []
       },
       "vit_e": {
-       "value": 19.68111,
+       "value": 10.084195,
        "complete": false,
        "missing": [
         "bay_leaf"
        ]
       },
       "vit_b6": {
-       "value": 1.179949,
+       "value": 0.9609246250000001,
        "complete": true,
        "missing": []
       },
@@ -10467,12 +10461,12 @@
        "missing": []
       },
       "folate": {
-       "value": 296.28700000000003,
+       "value": 281.372125,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 728.75,
+     "portion_mass_g": 812.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -10481,37 +10475,37 @@
      "date": "2026-10-23",
      "totals": {
       "kcal": {
-       "value": 805.5361666666665,
+       "value": 717.343625,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 20.487836666666666,
+       "value": 20.7989625,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 38.247416666666666,
+       "value": 36.5322775,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 102.21461,
+       "value": 85.6716725,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 18.012999999999998,
+       "value": 20.2660625,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 332.363,
+       "value": 2362.4264249999997,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 109.37023333333333,
+       "value": 93.169375,
        "complete": true,
        "missing": []
       },
@@ -10521,7 +10515,7 @@
        "missing": []
       },
       "vit_e": {
-       "value": 14.14919833333333,
+       "value": 7.817232499999999,
        "complete": false,
        "missing": [
         "red_lentils_dry",
@@ -10529,7 +10523,7 @@
        ]
       },
       "vit_b6": {
-       "value": 1.3441036666666666,
+       "value": 1.088183625,
        "complete": true,
        "missing": []
       },
@@ -10539,12 +10533,12 @@
        "missing": []
       },
       "folate": {
-       "value": 205.80599999999998,
+       "value": 205.72037500000002,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 845.8333333333334,
+     "portion_mass_g": 960,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -10553,39 +10547,39 @@
      "date": "2026-10-24",
      "totals": {
       "kcal": {
-       "value": 677.5672500000001,
+       "value": 731.3913749999999,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 25.29511,
+       "value": 34.100786666666664,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 28.479854999999997,
+       "value": 25.855004166666667,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 89.36035999999999,
+       "value": 100.24410749999998,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 24.628575000000005,
+       "value": 23.771929166666666,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 1108.5415,
+       "value": 703.1654333333333,
        "complete": false,
        "missing": [
         "beans_canned"
        ]
       },
       "vit_c": {
-       "value": 125.9003,
+       "value": 87.92279166666667,
        "complete": true,
        "missing": []
       },
@@ -10595,31 +10589,32 @@
        "missing": []
       },
       "vit_e": {
-       "value": 8.9644175,
+       "value": 7.002413333333334,
        "complete": false,
        "missing": [
-        "beans_canned"
+        "beans_canned",
+        "red_lentils_dry"
        ]
       },
       "vit_b6": {
-       "value": 0.7673812499999999,
+       "value": 0.8717520416666666,
        "complete": false,
        "missing": [
         "beans_canned"
        ]
       },
       "vit_b12": {
-       "value": 0,
+       "value": 0.012750000000000001,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 172.78725000000003,
+       "value": 288.07645833333333,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 735,
+     "portion_mass_g": 723.3333333333334,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -10628,37 +10623,39 @@
      "date": "2026-10-25",
      "totals": {
       "kcal": {
-       "value": 847.04825,
+       "value": 583.220125,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 27.66758625,
+       "value": 13.35909125,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 39.671685,
+       "value": 30.111337499999998,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 107.04379625000001,
+       "value": 75.50448125000001,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 24.9811375,
+       "value": 19.147475,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 225.0545,
-       "complete": true,
-       "missing": []
+       "value": 1835.1768875,
+       "complete": false,
+       "missing": [
+        "cherry_tomatoes"
+       ]
       },
       "vit_c": {
-       "value": 113.0464875,
+       "value": 126.4566375,
        "complete": true,
        "missing": []
       },
@@ -10668,30 +10665,31 @@
        "missing": []
       },
       "vit_e": {
-       "value": 7.065766249999999,
+       "value": 8.62496875,
        "complete": false,
        "missing": [
-        "red_lentils_dry",
-        "dill"
+        "coriander_ground"
        ]
       },
       "vit_b6": {
-       "value": 1.2742835,
-       "complete": true,
-       "missing": []
+       "value": 1.097825125,
+       "complete": false,
+       "missing": [
+        "coriander_ground"
+       ]
       },
       "vit_b12": {
-       "value": 0.012750000000000001,
+       "value": 0,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 316.584625,
+       "value": 222.51299999999998,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 847.5,
+     "portion_mass_g": 1072.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -10700,43 +10698,43 @@
      "date": "2026-10-26",
      "totals": {
       "kcal": {
-       "value": 827.8115,
+       "value": 903.3766666666667,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 40.29690416666667,
+       "value": 43.533999166666675,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 57.41486666666666,
+       "value": 58.796097499999995,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 54.97654,
+       "value": 66.80288083333332,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 19.410791666666668,
+       "value": 20.28071666666667,
        "complete": false,
        "missing": [
         "coconut_milk"
        ]
       },
       "vit_a": {
-       "value": 482.20383333333336,
+       "value": 453.8586833333333,
        "complete": false,
        "missing": [
+        "beans_canned",
         "tofu",
-        "garam_masala",
-        "beans_canned"
+        "garam_masala"
        ]
       },
       "vit_c": {
-       "value": 75.28071666666665,
+       "value": 101.158375,
        "complete": false,
        "missing": [
         "garam_masala"
@@ -10748,21 +10746,22 @@
        "missing": []
       },
       "vit_e": {
-       "value": 10.048975833333332,
+       "value": 12.256197499999999,
        "complete": false,
        "missing": [
+        "beans_canned",
+        "dill",
         "tofu",
         "coconut_milk",
-        "garam_masala",
-        "beans_canned"
+        "garam_masala"
        ]
       },
       "vit_b6": {
-       "value": 0.8826396666666666,
+       "value": 0.84011825,
        "complete": false,
        "missing": [
-        "garam_masala",
-        "beans_canned"
+        "beans_canned",
+        "garam_masala"
        ]
       },
       "vit_b12": {
@@ -10771,14 +10770,14 @@
        "missing": []
       },
       "folate": {
-       "value": 176.16783333333333,
+       "value": 180.62158333333338,
        "complete": false,
        "missing": [
         "garam_masala"
        ]
       }
      },
-     "portion_mass_g": 923.3333333333334,
+     "portion_mass_g": 850,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -10787,37 +10786,37 @@
      "date": "2026-10-27",
      "totals": {
       "kcal": {
-       "value": 626.8394999999999,
+       "value": 878.1339166666666,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 22.775824999999998,
+       "value": 25.710101666666663,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 21.34142,
+       "value": 39.808546666666665,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 92.519905,
+       "value": 111.07808499999999,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 26.000449999999997,
+       "value": 27.607975,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 195.7985,
+       "value": 657.6685333333332,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 138.4224,
+       "value": 97.04388333333333,
        "complete": true,
        "missing": []
       },
@@ -10827,12 +10826,14 @@
        "missing": []
       },
       "vit_e": {
-       "value": 6.123215,
-       "complete": true,
-       "missing": []
+       "value": 15.387893333333333,
+       "complete": false,
+       "missing": [
+        "dill"
+       ]
       },
       "vit_b6": {
-       "value": 0.6681335,
+       "value": 1.1489364166666665,
        "complete": true,
        "missing": []
       },
@@ -10842,12 +10843,12 @@
        "missing": []
       },
       "folate": {
-       "value": 124.7375,
+       "value": 162.8455,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 900,
+     "portion_mass_g": 628.3333333333334,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -10856,75 +10857,82 @@
      "date": "2026-10-28",
      "totals": {
       "kcal": {
-       "value": 586.7737083333334,
+       "value": 760.2648750000001,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 19.928197500000003,
+       "value": 24.269345,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 26.142230833333336,
+       "value": 41.58572875,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 78.53483833333334,
+       "value": 84.13576625000002,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 20.0473125,
+       "value": 25.068125000000002,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 787.5275833333335,
+       "value": 1779.5051500000002,
        "complete": false,
        "missing": [
-        "beans_canned"
+        "beans_canned",
+        "wine_vinegar"
        ]
       },
       "vit_c": {
-       "value": 147.61866666666668,
+       "value": 97.62653749999998,
        "complete": true,
        "missing": []
       },
       "vit_d": {
        "value": 0,
-       "complete": true,
-       "missing": []
+       "complete": false,
+       "missing": [
+        "wine_vinegar"
+       ]
       },
       "vit_e": {
-       "value": 9.7421375,
+       "value": 13.36943,
        "complete": false,
        "missing": [
         "beans_canned",
-        "coriander_ground"
+        "wine_vinegar"
        ]
       },
       "vit_b6": {
-       "value": 0.6568376249999999,
+       "value": 1.0213277499999998,
        "complete": false,
        "missing": [
         "beans_canned",
-        "coriander_ground"
+        "wine_vinegar"
        ]
       },
       "vit_b12": {
        "value": 0,
-       "complete": true,
-       "missing": []
+       "complete": false,
+       "missing": [
+        "wine_vinegar"
+       ]
       },
       "folate": {
-       "value": 170.08870833333333,
-       "complete": true,
-       "missing": []
+       "value": 281.62975000000006,
+       "complete": false,
+       "missing": [
+        "wine_vinegar"
+       ]
       }
      },
-     "portion_mass_g": 900,
+     "portion_mass_g": 800,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -10933,81 +10941,70 @@
      "date": "2026-10-29",
      "totals": {
       "kcal": {
-       "value": 829.8122916666666,
+       "value": 656.1579166666666,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 33.87202416666666,
+       "value": 20.85283666666666,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 37.46466791666666,
+       "value": 28.126811666666665,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 98.04019875,
+       "value": 87.27880499999999,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 26.743241666666663,
+       "value": 13.543491666666664,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 806.3966250000001,
+       "value": 323.21411666666665,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 57.87260416666666,
+       "value": 65.17066666666666,
        "complete": true,
        "missing": []
       },
       "vit_d": {
        "value": 0,
-       "complete": false,
-       "missing": [
-        "wine_vinegar"
-       ]
+       "complete": true,
+       "missing": []
       },
       "vit_e": {
-       "value": 12.219786666666666,
+       "value": 13.969036666666668,
        "complete": false,
        "missing": [
         "bay_leaf",
-        "beans_white_canned",
-        "wine_vinegar"
+        "dill"
        ]
       },
       "vit_b6": {
-       "value": 1.0016235,
-       "complete": false,
-       "missing": [
-        "beans_white_canned",
-        "wine_vinegar"
-       ]
+       "value": 1.46030975,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
-       "value": 0,
-       "complete": false,
-       "missing": [
-        "wine_vinegar"
-       ]
+       "value": 0.012750000000000001,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 418.11749999999995,
-       "complete": false,
-       "missing": [
-        "beans_white_canned",
-        "wine_vinegar"
-       ]
+       "value": 289.11249999999995,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 921.6666666666667,
+     "portion_mass_g": 682.9166666666667,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -11016,32 +11013,32 @@
      "date": "2026-10-30",
      "totals": {
       "kcal": {
-       "value": 613.5856666666666,
+       "value": 628.9795833333333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 17.39091666666667,
+       "value": 24.20857,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 27.843158749999997,
+       "value": 25.836902083333335,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 79.39442958333333,
+       "value": 84.20771458333334,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 16.414316666666664,
+       "value": 22.722775,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 165.69625000000002,
+       "value": 234.17756666666662,
        "complete": false,
        "missing": [
         "beans_canned",
@@ -11049,7 +11046,7 @@
        ]
       },
       "vit_c": {
-       "value": 84.21119999999999,
+       "value": 135.78806666666668,
        "complete": false,
        "missing": [
         "garam_masala"
@@ -11061,17 +11058,16 @@
        "missing": []
       },
       "vit_e": {
-       "value": 9.662685000000002,
+       "value": 10.66601,
        "complete": false,
        "missing": [
         "beans_canned",
         "garam_masala",
-        "coriander_ground",
-        "dill"
+        "coriander_ground"
        ]
       },
       "vit_b6": {
-       "value": 0.97675625,
+       "value": 0.5373064999999999,
        "complete": false,
        "missing": [
         "beans_canned",
@@ -11080,19 +11076,19 @@
        ]
       },
       "vit_b12": {
-       "value": 0.012750000000000001,
+       "value": 0,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 116.06445833333333,
+       "value": 154.43595833333336,
        "complete": false,
        "missing": [
         "garam_masala"
        ]
       }
      },
-     "portion_mass_g": 700,
+     "portion_mass_g": 850,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -11101,32 +11097,104 @@
      "date": "2026-10-31",
      "totals": {
       "kcal": {
-       "value": 578.853875,
+       "value": 548.6837499999999,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 20.612132499999998,
+       "value": 19.33791,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 31.888341249999996,
+       "value": 16.85284,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 62.555516250000004,
+       "value": 85.76878249999999,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 13.4748375,
+       "value": 21.8704,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 101.69550000000001,
+       "value": 771.4371000000001,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 139.43680000000003,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 3.2360599999999997,
+       "complete": false,
+       "missing": [
+        "dill",
+        "bay_leaf"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.7456765000000001,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 0.0063750000000000005,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 136.42775,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 1100,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-11-01",
+     "totals": {
+      "kcal": {
+       "value": 505.25287499999996,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 22.85013833333333,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 20.02200125,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 67.18248041666668,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 14.360704166666668,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 1215.5942666666667,
        "complete": false,
        "missing": [
         "tofu",
@@ -11135,7 +11203,7 @@
        ]
       },
       "vit_c": {
-       "value": 154.925875,
+       "value": 69.0589,
        "complete": false,
        "missing": [
         "nori",
@@ -11150,7 +11218,7 @@
        ]
       },
       "vit_e": {
-       "value": 9.430395,
+       "value": 6.116423333333333,
        "complete": false,
        "missing": [
         "tofu",
@@ -11160,7 +11228,7 @@
        ]
       },
       "vit_b6": {
-       "value": 1.066406625,
+       "value": 0.8247022083333333,
        "complete": false,
        "missing": [
         "nori",
@@ -11176,7 +11244,7 @@
        ]
       },
       "folate": {
-       "value": 161.329,
+       "value": 118.69283333333334,
        "complete": false,
        "missing": [
         "nori",
@@ -11184,89 +11252,7 @@
        ]
       }
      },
-     "portion_mass_g": 712.5,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
-     "date": "2026-11-01",
-     "totals": {
-      "kcal": {
-       "value": 525.656375,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 14.67745,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 21.76086625,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 74.09649625,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 17.890462499999998,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 640.38125,
-       "complete": false,
-       "missing": [
-        "garam_masala"
-       ]
-      },
-      "vit_c": {
-       "value": 132.51934999999997,
-       "complete": false,
-       "missing": [
-        "garam_masala"
-       ]
-      },
-      "vit_d": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 8.348675,
-       "complete": false,
-       "missing": [
-        "dill",
-        "coriander_ground",
-        "garam_masala"
-       ]
-      },
-      "vit_b6": {
-       "value": 1.129504625,
-       "complete": false,
-       "missing": [
-        "coriander_ground",
-        "garam_masala"
-       ]
-      },
-      "vit_b12": {
-       "value": 0.0063750000000000005,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 232.23675,
-       "complete": false,
-       "missing": [
-        "garam_masala"
-       ]
-      }
-     },
-     "portion_mass_g": 970,
+     "portion_mass_g": 816.6666666666666,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -11275,41 +11261,44 @@
      "date": "2026-11-02",
      "totals": {
       "kcal": {
-       "value": 670.6186666666665,
+       "value": 575.2427916666666,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 24.595531666666666,
+       "value": 14.615461666666665,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 22.39393666666667,
+       "value": 26.783815416666663,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 101.45032833333332,
+       "value": 76.64435208333333,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 25.0368,
+       "value": 17.4243375,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 295.9205,
+       "value": 607.0645333333334,
        "complete": false,
        "missing": [
+        "garam_masala",
         "beans_canned"
        ]
       },
       "vit_c": {
-       "value": 57.67198333333334,
-       "complete": true,
-       "missing": []
+       "value": 175.39325833333334,
+       "complete": false,
+       "missing": [
+        "garam_masala"
+       ]
       },
       "vit_d": {
        "value": 0,
@@ -11317,18 +11306,22 @@
        "missing": []
       },
       "vit_e": {
-       "value": 7.226273333333333,
+       "value": 11.501820833333333,
        "complete": false,
        "missing": [
-        "bay_leaf",
+        "coriander_ground",
+        "garam_masala",
+        "dill",
         "beans_canned",
-        "dill"
+        "bay_leaf"
        ]
       },
       "vit_b6": {
-       "value": 0.7859791666666665,
+       "value": 1.2284885416666667,
        "complete": false,
        "missing": [
+        "coriander_ground",
+        "garam_masala",
         "beans_canned"
        ]
       },
@@ -11338,12 +11331,14 @@
        "missing": []
       },
       "folate": {
-       "value": 167.30849999999998,
-       "complete": true,
-       "missing": []
+       "value": 278.9095,
+       "complete": false,
+       "missing": [
+        "garam_masala"
+       ]
       }
      },
-     "portion_mass_g": 983.3333333333333,
+     "portion_mass_g": 870.8333333333333,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -11352,39 +11347,40 @@
      "date": "2026-11-03",
      "totals": {
       "kcal": {
-       "value": 246.17024999999998,
+       "value": 387.30899999999997,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 5.725211666666666,
+       "value": 13.550236666666667,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 14.19733,
+       "value": 18.021682499999997,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 27.289031666666663,
+       "value": 46.218379166666665,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 7.932308333333332,
+       "value": 12.399308333333332,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 262.48316666666665,
+       "value": 346.19233333333335,
        "complete": false,
        "missing": [
-        "porcini_dried"
+        "porcini_dried",
+        "wine_vinegar"
        ]
       },
       "vit_c": {
-       "value": 61.36431666666667,
+       "value": 48.18259166666667,
        "complete": false,
        "missing": [
         "porcini_dried"
@@ -11394,41 +11390,49 @@
        "value": 0.06333333333333332,
        "complete": false,
        "missing": [
-        "porcini_dried"
+        "porcini_dried",
+        "wine_vinegar"
        ]
       },
       "vit_e": {
-       "value": 6.137499999999999,
+       "value": 5.0848625,
        "complete": false,
        "missing": [
         "porcini_dried",
         "bay_leaf",
-        "dill"
+        "dill",
+        "beans_white_canned",
+        "wine_vinegar"
        ]
       },
       "vit_b6": {
-       "value": 0.49835774999999993,
+       "value": 0.46097424999999986,
        "complete": false,
        "missing": [
-        "porcini_dried"
+        "porcini_dried",
+        "beans_white_canned",
+        "wine_vinegar"
        ]
       },
       "vit_b12": {
        "value": 0.012666666666666668,
        "complete": false,
        "missing": [
-        "porcini_dried"
+        "porcini_dried",
+        "wine_vinegar"
        ]
       },
       "folate": {
-       "value": 81.939,
+       "value": 63.00675,
        "complete": false,
        "missing": [
-        "porcini_dried"
+        "porcini_dried",
+        "beans_white_canned",
+        "wine_vinegar"
        ]
       }
      },
-     "portion_mass_g": 616.6666666666667,
+     "portion_mass_g": 696.6666666666667,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -11437,32 +11441,32 @@
      "date": "2026-11-04",
      "totals": {
       "kcal": {
-       "value": 329.95349999999996,
+       "value": 251.57249999999996,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 8.83269,
+       "value": 6.767149999999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 17.081043333333334,
+       "value": 15.797963333333332,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 41.64402,
+       "value": 25.088079999999994,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 8.92425,
+       "value": 6.355149999999999,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 20.119333333333337,
+       "value": 172.26070000000004,
        "complete": false,
        "missing": [
         "porcini_dried",
@@ -11470,7 +11474,7 @@
        ]
       },
       "vit_c": {
-       "value": 25.6524,
+       "value": 41.001,
        "complete": false,
        "missing": [
         "porcini_dried",
@@ -11486,16 +11490,17 @@
        ]
       },
       "vit_e": {
-       "value": 5.146086666666665,
+       "value": 6.848206666666666,
        "complete": false,
        "missing": [
         "porcini_dried",
         "marinated_champignons",
-        "bay_leaf"
+        "bay_leaf",
+        "dill"
        ]
       },
       "vit_b6": {
-       "value": 0.36545300000000003,
+       "value": 0.375074,
        "complete": false,
        "missing": [
         "porcini_dried",
@@ -11511,7 +11516,7 @@
        ]
       },
       "folate": {
-       "value": 43.153333333333336,
+       "value": 56.31133333333334,
        "complete": false,
        "missing": [
         "porcini_dried",
@@ -11519,153 +11524,13 @@
        ]
       }
      },
-     "portion_mass_g": 673.3333333333333,
+     "portion_mass_g": 723.3333333333333,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
     },
     {
      "date": "2026-11-05",
-     "totals": {
-      "kcal": {
-       "value": 106.5295,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 2.6596,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 7.0453,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 9.631,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 3.39725,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 22.634999999999998,
-       "complete": true,
-       "missing": []
-      },
-      "vit_c": {
-       "value": 33.280499999999996,
-       "complete": true,
-       "missing": []
-      },
-      "vit_d": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 2.9242399999999997,
-       "complete": false,
-       "missing": [
-        "dill"
-       ]
-      },
-      "vit_b6": {
-       "value": 0.12936250000000005,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b12": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 51.92,
-       "complete": true,
-       "missing": []
-      }
-     },
-     "portion_mass_g": 162.5,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
-     "date": "2026-11-06",
-     "totals": {
-      "kcal": {
-       "value": 98.90199999999999,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 1.51335,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 7.01905,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 8.9788,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 4.484500000000001,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 3.8,
-       "complete": true,
-       "missing": []
-      },
-      "vit_c": {
-       "value": 22.285999999999998,
-       "complete": true,
-       "missing": []
-      },
-      "vit_d": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 3.1242500000000004,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b6": {
-       "value": 0.197945,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b12": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 37.255,
-       "complete": true,
-       "missing": []
-      }
-     },
-     "portion_mass_g": 150,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
-     "date": "2026-11-07",
      "totals": {
       "kcal": {
        "value": 96.67199999999998,
@@ -11693,7 +11558,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 209.18066666666667,
+       "value": 418.1993333333333,
        "complete": true,
        "missing": []
       },
@@ -11736,40 +11601,40 @@
      "energy_status": "no_target"
     },
     {
-     "date": "2026-11-08",
+     "date": "2026-11-06",
      "totals": {
       "kcal": {
-       "value": 115.854,
+       "value": 195.45000000000002,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 3.1688533333333333,
+       "value": 4.4735000000000005,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 3.50708,
+       "value": 11.647499999999999,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 21.224186666666668,
+       "value": 22.504,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 2.884266666666667,
+       "value": 4.08,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 495.86733333333336,
+       "value": 66.025,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 13.985000000000001,
+       "value": 0.37,
        "complete": true,
        "missing": []
       },
@@ -11779,12 +11644,12 @@
        "missing": []
       },
       "vit_e": {
-       "value": 1.1477533333333334,
+       "value": 3.3470000000000004,
        "complete": true,
        "missing": []
       },
       "vit_b6": {
-       "value": 0.11354533333333333,
+       "value": 0.1196,
        "complete": true,
        "missing": []
       },
@@ -11794,12 +11659,152 @@
        "missing": []
       },
       "folate": {
-       "value": 22.019333333333336,
+       "value": 16.3,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 166.66666666666666,
+     "portion_mass_g": 50,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-11-07",
+     "totals": {
+      "kcal": {
+       "value": 98.90199999999999,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 1.51335,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 7.01905,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 8.9788,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 4.484500000000001,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 7.4115,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 22.285999999999998,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 3.1242500000000004,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b6": {
+       "value": 0.197945,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 37.255,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 150,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-11-08",
+     "totals": {
+      "kcal": {
+       "value": 106.5295,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 2.6596,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 7.0453,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 9.631,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 3.39725,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 45.063500000000005,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 33.280499999999996,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 2.9242399999999997,
+       "complete": false,
+       "missing": [
+        "dill"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.12936250000000005,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 51.92,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 162.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -11808,37 +11813,37 @@
      "date": "2026-11-09",
      "totals": {
       "kcal": {
-       "value": 99.667,
+       "value": 178.048,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 1.8999000000000001,
+       "value": 3.9654400000000005,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 7.2038,
+       "value": 8.48688,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 8.8887,
+       "value": 25.444640000000003,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 2.0324999999999998,
+       "value": 4.6016,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 70.95,
+       "value": 8.553600000000001,
        "complete": true,
        "missing": []
       },
       "vit_c": {
-       "value": 22.634999999999998,
+       "value": 7.2863999999999995,
        "complete": true,
        "missing": []
       },
@@ -11848,14 +11853,12 @@
        "missing": []
       },
       "vit_e": {
-       "value": 3.44324,
-       "complete": false,
-       "missing": [
-        "dill"
-       ]
+       "value": 1.74112,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 0.145125,
+       "value": 0.135504,
        "complete": true,
        "missing": []
       },
@@ -11865,12 +11868,12 @@
        "missing": []
       },
       "folate": {
-       "value": 31.830000000000002,
+       "value": 18.672,
        "complete": true,
        "missing": []
       }
      },
-     "portion_mass_g": 240,
+     "portion_mass_g": 190,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -11904,7 +11907,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 33.06666666666666,
+       "value": 66.48453333333333,
        "complete": true,
        "missing": []
       },
@@ -11973,7 +11976,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 8.293666666666667,
+       "value": 17.530199999999997,
        "complete": true,
        "missing": []
       },
@@ -12042,7 +12045,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 0,
+       "value": 0.012000000000000002,
        "complete": false,
        "missing": [
         "edamame_frozen"
@@ -12119,7 +12122,7 @@
        ]
       },
       "vit_a": {
-       "value": 3.51,
+       "value": 7.488,
        "complete": true,
        "missing": []
       },
@@ -12190,7 +12193,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 21.468749999999996,
+       "value": 43.50487499999999,
        "complete": true,
        "missing": []
       },
@@ -12236,6 +12239,79 @@
      "date": "2026-11-15",
      "totals": {
       "kcal": {
+       "value": 116.46008333333333,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 0.8321616666666667,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 9.302689999999998,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 8.342643333333331,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 2.1471083333333327,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 1176.8132999999998,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 4.907933333333332,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 4.195938333333332,
+       "complete": false,
+       "missing": [
+        "coriander_ground"
+       ]
+      },
+      "vit_b6": {
+       "value": 0.12442158333333332,
+       "complete": false,
+       "missing": [
+        "coriander_ground"
+       ]
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 13.458916666666664,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 100,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-11-16",
+     "totals": {
+      "kcal": {
        "value": 90.9,
        "complete": true,
        "missing": []
@@ -12261,7 +12337,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 6.51,
+       "value": 13.104,
        "complete": true,
        "missing": []
       },
@@ -12304,7 +12380,7 @@
      "energy_status": "no_target"
     },
     {
-     "date": "2026-11-16",
+     "date": "2026-11-17",
      "totals": {
       "kcal": {
        "value": 308.296875,
@@ -12332,7 +12408,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 0.375,
+       "value": 0.75,
        "complete": true,
        "missing": []
       },
@@ -12373,75 +12449,6 @@
      "energy_status": "no_target"
     },
     {
-     "date": "2026-11-17",
-     "totals": {
-      "kcal": {
-       "value": 99.99525000000001,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 0.23479500000000003,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 0.142515,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 26.17917,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 1.9743,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 2.4022500000000004,
-       "complete": true,
-       "missing": []
-      },
-      "vit_c": {
-       "value": 5.03445,
-       "complete": true,
-       "missing": []
-      },
-      "vit_d": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 0.1464975,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b6": {
-       "value": 0.034572,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b12": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 2.66475,
-       "complete": true,
-       "missing": []
-      }
-     },
-     "portion_mass_g": 375,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
      "date": "2026-11-18",
      "totals": {
       "kcal": {
@@ -12470,7 +12477,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1.875,
+       "value": 3.9375,
        "complete": true,
        "missing": []
       },
@@ -12514,6 +12521,75 @@
      "date": "2026-11-19",
      "totals": {
       "kcal": {
+       "value": 99.99525000000001,
+       "complete": true,
+       "missing": []
+      },
+      "protein": {
+       "value": 0.23479500000000003,
+       "complete": true,
+       "missing": []
+      },
+      "fat": {
+       "value": 0.142515,
+       "complete": true,
+       "missing": []
+      },
+      "carbs": {
+       "value": 26.17917,
+       "complete": true,
+       "missing": []
+      },
+      "fiber": {
+       "value": 1.9743,
+       "complete": true,
+       "missing": []
+      },
+      "vit_a": {
+       "value": 4.334550000000001,
+       "complete": true,
+       "missing": []
+      },
+      "vit_c": {
+       "value": 5.03445,
+       "complete": true,
+       "missing": []
+      },
+      "vit_d": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "vit_e": {
+       "value": 0.1464975,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b6": {
+       "value": 0.034572,
+       "complete": true,
+       "missing": []
+      },
+      "vit_b12": {
+       "value": 0,
+       "complete": true,
+       "missing": []
+      },
+      "folate": {
+       "value": 2.66475,
+       "complete": true,
+       "missing": []
+      }
+     },
+     "portion_mass_g": 375,
+     "energy_target": null,
+     "energy_deviation_pct": null,
+     "energy_status": "no_target"
+    },
+    {
+     "date": "2026-11-20",
+     "totals": {
+      "kcal": {
        "value": 297.57,
        "complete": true,
        "missing": []
@@ -12539,7 +12615,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 0.9375,
+       "value": 2.11175,
        "complete": true,
        "missing": []
       },
@@ -12580,75 +12656,6 @@
      "energy_status": "no_target"
     },
     {
-     "date": "2026-11-20",
-     "totals": {
-      "kcal": {
-       "value": 145.24,
-       "complete": true,
-       "missing": []
-      },
-      "protein": {
-       "value": 0.616,
-       "complete": true,
-       "missing": []
-      },
-      "fat": {
-       "value": 0.16799999999999998,
-       "complete": true,
-       "missing": []
-      },
-      "carbs": {
-       "value": 38.54586666666667,
-       "complete": true,
-       "missing": []
-      },
-      "fiber": {
-       "value": 1.5679999999999998,
-       "complete": true,
-       "missing": []
-      },
-      "vit_a": {
-       "value": 0.5599999999999999,
-       "complete": true,
-       "missing": []
-      },
-      "vit_c": {
-       "value": 29.68,
-       "complete": true,
-       "missing": []
-      },
-      "vit_d": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 0.08399999999999999,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b6": {
-       "value": 0.04479999999999999,
-       "complete": true,
-       "missing": []
-      },
-      "vit_b12": {
-       "value": 0,
-       "complete": true,
-       "missing": []
-      },
-      "folate": {
-       "value": 6.16,
-       "complete": true,
-       "missing": []
-      }
-     },
-     "portion_mass_g": 121.66666666666667,
-     "energy_target": null,
-     "energy_deviation_pct": null,
-     "energy_status": "no_target"
-    },
-    {
      "date": "2026-11-21",
      "totals": {
       "kcal": {
@@ -12677,7 +12684,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1.536,
+       "value": 3.990075,
        "complete": false,
        "missing": [
         "star_anise"
@@ -12731,44 +12738,39 @@
      "date": "2026-11-22",
      "totals": {
       "kcal": {
-       "value": 106.45625,
+       "value": 145.24,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 1.0123499999999999,
+       "value": 0.616,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 2.763675,
+       "value": 0.16799999999999998,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 20.161000000000005,
+       "value": 38.54586666666667,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 1.92575,
+       "value": 1.5679999999999998,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 4.015,
-       "complete": false,
-       "missing": [
-        "sea_buckthorn_frozen",
-        "star_anise"
-       ]
+       "value": 1.232,
+       "complete": true,
+       "missing": []
       },
       "vit_c": {
-       "value": 119.49675,
-       "complete": false,
-       "missing": [
-        "star_anise"
-       ]
+       "value": 29.68,
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
        "value": 0,
@@ -12776,19 +12778,14 @@
        "missing": []
       },
       "vit_e": {
-       "value": 2.5657,
-       "complete": false,
-       "missing": [
-        "star_anise"
-       ]
+       "value": 0.08399999999999999,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 0.025679999999999998,
-       "complete": false,
-       "missing": [
-        "sea_buckthorn_frozen",
-        "star_anise"
-       ]
+       "value": 0.04479999999999999,
+       "complete": true,
+       "missing": []
       },
       "vit_b12": {
        "value": 0,
@@ -12796,15 +12793,12 @@
        "missing": []
       },
       "folate": {
-       "value": 11.264999999999999,
-       "complete": false,
-       "missing": [
-        "sea_buckthorn_frozen",
-        "star_anise"
-       ]
+       "value": 6.16,
+       "complete": true,
+       "missing": []
       }
      },
-     "portion_mass_g": 250,
+     "portion_mass_g": 121.66666666666667,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -12812,50 +12806,51 @@
    ],
    "period": {
     "kcal": {
-     "value": 14048.929599999994,
+     "value": 14058.933433333332,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 444.85613808333346,
+     "value": 444.67594975000014,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 680.6613783333335,
+     "value": 687.2003933333334,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 1756.0079555833331,
+     "value": 1744.189598916667,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 404.41463916666663,
+     "value": 404.63599750000003,
      "complete": false,
      "missing": [
       "coconut_milk"
      ]
     },
     "vit_a": {
-     "value": 8867.516958333335,
+     "value": 18761.480950833335,
      "complete": false,
      "missing": [
       "tofu",
       "chia_seeds",
       "beans_canned",
+      "cherry_tomatoes",
       "garam_masala",
+      "wine_vinegar",
       "nori",
       "porcini_dried",
       "marinated_champignons",
       "edamame_frozen",
-      "star_anise",
-      "sea_buckthorn_frozen"
+      "star_anise"
      ]
     },
     "vit_c": {
-     "value": 2718.6607366666667,
+     "value": 2604.0719200000003,
      "complete": false,
      "missing": [
       "garam_masala",
@@ -12878,7 +12873,7 @@
      ]
     },
     "vit_e": {
-     "value": 203.48857074999995,
+     "value": 205.11880908333336,
      "complete": false,
      "missing": [
       "tofu",
@@ -12887,32 +12882,31 @@
       "red_lentils_dry",
       "dill",
       "beans_canned",
-      "garam_masala",
       "coriander_ground",
-      "beans_white_canned",
+      "garam_masala",
       "wine_vinegar",
       "nori",
       "porcini_dried",
+      "beans_white_canned",
       "marinated_champignons",
       "mint",
       "star_anise"
      ]
     },
     "vit_b6": {
-     "value": 19.840263916666668,
+     "value": 19.9390055,
      "complete": false,
      "missing": [
       "chia_seeds",
       "beans_canned",
-      "garam_masala",
       "coriander_ground",
-      "beans_white_canned",
+      "garam_masala",
       "wine_vinegar",
       "nori",
       "porcini_dried",
+      "beans_white_canned",
       "marinated_champignons",
-      "star_anise",
-      "sea_buckthorn_frozen"
+      "star_anise"
      ]
     },
     "vit_b12": {
@@ -12927,43 +12921,43 @@
      ]
     },
     "folate": {
-     "value": 4570.280383333334,
+     "value": 4572.4743,
      "complete": false,
      "missing": [
       "garam_masala",
-      "beans_white_canned",
       "wine_vinegar",
       "nori",
       "porcini_dried",
+      "beans_white_canned",
       "marinated_champignons",
-      "star_anise",
-      "sea_buckthorn_frozen"
+      "star_anise"
      ]
     }
    },
    "vitamins": [
     {
      "nutrient": "vit_a",
-     "status": "incompatible_form",
-     "daily_target": null,
-     "period_target": null,
-     "period_value": 8867.516958333335,
+     "status": "incomplete_data",
+     "daily_target": 800,
+     "period_target": 28000,
+     "period_value": 18761.480950833335,
      "coverage_pct": null,
-     "lower_bound_pct": null,
+     "lower_bound_pct": 67.00528911011905,
      "data_complete": false,
      "missing_products": [
       "beans_canned",
+      "cherry_tomatoes",
       "chia_seeds",
       "edamame_frozen",
       "garam_masala",
       "marinated_champignons",
       "nori",
       "porcini_dried",
-      "sea_buckthorn_frozen",
       "star_anise",
-      "tofu"
+      "tofu",
+      "wine_vinegar"
      ],
-     "message": "В МР витамин A выражен в ретиноловых эквивалентах (РЭ): 1 мкг РЭ = 1 мкг ретинола = 6 мкг β-каротина = 12 мкг других каротиноидов (приложение 2). Данные продуктов Foodo — в RAE (12 и 24 мкг соответственно), поэтому цель не сравнивается с данными.",
+     "message": "Данные о витамине известны не для всех продуктов: показана нижняя граница.",
      "set_status": "verified"
     },
     {
@@ -12971,9 +12965,9 @@
      "status": "incomplete_data",
      "daily_target": 100,
      "period_target": 3500,
-     "period_value": 2718.6607366666667,
+     "period_value": 2604.0719200000003,
      "coverage_pct": null,
-     "lower_bound_pct": 77.67602104761905,
+     "lower_bound_pct": 74.40205485714286,
      "data_complete": false,
      "missing_products": [
       "garam_masala",
@@ -13010,9 +13004,9 @@
      "status": "incomplete_data",
      "daily_target": 15,
      "period_target": 525,
-     "period_value": 203.48857074999995,
+     "period_value": 205.11880908333336,
      "coverage_pct": null,
-     "lower_bound_pct": 38.759727761904756,
+     "lower_bound_pct": 39.07024934920636,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
@@ -13039,9 +13033,9 @@
      "status": "incomplete_data",
      "daily_target": 2,
      "period_target": 70,
-     "period_value": 19.840263916666668,
+     "period_value": 19.9390055,
      "coverage_pct": null,
-     "lower_bound_pct": 28.34323416666667,
+     "lower_bound_pct": 28.48429357142857,
      "data_complete": false,
      "missing_products": [
       "beans_canned",
@@ -13052,7 +13046,6 @@
       "marinated_champignons",
       "nori",
       "porcini_dried",
-      "sea_buckthorn_frozen",
       "star_anise",
       "wine_vinegar"
      ],
@@ -13083,9 +13076,9 @@
      "status": "incomplete_data",
      "daily_target": 400,
      "period_target": 14000,
-     "period_value": 4570.280383333334,
+     "period_value": 4572.4743,
      "coverage_pct": null,
-     "lower_bound_pct": 32.64485988095238,
+     "lower_bound_pct": 32.66053071428571,
      "data_complete": false,
      "missing_products": [
       "beans_white_canned",
@@ -13093,7 +13086,6 @@
       "marinated_champignons",
       "nori",
       "porcini_dried",
-      "sea_buckthorn_frozen",
       "star_anise",
       "wine_vinegar"
      ],

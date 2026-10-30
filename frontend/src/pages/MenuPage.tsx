@@ -531,7 +531,7 @@ function VitaminPanel({ report, members, who, enabled, targetSet }: { report: Me
               </table>
             </div>
           ))}
-          <p className="muted tiny">Данные о витаминах в стартовой базе оценочные. Это не медицинская оценка и не назначение добавок.</p>
+          <p className="muted tiny">Витамины считаются по USDA FoodData Central там, где продукт с ним сопоставлен; у части продуктов значения оценочные или неизвестны — тогда покрытие показано как «не менее». Это не медицинская оценка и не назначение добавок.</p>
         </div>
       )}
     </section>

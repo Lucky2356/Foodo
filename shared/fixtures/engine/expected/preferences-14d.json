@@ -7257,9 +7257,13 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1049.1158750000002,
-       "complete": true,
-       "missing": []
+       "value": 1731.9318150000001,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "blueberries_frozen",
+        "wine_vinegar"
+       ]
       },
       "vit_c": {
        "value": 144.8993625,
@@ -7338,9 +7342,10 @@
        "missing": []
       },
       "vit_a": {
-       "value": 813.24725,
+       "value": 1387.94969,
        "complete": false,
        "missing": [
+        "cottage_cheese",
         "italian_herbs"
        ]
       },
@@ -7422,7 +7427,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1120.7605,
+       "value": 1888.0954299999999,
        "complete": false,
        "missing": [
         "beans_canned"
@@ -7498,9 +7503,13 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1375.721875,
-       "complete": true,
-       "missing": []
+       "value": 2220.434655,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "wine_vinegar",
+        "cottage_cheese"
+       ]
       },
       "vit_c": {
        "value": 178.8055625,
@@ -7581,7 +7590,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 582.4190000000001,
+       "value": 928.3583733333334,
        "complete": true,
        "missing": []
       },
@@ -7653,10 +7662,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 479.19624999999996,
+       "value": 817.4732000000001,
        "complete": false,
        "missing": [
-        "tofu"
+        "tofu",
+        "wine_vinegar"
        ]
       },
       "vit_c": {
@@ -7738,9 +7748,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 690.0434166666666,
-       "complete": true,
-       "missing": []
+       "value": 904.6558483333333,
+       "complete": false,
+       "missing": [
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 166.43295,
@@ -7814,7 +7826,7 @@
        ]
       },
       "vit_a": {
-       "value": 580.509,
+       "value": 803.86269,
        "complete": false,
        "missing": [
         "rice_round_dry",
@@ -7898,11 +7910,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 460.01424999999995,
+       "value": 767.79325,
        "complete": false,
        "missing": [
         "tofu",
-        "beans_canned"
+        "beans_canned",
+        "cottage_cheese"
        ]
       },
       "vit_c": {
@@ -7982,9 +7995,10 @@
        ]
       },
       "vit_a": {
-       "value": 738.1684999999999,
+       "value": 998.15098,
        "complete": false,
        "missing": [
+        "cheese_hard",
         "rice_arborio_dry",
         "brynza"
        ]
@@ -8068,9 +8082,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1070.058,
-       "complete": true,
-       "missing": []
+       "value": 1511.9816299999998,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "cottage_cheese"
+       ]
       },
       "vit_c": {
        "value": 103.44495,
@@ -8143,7 +8160,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 652.873,
+       "value": 1024.8909600000002,
        "complete": true,
        "missing": []
       },
@@ -8218,12 +8235,13 @@
        ]
       },
       "vit_a": {
-       "value": 652.8742500000001,
+       "value": 933.56104,
        "complete": false,
        "missing": [
         "tofu",
         "garam_masala",
-        "brynza"
+        "brynza",
+        "cottage_cheese"
        ]
       },
       "vit_c": {
@@ -8313,10 +8331,11 @@
        ]
       },
       "vit_a": {
-       "value": 1194.70425,
+       "value": 1915.82094,
        "complete": false,
        "missing": [
-        "rice_arborio_dry"
+        "rice_arborio_dry",
+        "cheese_hard"
        ]
       },
       "vit_c": {
@@ -8392,11 +8411,15 @@
      ]
     },
     "vit_a": {
-     "value": 11459.705416666668,
+     "value": 17834.960501666672,
      "complete": false,
      "missing": [
+      "cottage_cheese",
+      "blueberries_frozen",
+      "wine_vinegar",
       "italian_herbs",
       "beans_canned",
+      "cheese_hard",
       "tofu",
       "rice_round_dry",
       "rice_arborio_dry",
@@ -8486,18 +8509,22 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 11459.705416666668,
+     "period_value": 17834.960501666672,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beans_canned",
+      "blueberries_frozen",
       "brynza",
+      "cheese_hard",
+      "cottage_cheese",
       "garam_masala",
       "italian_herbs",
       "rice_arborio_dry",
       "rice_round_dry",
-      "tofu"
+      "tofu",
+      "wine_vinegar"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -8660,9 +8687,13 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1049.1158750000002,
-       "complete": true,
-       "missing": []
+       "value": 1731.9318150000001,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "blueberries_frozen",
+        "wine_vinegar"
+       ]
       },
       "vit_c": {
        "value": 144.8993625,
@@ -8741,9 +8772,10 @@
        "missing": []
       },
       "vit_a": {
-       "value": 813.24725,
+       "value": 1387.94969,
        "complete": false,
        "missing": [
+        "cottage_cheese",
         "italian_herbs"
        ]
       },
@@ -8825,7 +8857,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1120.7605,
+       "value": 1888.0954299999999,
        "complete": false,
        "missing": [
         "beans_canned"
@@ -8901,9 +8933,13 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1375.721875,
-       "complete": true,
-       "missing": []
+       "value": 2220.434655,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "wine_vinegar",
+        "cottage_cheese"
+       ]
       },
       "vit_c": {
        "value": 178.8055625,
@@ -8984,7 +9020,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 582.4190000000001,
+       "value": 928.3583733333334,
        "complete": true,
        "missing": []
       },
@@ -9056,10 +9092,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 479.19624999999996,
+       "value": 817.4732000000001,
        "complete": false,
        "missing": [
-        "tofu"
+        "tofu",
+        "wine_vinegar"
        ]
       },
       "vit_c": {
@@ -9141,9 +9178,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 690.0434166666666,
-       "complete": true,
-       "missing": []
+       "value": 904.6558483333333,
+       "complete": false,
+       "missing": [
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 166.43295,
@@ -9217,7 +9256,7 @@
        ]
       },
       "vit_a": {
-       "value": 580.509,
+       "value": 803.86269,
        "complete": false,
        "missing": [
         "rice_round_dry",
@@ -9301,11 +9340,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 460.01424999999995,
+       "value": 767.79325,
        "complete": false,
        "missing": [
         "tofu",
-        "beans_canned"
+        "beans_canned",
+        "cottage_cheese"
        ]
       },
       "vit_c": {
@@ -9385,9 +9425,10 @@
        ]
       },
       "vit_a": {
-       "value": 738.1684999999999,
+       "value": 998.15098,
        "complete": false,
        "missing": [
+        "cheese_hard",
         "rice_arborio_dry",
         "brynza"
        ]
@@ -9471,9 +9512,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 1070.058,
-       "complete": true,
-       "missing": []
+       "value": 1511.9816299999998,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "cottage_cheese"
+       ]
       },
       "vit_c": {
        "value": 103.44495,
@@ -9546,7 +9590,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 652.873,
+       "value": 1024.8909600000002,
        "complete": true,
        "missing": []
       },
@@ -9621,12 +9665,13 @@
        ]
       },
       "vit_a": {
-       "value": 652.8742500000001,
+       "value": 933.56104,
        "complete": false,
        "missing": [
         "tofu",
         "garam_masala",
-        "brynza"
+        "brynza",
+        "cottage_cheese"
        ]
       },
       "vit_c": {
@@ -9716,10 +9761,11 @@
        ]
       },
       "vit_a": {
-       "value": 1194.70425,
+       "value": 1915.82094,
        "complete": false,
        "missing": [
-        "rice_arborio_dry"
+        "rice_arborio_dry",
+        "cheese_hard"
        ]
       },
       "vit_c": {
@@ -9795,11 +9841,15 @@
      ]
     },
     "vit_a": {
-     "value": 11459.705416666668,
+     "value": 17834.960501666672,
      "complete": false,
      "missing": [
+      "cottage_cheese",
+      "blueberries_frozen",
+      "wine_vinegar",
       "italian_herbs",
       "beans_canned",
+      "cheese_hard",
       "tofu",
       "rice_round_dry",
       "rice_arborio_dry",
@@ -9889,18 +9939,22 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 11459.705416666668,
+     "period_value": 17834.960501666672,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beans_canned",
+      "blueberries_frozen",
       "brynza",
+      "cheese_hard",
+      "cottage_cheese",
       "garam_masala",
       "italian_herbs",
       "rice_arborio_dry",
       "rice_round_dry",
-      "tofu"
+      "tofu",
+      "wine_vinegar"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -10063,9 +10117,13 @@
        "missing": []
       },
       "vit_a": {
-       "value": 629.469525,
-       "complete": true,
-       "missing": []
+       "value": 1039.159089,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "blueberries_frozen",
+        "wine_vinegar"
+       ]
       },
       "vit_c": {
        "value": 86.9396175,
@@ -10144,9 +10202,10 @@
        "missing": []
       },
       "vit_a": {
-       "value": 487.94835,
+       "value": 832.7698139999999,
        "complete": false,
        "missing": [
+        "cottage_cheese",
         "italian_herbs"
        ]
       },
@@ -10228,7 +10287,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 672.4562999999999,
+       "value": 1132.8572579999998,
        "complete": false,
        "missing": [
         "beans_canned"
@@ -10304,9 +10363,13 @@
        "missing": []
       },
       "vit_a": {
-       "value": 825.433125,
-       "complete": true,
-       "missing": []
+       "value": 1332.260793,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "wine_vinegar",
+        "cottage_cheese"
+       ]
       },
       "vit_c": {
        "value": 107.28333750000002,
@@ -10387,7 +10450,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 349.4514,
+       "value": 557.0150239999999,
        "complete": true,
        "missing": []
       },
@@ -10459,10 +10522,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 287.51775,
+       "value": 490.48391999999996,
        "complete": false,
        "missing": [
-        "tofu"
+        "tofu",
+        "wine_vinegar"
        ]
       },
       "vit_c": {
@@ -10544,9 +10608,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 414.02604999999994,
-       "complete": true,
-       "missing": []
+       "value": 542.793509,
+       "complete": false,
+       "missing": [
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 99.85977000000001,
@@ -10620,7 +10686,7 @@
        ]
       },
       "vit_a": {
-       "value": 348.30539999999996,
+       "value": 482.31761400000005,
        "complete": false,
        "missing": [
         "rice_round_dry",
@@ -10704,11 +10770,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 276.00855,
+       "value": 460.6759499999999,
        "complete": false,
        "missing": [
         "tofu",
-        "beans_canned"
+        "beans_canned",
+        "cottage_cheese"
        ]
       },
       "vit_c": {
@@ -10788,9 +10855,10 @@
        ]
       },
       "vit_a": {
-       "value": 442.90109999999993,
+       "value": 598.890588,
        "complete": false,
        "missing": [
+        "cheese_hard",
         "rice_arborio_dry",
         "brynza"
        ]
@@ -10874,9 +10942,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 642.0348,
-       "complete": true,
-       "missing": []
+       "value": 907.1889779999999,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "cottage_cheese"
+       ]
       },
       "vit_c": {
        "value": 62.06697,
@@ -10949,7 +11020,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 391.7238,
+       "value": 614.934576,
        "complete": true,
        "missing": []
       },
@@ -11024,12 +11095,13 @@
        ]
       },
       "vit_a": {
-       "value": 391.72455,
+       "value": 560.136624,
        "complete": false,
        "missing": [
         "tofu",
         "garam_masala",
-        "brynza"
+        "brynza",
+        "cottage_cheese"
        ]
       },
       "vit_c": {
@@ -11119,10 +11191,11 @@
        ]
       },
       "vit_a": {
-       "value": 716.82255,
+       "value": 1149.4925640000001,
        "complete": false,
        "missing": [
-        "rice_arborio_dry"
+        "rice_arborio_dry",
+        "cheese_hard"
        ]
       },
       "vit_c": {
@@ -11198,11 +11271,15 @@
      ]
     },
     "vit_a": {
-     "value": 6875.8232499999995,
+     "value": 10700.976300999999,
      "complete": false,
      "missing": [
+      "cottage_cheese",
+      "blueberries_frozen",
+      "wine_vinegar",
       "italian_herbs",
       "beans_canned",
+      "cheese_hard",
       "tofu",
       "rice_round_dry",
       "rice_arborio_dry",
@@ -11292,18 +11369,22 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 6875.8232499999995,
+     "period_value": 10700.976300999999,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beans_canned",
+      "blueberries_frozen",
       "brynza",
+      "cheese_hard",
+      "cottage_cheese",
       "garam_masala",
       "italian_herbs",
       "rice_arborio_dry",
       "rice_round_dry",
-      "tofu"
+      "tofu",
+      "wine_vinegar"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null

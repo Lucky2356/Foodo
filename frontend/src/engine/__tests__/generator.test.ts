@@ -365,9 +365,10 @@ describe('vitamins', () => {
     const req = request({ members: [member()], days: 3, settings: settings({ vitamins: { enabled: true, target_set: 'mr-2.3.1.0253-21-adults', demo: false } }) });
     const { menu } = generateMenu(req, cat);
     const rows = menuReport(menu, cat, req.members)[0]!.vitamins;
-    const a = rows.find((v) => v.nutrient === 'vit_a')!;
-    expect(a.status).toBe('incompatible_form');
-    expect(a.coverage_pct).toBeNull();
+    // Vitamin A of the norms and of the data are both in retinol equivalents, so it is assessed.
+    expect(rows.find((v) => v.nutrient === 'vit_a')!.status).toBe('ok');
+    // The starter catalog has unknown values (estimates, nutrients USDA did not measure).
+    expect(rows.some((r) => !r.data_complete)).toBe(true);
     for (const row of rows) {
       if (!row.data_complete) expect(row.coverage_pct).toBeNull();
     }

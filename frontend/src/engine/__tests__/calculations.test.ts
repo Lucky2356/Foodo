@@ -102,8 +102,12 @@ describe('vitamin targets', () => {
   it('uses only targets whose form matches the product data; RE is never compared with RAE (check 27)', () => {
     const t = resolveVitaminTargets(cat, member(), 'mr-2.3.1.0253-21-adults', false);
     const by = Object.fromEntries(t.map((x) => [x.nutrient, x]));
-    // МР gives vitamin A in retinol equivalents; product data is RAE — not converted.
-    expect(by.vit_a!.status).toBe('incompatible_form');
+    // МР gives vitamin A in retinol equivalents, and so does the product data (appendix 2 of МР).
+    expect(by.vit_a!.status).toBe('ok');
+    expect(by.vit_a!.daily).toBe(800);
+    // A target in another form is still never converted.
+    const rae = resolveVitaminTargets(cat, member({ vitamin_targets_manual: [{ nutrient: 'vit_a', value: 700, form: 'ug_rae' }] }), 'mr-2.3.1.0253-21-adults', false);
+    expect(rae.find((x) => x.nutrient === 'vit_a')!.status).toBe('incompatible_form');
     // Appendix 2 of МР: 1 mg TE = 1 mg alpha-tocopherol, 1 µg DFE = 1 µg food folate — the data forms.
     expect(by.vit_e!.status).toBe('ok');
     expect(by.vit_e!.daily).toBe(15);
