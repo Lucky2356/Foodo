@@ -166,7 +166,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--list", action="store_true")
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--probe", action="append", default=[], help="status of a URL")
     args = parser.parse_args(argv)
+    for url in args.probe:
+        probe(url)
     try:
         if args.discover:
             discover()

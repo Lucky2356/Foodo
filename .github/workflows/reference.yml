@@ -53,4 +53,8 @@ jobs:
         with:
           python-version: "3.13"
       - name: Fineli open data — package links and component definitions
-        run: python -m scripts.nutrition.fineli --discover
+        run: >-
+          python -m scripts.nutrition.fineli
+          --probe "https://dataportal.livsmedelsverket.se/livsmedel/api/v1/livsmedel?offset=0&limit=2&sprak=1"
+          --probe "https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/"
+          --probe "https://soknaringsinnehall.livsmedelsverket.se/"
