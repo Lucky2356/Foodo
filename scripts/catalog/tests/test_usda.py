@@ -26,9 +26,10 @@ def test_usda_values_replace_the_estimate_and_missing_nutrients_stay_unknown(
         encoding="utf-8",
     )
     monkeypatch.setattr(build, "USDA_VALUES", values)
+    monkeypatch.setattr(build, "LIVSMEDEL_VALUES", tmp_path / "none.json")
     products = {"rice": product("rice"), "kefir": product("kefir")}
     estimates: dict[str, Any] = {}
-    assert build.apply_usda(products, set(), estimates) == []
+    assert build.apply_references(products, set(), estimates) == []
     rice = products["rice"]
     assert rice["source"] == build.USDA_SOURCE
     assert rice["nutrients"]["kcal"] == 360 and rice["nutrients"]["fat"] == 0.6
@@ -42,15 +43,16 @@ def test_a_removed_mapping_brings_the_saved_estimate_back(tmp_path, monkeypatch)
     values = tmp_path / "usda_values.json"
     values.write_text('{"products": {}}', encoding="utf-8")
     monkeypatch.setattr(build, "USDA_VALUES", values)
+    monkeypatch.setattr(build, "LIVSMEDEL_VALUES", tmp_path / "none.json")
     rice = product("rice", build.USDA_SOURCE)
     rice["nutrients"] = {"kcal": 360}
     estimates: dict[str, Any] = {"rice": dict(ESTIMATE)}
-    assert build.apply_usda({"rice": rice}, set(), estimates) == []
+    assert build.apply_references({"rice": rice}, set(), estimates) == []
     assert rice["source"] == build.PRODUCT_SOURCE and rice["nutrients"] == ESTIMATE
     assert estimates == {}
     lost = product("lost", build.USDA_SOURCE)
-    assert build.apply_usda({"lost": lost}, set(), {}) == [
-        "lost: USDA values removed and no estimate saved"
+    assert build.apply_references({"lost": lost}, set(), {}) == [
+        "lost: reference values removed and no estimate saved"
     ]
 
 

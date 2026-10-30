@@ -2717,7 +2717,7 @@
   "stats": {
    "attempts": 3,
    "evaluated": 4494,
-   "score": 37.06425579628765,
+   "score": 37.06120841676956,
    "budget_status": "none"
   },
   "snapshot_ids": {
@@ -10623,27 +10623,27 @@
      "date": "2026-10-25",
      "totals": {
       "kcal": {
-       "value": 583.220125,
+       "value": 585.792625,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 13.35909125,
+       "value": 13.322341250000001,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 30.111337499999998,
+       "value": 30.0745875,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 75.50448125000001,
+       "value": 76.27623125000001,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 19.147475,
+       "value": 19.257725,
        "complete": true,
        "missing": []
       },
@@ -10655,24 +10655,26 @@
        ]
       },
       "vit_c": {
-       "value": 126.4566375,
+       "value": 133.8066375,
        "complete": true,
        "missing": []
       },
       "vit_d": {
        "value": 0,
-       "complete": true,
-       "missing": []
+       "complete": false,
+       "missing": [
+        "cherry_tomatoes"
+       ]
       },
       "vit_e": {
-       "value": 8.62496875,
+       "value": 8.80871875,
        "complete": false,
        "missing": [
         "coriander_ground"
        ]
       },
       "vit_b6": {
-       "value": 1.097825125,
+       "value": 1.119875125,
        "complete": false,
        "missing": [
         "coriander_ground"
@@ -10684,7 +10686,7 @@
        "missing": []
       },
       "folate": {
-       "value": 222.51299999999998,
+       "value": 226.44525,
        "complete": true,
        "missing": []
       }
@@ -11347,27 +11349,27 @@
      "date": "2026-11-03",
      "totals": {
       "kcal": {
-       "value": 387.30899999999997,
+       "value": 396.909,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 13.550236666666667,
+       "value": 13.790236666666667,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 18.021682499999997,
+       "value": 18.6216825,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 46.218379166666665,
+       "value": 50.898379166666665,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 12.399308333333332,
+       "value": 15.03930833333333,
        "complete": true,
        "missing": []
       },
@@ -11376,6 +11378,7 @@
        "complete": false,
        "missing": [
         "porcini_dried",
+        "beans_white_canned",
         "wine_vinegar"
        ]
       },
@@ -11391,6 +11394,7 @@
        "complete": false,
        "missing": [
         "porcini_dried",
+        "beans_white_canned",
         "wine_vinegar"
        ]
       },
@@ -11401,16 +11405,14 @@
         "porcini_dried",
         "bay_leaf",
         "dill",
-        "beans_white_canned",
         "wine_vinegar"
        ]
       },
       "vit_b6": {
-       "value": 0.46097424999999986,
+       "value": 0.5929742499999999,
        "complete": false,
        "missing": [
         "porcini_dried",
-        "beans_white_canned",
         "wine_vinegar"
        ]
       },
@@ -11423,11 +11425,10 @@
        ]
       },
       "folate": {
-       "value": 63.00675,
+       "value": 88.80675,
        "complete": false,
        "missing": [
         "porcini_dried",
-        "beans_white_canned",
         "wine_vinegar"
        ]
       }
@@ -12806,27 +12807,27 @@
    ],
    "period": {
     "kcal": {
-     "value": 14058.933433333332,
+     "value": 14071.10593333333,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 444.67594975000014,
+     "value": 444.87919975000005,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 687.2003933333334,
+     "value": 687.7636433333333,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 1744.189598916667,
+     "value": 1749.6413489166666,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 404.63599750000003,
+     "value": 407.3862475,
      "complete": false,
      "missing": [
       "coconut_milk"
@@ -12844,13 +12845,14 @@
       "wine_vinegar",
       "nori",
       "porcini_dried",
+      "beans_white_canned",
       "marinated_champignons",
       "edamame_frozen",
       "star_anise"
      ]
     },
     "vit_c": {
-     "value": 2604.0719200000003,
+     "value": 2611.4219200000002,
      "complete": false,
      "missing": [
       "garam_masala",
@@ -12865,15 +12867,17 @@
      "complete": false,
      "missing": [
       "chia_seeds",
+      "cherry_tomatoes",
       "wine_vinegar",
       "nori",
       "porcini_dried",
+      "beans_white_canned",
       "marinated_champignons",
       "edamame_frozen"
      ]
     },
     "vit_e": {
-     "value": 205.11880908333336,
+     "value": 205.30255908333334,
      "complete": false,
      "missing": [
       "tofu",
@@ -12887,14 +12891,13 @@
       "wine_vinegar",
       "nori",
       "porcini_dried",
-      "beans_white_canned",
       "marinated_champignons",
       "mint",
       "star_anise"
      ]
     },
     "vit_b6": {
-     "value": 19.9390055,
+     "value": 20.093055500000002,
      "complete": false,
      "missing": [
       "chia_seeds",
@@ -12904,7 +12907,6 @@
       "wine_vinegar",
       "nori",
       "porcini_dried",
-      "beans_white_canned",
       "marinated_champignons",
       "star_anise"
      ]
@@ -12921,14 +12923,13 @@
      ]
     },
     "folate": {
-     "value": 4572.4743,
+     "value": 4602.20655,
      "complete": false,
      "missing": [
       "garam_masala",
       "wine_vinegar",
       "nori",
       "porcini_dried",
-      "beans_white_canned",
       "marinated_champignons",
       "star_anise"
      ]
@@ -12946,6 +12947,7 @@
      "data_complete": false,
      "missing_products": [
       "beans_canned",
+      "beans_white_canned",
       "cherry_tomatoes",
       "chia_seeds",
       "edamame_frozen",
@@ -12965,9 +12967,9 @@
      "status": "incomplete_data",
      "daily_target": 100,
      "period_target": 3500,
-     "period_value": 2604.0719200000003,
+     "period_value": 2611.4219200000002,
      "coverage_pct": null,
-     "lower_bound_pct": 74.40205485714286,
+     "lower_bound_pct": 74.61205485714287,
      "data_complete": false,
      "missing_products": [
       "garam_masala",
@@ -12989,6 +12991,8 @@
      "lower_bound_pct": 0.06634920634920634,
      "data_complete": false,
      "missing_products": [
+      "beans_white_canned",
+      "cherry_tomatoes",
       "chia_seeds",
       "edamame_frozen",
       "marinated_champignons",
@@ -13004,14 +13008,13 @@
      "status": "incomplete_data",
      "daily_target": 15,
      "period_target": 525,
-     "period_value": 205.11880908333336,
+     "period_value": 205.30255908333334,
      "coverage_pct": null,
-     "lower_bound_pct": 39.07024934920636,
+     "lower_bound_pct": 39.10524934920635,
      "data_complete": false,
      "missing_products": [
       "bay_leaf",
       "beans_canned",
-      "beans_white_canned",
       "coconut_milk",
       "coriander_ground",
       "dill",
@@ -13033,13 +13036,12 @@
      "status": "incomplete_data",
      "daily_target": 2,
      "period_target": 70,
-     "period_value": 19.9390055,
+     "period_value": 20.093055500000002,
      "coverage_pct": null,
-     "lower_bound_pct": 28.48429357142857,
+     "lower_bound_pct": 28.704365000000003,
      "data_complete": false,
      "missing_products": [
       "beans_canned",
-      "beans_white_canned",
       "chia_seeds",
       "coriander_ground",
       "garam_masala",
@@ -13076,12 +13078,11 @@
      "status": "incomplete_data",
      "daily_target": 400,
      "period_target": 14000,
-     "period_value": 4572.4743,
+     "period_value": 4602.20655,
      "coverage_pct": null,
-     "lower_bound_pct": 32.66053071428571,
+     "lower_bound_pct": 32.87290392857143,
      "data_complete": false,
      "missing_products": [
-      "beans_white_canned",
       "garam_masala",
       "marinated_champignons",
       "nori",

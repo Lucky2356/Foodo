@@ -155,16 +155,16 @@
    },
    {
     "id": "b12",
-    "recipe_id": "kuritsa-s-chernoslivom",
+    "recipe_id": "okorochka-gril-s-paprikoy",
     "recipe_version": 1,
-    "method_id": "stove",
+    "method_id": "oven",
     "cook_date": "2026-10-21",
     "slot": "dinner",
     "portions": 1.5
    },
    {
     "id": "b13",
-    "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
+    "recipe_id": "pan-kon-tomate",
     "recipe_version": 1,
     "method_id": "stove",
     "cook_date": "2026-10-22",
@@ -173,25 +173,25 @@
    },
    {
     "id": "b14",
-    "recipe_id": "steyki-syomgi-s-bulgurom",
+    "recipe_id": "svinye-ryobryshki-s-kartofelem",
     "recipe_version": 1,
-    "method_id": "stove",
+    "method_id": "oven",
     "cook_date": "2026-10-22",
     "slot": "lunch",
     "portions": 1.5
    },
    {
     "id": "b15",
-    "recipe_id": "salat-s-nutom",
+    "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
     "recipe_version": 1,
-    "method_id": "no-heat",
+    "method_id": "oven",
     "cook_date": "2026-10-22",
     "slot": "snack",
     "portions": 1.5
    },
    {
     "id": "b16",
-    "recipe_id": "svinaya-sheya-s-ovoshchami",
+    "recipe_id": "dorado-s-cherri-i-olivkami",
     "recipe_version": 1,
     "method_id": "oven",
     "cook_date": "2026-10-22",
@@ -462,78 +462,75 @@
   "warnings": [],
   "stats": {
    "attempts": 6,
-   "evaluated": 9100,
-   "score": 7.821280338033904,
+   "evaluated": 9098,
+   "score": 8.3105423885963,
    "budget_status": "none"
   },
   "snapshot_ids": {
    "recipes": [
+    "brusketta-s-pomidorami-i-bazilikom",
     "chebureki",
     "chipsy-iz-lavasha-s-paprikoy",
-    "grechnevyy-boul-s-syomgoy-i-avokado",
+    "dorado-s-cherri-i-olivkami",
     "guakamole-s-tostami",
     "hinkali",
     "kambala-zharenaya",
     "kazan-kebab",
-    "kuritsa-s-chernoslivom",
     "lyulya-kebab-iz-baraniny",
+    "okorochka-gril-s-paprikoy",
     "ovsyanka-s-arahisovoy-pastoy-na-soevom-moloke",
+    "pan-kon-tomate",
     "postnye-bliny-na-vode",
     "salat-iz-pomidorov-s-lukom",
-    "salat-s-nutom",
-    "steyki-syomgi-s-bulgurom",
-    "svinaya-sheya-s-ovoshchami",
+    "svinye-ryobryshki-s-kartofelem",
     "tost-s-arahisovoy-pastoy-i-bananom"
    ],
    "products": [
     "avocado",
+    "baguette",
     "baking_soda",
     "banana",
+    "basil",
     "beef_mince",
-    "bell_pepper",
     "black_pepper",
     "bread_wholegrain",
-    "buckwheat_dry",
-    "bulgur_dry",
-    "carrot",
-    "chicken_thighs",
-    "chickpeas_canned",
+    "capers",
+    "cherry_tomatoes",
+    "chicken_leg_quarters",
     "cilantro",
     "coriander_ground",
-    "cucumber",
     "cumin",
     "dill",
+    "dorado",
     "flounder",
     "garlic",
     "garlic_dried",
+    "green_olives",
     "italian_herbs",
     "lamb_mince",
     "lamb_ribs",
     "lavash",
     "lemon",
-    "mint",
+    "mustard",
     "oats_flakes",
     "olive_oil",
     "onion",
+    "oregano_dried",
     "paprika",
-    "parsley",
     "peanut_butter",
     "pork_mince",
-    "pork_neck",
+    "pork_ribs",
     "potato",
-    "prunes",
     "red_onion",
-    "salmon_salted",
-    "salmon_steak",
     "salt",
-    "sesame_seeds",
+    "smoked_paprika",
     "soy_milk",
     "sugar",
     "sunflower_oil",
+    "thyme_dried",
     "tomato",
     "water",
-    "wheat_flour",
-    "zucchini"
+    "wheat_flour"
    ]
   }
  },
@@ -546,10 +543,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 300,
+    "needed": 150,
     "from_pantry": 0,
-    "to_buy": 300,
-    "buy_qty": 300,
+    "to_buy": 150,
+    "buy_qty": 150,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -567,13 +564,52 @@
       "recipe_name": "Гуакамоле с хлебцами",
       "cook_date": "2026-10-19",
       "qty": 150
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:basil:g",
+    "product_id": "basil",
+    "name": "Базилик свежий",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 11.25,
+    "from_pantry": 0,
+    "to_buy": 11.25,
+    "buy_qty": 30,
+    "package": {
+     "size": 30,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b15",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
+      "cook_date": "2026-10-22",
+      "qty": 3.75
      },
      {
-      "batch_id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
-      "recipe_name": "Гречневый боул с сёмгой и авокадо",
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
       "cook_date": "2026-10-22",
-      "qty": 150
+      "qty": 7.5
      }
     ],
     "purchased": false,
@@ -624,50 +660,15 @@
     "changed": false
    },
    {
-    "id": "auto:zucchini:g",
-    "product_id": "zucchini",
-    "name": "Кабачок",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 90,
-    "from_pantry": 0,
-    "to_buy": 90,
-    "buy_qty": 90,
-    "package": null,
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
-      "cook_date": "2026-10-22",
-      "qty": 90
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
     "id": "auto:potato:g",
     "product_id": "potato",
     "name": "Картофель",
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 480,
+    "needed": 675,
     "from_pantry": 0,
-    "to_buy": 480,
+    "to_buy": 675,
     "buy_qty": 2000,
     "package": {
      "size": 2000,
@@ -692,11 +693,11 @@
       "qty": 300
      },
      {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
+      "batch_id": "b14",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
       "cook_date": "2026-10-22",
-      "qty": 180
+      "qty": 375
      }
     ],
     "purchased": false,
@@ -771,10 +772,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 157.5,
+    "needed": 142.5,
     "from_pantry": 0,
-    "to_buy": 157.5,
-    "buy_qty": 157.5,
+    "to_buy": 142.5,
+    "buy_qty": 142.5,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -801,25 +802,18 @@
       "qty": 30
      },
      {
-      "batch_id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
-      "recipe_name": "Гречневый боул с сёмгой и авокадо",
-      "cook_date": "2026-10-22",
+      "batch_id": "b12",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
+      "cook_date": "2026-10-21",
       "qty": 22.5
      },
      {
-      "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
       "cook_date": "2026-10-22",
       "qty": 45
-     },
-     {
-      "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 15
      }
     ],
     "purchased": false,
@@ -834,9 +828,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 81,
+    "needed": 126,
     "from_pantry": 0,
-    "to_buy": 81,
+    "to_buy": 126,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -866,6 +860,13 @@
       "recipe_name": "Казан-кебаб из баранины с картофелем",
       "cook_date": "2026-10-20",
       "qty": 36
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
+      "cook_date": "2026-10-22",
+      "qty": 45
      }
     ],
     "purchased": false,
@@ -880,9 +881,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 396.25,
+    "needed": 373.75,
     "from_pantry": 0,
-    "to_buy": 396.25,
+    "to_buy": 373.75,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -942,226 +943,11 @@
       "qty": 60
      },
      {
-      "batch_id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
-      "recipe_name": "Курица с черносливом и морковью",
-      "cook_date": "2026-10-21",
-      "qty": 37.5
-     },
-     {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
-      "cook_date": "2026-10-22",
-      "qty": 60
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:carrot:g",
-    "product_id": "carrot",
-    "name": "Морковь",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 60,
-    "from_pantry": 0,
-    "to_buy": 60,
-    "buy_qty": 1000,
-    "package": {
-     "size": 1000,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
-      "recipe_name": "Курица с черносливом и морковью",
-      "cook_date": "2026-10-21",
-      "qty": 60
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:mint:g",
-    "product_id": "mint",
-    "name": "Мята свежая",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 1.875,
-    "from_pantry": 0,
-    "to_buy": 1.875,
-    "buy_qty": 30,
-    "package": {
-     "size": 30,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
       "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
       "cook_date": "2026-10-22",
-      "qty": 1.875
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:cucumber:g",
-    "product_id": "cucumber",
-    "name": "Огурцы",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 195,
-    "from_pantry": 0,
-    "to_buy": 195,
-    "buy_qty": 195,
-    "package": null,
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
-      "recipe_name": "Гречневый боул с сёмгой и авокадо",
-      "cook_date": "2026-10-22",
-      "qty": 90
-     },
-     {
-      "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 45
-     },
-     {
-      "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 60
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:bell_pepper:g",
-    "product_id": "bell_pepper",
-    "name": "Перец сладкий",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 90,
-    "from_pantry": 0,
-    "to_buy": 90,
-    "buy_qty": 90,
-    "package": null,
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
-      "cook_date": "2026-10-22",
-      "qty": 90
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:parsley:g",
-    "product_id": "parsley",
-    "name": "Петрушка",
-    "department": "Овощи и фрукты",
-    "unit": "g",
-    "convertible": true,
-    "needed": 17.5,
-    "from_pantry": 0,
-    "to_buy": 17.5,
-    "buy_qty": 50,
-    "package": {
-     "size": 50,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 7.5
-     },
-     {
-      "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 10
+      "qty": 75
      }
     ],
     "purchased": false,
@@ -1176,10 +962,10 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 630,
+    "needed": 735,
     "from_pantry": 0,
-    "to_buy": 630,
-    "buy_qty": 630,
+    "to_buy": 735,
+    "buy_qty": 735,
     "package": null,
     "package_note": null,
     "price_kop": null,
@@ -1213,18 +999,57 @@
       "qty": 240
      },
      {
-      "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "batch_id": "b13",
+      "recipe_id": "pan-kon-tomate",
+      "recipe_name": "Пан кон томате",
       "cook_date": "2026-10-22",
-      "qty": 90
+      "qty": 180
      },
      {
       "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
       "cook_date": "2026-10-22",
-      "qty": 120
+      "qty": 135
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:cherry_tomatoes:g",
+    "product_id": "cherry_tomatoes",
+    "name": "Помидоры черри",
+    "department": "Овощи и фрукты",
+    "unit": "g",
+    "convertible": true,
+    "needed": 187.5,
+    "from_pantry": 0,
+    "to_buy": 187.5,
+    "buy_qty": 250,
+    "package": {
+     "size": 250,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
+      "cook_date": "2026-10-22",
+      "qty": 187.5
      }
     ],
     "purchased": false,
@@ -1239,9 +1064,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 18,
+    "needed": 10.5,
     "from_pantry": 0,
-    "to_buy": 18,
+    "to_buy": 10.5,
     "buy_qty": 50,
     "package": {
      "size": 50,
@@ -1278,13 +1103,6 @@
       "recipe_name": "Камбала, жаренная в муке",
       "cook_date": "2026-10-20",
       "qty": 5
-     },
-     {
-      "batch_id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
-      "recipe_name": "Гречневый боул с сёмгой и авокадо",
-      "cook_date": "2026-10-22",
-      "qty": 7.5
      }
     ],
     "purchased": false,
@@ -1299,9 +1117,9 @@
     "department": "Овощи и фрукты",
     "unit": "g",
     "convertible": true,
-    "needed": 4.5,
+    "needed": 26.25,
     "from_pantry": 0,
-    "to_buy": 4.5,
+    "to_buy": 26.25,
     "buy_qty": 100,
     "package": {
      "size": 100,
@@ -1319,11 +1137,39 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
+      "batch_id": "b12",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
+      "cook_date": "2026-10-21",
+      "qty": 5.625
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "pan-kon-tomate",
+      "recipe_name": "Пан кон томате",
       "cook_date": "2026-10-22",
-      "qty": 4.5
+      "qty": 3.75
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
+      "cook_date": "2026-10-22",
+      "qty": 7.5
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
+      "cook_date": "2026-10-22",
+      "qty": 1.875
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
+      "cook_date": "2026-10-22",
+      "qty": 7.5
      }
     ],
     "purchased": false,
@@ -1410,54 +1256,15 @@
     "changed": false
    },
    {
-    "id": "auto:chicken_thighs:g",
-    "product_id": "chicken_thighs",
-    "name": "Куриные бёдра на кости",
+    "id": "auto:chicken_leg_quarters:g",
+    "product_id": "chicken_leg_quarters",
+    "name": "Окорочка куриные",
     "department": "Мясо и птица",
     "unit": "g",
     "convertible": true,
-    "needed": 337.5,
+    "needed": 450,
     "from_pantry": 0,
-    "to_buy": 337.5,
-    "buy_qty": 900,
-    "package": {
-     "size": 900,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
-      "recipe_name": "Курица с черносливом и морковью",
-      "cook_date": "2026-10-21",
-      "qty": 337.5
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:pork_neck:g",
-    "product_id": "pork_neck",
-    "name": "Свинина, шея",
-    "department": "Мясо и птица",
-    "unit": "g",
-    "convertible": true,
-    "needed": 240,
-    "from_pantry": 0,
-    "to_buy": 240,
+    "to_buy": 450,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -1475,11 +1282,50 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
+      "batch_id": "b12",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
+      "cook_date": "2026-10-21",
+      "qty": 450
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:pork_ribs:g",
+    "product_id": "pork_ribs",
+    "name": "Рёбра свиные",
+    "department": "Мясо и птица",
+    "unit": "g",
+    "convertible": true,
+    "needed": 375,
+    "from_pantry": 0,
+    "to_buy": 375,
+    "buy_qty": 1000,
+    "package": {
+     "size": 1000,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b14",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
       "cook_date": "2026-10-22",
-      "qty": 240
+      "qty": 375
      }
     ],
     "purchased": false,
@@ -1612,6 +1458,41 @@
     "changed": false
    },
    {
+    "id": "auto:dorado:g",
+    "product_id": "dorado",
+    "name": "Дорадо (целая рыба)",
+    "department": "Рыба",
+    "unit": "g",
+    "convertible": true,
+    "needed": 600,
+    "from_pantry": 0,
+    "to_buy": 600,
+    "buy_qty": 600,
+    "package": null,
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
+      "cook_date": "2026-10-22",
+      "qty": 600
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
     "id": "auto:flounder:g",
     "product_id": "flounder",
     "name": "Камбала (тушка без головы)",
@@ -1639,80 +1520,6 @@
       "recipe_name": "Камбала, жаренная в муке",
       "cook_date": "2026-10-20",
       "qty": 500
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:salmon_salted:g",
-    "product_id": "salmon_salted",
-    "name": "Сёмга слабосолёная",
-    "department": "Рыба",
-    "unit": "g",
-    "convertible": true,
-    "needed": 75,
-    "from_pantry": 0,
-    "to_buy": 75,
-    "buy_qty": 200,
-    "package": {
-     "size": 200,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
-      "recipe_name": "Гречневый боул с сёмгой и авокадо",
-      "cook_date": "2026-10-22",
-      "qty": 75
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:salmon_steak:g",
-    "product_id": "salmon_steak",
-    "name": "Сёмга, стейк",
-    "department": "Рыба",
-    "unit": "g",
-    "convertible": true,
-    "needed": 375,
-    "from_pantry": 0,
-    "to_buy": 375,
-    "buy_qty": 375,
-    "package": null,
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 375
      }
     ],
     "purchased": false,
@@ -1759,123 +1566,6 @@
       "recipe_name": "Тост с арахисовой пастой и бананом",
       "cook_date": "2026-10-20",
       "qty": 24
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:bulgur_dry:g",
-    "product_id": "bulgur_dry",
-    "name": "Булгур",
-    "department": "Бакалея",
-    "unit": "g",
-    "convertible": true,
-    "needed": 75,
-    "from_pantry": 0,
-    "to_buy": 75,
-    "buy_qty": 500,
-    "package": {
-     "size": 500,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 75
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:buckwheat_dry:g",
-    "product_id": "buckwheat_dry",
-    "name": "Гречка ядрица",
-    "department": "Бакалея",
-    "unit": "g",
-    "convertible": true,
-    "needed": 75,
-    "from_pantry": 0,
-    "to_buy": 75,
-    "buy_qty": 900,
-    "package": {
-     "size": 900,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
-      "recipe_name": "Гречневый боул с сёмгой и авокадо",
-      "cook_date": "2026-10-22",
-      "qty": 75
-     }
-    ],
-    "purchased": false,
-    "at_home": false,
-    "previous_to_buy": null,
-    "changed": false
-   },
-   {
-    "id": "auto:sesame_seeds:g",
-    "product_id": "sesame_seeds",
-    "name": "Кунжут",
-    "department": "Бакалея",
-    "unit": "g",
-    "convertible": true,
-    "needed": 2.25,
-    "from_pantry": 0,
-    "to_buy": 2.25,
-    "buy_qty": 100,
-    "package": {
-     "size": 100,
-     "unit": "g",
-     "count": 1
-    },
-    "package_note": null,
-    "price_kop": null,
-    "price_per": null,
-    "price_date": null,
-    "price_source": null,
-    "price_kind": null,
-    "estimated": false,
-    "purchase_cost_kop": null,
-    "usage_cost_kop": null,
-    "sources": [
-     {
-      "batch_id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
-      "recipe_name": "Гречневый боул с сёмгой и авокадо",
-      "cook_date": "2026-10-22",
-      "qty": 2.25
      }
     ],
     "purchased": false,
@@ -2061,21 +1751,17 @@
     "changed": false
    },
    {
-    "id": "auto:prunes:g",
-    "product_id": "prunes",
-    "name": "Чернослив",
-    "department": "Бакалея",
+    "id": "auto:baguette:g",
+    "product_id": "baguette",
+    "name": "Багет",
+    "department": "Хлеб",
     "unit": "g",
     "convertible": true,
-    "needed": 37.5,
+    "needed": 168.75,
     "from_pantry": 0,
-    "to_buy": 37.5,
-    "buy_qty": 200,
-    "package": {
-     "size": 200,
-     "unit": "g",
-     "count": 1
-    },
+    "to_buy": 168.75,
+    "buy_qty": 168.75,
+    "package": null,
     "package_note": null,
     "price_kop": null,
     "price_per": null,
@@ -2087,11 +1773,18 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
-      "recipe_name": "Курица с черносливом и морковью",
-      "cook_date": "2026-10-21",
-      "qty": 37.5
+      "batch_id": "b13",
+      "recipe_id": "pan-kon-tomate",
+      "recipe_name": "Пан кон томате",
+      "cook_date": "2026-10-22",
+      "qty": 93.75
+     },
+     {
+      "batch_id": "b15",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
+      "cook_date": "2026-10-22",
+      "qty": 75
      }
     ],
     "purchased": false,
@@ -2192,18 +1885,18 @@
     "changed": false
    },
    {
-    "id": "auto:chickpeas_canned:g",
-    "product_id": "chickpeas_canned",
-    "name": "Нут консервированный",
+    "id": "auto:mustard:g",
+    "product_id": "mustard",
+    "name": "Горчица столовая",
     "department": "Консервы и соусы",
     "unit": "g",
     "convertible": true,
-    "needed": 200,
+    "needed": 5.625,
     "from_pantry": 0,
-    "to_buy": 200,
-    "buy_qty": 400,
+    "to_buy": 5.625,
+    "buy_qty": 100,
     "package": {
-     "size": 400,
+     "size": 100,
      "unit": "g",
      "count": 1
     },
@@ -2218,11 +1911,89 @@
     "usage_cost_kop": null,
     "sources": [
      {
-      "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
+      "batch_id": "b14",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
       "cook_date": "2026-10-22",
-      "qty": 200
+      "qty": 5.625
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:capers:g",
+    "product_id": "capers",
+    "name": "Каперсы",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 6.75,
+    "from_pantry": 0,
+    "to_buy": 6.75,
+    "buy_qty": 100,
+    "package": {
+     "size": 100,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
+      "cook_date": "2026-10-22",
+      "qty": 6.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:green_olives:g",
+    "product_id": "green_olives",
+    "name": "Оливки зелёные без косточки",
+    "department": "Консервы и соусы",
+    "unit": "g",
+    "convertible": true,
+    "needed": 37.5,
+    "from_pantry": 0,
+    "to_buy": 37.5,
+    "buy_qty": 300,
+    "package": {
+     "size": 300,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
+      "cook_date": "2026-10-22",
+      "qty": 37.5
      }
     ],
     "purchased": false,
@@ -2290,9 +2061,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 0.4875,
+    "needed": 0.1875,
     "from_pantry": 0,
-    "to_buy": 0.4875,
+    "to_buy": 0.1875,
     "buy_qty": 15,
     "package": {
      "size": 15,
@@ -2315,13 +2086,6 @@
       "recipe_name": "Чипсы из лаваша с паприкой и чесноком",
       "cook_date": "2026-10-21",
       "qty": 0.1875
-     },
-     {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
-      "cook_date": "2026-10-22",
-      "qty": 0.3
      }
     ],
     "purchased": false,
@@ -2375,9 +2139,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 56.002747,
+    "needed": 72.321429,
     "from_pantry": 0,
-    "to_buy": 56.002747,
+    "to_buy": 72.321429,
     "buy_qty": 500,
     "package": {
      "size": 500,
@@ -2396,31 +2160,24 @@
     "sources": [
      {
       "batch_id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
-      "recipe_name": "Гречневый боул с сёмгой и авокадо",
+      "recipe_id": "pan-kon-tomate",
+      "recipe_name": "Пан кон томате",
       "cook_date": "2026-10-22",
-      "qty": 11.126374
+      "qty": 22.252747
      },
      {
-      "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "batch_id": "b15",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
       "cook_date": "2026-10-22",
       "qty": 16.68956
      },
      {
-      "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
-      "cook_date": "2026-10-22",
-      "qty": 14.835165
-     },
-     {
       "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
       "cook_date": "2026-10-22",
-      "qty": 13.351648
+      "qty": 33.379121
      }
     ],
     "purchased": false,
@@ -2435,9 +2192,9 @@
     "department": "Масла и специи",
     "unit": "ml",
     "convertible": true,
-    "needed": 157.23913,
+    "needed": 168.326087,
     "from_pantry": 0,
-    "to_buy": 157.23913,
+    "to_buy": 168.326087,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -2498,10 +2255,102 @@
      },
      {
       "batch_id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
-      "recipe_name": "Курица с черносливом и морковью",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
       "cook_date": "2026-10-21",
       "qty": 11.086957
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
+      "cook_date": "2026-10-22",
+      "qty": 11.086957
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:oregano_dried:g",
+    "product_id": "oregano_dried",
+    "name": "Орегано сушёный",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.9375,
+    "from_pantry": 0,
+    "to_buy": 0.9375,
+    "buy_qty": 10,
+    "package": {
+     "size": 10,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
+      "cook_date": "2026-10-21",
+      "qty": 0.1875
+     },
+     {
+      "batch_id": "b16",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
+      "cook_date": "2026-10-22",
+      "qty": 0.75
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:smoked_paprika:g",
+    "product_id": "smoked_paprika",
+    "name": "Паприка копчёная",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.8625,
+    "from_pantry": 0,
+    "to_buy": 0.8625,
+    "buy_qty": 50,
+    "package": {
+     "size": 50,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b12",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
+      "cook_date": "2026-10-21",
+      "qty": 0.8625
      }
     ],
     "purchased": false,
@@ -2516,9 +2365,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 1.5525,
+    "needed": 3.45,
     "from_pantry": 0,
-    "to_buy": 1.5525,
+    "to_buy": 3.45,
     "buy_qty": 50,
     "package": {
      "size": 50,
@@ -2543,11 +2392,18 @@
       "qty": 0.8625
      },
      {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
+      "batch_id": "b12",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
+      "cook_date": "2026-10-21",
+      "qty": 0.8625
+     },
+     {
+      "batch_id": "b14",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
       "cook_date": "2026-10-22",
-      "qty": 0.69
+      "qty": 1.725
      }
     ],
     "purchased": false,
@@ -2562,9 +2418,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 1.815,
+    "needed": 1.845,
     "from_pantry": 0,
-    "to_buy": 1.815,
+    "to_buy": 1.845,
     "buy_qty": 50,
     "package": {
      "size": 50,
@@ -2625,24 +2481,24 @@
      },
      {
       "batch_id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
-      "recipe_name": "Курица с черносливом и морковью",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
       "cook_date": "2026-10-21",
       "qty": 0.15
      },
      {
       "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
       "cook_date": "2026-10-22",
-      "qty": 0.15
+      "qty": 0.225
      },
      {
-      "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
+      "batch_id": "b15",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
       "cook_date": "2026-10-22",
-      "qty": 0.12
+      "qty": 0.075
      }
     ],
     "purchased": false,
@@ -2657,9 +2513,9 @@
     "department": "Масла и специи",
     "unit": "g",
     "convertible": true,
-    "needed": 32.5875,
+    "needed": 34.8625,
     "from_pantry": 0,
-    "to_buy": 32.5875,
+    "to_buy": 34.8625,
     "buy_qty": 1000,
     "package": {
      "size": 1000,
@@ -2748,31 +2604,77 @@
      },
      {
       "batch_id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
-      "recipe_name": "Курица с черносливом и морковью",
+      "recipe_id": "okorochka-gril-s-paprikoy",
+      "recipe_name": "Окорочка гриль с паприкой и чесноком",
       "cook_date": "2026-10-21",
-      "qty": 2.25
+      "qty": 3.375
+     },
+     {
+      "batch_id": "b13",
+      "recipe_id": "pan-kon-tomate",
+      "recipe_name": "Пан кон томате",
+      "cook_date": "2026-10-22",
+      "qty": 0.375
      },
      {
       "batch_id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
-      "recipe_name": "Стейки сёмги с булгуром и свежими овощами",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
       "cook_date": "2026-10-22",
       "qty": 4.5
      },
      {
       "batch_id": "b15",
-      "recipe_id": "salat-s-nutom",
-      "recipe_name": "Салат с нутом и свежими овощами",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_name": "Брускетта с помидорами и базиликом",
       "cook_date": "2026-10-22",
-      "qty": 0.5
+      "qty": 0.375
      },
      {
       "batch_id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
-      "recipe_name": "Свиная шея, запечённая с овощами",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
+      "recipe_name": "Дорадо, запечённая с черри, оливками и каперсами",
       "cook_date": "2026-10-22",
-      "qty": 3.6
+      "qty": 4.5
+     }
+    ],
+    "purchased": false,
+    "at_home": false,
+    "previous_to_buy": null,
+    "changed": false
+   },
+   {
+    "id": "auto:thyme_dried:g",
+    "product_id": "thyme_dried",
+    "name": "Тимьян сушёный",
+    "department": "Масла и специи",
+    "unit": "g",
+    "convertible": true,
+    "needed": 0.375,
+    "from_pantry": 0,
+    "to_buy": 0.375,
+    "buy_qty": 10,
+    "package": {
+     "size": 10,
+     "unit": "g",
+     "count": 1
+    },
+    "package_note": null,
+    "price_kop": null,
+    "price_per": null,
+    "price_date": null,
+    "price_source": null,
+    "price_kind": null,
+    "estimated": false,
+    "purchase_cost_kop": null,
+    "usage_cost_kop": null,
+    "sources": [
+     {
+      "batch_id": "b14",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
+      "recipe_name": "Свиные рёбрышки с картофелем в духовке",
+      "cook_date": "2026-10-22",
+      "qty": 0.375
      }
     ],
     "purchased": false,
@@ -2857,23 +2759,20 @@
     "auto:paprika:g",
     "auto:garlic_dried:g",
     "auto:italian_herbs:g",
-    "auto:chicken_thighs:g",
-    "auto:prunes:g",
-    "auto:carrot:g",
-    "auto:buckwheat_dry:g",
-    "auto:salmon_salted:g",
-    "auto:cucumber:g",
+    "auto:chicken_leg_quarters:g",
+    "auto:smoked_paprika:g",
+    "auto:garlic:g",
+    "auto:oregano_dried:g",
+    "auto:baguette:g",
     "auto:olive_oil:ml",
-    "auto:sesame_seeds:g",
-    "auto:salmon_steak:g",
-    "auto:bulgur_dry:g",
-    "auto:parsley:g",
-    "auto:mint:g",
-    "auto:chickpeas_canned:g",
-    "auto:pork_neck:g",
-    "auto:zucchini:g",
-    "auto:bell_pepper:g",
-    "auto:garlic:g"
+    "auto:pork_ribs:g",
+    "auto:mustard:g",
+    "auto:thyme_dried:g",
+    "auto:basil:g",
+    "auto:dorado:g",
+    "auto:cherry_tomatoes:g",
+    "auto:green_olives:g",
+    "auto:capers:g"
    ]
   },
   "budget": {
@@ -2895,27 +2794,27 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 1980.6648,
+       "value": 1949.7648,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 87.7771395,
+       "value": 87.4681395,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 93.51848050000001,
+       "value": 93.05498050000001,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 199.38371250000003,
+       "value": 192.74021250000004,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 23.014965000000004,
+       "value": 22.087965000000004,
        "complete": true,
        "missing": []
       },
@@ -2928,10 +2827,8 @@
       },
       "vit_c": {
        "value": 51.06965000000001,
-       "complete": false,
-       "missing": [
-        "soy_milk"
-       ]
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
        "value": 0.245,
@@ -2942,35 +2839,29 @@
        ]
       },
       "vit_e": {
-       "value": 5.592461999999999,
+       "value": 5.746962,
        "complete": false,
        "missing": [
-        "soy_milk",
         "coriander_ground",
         "pork_mince"
        ]
       },
       "vit_b6": {
-       "value": 1.5844273000000002,
+       "value": 1.6462273,
        "complete": false,
        "missing": [
-        "soy_milk",
         "coriander_ground"
        ]
       },
       "vit_b12": {
        "value": 5.8905,
-       "complete": false,
-       "missing": [
-        "soy_milk"
-       ]
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 233.43910000000002,
-       "complete": false,
-       "missing": [
-        "soy_milk"
-       ]
+       "value": 256.6141,
+       "complete": true,
+       "missing": []
       }
      },
      "portion_mass_g": 1012.5,
@@ -3055,77 +2946,77 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 1777.196566666667,
+       "value": 1806.5699416666669,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 60.66043116666667,
+       "value": 68.39542616666667,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 95.30905133333331,
+       "value": 102.64271883333332,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 167.3436916666667,
+       "value": 148.6274991666667,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 9.073015000000002,
+       "value": 6.746902500000001,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 675.64509,
+       "value": 147.685715,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       },
       "vit_c": {
-       "value": 6.565475000000001,
+       "value": 9.689800000000002,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       },
       "vit_d": {
-       "value": 0.23750000000000002,
+       "value": 0.29000000000000004,
        "complete": true,
        "missing": []
       },
       "vit_e": {
-       "value": 22.0996115,
+       "value": 22.262376500000002,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       },
       "vit_b6": {
-       "value": 1.1039578833333334,
+       "value": 1.1730252583333334,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       },
       "vit_b12": {
-       "value": 2.6885000000000003,
+       "value": 2.8880000000000003,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 76.77543333333332,
+       "value": 70.60005833333332,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       }
      },
-     "portion_mass_g": 755,
+     "portion_mass_g": 692.5,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3134,90 +3025,82 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 2046.7669,
+       "value": 1898.141125,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 108.77839200000003,
+       "value": 86.42527999999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 123.44206199999999,
+       "value": 120.7373925,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 138.39427999999998,
+       "value": 127.28858749999999,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 29.55439,
+       "value": 14.5854125,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 579.05386,
+       "value": 263.73515000000003,
        "complete": false,
        "missing": [
-        "salmon_salted",
-        "pork_neck",
-        "italian_herbs"
+        "mustard",
+        "dorado",
+        "cherry_tomatoes"
        ]
       },
       "vit_c": {
-       "value": 169.21846,
+       "value": 129.78665,
        "complete": false,
        "missing": [
-        "salmon_salted",
-        "italian_herbs"
+        "mustard"
        ]
       },
       "vit_d": {
-       "value": 25.71,
+       "value": 4.0249999999999995,
        "complete": false,
        "missing": [
-        "salmon_salted"
+        "dorado",
+        "cherry_tomatoes"
        ]
       },
       "vit_e": {
-       "value": 16.7672325,
+       "value": 16.2568525,
        "complete": false,
        "missing": [
-        "buckwheat_dry",
-        "salmon_salted",
-        "dill",
-        "mint",
-        "italian_herbs"
+        "mustard"
        ]
       },
       "vit_b6": {
-       "value": 3.3570909,
+       "value": 3.1896953749999994,
        "complete": false,
        "missing": [
-        "salmon_salted",
-        "italian_herbs"
+        "mustard"
        ]
       },
       "vit_b12": {
-       "value": 8.3875,
-       "complete": false,
-       "missing": [
-        "salmon_salted"
-       ]
+       "value": 7.385,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 301.5593,
+       "value": 197.588875,
        "complete": false,
        "missing": [
-        "salmon_salted",
-        "italian_herbs"
+        "mustard"
        ]
       }
      },
-     "portion_mass_g": 1300,
+     "portion_mass_g": 1090,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3225,98 +3108,91 @@
    ],
    "period": {
     "kcal": {
-     "value": 7455.660133333335,
+     "value": 7305.507733333334,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 323.41690733333337,
+     "value": 308.4897903333333,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 426.77974916666665,
+     "value": 430.94524716666666,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 598.7706175000001,
+     "value": 562.3052325,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 74.98823,
+     "value": 56.76614000000001,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 1651.89425,
+     "value": 808.6161650000001,
      "complete": false,
      "missing": [
       "soy_milk",
       "italian_herbs",
-      "salmon_salted",
-      "pork_neck"
+      "mustard",
+      "dorado",
+      "cherry_tomatoes"
      ]
     },
     "vit_c": {
-     "value": 303.096285,
+     "value": 266.78880000000004,
      "complete": false,
      "missing": [
-      "soy_milk",
       "italian_herbs",
-      "salmon_salted"
+      "mustard"
      ]
     },
     "vit_d": {
-     "value": 31.7925,
+     "value": 10.16,
      "complete": false,
      "missing": [
       "soy_milk",
       "pork_mince",
       "lamb_ribs",
-      "salmon_salted"
+      "dorado",
+      "cherry_tomatoes"
      ]
     },
     "vit_e": {
-     "value": 68.79011399999999,
+     "value": 68.59699900000001,
      "complete": false,
      "missing": [
-      "soy_milk",
       "coriander_ground",
       "pork_mince",
       "dill",
       "italian_herbs",
-      "buckwheat_dry",
-      "salmon_salted",
-      "mint"
+      "mustard"
      ]
     },
     "vit_b6": {
-     "value": 7.546622616666667,
+     "value": 7.510094466666667,
      "complete": false,
      "missing": [
-      "soy_milk",
       "coriander_ground",
       "italian_herbs",
-      "salmon_salted"
+      "mustard"
      ]
     },
     "vit_b12": {
-     "value": 22.4869,
-     "complete": false,
-     "missing": [
-      "soy_milk",
-      "salmon_salted"
-     ]
+     "value": 21.6839,
+     "complete": true,
+     "missing": []
     },
     "folate": {
-     "value": 770.0215666666667,
+     "value": 683.0507666666666,
      "complete": false,
      "missing": [
-      "soy_milk",
       "italian_herbs",
-      "salmon_salted"
+      "mustard"
      ]
     }
    },
@@ -3326,14 +3202,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 1651.89425,
+     "period_value": 808.6161650000001,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cherry_tomatoes",
+      "dorado",
       "italian_herbs",
-      "pork_neck",
-      "salmon_salted",
+      "mustard",
       "soy_milk"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3344,14 +3221,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 303.096285,
+     "period_value": 266.78880000000004,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "italian_herbs",
-      "salmon_salted",
-      "soy_milk"
+      "mustard"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3361,14 +3237,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 31.7925,
+     "period_value": 10.16,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cherry_tomatoes",
+      "dorado",
       "lamb_ribs",
       "pork_mince",
-      "salmon_salted",
       "soy_milk"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3379,19 +3256,16 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 68.79011399999999,
+     "period_value": 68.59699900000001,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "buckwheat_dry",
       "coriander_ground",
       "dill",
       "italian_herbs",
-      "mint",
-      "pork_mince",
-      "salmon_salted",
-      "soy_milk"
+      "mustard",
+      "pork_mince"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3401,15 +3275,14 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 7.546622616666667,
+     "period_value": 7.510094466666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "coriander_ground",
       "italian_herbs",
-      "salmon_salted",
-      "soy_milk"
+      "mustard"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3419,14 +3292,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 22.4869,
+     "period_value": 21.6839,
      "coverage_pct": null,
      "lower_bound_pct": null,
-     "data_complete": false,
-     "missing_products": [
-      "salmon_salted",
-      "soy_milk"
-     ],
+     "data_complete": true,
+     "missing_products": [],
      "message": "Целевая норма не выбрана.",
      "set_status": null
     },
@@ -3435,14 +3305,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 770.0215666666667,
+     "period_value": 683.0507666666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "italian_herbs",
-      "salmon_salted",
-      "soy_milk"
+      "mustard"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3457,27 +3326,27 @@
      "date": "2026-10-19",
      "totals": {
       "kcal": {
-       "value": 990.3324,
+       "value": 974.8824,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 43.88856975,
+       "value": 43.73406975,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 46.759240250000005,
+       "value": 46.52749025000001,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 99.69185625000001,
+       "value": 96.37010625000002,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 11.507482500000002,
+       "value": 11.043982500000002,
        "complete": true,
        "missing": []
       },
@@ -3490,10 +3359,8 @@
       },
       "vit_c": {
        "value": 25.534825000000005,
-       "complete": false,
-       "missing": [
-        "soy_milk"
-       ]
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
        "value": 0.1225,
@@ -3504,35 +3371,29 @@
        ]
       },
       "vit_e": {
-       "value": 2.7962309999999997,
+       "value": 2.873481,
        "complete": false,
        "missing": [
-        "soy_milk",
         "coriander_ground",
         "pork_mince"
        ]
       },
       "vit_b6": {
-       "value": 0.7922136500000001,
+       "value": 0.82311365,
        "complete": false,
        "missing": [
-        "soy_milk",
         "coriander_ground"
        ]
       },
       "vit_b12": {
        "value": 2.94525,
-       "complete": false,
-       "missing": [
-        "soy_milk"
-       ]
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 116.71955000000001,
-       "complete": false,
-       "missing": [
-        "soy_milk"
-       ]
+       "value": 128.30705,
+       "complete": true,
+       "missing": []
       }
      },
      "portion_mass_g": 506.25,
@@ -3617,77 +3478,77 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 888.5982833333335,
+       "value": 903.2849708333334,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 30.330215583333334,
+       "value": 34.19771308333333,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 47.65452566666666,
+       "value": 51.32135941666666,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 83.67184583333335,
+       "value": 74.31374958333335,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 4.536507500000001,
+       "value": 3.3734512500000005,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 337.822545,
+       "value": 73.8428575,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       },
       "vit_c": {
-       "value": 3.2827375000000005,
+       "value": 4.844900000000001,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       },
       "vit_d": {
-       "value": 0.11875000000000001,
+       "value": 0.14500000000000002,
        "complete": true,
        "missing": []
       },
       "vit_e": {
-       "value": 11.04980575,
+       "value": 11.131188250000001,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       },
       "vit_b6": {
-       "value": 0.5519789416666667,
+       "value": 0.5865126291666667,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       },
       "vit_b12": {
-       "value": 1.3442500000000002,
+       "value": 1.4440000000000002,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 38.38771666666666,
+       "value": 35.30002916666666,
        "complete": false,
        "missing": [
         "italian_herbs"
        ]
       }
      },
-     "portion_mass_g": 377.5,
+     "portion_mass_g": 346.25,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3696,90 +3557,82 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 1023.38345,
+       "value": 949.0705625,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 54.38919600000001,
+       "value": 43.21263999999999,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 61.721030999999996,
+       "value": 60.36869625,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 69.19713999999999,
+       "value": 63.644293749999996,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 14.777195,
+       "value": 7.29270625,
        "complete": true,
        "missing": []
       },
       "vit_a": {
-       "value": 289.52693,
+       "value": 131.86757500000002,
        "complete": false,
        "missing": [
-        "salmon_salted",
-        "pork_neck",
-        "italian_herbs"
+        "mustard",
+        "dorado",
+        "cherry_tomatoes"
        ]
       },
       "vit_c": {
-       "value": 84.60923,
+       "value": 64.893325,
        "complete": false,
        "missing": [
-        "salmon_salted",
-        "italian_herbs"
+        "mustard"
        ]
       },
       "vit_d": {
-       "value": 12.855,
+       "value": 2.0124999999999997,
        "complete": false,
        "missing": [
-        "salmon_salted"
+        "dorado",
+        "cherry_tomatoes"
        ]
       },
       "vit_e": {
-       "value": 8.38361625,
+       "value": 8.12842625,
        "complete": false,
        "missing": [
-        "buckwheat_dry",
-        "salmon_salted",
-        "dill",
-        "mint",
-        "italian_herbs"
+        "mustard"
        ]
       },
       "vit_b6": {
-       "value": 1.67854545,
+       "value": 1.5948476874999997,
        "complete": false,
        "missing": [
-        "salmon_salted",
-        "italian_herbs"
+        "mustard"
        ]
       },
       "vit_b12": {
-       "value": 4.19375,
-       "complete": false,
-       "missing": [
-        "salmon_salted"
-       ]
+       "value": 3.6925,
+       "complete": true,
+       "missing": []
       },
       "folate": {
-       "value": 150.77965,
+       "value": 98.7944375,
        "complete": false,
        "missing": [
-        "salmon_salted",
-        "italian_herbs"
+        "mustard"
        ]
       }
      },
-     "portion_mass_g": 650,
+     "portion_mass_g": 545,
      "energy_target": null,
      "energy_deviation_pct": null,
      "energy_status": "no_target"
@@ -3787,98 +3640,91 @@
    ],
    "period": {
     "kcal": {
-     "value": 3727.8300666666673,
+     "value": 3652.753866666667,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 161.70845366666668,
+     "value": 154.24489516666665,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 213.38987458333332,
+     "value": 215.47262358333333,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 299.38530875000004,
+     "value": 281.15261625,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 37.494115,
+     "value": 28.383070000000004,
      "complete": true,
      "missing": []
     },
     "vit_a": {
-     "value": 825.947125,
+     "value": 404.30808250000007,
      "complete": false,
      "missing": [
       "soy_milk",
       "italian_herbs",
-      "salmon_salted",
-      "pork_neck"
+      "mustard",
+      "dorado",
+      "cherry_tomatoes"
      ]
     },
     "vit_c": {
-     "value": 151.5481425,
+     "value": 133.39440000000002,
      "complete": false,
      "missing": [
-      "soy_milk",
       "italian_herbs",
-      "salmon_salted"
+      "mustard"
      ]
     },
     "vit_d": {
-     "value": 15.89625,
+     "value": 5.08,
      "complete": false,
      "missing": [
       "soy_milk",
       "pork_mince",
       "lamb_ribs",
-      "salmon_salted"
+      "dorado",
+      "cherry_tomatoes"
      ]
     },
     "vit_e": {
-     "value": 34.395056999999994,
+     "value": 34.298499500000005,
      "complete": false,
      "missing": [
-      "soy_milk",
       "coriander_ground",
       "pork_mince",
       "dill",
       "italian_herbs",
-      "buckwheat_dry",
-      "salmon_salted",
-      "mint"
+      "mustard"
      ]
     },
     "vit_b6": {
-     "value": 3.7733113083333336,
+     "value": 3.7550472333333333,
      "complete": false,
      "missing": [
-      "soy_milk",
       "coriander_ground",
       "italian_herbs",
-      "salmon_salted"
+      "mustard"
      ]
     },
     "vit_b12": {
-     "value": 11.24345,
-     "complete": false,
-     "missing": [
-      "soy_milk",
-      "salmon_salted"
-     ]
+     "value": 10.84195,
+     "complete": true,
+     "missing": []
     },
     "folate": {
-     "value": 385.01078333333334,
+     "value": 341.5253833333333,
      "complete": false,
      "missing": [
-      "soy_milk",
       "italian_herbs",
-      "salmon_salted"
+      "mustard"
      ]
     }
    },
@@ -3888,14 +3734,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 825.947125,
+     "period_value": 404.30808250000007,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cherry_tomatoes",
+      "dorado",
       "italian_herbs",
-      "pork_neck",
-      "salmon_salted",
+      "mustard",
       "soy_milk"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3906,14 +3753,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 151.5481425,
+     "period_value": 133.39440000000002,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "italian_herbs",
-      "salmon_salted",
-      "soy_milk"
+      "mustard"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3923,14 +3769,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 15.89625,
+     "period_value": 5.08,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cherry_tomatoes",
+      "dorado",
       "lamb_ribs",
       "pork_mince",
-      "salmon_salted",
       "soy_milk"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3941,19 +3788,16 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 34.395056999999994,
+     "period_value": 34.298499500000005,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "buckwheat_dry",
       "coriander_ground",
       "dill",
       "italian_herbs",
-      "mint",
-      "pork_mince",
-      "salmon_salted",
-      "soy_milk"
+      "mustard",
+      "pork_mince"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3963,15 +3807,14 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 3.7733113083333336,
+     "period_value": 3.7550472333333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "coriander_ground",
       "italian_herbs",
-      "salmon_salted",
-      "soy_milk"
+      "mustard"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -3981,14 +3824,11 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 11.24345,
+     "period_value": 10.84195,
      "coverage_pct": null,
      "lower_bound_pct": null,
-     "data_complete": false,
-     "missing_products": [
-      "salmon_salted",
-      "soy_milk"
-     ],
+     "data_complete": true,
+     "missing_products": [],
      "message": "Целевая норма не выбрана.",
      "set_status": null
     },
@@ -3997,14 +3837,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 385.01078333333334,
+     "period_value": 341.5253833333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "italian_herbs",
-      "salmon_salted",
-      "soy_milk"
+      "mustard"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null
@@ -4171,16 +4010,16 @@
      },
      {
       "id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
+      "recipe_id": "okorochka-gril-s-paprikoy",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "oven",
       "cook_date": "2026-10-21",
       "slot": "dinner",
       "portions": 1.5
      },
      {
       "id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
+      "recipe_id": "pan-kon-tomate",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-22",
@@ -4189,25 +4028,25 @@
      },
      {
       "id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "oven",
       "cook_date": "2026-10-22",
       "slot": "lunch",
       "portions": 1.5
      },
      {
       "id": "b15",
-      "recipe_id": "salat-s-nutom",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
       "recipe_version": 1,
-      "method_id": "no-heat",
+      "method_id": "oven",
       "cook_date": "2026-10-22",
       "slot": "snack",
       "portions": 1.5
      },
      {
       "id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
       "recipe_version": 1,
       "method_id": "oven",
       "cook_date": "2026-10-22",
@@ -4495,81 +4334,79 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 9100,
-     "score": 7.821280338033904,
+     "evaluated": 9098,
+     "score": 8.3105423885963,
      "budget_status": "none"
     },
     "snapshot_ids": {
      "recipes": [
+      "brusketta-s-pomidorami-i-bazilikom",
       "chebureki",
       "chipsy-iz-lavasha-s-paprikoy",
-      "grechnevyy-boul-s-syomgoy-i-avokado",
+      "dorado-s-cherri-i-olivkami",
       "guakamole-s-tostami",
       "hinkali",
       "kambala-zharenaya",
       "kazan-kebab",
-      "kuritsa-s-chernoslivom",
       "lyulya-kebab-iz-baraniny",
+      "okorochka-gril-s-paprikoy",
       "ovsyanka-s-arahisovoy-pastoy-na-soevom-moloke",
+      "pan-kon-tomate",
       "postnye-bliny-na-vode",
       "salat-iz-pomidorov-s-lukom",
-      "salat-s-nutom",
-      "steyki-syomgi-s-bulgurom",
-      "svinaya-sheya-s-ovoshchami",
+      "svinye-ryobryshki-s-kartofelem",
       "tost-s-arahisovoy-pastoy-i-bananom",
       "tost-s-shampinonami-i-timyanom"
      ],
      "products": [
       "avocado",
+      "baguette",
       "baking_soda",
       "banana",
+      "basil",
       "beef_mince",
-      "bell_pepper",
       "black_pepper",
       "bread_wholegrain",
-      "buckwheat_dry",
-      "bulgur_dry",
-      "carrot",
+      "capers",
       "champignons",
-      "chicken_thighs",
-      "chickpeas_canned",
+      "cherry_tomatoes",
+      "chicken_leg_quarters",
       "cilantro",
       "coriander_ground",
-      "cucumber",
       "cumin",
       "dill",
+      "dorado",
       "flounder",
       "garlic",
       "garlic_dried",
+      "green_olives",
       "italian_herbs",
       "lamb_mince",
       "lamb_ribs",
       "lavash",
       "lemon",
-      "mint",
+      "mustard",
       "oats_flakes",
       "olive_oil",
       "onion",
+      "oregano_dried",
       "paprika",
       "parsley",
       "peanut_butter",
       "pork_mince",
-      "pork_neck",
+      "pork_ribs",
       "potato",
-      "prunes",
       "red_onion",
-      "salmon_salted",
-      "salmon_steak",
       "salt",
-      "sesame_seeds",
+      "smoked_paprika",
       "soy_milk",
       "sugar",
       "sunflower_oil",
       "thyme",
+      "thyme_dried",
       "tomato",
       "water",
-      "wheat_flour",
-      "zucchini"
+      "wheat_flour"
      ]
     }
    },
@@ -4614,20 +4451,18 @@
      "auto:paprika:g",
      "auto:garlic_dried:g",
      "auto:italian_herbs:g",
-     "auto:chicken_thighs:g",
-     "auto:prunes:g",
-     "auto:carrot:g",
-     "auto:buckwheat_dry:g",
-     "auto:salmon_salted:g",
-     "auto:cucumber:g",
-     "auto:sesame_seeds:g",
-     "auto:salmon_steak:g",
-     "auto:bulgur_dry:g",
-     "auto:mint:g",
-     "auto:chickpeas_canned:g",
-     "auto:pork_neck:g",
-     "auto:zucchini:g",
-     "auto:bell_pepper:g"
+     "auto:chicken_leg_quarters:g",
+     "auto:smoked_paprika:g",
+     "auto:oregano_dried:g",
+     "auto:baguette:g",
+     "auto:pork_ribs:g",
+     "auto:mustard:g",
+     "auto:thyme_dried:g",
+     "auto:basil:g",
+     "auto:dorado:g",
+     "auto:cherry_tomatoes:g",
+     "auto:green_olives:g",
+     "auto:capers:g"
     ]
    }
   },
@@ -4784,16 +4619,16 @@
      },
      {
       "id": "b12",
-      "recipe_id": "kuritsa-s-chernoslivom",
+      "recipe_id": "okorochka-gril-s-paprikoy",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "oven",
       "cook_date": "2026-10-21",
       "slot": "dinner",
       "portions": 1.5
      },
      {
       "id": "b13",
-      "recipe_id": "grechnevyy-boul-s-syomgoy-i-avokado",
+      "recipe_id": "pan-kon-tomate",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-22",
@@ -4802,25 +4637,25 @@
      },
      {
       "id": "b14",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_id": "svinye-ryobryshki-s-kartofelem",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "oven",
       "cook_date": "2026-10-22",
       "slot": "lunch",
       "portions": 1.5
      },
      {
       "id": "b15",
-      "recipe_id": "salat-s-nutom",
+      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
       "recipe_version": 1,
-      "method_id": "no-heat",
+      "method_id": "oven",
       "cook_date": "2026-10-22",
       "slot": "snack",
       "portions": 1.5
      },
      {
       "id": "b16",
-      "recipe_id": "svinaya-sheya-s-ovoshchami",
+      "recipe_id": "dorado-s-cherri-i-olivkami",
       "recipe_version": 1,
       "method_id": "oven",
       "cook_date": "2026-10-22",
@@ -5097,81 +4932,79 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 9100,
-     "score": 7.821280338033904,
+     "evaluated": 9098,
+     "score": 8.3105423885963,
      "budget_status": "none"
     },
     "snapshot_ids": {
      "recipes": [
+      "brusketta-s-pomidorami-i-bazilikom",
       "chebureki",
       "chipsy-iz-lavasha-s-paprikoy",
-      "grechnevyy-boul-s-syomgoy-i-avokado",
+      "dorado-s-cherri-i-olivkami",
       "guakamole-s-tostami",
       "hinkali",
       "kambala-zharenaya",
       "kazan-kebab",
-      "kuritsa-s-chernoslivom",
       "lyulya-kebab-iz-baraniny",
+      "okorochka-gril-s-paprikoy",
       "ovsyanka-s-arahisovoy-pastoy-na-soevom-moloke",
+      "pan-kon-tomate",
       "postnye-bliny-na-vode",
       "salat-iz-pomidorov-s-lukom",
-      "salat-s-nutom",
-      "steyki-syomgi-s-bulgurom",
-      "svinaya-sheya-s-ovoshchami",
+      "svinye-ryobryshki-s-kartofelem",
       "tost-s-arahisovoy-pastoy-i-bananom",
       "tost-s-shampinonami-i-timyanom"
      ],
      "products": [
       "avocado",
+      "baguette",
       "baking_soda",
       "banana",
+      "basil",
       "beef_mince",
-      "bell_pepper",
       "black_pepper",
       "bread_wholegrain",
-      "buckwheat_dry",
-      "bulgur_dry",
-      "carrot",
+      "capers",
       "champignons",
-      "chicken_thighs",
-      "chickpeas_canned",
+      "cherry_tomatoes",
+      "chicken_leg_quarters",
       "cilantro",
       "coriander_ground",
-      "cucumber",
       "cumin",
       "dill",
+      "dorado",
       "flounder",
       "garlic",
       "garlic_dried",
+      "green_olives",
       "italian_herbs",
       "lamb_mince",
       "lamb_ribs",
       "lavash",
       "lemon",
-      "mint",
+      "mustard",
       "oats_flakes",
       "olive_oil",
       "onion",
+      "oregano_dried",
       "paprika",
       "parsley",
       "peanut_butter",
       "pork_mince",
-      "pork_neck",
+      "pork_ribs",
       "potato",
-      "prunes",
       "red_onion",
-      "salmon_salted",
-      "salmon_steak",
       "salt",
-      "sesame_seeds",
+      "smoked_paprika",
       "soy_milk",
       "sugar",
       "sunflower_oil",
       "thyme",
+      "thyme_dried",
       "tomato",
       "water",
-      "wheat_flour",
-      "zucchini"
+      "wheat_flour"
      ]
     }
    },
@@ -5214,20 +5047,18 @@
      "auto:paprika:g",
      "auto:garlic_dried:g",
      "auto:italian_herbs:g",
-     "auto:chicken_thighs:g",
-     "auto:prunes:g",
-     "auto:carrot:g",
-     "auto:buckwheat_dry:g",
-     "auto:salmon_salted:g",
-     "auto:cucumber:g",
-     "auto:sesame_seeds:g",
-     "auto:salmon_steak:g",
-     "auto:bulgur_dry:g",
-     "auto:mint:g",
-     "auto:chickpeas_canned:g",
-     "auto:pork_neck:g",
-     "auto:zucchini:g",
-     "auto:bell_pepper:g"
+     "auto:chicken_leg_quarters:g",
+     "auto:smoked_paprika:g",
+     "auto:oregano_dried:g",
+     "auto:baguette:g",
+     "auto:pork_ribs:g",
+     "auto:mustard:g",
+     "auto:thyme_dried:g",
+     "auto:basil:g",
+     "auto:dorado:g",
+     "auto:cherry_tomatoes:g",
+     "auto:green_olives:g",
+     "auto:capers:g"
     ]
    }
   }

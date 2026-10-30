@@ -1,0 +1,9865 @@
+{
+ "format": "foodo-livsmedel-values",
+ "version": 1,
+ "dataset": "Livsmedelsverket, Livsmedelsdatabasen (Swedish Food Agency food composition database)",
+ "url": "https://dataportal.livsmedelsverket.se/livsmedel",
+ "license": "CC BY 4.0",
+ "products": {
+  "ayran": {
+   "nummer": 6959,
+   "name_sv": "Yoghurtdryck typ ayran",
+   "name_en": "Yoghurt drink e.g. Ayran",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 60,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 6,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 2.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 5.4,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 1.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 28,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 1.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 7.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 16.7,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 82,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 6,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 116,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.06,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.46,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 46,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 1.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 11.6,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.07,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 1.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.02,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 12.2,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.11,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.02,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.51,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WASTE": {
+     "name": "Waste (e.g. peel)",
+     "value": 0,
+     "unit": "%",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 94.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.8,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "beans_in_tomato": {
+   "nummer": 901,
+   "name_sv": "Vita bönor m. tomatsås konserv.",
+   "name_en": "White beans w/ tomato sauce canned",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.7,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 42,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 23,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 15.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 3.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 95,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 0.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 1.4,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 4.9,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 29.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "TR"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 272,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 30,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 1.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 261,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.7,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 1.5,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 88,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 5.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.03,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 3.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 3.4,
+     "unit": "g",
+     "type": "MN"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 4.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.21,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 1.9,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.13,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "TR"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.2,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 72.8,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.6,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "beans_white_canned": {
+   "nummer": 3761,
+   "name_sv": "Stora vita bönor konserv. u. lag",
+   "name_en": "Large white beans canned w/o brine",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.3,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 44,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 14.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 107,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 0.8,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 1.3,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 6.8,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 21.5,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 4.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 320,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 34,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 240,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.42,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 1.6,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 81,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 6.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.7,
+     "unit": "g",
+     "type": "MN"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 0.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.11,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 69.6,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.5,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "blueberries_frozen": {
+   "nummer": 556,
+   "name_sv": "Blåbär frysvara",
+   "name_en": "Blueberries frozen product",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 20,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 13,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 7.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.5,
+     "unit": "g",
+     "type": null
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 43,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.2,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.6,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 3.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 6.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 2.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 86,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 9,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 5.9,
+     "unit": "g",
+     "type": null
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 3,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.3,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.38,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 20,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.07,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": null
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.5,
+     "unit": "g",
+     "type": null
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 6.4,
+     "unit": "g",
+     "type": "E"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 1.1,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.06,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 5.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 88.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.2,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "cheese_hard": {
+   "nummer": 96,
+   "name_sv": "Ost hårdost fett 28%",
+   "name_en": "Cheese hard 28% fat",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 3.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 689,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 95,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 3.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 66.3,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 358,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 2.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 8.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 2.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 5.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 2.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 6.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 17.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 27.1,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 24.4,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 12.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 77,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 31,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 424,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 1.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "TR"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 6.1,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 440,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 26.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 256.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.26,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 13.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.01,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 263.9,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 1.85,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.05,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.1,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.7,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 40.2,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 3.5,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "cherry_tomatoes": {
+   "nummer": 4937,
+   "name_sv": "Tomat körsbärstomat röd",
+   "name_en": "Tomato red cherry tomato",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.6,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 11,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 965,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 4.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 25,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 0.1,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.4,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 1.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 25.7,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 0.2,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 320,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 14,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 4.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 3,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.87,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 1.0,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 37,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 0.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.03,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 4.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.05,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 80.4,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.14,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 33.7,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 1.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 92.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "corn_flakes": {
+   "nummer": 6781,
+   "name_sv": "Frukostflingor majs typ cornflakes",
+   "name_en": "Breakfast cereal e.g. corn flakes",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.3,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 3,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 77,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 80.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 4.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 376,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 1.2,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.2,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 6.1,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 10.4,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 91,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 15,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 3.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 450,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 1.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.76,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 1.5,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 50,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 7.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 10.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 3.3,
+     "unit": "g",
+     "type": "MN"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 7.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.01,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 12.5,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BL"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 4.4,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.3,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "dorado": {
+   "nummer": 4612,
+   "name_sv": "Guldsparid rå",
+   "name_en": "Gilt-head sea bream raw",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.2,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 17,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 80.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 177,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 1.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 2.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 4.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 3.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 2.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 11.4,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.2,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 9.4,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 24.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 421,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 31,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 60,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 6.05,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 9.5,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 261,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 18.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 30.6,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.12,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 16.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.26,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 30.6,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 3.36,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.42,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 6.93,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 1.4,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 66.6,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.5,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "gluten_free_bread": {
+   "nummer": 226,
+   "name_sv": "Bröd vitt glutenfritt",
+   "name_en": "Bread white gluten free",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 45,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 5,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 47.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 238,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.7,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.3,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 1.4,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.7,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.5,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 1.4,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 1.2,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 1.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 3.6,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 1.4,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 3.2,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 27.7,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 2.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 88,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 8,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 3.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 396,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.66,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 1.0,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 59,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 1.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.06,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 3.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 0.4,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.6,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 42.6,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.3,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "hake_fillet": {
+   "nummer": 1238,
+   "name_sv": "Kummel rå",
+   "name_en": "Hake raw",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.3,
+     "unit": "g",
+     "type": null
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 41,
+     "unit": "mg",
+     "type": null
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": null
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 50.0,
+     "unit": "mg",
+     "type": null
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 71,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 0.4,
+     "unit": "g",
+     "type": null
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.5,
+     "unit": "mg",
+     "type": null
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 12.0,
+     "unit": "µg",
+     "type": null
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 120.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 365,
+     "unit": "mg",
+     "type": null
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 24,
+     "unit": "mg",
+     "type": null
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 74,
+     "unit": "mg",
+     "type": null
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 3.0,
+     "unit": "mg",
+     "type": null
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 6.03,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 142,
+     "unit": "mg",
+     "type": null
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 16.5,
+     "unit": "g",
+     "type": null
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 10.0,
+     "unit": "µg",
+     "type": null
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.2,
+     "unit": "mg",
+     "type": null
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 20.0,
+     "unit": "µg",
+     "type": null
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.1,
+     "unit": "mg",
+     "type": null
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 10.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 1.3,
+     "unit": "µg",
+     "type": null
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.18,
+     "unit": "mg",
+     "type": null
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": null
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.7,
+     "unit": "µg",
+     "type": null
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.4,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 81.8,
+     "unit": "g",
+     "type": null
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.3,
+     "unit": "mg",
+     "type": null
+    }
+   }
+  },
+  "herring_salted": {
+   "nummer": 1273,
+   "name_sv": "Saltsill rå",
+   "name_en": "Herring salted raw",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 15.0,
+     "unit": "g",
+     "type": null
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 79,
+     "unit": "mg",
+     "type": null
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 3,
+     "unit": "µg",
+     "type": null
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 90.0,
+     "unit": "mg",
+     "type": null
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 245,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 1.3,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 2.6,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 1.1,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 2.4,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.4,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.3,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 1.1,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 1.7,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 7.9,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 4.9,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 4.3,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 19.0,
+     "unit": "g",
+     "type": null
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.8,
+     "unit": "mg",
+     "type": null
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 5.0,
+     "unit": "µg",
+     "type": null
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 20.0,
+     "unit": "µg",
+     "type": null
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 190,
+     "unit": "mg",
+     "type": null
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 24,
+     "unit": "mg",
+     "type": null
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 5900,
+     "unit": "mg",
+     "type": null
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 14.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 5.5,
+     "unit": "mg",
+     "type": null
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 8.98,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 180,
+     "unit": "mg",
+     "type": null
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 19.0,
+     "unit": "g",
+     "type": null
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 30.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.3,
+     "unit": "mg",
+     "type": null
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 22.0,
+     "unit": "µg",
+     "type": null
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.03,
+     "unit": "mg",
+     "type": null
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 30.2,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 6.1,
+     "unit": "µg",
+     "type": null
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.22,
+     "unit": "mg",
+     "type": null
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": null
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 8.3,
+     "unit": "µg",
+     "type": null
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 2.3,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 47.0,
+     "unit": "g",
+     "type": null
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 1.0,
+     "unit": "mg",
+     "type": null
+    }
+   }
+  },
+  "kefir_25": {
+   "nummer": 142,
+   "name_sv": "Kefir fett 3% berikad",
+   "name_en": "Fermented milk 3% fat e.g. Kefir",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 116,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 14,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 4.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 10.2,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 3.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 60,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 2.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 3.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 11.2,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 10.5,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 162,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 12,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 41,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.06,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.86,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 91,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 3.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 25.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.14,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 1.8,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 3.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 26.2,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.27,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 1.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 88.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.4,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "lingonberries_frozen": {
+   "nummer": 573,
+   "name_sv": "Lingon",
+   "name_en": "Lingonberries cowberries",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.2,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 22,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 8,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 10.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 56,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.2,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 0.7,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.4,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 2.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 19.6,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 1.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 80,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 9,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 7.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 2,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.5,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.6,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 17,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "TR"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.1,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.2,
+     "unit": "g",
+     "type": "MN"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 8.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.06,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 0.7,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "TR"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 10.7,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 1.5,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 85.3,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.2,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "matsoni": {
+   "nummer": 124,
+   "name_sv": "Yoghurt naturell fett 3% berikad",
+   "name_en": "Yoghurt plain 3% fat fortified",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.7,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 116,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 12,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 4.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 10.6,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 2.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 56,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 1.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 2.7,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 13.8,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 8.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 162,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 11,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 38,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.11,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.9,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 91,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 3.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 23.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.14,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 2.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 24.1,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.21,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 1.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 88.7,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 1.6,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "pangasius_fillet": {
+   "nummer": 4226,
+   "name_sv": "Pangasiusmal rå",
+   "name_en": "Pangasius raw",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.3,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 9,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 34.2,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 63,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 1.1,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 8.2,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 2.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 235,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 20,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 318,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 1.96,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 4.4,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 208,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 13.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.03,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 12.7,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.02,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 0.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.36,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.12,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.2,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 83.9,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.3,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "pork_brisket_smoked": {
+   "nummer": 1011,
+   "name_sv": "Gris sidfläsk rökt",
+   "name_en": "Pork belly smoked",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 3.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 4,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 67.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 394,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 9.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 1.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 4.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 15.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 2.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 17.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 3.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 14.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 37.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.5,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 2.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 200,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 15,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 820,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 2.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 3.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 5.82,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 90,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 15.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 2.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.16,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 5.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.48,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 2.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.6,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.15,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.63,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.3,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 43.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 1.7,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "pork_knuckle": {
+   "nummer": 975,
+   "name_sv": "Gris fläskben rå",
+   "name_en": "Pork knuckle raw",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 11,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 58.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 193,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 3.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 2.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 5.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 1.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 5.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 1.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 5.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 13.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 1.5,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 7.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 325,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 27,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 57,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 5.59,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 8.84,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 182,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 17.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 9.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.36,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 10.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.91,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 9.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.68,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.53,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.57,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.4,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 67.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 2.9,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "pork_neck": {
+   "nummer": 978,
+   "name_sv": "Gris fläskkarré rå",
+   "name_en": "Pork collar raw",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 11,
+     "unit": "mg",
+     "type": null
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": null
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 58.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 171,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 2.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 1.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 4.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 4.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 1.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 4.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 11.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 1.5,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 7.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 325,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 27,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 57,
+     "unit": "mg",
+     "type": null
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 5.59,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 8.85,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 182,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 17.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 9.0,
+     "unit": "µg",
+     "type": null
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.36,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 10.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.91,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 9.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.68,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.54,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.57,
+     "unit": "µg",
+     "type": null
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.4,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 70.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 2.9,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "potato_starch": {
+   "nummer": 1946,
+   "name_sv": "Potatismjöl",
+   "name_en": "Potato flour",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.3,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 11,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 84.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 346,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 0.4,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 7.1,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 68,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 3,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 3,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.15,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.2,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 64,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "TR"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "TR"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 0.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "TR"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 15.0,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BL"
+    }
+   }
+  },
+  "processed_cheese": {
+   "nummer": 85,
+   "name_sv": "Mjukost smältost fett ca 20%",
+   "name_en": "Cheese processed 20% fat",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 4.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 440,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 43,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 53.4,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 246,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 2.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 6.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 2.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 4.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 1.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 5.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 13.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 20.8,
+     "unit": "g",
+     "type": null
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 18.7,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 7.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 120,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 20,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 1200,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 3.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.26,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 3.8,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 780,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 15.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 101.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.17,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 10.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.02,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 104.6,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.65,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.6,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.5,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 59.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 2.2,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "prostokvasha": {
+   "nummer": 114,
+   "name_sv": "Filmjölk fett 3% berikad",
+   "name_en": "Fermented milk 3% fat fortified e.g. filmjölk",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.7,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 114,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 12,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 4.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 9.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 3.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 57,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 1.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 2.8,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 10.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 10.5,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 155,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 12,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 39,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.11,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.9,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 95,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 3.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 26.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.15,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BL"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 3.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 27.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.25,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 1.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 88.6,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.7,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "puff_pastry": {
+   "nummer": 1641,
+   "name_sv": "Deg smördeg frysvara",
+   "name_en": "Puff pastry dough frozen product",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 1.0,
+     "unit": "g",
+     "type": null
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 13,
+     "unit": "mg",
+     "type": null
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": null
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 31.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": null
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 395,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 7.9,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 2.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 10.3,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 4.2,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.4,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 10.4,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 4.7,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 10.3,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 27.5,
+     "unit": "g",
+     "type": null
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 3.1,
+     "unit": "mg",
+     "type": null
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 1.4,
+     "unit": "g",
+     "type": null
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 10.2,
+     "unit": "µg",
+     "type": null
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 1.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 61,
+     "unit": "mg",
+     "type": null
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 10,
+     "unit": "mg",
+     "type": null
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 3,
+     "unit": "mg",
+     "type": null
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 1.87,
+     "unit": "mg",
+     "type": null
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 2.7,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 59,
+     "unit": "mg",
+     "type": null
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 5.0,
+     "unit": "g",
+     "type": null
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 310.0,
+     "unit": "µg",
+     "type": null
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.08,
+     "unit": "mg",
+     "type": null
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.8,
+     "unit": "µg",
+     "type": null
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.19,
+     "unit": "mg",
+     "type": null
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 310.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.03,
+     "unit": "µg",
+     "type": null
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.17,
+     "unit": "mg",
+     "type": null
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": null
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 2.37,
+     "unit": "µg",
+     "type": null
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 2.7,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 33.3,
+     "unit": "g",
+     "type": null
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.4,
+     "unit": "mg",
+     "type": null
+    }
+   }
+  },
+  "rice_basmati_dry": {
+   "nummer": 2475,
+   "name_sv": "Ris basmati okokt",
+   "name_en": "Rice Basmati dry",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 18,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 76.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 359,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.4,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 9.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 2.6,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 76,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 26,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 1.3,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 2.8,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 101,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 9.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.05,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 14.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.14,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 0.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.42,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 12.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 1.5,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "rice_jasmine_dry": {
+   "nummer": 2477,
+   "name_sv": "Ris jasmin okokt",
+   "name_en": "Rice Jasmine dry",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 78.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 354,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 0.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 11.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 2.6,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 56,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 10,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.7,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 2.0,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 68,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 7.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.05,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 0.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.75,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 13.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 1.6,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "salmon_salted": {
+   "nummer": 1286,
+   "name_sv": "Lax rimmad",
+   "name_en": "Salmon cured",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 5.3,
+     "unit": "g",
+     "type": null
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 19,
+     "unit": "mg",
+     "type": null
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": null
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 70.0,
+     "unit": "mg",
+     "type": null
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 1.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 148,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 1.2,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.7,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.2,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 2.4,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.3,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.3,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.2,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.9,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 3.4,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 2.2,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 1.7,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 8.1,
+     "unit": "g",
+     "type": null
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.3,
+     "unit": "mg",
+     "type": null
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 26.0,
+     "unit": "µg",
+     "type": null
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 12.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 250,
+     "unit": "mg",
+     "type": null
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 24,
+     "unit": "mg",
+     "type": null
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 1760,
+     "unit": "mg",
+     "type": null
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 4.4,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 6.0,
+     "unit": "mg",
+     "type": null
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 9.45,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 184,
+     "unit": "mg",
+     "type": null
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 18.8,
+     "unit": "g",
+     "type": null
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 30.0,
+     "unit": "µg",
+     "type": null
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.08,
+     "unit": "mg",
+     "type": null
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 26.0,
+     "unit": "µg",
+     "type": null
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 1.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 1.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.18,
+     "unit": "mg",
+     "type": null
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 30.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 5.0,
+     "unit": "µg",
+     "type": null
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.78,
+     "unit": "mg",
+     "type": null
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": null
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 13.0,
+     "unit": "µg",
+     "type": null
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 2.2,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 67.8,
+     "unit": "g",
+     "type": null
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.4,
+     "unit": "mg",
+     "type": null
+    }
+   }
+  },
+  "sea_buckthorn_frozen": {
+   "nummer": 4456,
+   "name_sv": "Havtorn",
+   "name_en": "Sea Buckthorn",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 5,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 860,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 5.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 65,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 1.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 2.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 1.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 3.2,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 3.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 10.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 160,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 5,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 2.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 2,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.26,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.5,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 20,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 1.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.07,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 10.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "TR"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 2.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.18,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 106.7,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.13,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 140.0,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 3.0,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 85.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  },
+  "smoked_mackerel": {
+   "nummer": 1289,
+   "name_sv": "Makrill filé varmrökt",
+   "name_en": "Mackerel fillet smoked",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 2.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 23,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 92.8,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 327,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 1.8,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 3.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 1.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 3.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 1.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.2,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 2.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 11.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 7.6,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 6.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 27.7,
+     "unit": "g",
+     "type": "BE"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 1.5,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 3.9,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 20.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 307,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 32,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 803,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 2.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 8.2,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 11.89,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 354,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 20.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 79.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.46,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 29.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.15,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 79.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 2.9,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.35,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "LZ"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 6.3,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 1.5,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 49.3,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.9,
+     "unit": "mg",
+     "type": "BE"
+    }
+   }
+  },
+  "soy_milk": {
+   "nummer": 907,
+   "name_sv": "Sojadryck",
+   "name_en": "Soy drink",
+   "nutrients": {
+    "ALC": {
+     "name": "Alcohol",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ASH": {
+     "name": "Ash",
+     "value": 0.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "CA": {
+     "name": "Calcium, Ca",
+     "value": 14,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "CARTBTOT": {
+     "name": "Beta-carotene",
+     "value": 0,
+     "unit": "µg",
+     "type": "BL"
+    },
+    "CHO": {
+     "name": "Carbohydrates, available",
+     "value": 1.9,
+     "unit": "g",
+     "type": "BE"
+    },
+    "CHORL": {
+     "name": "Cholesterol",
+     "value": 0.0,
+     "unit": "mg",
+     "type": null
+    },
+    "DISAC": {
+     "name": "Disaccharides",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "ENERC": {
+     "name": "Energy (kcal)",
+     "value": 34,
+     "unit": "kcal",
+     "type": "BE"
+    },
+    "F12:0": {
+     "name": "Fatty acid 12:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F14:0": {
+     "name": "Fatty acid 14:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F16:0": {
+     "name": "Fatty acid 16:0",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F16:1": {
+     "name": "Fatty acid 16:1",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:0": {
+     "name": "Fatty acid 18:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F18:1": {
+     "name": "Fatty acid 18:1",
+     "value": 0.3,
+     "unit": "g",
+     "type": null
+    },
+    "F18:2": {
+     "name": "Fatty acids 18:2",
+     "value": 0.5,
+     "unit": "g",
+     "type": null
+    },
+    "F18:3": {
+     "name": "Fatty acid 18:3",
+     "value": 0.1,
+     "unit": "g",
+     "type": null
+    },
+    "F20:0": {
+     "name": "Fatty acid 20:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:4": {
+     "name": "Fatty acid 20:4",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F20:5": {
+     "name": "EPA (Fatty acid 20:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:5": {
+     "name": "DPA (Fatty acid 22:5)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F22:6": {
+     "name": "DHA (Fatty acid 22:6)",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "F4-10:0": {
+     "name": "Fatty acids 4:0-10:0",
+     "value": 0.0,
+     "unit": "g",
+     "type": null
+    },
+    "FAMS": {
+     "name": "Fatty acids, total monounsaturated",
+     "value": 0.3,
+     "unit": "g",
+     "type": null
+    },
+    "FAPU": {
+     "name": "Fatty acids, total polyunsaturated",
+     "value": 0.6,
+     "unit": "g",
+     "type": null
+    },
+    "FASAT": {
+     "name": "Fatty acids, total saturated",
+     "value": 0.2,
+     "unit": "g",
+     "type": null
+    },
+    "FAT": {
+     "name": "Fat, total",
+     "value": 1.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "FE": {
+     "name": "Iron, Fe",
+     "value": 0.4,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "FIBT": {
+     "name": "Fibre",
+     "value": 0.0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "FOL": {
+     "name": "Folate, total",
+     "value": 15.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "ID": {
+     "name": "Iodide, I",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "K": {
+     "name": "Potassium, K",
+     "value": 135,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MG": {
+     "name": "Magnesium, Mg",
+     "value": 19,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "MNSAC": {
+     "name": "Monosaccharides",
+     "value": 0.0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NA": {
+     "name": "Sodium, Na",
+     "value": 28,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NACL": {
+     "name": "Salt, NaCl",
+     "value": 0.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "NIA": {
+     "name": "Niacin",
+     "value": 0.18,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "NIAEQ": {
+     "name": "Niacin equivalents",
+     "value": 0.6,
+     "unit": "NE/mg",
+     "type": "BE"
+    },
+    "P": {
+     "name": "Phosphorus, P",
+     "value": 47,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "PROT": {
+     "name": "Protein",
+     "value": 3.1,
+     "unit": "g",
+     "type": "BE"
+    },
+    "RETOL": {
+     "name": "Retinol",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "RIBF": {
+     "name": "Riboflavin",
+     "value": 0.02,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "SE": {
+     "name": "Selenium, Se",
+     "value": 1.0,
+     "unit": "µg",
+     "type": "MN"
+    },
+    "SUCS": {
+     "name": "Sucrose",
+     "value": 0.5,
+     "unit": "g",
+     "type": "MN"
+    },
+    "SUGAD": {
+     "name": "Added sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "SUGAR": {
+     "name": "Sugar total",
+     "value": 0.5,
+     "unit": "g",
+     "type": "BE"
+    },
+    "SUGFR": {
+     "name": "Free sugar",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "THIACLHCL": {
+     "name": "Thiamin",
+     "value": 0.03,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITA": {
+     "name": "Retinol equivalents",
+     "value": 0.0,
+     "unit": "RE/µg",
+     "type": "BE"
+    },
+    "VITB12": {
+     "name": "Vitamin B-12",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "LZ"
+    },
+    "VITB6": {
+     "name": "Vitamin B-6",
+     "value": 0.04,
+     "unit": "mg",
+     "type": "MN"
+    },
+    "VITC": {
+     "name": "Vitamin C",
+     "value": 0.0,
+     "unit": "mg",
+     "type": "BL"
+    },
+    "VITD": {
+     "name": "Vitamin D",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITD_x": {
+     "name": "Vitamin D incl 25-OH-D3",
+     "value": 0.0,
+     "unit": "µg",
+     "type": "BE"
+    },
+    "VITE": {
+     "name": "Vitamin E",
+     "value": 0.1,
+     "unit": "mg",
+     "type": "BE"
+    },
+    "WATER": {
+     "name": "Water",
+     "value": 92.9,
+     "unit": "g",
+     "type": "MN"
+    },
+    "WHOLET": {
+     "name": "Wholegrain total",
+     "value": 0,
+     "unit": "g",
+     "type": "BE"
+    },
+    "WHOLE_x": {
+     "name": "Wholegrain from pseudocereals",
+     "value": 0,
+     "unit": "g",
+     "type": "LZ"
+    },
+    "ZN": {
+     "name": "Zinc, Zn",
+     "value": 0.3,
+     "unit": "mg",
+     "type": "MN"
+    }
+   }
+  }
+ }
+}

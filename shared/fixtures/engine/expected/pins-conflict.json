@@ -386,7 +386,7 @@
   "stats": {
    "attempts": 6,
    "evaluated": 19248,
-   "score": 3.4224371760150465,
+   "score": 3.4290790481713147,
    "budget_status": "none"
   },
   "snapshot_ids": {
@@ -2445,22 +2445,22 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 2198.72575,
+       "value": 2211.0857499999997,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 103.80416666666667,
+       "value": 104.49083333333333,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 117.56917833333334,
+       "value": 118.255845,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 178.08222833333332,
+       "value": 179.3182283333333,
        "complete": true,
        "missing": []
       },
@@ -2479,10 +2479,8 @@
       },
       "vit_c": {
        "value": 46.74080000000001,
-       "complete": false,
-       "missing": [
-        "kefir_25"
-       ]
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
        "value": 1.8263333333333331,
@@ -2494,35 +2492,31 @@
        ]
       },
       "vit_e": {
-       "value": 21.54864333333333,
+       "value": 21.685976666666665,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "dill"
        ]
       },
       "vit_b6": {
-       "value": 1.9497109166666666,
+       "value": 2.00464425,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni"
        ]
       },
       "vit_b12": {
-       "value": 4.75651,
+       "value": 5.12731,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni"
        ]
       },
       "folate": {
-       "value": 163.48308333333333,
+       "value": 178.86441666666664,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni"
        ]
       }
@@ -2535,22 +2529,22 @@
    ],
    "period": {
     "kcal": {
-     "value": 5507.5301,
+     "value": 5519.890099999999,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 256.00963033333335,
+     "value": 256.69629699999996,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 286.862982,
+     "value": 287.5496486666666,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 472.41495566666663,
+     "value": 473.6509556666666,
      "complete": true,
      "missing": []
     },
@@ -2569,10 +2563,8 @@
     },
     "vit_c": {
      "value": 123.79583333333335,
-     "complete": false,
-     "missing": [
-      "kefir_25"
-     ]
+     "complete": true,
+     "missing": []
     },
     "vit_d": {
      "value": 2.6617333333333333,
@@ -2585,41 +2577,37 @@
      ]
     },
     "vit_e": {
-     "value": 57.34957,
+     "value": 57.48690333333333,
      "complete": false,
      "missing": [
       "suluguni",
       "bay_leaf",
       "canned_beef",
-      "dill",
-      "kefir_25"
+      "dill"
      ]
     },
     "vit_b6": {
-     "value": 6.027686166666667,
+     "value": 6.082619500000001,
      "complete": false,
      "missing": [
       "suluguni",
-      "canned_beef",
-      "kefir_25"
+      "canned_beef"
      ]
     },
     "vit_b12": {
-     "value": 8.047554666666667,
+     "value": 8.418354666666666,
      "complete": false,
      "missing": [
       "suluguni",
-      "canned_beef",
-      "kefir_25"
+      "canned_beef"
      ]
     },
     "folate": {
-     "value": 492.70439999999996,
+     "value": 508.08573333333334,
      "complete": false,
      "missing": [
       "suluguni",
-      "canned_beef",
-      "kefir_25"
+      "canned_beef"
      ]
     }
    },
@@ -2648,10 +2636,8 @@
      "period_value": 123.79583333333335,
      "coverage_pct": null,
      "lower_bound_pct": null,
-     "data_complete": false,
-     "missing_products": [
-      "kefir_25"
-     ],
+     "data_complete": true,
+     "missing_products": [],
      "message": "Целевая норма не выбрана.",
      "set_status": null
     },
@@ -2678,7 +2664,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 57.34957,
+     "period_value": 57.48690333333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -2686,7 +2672,6 @@
       "bay_leaf",
       "canned_beef",
       "dill",
-      "kefir_25",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -2697,13 +2682,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 6.027686166666667,
+     "period_value": 6.082619500000001,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "canned_beef",
-      "kefir_25",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -2714,13 +2698,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 8.047554666666667,
+     "period_value": 8.418354666666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "canned_beef",
-      "kefir_25",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -2731,13 +2714,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 492.70439999999996,
+     "period_value": 508.08573333333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "canned_beef",
-      "kefir_25",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -2914,22 +2896,22 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 2198.72575,
+       "value": 2211.0857499999997,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 103.80416666666667,
+       "value": 104.49083333333333,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 117.56917833333334,
+       "value": 118.255845,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 178.08222833333332,
+       "value": 179.3182283333333,
        "complete": true,
        "missing": []
       },
@@ -2948,10 +2930,8 @@
       },
       "vit_c": {
        "value": 46.74080000000001,
-       "complete": false,
-       "missing": [
-        "kefir_25"
-       ]
+       "complete": true,
+       "missing": []
       },
       "vit_d": {
        "value": 1.8263333333333331,
@@ -2963,35 +2943,31 @@
        ]
       },
       "vit_e": {
-       "value": 21.54864333333333,
+       "value": 21.685976666666665,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "dill"
        ]
       },
       "vit_b6": {
-       "value": 1.9497109166666666,
+       "value": 2.00464425,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni"
        ]
       },
       "vit_b12": {
-       "value": 4.75651,
+       "value": 5.12731,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni"
        ]
       },
       "folate": {
-       "value": 163.48308333333333,
+       "value": 178.86441666666664,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni"
        ]
       }
@@ -3004,22 +2980,22 @@
    ],
    "period": {
     "kcal": {
-     "value": 6228.193266666666,
+     "value": 6240.553266666666,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 302.876952,
+     "value": 303.5636186666667,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 342.134072,
+     "value": 342.82073866666667,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 481.32289733333334,
+     "value": 482.55889733333333,
      "complete": true,
      "missing": []
     },
@@ -3038,10 +3014,8 @@
     },
     "vit_c": {
      "value": 130.65586666666667,
-     "complete": false,
-     "missing": [
-      "kefir_25"
-     ]
+     "complete": true,
+     "missing": []
     },
     "vit_d": {
      "value": 3.1755666666666666,
@@ -3055,41 +3029,37 @@
      ]
     },
     "vit_e": {
-     "value": 60.82000333333333,
+     "value": 60.95733666666666,
      "complete": false,
      "missing": [
       "suluguni",
       "bay_leaf",
       "canned_beef",
-      "dill",
-      "kefir_25"
+      "dill"
      ]
     },
     "vit_b6": {
-     "value": 7.256183333333333,
+     "value": 7.311116666666667,
      "complete": false,
      "missing": [
       "suluguni",
-      "canned_beef",
-      "kefir_25"
+      "canned_beef"
      ]
     },
     "vit_b12": {
-     "value": 10.160254666666667,
+     "value": 10.531054666666666,
      "complete": false,
      "missing": [
       "suluguni",
-      "canned_beef",
-      "kefir_25"
+      "canned_beef"
      ]
     },
     "folate": {
-     "value": 512.7369,
+     "value": 528.1182333333334,
      "complete": false,
      "missing": [
       "suluguni",
-      "canned_beef",
-      "kefir_25"
+      "canned_beef"
      ]
     }
    },
@@ -3118,10 +3088,8 @@
      "period_value": 130.65586666666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
-     "data_complete": false,
-     "missing_products": [
-      "kefir_25"
-     ],
+     "data_complete": true,
+     "missing_products": [],
      "message": "Целевая норма не выбрана.",
      "set_status": null
     },
@@ -3149,7 +3117,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 60.82000333333333,
+     "period_value": 60.95733666666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -3157,7 +3125,6 @@
       "bay_leaf",
       "canned_beef",
       "dill",
-      "kefir_25",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3168,13 +3135,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 7.256183333333333,
+     "period_value": 7.311116666666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "canned_beef",
-      "kefir_25",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3185,13 +3151,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 10.160254666666667,
+     "period_value": 10.531054666666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "canned_beef",
-      "kefir_25",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3202,13 +3167,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 512.7369,
+     "period_value": 528.1182333333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "canned_beef",
-      "kefir_25",
       "suluguni"
      ],
      "message": "Целевая норма не выбрана.",
@@ -3607,7 +3571,7 @@
     "stats": {
      "attempts": 6,
      "evaluated": 19248,
-     "score": 3.4224371760150465,
+     "score": 3.4290790481713147,
      "budget_status": "none"
     },
     "snapshot_ids": {
@@ -4102,7 +4066,7 @@
     "stats": {
      "attempts": 6,
      "evaluated": 19248,
-     "score": 3.4224371760150465,
+     "score": 3.4290790481713147,
      "budget_status": "none"
     },
     "snapshot_ids": {

@@ -30,6 +30,7 @@ Copyright © 2026 Lucky (https://github.com/Lucky2356). Исходный реп�
 - **Справочник городов** (`shared/data/geo/`) — hflabs/city, CC BY-SA 4.0 (HFLabs).
 - **Цены** (`shared/data/prices/`) — сведения из открытых источников: средние цены Росстата и цены с открытых страниц сетей; источник указан у каждой записи.
 - **Пищевая ценность из USDA FoodData Central** — у продуктов с источником `usda-sr-legacy-2018` в `shared/data/products.json`, а также `scripts/catalog/sources/usda_values.json`: значения набора SR Legacy (апрель 2018) Министерства сельского хозяйства США, общественное достояние (CC0 1.0); источник указывается как «U.S. Department of Agriculture, Agricultural Research Service. FoodData Central, SR Legacy, 2018». Сопоставление продуктов Foodo с записями набора — часть Foodo.
+- **Пищевая ценность из Livsmedelsverket** — у продуктов с источником `livsmedelsverket` в `shared/data/products.json`, а также `scripts/catalog/sources/livsmedel_values.json`: данные Livsmedelsdatabasen Шведского агентства по продовольствию (Livsmedelsverket), лицензия CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Изменения Foodo: углеводы пересчитаны по разности, отобраны формы витаминов, совпадающие с формами Foodo (подробно — `docs/NUTRIENTS.md`).
 - **Нормы витаминов** (`shared/data/nutrient_targets.json`) — значения из методических рекомендаций МР 2.3.1.0253-21 (официальный документ).
 - **Шрифты** — Onest (SIL Open Font License 1.1), DejaVu Sans (`frontend/public/fonts/DejaVu-LICENSE.txt`).
 - **Зависимости** (npm, PyPI, Android) — по своим лицензиям.

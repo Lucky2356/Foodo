@@ -763,7 +763,7 @@
   "stats": {
    "attempts": 6,
    "evaluated": 56498,
-   "score": 15.923153627304949,
+   "score": 15.994200927910006,
    "budget_status": "none"
   },
   "snapshot_ids": {
@@ -4517,22 +4517,22 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 2034.4650533333333,
+       "value": 2042.1900533333333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 104.79540906666668,
+       "value": 105.22457573333332,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 83.97214706666668,
+       "value": 84.40131373333332,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 215.31164479999998,
+       "value": 216.0841448,
        "complete": true,
        "missing": []
       },
@@ -4557,7 +4557,6 @@
        "value": 36.10794666666667,
        "complete": false,
        "missing": [
-        "kefir_25",
         "shrimp"
        ]
       },
@@ -4572,37 +4571,33 @@
        ]
       },
       "vit_e": {
-       "value": 2.8015006666666666,
+       "value": 2.887334,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "shrimp"
        ]
       },
       "vit_b6": {
-       "value": 0.6954092666666667,
+       "value": 0.7297426,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "shrimp"
        ]
       },
       "vit_b12": {
-       "value": 20.707796266666666,
+       "value": 20.939546266666667,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "shrimp"
        ]
       },
       "folate": {
-       "value": 199.01067999999998,
+       "value": 208.62401333333332,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "shrimp"
        ]
@@ -4617,22 +4612,22 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 2040.8336333333334,
+       "value": 2053.1936333333333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 108.733791,
+       "value": 109.42045766666666,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 115.02089933333332,
+       "value": 115.70756599999997,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 142.07020366666666,
+       "value": 143.30620366666668,
        "complete": true,
        "missing": []
       },
@@ -4653,7 +4648,6 @@
        "value": 60.16556666666666,
        "complete": false,
        "missing": [
-        "kefir_25",
         "kefir"
        ]
       },
@@ -4667,35 +4661,31 @@
        ]
       },
       "vit_e": {
-       "value": 22.50977,
+       "value": 22.647103333333334,
        "complete": false,
        "missing": [
-        "kefir_25",
         "dill",
         "kefir"
        ]
       },
       "vit_b6": {
-       "value": 2.2429386666666664,
+       "value": 2.297872,
        "complete": false,
        "missing": [
-        "kefir_25",
         "kefir"
        ]
       },
       "vit_b12": {
-       "value": 4.597644,
+       "value": 4.968444,
        "complete": false,
        "missing": [
-        "kefir_25",
         "kefir"
        ]
       },
       "folate": {
-       "value": 164.38636666666665,
+       "value": 179.7677,
        "complete": false,
        "missing": [
-        "kefir_25",
         "kefir"
        ]
       }
@@ -4709,22 +4699,22 @@
      "date": "2026-10-23",
      "totals": {
       "kcal": {
-       "value": 2246.6451500000003,
+       "value": 2246.3784833333334,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 130.14634633333333,
+       "value": 130.573013,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 116.60426633333333,
+       "value": 116.350933,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 165.13958933333336,
+       "value": 165.49958933333335,
        "complete": true,
        "missing": []
       },
@@ -4747,33 +4737,33 @@
        "missing": []
       },
       "vit_d": {
-       "value": 3.3722666666666665,
-       "complete": false,
-       "missing": [
-        "cottage_cheese"
-       ]
-      },
-      "vit_e": {
-       "value": 22.150191666666665,
+       "value": 3.2922666666666665,
        "complete": false,
        "missing": [
         "cottage_cheese",
-        "dill",
         "cheese_hard"
        ]
       },
+      "vit_e": {
+       "value": 22.243524999999998,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "dill"
+       ]
+      },
       "vit_b6": {
-       "value": 2.035184833333333,
+       "value": 2.0311848333333336,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 6.675491999999999,
+       "value": 6.722158666666666,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 241.07093333333333,
+       "value": 241.65759999999997,
        "complete": true,
        "missing": []
       }
@@ -4787,22 +4777,22 @@
      "date": "2026-10-24",
      "totals": {
       "kcal": {
-       "value": 1826.8578066666669,
+       "value": 1826.1078066666669,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 86.58562613333334,
+       "value": 87.78562613333334,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 119.15872279999999,
+       "value": 118.44622279999999,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 101.49842759999999,
+       "value": 102.51092759999999,
        "complete": true,
        "missing": []
       },
@@ -4827,31 +4817,30 @@
        ]
       },
       "vit_d": {
-       "value": 2.830293333333333,
+       "value": 2.605293333333333,
        "complete": false,
        "missing": [
+        "cheese_hard",
         "dark_chocolate"
        ]
       },
       "vit_e": {
-       "value": 15.291434999999998,
-       "complete": false,
-       "missing": [
-        "cheese_hard"
-       ]
+       "value": 15.553935,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 1.3334542333333337,
+       "value": 1.3222042333333335,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 7.525165533333334,
+       "value": 7.656415533333334,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 112.14276000000001,
+       "value": 113.79276,
        "complete": false,
        "missing": [
         "dark_chocolate"
@@ -4867,22 +4856,22 @@
      "date": "2026-10-25",
      "totals": {
       "kcal": {
-       "value": 1674.7785666666668,
+       "value": 1674.3785666666668,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 97.567148,
+       "value": 98.20714800000002,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 88.40435466666666,
+       "value": 88.02435466666667,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 118.79419933333334,
+       "value": 119.33419933333334,
        "complete": true,
        "missing": []
       },
@@ -4904,32 +4893,32 @@
        "missing": []
       },
       "vit_d": {
-       "value": 3.2572666666666663,
+       "value": 3.137266666666666,
        "complete": false,
        "missing": [
+        "cheese_hard",
         "chicken_mince"
        ]
       },
       "vit_e": {
-       "value": 12.821333333333332,
+       "value": 12.961333333333332,
        "complete": false,
        "missing": [
-        "cheese_hard",
         "dill"
        ]
       },
       "vit_b6": {
-       "value": 2.171507833333333,
+       "value": 2.1655078333333333,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 5.328232000000001,
+       "value": 5.398232,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 157.83893333333333,
+       "value": 158.71893333333333,
        "complete": true,
        "missing": []
       }
@@ -4942,22 +4931,22 @@
    ],
    "period": {
     "kcal": {
-     "value": 13909.207410000003,
+     "value": 13927.875743333332,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 722.9523078666666,
+     "value": 726.3348078666668,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 745.9014283666667,
+     "value": 745.6714283666666,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 1062.8898319,
+     "value": 1066.8108318999998,
      "complete": true,
      "missing": []
     },
@@ -4987,13 +4976,12 @@
      "complete": false,
      "missing": [
       "kefir",
-      "kefir_25",
       "shrimp",
       "dark_chocolate"
      ]
     },
     "vit_d": {
-     "value": 18.682606666666665,
+     "value": 18.257606666666664,
      "complete": false,
      "missing": [
       "suluguni",
@@ -5004,50 +4992,46 @@
       "mussels",
       "beef_striploin",
       "cottage_cheese",
+      "cheese_hard",
       "dark_chocolate",
       "chicken_mince"
      ]
     },
     "vit_e": {
-     "value": 123.92115233333331,
+     "value": 124.64015233333333,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
       "dill",
-      "kefir_25",
       "shrimp",
-      "cottage_cheese",
-      "cheese_hard"
+      "cottage_cheese"
      ]
     },
     "vit_b6": {
-     "value": 12.533053916666667,
+     "value": 12.601070583333334,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
-      "kefir_25",
       "shrimp"
      ]
     },
     "vit_b12": {
-     "value": 49.99545246666667,
+     "value": 50.84591913333333,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
-      "kefir_25",
       "shrimp"
      ]
     },
     "folate": {
-     "value": 1101.5968066666665,
+     "value": 1129.7081400000002,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
-      "kefir_25",
       "shrimp",
       "dark_chocolate"
      ]
@@ -5088,7 +5072,6 @@
      "missing_products": [
       "dark_chocolate",
       "kefir",
-      "kefir_25",
       "shrimp"
      ],
      "message": "Целевая норма не выбрана.",
@@ -5099,12 +5082,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 18.682606666666665,
+     "period_value": 18.257606666666664,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beef_striploin",
+      "cheese_hard",
       "chicken_mince",
       "cottage_cheese",
       "dark_chocolate",
@@ -5123,16 +5107,14 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 123.92115233333331,
+     "period_value": 124.64015233333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "cheese_hard",
       "cottage_cheese",
       "dill",
       "kefir",
-      "kefir_25",
       "shrimp",
       "suluguni"
      ],
@@ -5144,13 +5126,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 12.533053916666667,
+     "period_value": 12.601070583333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "kefir",
-      "kefir_25",
       "shrimp",
       "suluguni"
      ],
@@ -5162,13 +5143,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 49.99545246666667,
+     "period_value": 50.84591913333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "kefir",
-      "kefir_25",
       "shrimp",
       "suluguni"
      ],
@@ -5180,14 +5160,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 1101.5968066666665,
+     "period_value": 1129.7081400000002,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "dark_chocolate",
       "kefir",
-      "kefir_25",
       "shrimp",
       "suluguni"
      ],
@@ -5370,22 +5349,22 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 2034.4650533333333,
+       "value": 2042.1900533333333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 104.79540906666668,
+       "value": 105.22457573333332,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 83.97214706666668,
+       "value": 84.40131373333332,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 215.31164479999998,
+       "value": 216.0841448,
        "complete": true,
        "missing": []
       },
@@ -5410,7 +5389,6 @@
        "value": 36.10794666666667,
        "complete": false,
        "missing": [
-        "kefir_25",
         "shrimp"
        ]
       },
@@ -5425,37 +5403,33 @@
        ]
       },
       "vit_e": {
-       "value": 2.8015006666666666,
+       "value": 2.887334,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "shrimp"
        ]
       },
       "vit_b6": {
-       "value": 0.6954092666666667,
+       "value": 0.7297426,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "shrimp"
        ]
       },
       "vit_b12": {
-       "value": 20.707796266666666,
+       "value": 20.939546266666667,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "shrimp"
        ]
       },
       "folate": {
-       "value": 199.01067999999998,
+       "value": 208.62401333333332,
        "complete": false,
        "missing": [
-        "kefir_25",
         "suluguni",
         "shrimp"
        ]
@@ -5470,22 +5444,22 @@
      "date": "2026-10-22",
      "totals": {
       "kcal": {
-       "value": 2040.8336333333334,
+       "value": 2053.1936333333333,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 108.733791,
+       "value": 109.42045766666666,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 115.02089933333332,
+       "value": 115.70756599999997,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 142.07020366666666,
+       "value": 143.30620366666668,
        "complete": true,
        "missing": []
       },
@@ -5506,7 +5480,6 @@
        "value": 60.16556666666666,
        "complete": false,
        "missing": [
-        "kefir_25",
         "kefir"
        ]
       },
@@ -5520,35 +5493,31 @@
        ]
       },
       "vit_e": {
-       "value": 22.50977,
+       "value": 22.647103333333334,
        "complete": false,
        "missing": [
-        "kefir_25",
         "dill",
         "kefir"
        ]
       },
       "vit_b6": {
-       "value": 2.2429386666666664,
+       "value": 2.297872,
        "complete": false,
        "missing": [
-        "kefir_25",
         "kefir"
        ]
       },
       "vit_b12": {
-       "value": 4.597644,
+       "value": 4.968444,
        "complete": false,
        "missing": [
-        "kefir_25",
         "kefir"
        ]
       },
       "folate": {
-       "value": 164.38636666666665,
+       "value": 179.7677,
        "complete": false,
        "missing": [
-        "kefir_25",
         "kefir"
        ]
       }
@@ -5562,22 +5531,22 @@
      "date": "2026-10-23",
      "totals": {
       "kcal": {
-       "value": 2246.6451500000003,
+       "value": 2246.3784833333334,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 130.14634633333333,
+       "value": 130.573013,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 116.60426633333333,
+       "value": 116.350933,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 165.13958933333336,
+       "value": 165.49958933333335,
        "complete": true,
        "missing": []
       },
@@ -5600,33 +5569,33 @@
        "missing": []
       },
       "vit_d": {
-       "value": 3.3722666666666665,
-       "complete": false,
-       "missing": [
-        "cottage_cheese"
-       ]
-      },
-      "vit_e": {
-       "value": 22.150191666666665,
+       "value": 3.2922666666666665,
        "complete": false,
        "missing": [
         "cottage_cheese",
-        "dill",
         "cheese_hard"
        ]
       },
+      "vit_e": {
+       "value": 22.243524999999998,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "dill"
+       ]
+      },
       "vit_b6": {
-       "value": 2.035184833333333,
+       "value": 2.0311848333333336,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 6.675491999999999,
+       "value": 6.722158666666666,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 241.07093333333333,
+       "value": 241.65759999999997,
        "complete": true,
        "missing": []
       }
@@ -5640,22 +5609,22 @@
      "date": "2026-10-24",
      "totals": {
       "kcal": {
-       "value": 1826.8578066666669,
+       "value": 1826.1078066666669,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 86.58562613333334,
+       "value": 87.78562613333334,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 119.15872279999999,
+       "value": 118.44622279999999,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 101.49842759999999,
+       "value": 102.51092759999999,
        "complete": true,
        "missing": []
       },
@@ -5680,31 +5649,30 @@
        ]
       },
       "vit_d": {
-       "value": 2.830293333333333,
+       "value": 2.605293333333333,
        "complete": false,
        "missing": [
+        "cheese_hard",
         "dark_chocolate"
        ]
       },
       "vit_e": {
-       "value": 15.291434999999998,
-       "complete": false,
-       "missing": [
-        "cheese_hard"
-       ]
+       "value": 15.553935,
+       "complete": true,
+       "missing": []
       },
       "vit_b6": {
-       "value": 1.3334542333333337,
+       "value": 1.3222042333333335,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 7.525165533333334,
+       "value": 7.656415533333334,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 112.14276000000001,
+       "value": 113.79276,
        "complete": false,
        "missing": [
         "dark_chocolate"
@@ -5720,22 +5688,22 @@
      "date": "2026-10-25",
      "totals": {
       "kcal": {
-       "value": 1674.7785666666668,
+       "value": 1674.3785666666668,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 97.567148,
+       "value": 98.20714800000002,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 88.40435466666666,
+       "value": 88.02435466666667,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 118.79419933333334,
+       "value": 119.33419933333334,
        "complete": true,
        "missing": []
       },
@@ -5757,32 +5725,32 @@
        "missing": []
       },
       "vit_d": {
-       "value": 3.2572666666666663,
+       "value": 3.137266666666666,
        "complete": false,
        "missing": [
+        "cheese_hard",
         "chicken_mince"
        ]
       },
       "vit_e": {
-       "value": 12.821333333333332,
+       "value": 12.961333333333332,
        "complete": false,
        "missing": [
-        "cheese_hard",
         "dill"
        ]
       },
       "vit_b6": {
-       "value": 2.171507833333333,
+       "value": 2.1655078333333333,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 5.328232000000001,
+       "value": 5.398232,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 157.83893333333333,
+       "value": 158.71893333333333,
        "complete": true,
        "missing": []
       }
@@ -5795,22 +5763,22 @@
    ],
    "period": {
     "kcal": {
-     "value": 13909.207410000003,
+     "value": 13927.875743333332,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 722.9523078666666,
+     "value": 726.3348078666668,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 745.9014283666667,
+     "value": 745.6714283666666,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 1062.8898319,
+     "value": 1066.8108318999998,
      "complete": true,
      "missing": []
     },
@@ -5840,13 +5808,12 @@
      "complete": false,
      "missing": [
       "kefir",
-      "kefir_25",
       "shrimp",
       "dark_chocolate"
      ]
     },
     "vit_d": {
-     "value": 18.682606666666665,
+     "value": 18.257606666666664,
      "complete": false,
      "missing": [
       "suluguni",
@@ -5857,50 +5824,46 @@
       "mussels",
       "beef_striploin",
       "cottage_cheese",
+      "cheese_hard",
       "dark_chocolate",
       "chicken_mince"
      ]
     },
     "vit_e": {
-     "value": 123.92115233333331,
+     "value": 124.64015233333333,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
       "dill",
-      "kefir_25",
       "shrimp",
-      "cottage_cheese",
-      "cheese_hard"
+      "cottage_cheese"
      ]
     },
     "vit_b6": {
-     "value": 12.533053916666667,
+     "value": 12.601070583333334,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
-      "kefir_25",
       "shrimp"
      ]
     },
     "vit_b12": {
-     "value": 49.99545246666667,
+     "value": 50.84591913333333,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
-      "kefir_25",
       "shrimp"
      ]
     },
     "folate": {
-     "value": 1101.5968066666665,
+     "value": 1129.7081400000002,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
-      "kefir_25",
       "shrimp",
       "dark_chocolate"
      ]
@@ -5941,7 +5904,6 @@
      "missing_products": [
       "dark_chocolate",
       "kefir",
-      "kefir_25",
       "shrimp"
      ],
      "message": "Целевая норма не выбрана.",
@@ -5952,12 +5914,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 18.682606666666665,
+     "period_value": 18.257606666666664,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beef_striploin",
+      "cheese_hard",
       "chicken_mince",
       "cottage_cheese",
       "dark_chocolate",
@@ -5976,16 +5939,14 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 123.92115233333331,
+     "period_value": 124.64015233333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
-      "cheese_hard",
       "cottage_cheese",
       "dill",
       "kefir",
-      "kefir_25",
       "shrimp",
       "suluguni"
      ],
@@ -5997,13 +5958,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 12.533053916666667,
+     "period_value": 12.601070583333334,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "kefir",
-      "kefir_25",
       "shrimp",
       "suluguni"
      ],
@@ -6015,13 +5975,12 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 49.99545246666667,
+     "period_value": 50.84591913333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "kefir",
-      "kefir_25",
       "shrimp",
       "suluguni"
      ],
@@ -6033,14 +5992,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 1101.5968066666665,
+     "period_value": 1129.7081400000002,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "dark_chocolate",
       "kefir",
-      "kefir_25",
       "shrimp",
       "suluguni"
      ],
@@ -6817,7 +6775,7 @@
     "stats": {
      "attempts": 6,
      "evaluated": 56498,
-     "score": 15.923153627304949,
+     "score": 15.994200927910006,
      "budget_status": "none"
     },
     "snapshot_ids": {
@@ -7753,7 +7711,7 @@
     "stats": {
      "attempts": 6,
      "evaluated": 56498,
-     "score": 15.923153627304949,
+     "score": 15.994200927910006,
      "budget_status": "none"
     },
     "snapshot_ids": {
@@ -8689,7 +8647,7 @@
     "stats": {
      "attempts": 6,
      "evaluated": 56498,
-     "score": 15.923153627304949,
+     "score": 15.994200927910006,
      "budget_status": "none"
     },
     "snapshot_ids": {
@@ -9625,7 +9583,7 @@
     "stats": {
      "attempts": 6,
      "evaluated": 56498,
-     "score": 15.923153627304949,
+     "score": 15.994200927910006,
      "budget_status": "none"
     },
     "snapshot_ids": {
@@ -9854,7 +9812,7 @@
     "batches": [
      {
       "id": "b6.1",
-      "recipe_id": "yaytsa-benedikt",
+      "recipe_id": "risovaya-kasha-na-kokosovom-moloke-s-bananom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-19",
@@ -9872,9 +9830,9 @@
      },
      {
       "id": "b6.3",
-      "recipe_id": "pashtet-iz-kopchyonoy-skumbrii",
+      "recipe_id": "bananovyy-hleb",
       "recipe_version": 1,
-      "method_id": "fork",
+      "method_id": "oven",
       "cook_date": "2026-10-19",
       "slot": "snack",
       "portions": 2
@@ -9890,7 +9848,7 @@
      },
      {
       "id": "b6.5",
-      "recipe_id": "kattama-s-lukom",
+      "recipe_id": "syrnye-lepyoshki-na-kefire",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -9908,7 +9866,7 @@
      },
      {
       "id": "b6.7",
-      "recipe_id": "khlebtsy-s-tvorozhnym-syrom-i-forelyu",
+      "recipe_id": "pomidory-s-syrom-i-chesnokom",
       "recipe_version": 1,
       "method_id": "nocook",
       "cook_date": "2026-10-20",
@@ -9917,7 +9875,7 @@
      },
      {
       "id": "b6.8",
-      "recipe_id": "makarony-s-tushyonkoy",
+      "recipe_id": "makarony-s-syrom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-20",
@@ -9926,7 +9884,7 @@
      },
      {
       "id": "b6.9",
-      "recipe_id": "kedzheri",
+      "recipe_id": "solyonye-grenki-s-yaytsom-i-syrom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -9935,7 +9893,7 @@
      },
      {
       "id": "b6.10",
-      "recipe_id": "steyki-syomgi-s-bulgurom",
+      "recipe_id": "kurinye-otbivnye-v-panirovke",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -9944,16 +9902,16 @@
      },
      {
       "id": "b6.11",
-      "recipe_id": "salat-s-nutom",
+      "recipe_id": "hleb-na-kefire-bez-drozhzhey",
       "recipe_version": 1,
-      "method_id": "no-heat",
+      "method_id": "oven",
       "cook_date": "2026-10-21",
       "slot": "snack",
       "portions": 2
      },
      {
       "id": "b6.12",
-      "recipe_id": "kurinye-otbivnye-v-panirovke",
+      "recipe_id": "krevetki-tempura",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-21",
@@ -9962,7 +9920,7 @@
      },
      {
       "id": "b6.13",
-      "recipe_id": "sabih",
+      "recipe_id": "bliny-na-drozhzhah",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-22",
@@ -9971,7 +9929,7 @@
      },
      {
       "id": "b6.14",
-      "recipe_id": "chebureki",
+      "recipe_id": "kambala-zharenaya",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-22",
@@ -9980,25 +9938,25 @@
      },
      {
       "id": "b6.15",
-      "recipe_id": "brusketta-s-pomidorami-i-bazilikom",
+      "recipe_id": "grenki-sladkie",
       "recipe_version": 1,
-      "method_id": "oven",
+      "method_id": "stove",
       "cook_date": "2026-10-22",
       "slot": "snack",
       "portions": 2
      },
      {
       "id": "b6.16",
-      "recipe_id": "kuritsa-v-smetane",
+      "recipe_id": "kartofelnaya-zapekanka-s-farshem",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "oven",
       "cook_date": "2026-10-22",
       "slot": "dinner",
       "portions": 2
      },
      {
       "id": "b6.17",
-      "recipe_id": "turetskiy-zavtrak",
+      "recipe_id": "kayzershmarrn",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-23",
@@ -10007,7 +9965,7 @@
      },
      {
       "id": "b6.18",
-      "recipe_id": "manty-s-baraninoy",
+      "recipe_id": "makarony-s-tushyonkoy",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-23",
@@ -10016,34 +9974,34 @@
      },
      {
       "id": "b6.19",
-      "recipe_id": "shopskiy-salat",
+      "recipe_id": "sharlotka-s-yablokami",
       "recipe_version": 1,
-      "method_id": "nocook",
+      "method_id": "oven",
       "cook_date": "2026-10-23",
       "slot": "snack",
       "portions": 2
      },
      {
       "id": "b6.20",
-      "recipe_id": "losos-zapechyonnyy-s-kartofelem",
+      "recipe_id": "kuritsa-v-smetane",
       "recipe_version": 1,
-      "method_id": "oven",
+      "method_id": "stove",
       "cook_date": "2026-10-23",
       "slot": "dinner",
       "portions": 2
      },
      {
       "id": "b6.21",
-      "recipe_id": "menemen",
+      "recipe_id": "gollandskiy-bebi-pankeyk",
       "recipe_version": 1,
-      "method_id": "stove",
+      "method_id": "oven",
       "cook_date": "2026-10-24",
       "slot": "breakfast",
       "portions": 2
      },
      {
       "id": "b6.22",
-      "recipe_id": "spagetti-aglio-olio",
+      "recipe_id": "manty-s-baraninoy",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-24",
@@ -10052,16 +10010,16 @@
      },
      {
       "id": "b6.23",
-      "recipe_id": "grecheskiy-salat",
+      "recipe_id": "kokosovoe-pechene",
       "recipe_version": 1,
-      "method_id": "no-heat",
+      "method_id": "oven",
       "cook_date": "2026-10-24",
       "slot": "snack",
       "portions": 2
      },
      {
       "id": "b6.24",
-      "recipe_id": "befstroganov",
+      "recipe_id": "kotlety-iz-shchuki",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-24",
@@ -10070,7 +10028,7 @@
      },
      {
       "id": "b6.25",
-      "recipe_id": "zelyonaya-shakshuka",
+      "recipe_id": "kattama-s-lukom",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-25",
@@ -10079,7 +10037,7 @@
      },
      {
       "id": "b6.26",
-      "recipe_id": "pechen-po-stroganovski",
+      "recipe_id": "chebureki",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-25",
@@ -10097,7 +10055,7 @@
      },
      {
       "id": "b6.28",
-      "recipe_id": "grechaniki",
+      "recipe_id": "kotlety-kurinye",
       "recipe_version": 1,
       "method_id": "stove",
       "cook_date": "2026-10-25",
@@ -10560,102 +10518,97 @@
     "warnings": [],
     "stats": {
      "attempts": 6,
-     "evaluated": 53778,
-     "score": 13.75541962373186,
+     "evaluated": 53753,
+     "score": 9.639129668344465,
      "budget_status": "none"
     },
     "snapshot_ids": {
      "recipes": [
-      "befstroganov",
-      "brusketta-s-pomidorami-i-bazilikom",
+      "bananovyy-hleb",
+      "bliny-na-drozhzhah",
       "chebureki",
-      "grechaniki",
-      "grecheskiy-salat",
+      "gollandskiy-bebi-pankeyk",
+      "grenki-sladkie",
+      "hleb-na-kefire-bez-drozhzhey",
       "kabachki-zharenye-s-chesnokom",
+      "kambala-zharenaya",
+      "kartofelnaya-zapekanka-s-farshem",
       "kattama-s-lukom",
-      "kedzheri",
-      "khlebtsy-s-tvorozhnym-syrom-i-forelyu",
+      "kayzershmarrn",
+      "kokosovoe-pechene",
+      "kotlety-iz-shchuki",
+      "kotlety-kurinye",
       "kotlety-po-kievski",
+      "krevetki-tempura",
       "kurinye-otbivnye-v-panirovke",
       "kuritsa-v-smetane",
-      "losos-zapechyonnyy-s-kartofelem",
+      "makarony-s-syrom",
       "makarony-s-tushyonkoy",
       "manty-s-baraninoy",
-      "menemen",
-      "pashtet-iz-kopchyonoy-skumbrii",
-      "pechen-po-stroganovski",
-      "sabih",
-      "salat-s-nutom",
+      "pomidory-s-syrom-i-chesnokom",
+      "risovaya-kasha-na-kokosovom-moloke-s-bananom",
+      "sharlotka-s-yablokami",
       "shnitsel-po-venski",
-      "shopskiy-salat",
-      "spagetti-aglio-olio",
-      "steyki-syomgi-s-bulgurom",
+      "solyonye-grenki-s-yaytsom-i-syrom",
       "svinye-otbivnye",
-      "turetskiy-zavtrak",
-      "yaytsa-benedikt",
-      "zelyonaya-shakshuka"
+      "syrnye-lepyoshki-na-kefire"
      ],
      "products": [
-      "baguette",
-      "basil",
-      "beef",
-      "beef_liver",
+      "apple",
+      "baking_soda",
+      "banana",
       "beef_mince",
-      "bell_pepper",
       "black_pepper",
+      "bread_white",
       "breadcrumbs",
-      "buckwheat_dry",
-      "bulgur_dry",
       "butter",
+      "cane_sugar",
       "canned_beef",
       "carrot",
+      "cheese_hard",
       "chicken_breast",
+      "chicken_mince",
       "chicken_thighs",
-      "chickpeas_canned",
-      "chili_flakes",
-      "cream_cheese",
-      "cucumber",
+      "cinnamon",
+      "coconut_flakes",
+      "coconut_milk",
+      "cornstarch",
       "cumin",
-      "curry_powder",
       "dill",
-      "eggplant",
+      "dry_yeast",
       "eggs",
-      "feta",
+      "flounder",
       "garlic",
-      "ham",
-      "honey",
+      "kefir_25",
+      "king_prawns",
       "lamb",
-      "leek",
       "lemon",
-      "mint",
-      "olive_oil",
-      "olives",
+      "mayonnaise",
+      "milk",
+      "mustard",
       "onion",
-      "parsley",
       "pasta_dry",
-      "pita",
+      "pike",
       "pork_loin",
       "potato",
-      "rice_basmati_dry",
-      "rice_crispbread",
+      "powdered_sugar",
+      "raisins",
       "rice_round_dry",
-      "salmon_fillet",
-      "salmon_steak",
       "salt",
-      "smoked_mackerel",
       "sour_cream",
-      "spaghetti_dry",
-      "spinach",
+      "soy_sauce",
+      "sparkling_water",
+      "strawberries",
+      "sugar",
       "sunflower_oil",
-      "tahini",
-      "toast_bread",
+      "sunflower_seeds",
       "tomato",
-      "tomato_paste",
-      "trout_salted",
+      "vanilla_sugar",
       "veal",
-      "vinegar",
+      "walnuts",
       "water",
       "wheat_flour",
+      "whole_wheat_flour",
       "zucchini"
      ]
     }
@@ -10666,65 +10619,60 @@
     "complete": false,
     "estimated": false,
     "missing_prices": [
-     "auto:eggs:pcs",
-     "auto:butter:g",
-     "auto:lemon:g",
-     "auto:toast_bread:g",
-     "auto:ham:g",
-     "auto:vinegar:ml",
+     "auto:rice_round_dry:g",
+     "auto:coconut_milk:ml",
+     "auto:banana:g",
+     "auto:coconut_flakes:g",
+     "auto:cane_sugar:g",
      "auto:salt:g",
      "auto:chicken_breast:g",
+     "auto:butter:g",
      "auto:dill:g",
+     "auto:eggs:pcs",
      "auto:wheat_flour:g",
      "auto:breadcrumbs:g",
      "auto:sunflower_oil:ml",
      "auto:black_pepper:g",
-     "auto:smoked_mackerel:g",
-     "auto:cream_cheese:g",
+     "auto:baking_soda:g",
+     "auto:cinnamon:g",
+     "auto:walnuts:g",
      "auto:pork_loin:g",
-     "auto:onion:g",
+     "auto:kefir_25:ml",
+     "auto:cheese_hard:g",
      "auto:veal:g",
-     "auto:rice_crispbread:g",
-     "auto:trout_salted:g",
-     "auto:cucumber:g",
+     "auto:lemon:g",
+     "auto:tomato:g",
+     "auto:mayonnaise:g",
+     "auto:garlic:g",
      "auto:pasta_dry:g",
+     "auto:milk:ml",
+     "auto:bread_white:g",
+     "auto:whole_wheat_flour:g",
+     "auto:sunflower_seeds:g",
+     "auto:king_prawns:g",
+     "auto:cornstarch:g",
+     "auto:sparkling_water:ml",
+     "auto:soy_sauce:ml",
+     "auto:dry_yeast:g",
+     "auto:sugar:g",
+     "auto:flounder:g",
+     "auto:potato:g",
+     "auto:beef_mince:g",
+     "auto:onion:g",
+     "auto:raisins:g",
+     "auto:powdered_sugar:g",
+     "auto:vanilla_sugar:g",
      "auto:canned_beef:g",
      "auto:carrot:g",
-     "auto:rice_basmati_dry:g",
-     "auto:curry_powder:g",
-     "auto:parsley:g",
-     "auto:salmon_steak:g",
-     "auto:bulgur_dry:g",
-     "auto:tomato:g",
-     "auto:mint:g",
-     "auto:olive_oil:ml",
-     "auto:chickpeas_canned:g",
-     "auto:pita:g",
-     "auto:eggplant:g",
-     "auto:tahini:g",
-     "auto:garlic:g",
-     "auto:beef_mince:g",
-     "auto:baguette:g",
-     "auto:basil:g",
+     "auto:apple:g",
      "auto:chicken_thighs:g",
      "auto:sour_cream:g",
-     "auto:feta:g",
-     "auto:olives:g",
-     "auto:honey:g",
+     "auto:strawberries:g",
      "auto:lamb:g",
      "auto:cumin:g",
-     "auto:bell_pepper:g",
-     "auto:salmon_fillet:g",
-     "auto:potato:g",
-     "auto:chili_flakes:g",
-     "auto:spaghetti_dry:g",
-     "auto:beef:g",
-     "auto:tomato_paste:g",
-     "auto:spinach:g",
-     "auto:leek:g",
+     "auto:pike:g",
      "auto:zucchini:g",
-     "auto:beef_liver:g",
-     "auto:buckwheat_dry:g"
+     "auto:chicken_mince:g"
     ]
    }
   }

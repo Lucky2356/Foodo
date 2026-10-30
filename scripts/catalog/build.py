@@ -7,7 +7,8 @@ Sources in scripts/catalog/sources:
   products_*.txt  — new products, one per line;
   recipes_*.txt   — new recipes in blocks;
   tags_*.txt      — cuisine / spiciness / kid-friendliness for recipes already in recipes.json;
-  usda_values.json — nutrients of mapped products from USDA FoodData Central (scripts/nutrition/usda.py).
+  usda_values.json — nutrients of mapped products from USDA FoodData Central (scripts/nutrition/usda.py);
+  livsmedel_values.json — the same from Livsmedelsverket (scripts/nutrition/livsmedel.py).
 
 The build is idempotent: a product or recipe defined in the sources replaces the entry with the same
 id, so running it twice gives the same files. Nothing in the sources is executed; it is parsed text.
@@ -21,6 +22,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from scripts.nutrition.livsmedel import catalog_nutrients
 from scripts.nutrition.vitamin_a import retinol_equivalents
 
 from .dump import dump_products, dump_recipes
@@ -54,6 +56,10 @@ RECIPE_SOURCE = "foodo-recipes-2026-10"
 PRODUCT_SOURCE = "foodo-estimate-2026-10"
 USDA_SOURCE = "usda-sr-legacy-2018"
 USDA_VALUES = SOURCES / "usda_values.json"
+LIVSMEDEL_SOURCE = "livsmedelsverket"
+LIVSMEDEL_VALUES = SOURCES / "livsmedel_values.json"
+LIVSMEDEL_MAP = ROOT / "scripts" / "nutrition" / "livsmedel_map.json"
+REFERENCE_SOURCES = (USDA_SOURCE, LIVSMEDEL_SOURCE)
 # Estimates of products kept only in products.json, saved when USDA values replace them, so removing
 # a mapping brings the estimate back instead of leaving USDA numbers under an estimate label.
 ESTIMATES = SOURCES / "estimates.json"
@@ -408,43 +414,72 @@ def validate(
     return errors
 
 
-def apply_usda(
-    products: dict[str, JSON], from_sources: set[str], estimates: dict[str, JSON]
-) -> list[str]:
-    """Replaces the estimated nutrients of mapped products with USDA SR Legacy values.
-
-    A nutrient USDA does not report for the food becomes unknown (None), not the old estimate and not
-    zero: one product never mixes two sources. Estimates of products defined only in products.json go
-    to `estimates` first, so a product whose mapping is removed gets its estimate back.
-    """
-    doc = (
-        json.loads(USDA_VALUES.read_text(encoding="utf-8"))
-        if USDA_VALUES.exists()
+def _read(path: Path) -> JSON:
+    return (
+        json.loads(path.read_text(encoding="utf-8"))
+        if path.exists()
         else {"products": {}}
     )
-    usda: dict[str, JSON] = doc["products"]
-    errors = [
-        f"usda_values.json: unknown product {pid}"
-        for pid in usda
+
+
+def reference_values() -> tuple[dict[str, tuple[str, JSON]], list[str]]:
+    """Product id → (source, nutrients in Foodo's forms) from the reference datasets.
+
+    USDA publishes vitamin A as RAE; the catalog keeps RE, the form of the norms. Livsmedelsdatabasen
+    values go through livsmedel.catalog_nutrients, which keeps only the forms that match Foodo's.
+    """
+    out: dict[str, tuple[str, JSON]] = {}
+    errors: list[str] = []
+    for pid, entry in _read(USDA_VALUES)["products"].items():
+        values = entry["per_100g"]
+        nutrients = {
+            k: None if values.get(k) is None else _int_or_float(values[k])
+            for k in NUTRIENTS
+        }
+        re = retinol_equivalents(values)
+        nutrients["vit_a"] = None if re is None else _int_or_float(re)
+        out[pid] = (USDA_SOURCE, nutrients)
+    mapping = _read(LIVSMEDEL_MAP) if LIVSMEDEL_MAP.exists() else {}
+    for pid, entry in _read(LIVSMEDEL_VALUES)["products"].items():
+        if pid in out:
+            errors.append(f"{pid}: values from both USDA and Livsmedelsverket")
+            continue
+        fortified = bool(mapping.get(pid, {}).get("fortified"))
+        found = catalog_nutrients(entry["nutrients"], fortified)
+        out[pid] = (
+            LIVSMEDEL_SOURCE,
+            {
+                k: None if found[k] is None else _int_or_float(found[k])
+                for k in NUTRIENTS
+            },
+        )
+    return out, errors
+
+
+def apply_references(
+    products: dict[str, JSON], from_sources: set[str], estimates: dict[str, JSON]
+) -> list[str]:
+    """Replaces the estimated nutrients of mapped products with reference values.
+
+    A nutrient the dataset does not give in Foodo's form becomes unknown (None), not the old estimate
+    and not zero: one product never mixes two sources. Estimates of products defined only in
+    products.json go to `estimates` first, so a product whose mapping is removed gets its estimate back.
+    """
+    refs, errors = reference_values()
+    errors += [
+        f"reference values: unknown product {pid}"
+        for pid in refs
         if pid not in products
     ]
     for pid, p in products.items():
-        if pid in usda:
+        if pid in refs:
             if pid not in from_sources and p["source"] == PRODUCT_SOURCE:
                 estimates[pid] = p["nutrients"]
-            values = usda[pid]["per_100g"]
-            p["nutrients"] = {
-                k: None if values.get(k) is None else _int_or_float(values[k])
-                for k in NUTRIENTS
-            }
-            # The dataset publishes RAE; the catalog keeps vitamin A in RE, the form of the norms.
-            re = retinol_equivalents(values)
-            p["nutrients"]["vit_a"] = None if re is None else _int_or_float(re)
-            p["source"] = USDA_SOURCE
-        elif p["source"] == USDA_SOURCE:
+            p["source"], p["nutrients"] = refs[pid]
+        elif p["source"] in REFERENCE_SOURCES:
             # Only products kept in products.json get here: parse_products labels source lines estimates.
             if pid not in estimates:
-                errors.append(f"{pid}: USDA values removed and no estimate saved")
+                errors.append(f"{pid}: reference values removed and no estimate saved")
                 continue
             p["nutrients"] = estimates.pop(pid)
             p["source"] = PRODUCT_SOURCE
@@ -517,7 +552,7 @@ def build(write: bool) -> int:
     estimates = (
         json.loads(ESTIMATES.read_text(encoding="utf-8")) if ESTIMATES.exists() else {}
     )
-    errors += apply_usda(products, {p["id"] for p in new_products}, estimates)
+    errors += apply_references(products, {p["id"] for p in new_products}, estimates)
     estimates_in_retinol_equivalents(products)
     product_names: dict[str, str] = {}
     for p in products.values():
