@@ -1073,8 +1073,8 @@
   "warnings": [],
   "stats": {
    "attempts": 3,
-   "evaluated": 36642,
-   "score": -28.175737907116137,
+   "evaluated": 36640,
+   "score": -28.171974395928526,
    "budget_status": "exceeded"
   },
   "snapshot_ids": {
@@ -6386,27 +6386,27 @@
      "date": "2026-10-21",
      "totals": {
       "kcal": {
-       "value": 1031.8531249999999,
+       "value": 1034.4256249999999,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 79.94105,
+       "value": 79.9043,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 30.2431325,
+       "value": 30.206382500000004,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 107.99363249999999,
+       "value": 108.76538249999999,
        "complete": true,
        "missing": []
       },
       "fiber": {
-       "value": 7.4726125,
+       "value": 7.582862500000001,
        "complete": false,
        "missing": [
         "rice_arborio_dry"
@@ -6422,7 +6422,7 @@
        ]
       },
       "vit_c": {
-       "value": 39.48765,
+       "value": 46.837650000000004,
        "complete": false,
        "missing": [
         "seafood_cocktail",
@@ -6433,11 +6433,12 @@
        "value": 3.4187499999999997,
        "complete": false,
        "missing": [
-        "seafood_cocktail"
+        "seafood_cocktail",
+        "cherry_tomatoes"
        ]
       },
       "vit_e": {
-       "value": 4.8936525,
+       "value": 5.0774025,
        "complete": false,
        "missing": [
         "rice_arborio_dry",
@@ -6445,7 +6446,7 @@
        ]
       },
       "vit_b6": {
-       "value": 2.400986375,
+       "value": 2.423036375,
        "complete": false,
        "missing": [
         "seafood_cocktail"
@@ -6459,7 +6460,7 @@
        ]
       },
       "folate": {
-       "value": 135.026875,
+       "value": 138.959125,
        "complete": false,
        "missing": [
         "seafood_cocktail"
@@ -7564,22 +7565,22 @@
      "date": "2026-11-05",
      "totals": {
       "kcal": {
-       "value": 849.9404,
+       "value": 849.3403999999998,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 65.737132,
+       "value": 66.69713200000001,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 58.29422133333334,
+       "value": 57.72422133333333,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 16.38016,
+       "value": 17.19016,
        "complete": true,
        "missing": []
       },
@@ -7601,30 +7602,31 @@
        "missing": []
       },
       "vit_d": {
-       "value": 6.374,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 11.312443999999998,
+       "value": 6.194,
        "complete": false,
        "missing": [
-        "dill",
         "cheese_hard"
        ]
       },
+      "vit_e": {
+       "value": 11.522443999999998,
+       "complete": false,
+       "missing": [
+        "dill"
+       ]
+      },
       "vit_b6": {
-       "value": 0.8197441333333336,
+       "value": 0.8107441333333336,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 3.4247999999999994,
+       "value": 3.5297999999999994,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 44.67960000000001,
+       "value": 45.9996,
        "complete": true,
        "missing": []
       }
@@ -7638,22 +7640,22 @@
      "date": "2026-11-06",
      "totals": {
       "kcal": {
-       "value": 937.9156,
+       "value": 937.1656,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 60.794577000000004,
+       "value": 61.99457700000001,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 51.726237,
+       "value": 51.013737,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 54.672034,
+       "value": 55.684534,
        "complete": true,
        "missing": []
       },
@@ -7675,29 +7677,29 @@
        "missing": []
       },
       "vit_d": {
-       "value": 2.9854000000000003,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 8.357899999999999,
+       "value": 2.7604,
        "complete": false,
        "missing": [
         "cheese_hard"
        ]
       },
+      "vit_e": {
+       "value": 8.6204,
+       "complete": true,
+       "missing": []
+      },
       "vit_b6": {
-       "value": 1.9919274999999999,
+       "value": 1.9806774999999999,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 90.651903,
+       "value": 90.78315300000001,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 489.24390000000005,
+       "value": 490.89390000000003,
        "complete": true,
        "missing": []
       }
@@ -7782,22 +7784,22 @@
      "date": "2026-11-08",
      "totals": {
       "kcal": {
-       "value": 700.9467750000001,
+       "value": 700.4467750000001,
        "complete": true,
        "missing": []
       },
       "protein": {
-       "value": 58.439993,
+       "value": 59.239993,
        "complete": true,
        "missing": []
       },
       "fat": {
-       "value": 42.4322505,
+       "value": 41.9572505,
        "complete": true,
        "missing": []
       },
       "carbs": {
-       "value": 24.765463500000003,
+       "value": 25.4404635,
        "complete": true,
        "missing": []
       },
@@ -7819,29 +7821,29 @@
        "missing": []
       },
       "vit_d": {
-       "value": 6.9716000000000005,
-       "complete": true,
-       "missing": []
-      },
-      "vit_e": {
-       "value": 7.142935,
+       "value": 6.8216,
        "complete": false,
        "missing": [
         "cheese_hard"
        ]
       },
+      "vit_e": {
+       "value": 7.317935,
+       "complete": true,
+       "missing": []
+      },
       "vit_b6": {
-       "value": 1.1391096250000001,
+       "value": 1.131609625,
        "complete": true,
        "missing": []
       },
       "vit_b12": {
-       "value": 4.121012,
+       "value": 4.208512,
        "complete": true,
        "missing": []
       },
       "folate": {
-       "value": 351.9292249999999,
+       "value": 353.02922499999994,
        "complete": true,
        "missing": []
       }
@@ -7854,27 +7856,27 @@
    ],
    "period": {
     "kcal": {
-     "value": 22484.662115,
+     "value": 22485.384615000003,
      "complete": true,
      "missing": []
     },
     "protein": {
-     "value": 1390.6564054666667,
+     "value": 1393.5796554666667,
      "complete": true,
      "missing": []
     },
     "fat": {
-     "value": 1368.0484139666669,
+     "value": 1366.254163966667,
      "complete": true,
      "missing": []
     },
     "carbs": {
-     "value": 1140.1396722666666,
+     "value": 1143.4089222666667,
      "complete": true,
      "missing": []
     },
     "fiber": {
-     "value": 99.83474583333332,
+     "value": 99.94499583333332,
      "complete": false,
      "missing": [
       "shrimp",
@@ -7901,7 +7903,7 @@
      ]
     },
     "vit_c": {
-     "value": 539.5792066666667,
+     "value": 546.9292066666667,
      "complete": false,
      "missing": [
       "shrimp",
@@ -7913,7 +7915,7 @@
      ]
     },
     "vit_d": {
-     "value": 51.55342666666667,
+     "value": 50.99842666666666,
      "complete": false,
      "missing": [
       "beef_ribeye",
@@ -7921,17 +7923,19 @@
       "shrimp",
       "mussels",
       "seafood_cocktail",
+      "cherry_tomatoes",
       "veal",
       "kefir",
       "wine_vinegar",
       "chicken_mince",
       "pollock_fillet",
       "corn_grits",
-      "mayonnaise"
+      "mayonnaise",
+      "cheese_hard"
      ]
     },
     "vit_e": {
-     "value": 184.65702649999997,
+     "value": 185.48827649999996,
      "complete": false,
      "missing": [
       "beef_ribeye",
@@ -7947,12 +7951,11 @@
       "buckwheat_dry",
       "corn_grits",
       "mayonnaise",
-      "dill",
-      "cheese_hard"
+      "dill"
      ]
     },
     "vit_b6": {
-     "value": 32.26593165833333,
+     "value": 32.26023165833333,
      "complete": false,
      "missing": [
       "shrimp",
@@ -7966,7 +7969,7 @@
      ]
     },
     "vit_b12": {
-     "value": 274.58930319999996,
+     "value": 274.9130531999999,
      "complete": false,
      "missing": [
       "shrimp",
@@ -7978,7 +7981,7 @@
      ]
     },
     "folate": {
-     "value": 2953.7641183333335,
+     "value": 2961.766368333333,
      "complete": false,
      "missing": [
       "shrimp",
@@ -8023,7 +8026,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 539.5792066666667,
+     "period_value": 546.9292066666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -8043,13 +8046,15 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 51.55342666666667,
+     "period_value": 50.99842666666666,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beef_ribeye",
       "beef_striploin",
+      "cheese_hard",
+      "cherry_tomatoes",
       "chicken_mince",
       "corn_grits",
       "kefir",
@@ -8069,14 +8074,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 184.65702649999997,
+     "period_value": 185.48827649999996,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "beef_ribeye",
       "buckwheat_dry",
-      "cheese_hard",
       "coriander_ground",
       "corn_grits",
       "dill",
@@ -8098,7 +8102,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 32.26593165833333,
+     "period_value": 32.26023165833333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -8120,7 +8124,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 274.58930319999996,
+     "period_value": 274.9130531999999,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
@@ -8140,7 +8144,7 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2953.7641183333335,
+     "period_value": 2961.766368333333,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,

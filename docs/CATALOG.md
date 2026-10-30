@@ -36,6 +36,10 @@ tofu | Тофу | legumes | Молочные продукты и яйца | proc
 
 Как обновить: изменить `usda_map.json`, запустить workflow «Reference data» с `python -m scripts.nutrition.usda --apply` (скачивает набор, пишет `usda_values.json`; сайт USDA доступен не из любой среды), затем `python -m scripts.catalog.build`. В CI `--check` сверяет файл с набором при каждом его изменении.
 
+### Пищевая ценность из Livsmedelsverket
+
+Так же устроен второй справочник — шведская Livsmedelsdatabasen (CC BY 4.0): сопоставление в `scripts/nutrition/livsmedel_map.json` (id продукта → номер продукта в базе, пояснение, `fortified` для обогащённых продуктов), все опубликованные нутриенты — в `sources/livsmedel_values.json`, источник `livsmedelsverket`. Какие нутриенты и в каком виде переносятся, решает `catalog_nutrients` в `scripts/nutrition/livsmedel.py` (правила — `docs/NUTRIENTS.md`). Продукт берёт значения только из одного справочника. Обновление — `python -m scripts.nutrition.livsmedel --apply` в workflow «Reference data»; `--check` сверяет файл с API при каждом изменении. База обновляется агентством, поэтому `--check` может показать расхождение — тогда значения обновляются через `--apply`.
+
 ## Рецепты — `sources/recipes_*.txt`
 
 ```

@@ -223,6 +223,20 @@
   "vit_b12": 0,
   "folate": null
  },
+ "blueberries_frozen": {
+  "kcal": 51,
+  "protein": 0.4,
+  "fat": 0.6,
+  "carbs": 12.2,
+  "fiber": 2.7,
+  "vit_a": null,
+  "vit_c": 2.5,
+  "vit_d": 0,
+  "vit_e": 0.47,
+  "vit_b6": 0.06,
+  "vit_b12": 0,
+  "folate": 7
+ },
  "bread_white": {
   "kcal": 266,
   "protein": 7.6,
@@ -404,6 +418,34 @@
   "vit_b6": 0.1,
   "vit_b12": 0.04,
   "folate": 17
+ },
+ "cheese_hard": {
+  "kcal": 360,
+  "protein": 23,
+  "fat": 29,
+  "carbs": 0.3,
+  "fiber": 0,
+  "vit_a": null,
+  "vit_c": 0,
+  "vit_d": 0.6,
+  "vit_e": null,
+  "vit_b6": 0.08,
+  "vit_b12": 1.5,
+  "folate": 20
+ },
+ "cherry_tomatoes": {
+  "kcal": 18,
+  "protein": 0.9,
+  "fat": 0.2,
+  "carbs": 3.9,
+  "fiber": 1.2,
+  "vit_a": null,
+  "vit_c": 13.7,
+  "vit_d": 0,
+  "vit_e": 0.5,
+  "vit_b6": 0.08,
+  "vit_b12": 0,
+  "folate": 15
  },
  "chia_seeds": {
   "kcal": 486,
@@ -951,6 +993,34 @@
   "vit_b12": 0,
   "folate": 59
  },
+ "hake_fillet": {
+  "kcal": 86,
+  "protein": 16.6,
+  "fat": 2.2,
+  "carbs": 0,
+  "fiber": 0,
+  "vit_a": null,
+  "vit_c": 0,
+  "vit_d": 1,
+  "vit_e": 0.4,
+  "vit_b6": 0.3,
+  "vit_b12": 1,
+  "folate": 11
+ },
+ "herring_salted": {
+  "kcal": 217,
+  "protein": 17,
+  "fat": 15.4,
+  "carbs": 0,
+  "fiber": 0,
+  "vit_a": null,
+  "vit_c": 0.7,
+  "vit_d": 16.7,
+  "vit_e": 1.1,
+  "vit_b6": 0.3,
+  "vit_b12": 13,
+  "folate": 3
+ },
  "honey": {
   "kcal": 304,
   "protein": 0.3,
@@ -1384,6 +1454,20 @@
   "vit_b6": 0.3,
   "vit_b12": 0,
   "folate": 15
+ },
+ "potato_starch": {
+  "kcal": 330,
+  "protein": 0.1,
+  "fat": 0,
+  "carbs": 83,
+  "fiber": 0,
+  "vit_a": 0,
+  "vit_c": 0,
+  "vit_d": 0,
+  "vit_e": 0,
+  "vit_b6": 0,
+  "vit_b12": 0,
+  "folate": 0
  },
  "prunes": {
   "kcal": 240,

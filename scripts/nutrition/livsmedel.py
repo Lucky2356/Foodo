@@ -27,6 +27,75 @@ MAP = HERE / "livsmedel_map.json"
 VALUES = Path(__file__).resolve().parents[1] / "catalog/sources/livsmedel_values.json"
 
 
+# Units the conversion below expects (Livsmedelsdatabasen, per 100 g edible portion).
+UNITS = {
+    "ENERC": "kcal",
+    "PROT": "g",
+    "FAT": "g",
+    "WATER": "g",
+    "ASH": "g",
+    "ALC": "g",
+    "FIBT": "g",
+    "RETOL": "µg",
+    "CARTBTOT": "µg",
+    "VITC": "mg",
+    "VITE": "mg",
+    "VITB6": "mg",
+    "VITB12": "µg",
+    "FOL": "µg",
+}
+
+
+def catalog_nutrients(
+    nutrients: dict[str, dict[str, object]], fortified: bool
+) -> dict[str, float | None]:
+    """Foodo nutrients from published Livsmedelsdatabasen values, in Foodo's forms.
+
+    Definitions are the agency's (Omräkningsfaktorer som används i Livsmedelsdatabasen):
+    - carbohydrates there are «available»; Foodo's are by difference, computed by that definition:
+      100 − water − protein − fat − ash − alcohol;
+    - vitamin E is alpha-tocopherol, as in Foodo;
+    - vitamin D includes 25-hydroxy-D3 × 2.5 where measured — not Foodo's D2 + D3, so not taken;
+    - vitamin A is RAE from retinol and beta-carotene only. Retinol equivalents of МР 2.3.1.0253-21
+      also count the other provitamin A carotenoids, which the API does not give, so vitamin A is
+      taken only where the database marks beta-carotene a logical zero (no carotenoids in the food):
+      there RE equals retinol. Fortified foods (vitamins A and D added in Sweden) get neither.
+    """
+
+    def value(code: str) -> float | None:
+        row = nutrients.get(code)
+        if row is None or row.get("value") is None:
+            return None
+        if row.get("unit") != UNITS[code]:
+            raise ValueError(
+                f"{code}: единица {row.get('unit')}, ожидалась {UNITS[code]}"
+            )
+        return float(str(row["value"]))
+
+    parts = [value(c) for c in ("WATER", "PROT", "FAT", "ASH", "ALC")]
+    carbs = None
+    if all(p is not None for p in parts):
+        carbs = round(max(100 - sum(p for p in parts if p is not None), 0.0), 1)
+    vit_a = None
+    beta = nutrients.get("CARTBTOT")
+    if not fortified and beta is not None and beta.get("type") == "LZ":
+        vit_a = value("RETOL")
+    return {
+        "kcal": value("ENERC"),
+        "protein": value("PROT"),
+        "fat": value("FAT"),
+        "carbs": carbs,
+        "fiber": value("FIBT"),
+        "vit_a": vit_a,
+        "vit_c": value("VITC"),
+        "vit_d": None,
+        "vit_e": value("VITE"),
+        "vit_b6": value("VITB6"),
+        "vit_b12": value("VITB12"),
+        "folate": value("FOL"),
+    }
+
+
 def fetcher() -> Fetcher:
     # rules=None: the site's robots.txt is read and respected; one request a second.
     return Fetcher(API, delay=1, timeout=120, rules=None)
