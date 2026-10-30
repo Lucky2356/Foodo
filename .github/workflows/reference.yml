@@ -1,7 +1,7 @@
 name: Reference data
 
 # Checks reference data against its primary sources: МР 2.3.1.0253-21 (vitamin targets) from the
-# publisher's site and USDA FoodData Central SR Legacy (product nutrients). The hosts are not
+# publisher's site, USDA FoodData Central SR Legacy and Fineli (product nutrients). The hosts are not
 # reachable from every development environment.
 on:
   pull_request:
@@ -10,6 +10,7 @@ on:
       - "scripts/nutrition/**"
       - "shared/data/nutrient_targets.json"
       - "scripts/catalog/sources/usda_values.json"
+      - "scripts/catalog/sources/fineli_values.json"
       - ".github/workflows/reference.yml"
   workflow_dispatch:
 
@@ -41,3 +42,15 @@ jobs:
           python-version: "3.13"
       - name: USDA FoodData Central SR Legacy — usda_values.json matches the dataset
         run: python -m scripts.nutrition.usda --check
+
+  fineli:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: Fineli open data — package links and component definitions
+        run: python -m scripts.nutrition.fineli --discover
