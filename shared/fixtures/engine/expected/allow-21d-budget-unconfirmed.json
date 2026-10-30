@@ -6249,7 +6249,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 274.53549999999996,
+       "value": 324.06080000000003,
        "complete": true,
        "missing": []
       },
@@ -6326,10 +6326,11 @@
        ]
       },
       "vit_a": {
-       "value": 385.251,
+       "value": 343.79583333333335,
        "complete": false,
        "missing": [
-        "shrimp"
+        "shrimp",
+        "mussels"
        ]
       },
       "vit_c": {
@@ -6412,11 +6413,12 @@
        ]
       },
       "vit_a": {
-       "value": 150.56149999999997,
+       "value": 176.7722,
        "complete": false,
        "missing": [
         "rice_arborio_dry",
-        "seafood_cocktail"
+        "seafood_cocktail",
+        "cherry_tomatoes"
        ]
       },
       "vit_c": {
@@ -6498,7 +6500,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 398.774,
+       "value": 530.693,
        "complete": true,
        "missing": []
       },
@@ -6571,7 +6573,7 @@
        ]
       },
       "vit_a": {
-       "value": 442.38399999999996,
+       "value": 721.4289999999999,
        "complete": false,
        "missing": [
         "rice_arborio_dry"
@@ -6644,7 +6646,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 197.094,
+       "value": 203.15006,
        "complete": true,
        "missing": []
       },
@@ -6719,7 +6721,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 82.2885,
+       "value": 82.63644,
        "complete": true,
        "missing": []
       },
@@ -6788,7 +6790,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 167.13899999999998,
+       "value": 168.831,
        "complete": false,
        "missing": [
         "kefir"
@@ -6871,7 +6873,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 250.17849999999999,
+       "value": 262.04286,
        "complete": true,
        "missing": []
       },
@@ -6946,9 +6948,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 645.208,
+       "value": 838.5302066666666,
        "complete": false,
        "missing": [
+        "mussels",
+        "wine_vinegar",
         "mustard"
        ]
       },
@@ -7033,9 +7037,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 177.6044,
-       "complete": true,
-       "missing": []
+       "value": 212.22925066666667,
+       "complete": false,
+       "missing": [
+        "mince_pork_beef"
+       ]
       },
       "vit_c": {
        "value": 19.29704,
@@ -7102,7 +7108,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 161.234,
+       "value": 166.60836,
        "complete": true,
        "missing": []
       },
@@ -7173,7 +7179,7 @@
        ]
       },
       "vit_a": {
-       "value": 50.980000000000004,
+       "value": 51.401860000000006,
        "complete": false,
        "missing": [
         "pollock_fillet"
@@ -7257,9 +7263,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 6282.6425,
-       "complete": true,
-       "missing": []
+       "value": 6324.24443,
+       "complete": false,
+       "missing": [
+        "wine_vinegar"
+       ]
       },
       "vit_c": {
        "value": 12.96125,
@@ -7339,7 +7347,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 87.2705,
+       "value": 108.54846,
        "complete": true,
        "missing": []
       },
@@ -7414,7 +7422,7 @@
        ]
       },
       "vit_a": {
-       "value": 301.39700000000005,
+       "value": 513.909475,
        "complete": false,
        "missing": [
         "shrimp",
@@ -7508,7 +7516,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 163.999,
+       "value": 182.95606000000004,
        "complete": true,
        "missing": []
       },
@@ -7581,9 +7589,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 144.3776,
-       "complete": true,
-       "missing": []
+       "value": 81.79690666666667,
+       "complete": false,
+       "missing": [
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 14.101,
@@ -7653,9 +7663,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 7695.139,
-       "complete": true,
-       "missing": []
+       "value": 7637.42971,
+       "complete": false,
+       "missing": [
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 8.812,
@@ -7724,7 +7736,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 120.64699999999999,
+       "value": 154.932,
        "complete": true,
        "missing": []
       },
@@ -7795,9 +7807,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 797.4340000000001,
-       "complete": true,
-       "missing": []
+       "value": 1261.0882899999997,
+       "complete": false,
+       "missing": [
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 70.174,
@@ -7869,16 +7883,21 @@
      ]
     },
     "vit_a": {
-     "value": 18976.139000000003,
+     "value": 20347.086202333336,
      "complete": false,
      "missing": [
       "shrimp",
+      "mussels",
       "rice_arborio_dry",
       "seafood_cocktail",
+      "cherry_tomatoes",
       "kefir",
+      "wine_vinegar",
       "mustard",
+      "mince_pork_beef",
       "pollock_fillet",
-      "mayonnaise"
+      "mayonnaise",
+      "cheese_hard"
      ]
     },
     "vit_c": {
@@ -7978,18 +7997,23 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 18976.139000000003,
+     "period_value": 20347.086202333336,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cheese_hard",
+      "cherry_tomatoes",
       "kefir",
       "mayonnaise",
+      "mince_pork_beef",
+      "mussels",
       "mustard",
       "pollock_fillet",
       "rice_arborio_dry",
       "seafood_cocktail",
-      "shrimp"
+      "shrimp",
+      "wine_vinegar"
      ],
      "message": "Целевая норма не выбрана.",
      "set_status": null

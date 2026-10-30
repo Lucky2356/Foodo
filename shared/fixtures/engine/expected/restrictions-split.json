@@ -2920,7 +2920,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 93.97510000000001,
+       "value": 184.35754000000003,
        "complete": false,
        "missing": [
         "soy_milk"
@@ -3007,7 +3007,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 116.5894,
+       "value": 212.83776,
        "complete": true,
        "missing": []
       },
@@ -3080,7 +3080,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 357.34635000000003,
+       "value": 675.64509,
        "complete": false,
        "missing": [
         "italian_herbs"
@@ -3159,10 +3159,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 357.5634,
+       "value": 579.05386,
        "complete": false,
        "missing": [
         "salmon_salted",
+        "pork_neck",
         "italian_herbs"
        ]
       },
@@ -3249,12 +3250,13 @@
      "missing": []
     },
     "vit_a": {
-     "value": 925.47425,
+     "value": 1651.89425,
      "complete": false,
      "missing": [
       "soy_milk",
       "italian_herbs",
-      "salmon_salted"
+      "salmon_salted",
+      "pork_neck"
      ]
     },
     "vit_c": {
@@ -3324,12 +3326,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 925.47425,
+     "period_value": 1651.89425,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "italian_herbs",
+      "pork_neck",
       "salmon_salted",
       "soy_milk"
      ],
@@ -3479,7 +3482,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 46.987550000000006,
+       "value": 92.17877000000001,
        "complete": false,
        "missing": [
         "soy_milk"
@@ -3566,7 +3569,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 58.2947,
+       "value": 106.41888,
        "complete": true,
        "missing": []
       },
@@ -3639,7 +3642,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 178.67317500000001,
+       "value": 337.822545,
        "complete": false,
        "missing": [
         "italian_herbs"
@@ -3718,10 +3721,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 178.7817,
+       "value": 289.52693,
        "complete": false,
        "missing": [
         "salmon_salted",
+        "pork_neck",
         "italian_herbs"
        ]
       },
@@ -3808,12 +3812,13 @@
      "missing": []
     },
     "vit_a": {
-     "value": 462.737125,
+     "value": 825.947125,
      "complete": false,
      "missing": [
       "soy_milk",
       "italian_herbs",
-      "salmon_salted"
+      "salmon_salted",
+      "pork_neck"
      ]
     },
     "vit_c": {
@@ -3883,12 +3888,13 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 462.737125,
+     "period_value": 825.947125,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
       "italian_herbs",
+      "pork_neck",
       "salmon_salted",
       "soy_milk"
      ],

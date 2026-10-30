@@ -4376,7 +4376,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 186.14366666666666,
+       "value": 196.52941333333334,
        "complete": false,
        "missing": [
         "suluguni"
@@ -4457,7 +4457,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 345.65683333333334,
+       "value": 360.43491500000005,
        "complete": false,
        "missing": [
         "kefir"
@@ -4544,12 +4544,13 @@
        ]
       },
       "vit_a": {
-       "value": 561.8990666666666,
+       "value": 523.011312,
        "complete": false,
        "missing": [
         "kefir_25",
         "suluguni",
-        "shrimp"
+        "shrimp",
+        "mussels"
        ]
       },
       "vit_c": {
@@ -4641,7 +4642,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 303.04516666666666,
+       "value": 363.27738000000005,
        "complete": false,
        "missing": [
         "kefir_25",
@@ -4733,9 +4734,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 658.4615,
-       "complete": true,
-       "missing": []
+       "value": 586.40114,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 3.1427499999999995,
@@ -4808,9 +4812,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 308.76306666666665,
-       "complete": true,
-       "missing": []
+       "value": 216.514084,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "mince_pork_beef"
+       ]
       },
       "vit_c": {
        "value": 6.860173333333334,
@@ -4885,9 +4892,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 381.38766666666663,
-       "complete": true,
-       "missing": []
+       "value": 345.00227333333333,
+       "complete": false,
+       "missing": [
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 9.063266666666667,
@@ -4960,13 +4969,17 @@
      ]
     },
     "vit_a": {
-     "value": 2745.3569666666663,
+     "value": 2591.170517666667,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
       "kefir_25",
-      "shrimp"
+      "shrimp",
+      "mussels",
+      "cottage_cheese",
+      "cheese_hard",
+      "mince_pork_beef"
      ]
     },
     "vit_c": {
@@ -5046,13 +5059,17 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2745.3569666666663,
+     "period_value": 2591.170517666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cheese_hard",
+      "cottage_cheese",
       "kefir",
       "kefir_25",
+      "mince_pork_beef",
+      "mussels",
       "shrimp",
       "suluguni"
      ],
@@ -5212,7 +5229,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 186.14366666666666,
+       "value": 196.52941333333334,
        "complete": false,
        "missing": [
         "suluguni"
@@ -5293,7 +5310,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 345.65683333333334,
+       "value": 360.43491500000005,
        "complete": false,
        "missing": [
         "kefir"
@@ -5380,12 +5397,13 @@
        ]
       },
       "vit_a": {
-       "value": 561.8990666666666,
+       "value": 523.011312,
        "complete": false,
        "missing": [
         "kefir_25",
         "suluguni",
-        "shrimp"
+        "shrimp",
+        "mussels"
        ]
       },
       "vit_c": {
@@ -5477,7 +5495,7 @@
        "missing": []
       },
       "vit_a": {
-       "value": 303.04516666666666,
+       "value": 363.27738000000005,
        "complete": false,
        "missing": [
         "kefir_25",
@@ -5569,9 +5587,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 658.4615,
-       "complete": true,
-       "missing": []
+       "value": 586.40114,
+       "complete": false,
+       "missing": [
+        "cottage_cheese",
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 3.1427499999999995,
@@ -5644,9 +5665,12 @@
        "missing": []
       },
       "vit_a": {
-       "value": 308.76306666666665,
-       "complete": true,
-       "missing": []
+       "value": 216.514084,
+       "complete": false,
+       "missing": [
+        "cheese_hard",
+        "mince_pork_beef"
+       ]
       },
       "vit_c": {
        "value": 6.860173333333334,
@@ -5721,9 +5745,11 @@
        "missing": []
       },
       "vit_a": {
-       "value": 381.38766666666663,
-       "complete": true,
-       "missing": []
+       "value": 345.00227333333333,
+       "complete": false,
+       "missing": [
+        "cheese_hard"
+       ]
       },
       "vit_c": {
        "value": 9.063266666666667,
@@ -5796,13 +5822,17 @@
      ]
     },
     "vit_a": {
-     "value": 2745.3569666666663,
+     "value": 2591.170517666667,
      "complete": false,
      "missing": [
       "suluguni",
       "kefir",
       "kefir_25",
-      "shrimp"
+      "shrimp",
+      "mussels",
+      "cottage_cheese",
+      "cheese_hard",
+      "mince_pork_beef"
      ]
     },
     "vit_c": {
@@ -5882,13 +5912,17 @@
      "status": "no_target",
      "daily_target": null,
      "period_target": null,
-     "period_value": 2745.3569666666663,
+     "period_value": 2591.170517666667,
      "coverage_pct": null,
      "lower_bound_pct": null,
      "data_complete": false,
      "missing_products": [
+      "cheese_hard",
+      "cottage_cheese",
       "kefir",
       "kefir_25",
+      "mince_pork_beef",
+      "mussels",
       "shrimp",
       "suluguni"
      ],

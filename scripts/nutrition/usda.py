@@ -24,10 +24,10 @@ HERE = Path(__file__).resolve().parent
 MAP = HERE / "usda_map.json"
 VALUES = Path(__file__).resolve().parents[1] / "catalog/sources/usda_values.json"
 
-# SR nutrient numbers → Foodo nutrient ids, in the forms Foodo stores (shared/data/reference.json):
-# energy in kcal as published (not recomputed 4/9/4), carbohydrates by difference, vitamin A as RAE,
-# D as D2+D3, E as alpha-tocopherol, folate as food folate. Retinol and carotenoids are kept so
-# retinol equivalents (RE, МР 2.3.1.0253-21, appendix 3) can be derived without guessing.
+# SR nutrient numbers → Foodo nutrient ids, as published: energy in kcal (not recomputed 4/9/4),
+# carbohydrates by difference, D as D2+D3, E as alpha-tocopherol, folate as food folate. Vitamin A is
+# kept as published (RAE) together with retinol and the carotenoids; the catalog build turns them into
+# retinol equivalents, the form of the norms (scripts/nutrition/vitamin_a.py).
 NUTRIENTS = {
     "208": "kcal",
     "203": "protein",
