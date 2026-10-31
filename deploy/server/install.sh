@@ -14,6 +14,12 @@ SETTINGS=${1:?settings file}
 SRC=$(cd "$(dirname "$0")/../.." && pwd)
 DIR=${FOODO_DIR:-/opt/foodo}
 REPO=${FOODO_REPO:-Lucky2356/Foodo}
+# The latest release from the redirect of github.com/<repo>/releases/latest: the same host the files
+# come from, and no API rate limit for a server behind a shared address.
+latest_release() {
+  curl -fsSLI --retry 3 --retry-all-errors -o /dev/null -w '%{url_effective}' "https://github.com/$REPO/releases/latest" |
+    sed -n 's#.*/releases/tag/v\{0,1\}##p'
+}
 
 # shellcheck source=/dev/null
 . "$SETTINGS"
@@ -30,7 +36,7 @@ if ! docker compose version >/dev/null 2>&1; then
   . /etc/os-release
   [ "${ID:-}" = ubuntu ] || { echo "Поддерживается Ubuntu 22.04 или 24.04, у сервера: ${PRETTY_NAME:-?}" >&2; exit 1; }
   apt-get update -q
-  DEBIAN_FRONTEND=noninteractive apt-get install -yq docker.io docker-compose-v2 curl openssl python3
+  DEBIAN_FRONTEND=noninteractive apt-get install -yq docker.io docker-compose-v2 curl openssl
   systemctl enable --now docker
 fi
 docker compose version
@@ -105,14 +111,14 @@ fi
 
 tag=${FOODO_IMAGE_TAG:-$(get_env FOODO_IMAGE_TAG)}
 if [ -z "$tag" ]; then
-  tag=$(curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" | python3 -Ic 'import json,sys; print(json.load(sys.stdin)["tag_name"].lstrip("v"))')
+  tag=$(latest_release)
 fi
 [[ "$tag" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Неверная версия: $tag" >&2; exit 1; }
 set_env FOODO_IMAGE_TAG "$tag"
 echo "Версия: $tag"
 
 # The compose file published with that release; the bundled copy only if the download fails.
-if ! curl -fsSL -o "$DIR/docker-compose.prod.yml.new" "https://github.com/$REPO/releases/download/v$tag/docker-compose.prod.yml"; then
+if ! curl -fsSL --retry 3 --retry-all-errors -o "$DIR/docker-compose.prod.yml.new" "https://github.com/$REPO/releases/download/v$tag/docker-compose.prod.yml"; then
   echo "Не скачан docker-compose.prod.yml версии $tag — используется копия из репозитория" >&2
   cp "$SRC/docker-compose.prod.yml" "$DIR/docker-compose.prod.yml.new"
 fi

@@ -21,6 +21,12 @@ set_env() {
 }
 compose() { docker compose -f docker-compose.prod.yml "$@"; }
 REPO=$(get_env FOODO_REPO); REPO=${REPO:-Lucky2356/Foodo}
+# The latest release from the redirect of github.com/<repo>/releases/latest: the same host the files
+# come from, and no API rate limit for a server behind a shared address.
+latest_release() {
+  curl -fsSLI --retry 3 --retry-all-errors -o /dev/null -w '%{url_effective}' "https://github.com/$REPO/releases/latest" |
+    sed -n 's#.*/releases/tag/v\{0,1\}##p'
+}
 DOMAIN=$(get_env FOODO_DOMAIN)
 
 healthy() {
@@ -41,7 +47,7 @@ wait_healthy() {
 case "${1:-}" in
   --wait-healthy) wait_healthy; exit ;;
   --to) target=${2:?version}; ;;
-  "") target=$(curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" | python3 -Ic 'import json,sys; print(json.load(sys.stdin)["tag_name"].lstrip("v"))') ;;
+  "") target=$(latest_release) ;;
   *) echo "usage: update.sh [--to X.Y.Z | --wait-healthy]" >&2; exit 2 ;;
 esac
 [[ "$target" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Неверная версия: $target" >&2; exit 1; }
@@ -57,7 +63,7 @@ echo "Обновление $current → $target"
 # server's setup (install.sh), not to a version.
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
-curl -fsSL -o "$tmp/docker-compose.prod.yml" "https://github.com/$REPO/releases/download/v$target/docker-compose.prod.yml"
+curl -fsSL --retry 3 --retry-all-errors -o "$tmp/docker-compose.prod.yml" "https://github.com/$REPO/releases/download/v$target/docker-compose.prod.yml"
 
 "$DIR/backup.sh"
 cp docker-compose.prod.yml "$tmp/previous-compose.yml"
