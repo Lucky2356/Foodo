@@ -1,4 +1,4 @@
-import { UNIT_NAMES } from '../engine';
+import { UNIT_NAMES, approxPieces } from '../engine';
 import type { Member } from '../engine';
 import type { MenuRecord, ShoppingView } from '../data/types';
 import { SLOT_NAMES } from '../lib/recipes';
@@ -62,6 +62,13 @@ const single = (p: { size: number; unit: string }) => p.unit === 'pcs' && p.size
 
 const unitName = (u: string) => (UNIT_NAMES as Record<string, string>)[u] ?? u;
 
+/** « (≈ 2 шт.)» for a loose product bought by weight whose mass of one piece is known. */
+function piecesNote(l: ShoppingView['lines'][number], product: Parameters<typeof approxPieces>[0]): string {
+  if (l.package || l.unit !== 'g') return '';
+  const pieces = approxPieces(product, l.to_buy);
+  return pieces ? ` (≈ ${pieces} шт.)` : '';
+}
+
 export function buildExportModel(record: MenuRecord, shopping: ShoppingView | null, members: Member[]): ExportModel {
   const menu = record.menu;
   const name = (id: string) => members.find((m) => m.id === id)?.name ?? '—';
@@ -92,7 +99,7 @@ export function buildExportModel(record: MenuRecord, shopping: ShoppingView | nu
       needed: round2(l.needed),
       fromPantry: round2(l.from_pantry),
       toBuy: round2(l.at_home ? 0 : buyAmount(l.to_buy, l.unit)),
-      toBuyText: l.at_home ? 'есть дома' : l.to_buy === 0 ? 'всё есть дома' : quantity(buyAmount(l.to_buy, l.unit), l.unit),
+      toBuyText: l.at_home ? 'есть дома' : l.to_buy === 0 ? 'всё есть дома' : quantity(buyAmount(l.to_buy, l.unit), l.unit) + piecesNote(l, menu.snapshot.products[l.product_id]),
       unit: unitName(l.unit),
       // Pieces sold one by one are not «packages of 1 pcs»: the amount to buy already says it.
       packages: l.package && !single(l.package) ? l.package.count : null,

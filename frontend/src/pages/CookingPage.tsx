@@ -89,7 +89,7 @@ function CookDaySection({ day, today, onCook, folded = false }: { day: CookDay; 
   const counts = (
     <span className="muted small">
       {left === 0 ? 'всё приготовлено' : `${left} ${plural(left, 'блюдо', 'блюда', 'блюд')}`}
-      {left > 0 && day.activeMin !== null ? ` · у плиты ≈ ${minutes(day.activeMin)}` : ''}
+      {left > 0 && day.activeMin !== null ? ` · активно ≈ ${minutes(day.activeMin)}` : ''}
     </span>
   );
   const tasks = day.tasks.map((t) => <CookTaskCard key={t.batchId} task={t} day={day} onCook={onCook} />);
@@ -99,7 +99,7 @@ function CookDaySection({ day, today, onCook, folded = false }: { day: CookDay; 
         <summary>
           <span className="cook-day-title">{humanDate(day.date, today)}</span> {counts}
         </summary>
-        <div className="stack" style={{ ['--gap' as string]: '10px', marginTop: 12 }}>
+        <div className="cook-tasks" style={{ marginTop: 12 }}>
           {tasks}
         </div>
       </details>
@@ -113,7 +113,7 @@ function CookDaySection({ day, today, onCook, folded = false }: { day: CookDay; 
         </h2>
         {counts}
       </div>
-      {tasks}
+      <div className="cook-tasks">{tasks}</div>
     </section>
   );
 }
@@ -129,7 +129,7 @@ function CookTaskCard({ task: t, day, onCook }: { task: CookTask; day: CookDay; 
       <div className="stack grow" style={{ ['--gap' as string]: '6px' }}>
         <h3 className="cook-name">{t.recipe?.name ?? 'Рецепт недоступен'}</h3>
         <p className="muted small">
-          {t.totalMin !== null ? `${minutes(t.totalMin)}${t.activeMin !== null ? ` · у плиты ${minutes(t.activeMin)}` : ''} · ` : ''}
+          {t.totalMin !== null ? `${minutes(t.totalMin)}${t.activeMin !== null ? ` · активно ${minutes(t.activeMin)}` : ''} · ` : ''}
           {portionsLabel(t.portions)}
           {t.methodName ? ` · ${t.methodName.toLowerCase()}` : ''}
         </p>

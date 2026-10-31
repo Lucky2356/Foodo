@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { approxPieces } from '../engine';
 import type { ManualLine } from '../engine';
 import type { ShoppingView } from '../data/types';
 import { downloadBlob } from '../data/backup';
@@ -26,6 +27,13 @@ function packageText(pkg: { count: number; size: number; unit: string } | null):
   if (!pkg || pkg.count <= 0) return '';
   if (pkg.unit === 'pcs' && pkg.size === 1) return '';
   return ` · ${pkg.count} уп. по ${qty(pkg.size, pkg.unit)}`;
+}
+
+/** « · ≈ 2 шт.» for a loose product bought by weight whose mass of one piece is known (lemons, avocados). */
+function piecesText(l: Line, product: Parameters<typeof approxPieces>[0]): string {
+  if (l.package || l.unit !== 'g' || l.at_home || l.to_buy <= 0) return '';
+  const pieces = approxPieces(product, l.to_buy);
+  return pieces ? ` · ≈ ${pieces} шт.` : '';
 }
 
 export default function ShoppingPage() {
@@ -337,6 +345,7 @@ export default function ShoppingPage() {
                     {l.to_buy === 0 ? 'всё есть дома' : qty(buyAmount(l.to_buy, l.unit), l.unit)}
                     {l.from_pantry > 0 && l.to_buy > 0 ? ` · дома ${qty(l.from_pantry, l.unit)}` : ''}
                     {packageText(l.package)}
+                    {piecesText(l, record?.menu.snapshot.products[l.product_id])}
                     {l.at_home ? ' · есть дома' : ''}
                   </div>
                 </button>

@@ -136,3 +136,12 @@ export function formatQty(qty: number, unit: string): string {
   const name = (UNIT_NAMES as Record<string, string>)[unit] ?? unit;
   return `${text} ${name}`;
 }
+
+/**
+ * Whole pieces to pick for a product bought loose by weight («≈ 2 шт.»), or null without a mass of one
+ * piece. A remainder under a tenth of a piece does not add one more piece.
+ */
+export function approxPieces(product: Product | undefined, grams: number): number | null {
+  if (!product?.piece_g || grams <= 0) return null;
+  return Math.max(1, Math.ceil(grams / product.piece_g - 0.1));
+}
