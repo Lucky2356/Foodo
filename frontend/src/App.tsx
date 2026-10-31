@@ -84,30 +84,40 @@ function DocumentTitle() {
   return null;
 }
 
-/**
- * A screen that failed to load (its code chunk was not reachable, e.g. offline before the app was
- * cached) shows an explanation and a retry instead of an empty page. Reset when the route changes.
- */
-class ScreenBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
-  override state = { failed: false };
+/** The code of a lazily loaded screen could not be fetched (offline, or an old version was replaced). */
+function isLoadError(error: unknown): boolean {
+  const message = error instanceof Error ? `${error.name} ${error.message}` : String(error);
+  return /dynamically imported module|Importing a module script failed|error loading dynamically|ChunkLoadError|Failed to fetch/i.test(message);
+}
 
-  static getDerivedStateFromError(): { failed: boolean } {
-    return { failed: true };
+/**
+ * A screen that failed shows an explanation and a retry instead of an empty page; reset when the
+ * route changes. A screen whose code was not reachable (e.g. offline before the app was cached) and
+ * a screen that broke while drawing are told apart, so a bug does not read as a network problem.
+ */
+class ScreenBoundary extends Component<{ children: ReactNode }, { failed: 'load' | 'error' | null }> {
+  override state: { failed: 'load' | 'error' | null } = { failed: null };
+
+  static getDerivedStateFromError(error: unknown): { failed: 'load' | 'error' } {
+    return { failed: isLoadError(error) ? 'load' : 'error' };
   }
 
   override render() {
     if (!this.state.failed) return this.props.children;
+    const reload = (
+      <button className="btn primary" onClick={() => window.location.reload()}>
+        Обновить страницу
+      </button>
+    );
+    if (this.state.failed === 'error') {
+      return (
+        <Empty page icon="info" title="На этом экране ошибка" action={reload}>
+          Экран не смог открыться из-за ошибки в приложении. Ваши данные не затронуты. Обновите страницу или откройте другой раздел.
+        </Empty>
+      );
+    }
     return (
-      <Empty
-        page
-        icon="offline"
-        title="Экран не загрузился"
-        action={
-          <button className="btn primary" onClick={() => window.location.reload()}>
-            Обновить страницу
-          </button>
-        }
-      >
+      <Empty page icon="offline" title="Экран не загрузился" action={reload}>
         {navigator.onLine ? 'Не удалось загрузить часть приложения. Обновите страницу.' : 'Нет сети, а этот экран ещё не сохранён на устройстве. Подключитесь к интернету и обновите страницу.'}
       </Empty>
     );
