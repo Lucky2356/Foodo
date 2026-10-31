@@ -1,0 +1,8 @@
+[Unit]
+Description=Foodo: install a newer release if there is one
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/foodo/update.sh

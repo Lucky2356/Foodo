@@ -192,6 +192,74 @@ jobs:
             frontend/test-results
           retention-days: 7
 
+  server-scripts:
+    name: Server scripts — setup, re-setup, backup, update, restore on a clean machine
+    runs-on: ubuntu-24.04
+    env:
+      COMPOSE: sudo docker compose -f /opt/foodo/docker-compose.prod.yml
+      SITE: https://foodo.test
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - name: Shell scripts and systemd units are valid
+        run: |
+          shellcheck deploy/server/*.sh
+          bash -n deploy/server/*.sh
+      - name: Setup with the previous release (TLS from Caddy's own CA)
+        run: |
+          releases=$(curl -fsSL "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases?per_page=2")
+          echo "LATEST=$(printf '%s' "$releases" | python3 -c 'import json,sys; print(json.load(sys.stdin)[0]["tag_name"].lstrip("v"))')" >> "$GITHUB_ENV"
+          prev=$(printf '%s' "$releases" | python3 -c 'import json,sys; print(json.load(sys.stdin)[1]["tag_name"].lstrip("v"))')
+          echo "PREVIOUS=$prev" >> "$GITHUB_ENV"
+          # Firewall and timers stay off on the CI machine; the timers would start an update mid-test.
+          printf '%s\n' FOODO_DOMAIN=foodo.test FOODO_TLS=internal FOODO_ADMIN_EMAIL=admin@foodo.test \
+            "FOODO_IMAGE_TAG=$prev" FOODO_SKIP_SYSTEM=1 FOODO_SKIP_TIMERS=1 > /tmp/setup.env
+          sudo FOODO_REPO="$GITHUB_REPOSITORY" bash deploy/server/install.sh /tmp/setup.env
+      - name: After setup — HTTPS, version, admin without a password, private settings
+        run: |
+          curl -fsSk --resolve foodo.test:443:127.0.0.1 "$SITE/api/health/" | tee /dev/stderr | grep -q "\"version\":\"$PREVIOUS\""
+          curl -fsSk --resolve foodo.test:443:127.0.0.1 "$SITE/" | grep -q '<div id="root">'
+          curl -fsSkI --resolve foodo.test:443:127.0.0.1 "$SITE/" | grep -qi '^strict-transport-security'
+          $COMPOSE exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; u = g().objects.get(username='admin@foodo.test'); assert u.is_superuser and not u.has_usable_password()"
+          test "$(sudo stat -c %a /opt/foodo/.env)" = 600
+          test "$(sudo stat -c %a /opt/foodo/backups)" = 700
+      - name: Re-running setup keeps the secrets and the data
+        run: |
+          before=$(sudo grep -E '^(DJANGO_SECRET_KEY|POSTGRES_PASSWORD)=' /opt/foodo/.env | sha256sum)
+          $COMPOSE exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; g().objects.create_user(username='keep@example.com', email='keep@example.com', password=__import__('secrets').token_urlsafe(18))"
+          sudo FOODO_REPO="$GITHUB_REPOSITORY" bash deploy/server/install.sh /tmp/setup.env
+          test "$before" = "$(sudo grep -E '^(DJANGO_SECRET_KEY|POSTGRES_PASSWORD)=' /opt/foodo/.env | sha256sum)"
+          $COMPOSE exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; assert g().objects.filter(username='keep@example.com').exists()"
+      - name: Backup
+        run: |
+          sudo /opt/foodo/backup.sh
+          dump=$(sudo sh -c 'ls -t /opt/foodo/backups/foodo-*.dump | head -n1')
+          sudo test -s "$dump"
+          echo "DUMP=$dump" >> "$GITHUB_ENV"
+      - name: Update to the latest release keeps the data
+        run: |
+          sleep 1  # the update's own backup gets a different file name
+          sudo /opt/foodo/update.sh
+          sudo grep -q "^FOODO_IMAGE_TAG=$LATEST$" /opt/foodo/.env
+          curl -fsSk --resolve foodo.test:443:127.0.0.1 "$SITE/api/health/" | grep -q "\"version\":\"$LATEST\""
+          $COMPOSE exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; assert g().objects.filter(username='keep@example.com').exists()"
+          sudo /opt/foodo/update.sh | tee /dev/stderr | grep -q "Уже версия $LATEST"
+      - name: Restore brings back the state of the backup
+        run: |
+          $COMPOSE exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; g().objects.create_user(username='after@example.com', email='after@example.com', password=__import__('secrets').token_urlsafe(18))"
+          if sudo /opt/foodo/restore.sh "$DUMP"; then echo "restore without --yes must refuse"; exit 1; fi
+          sudo /opt/foodo/restore.sh "$DUMP" --yes
+          $COMPOSE exec -T api python manage.py shell -c "from django.contrib.auth import get_user_model as g; u = g().objects; assert u.filter(username='keep@example.com').exists(); assert not u.filter(username='after@example.com').exists()"
+      - name: systemd units
+        run: |
+          sudo install -m 644 deploy/server/foodo-*.service deploy/server/foodo-*.timer /etc/systemd/system/
+          sudo systemd-analyze verify /etc/systemd/system/foodo-update.service /etc/systemd/system/foodo-update.timer /etc/systemd/system/foodo-backup.service /etc/systemd/system/foodo-backup.timer
+      - if: failure()
+        run: |
+          $COMPOSE ps || true
+          $COMPOSE logs --tail 100 || true
+
   docker:
     name: Docker — build images, clean start, health, restart keeps data
     runs-on: ubuntu-24.04

@@ -1,4 +1,6 @@
+# FOODO_TLS: e-mail for the Let's Encrypt account, or "internal" for a self-signed test certificate.
 {$FOODO_DOMAIN} {
+	tls {$FOODO_TLS}
 	encode zstd gzip
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	reverse_proxy web:80 {

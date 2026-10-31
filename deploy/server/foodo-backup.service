@@ -1,0 +1,7 @@
+[Unit]
+Description=Foodo: back up the database and uploaded files
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/foodo/backup.sh
