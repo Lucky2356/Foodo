@@ -50,6 +50,36 @@ test.describe('guest mode (static site, no server)', () => {
     await noHorizontalScroll(page);
   });
 
+  test.describe('published price status', () => {
+    // The service worker would answer the request itself, and the route below would never see it.
+    test.use({ serviceWorkers: 'block' });
+    test('«Покупки и цены» opens with the published price status of the real shape (Rosstat «cities» is a number)', async ({ page }) => {
+      await page.route('**/data/prices/index.json', (route) =>
+        route.fulfill({
+          json: {
+            format: 'foodo-prices-index',
+            files: {},
+            status: {
+              sources: {
+                rosstat: { name: 'Росстат', ok: true, regions: 85, cities: 270, period: '2026-09', updated_at: '2026-10-26T08:59:14+00:00' },
+                metro: { name: 'Metro', ok: true, cities: [{ city: 'Москва', products: 50 }], updated_at: '2026-10-26T09:26:42+00:00' },
+                lenta: { name: 'lenta', collected: false, reason: 'Сайт закрыт проверкой браузера.' },
+              },
+            },
+          },
+        }),
+      );
+      await page.setViewportSize({ width: 360, height: 780 });
+      await onboard(page);
+      await page.goto('./#/settings/shopping');
+      await expect(page.getByRole('heading', { level: 1, name: 'Покупки и цены' })).toBeVisible();
+      await page.getByText('Откуда цены').click();
+      await expect(page.getByText(/85 регионов и 270 городов/)).toBeVisible();
+      await expect(page.getByText('Сайт закрыт проверкой браузера.')).toBeVisible();
+      await noHorizontalScroll(page);
+    });
+  });
+
   test('cooking: today first with portions and meals; «Приготовлено» marks the dish (cooking)', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await onboard(page);

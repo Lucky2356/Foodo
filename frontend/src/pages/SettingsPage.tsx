@@ -10,7 +10,7 @@ import { Icon } from '../ui/icons';
 import { Banner, Chip, Field, Loading, NumberInput, PageHead, Segmented, Sheet, Switch } from '../ui/kit';
 import { ProductPicker } from '../ui/ProductPicker';
 import { dayMonth } from '../lib/dates';
-import { num, rub } from '../lib/format';
+import { num, plural, rub } from '../lib/format';
 import { budgetError } from '../lib/numbers';
 
 const PRICE_UNITS: Record<string, string> = { g: 'г', kg: 'кг', ml: 'мл', l: 'л', pcs: 'шт.' };
@@ -435,6 +435,7 @@ function PriceSources() {
       const inCities = (s.cities ?? []).filter((c) => (c.products ?? 0) > 0).map((c) => c.city);
       const parts = [
         s.period ? `период ${s.period}` : null,
+        s.regions && s.city_count ? `${s.regions} ${plural(s.regions, 'регион', 'региона', 'регионов')} и ${s.city_count} ${plural(s.city_count, 'город', 'города', 'городов')}` : null,
         s.city ? `магазин в городе ${s.city}` : null,
         inCities.length > 6 ? `магазины в ${inCities.length} городах` : inCities.length > 0 ? `магазины в городах: ${inCities.join(', ')}` : null,
         s.updated_at ? `обновлено ${dayMonth(s.updated_at.slice(0, 10))}` : null];

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import ExcelJS from 'exceljs';
 import { seedCatalog } from '../../data/seed';
-import { computeShopping, generateMenu } from '../../engine';
+import { approxPieces, computeShopping, generateMenu } from '../../engine';
 import { buildExportModel, safeText } from '../model';
 import { buildXlsx } from '../files';
 import type { MenuRecord, ShoppingView } from '../../data/types';
@@ -30,6 +30,23 @@ describe('XLSX export (check 15)', () => {
     expect(names.some((n) => n.startsWith('='))).toBe(false);
     const cook = wb.getWorksheet('Готовка')!;
     expect(typeof cook.getCell('D2').value).toBe('number');
+  });
+
+  it('loose produce bought by weight also says how many pieces to pick (1 piece = its own mass)', () => {
+    const catalog = seedCatalog();
+    const lemon = catalog.products.lemon!;
+    expect(lemon.piece_g).toBe(120);
+    expect(approxPieces(lemon, 142)).toBe(2);
+    expect(approxPieces(lemon, 125)).toBe(1); // under a tenth of a piece more: still one lemon
+    expect(approxPieces(lemon, 30)).toBe(1);
+    expect(approxPieces(catalog.products.lemon, 0)).toBeNull();
+    expect(approxPieces({ ...lemon, piece_g: null }, 142)).toBeNull();
+
+    const line = { id: 'auto:lemon', product_id: 'lemon', name: 'Лимон', department: 'Овощи и фрукты', unit: 'g', needed: 142, from_pantry: 0, to_buy: 142, package: null, price_kop: null, price_per: null, purchase_cost_kop: null, price_source: null, purchased: false, at_home: false, changed: false, transferred: false };
+    const menu = { start_date: '2026-10-19', days: 1, meals: [], batches: [], snapshot: { recipes: {}, products: { lemon } } };
+    const record = { id: 'x', title: 'Меню', start_date: '2026-10-19', days: 1, revision: 1, is_favorite: false, created_at: '', updated_at: '', menu, shopping_revision: 1, cooked_batches: [] } as unknown as MenuRecord;
+    const shopping = { lines: [line], manual_lines: [], totals: { purchase_kop: 0, complete: false }, budget: null } as unknown as ShoppingView;
+    expect(buildExportModel(record, shopping, []).shopping[0]?.toBuyText).toBe('142 г (≈ 2 шт.)');
   });
 
   it('neutralises formula-like text', () => {

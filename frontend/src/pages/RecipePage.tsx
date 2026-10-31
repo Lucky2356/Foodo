@@ -205,7 +205,7 @@ export default function RecipePage() {
                 <li key={i}>
                   <span className="grow">
                     {product?.name ?? ing.product}
-                    {product && product.state !== 'raw' && product.state !== 'processed' && <span className="muted tiny"> · {product.state === 'dry' ? 'сухой' : 'готовый'}</span>}
+                    {product && product.state !== 'raw' && product.state !== 'processed' && <span className="muted tiny"> · {product.state === 'dry' ? 'в сухом виде' : 'в готовом виде'}</span>}
                   </span>
                   {allOptions.length > 1 ? (
                     <label className="row" style={{ ['--gap' as string]: '6px' }}>

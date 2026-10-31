@@ -66,8 +66,48 @@ export interface PriceSourceStatus {
   city?: string;
   /** Chains collected for several stores: one entry per city. */
   cities?: { city: string; products?: number }[];
+  /** Rosstat: how many cities and regions its averages cover (published as plain numbers). */
+  city_count?: number;
+  regions?: number;
   products?: number;
   observations?: number;
+}
+
+const text = (v: unknown): string | undefined => (typeof v === 'string' ? v : undefined);
+const count = (v: unknown): number | undefined => (typeof v === 'number' && Number.isFinite(v) ? v : undefined);
+const flag = (v: unknown): boolean | undefined => (typeof v === 'boolean' ? v : undefined);
+
+/**
+ * One source of the published status in the shape the page expects. The file is written by the price
+ * workflow, and its sources differ: `cities` is a list of stores for METRO but a number for Rosstat. A
+ * field of an unexpected type is dropped instead of breaking the settings screen.
+ */
+export function normalizePriceSource(raw: unknown): PriceSourceStatus {
+  const s = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>;
+  const cities = Array.isArray(s.cities)
+    ? s.cities.flatMap((c: unknown) => {
+        const o = (c && typeof c === 'object' ? c : {}) as Record<string, unknown>;
+        const city = text(o.city);
+        return city ? [{ city, products: count(o.products) }] : [];
+      })
+    : undefined;
+  return {
+    name: text(s.name),
+    ok: flag(s.ok),
+    updated_at: text(s.updated_at),
+    checked_at: text(s.checked_at),
+    error: text(s.error),
+    collected: flag(s.collected),
+    reachable: flag(s.reachable),
+    reason: text(s.reason),
+    period: text(s.period),
+    city: text(s.city),
+    cities,
+    city_count: count(s.cities),
+    regions: count(s.regions),
+    products: count(s.products),
+    observations: count(s.observations),
+  };
 }
 
 /** What the price workflow last collected (published with the static site), or null if unknown. */
@@ -75,8 +115,10 @@ export async function fetchPriceSourcesStatus(): Promise<Record<string, PriceSou
   try {
     const r = await fetch(`data/prices/index.json`, { cache: 'no-cache' });
     if (!r.ok) return null;
-    const index = (await r.json()) as { status?: { sources?: Record<string, PriceSourceStatus> } | null };
-    return index.status?.sources ?? null;
+    const index = (await r.json()) as { status?: { sources?: unknown } | null } | null;
+    const sources = index?.status?.sources;
+    if (!sources || typeof sources !== 'object') return null;
+    return Object.fromEntries(Object.entries(sources).map(([id, s]) => [id, normalizePriceSource(s)]));
   } catch {
     // Offline or a server build without published files: the block is simply not shown.
     return null;

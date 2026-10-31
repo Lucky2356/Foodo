@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { fetchPublicPrices } from '../prices';
+import { fetchPriceSourcesStatus, fetchPublicPrices } from '../prices';
 
 const entry = (product_id: string, price_kop: number, kind: string) => ({
   product_id,
@@ -42,5 +42,29 @@ describe('published price data on the static site', () => {
   it('works without a city file or chain and with no published data at all', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => new Response('{}', { status: 404 })));
     expect(await fetchPublicPrices('1600000100000', null, false, 'Республика Татарстан')).toEqual([]);
+  });
+
+  it('reads the published status of every source, whatever shape its fields have (settings did crash on Rosstat «cities»: 270)', async () => {
+    const index = {
+      status: {
+        sources: {
+          rosstat: { name: 'Росстат', ok: true, regions: 85, cities: 270, period: '2026-09', updated_at: '2026-10-26T08:59:14+00:00' },
+          metro: { name: 'Metro', ok: true, cities: [{ city: 'Москва', products: 50 }, { city: 7 }, null], updated_at: '2026-10-26T09:26:42+00:00' },
+          lenta: { name: 'lenta', collected: false, reason: 'Проверка браузера' },
+          broken: 'not an object',
+        },
+      },
+    };
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify(index), { status: 200 })));
+    const status = await fetchPriceSourcesStatus();
+    expect(status?.rosstat).toMatchObject({ ok: true, regions: 85, city_count: 270, cities: undefined, period: '2026-09' });
+    expect(status?.metro?.cities).toEqual([{ city: 'Москва', products: 50 }]);
+    expect(status?.lenta).toMatchObject({ collected: false, reason: 'Проверка браузера' });
+    expect(status?.broken).toEqual(expect.objectContaining({ name: undefined }));
+  });
+
+  it('has no status when the file says nothing about sources', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ files: {} }), { status: 200 })));
+    expect(await fetchPriceSourcesStatus()).toBeNull();
   });
 });
