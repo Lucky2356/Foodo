@@ -3,7 +3,7 @@
 Два варианта, оба собираются в GitHub Actions:
 
 1. **GitHub Pages — тестовый сайт** (сейчас). Только гостевой режим: всё работает в браузере, аккаунтов нет.
-2. **Собственный сервер — production** (позже). Готовые образы из GHCR + `docker-compose.prod.yml`: PostgreSQL, API (Django + gunicorn), web (nginx + PWA), Caddy (HTTPS).
+2. **Собственный сервер — production.** Готовые образы из GHCR + `docker-compose.prod.yml`: PostgreSQL, API (Django + gunicorn), web (nginx + PWA), Caddy (HTTPS). Настраивается и обслуживается из GitHub Actions — workflow **Server**, на своём компьютере ничего устанавливать не нужно.
 
 GitHub Actions не является хостингом Django и PostgreSQL: для аккаунтов нужен сервер.
 
@@ -19,7 +19,62 @@ GitHub Actions не является хостингом Django и PostgreSQL: д
 
 Сведения об операторе и адрес для обращений на странице «О сервисе» задаются переменными репозитория (*Settings → Secrets and variables → Actions → Variables*): `FOODO_OPERATOR` (например, «ИП Иванов Иван Иванович, ИНН 000000000000») и `FOODO_CONTACT_EMAIL`. Их читают workflow Pages и Release (статическая сборка и образ `foodo-web`). Пока переменные не заданы, страница не показывает ни оператора, ни контактов — без заготовок в квадратных скобках. Текст об обработке данных перед публичным запуском стоит проверить с юристом.
 
-## 2. Сервер
+## 2. Свой сервер через GitHub Actions
+
+Всё делается в браузере: аренда сервера, домен, почтовый ящик, секреты репозитория и запуск workflow **Server**. Workflow сам ставит на сервер Docker, файрвол (открыты только SSH, 80 и 443), автоматические обновления безопасности Ubuntu, Foodo с HTTPS (сертификат Let's Encrypt через Caddy), а также:
+
+- **автообновление** — сервер каждые 30 минут проверяет релизы на GitHub; новую версию ставит сам, перед этим делает резервную копию, а если новая версия не запустилась — возвращает прежнюю;
+- **резервные копии** базы и загруженных файлов — каждый день в 03:30 и перед каждым обновлением, хранятся 14 дней в `/opt/foodo/backups`.
+
+### Шаг 1. Сервер
+
+Арендуйте VPS у любого хостинга с **Ubuntu 24.04** (или 22.04) и доступом root по паролю: 2 ГБ памяти, 20 ГБ диска, 1–2 ядра. Запишите **IP-адрес** и **пароль root** из письма или панели хостинга. Если хостинг предлагает автоматические снимки (бэкапы) сервера, включите их: это копия вне `/opt/foodo/backups`.
+
+### Шаг 2. Домен
+
+Купите домен (например, в зоне .ru) и в настройках DNS добавьте **A-запись** на IP сервера: для самого домена (`@`) или поддомена (`foodo`). Запись начинает работать от нескольких минут до нескольких часов.
+
+### Шаг 3. Почта для писем восстановления пароля
+
+Подойдёт обычный ящик с SMTP. Для Яндекс Почты: создайте ящик, в Яндекс ID → «Безопасность» → «Пароли приложений» создайте пароль для почты. Настройки: сервер `smtp.yandex.ru`, порт `465`, логин — адрес ящика, пароль — пароль приложения, отправитель — тот же адрес. Без почты сайт работает, но «Забыли пароль» не отправляет писем.
+
+### Шаг 4. Секреты репозитория
+
+GitHub → репозиторий → *Settings → Secrets and variables → Actions → New repository secret*. Значения видны только workflow, в логах они скрыты.
+
+| Секрет | Что вписать |
+| --- | --- |
+| `SERVER_HOST` | IP-адрес сервера |
+| `SERVER_PASSWORD` | пароль root (вместо него можно `SERVER_SSH_KEY` — закрытый SSH-ключ) |
+| `FOODO_DOMAIN` | домен без `https://`, например `foodo.example.ru` |
+| `FOODO_ADMIN_EMAIL` | ваш адрес: учётная запись администратора и уведомления Let's Encrypt |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `SMTP_FROM` | почта из шага 3 (`smtp.yandex.ru`, `465`, адрес, пароль приложения, адрес) |
+| `SERVER_HOST_KEY` | необязательно: ключ сервера (см. ниже), чтобы workflow проверял, что подключается именно к нему |
+
+### Шаг 5. Запуск
+
+*Actions → Server → Run workflow*, ветка `main`, действие **setup**. Через 5–10 минут в конце лога будет «Сайт работает: https://ваш-домен». Если домен ещё не указывает на сервер, последний шаг сообщит об этом — запустите **setup** ещё раз позже: повторный запуск безопасен, он сохраняет базу и ключи.
+
+### Шаг 6. Вход администратора
+
+Откройте сайт → «Войти» → «Забыли пароль?» → адрес из `FOODO_ADMIN_EMAIL` → по ссылке из письма задайте пароль. Учётная запись администратора создаётся без пароля, поэтому пароль нигде не передаётся и не попадает в логи. Панель управления каталогом — `https://ваш-домен/admin/`.
+
+### Дальше
+
+| Действие workflow Server | Когда |
+| --- | --- |
+| **status** | версия, контейнеры, расписание, последние копии, проверка сайта из интернета |
+| **update** | поставить последний релиз сразу, не дожидаясь проверки по расписанию |
+| **backup** | сделать резервную копию сейчас |
+| **setup** | сменить почту, домен или после переустановки сервера |
+
+Строка «Ключ сервера: …» в логе первого запуска — отпечаток SSH-ключа сервера. Чтобы последующие запуски проверяли его, сохраните в секрет `SERVER_HOST_KEY` строку вида `ssh-ed25519 AAAA…` из панели хостинга или из `/etc/ssh/ssh_host_ed25519_key.pub` на сервере.
+
+Скрипты сервера (`deploy/server/`) проверяются в CI на чистой машине: установка предыдущего релиза, повторная настройка с сохранением ключей и данных, резервная копия, обновление до последнего релиза, восстановление из копии.
+
+## 3. Сервер вручную (для специалистов)
+
+То же, что делает workflow, можно выполнить на сервере самому: скопировать репозиторий, заполнить файл настроек (переменные описаны в начале `deploy/server/install.sh`) и запустить `sudo bash deploy/server/install.sh файл-настроек`. Ниже — устройство установки.
 
 ### Что нужно
 
@@ -27,27 +82,13 @@ GitHub Actions не является хостингом Django и PostgreSQL: д
 - Домен с A/AAAA-записью на сервер; открытые порты 80 и 443. PostgreSQL наружу **не** публикуется.
 - SMTP-ящик для писем восстановления пароля. Без SMTP восстановление в production не работает (письма уходят только в лог при консольном бэкенде).
 
-### Первый запуск
-
-```sh
-mkdir -p /opt/foodo && cd /opt/foodo
-# из релиза — docker-compose.prod.yml; из исходников того же тега — пример .env и Caddyfile
-curl -LO https://github.com/Lucky2356/Foodo/releases/download/v0.1.0/docker-compose.prod.yml
-curl -L  https://raw.githubusercontent.com/Lucky2356/Foodo/v0.1.0/.env.example -o .env
-mkdir -p deploy && curl -L https://raw.githubusercontent.com/Lucky2356/Foodo/v0.1.0/deploy/Caddyfile -o deploy/Caddyfile
-nano .env          # домен, секреты, пароль БД, SMTP
-docker compose -f docker-compose.prod.yml pull
-docker compose -f docker-compose.prod.yml up -d
-docker compose -f docker-compose.prod.yml exec api python manage.py createsuperuser
-```
-
 При старте API выполняет `migrate` и идемпотентную загрузку стартовых данных (`FOODO_MIGRATE=1`, `FOODO_LOAD_SEED=1`). Повторная загрузка не создаёт дублей и записывает только строки, изменившиеся в `shared/data` с прошлой загрузки (таблица `SeedState`): исправления администратора в остальных записях сохраняются при перезапусках. Если новая версия меняет ту же запись, применяется версия из релиза — постоянные исправления данных лучше вносить в `shared/data` через PR. `python manage.py load_seed --force` применяет все строки заново.
 
 Перед развёртыванием можно проверить подпись образов:
 
 ```sh
-gh attestation verify oci://ghcr.io/lucky2356/foodo-api:0.1.0 -R Lucky2356/Foodo
-gh attestation verify oci://ghcr.io/lucky2356/foodo-web:0.1.0 -R Lucky2356/Foodo
+gh attestation verify oci://ghcr.io/lucky2356/foodo-api:0.2.7 -R Lucky2356/Foodo
+gh attestation verify oci://ghcr.io/lucky2356/foodo-web:0.2.7 -R Lucky2356/Foodo
 ```
 
 ### Переменные окружения (`.env`)
@@ -55,12 +96,13 @@ gh attestation verify oci://ghcr.io/lucky2356/foodo-web:0.1.0 -R Lucky2356/Foodo
 | Переменная | Назначение |
 | --- | --- |
 | `FOODO_DOMAIN`, `FOODO_SITE_URL` | домен (Caddy получает сертификат) и полный адрес для ссылок в письмах |
+| `FOODO_TLS` | адрес для учётной записи Let's Encrypt или `internal` — тестовый сертификат |
 | `FOODO_IMAGE_OWNER`, `FOODO_IMAGE_TAG` | владелец образов в GHCR (в нижнем регистре) и версия |
 | `DJANGO_SECRET_KEY` | длинный случайный ключ; `python3 -c "import secrets; print(secrets.token_urlsafe(50))"` |
 | `DJANGO_ALLOWED_HOSTS`, `DJANGO_CSRF_TRUSTED_ORIGINS` | домен; `https://домен` |
 | `DJANGO_HSTS_SECONDS` | HSTS (после проверки HTTPS) |
 | `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `DATABASE_URL` | БД (пароль в обоих местах одинаковый) |
-| `DJANGO_EMAIL_BACKEND`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `EMAIL_USE_TLS`, `DEFAULT_FROM_EMAIL` | SMTP |
+| `DJANGO_EMAIL_BACKEND`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `EMAIL_USE_TLS`, `EMAIL_USE_SSL`, `DEFAULT_FROM_EMAIL` | SMTP: порт 587 — `EMAIL_USE_TLS=1`, порт 465 — `EMAIL_USE_SSL=1` |
 | `FOODO_THROTTLE_*` | (необязательно) лимиты частоты: вход, регистрация, сброс, генерация, импорт, цены |
 
 Секреты хранятся только в `.env` на сервере (права `600`) и не попадают в Git.
@@ -76,46 +118,21 @@ curl -sI https://ДОМЕН/ | grep -i strict-transport-security
 
 ### Обновление
 
-```sh
-cd /opt/foodo
-./backup.sh                                     # см. ниже — всегда перед обновлением
-sed -i 's/^FOODO_IMAGE_TAG=.*/FOODO_IMAGE_TAG=0.2.0/' .env
-docker compose -f docker-compose.prod.yml pull
-docker compose -f docker-compose.prod.yml up -d  # миграции выполняются при старте API
-curl -sf https://ДОМЕН/api/health/
-```
-
-Откат: вернуть прежний `FOODO_IMAGE_TAG` и `up -d`. Если новая версия применила миграции, несовместимые со старой, — восстановить резервную копию (ниже). Разрушительные миграции выпускаются только с отдельной инструкцией в `CHANGELOG.md`.
+`/opt/foodo/update.sh` (его же раз в 30 минут запускает `foodo-update.timer`): находит последний релиз, делает резервную копию, берёт `docker-compose.prod.yml` этой версии, обновляет образы и ждёт ответа сайта; если новая версия не отвечает 5 минут — возвращает прежнюю. `update.sh --to 0.2.7` ставит указанную версию (в том числе более старую). Миграции выполняются при старте API; если новая версия применила миграции, несовместимые со старой, после отката может понадобиться восстановление из копии (ниже). Разрушительные миграции выпускаются только с отдельной инструкцией в `CHANGELOG.md`.
 
 **Никогда** не выполняйте `docker compose down -v`: это удаляет тома с базой данных.
 
 ### Резервное копирование
 
-`backup.sh`:
-
-```sh
-#!/bin/sh
-set -eu
-cd /opt/foodo
-mkdir -p backups
-ts=$(date +%Y%m%d-%H%M%S)
-docker compose -f docker-compose.prod.yml exec -T db sh -c 'pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Fc' > "backups/foodo-$ts.dump"
-docker compose -f docker-compose.prod.yml exec -T api tar -C /app -czf - media > "backups/media-$ts.tar.gz"
-find backups -type f -mtime +14 -delete
-```
-
-Запуск по расписанию: `crontab -e` → `30 3 * * * /opt/foodo/backup.sh`. Копии стоит дополнительно переносить с сервера.
+`/opt/foodo/backup.sh` (ежедневно в 03:30 через `foodo-backup.timer` и перед каждым обновлением): дамп PostgreSQL и архив загруженных файлов в `/opt/foodo/backups` (права 700), копии старше 14 дней удаляются (`FOODO_BACKUP_DAYS`). Копии на том же сервере не защищают от потери сервера: включите снимки у хостинга или переносите копии отдельно.
 
 ### Восстановление
 
 ```sh
-docker compose -f docker-compose.prod.yml stop api web
-docker compose -f docker-compose.prod.yml exec -T db sh -c 'pg_restore -U "$POSTGRES_USER" -d "$POSTGRES_DB" --clean --if-exists' < backups/foodo-YYYYMMDD-HHMMSS.dump
-docker compose -f docker-compose.prod.yml exec -T api tar -C /app -xzf - < backups/media-YYYYMMDD-HHMMSS.tar.gz
-docker compose -f docker-compose.prod.yml up -d
+/opt/foodo/restore.sh /opt/foodo/backups/foodo-YYYYMMDD-HHMMSS.dump --yes
 ```
 
-Проверяйте восстановление на отдельной машине хотя бы раз перед запуском.
+Перед восстановлением делается копия текущего состояния; затем база и файлы заменяются содержимым копии, сервис перезапускается и проверяется. Всё, что записано после выбранной копии, теряется.
 
 ### Цены на сервере
 

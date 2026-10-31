@@ -1,0 +1,131 @@
+name: Server
+
+# Manages the production server over SSH (docs/DEPLOYMENT.md). Run by hand: Actions → Server → Run workflow.
+#   setup   first setup or new settings: Docker, firewall, HTTPS, Foodo, automatic updates and backups
+#   status  containers, version, timers, latest backups, site health
+#   update  install the latest release now (the server also checks by itself every 30 minutes)
+#   backup  back up the database now
+# Settings come from repository secrets (Settings → Secrets and variables → Actions):
+#   SERVER_HOST          server IP address
+#   SERVER_PASSWORD      root password from the hosting provider (or SERVER_SSH_KEY: a private key)
+#   SERVER_HOST_KEY      (optional) the server's SSH host key line, to pin it instead of trusting the first answer
+#   FOODO_DOMAIN         domain whose A record points to SERVER_HOST
+#   FOODO_ADMIN_EMAIL    administrator e-mail: Let's Encrypt notices and the admin account
+#   SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASSWORD SMTP_FROM  mail for password reset
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: What to do
+        type: choice
+        options: [status, setup, update, backup]
+        default: status
+
+permissions:
+  contents: read
+
+concurrency:
+  group: server
+  cancel-in-progress: false
+
+jobs:
+  server:
+    name: Server — ${{ inputs.action }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      SERVER_HOST: ${{ secrets.SERVER_HOST }}
+      SERVER_USER: ${{ secrets.SERVER_USER || 'root' }}
+      SSHPASS: ${{ secrets.SERVER_PASSWORD }}
+      SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+      SERVER_HOST_KEY: ${{ secrets.SERVER_HOST_KEY }}
+      FOODO_DOMAIN: ${{ secrets.FOODO_DOMAIN }}
+      FOODO_ADMIN_EMAIL: ${{ secrets.FOODO_ADMIN_EMAIL }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+    steps:
+      - name: Only from main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "::error::Run the Server workflow from main"
+          exit 1
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - name: Settings are present
+        run: |
+          missing=""
+          for name in SERVER_HOST FOODO_DOMAIN; do [ -n "${!name}" ] || missing="$missing $name"; done
+          [ -n "$SSHPASS" ] || [ -n "$SERVER_SSH_KEY" ] || missing="$missing SERVER_PASSWORD(или SERVER_SSH_KEY)"
+          if [ "${{ inputs.action }}" = setup ]; then
+            [ -n "$FOODO_ADMIN_EMAIL" ] || missing="$missing FOODO_ADMIN_EMAIL"
+            [ -n "$SMTP_HOST" ] || echo "::warning::SMTP_HOST не задан: письма восстановления пароля не будут уходить"
+          fi
+          if [ -n "$missing" ]; then echo "::error::Не заданы секреты:$missing"; exit 1; fi
+      - name: SSH connection
+        run: |
+          install -d -m 700 ~/.ssh
+          if [ -n "$SERVER_SSH_KEY" ]; then
+            printf '%s\n' "$SERVER_SSH_KEY" > ~/.ssh/id_server && chmod 600 ~/.ssh/id_server
+            export SSH_AUTH="-i $HOME/.ssh/id_server"
+          else
+            sudo apt-get install -yq sshpass >/dev/null
+            export SSH_RUN="sshpass -e"
+          fi
+          if [ -n "$SERVER_HOST_KEY" ]; then
+            printf '%s %s\n' "$SERVER_HOST" "$SERVER_HOST_KEY" > ~/.ssh/known_hosts
+            export SSH_CHECK=yes
+          else
+            # Without a pinned key the first answer is trusted; its fingerprint is printed for comparison.
+            export SSH_CHECK=accept-new
+          fi
+          cat > ~/remote <<'SH'
+          #!/usr/bin/env bash
+          # remote CMD... — runs a command on the server
+          exec $SSH_RUN ssh $SSH_AUTH -o StrictHostKeyChecking=$SSH_CHECK -o ConnectTimeout=20 -o ServerAliveInterval=30 "$SERVER_USER@$SERVER_HOST" "$@"
+          SH
+          chmod +x ~/remote
+          # The next steps get the same connection settings.
+          printf 'SSH_AUTH=%s\nSSH_RUN=%s\nSSH_CHECK=%s\n' "${SSH_AUTH:-}" "${SSH_RUN:-}" "$SSH_CHECK" >> "$GITHUB_ENV"
+          ~/remote true
+          ssh-keygen -lf ~/.ssh/known_hosts | sed 's/^/Ключ сервера: /'
+
+      - name: Setup
+        if: inputs.action == 'setup'
+        run: |
+          tar -czf /tmp/foodo-src.tgz docker-compose.prod.yml deploy/Caddyfile deploy/server
+          ~/remote 'rm -rf /root/foodo-src && mkdir -p /root/foodo-src && tar -xzf - -C /root/foodo-src' < /tmp/foodo-src.tgz
+          # Settings go through stdin into a root-only file, never into a command line or the log.
+          {
+            printf 'FOODO_DOMAIN=%q\n' "$FOODO_DOMAIN"
+            printf 'FOODO_TLS=%q\n' "$FOODO_ADMIN_EMAIL"
+            printf 'FOODO_ADMIN_EMAIL=%q\n' "$FOODO_ADMIN_EMAIL"
+            printf 'SMTP_HOST=%q\nSMTP_PORT=%q\nSMTP_USER=%q\nSMTP_PASSWORD=%q\nSMTP_FROM=%q\n' \
+              "$SMTP_HOST" "${SMTP_PORT:-587}" "$SMTP_USER" "$SMTP_PASSWORD" "$SMTP_FROM"
+          } | ~/remote 'umask 077 && cat > /root/foodo-setup.env'
+          ~/remote 'bash /root/foodo-src/deploy/server/install.sh /root/foodo-setup.env; status=$?; rm -f /root/foodo-setup.env; exit $status'
+
+      - name: Update now
+        if: inputs.action == 'update'
+        run: ~/remote /opt/foodo/update.sh
+
+      - name: Backup now
+        if: inputs.action == 'backup'
+        run: ~/remote '/opt/foodo/backup.sh && ls -lh /opt/foodo/backups | tail -n 6'
+
+      - name: Status
+        run: |
+          ~/remote 'cd /opt/foodo && grep -E "^FOODO_(IMAGE_TAG|DOMAIN)=" .env; docker compose -f docker-compose.prod.yml ps; systemctl list-timers "foodo-*" --no-pager; ls -lh backups | tail -n 4; df -h / | tail -n 1'
+      - name: Site from the internet (HTTPS and health)
+        run: |
+          for i in $(seq 1 40); do
+            if curl -fsS --max-time 15 "https://$FOODO_DOMAIN/api/health/"; then echo; break; fi
+            [ "$i" = 40 ] && { echo "::error::https://$FOODO_DOMAIN не отвечает: проверьте A-запись домена и порты 80/443"; exit 1; }
+            sleep 15
+          done
+          curl -fsSI "https://$FOODO_DOMAIN/" | grep -i '^strict-transport-security'
+          curl -fsS "https://$FOODO_DOMAIN/" | grep -q '<div id="root">'
+          echo "Сайт работает: https://$FOODO_DOMAIN"
