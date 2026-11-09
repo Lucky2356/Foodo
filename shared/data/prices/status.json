@@ -16,10 +16,10 @@
    ],
    "period": "2026-09",
    "file": "https://rosstat.gov.ru/storage/mediabank/sred_potreb_cen_09-2026.xlsx",
-   "checked_at": "2026-11-02T11:17:53+00:00",
+   "checked_at": "2026-11-09T11:37:33+00:00",
    "ok": false,
    "updated_at": "2026-10-26T08:59:14+00:00",
-   "error": "URLError: <urlopen error [Errno 110] Connection timed out> (https://rosstat.gov.ru/statistics/price)"
+   "error": "HTTP 404 https://rosstat.gov.ru/storage/mediabank/sred_potreb_cen_02-2026.xlsx"
   },
   "magnit": {
    "name": "Магнит, magnit.ru",
@@ -31,26 +31,26 @@
    "offers": 1992,
    "products": 67,
    "requests": 83,
-   "checked_at": "2026-11-02T11:17:57+00:00",
+   "checked_at": "2026-11-09T11:39:34+00:00",
    "ok": false,
    "updated_at": "2026-10-26T09:03:23+00:00",
-   "error": "HTTP 403 https://magnit.ru/catalog/"
+   "error": "URLError: <urlopen error timed out> (https://magnit.ru/catalog/)"
   },
   "pyaterochka": {
    "name": "pyaterochka",
    "collected": false,
    "reachable": false,
-   "detail": "HTTP 403 https://5ka.ru/robots.txt",
+   "detail": "URLError: <urlopen error timed out> (https://5ka.ru/robots.txt)",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-11-02T11:45:04+00:00"
+   "checked_at": "2026-11-09T12:00:01+00:00"
   },
   "perekrestok": {
    "name": "perekrestok",
    "collected": false,
    "reachable": false,
-   "detail": "HTTP 403 https://www.perekrestok.ru/robots.txt",
+   "detail": "URLError: <urlopen error timed out> (https://www.perekrestok.ru/robots.txt)",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-11-02T11:45:05+00:00"
+   "checked_at": "2026-11-09T12:00:22+00:00"
   },
   "lenta": {
    "name": "lenta",
@@ -58,7 +58,7 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Страницы товаров закрыты проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
-   "checked_at": "2026-11-02T11:45:06+00:00"
+   "checked_at": "2026-11-09T12:00:22+00:00"
   },
   "auchan": {
    "name": "auchan",
@@ -66,19 +66,19 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Сайт закрыт проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
-   "checked_at": "2026-11-02T11:45:08+00:00"
+   "checked_at": "2026-11-09T12:00:26+00:00"
   },
   "okey": {
    "name": "okey",
    "collected": false,
    "reachable": false,
-   "detail": "HTTP 403 https://www.okeydostavka.ru/robots.txt",
+   "detail": "URLError: <urlopen error timed out> (https://www.okeydostavka.ru/robots.txt)",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-11-02T11:45:09+00:00"
+   "checked_at": "2026-11-09T12:00:47+00:00"
   },
   "metro": {
    "name": "Metro, online.metro-cc.ru",
-   "checked_at": "2026-11-02T11:45:03+00:00",
+   "checked_at": "2026-11-09T11:59:41+00:00",
    "stores_on_site": 94,
    "uniform_online_price": true,
    "checked": [
@@ -327,12 +327,12 @@
      "products": 50
     }
    ],
-   "product_urls": 97826,
+   "product_urls": 98361,
    "products": 50,
    "observations": 2850,
    "requests": 440,
    "ok": true,
-   "updated_at": "2026-11-02T11:45:03+00:00"
+   "updated_at": "2026-11-09T11:59:41+00:00"
   },
   "dixy": {
    "name": "dixy",
@@ -340,15 +340,15 @@
    "reachable": false,
    "detail": "HTTP 403 https://dixy.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-11-02T11:45:11+00:00"
+   "checked_at": "2026-11-09T12:00:48+00:00"
   },
   "vkusvill": {
    "name": "vkusvill",
    "collected": false,
-   "reachable": true,
-   "detail": "доступен",
+   "reachable": false,
+   "detail": "TimeoutError: The read operation timed out (https://vkusvill.ru/robots.txt)",
    "reason": "Сайт доступен, но вес и единица товара не публикуются в машиночитаемом виде — без них цена за кг была бы догадкой.",
-   "checked_at": "2026-11-02T11:45:13+00:00"
+   "checked_at": "2026-11-09T12:01:08+00:00"
   },
   "monetka": {
    "name": "monetka",
@@ -356,7 +356,7 @@
    "reachable": true,
    "detail": "доступен",
    "reason": "Страницы каталога закрыты проверкой браузера (Qrator): цены видны только после выполнения скрипта, а выдавать сборщик за браузер мы не будем.",
-   "checked_at": "2026-11-02T11:45:13+00:00"
+   "checked_at": "2026-11-09T12:01:09+00:00"
   },
   "globus": {
    "name": "globus",
@@ -364,7 +364,7 @@
    "reachable": false,
    "detail": "URLError: <urlopen error [Errno 104] Connection reset by peer> (https://online.globus.ru/robots.txt)",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-11-02T11:45:14+00:00"
+   "checked_at": "2026-11-09T12:01:10+00:00"
   },
   "spar": {
    "name": "spar",
@@ -372,7 +372,7 @@
    "reachable": false,
    "detail": "HTTP 307 https://myspar.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-11-02T11:45:23+00:00"
+   "checked_at": "2026-11-09T12:01:15+00:00"
   },
   "maria_ra": {
    "name": "maria_ra",
@@ -380,8 +380,8 @@
    "reachable": false,
    "detail": "HTTP 404 https://www.maria-ra.ru/robots.txt",
    "reason": "Сайт недоступен из сети GitHub Actions (блокировка или защита от ботов).",
-   "checked_at": "2026-11-02T11:45:24+00:00"
+   "checked_at": "2026-11-09T12:01:16+00:00"
   }
  },
- "generated_at": "2026-11-02T11:45:24+00:00"
+ "generated_at": "2026-11-09T12:01:16+00:00"
 }
